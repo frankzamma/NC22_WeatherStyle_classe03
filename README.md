@@ -1,4 +1,4 @@
-# WeatherStyle_classe03
+# WeatherStyle
 Repository project: Ingegneria del Software <br>
 Name Project: WeatherStyle<br>
 
