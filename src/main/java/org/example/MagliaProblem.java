@@ -2,14 +2,14 @@ package org.example;
 
 import org.uma.jmetal.problem.integerproblem.impl.AbstractIntegerProblem;
 import org.uma.jmetal.solution.integersolution.IntegerSolution;
-import org.uma.jmetal.util.solutionattribute.impl.NumberOfViolatedConstraints;
+
 
 import java.util.*;
 
 public class MagliaProblem extends AbstractIntegerProblem{
     private static final int size = 3;
-    private List<Maglia> list;
-    private MeteoInformation meteoInformation;
+    private final List<Maglia> list;
+    private final MeteoInformation meteoInformation;
     private List<Hashtable<String, Integer>> ranges;  //si tiene traccia della corrispondenza tra intervalli di temperatura e materiali associati
 
     public MagliaProblem(String nomeProblema, List<Maglia> l, MeteoInformation meteoInformation){
@@ -72,7 +72,7 @@ public class MagliaProblem extends AbstractIntegerProblem{
         ranges.get(1).put("tweed",2);
         ranges.get(1).put("velluto",3);
         ranges.get(1).put("lana",0);
-        ranges.get(0).put("raso",7);
+        ranges.get(1).put("raso",7);
         ranges.get(1).put("lunga",2);
         ranges.get(1).put("corta",8);
 
@@ -86,8 +86,8 @@ public class MagliaProblem extends AbstractIntegerProblem{
         ranges.get(2).put("velluto",4);
         ranges.get(2).put("lana", 1);
         ranges.get(2).put("raso",6);
-        ranges.get(0).put("lunga",5);
-        ranges.get(0).put("corta",5);
+        ranges.get(2).put("lunga",5);
+        ranges.get(2).put("corta",5);
 
         /* mappa 15° < temperatura <= 20°  */
         ranges.get(3).put("cotone",10);
@@ -188,7 +188,7 @@ public class MagliaProblem extends AbstractIntegerProblem{
         List<Integer> list = integerSolution.getVariables();
 
         //vincolo che sono diversi gli elementi tra loro
-        if( (list.get(0)  == list.get(1)) || (list.get(0) == list.get(2)) || (list.get(1) == list.get(2)) )
+        if( list.get(0).equals(list.get(1)) || list.get(0).equals(list.get(2)) || list.get(1).equals(list.get(2)))
             integerSolution.getObjectives()[0] = 0;
 
 
@@ -207,7 +207,18 @@ public class MagliaProblem extends AbstractIntegerProblem{
         /* Valutazione della maglia inserita dall'utente sulla base delle regole descritte su Drive */
         int temperaturaPercepita =  meteoInformation.getTemperaturaPercepita();
         int range = this.searchRange(temperaturaPercepita);
-        return ranges.get(range).get(maglia.getMateriale());
+
+        int voto = 0;
+
+        //try-catch aggiunto per debug, successivamente può essere rimosso
+        try{
+            voto = ranges.get(range).get(maglia.getMateriale());
+        }catch(NullPointerException e){
+            System.out.println(maglia.getMateriale());
+            e.printStackTrace();
+        }
+
+        return  voto;
     }
 
     public int valutazioneColore(Maglia m, MeteoInformation meteoInformation){
@@ -235,7 +246,7 @@ public class MagliaProblem extends AbstractIntegerProblem{
 
     private String getStagione(){
         GregorianCalendar data = new GregorianCalendar();
-        String seasons[] = {
+        String[] seasons = {
                 "inverno", "inverno", "primavera", "primavera", "primavera", "estate",
                 "estate", "estate", "autunno", "autunno", "autunno", "inverno"
        };
