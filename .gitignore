@@ -78,3 +78,9 @@ buildNumber.properties
 # JDT-specific (Eclipse Java Development Tools)
 
 .idea/
+
+.mvn/
+
+mvnw
+
+*.cmd
