@@ -84,3 +84,7 @@ buildNumber.properties
 mvnw
 
 *.cmd
+
+venv/
+
+out/
