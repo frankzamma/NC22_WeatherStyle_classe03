@@ -1,0 +1,360 @@
+time,Meteo,TemperaturaPercepita
+2022-01-01,Principalmente chiaro,4.0
+2022-01-02,Parzialmente nuvoloso,3.4499999999999997
+2022-01-03,Parzialmente nuvoloso,3.0
+2022-01-04,Nevicate leggere,6.25
+2022-01-05,Nevicate leggere,-0.2999999999999998
+2022-01-06,Parzialmente nuvoloso,-4.7
+2022-01-07,Coperto,-5.45
+2022-01-08,Nevicate moderate,-4.1000000000000005
+2022-01-09,Nevicate moderate,-3.35
+2022-01-10,Parzialmente nuvoloso,-6.300000000000001
+2022-01-11,Parzialmente nuvoloso,-5.65
+2022-01-12,Cielo chiaro,-4.8
+2022-01-13,Cielo chiaro,-2.8
+2022-01-14,Cielo chiaro,0.19999999999999973
+2022-01-15,Cielo chiaro,2.7499999999999996
+2022-01-16,Cielo chiaro,1.3000000000000003
+2022-01-17,Cielo chiaro,0.5499999999999998
+2022-01-18,Cielo chiaro,1.9
+2022-01-19,Nevicate leggere,0.9000000000000001
+2022-01-20,Nevicate leggere,0.19999999999999996
+2022-01-21,Principalmente chiaro,-1.3499999999999999
+2022-01-22,Cielo chiaro,-0.5
+2022-01-23,Principalmente chiaro,0.7999999999999998
+2022-01-24,Cielo chiaro,0.40000000000000036
+2022-01-25,Cielo chiaro,0.050000000000000266
+2022-01-26,Cielo chiaro,0.75
+2022-01-27,Principalmente chiaro,0.40000000000000036
+2022-01-28,Principalmente chiaro,2.2
+2022-01-29,Principalmente chiaro,2.0999999999999996
+2022-01-30,Cielo chiaro,5.0
+2022-01-31,Nevicate leggere,1.2
+2022-02-01,Nevicate moderate,1.0
+2022-02-02,Nevicate moderate,6.550000000000001
+2022-02-03,Coperto,4.5
+2022-02-04,Principalmente chiaro,4.800000000000001
+2022-02-05,Principalmente chiaro,2.0
+2022-02-06,Nevicate moderate,0.8999999999999999
+2022-02-07,Nevicate moderate,1.7499999999999998
+2022-02-08,Cielo chiaro,2.95
+2022-02-09,Cielo chiaro,5.45
+2022-02-10,Cielo chiaro,5.2
+2022-02-11,Nevicate leggere,2.8499999999999996
+2022-02-12,Nevicate moderate,-0.7
+2022-02-13,Nevicate leggere,-1.1500000000000001
+2022-02-14,Nevicate moderate,0.10000000000000009
+2022-02-15,Nevicate leggere,0.8500000000000001
+2022-02-16,Nevicate leggere,2.9
+2022-02-17,Nevicate leggere,7.95
+2022-02-18,pioggerella debole,7.75
+2022-02-19,pioggerella debole,4.1
+2022-02-20,Principalmente chiaro,4.6000000000000005
+2022-02-21,Nevicate moderate,3.3000000000000003
+2022-02-22,Nevicate leggere,4.15
+2022-02-23,Cielo chiaro,4.15
+2022-02-24,Coperto,4.65
+2022-02-25,Parzialmente nuvoloso,1.65
+2022-02-26,Principalmente chiaro,0.9499999999999997
+2022-02-27,Nevicate leggere,-2.65
+2022-02-28,Principalmente chiaro,-0.8000000000000003
+2022-03-01,Nevicate leggere,1.4500000000000002
+2022-03-02,Parzialmente nuvoloso,1.4000000000000004
+2022-03-03,Parzialmente nuvoloso,3.7
+2022-03-04,Nevicate moderate,2.4
+2022-03-05,Nevicate moderate,-0.34999999999999987
+2022-03-06,Nevicate moderate,-2.0
+2022-03-07,Principalmente chiaro,-3.0500000000000003
+2022-03-08,Nevicate leggere,-2.55
+2022-03-09,Cielo chiaro,-1.4500000000000002
+2022-03-10,Principalmente chiaro,2.8500000000000005
+2022-03-11,Nevicate moderate,1.4000000000000001
+2022-03-12,Nevicate moderate,1.3
+2022-03-13,Nevicate moderate,1.7
+2022-03-14,Nevicate moderate,3.35
+2022-03-15,Nevicate moderate,6.15
+2022-03-16,Parzialmente nuvoloso,7.7
+2022-03-17,Coperto,9.25
+2022-03-18,Nevicate leggere,7.65
+2022-03-19,Nevicate moderate,5.9
+2022-03-20,Nevicate leggere,3.1
+2022-03-21,Coperto,3.6
+2022-03-22,Principalmente chiaro,1.9500000000000002
+2022-03-23,Cielo chiaro,5.4
+2022-03-24,Cielo chiaro,6.9
+2022-03-25,Cielo chiaro,6.45
+2022-03-26,Cielo chiaro,7.3
+2022-03-27,Principalmente chiaro,7.55
+2022-03-28,Principalmente chiaro,7.75
+2022-03-29,pioggerella debole,8.5
+2022-03-30,Nevicate moderate,6.949999999999999
+2022-03-31,Pioggia,7.65
+2022-04-01,Nevicate molto intense,2.35
+2022-04-02,Nevicate moderate,-0.4500000000000002
+2022-04-03,Nevicate leggere,0.15000000000000013
+2022-04-04,Nevicate leggere,2.35
+2022-04-05,Parzialmente nuvoloso,6.550000000000001
+2022-04-06,pioggerella debole,6.85
+2022-04-07,Nevicate moderate,8.1
+2022-04-08,Nevicate leggere,11.65
+2022-04-09,pioggerella debole,2.8499999999999996
+2022-04-10,Parzialmente nuvoloso,4.199999999999999
+2022-04-11,Parzialmente nuvoloso,6.1499999999999995
+2022-04-12,pioggerella debole,8.45
+2022-04-13,Coperto,12.25
+2022-04-14,Principalmente chiaro,12.5
+2022-04-15,Principalmente chiaro,15.2
+2022-04-16,pioggerella debole,14.899999999999999
+2022-04-17,Nevicate leggere,12.55
+2022-04-18,Parzialmente nuvoloso,9.4
+2022-04-19,Principalmente chiaro,9.25
+2022-04-20,Nevicate leggere,8.1
+2022-04-21,pioggerella debole,9.0
+2022-04-22,Nevicate leggere,11.45
+2022-04-23,Nevicate molto intense,8.25
+2022-04-24,Nevicate molto intense,8.100000000000001
+2022-04-25,Pioggia,11.25
+2022-04-26,pioggerella debole,10.3
+2022-04-27,pioggerella debole,9.35
+2022-04-28,pioggerella debole,13.65
+2022-04-29,Coperto,12.899999999999999
+2022-04-30,pioggerella Moderata,10.4
+2022-05-01,pioggerella debole,10.7
+2022-05-02,pioggerella debole,10.899999999999999
+2022-05-03,pioggerella Moderata,11.55
+2022-05-04,Nevicate leggere,12.350000000000001
+2022-05-05,Nevicate moderate,10.35
+2022-05-06,Nevicate leggere,11.6
+2022-05-07,Pioggia,14.3
+2022-05-08,pioggerella Moderata,12.75
+2022-05-09,pioggerella Moderata,15.5
+2022-05-10,pioggerella debole,16.1
+2022-05-11,pioggerella debole,17.55
+2022-05-12,pioggerella debole,19.15
+2022-05-13,pioggerella debole,19.0
+2022-05-14,pioggerella debole,19.9
+2022-05-15,Pioggia,19.3
+2022-05-16,pioggerella Moderata,18.0
+2022-05-17,Coperto,18.85
+2022-05-18,pioggerella Moderata,18.55
+2022-05-19,pioggerella Moderata,20.3
+2022-05-20,Coperto,22.0
+2022-05-21,pioggerella debole,21.8
+2022-05-22,pioggerella debole,21.65
+2022-05-23,Pioggia moderata,21.65
+2022-05-24,Pioggia moderata,19.45
+2022-05-25,Pioggia,19.05
+2022-05-26,pioggerella Moderata,19.6
+2022-05-27,Pioggia,22.6
+2022-05-28,Pioggia,21.8
+2022-05-29,pioggerella Moderata,17.0
+2022-05-30,pioggerella Moderata,13.5
+2022-05-31,Pioggia moderata,16.55
+2022-06-01,pioggerella Moderata,17.6
+2022-06-02,Pioggia,21.45
+2022-06-03,Pioggia,21.9
+2022-06-04,Pioggia,25.799999999999997
+2022-06-05,Pioggia,21.4
+2022-06-06,Pioggia moderata,21.75
+2022-06-07,pioggerella debole,19.299999999999997
+2022-06-08,pioggerella Moderata,17.7
+2022-06-09,Principalmente chiaro,16.35
+2022-06-10,Cielo chiaro,18.3
+2022-06-11,Cielo chiaro,21.2
+2022-06-12,Pioggia,22.85
+2022-06-13,pioggerella debole,24.4
+2022-06-14,pioggerella debole,23.35
+2022-06-15,Pioggia,23.450000000000003
+2022-06-16,pioggerella debole,25.700000000000003
+2022-06-17,pioggerella Moderata,25.85
+2022-06-18,pioggerella debole,26.7
+2022-06-19,pioggerella debole,26.9
+2022-06-20,Pioggia,27.5
+2022-06-21,Pioggia moderata,25.7
+2022-06-22,Pioggia molto intensa,24.15
+2022-06-23,pioggerella Moderata,22.25
+2022-06-24,Pioggia moderata,19.6
+2022-06-25,Coperto,19.3
+2022-06-26,Pioggia,22.85
+2022-06-27,pioggerella Moderata,24.8
+2022-06-28,Pioggia molto intensa,21.85
+2022-06-29,Pioggia,23.549999999999997
+2022-06-30,Pioggia moderata,24.0
+2022-07-01,Pioggia,23.75
+2022-07-02,pioggerella debole,24.4
+2022-07-03,Pioggia,26.450000000000003
+2022-07-04,Pioggia,25.75
+2022-07-05,Principalmente chiaro,25.450000000000003
+2022-07-06,pioggerella Moderata,24.2
+2022-07-07,Coperto,25.200000000000003
+2022-07-08,Principalmente chiaro,23.6
+2022-07-09,Parzialmente nuvoloso,24.4
+2022-07-10,Parzialmente nuvoloso,24.5
+2022-07-11,pioggerella debole,24.45
+2022-07-12,pioggerella debole,25.4
+2022-07-13,pioggerella Moderata,26.5
+2022-07-14,Pioggia moderata,26.05
+2022-07-15,Cielo chiaro,25.450000000000003
+2022-07-16,pioggerella debole,25.549999999999997
+2022-07-17,pioggerella Moderata,27.150000000000002
+2022-07-18,pioggerella debole,28.15
+2022-07-19,pioggerella debole,27.950000000000003
+2022-07-20,Pioggia moderata,27.55
+2022-07-21,Principalmente chiaro,27.4
+2022-07-22,pioggerella Moderata,28.3
+2022-07-23,Pioggia moderata,27.75
+2022-07-24,pioggerella debole,26.35
+2022-07-25,Pioggia moderata,29.8
+2022-07-26,pioggerella Moderata,26.25
+2022-07-27,Pioggia,24.950000000000003
+2022-07-28,Pioggia,25.049999999999997
+2022-07-29,Pioggia moderata,21.6
+2022-07-30,Parzialmente nuvoloso,23.6
+2022-07-31,Principalmente chiaro,24.35
+2022-08-01,pioggerella debole,24.85
+2022-08-02,Parzialmente nuvoloso,24.5
+2022-08-03,Parzialmente nuvoloso,27.0
+2022-08-04,pioggerella debole,27.4
+2022-08-05,Pioggia moderata,26.95
+2022-08-06,Pioggia,26.0
+2022-08-07,Pioggia moderata,23.9
+2022-08-08,pioggerella debole,23.5
+2022-08-09,Pioggia,25.0
+2022-08-10,Pioggia,25.200000000000003
+2022-08-11,pioggerella debole,23.9
+2022-08-12,pioggerella debole,22.9
+2022-08-13,pioggerella debole,23.0
+2022-08-14,pioggerella Moderata,19.95
+2022-08-15,Pioggia,21.25
+2022-08-16,pioggerella debole,22.049999999999997
+2022-08-17,Pioggia moderata,22.299999999999997
+2022-08-18,Pioggia,21.5
+2022-08-19,pioggerella debole,21.05
+2022-08-20,Principalmente chiaro,22.35
+2022-08-21,pioggerella debole,22.549999999999997
+2022-08-22,pioggerella debole,22.6
+2022-08-23,Parzialmente nuvoloso,22.05
+2022-08-24,Coperto,23.950000000000003
+2022-08-25,pioggerella Moderata,25.5
+2022-08-26,Pioggia,23.15
+2022-08-27,Pioggia,21.799999999999997
+2022-08-28,pioggerella Moderata,22.65
+2022-08-29,pioggerella debole,23.15
+2022-08-30,Pioggia moderata,21.9
+2022-08-31,pioggerella Moderata,21.95
+2022-09-01,Pioggia,21.2
+2022-09-02,Pioggia,20.95
+2022-09-03,Pioggia,21.049999999999997
+2022-09-04,pioggerella debole,21.1
+2022-09-05,pioggerella Moderata,23.55
+2022-09-06,pioggerella Moderata,23.05
+2022-09-07,Pioggia moderata,21.0
+2022-09-08,Pioggia,21.6
+2022-09-09,Cielo chiaro,18.200000000000003
+2022-09-10,Parzialmente nuvoloso,18.049999999999997
+2022-09-11,Principalmente chiaro,18.15
+2022-09-12,Cielo chiaro,19.35
+2022-09-13,pioggerella Moderata,20.35
+2022-09-14,Pioggia,22.299999999999997
+2022-09-15,pioggerella Moderata,21.9
+2022-09-16,Parzialmente nuvoloso,19.25
+2022-09-17,Parzialmente nuvoloso,11.649999999999999
+2022-09-18,Cielo chiaro,12.0
+2022-09-19,Principalmente chiaro,14.15
+2022-09-20,Parzialmente nuvoloso,13.6
+2022-09-21,pioggerella debole,11.65
+2022-09-22,pioggerella debole,14.549999999999999
+2022-09-23,Coperto,14.2
+2022-09-24,Nevicate moderate,13.05
+2022-09-25,Nevicate leggere,12.5
+2022-09-26,Coperto,12.649999999999999
+2022-09-27,pioggerella debole,11.05
+2022-09-28,Nevicate leggere,12.15
+2022-09-29,Pioggia,12.850000000000001
+2022-09-30,Nevicate moderate,10.55
+2022-10-01,pioggerella debole,11.65
+2022-10-02,Coperto,18.85
+2022-10-03,Parzialmente nuvoloso,17.45
+2022-10-04,Parzialmente nuvoloso,15.850000000000001
+2022-10-05,pioggerella debole,17.450000000000003
+2022-10-06,pioggerella debole,18.049999999999997
+2022-10-07,pioggerella debole,19.049999999999997
+2022-10-08,Pioggia,17.85
+2022-10-09,Pioggia moderata,15.549999999999999
+2022-10-10,Pioggia,14.45
+2022-10-11,pioggerella debole,14.0
+2022-10-12,pioggerella Moderata,14.65
+2022-10-13,pioggerella debole,13.45
+2022-10-14,pioggerella debole,14.7
+2022-10-15,Coperto,16.35
+2022-10-16,pioggerella Moderata,17.55
+2022-10-17,pioggerella debole,18.15
+2022-10-18,Coperto,18.85
+2022-10-19,Coperto,17.5
+2022-10-20,pioggerella Moderata,17.85
+2022-10-21,Pioggia moderata,16.95
+2022-10-22,Pioggia moderata,18.05
+2022-10-23,Pioggia moderata,17.4
+2022-10-24,Pioggia moderata,16.6
+2022-10-25,pioggerella debole,14.3
+2022-10-26,Pioggia moderata,18.1
+2022-10-27,pioggerella Moderata,17.35
+2022-10-28,Parzialmente nuvoloso,17.85
+2022-10-29,Parzialmente nuvoloso,16.25
+2022-10-30,Parzialmente nuvoloso,14.9
+2022-10-31,Parzialmente nuvoloso,14.75
+2022-11-01,pioggerella Moderata,11.95
+2022-11-02,Parzialmente nuvoloso,10.75
+2022-11-03,Nevicate moderate,10.15
+2022-11-04,Nevicate leggere,6.449999999999999
+2022-11-05,Principalmente chiaro,6.25
+2022-11-06,Coperto,6.35
+2022-11-07,Principalmente chiaro,8.35
+2022-11-08,pioggerella debole,8.2
+2022-11-09,Nevicate leggere,10.15
+2022-11-10,Parzialmente nuvoloso,10.8
+2022-11-11,Parzialmente nuvoloso,9.4
+2022-11-12,Coperto,10.899999999999999
+2022-11-13,Nevicate leggere,8.65
+2022-11-14,Nevicate moderate,7.050000000000001
+2022-11-15,Nevicate moderate,8.05
+2022-11-16,Nevicate moderate,6.1000000000000005
+2022-11-17,Nevicate moderate,7.300000000000001
+2022-11-18,pioggerella debole,3.3499999999999996
+2022-11-19,Coperto,2.0500000000000003
+2022-11-20,Parzialmente nuvoloso,1.7500000000000002
+2022-11-21,Nevicate moderate,2.5500000000000003
+2022-11-22,Nevicate moderate,2.75
+2022-11-23,Nevicate moderate,2.0500000000000003
+2022-11-24,Coperto,4.1499999999999995
+2022-11-25,Parzialmente nuvoloso,4.75
+2022-11-26,Parzialmente nuvoloso,3.4000000000000004
+2022-11-27,Coperto,2.4000000000000004
+2022-11-28,Nevicate leggere,3.7
+2022-11-29,Nevicate moderate,2.1500000000000004
+2022-11-30,Coperto,0.5499999999999998
+2022-12-01,Parzialmente nuvoloso,1.2500000000000002
+2022-12-02,Nevicate moderate,0.7999999999999998
+2022-12-03,Nevicate molto intense,2.5
+2022-12-04,Nevicate molto intense,3.9
+2022-12-05,Nevicate moderate,-1.8
+2022-12-06,Cielo chiaro,-1.9499999999999997
+2022-12-07,Nevicate leggere,-2.5500000000000003
+2022-12-08,Nevicate moderate,-4.35
+2022-12-09,Nevicate molto intense,1.0999999999999999
+2022-12-10,Coperto,-1.5999999999999996
+2022-12-11,Parzialmente nuvoloso,-10.35
+2022-12-12,Nevicate moderate,-12.3
+2022-12-13,Nevicate moderate,-4.6
+2022-12-14,Nevicate leggere,-1.0
+2022-12-15,Nevicate molto intense,-1.7
+2022-12-16,Nevicate leggere,1.2499999999999998
+2022-12-17,Parzialmente nuvoloso,-2.3499999999999996
+2022-12-18,Parzialmente nuvoloso,-4.3
+2022-12-19,Nevicate leggere,0.8500000000000001
+2022-12-20,pioggerella debole,2.35
+2022-12-21,Nevicate leggere,4.0
+2022-12-22,Nevicate leggere,3.9499999999999997
+2022-12-23,Nevicate moderate,8.05
+2022-12-24,Nevicate leggere,10.45
+2022-12-25,Parzialmente nuvoloso,7.05
