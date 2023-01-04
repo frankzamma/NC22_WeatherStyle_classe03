@@ -3,7 +3,7 @@ import pandas as pd
 # in questo script si fondono i dataset meteo e capi, visto che le osservazioni per i capi sono superiori rispetto
 # al dataset meteo, abbiamo pensato di fondere più volte il dataset meteo con quello dei capi, così da avere un
 # gran numero di osservazioni diversificate
-meteodf = pd.read_csv("../csv_dataset_meteo/dataset_meteo.csv")
+meteodf = pd.read_csv("../csv_dataset_meteo/meteo_dataset.csv")
 meteodf1 = pd.read_csv("../csv_dataset_meteo/meteo_dataset.csv")
 capidf = pd.read_csv("../newCsv_all_clothes/top_dataset.csv")
 
