@@ -173,7 +173,8 @@ def calculate_ranges_stagione(stagione):
 
 # questa funzione assegna un punteggio al materiale rispetto alla temperatura percepita
 def evaluate_materiale(materiale, temp_perc):
-    pass
+    i = calculate_ranges_temperatura(temp_perc)
+    return ranges[i][materiale]
 
 
 # questa funzione assegna un punteggio al capo d'abbigliamento in base alla sua stagionalitù
