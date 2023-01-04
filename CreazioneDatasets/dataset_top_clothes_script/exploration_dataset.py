@@ -16,16 +16,16 @@ for label in ["Materiale", "Colore", "Manica", "Stagione", "Meteo", "StagionePre
 sns.scatterplot(data=df, x="TemperaturaPercepita", y="Punteggio")
 plt.show()
 
-# mostra la forma della distribuzione delle variabili come scatterplot ma in modo più formale
+# mostra la forma della distribuzione della variabile temperatura allo stesso modo di scatterplot ma con
+# grafici bivariati
 sns.jointplot(data=df, x="TemperaturaPercepita", y="Punteggio")
 plt.show()
 
-# mostra grafici dove viene vista la variazione delle varie variabili numeriche
-sns.pairplot(data=df)
-plt.show()
-
-# mette in relazione la variabile x e y rispetto ad una colonna specificata --> "Stagione"
-sns.relplot(data=df, x="Punteggio", y="Materiale", kind="line", col="Stagione")
+# mette in relazione la variabile "Punteggio" e "Materiale" rispetto alla colonna "Stagione"
+# il grafico mostra come sono distribuiti i punteggi di ogni materiale rispetto alla stagione
+# della previsione, ovviamente i punteggi risulteranno bassi o alti a seconda della combinazione
+# di variabili
+sns.relplot(data=df, x="Materiale", y="Punteggio", kind="scatter", col="StagionePrevisione")
 plt.show()
 
 

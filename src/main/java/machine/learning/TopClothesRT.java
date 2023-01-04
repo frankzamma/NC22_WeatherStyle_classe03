@@ -5,6 +5,7 @@ import weka.classifiers.trees.REPTree;
 import weka.core.Instances;
 import weka.core.converters.CSVLoader;
 import weka.filters.Filter;
+import weka.filters.supervised.instance.ClassBalancer;
 import weka.filters.unsupervised.instance.Randomize;
 import weka.filters.unsupervised.instance.RemovePercentage;
 
