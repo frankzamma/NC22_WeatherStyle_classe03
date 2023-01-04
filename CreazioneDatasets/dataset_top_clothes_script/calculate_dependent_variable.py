@@ -133,7 +133,7 @@ stagionalita = [
         'autunno': 5,
         'inverno': 3,
         'primavera_estate': 8,
-        'autunno_inverno': 4,
+        'autunno_inverno': 2,
         'all': 5
     },
     {  # stagione estate
@@ -142,7 +142,7 @@ stagionalita = [
         'inverno': 0,
         'primavera': 7,
         'primavera_estate': 8,
-        'autunno_inverno': 2,
+        'autunno_inverno': 0,
         'all': 5
     },
     {  # stagione autunno
@@ -150,7 +150,7 @@ stagionalita = [
         'inverno': 7,
         'primavera': 5,
         'estate': 3,
-        'primavera_estate': 4,
+        'primavera_estate': 2,
         'autunno_inverno': 8,
         'all': 5
     }
