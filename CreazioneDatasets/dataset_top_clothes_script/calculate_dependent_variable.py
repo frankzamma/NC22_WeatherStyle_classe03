@@ -139,7 +139,13 @@ def evaluate_stagione(stagione_capo, stagione_prev):
 
 # questa funzione assegna un punteggio al colore del capo rispetto al meteo e alla temperatura percepita
 def evaluate_colore(meteo, colore, temp_perc):
-    pass
+    i = calculate_ranges(temp_perc)
+    if colore == "chiaro" and meteo == "soleggiato" and i <= 2:
+        return 10
+    elif colore == "scuro" and meteo == "soleggiato" and i <= 2:
+        return 0
+    else:
+        return 5
 
 
 # questa funzione assegna un punteggio alla manica del capo rispetto alla temperatura percepita
