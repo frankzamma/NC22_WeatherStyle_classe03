@@ -34,4 +34,4 @@ print(dataframe["TemperaturaPercepita"].value_counts())
 print("\n")
 print(dataframe["StagionePrevisione"].value_counts())
 
-dataframe.to_csv("../newCsv_all_clothes/dataset_capi_meteo_no_y.csv", index=False)
+dataframe.to_csv("../newCsv_all_clothes/top_meteo_dataset_no_y.csv", index=False)
