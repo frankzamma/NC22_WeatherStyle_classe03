@@ -101,16 +101,51 @@ ranges = [
         'raso': 2,
         'lunga': 10,
         'corta': 0,
+    },
+    {  # temperatura < 5°
+        'cotone': 8,
+        'poliestere': 8,
+        'cashmere': 10,
+        'lino': 0,
+        'seta': 3,
+        'tweed': 8,
+        'velluto': 9,
+        'lana': 10,
+        'raso': 1,
+        'lunga': 10,
+        'corta': 0,
     }
-
-    # da fare per altri range
-
-
 ]
 
+stagionalita = [
+    {   #stagione inverno
+        'inverno': 10,
+        'autunno': 7,
+        'primavera': 4,
+        'estate': 0
+    },
+    {   #stagione primavera
+        'primavera': 10,
+        'estate': 7,
+        'autunno': 5,
+        'inverno': 3
+    },
+    {   #stagione estate
+        'estate': 10,
+        'autunno': 4,
+        'inverno': 0,
+        'primavera': 7
+    },
+    {   #stagione autunno
+        'autunno': 10,
+        'inverno': 7,
+        'primavera': 5,
+        'estate': 3
+    }
+]
 
 # questa funzione identifica il range corretto in base alla temperatura percepita
-def calculate_ranges(temp_perc):
+def calculate_ranges_temperatura(temp_perc):
     if temp_perc >= 30:
         return 0
     if 25 <= temp_perc < 30:
@@ -126,20 +161,30 @@ def calculate_ranges(temp_perc):
     if temp_perc < 5:
         return 6
 
+def calculate_ranges_stagione(stagione):
+    if stagione=="inverno":
+        return 0
+    if stagione=="primavera":
+        return 1
+    if stagione=="estate":
+        return 2
+    if stagione=="autunno":
+        return 3
 
 # questa funzione assegna un punteggio al materiale rispetto alla temperatura percepita
 def evaluate_materiale(materiale, temp_perc):
     pass
 
 
-# questa funzione assegna un punteggio alla stagione del capo rispetto alla temperatura percepita
+# questa funzione assegna un punteggio al capo d'abbigliamento in base alla sua stagionalitù
 def evaluate_stagione(stagione_capo, stagione_prev):
-    pass
+    i = calculate_ranges_stagione(stagione_capo)
+    return stagionalita[i][stagione_prev]
 
 
 # questa funzione assegna un punteggio al colore del capo rispetto al meteo e alla temperatura percepita
 def evaluate_colore(meteo, colore, temp_perc):
-    i = calculate_ranges(temp_perc)
+    i = calculate_ranges_temperatura(temp_perc)
     if colore == "chiaro" and meteo == "soleggiato" and i <= 2:
         return 10
     elif colore == "scuro" and meteo == "soleggiato" and i <= 2:
@@ -150,7 +195,7 @@ def evaluate_colore(meteo, colore, temp_perc):
 
 # questa funzione assegna un punteggio alla manica del capo rispetto alla temperatura percepita
 def evaluate_manica(manica, temp_perc):
-    i = calculate_ranges(temp_perc)
+    i = calculate_ranges_temperatura(temp_perc)
     return ranges[i][manica]
 
 
