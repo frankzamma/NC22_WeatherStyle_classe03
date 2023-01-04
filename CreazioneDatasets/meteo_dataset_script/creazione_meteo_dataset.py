@@ -65,8 +65,8 @@ for i in array:
 final_df = pd.concat(final, ignore_index=True)
 
 
-if not(os.path.exists('../dataset_meteo')):
-    os.mkdir('../dataset_meteo')
+if not(os.path.exists('../csv_dataset_meteo')):
+    os.mkdir('../csv_dataset_meteo')
 
 final_df.to_csv('../dataset_meteo/dataset_meteo.csv', index=False)
 
