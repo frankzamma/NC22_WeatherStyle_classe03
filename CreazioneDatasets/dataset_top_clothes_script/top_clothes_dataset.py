@@ -13,7 +13,7 @@ pd.options.display.max_rows = 15000
 # Color         --> Colore
 # Sleeve Lenght --> Manica
 # Season        --> Stagione
-dataframe = pd.read_csv("./csv_top_bottom/top_bottom_git.csv")
+dataframe = pd.read_csv("../csv_top_bottom/top_bottom_git.csv")
 
 # stampiamo informazioni sul dataframe
 # print(dataframe.info())
@@ -46,7 +46,7 @@ for x in dataframe.index:
 
 # concateniamo il dataframe con un'altro dataframe di capi dato che alcuni di questi erano presenti in numero inferiore
 # per il nostro problema, tali osservazioni sono state generate in maniera pseudo-casuale con google sheets
-capi_mancanti_df = pd.read_csv("./csv_top_bottom/top_missing.csv")
+capi_mancanti_df = pd.read_csv("../csv_top_bottom/top_missing.csv")
 dataframe = pd.concat([dataframe, capi_mancanti_df])
 
 # resetta gli indici del dataframe
@@ -375,5 +375,5 @@ for x in dataframe.index:
         dataframe.loc[x, "Manica"] = "lunga"
 
 # esportiamo il dataframe in formato csv
-dataframe.to_csv("./newCsv_top_bottom/top_dataset.csv", index=False)
+dataframe.to_csv("../newCsv_top_bottom/top_dataset.csv", index=False)
 

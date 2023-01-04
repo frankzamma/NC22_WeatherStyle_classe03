@@ -50,7 +50,7 @@ for file in array:
     df.pop('apparent_temperature_max')
     df.pop('apparent_temperature_min')
 
-    name = '../newCsv_meteo\\New' + file
+    name = '../newCsv_meteo/New' + file
     df.to_csv(name, index=False)
 
     print(df)
@@ -58,7 +58,7 @@ for file in array:
 final = []
 
 for i in array:
-    name = '../newCsv_meteo\\New' + i
+    name = '../newCsv_meteo/New' + i
     final.append(pd.read_csv(name))
 
 
