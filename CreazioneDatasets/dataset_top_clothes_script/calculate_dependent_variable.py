@@ -49,14 +49,54 @@ ranges = [
         'raso': 7,
         'lunga': 2,
         'corta': 8,
+    },
+    {  # 20° <= temperatura < 25°
+        'cotone': 10,
+        'poliestere': 7,
+        'cashmere': 2,
+        'lino': 8,
+        'seta': 9,
+        'tweed': 2,
+        'velluto': 4,
+        'lana': 1,
+        'raso': 6,
+        'lunga': 5,
+        'corta': 5,
+    },
+    {  # 15° <= temperatura < 20°
+        'cotone': 10,
+        'poliestere': 8,
+        'cashmere': 5,
+        'lino': 6,
+        'seta': 7,
+        'tweed': 6,
+        'velluto': 5,
+        'lana': 4,
+        'raso': 4,
+        'lunga': 8,
+        'corta': 2,
     }
+
     # da fare per altri range
 ]
 
 
 # questa funzione identifica il range corretto in base alla temperatura percepita
 def calculate_ranges(temp_perc):
-    pass
+    if temp_perc >= 30:
+        return 0
+    if 25 <= temp_perc < 30:
+        return 1
+    if 20 <= temp_perc < 25:
+        return 2
+    if 15 <= temp_perc < 20:
+        return 3
+    if 10 <= temp_perc < 15:
+        return 4
+    if 5 <= temp_perc < 10:
+        return 5
+    if temp_perc < 5:
+        return 6
 
 
 # questa funzione assegna un punteggio al materiale rispetto alla temperatura percepita
