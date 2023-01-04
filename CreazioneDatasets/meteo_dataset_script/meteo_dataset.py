@@ -37,4 +37,4 @@ for x in dataframe.index:
 
 dataframe = dataframe.sample(frac=1.0)
 
-dataframe.to_csv("meteoDataset.csv", index=False)
+dataframe.to_csv("meteo_dataset.csv", index=False)
