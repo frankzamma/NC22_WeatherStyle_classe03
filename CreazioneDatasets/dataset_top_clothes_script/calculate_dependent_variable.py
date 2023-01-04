@@ -144,5 +144,7 @@ def evaluate_colore(meteo, colore, temp_perc):
 
 # questa funzione assegna un punteggio alla manica del capo rispetto alla temperatura percepita
 def evaluate_manica(manica, temp_perc):
-    pass
+    i = calculate_ranges(temp_perc)
+    return ranges[i][manica]
+
 
