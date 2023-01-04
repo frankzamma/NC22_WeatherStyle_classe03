@@ -75,9 +75,37 @@ ranges = [
         'raso': 4,
         'lunga': 8,
         'corta': 2,
+    },
+    {  # 10 <= temperatura < 15°
+        'cotone': 9,
+        'poliestere': 8,
+        'cashmere': 7,
+        'lino': 5,
+        'seta': 6,
+        'tweed': 6,
+        'velluto': 6,
+        'lana': 7,
+        'raso': 3,
+        'lunga': 9,
+        'corta': 1,
+    },
+    {  # 5 <= temperatura < 10°
+        'cotone': 8,
+        'poliestere': 8,
+        'cashmere': 8,
+        'lino': 2,
+        'seta': 4,
+        'tweed': 7,
+        'velluto': 8,
+        'lana': 9,
+        'raso': 2,
+        'lunga': 10,
+        'corta': 0,
     }
 
     # da fare per altri range
+
+
 ]
 
 
