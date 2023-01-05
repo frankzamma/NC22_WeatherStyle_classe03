@@ -2,11 +2,13 @@ package Model;
 
 public abstract class CapoAbbigliamento {
     private String materiale, stagione, colore;
+    private Integer id;
 
     public CapoAbbigliamento() {
     }
 
-    public CapoAbbigliamento(String materiale, String stagione, String colore) {
+    public CapoAbbigliamento(Integer id, String materiale, String stagione, String colore) {
+        this.id = id;
         this.materiale = materiale;
         this.stagione = stagione;
         this.colore = colore;
@@ -34,5 +36,13 @@ public abstract class CapoAbbigliamento {
 
     public void setColore(String colore) {
         this.colore = colore;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }
