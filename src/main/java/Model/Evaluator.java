@@ -159,21 +159,21 @@ public class Evaluator {
     }
 
     public int valuta(CapoAbbigliamento capoAbbigliamento, MeteoInformation meteoInformation){
-        if(capoAbbigliamento.getClass().equals(Maglia.class)){
-            return valutazioneMaglia((Maglia) capoAbbigliamento, meteoInformation);
+        if(capoAbbigliamento.getClass().equals(Maglia.class) || capoAbbigliamento.getClass().equals(Pantaloni.class)){
+            return valutazioneTopOrBottom(capoAbbigliamento, meteoInformation);
         }else{
-            //TODO completare con gli altri capi d'abbigliamento
+            //TODO completare con le scarpe
 
             return 0;
         }
     }
 
-    private int valutazioneMaglia(Maglia maglia, MeteoInformation meteoInformation){
+    private int valutazioneTopOrBottom(CapoAbbigliamento capoAbbigliamento, MeteoInformation meteoInformation){
         int punteggio = 0;
-        punteggio += valutazioneMateriale(maglia, meteoInformation);
-        punteggio += valutazioneColore(maglia, meteoInformation);
-        punteggio += valutazioneManica(maglia, meteoInformation);
-        punteggio += valutazioneStagione(maglia);
+        punteggio += valutazioneMateriale(capoAbbigliamento, meteoInformation);
+        punteggio += valutazioneColore(capoAbbigliamento, meteoInformation);
+        punteggio += valutazioneLunghezza(capoAbbigliamento, meteoInformation);
+        punteggio += valutazioneStagione(capoAbbigliamento);
         return punteggio;
     }
 
@@ -205,7 +205,7 @@ public class Evaluator {
         return range;
     }
 
-    private int valutazioneMateriale(Maglia maglia, MeteoInformation meteoInformation) {
+    private int valutazioneMateriale(CapoAbbigliamento capoAbbigliamento, MeteoInformation meteoInformation) {
         /* Valutazione della maglia inserita dall'utente sulla base delle regole descritte su Drive */
         int temperaturaPercepita = (int) meteoInformation.getTemperaturaPercepita();
         int range = searchRange(temperaturaPercepita);
@@ -214,23 +214,23 @@ public class Evaluator {
 
         //try-catch aggiunto per debug, successivamente può essere rimosso
         try{
-            voto = ranges.get(range).get(maglia.getMateriale());
+            voto = ranges.get(range).get(capoAbbigliamento.getMateriale());
         }catch(NullPointerException e){
-            System.out.println(maglia.getMateriale());
+            System.out.println(capoAbbigliamento.getMateriale());
             e.printStackTrace();
         }
 
         return  voto;
     }
 
-    private int valutazioneColore(Maglia m, MeteoInformation meteoInformation){
+    private int valutazioneColore(CapoAbbigliamento capoAbbigliamento, MeteoInformation meteoInformation){
         int voto;
 
         int i = searchRange((int) meteoInformation.getTemperaturaPercepita());
 
-        if (m.getColore().equalsIgnoreCase("chiaro") && meteoInformation.getMeteo().equalsIgnoreCase("soleggiato") && i<=2){
+        if (capoAbbigliamento.getColore().equalsIgnoreCase("chiaro") && meteoInformation.getMeteo().equalsIgnoreCase("soleggiato") && i<=2){
             voto=10;
-        }else if(m.getColore().equalsIgnoreCase("scuro") && meteoInformation.getMeteo().equalsIgnoreCase("soleggiato") && i<=2){
+        }else if(capoAbbigliamento.getColore().equalsIgnoreCase("scuro") && meteoInformation.getMeteo().equalsIgnoreCase("soleggiato") && i<=2){
             voto=0;
         }else{
             voto=5;
@@ -239,10 +239,21 @@ public class Evaluator {
         return voto;
     }
 
-    private int valutazioneManica(Maglia maglia, MeteoInformation meteoInformation) {
+    private int valutazioneLunghezza(CapoAbbigliamento capoAbbigliamento, MeteoInformation meteoInformation) {
         int temperaturaPercepita = (int) meteoInformation.getTemperaturaPercepita();
         int range = searchRange(temperaturaPercepita);
-        return ranges.get(range).get(maglia.getLunghezzaManica());
+        if(capoAbbigliamento.getClass().equals(Maglia.class)){
+            Maglia maglia = (Maglia) capoAbbigliamento;
+            return ranges.get(range).get(maglia.getLunghezzaManica());
+        }
+
+        else
+            if(capoAbbigliamento.getClass().equals(Pantaloni.class)) {
+                Pantaloni pantalone = (Pantaloni) capoAbbigliamento;
+                return ranges.get(range).get(pantalone.getLunghezza());
+            }
+
+            return 0;
     }
 
     private String getStagione(){
@@ -254,7 +265,7 @@ public class Evaluator {
         return seasons[data.get(Calendar.MONTH)];
     }
 
-    private int valutazioneStagione (Maglia maglia){
+    private int valutazioneStagione (CapoAbbigliamento capoAbbigliamento){
         String stagionePrevisione = getStagione();
         int i = -1;
         switch (stagionePrevisione){
@@ -267,7 +278,7 @@ public class Evaluator {
             case "autunno": i = 3;
                 break;
         }
-        return  stagionalita.get(i).get(maglia.getStagione());
+        return  stagionalita.get(i).get(capoAbbigliamento.getStagione());
     }
 
 }
