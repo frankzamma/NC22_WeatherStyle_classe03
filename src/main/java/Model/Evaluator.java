@@ -121,40 +121,39 @@ public class Evaluator {
             stagionalita.add(new Hashtable<>());
         }
 
-        //TODO normalizzare i valori da 0 a 5
         //stagione inverno
-        stagionalita.get(0).put("inverno", 10);
-        stagionalita.get(0).put("autunno", 7);
-        stagionalita.get(0).put("primavera", 4);
+        stagionalita.get(0).put("inverno", 5);
+        stagionalita.get(0).put("autunno", 4);
+        stagionalita.get(0).put("primavera", 3);
         stagionalita.get(0).put("estate", 0);
-        stagionalita.get(0).put("primavera_estate", 0);
-        stagionalita.get(0).put("autunno_inverno", 8);
-        stagionalita.get(0).put("all", 5);
+        stagionalita.get(0).put("primavera_estate", 1);
+        stagionalita.get(0).put("autunno_inverno", 2);
+        stagionalita.get(0).put("all", 3);
 
         //primavera
-        stagionalita.get(1).put("primavera", 10);
-        stagionalita.get(1).put("estate", 7);
-        stagionalita.get(1).put("autunno", 5);
-        stagionalita.get(1).put("inverno", 3);
-        stagionalita.get(1).put("primavera_estate", 8);
-        stagionalita.get(1).put("autunno_inverno",2);
-        stagionalita.get(1).put("all", 5);
+        stagionalita.get(1).put("primavera", 5);
+        stagionalita.get(1).put("estate", 3);
+        stagionalita.get(1).put("autunno", 2);
+        stagionalita.get(1).put("inverno", 0);
+        stagionalita.get(1).put("primavera_estate", 4);
+        stagionalita.get(1).put("autunno_inverno", 1);
+        stagionalita.get(1).put("all", 3);
         //stagione estate
-        stagionalita.get(2).put("estate", 10);
-        stagionalita.get(2).put("autunno", 4);
+        stagionalita.get(2).put("estate", 5);
+        stagionalita.get(2).put("autunno", 2);
         stagionalita.get(2).put("inverno", 0);
-        stagionalita.get(2).put("primavera", 7);
-        stagionalita.get(2).put("primavera_estate", 8);
-        stagionalita.get(2).put("autunno_inverno", 0);
-        stagionalita.get(2).put( "all", 5);
+        stagionalita.get(2).put("primavera", 3);
+        stagionalita.get(2).put("primavera_estate", 4);
+        stagionalita.get(2).put("autunno_inverno", 1);
+        stagionalita.get(2).put( "all", 3);
         // stagione autunno
-        stagionalita.get(3).put("autunno", 10);
-        stagionalita.get(3).put( "inverno", 7);
-        stagionalita.get(3).put("primavera", 5);
-        stagionalita.get(3).put("estate",3);
-        stagionalita.get(3).put("primavera_estate", 2);
-        stagionalita.get(3).put("autunno_inverno", 8);
-        stagionalita.get(3).put("all",5);
+        stagionalita.get(3).put("autunno", 5);
+        stagionalita.get(3).put( "inverno", 2);
+        stagionalita.get(3).put("primavera", 3);
+        stagionalita.get(3).put("estate", 0);
+        stagionalita.get(3).put("primavera_estate", 1);
+        stagionalita.get(3).put("autunno_inverno", 4);
+        stagionalita.get(3).put("all", 3);
     }
 
     public int valuta(CapoAbbigliamento capoAbbigliamento, MeteoInformation meteoInformation){
