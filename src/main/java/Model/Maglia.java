@@ -6,8 +6,8 @@ public class Maglia extends CapoAbbigliamento{
     public Maglia() {
     }
 
-    public Maglia(Integer id, String materiale, String stagione, String colore, String lunghezzaManica) {
-        super(id, materiale, stagione, colore);
+    public Maglia(String materiale, String stagione, String colore, String lunghezzaManica) {
+        super(materiale, stagione, colore);
         this.lunghezzaManica = lunghezzaManica;
     }
 
