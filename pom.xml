@@ -41,6 +41,11 @@
             <artifactId>weka-stable</artifactId>
             <version>3.8.6</version>
         </dependency>
+        <dependency>
+            <groupId>io.jenetics</groupId>
+            <artifactId>jenetics</artifactId>
+            <version>7.1.1</version>
+        </dependency>
     </dependencies>
 
     <build>
