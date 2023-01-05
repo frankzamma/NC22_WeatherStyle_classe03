@@ -1,4 +1,4 @@
-package machine.learning;
+package Model.machine.learning;
 
 import weka.classifiers.Evaluation;
 import weka.classifiers.trees.REPTree;
