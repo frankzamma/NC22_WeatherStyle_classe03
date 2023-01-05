@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-public class TopClothesGAConstraint implements Constraint<IntegerGene, Integer> {
+public class ClothesGAConstraint implements Constraint<IntegerGene, Integer> {
 
     /*
     * Metodo che viene chiamato per testare se i nuovi individui rispettano il vincolo

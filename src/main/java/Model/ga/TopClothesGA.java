@@ -29,7 +29,7 @@ public class TopClothesGA {
                 IntegerChromosome.of(0, list.size() - 1) , IntegerChromosome.of(0, list.size() -1));
 
        //Vincolo per le nuove generazioni
-        Constraint<IntegerGene, Integer> constraint = new TopClothesGAConstraint();
+        Constraint<IntegerGene, Integer> constraint = new ClothesGAConstraint();
         //Operatore di selezione
         Selector<IntegerGene, Integer> selector =  new RouletteWheelSelector<>();
         //Operatore di crossover
