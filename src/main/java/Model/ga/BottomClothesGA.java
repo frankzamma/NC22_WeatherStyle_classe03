@@ -31,11 +31,11 @@ public class BottomClothesGA {
         //Vincolo per le nuove generazioni
         Constraint<IntegerGene, Integer> constraint = new ClothesGAConstraint();
         //Operatore di selezione
-        Selector<IntegerGene, Integer> selector =  new RouletteWheelSelector<>();
+        Selector<IntegerGene, Integer> selector =  new TournamentSelector<>();
         //Operatore di crossover
-        Alterer<IntegerGene, Integer> crossover =  new SinglePointCrossover<>();
+        Alterer<IntegerGene, Integer> crossover =  new UniformCrossover<>();
         //Operatore di mutazione
-        Alterer<IntegerGene, Integer> mutation =  new GaussianMutator<>();
+        Alterer<IntegerGene, Integer> mutation =  new SwapMutator<>();
 
         //Setup dell'algoritmo genetico
         engine =  Engine.builder(a->eval(a), gtf)//Viene passato la funzione di fitness e la factory
