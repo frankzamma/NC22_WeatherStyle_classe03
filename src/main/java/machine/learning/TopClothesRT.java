@@ -41,14 +41,14 @@ public class TopClothesRT {
         randomize.setInputFormat(fullDataset);
         fullDataset = Filter.useFilter(fullDataset, randomize);
 
-        // divide il training set in 67% del fullDataset
+        // ottiene il training set dal 67% del fullDataset
         RemovePercentage removePercentage = new RemovePercentage();
         removePercentage.setPercentage(percentTrain);
         removePercentage.setInputFormat(fullDataset);
         Instances trainingSet = Filter.useFilter(fullDataset, removePercentage);
         trainingSet.setClassIndex(trainingSet.numAttributes() -1);
 
-        // divide il test set in 33% del fullDataset
+        // ottiene il test set dal 33% del fullDataset
         removePercentage.setInvertSelection(true);
         removePercentage.setPercentage(percentTest);
         removePercentage.setInputFormat(fullDataset);
