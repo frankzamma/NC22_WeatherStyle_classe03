@@ -78,7 +78,7 @@ for x in dataframe.index:
             and (str(dataframe.loc[x, "Materiale"]) != "seta") and (str(dataframe.loc[x, "Materiale"]) != "lino") \
             and (str(dataframe.loc[x, "Materiale"]) != "tweed") and (str(dataframe.loc[x, "Materiale"]) != "raso")\
             and (str(dataframe.loc[x, "Materiale"]) != "velluto") and (str(dataframe.loc[x, "Materiale"]) != "lana")\
-            and (str(dataframe.loc[x, "Materiale"])):
+            and (str(dataframe.loc[x, "Materiale"]) and (str(dataframe.loc[x, "Materiale"]) != "cashmere")):
         dataframe.drop(x, inplace=True)
 
 # rimuove le righe con celle che hanno valori mancanti, mediante delle stampe abbiamo notato che il valore mancante
@@ -374,6 +374,7 @@ for x in dataframe.index:
     if dataframe.loc[x, "Manica"] == "Extra-Long Sleeve":
         dataframe.loc[x, "Manica"] = "lunga"
 
+
 # esportiamo il dataframe in formato csv
-dataframe.to_csv("../newCsv_top_bottom/top_dataset.csv", index=False)
+dataframe.to_csv("../newCsv_all_clothes/top_dataset.csv", index=False)
 
