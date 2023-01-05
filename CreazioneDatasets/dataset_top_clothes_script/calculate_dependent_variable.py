@@ -119,40 +119,40 @@ ranges = [
 
 stagionalita = [
     {  # stagione inverno
-        'inverno': 10,
-        'autunno': 7,
-        'primavera': 4,
+        'inverno': 6,
+        'autunno': 4,
+        'primavera': 2,
         'estate': 0,
-        'primavera_estate': 0,
-        'autunno_inverno': 8,
-        'all': 5
+        'primavera_estate': 1,
+        'autunno_inverno': 5,
+        'all': 3
     },
     {  # stagione primavera
-        'primavera': 10,
-        'estate': 7,
-        'autunno': 5,
-        'inverno': 3,
-        'primavera_estate': 8,
-        'autunno_inverno': 2,
-        'all': 5
+        'primavera': 6,
+        'estate': 4,
+        'autunno': 2,
+        'inverno': 0,
+        'primavera_estate': 5,
+        'autunno_inverno': 1,
+        'all': 3
     },
     {  # stagione estate
-        'estate': 10,
-        'autunno': 4,
+        'estate': 6,
+        'autunno': 2,
         'inverno': 0,
-        'primavera': 7,
-        'primavera_estate': 8,
-        'autunno_inverno': 0,
-        'all': 5
+        'primavera': 4,
+        'primavera_estate': 5,
+        'autunno_inverno': 1,
+        'all': 3
     },
     {  # stagione autunno
-        'autunno': 10,
-        'inverno': 7,
-        'primavera': 5,
-        'estate': 3,
-        'primavera_estate': 2,
-        'autunno_inverno': 8,
-        'all': 5
+        'autunno': 6,
+        'inverno': 4,
+        'primavera': 2,
+        'estate': 0,
+        'primavera_estate': 1,
+        'autunno_inverno': 5,
+        'all': 3
     }
 ]
 
