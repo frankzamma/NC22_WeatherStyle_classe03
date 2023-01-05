@@ -28,13 +28,13 @@ public class TopClothesRT {
         // setting della variabile dipendente
         dataset.setClassIndex(dataset.numAttributes() - 1);
 
-        // ten cross validation offre risultati migliori
-        // trainModelWithTrainingSet(repTree, dataset, 67, 33);
+        // ten cross validation ha mostrato che l'intero dataset su cui sarà addestrato il modello dà buoni risultati
+        // quindi scegliamo di addestrarlo sull'intero dataset e non su una parte di esso
+        // trainModelWithTrainingSetAndTestSet(repTree, dataset, 67, 33);
         trainModelWithTenCrossValidation(repTree, dataset);
-
     }
 
-    private static void trainModelWithTrainingSet(REPTree repTree, Instances fullDataset, double percentTrain, double percentTest) throws Exception {
+    private static void trainModelWithTrainingSetAndTestSet(REPTree repTree, Instances fullDataset, double percentTrain, double percentTest) throws Exception {
 
         // randomizza fullDataset
         Randomize randomize = new Randomize();
@@ -55,6 +55,10 @@ public class TopClothesRT {
         Instances testSet = Filter.useFilter(fullDataset, removePercentage);
         testSet.setClassIndex(testSet.numAttributes() -1);
 
+        // bilanciamento dati di training
+        ClassBalancer classBalancer = (ClassBalancer) createClassBalancer(trainingSet);
+        Filter.useFilter(trainingSet, classBalancer);
+
         // addestramento regressore
         repTree.buildClassifier(trainingSet);
 
@@ -65,9 +69,25 @@ public class TopClothesRT {
     }
 
     private static void trainModelWithTenCrossValidation(REPTree repTree, Instances fullDataset) throws Exception {
+
+        // valutiamo quanto buono sarà il regressore mediante 10 folds cross validation
         Evaluation evaluation = new Evaluation(fullDataset);
         evaluation.crossValidateModel(repTree, fullDataset, 10, new Random(1));
-        repTree.buildClassifier(fullDataset);
+
+        // valutazione metriche
         System.out.println(evaluation.toSummaryString());
+
+        // bilanciamento dati di training
+        ClassBalancer classBalancer = (ClassBalancer) createClassBalancer(fullDataset);
+        Filter.useFilter(fullDataset, classBalancer);
+
+        // addestramento regressore
+        repTree.buildClassifier(fullDataset);
+    }
+
+    private static Filter createClassBalancer(Instances trainingSet) throws Exception {
+        ClassBalancer classBalancer = new ClassBalancer();
+        classBalancer.setInputFormat(trainingSet);
+        return classBalancer;
     }
 }
