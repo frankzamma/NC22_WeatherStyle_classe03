@@ -28,6 +28,7 @@ public class Evaluator {
         ranges.get(0).put("lana", 0);
         ranges.get(0).put("raso",9);
         ranges.get(0).put("lunga",0);
+        ranges.get(0).put("media",0);
         ranges.get(0).put("corta",10);
 
         /* mappa 25° < temperatura <= 30° */
@@ -40,8 +41,9 @@ public class Evaluator {
         ranges.get(1).put("velluto",3);
         ranges.get(1).put("lana",0);
         ranges.get(1).put("raso",7);
-        ranges.get(1).put("lunga",2);
-        ranges.get(1).put("corta",8);
+        ranges.get(1).put("lunga",1);
+        ranges.get(0).put("media",2);
+        ranges.get(1).put("corta",9);
 
         /* mappa 20° < temperatura <= 25° */
         ranges.get(2).put("cotone",10);
@@ -51,10 +53,11 @@ public class Evaluator {
         ranges.get(2).put("seta",9);
         ranges.get(2).put("tweed",2);
         ranges.get(2).put("velluto",4);
-        ranges.get(2).put("lana", 1);
+        ranges.get(2).put("lana",1);
         ranges.get(2).put("raso",6);
-        ranges.get(2).put("lunga",5);
-        ranges.get(2).put("corta",5);
+        ranges.get(2).put("lunga",3);
+        ranges.get(0).put("media",4);
+        ranges.get(2).put("corta",6);
 
         /* mappa 15° < temperatura <= 20°  */
         ranges.get(3).put("cotone",10);
@@ -64,10 +67,11 @@ public class Evaluator {
         ranges.get(3).put("seta",7);
         ranges.get(3).put("tweed",6);
         ranges.get(3).put("velluto",5);
-        ranges.get(3).put("lana", 4);
+        ranges.get(3).put("lana",4);
         ranges.get(3).put("raso",4);
-        ranges.get(3).put("lunga",8);
-        ranges.get(3).put("corta",2);
+        ranges.get(3).put("lunga",4);
+        ranges.get(0).put("media",5);
+        ranges.get(3).put("corta",3);
 
         /* mappa 10° < temperatura <= 15°  */
         ranges.get(4).put("cotone",8);
@@ -77,9 +81,10 @@ public class Evaluator {
         ranges.get(4).put("seta",6);
         ranges.get(4).put("tweed",6);
         ranges.get(4).put("velluto",6);
-        ranges.get(4).put("lana", 8);
+        ranges.get(4).put("lana",8);
         ranges.get(4).put("raso",3);
         ranges.get(4).put("lunga",9);
+        ranges.get(0).put("media",4);
         ranges.get(4).put("corta",1);
 
         /* mappa 5° < temperatura <= 10°  */
@@ -90,9 +95,10 @@ public class Evaluator {
         ranges.get(5).put("seta",4);
         ranges.get(5).put("tweed",7);
         ranges.get(5).put("velluto",8);
-        ranges.get(5).put("lana", 9);
+        ranges.get(5).put("lana",9);
         ranges.get(5).put("raso",2);
         ranges.get(5).put("lunga",10);
+        ranges.get(0).put("media",0);
         ranges.get(5).put("corta",0);
 
         /* mappa temperatura <= 5°  */
@@ -103,9 +109,10 @@ public class Evaluator {
         ranges.get(6).put("seta",3);
         ranges.get(6).put("tweed",8);
         ranges.get(6).put("velluto",9);
-        ranges.get(6).put("lana", 10);
+        ranges.get(6).put("lana",10);
         ranges.get(6).put("raso",1);
         ranges.get(6).put("lunga",10);
+        ranges.get(0).put("media",0);
         ranges.get(6).put("corta",0);
 
 
