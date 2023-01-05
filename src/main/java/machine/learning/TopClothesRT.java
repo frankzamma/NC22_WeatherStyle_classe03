@@ -85,6 +85,8 @@ public class TopClothesRT {
         repTree.buildClassifier(fullDataset);
     }
 
+    // il filtro si occuperà di ponderare le istanze del dataset sia che vi siano variabili numeriche che nominali
+    // in modo che abbiano lo stesso peso, facendo undersampling e oversampling
     private static Filter createClassBalancer(Instances trainingSet) throws Exception {
         ClassBalancer classBalancer = new ClassBalancer();
         classBalancer.setInputFormat(trainingSet);
