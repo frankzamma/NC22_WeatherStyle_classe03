@@ -138,6 +138,7 @@ public class Evaluator {
         stagionalita.get(1).put("primavera_estate", 4);
         stagionalita.get(1).put("autunno_inverno", 1);
         stagionalita.get(1).put("all", 3);
+
         //stagione estate
         stagionalita.get(2).put("estate", 5);
         stagionalita.get(2).put("autunno", 2);
@@ -146,6 +147,7 @@ public class Evaluator {
         stagionalita.get(2).put("primavera_estate", 4);
         stagionalita.get(2).put("autunno_inverno", 1);
         stagionalita.get(2).put( "all", 3);
+
         // stagione autunno
         stagionalita.get(3).put("autunno", 5);
         stagionalita.get(3).put( "inverno", 2);
@@ -253,20 +255,19 @@ public class Evaluator {
     }
 
     private int valutazioneStagione (Maglia maglia){
-        //TODO aggiornare per utilizzarla con la nuova hashmap
         String stagionePrevisione = getStagione();
-
-        if(maglia.getStagione().equalsIgnoreCase(stagionePrevisione))
-            return 10;
-        if(maglia.getStagione().contains(stagionePrevisione) )
-            return 7;
-        if((maglia.getStagione().equalsIgnoreCase("estate") && stagionePrevisione.equalsIgnoreCase("inverno")) ||
-                (maglia.getStagione().equalsIgnoreCase("inverno") && stagionePrevisione.equalsIgnoreCase("estate")) ||
-                (maglia.getStagione().equalsIgnoreCase("primavera_estate") && stagionePrevisione.equalsIgnoreCase("inverno")) ||
-                (maglia.getStagione().equalsIgnoreCase("autunno_inverno") && stagionePrevisione.equalsIgnoreCase("estate")))
-            return 0;
-        else //controlli
-            return 4;
+        int i = -1;
+        switch (stagionePrevisione){
+            case "inverno": i = 0;
+                break;
+            case "primavera": i = 1;
+                break;
+            case "estate": i = 2;
+                break;
+            case "autunno": i = 3;
+                break;
+        }
+        return  stagionalita.get(i).get(maglia.getStagione());
     }
 
 }
