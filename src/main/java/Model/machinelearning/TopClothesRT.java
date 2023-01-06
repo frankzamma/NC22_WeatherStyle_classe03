@@ -15,9 +15,7 @@ import weka.filters.unsupervised.instance.RemovePercentage;
 
 import java.io.File;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class TopClothesRT {
 
@@ -150,9 +148,25 @@ public class TopClothesRT {
         return scoreMagliaList;
     }
 
-    public List<Maglia> getTopThreeClothes(List<ScoreMaglia> scoreMagliaList){
-        return new ArrayList<>();
+    public List<ScoreMaglia> getBestThreeTopClothes(List<ScoreMaglia> scoreMagliaList){
+        List<ScoreMaglia> magliaListBest = new ArrayList<>();
+        Comparatore comparatore = new Comparatore();
+
+        for(int i=0; i<3; i++){
+            ScoreMaglia scoreMagliaMax = Collections.max(scoreMagliaList, comparatore);
+            magliaListBest.add(scoreMagliaMax);
+            scoreMagliaList.remove(scoreMagliaMax);
+        }
+
+        return magliaListBest;
     }
 
+    private static class Comparatore implements Comparator<ScoreMaglia>{
+
+        @Override
+        public int compare(ScoreMaglia o1, ScoreMaglia o2) {
+            return o1.getPunteggio().compareTo(o2.getPunteggio());
+        }
+    }
 
 }
