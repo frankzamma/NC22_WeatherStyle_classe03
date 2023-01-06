@@ -11,11 +11,13 @@ import io.jenetics.util.Factory;
 import java.util.List;
 
 public class TopClothesGA {
+
     private static final int populationSize = 10;
     private Engine<IntegerGene,Integer> engine;
     private List<CapoAbbigliamento> capoAbbigliamentoList;
     private Evaluator evaluator;//TODO da valutare se inserirlo come statico
     private MeteoInformation  meteoInformation;
+
     public TopClothesGA(List<CapoAbbigliamento> list, MeteoInformation meteoInformation) {
         this.capoAbbigliamentoList = list;
         this.meteoInformation = meteoInformation;
@@ -23,12 +25,13 @@ public class TopClothesGA {
 
         /* Creazione della factory -> permette di generare la prima generazione di individui
         *  Ogni individuo è un Genotipo che ha tre cromosomi.
-        *  Ogni cromosoma ha un gene di tipo Integer che ha come minimo 0 e come massimo list.size()-1 (Il numero di capi d'abbigliamento nella lista)
+        *  Ogni cromosoma ha un gene di tipo Integer che ha come valore minimo 0 e come massimo list.size()-1
+        *  (Il numero di capi d'abbigliamento nella lista)
         * */
         Factory<Genotype<IntegerGene>> gtf = Genotype.of(IntegerChromosome.of(0, list.size() -1),
                 IntegerChromosome.of(0, list.size() - 1) , IntegerChromosome.of(0, list.size() -1));
 
-       //Vincolo per le nuove generazioni
+        //Vincolo per le nuove generazioni
         Constraint<IntegerGene, Integer> constraint = new TopClothesGAConstraint();
         //Operatore di selezione
         Selector<IntegerGene, Integer> selector =  new RouletteWheelSelector<>();
@@ -38,7 +41,7 @@ public class TopClothesGA {
         Alterer<IntegerGene, Integer> mutation =  new GaussianMutator<>();
 
         //Setup dell'algoritmo genetico
-        engine =  Engine.builder(a->eval(a), gtf)//Viene passato la funzione di fitness e la factory
+        engine =  Engine.builder(this::eval, gtf)//Viene passato la funzione di fitness e la factory
                 .selector(selector)
                 .populationSize(populationSize)
                 .alterers(crossover, mutation)
