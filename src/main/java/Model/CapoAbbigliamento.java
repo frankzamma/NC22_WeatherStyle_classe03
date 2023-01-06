@@ -12,6 +12,11 @@ public abstract class CapoAbbigliamento {
         this.colore = colore;
     }
 
+    public CapoAbbigliamento(String materiale, String stagione) {
+        this.materiale = materiale;
+        this.stagione = stagione;
+    }
+
     public String getMateriale() {
         return materiale;
     }

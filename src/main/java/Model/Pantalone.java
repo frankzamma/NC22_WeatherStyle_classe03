@@ -1,13 +1,13 @@
 package Model;
 
-public class Pantaloni extends CapoAbbigliamento{
+public class Pantalone extends CapoAbbigliamento{
     private String lunghezza;
 
-    public Pantaloni(){
+    public Pantalone(){
 
     }
 
-    public Pantaloni (String materiale, String stagione, String colore, String lunghezza){
+    public Pantalone(String materiale, String stagione, String colore, String lunghezza){
         super (materiale,stagione,colore);
         this.lunghezza = lunghezza;
     }
