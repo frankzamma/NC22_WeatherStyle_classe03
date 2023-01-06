@@ -11,15 +11,17 @@ import io.jenetics.util.Factory;
 import java.util.List;
 
 public class BottomClothesGA {
+
     private static final int populationSize = 10;
     private Engine<IntegerGene,Integer> engine;
     private List<CapoAbbigliamento> capoAbbigliamentoList;
-    private Evaluator evaluator;//TODO da valutare se inserirlo come statico
+    private static final Evaluator evaluator = new Evaluator();
     private MeteoInformation  meteoInformation;
+
     public BottomClothesGA(List<CapoAbbigliamento> list, MeteoInformation meteoInformation) {
         this.capoAbbigliamentoList = list;
         this.meteoInformation = meteoInformation;
-        this.evaluator = new Evaluator();
+
 
         /* Creazione della factory -> permette di generare la prima generazione di individui
          *  Ogni individuo è un Genotipo che ha tre cromosomi.
