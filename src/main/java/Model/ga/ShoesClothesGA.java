@@ -22,7 +22,7 @@ public class ShoesClothesGA {
         this.capoAbbigliamentoList = list;
         this.meteoInformation = meteoInformation;
 
-        /*  La Factory permette di definire una prima soluzione, ovvero l'inizializzazione della popolazione.
+        /*  La Factory permette di generare la prima generazione di individui, ovvero stabilendo come saranno fatti.
          *  Ogni individuo è un Genotipo definito a partire dalla sua caratteristica ereditaria più piccola
          *  ovvero geni di tipo intero, ed ha tre cromosomi.
          *  Ogni cromosoma ha un gene di tipo Integer che ha come valore minimo 0 e come massimo list.size()-1
