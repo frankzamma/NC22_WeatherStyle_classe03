@@ -372,24 +372,6 @@ for x in dataframe.index:
         dataframe.loc[x, "Manica"] = "lunga"
 
 
-# bilanciamento del dataset --> cerchiamo di ottenere una quantità equilibrata di valori per ogni feature
-i = 0
-for x in dataframe.index:
-    if i == 1865:
-        break
-    if str(dataframe.loc[x, "Materiale"]) == "poliestere":
-        dataframe.drop(x, inplace=True)
-        i += 1
-
-i = 0
-for x in dataframe.index:
-    if i == 609:
-        break
-    if str(dataframe.loc[x, "Stagione"]) == "estate":
-        dataframe.drop(x, inplace=True)
-        i += 1
-
-
 # mischiamo i dati
 dataframe.sample(frac=1.0)
 
