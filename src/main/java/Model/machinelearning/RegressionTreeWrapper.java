@@ -13,6 +13,7 @@ import weka.filters.unsupervised.instance.Randomize;
 import weka.filters.unsupervised.instance.RemovePercentage;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.*;
 
 public class RegressionTreeWrapper {
@@ -21,26 +22,33 @@ public class RegressionTreeWrapper {
     private Instances fullDataset;
     private Evaluation evaluation;
 
-    public RegressionTreeWrapper(String pathDatasetFile, Boolean buildWithTrainingSetAndTestSet, boolean balanceDate) throws Exception {
+    public RegressionTreeWrapper(String pathDatasetFile, Boolean buildWithTrainingSetAndTestSet, boolean balanceDate) {
         repTree = new REPTree();
 
         // caricamento del dataset
         CSVLoader csvLoader = new CSVLoader();
-        csvLoader.setSource(new File(pathDatasetFile));
-        fullDataset = csvLoader.getDataSet();
+        try {
+            csvLoader.setSource(new File(pathDatasetFile));
+            fullDataset = csvLoader.getDataSet();
 
-        // stampa del dataset
-        // System.out.println(dataset.toString());
+            // stampa del dataset
+            // System.out.println(dataset.toString());
 
-        // setting della variabile dipendente
-        fullDataset.setClassIndex(fullDataset.numAttributes()-1);
+            // setting della variabile dipendente
+            fullDataset.setClassIndex(fullDataset.numAttributes()-1);
 
-        // ten cross validation ha mostrato che l'intero dataset su cui sarà addestrato il modello dà buoni risultati
-        // quindi è preferibile addestrarlo sull'intero dataset e non su una parte di esso
-        if(buildWithTrainingSetAndTestSet)
-            buildModelWithTrainingSetAndTestSet(67, 33, balanceDate);
-        else
-            buildModelWithTenFoldsCrossValidation(balanceDate);
+            // ten cross validation ha mostrato che l'intero dataset su cui sarà addestrato il modello dà buoni risultati
+            // quindi è preferibile addestrarlo sull'intero dataset e non su una parte di esso
+            if(buildWithTrainingSetAndTestSet)
+                buildModelWithTrainingSetAndTestSet(67, 33, balanceDate);
+            else
+                buildModelWithTenFoldsCrossValidation(balanceDate);
+        } catch (IOException e) {
+            throw new RuntimeException("File csv non trovato" + e);
+        } catch (Exception e){
+            throw new RuntimeException("Problemi nella costruzione del modello [WEKA]" + e);
+        }
+
     }
 
     private void buildModelWithTrainingSetAndTestSet(double percentTrain, double percentTest, boolean balanceDate) throws Exception {
@@ -82,7 +90,7 @@ public class RegressionTreeWrapper {
                 percentTest + "%):\n" + evaluation.toSummaryString());
     }
 
-    private void buildModelWithTenFoldsCrossValidation(boolean balanceDate) throws Exception {
+    private void buildModelWithTenFoldsCrossValidation(boolean balanceDate) throws Exception{
 
         // valutiamo quanto buono sarà il regressore mediante 10 folds cross validation
         evaluation = new Evaluation(fullDataset);
@@ -120,7 +128,7 @@ public class RegressionTreeWrapper {
         List<Instance> listInstance = new ArrayList<>();
 
         for (CapoAbbigliamento capoAbbigliamento: capoAbbigliamentoList){
-            Instance instance = new DenseInstance(7);
+            Instance instance = new DenseInstance(capoAbbigliamento.getClass() != Scarpa.class ? 7 : 8);
             instance.setDataset(fullDataset);
             if(capoAbbigliamento.getClass() == Maglia.class || capoAbbigliamento.getClass() == Pantalone.class){
                 instance.setValue(0, capoAbbigliamento.getMateriale());
@@ -161,7 +169,7 @@ public class RegressionTreeWrapper {
                 scoreCapoAbbigliamentoList.add(scoreCapoAbbigliamento);
                 i++;
             }catch (Exception e){
-                throw new RuntimeException("Predict blocked on " + i + "instance");
+                throw new RuntimeException("Predict blocked on " + i + "instance" + e);
             }
 
         }
@@ -178,8 +186,6 @@ public class RegressionTreeWrapper {
             bests.add(scoreCapoAbbigliamentoMax);
             scoreCapoAbbigliamentoList.remove(scoreCapoAbbigliamentoMax);
         }
-
-
         return bests;
     }
 
