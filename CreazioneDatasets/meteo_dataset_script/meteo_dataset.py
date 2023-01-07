@@ -1,6 +1,6 @@
 import pandas as pd
 
-dataframe = pd.read_csv("../csv_dataset_meteo/dataset_meteo.csv")
+dataframe = pd.read_csv("../csv_dataset_meteo/meteo.csv")
 
 dataframe["time"] = pd.to_datetime(dataframe["time"])
 
@@ -36,5 +36,8 @@ for x in dataframe.index:
         dataframe.loc[x, "Meteo"] = "neve"
 
 dataframe = dataframe.sample(frac=1.0)
+dataframe.drop_duplicates()
+print(dataframe.info())
+print(dataframe['TemperaturaPercepita'].value_counts().to_string())
 
-dataframe.to_csv("meteo_dataset.csv", index=False)
+dataframe.to_csv("../csv_dataset_meteo/meteo_dataset.csv", index=False)

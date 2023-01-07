@@ -43,7 +43,7 @@ for file in array:
     df.rename(columns={'weathercode': 'Meteo'}, inplace=True)
     for i in df.index:
         df.loc[i, 'TemperaturaPercepita'] = \
-            (df.loc[i, 'apparent_temperature_max'] + df.loc[i, 'apparent_temperature_min'])/2
+          round((df.loc[i, 'apparent_temperature_max'] + df.loc[i, 'apparent_temperature_min'])/2, 0)
 
         df.loc[i, 'Meteo'] = dictonary[df.loc[i, 'Meteo']]
 
@@ -68,7 +68,7 @@ final_df = pd.concat(final, ignore_index=True)
 if not(os.path.exists('../csv_dataset_meteo')):
     os.mkdir('../csv_dataset_meteo')
 
-final_df.to_csv('../dataset_meteo/dataset_meteo.csv', index=False)
+final_df.to_csv('../csv_dataset_meteo/meteo.csv', index=False)
 
 print(final_df)
 
