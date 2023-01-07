@@ -12,11 +12,14 @@ public class StartupServlet extends HttpServlet {
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
-        //Il costruttore crea e fai il trainig del ML
+        //Il costruttore crea e allena il ML
         ShoesML shoesML =  new ShoesML();
+        //TODO Aggiungere gli altri ML
 
         ServletContext context = this.getServletContext();
         context.setAttribute("shoesML", shoesML);
+
+
     }
 
     @Override
