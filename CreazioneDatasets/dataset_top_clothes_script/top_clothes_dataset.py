@@ -23,12 +23,12 @@ dataframe = pd.read_csv("../csv_all_clothes/top_bottom_git.csv")
 
 # elimina le righe bottom --> pantaloni
 for x in dataframe.index:
-    if dataframe.loc[x, "Tipo"] == "Bottom":
+    if str(dataframe.loc[x, "Tipo"]) == "Bottom":
         dataframe.drop(x, inplace=True)
 
 # elimina le righe dress --> vestiti da donna
 for x in dataframe.index:
-    if dataframe.loc[x, "Tipo"] == "Dress":
+    if str(dataframe.loc[x, "Tipo"]) == "Dress":
         dataframe.drop(x, inplace=True)
 
 # stampiamo il numero di valori presenti nel dataframe per i materiali
@@ -76,8 +76,8 @@ for x in dataframe.index:
 for x in dataframe.index:
     if (str(dataframe.loc[x, "Materiale"]) != "cotone") and (str(dataframe.loc[x, "Materiale"]) != "poliestere") \
             and (str(dataframe.loc[x, "Materiale"]) != "seta") and (str(dataframe.loc[x, "Materiale"]) != "lino") \
-            and (str(dataframe.loc[x, "Materiale"]) != "tweed") and (str(dataframe.loc[x, "Materiale"]) != "raso")\
-            and (str(dataframe.loc[x, "Materiale"]) != "velluto") and (str(dataframe.loc[x, "Materiale"]) != "lana")\
+            and (str(dataframe.loc[x, "Materiale"]) != "tweed") and (str(dataframe.loc[x, "Materiale"]) != "raso") \
+            and (str(dataframe.loc[x, "Materiale"]) != "velluto") and (str(dataframe.loc[x, "Materiale"]) != "lana") \
             and (str(dataframe.loc[x, "Materiale"]) and (str(dataframe.loc[x, "Materiale"]) != "cashmere")):
         dataframe.drop(x, inplace=True)
 
@@ -92,289 +92,290 @@ dataframe["Manica"].fillna(x, inplace=True)
 # eliminiamo tutte le righe che presentano valori vuoti nelle celle
 dataframe.dropna(inplace=True)
 
-
 # stampiamo il numero di valori presenti nel dataframe per le stagioni
 # print(dataframe["Stagione"].value_counts())
 
 # cambiamo i valori delle stagioni in italiano
 i = 0
 for x in dataframe.index:
-    if dataframe.loc[x, "Stagione"] == "Summer":
+    if str(dataframe.loc[x, "Stagione"]) == "Summer":
         dataframe.loc[x, "Stagione"] = "estate"
-    if dataframe.loc[x, "Stagione"] == "Spring":
+    if str(dataframe.loc[x, "Stagione"]) == "Spring":
         dataframe.loc[x, "Stagione"] = "primavera"
-    if dataframe.loc[x, "Stagione"] == "Fall":
+    if str(dataframe.loc[x, "Stagione"]) == "Fall":
         dataframe.loc[x, "Stagione"] = "autunno"
-    if dataframe.loc[x, "Stagione"] == "Winter":
+    if str(dataframe.loc[x, "Stagione"]) == "Winter":
         dataframe.loc[x, "Stagione"] = "inverno"
-    if dataframe.loc[x, "Stagione"] == "['Spring', 'Summer']":
+    if str(dataframe.loc[x, "Stagione"]) == "['Spring', 'Summer']":
         dataframe.loc[x, "Stagione"] = "primavera_estate"
-    if dataframe.loc[x, "Stagione"] == "['Fall', 'Winter']":
+    if str(dataframe.loc[x, "Stagione"]) == "['Fall', 'Winter']":
         dataframe.loc[x, "Stagione"] = "autunno_inverno"
-    if dataframe.loc[x, "Stagione"] == "['Spring', 'Fall']":
+    if str(dataframe.loc[x, "Stagione"]) == "['Spring', 'Fall']":
         if i % 2 == 0:
             dataframe.loc[x, "Stagione"] = "autunno"
         else:
             dataframe.loc[x, "Stagione"] = "primavera"
             i += 1
-    if dataframe.loc[x, "Stagione"] == "All":
+    if str(dataframe.loc[x, "Stagione"]) == "All":
         dataframe.loc[x, "Stagione"] = "all"
-    if dataframe.loc[x, "Stagione"] == "['Spring', 'Summer', 'Fall']":
+    if str(dataframe.loc[x, "Stagione"]) == "['Spring', 'Summer', 'Fall']":
         dataframe.drop(x, inplace=True)
-
 
 # stampiamo il numero di valori presenti nel dataframe per i colori
 # print(dataframe["Materiale"].value_counts())
 
 # sostituiamo i colori con i valori --> chiaro, scuro e colorato
 for x in dataframe.index:
-    if dataframe.loc[x, "Colore"] == "Multicolor":
+    if str(dataframe.loc[x, "Colore"]) == "Multicolor":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "Black":
+    if str(dataframe.loc[x, "Colore"]) == "Black":
         dataframe.loc[x, "Colore"] = "scuro"
-    if dataframe.loc[x, "Colore"] == "Beige":
+    if str(dataframe.loc[x, "Colore"]) == "Beige":
         dataframe.loc[x, "Colore"] = "chiaro"
-    if dataframe.loc[x, "Colore"] == "Brown":
+    if str(dataframe.loc[x, "Colore"]) == "Brown":
         dataframe.loc[x, "Colore"] = "scuro"
-    if dataframe.loc[x, "Colore"] == "Burgundy":
+    if str(dataframe.loc[x, "Colore"]) == "Burgundy":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "Dusty Pink":
+    if str(dataframe.loc[x, "Colore"]) == "Dusty Pink":
         dataframe.loc[x, "Colore"] = "scuro"
-    if dataframe.loc[x, "Colore"] == "White":
+    if str(dataframe.loc[x, "Colore"]) == "White":
         dataframe.loc[x, "Colore"] = "chiaro"
-    if dataframe.loc[x, "Colore"] == "Green":
+    if str(dataframe.loc[x, "Colore"]) == "Green":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "['Pastel', ' Baby Pink']":
+    if str(dataframe.loc[x, "Colore"]) == "['Pastel', ' Baby Pink']":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "Coral Pink":
+    if str(dataframe.loc[x, "Colore"]) == "Coral Pink":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "Dusty Blue":
+    if str(dataframe.loc[x, "Colore"]) == "Dusty Blue":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "Red":
+    if str(dataframe.loc[x, "Colore"]) == "Red":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "Mint Green":
+    if str(dataframe.loc[x, "Colore"]) == "Mint Green":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "Black and White":
+    if str(dataframe.loc[x, "Colore"]) == "Black and White":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "Navy Blue":
+    if str(dataframe.loc[x, "Colore"]) == "Navy Blue":
         dataframe.loc[x, "Colore"] = "scuro"
-    if dataframe.loc[x, "Colore"] == "['Pastel', ' Dusty Pink']":
+    if str(dataframe.loc[x, "Colore"]) == "['Pastel', ' Dusty Pink']":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "Lime Green":
+    if str(dataframe.loc[x, "Colore"]) == "Lime Green":
         dataframe.loc[x, "Colore"] = "chiaro"
-    if dataframe.loc[x, "Colore"] == "Baby Pink":
+    if str(dataframe.loc[x, "Colore"]) == "Baby Pink":
         dataframe.loc[x, "Colore"] = "chiaro"
-    if dataframe.loc[x, "Colore"] == "Maroon":
+    if str(dataframe.loc[x, "Colore"]) == "Maroon":
         dataframe.loc[x, "Colore"] = "scuro"
-    if dataframe.loc[x, "Colore"] == "Dark Grey":
+    if str(dataframe.loc[x, "Colore"]) == "Dark Grey":
         dataframe.loc[x, "Colore"] = "scuro"
-    if dataframe.loc[x, "Colore"] == "Army Green":
+    if str(dataframe.loc[x, "Colore"]) == "Army Green":
         dataframe.loc[x, "Colore"] = "scuro"
-    if dataframe.loc[x, "Colore"] == "Grey":
+    if str(dataframe.loc[x, "Colore"]) == "Grey":
         dataframe.loc[x, "Colore"] = "scuro"
-    if dataframe.loc[x, "Colore"] == "['Pastel', ' Lilac Purple']":
+    if str(dataframe.loc[x, "Colore"]) == "['Pastel', ' Lilac Purple']":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "Light Grey":
+    if str(dataframe.loc[x, "Colore"]) == "Light Grey":
         dataframe.loc[x, "Colore"] = "chiaro"
-    if dataframe.loc[x, "Colore"] == "Khaki":
+    if str(dataframe.loc[x, "Colore"]) == "Khaki":
         dataframe.loc[x, "Colore"] = "chiaro"
-    if dataframe.loc[x, "Colore"] == "['Red', ' Bright']":
+    if str(dataframe.loc[x, "Colore"]) == "['Red', ' Bright']":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "Dark Green":
+    if str(dataframe.loc[x, "Colore"]) == "Dark Green":
         dataframe.loc[x, "Colore"] = "scuro"
-    if dataframe.loc[x, "Colore"] == "Orange, Pastel":
+    if str(dataframe.loc[x, "Colore"]) == "Orange, Pastel":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "Pink":
+    if str(dataframe.loc[x, "Colore"]) == "Pink":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "Apricot":
+    if str(dataframe.loc[x, "Colore"]) == "Apricot":
         dataframe.loc[x, "Colore"] = "chiaro"
-    if dataframe.loc[x, "Colore"] == "Yellow":
+    if str(dataframe.loc[x, "Colore"]) == "Yellow":
         dataframe.loc[x, "Colore"] = "chiaro"
-    if dataframe.loc[x, "Colore"] == "['Orange', ' Bright']":
+    if str(dataframe.loc[x, "Colore"]) == "['Orange', ' Bright']":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "['Bright', ' Lime Green']":
+    if str(dataframe.loc[x, "Colore"]) == "['Bright', ' Lime Green']":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "['Pastel', ' Mint Green']":
+    if str(dataframe.loc[x, "Colore"]) == "['Pastel', ' Mint Green']":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "Mauve Purple":
+    if str(dataframe.loc[x, "Colore"]) == "Mauve Purple":
         dataframe.loc[x, "Colore"] = "scuro"
-    if dataframe.loc[x, "Colore"] == "['Pastel', ' Baby Blue']":
+    if str(dataframe.loc[x, "Colore"]) == "['Pastel', ' Baby Blue']":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "['Yellow', ' Pastel']":
+    if str(dataframe.loc[x, "Colore"]) == "['Yellow', ' Pastel']":
         dataframe.loc[x, "Colore"] = "chiaro"
-    if dataframe.loc[x, "Colore"] == "Chocolate Brown":
+    if str(dataframe.loc[x, "Colore"]) == "Chocolate Brown":
         dataframe.loc[x, "Colore"] = "scuro"
-    if dataframe.loc[x, "Colore"] == "Burnt Orange":
+    if str(dataframe.loc[x, "Colore"]) == "Burnt Orange":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "Redwood":
+    if str(dataframe.loc[x, "Colore"]) == "Redwood":
         dataframe.loc[x, "Colore"] = "scuro"
-    if dataframe.loc[x, "Colore"] == "Blue":
+    if str(dataframe.loc[x, "Colore"]) == "Blue":
         dataframe.loc[x, "Colore"] = "scuro"
-    if dataframe.loc[x, "Colore"] == "Watermelon Pink":
+    if str(dataframe.loc[x, "Colore"]) == "Watermelon Pink":
         dataframe.loc[x, "Colore"] = "chiaro"
-    if dataframe.loc[x, "Colore"] == "Lilac Purple":
+    if str(dataframe.loc[x, "Colore"]) == "Lilac Purple":
         dataframe.loc[x, "Colore"] = "scuro"
-    if dataframe.loc[x, "Colore"] == "Pastel, Lime Green":
+    if str(dataframe.loc[x, "Colore"]) == "Pastel, Lime Green":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "Rusty Rose":
+    if str(dataframe.loc[x, "Colore"]) == "Rusty Rose":
         dataframe.loc[x, "Colore"] = "chiaro"
-    if dataframe.loc[x, "Colore"] == "Red and White":
+    if str(dataframe.loc[x, "Colore"]) == "Red and White":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "Champagne":
+    if str(dataframe.loc[x, "Colore"]) == "Champagne":
         dataframe.loc[x, "Colore"] = "chiaro"
-    if dataframe.loc[x, "Colore"] == "Royal Blue":
+    if str(dataframe.loc[x, "Colore"]) == "Royal Blue":
         dataframe.loc[x, "Colore"] = "scuro"
-    if dataframe.loc[x, "Colore"] == "Blue and White":
+    if str(dataframe.loc[x, "Colore"]) == "Blue and White":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "Baby Blue":
+    if str(dataframe.loc[x, "Colore"]) == "Baby Blue":
         dataframe.loc[x, "Colore"] = "chiaro"
-    if dataframe.loc[x, "Colore"] == "Coffee Brown":
+    if str(dataframe.loc[x, "Colore"]) == "Coffee Brown":
         dataframe.loc[x, "Colore"] = "scuro"
-    if dataframe.loc[x, "Colore"] == "Rust Brown":
+    if str(dataframe.loc[x, "Colore"]) == "Rust Brown":
         dataframe.loc[x, "Colore"] = "scuro"
-    if dataframe.loc[x, "Colore"] == "Orange, Bright":
+    if str(dataframe.loc[x, "Colore"]) == "Orange, Bright":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "Mustard Yellow":
+    if str(dataframe.loc[x, "Colore"]) == "Mustard Yellow":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "Mocha Brown":
+    if str(dataframe.loc[x, "Colore"]) == "Mocha Brown":
         dataframe.loc[x, "Colore"] = "scuro"
-    if dataframe.loc[x, "Colore"] == "Mint Blue":
+    if str(dataframe.loc[x, "Colore"]) == "Mint Blue":
         dataframe.loc[x, "Colore"] = "scuro"
-    if dataframe.loc[x, "Colore"] == "Camel":
+    if str(dataframe.loc[x, "Colore"]) == "Camel":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "['Neon', ' Lime Green']":
+    if str(dataframe.loc[x, "Colore"]) == "['Neon', ' Lime Green']":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "Orange":
+    if str(dataframe.loc[x, "Colore"]) == "Orange":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "['Pastel', ' Lime Green']":
+    if str(dataframe.loc[x, "Colore"]) == "['Pastel', ' Lime Green']":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "Rose Red":
+    if str(dataframe.loc[x, "Colore"]) == "Rose Red":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "Pastel, Baby Pink":
+    if str(dataframe.loc[x, "Colore"]) == "Pastel, Baby Pink":
         dataframe.loc[x, "Colore"] = "chiaro"
-    if dataframe.loc[x, "Colore"] == "Cadet Blue":
+    if str(dataframe.loc[x, "Colore"]) == "Cadet Blue":
         dataframe.loc[x, "Colore"] = "scuro"
-    if dataframe.loc[x, "Colore"] == "Purple":
+    if str(dataframe.loc[x, "Colore"]) == "Purple":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "Gold":
+    if str(dataframe.loc[x, "Colore"]) == "Gold":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "['Pastel', ' Dusty Blue']":
+    if str(dataframe.loc[x, "Colore"]) == "['Pastel', ' Dusty Blue']":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "Olive Green":
+    if str(dataframe.loc[x, "Colore"]) == "Olive Green":
         dataframe.loc[x, "Colore"] = "scuro"
-    if dataframe.loc[x, "Colore"] == "Violet Purple":
+    if str(dataframe.loc[x, "Colore"]) == "Violet Purple":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "['Blue', ' Pastel']":
+    if str(dataframe.loc[x, "Colore"]) == "['Blue', ' Pastel']":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "['Pastel', ' Dusty Purple']":
+    if str(dataframe.loc[x, "Colore"]) == "['Pastel', ' Dusty Purple']":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "['Yellow', ' Bright']":
+    if str(dataframe.loc[x, "Colore"]) == "['Yellow', ' Bright']":
         dataframe.loc[x, "Colore"] = "chiaro"
-    if dataframe.loc[x, "Colore"] == "['Hot Pink', ' Neon']":
+    if str(dataframe.loc[x, "Colore"]) == "['Hot Pink', ' Neon']":
         dataframe.loc[x, "Colore"] = "scuro"
-    if dataframe.loc[x, "Colore"] == "['Camel', ' Pastel']":
+    if str(dataframe.loc[x, "Colore"]) == "['Camel', ' Pastel']":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "['Neon', ' Orange']":
+    if str(dataframe.loc[x, "Colore"]) == "['Neon', ' Orange']":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "Hot Pink":
+    if str(dataframe.loc[x, "Colore"]) == "Hot Pink":
         dataframe.loc[x, "Colore"] = "scuro"
-    if dataframe.loc[x, "Colore"] == "['Pink', ' Neon']":
+    if str(dataframe.loc[x, "Colore"]) == "['Pink', ' Neon']":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "Bronze":
+    if str(dataframe.loc[x, "Colore"]) == "Bronze":
         dataframe.loc[x, "Colore"] = "scuro"
-    if dataframe.loc[x, "Colore"] == "['Royal Blue', ' Bright']":
+    if str(dataframe.loc[x, "Colore"]) == "['Royal Blue', ' Bright']":
         dataframe.loc[x, "Colore"] = "scuro"
-    if dataframe.loc[x, "Colore"] == "Teal Blue":
+    if str(dataframe.loc[x, "Colore"]) == "Teal Blue":
         dataframe.loc[x, "Colore"] = "scuro"
-    if dataframe.loc[x, "Colore"] == "['Multicolor', ' Dusty Blue']":
+    if str(dataframe.loc[x, "Colore"]) == "['Multicolor', ' Dusty Blue']":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "Bright, Mint Blue":
+    if str(dataframe.loc[x, "Colore"]) == "Bright, Mint Blue":
         dataframe.loc[x, "Colore"] = "scuro"
-    if dataframe.loc[x, "Colore"] == "Bright, Watermelon Pink":
+    if str(dataframe.loc[x, "Colore"]) == "Bright, Watermelon Pink":
         dataframe.loc[x, "Colore"] = "chiaro"
-    if dataframe.loc[x, "Colore"] == "['Purple', ' Pastel']":
+    if str(dataframe.loc[x, "Colore"]) == "['Purple', ' Pastel']":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "['Pink', ' Pastel']":
+    if str(dataframe.loc[x, "Colore"]) == "['Pink', ' Pastel']":
         dataframe.loc[x, "Colore"] = "chiaro"
-    if dataframe.loc[x, "Colore"] == "Pastel, Coral Pink":
+    if str(dataframe.loc[x, "Colore"]) == "Pastel, Coral Pink":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "Pastel, Lilac Purple":
+    if str(dataframe.loc[x, "Colore"]) == "Pastel, Lilac Purple":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "['Neon', ' Yellow']":
+    if str(dataframe.loc[x, "Colore"]) == "['Neon', ' Yellow']":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "Neon, Orange":
+    if str(dataframe.loc[x, "Colore"]) == "Neon, Orange":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "['Green', ' Bright']":
+    if str(dataframe.loc[x, "Colore"]) == "['Green', ' Bright']":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "Red, Bright":
+    if str(dataframe.loc[x, "Colore"]) == "Red, Bright":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "Yellow, Bright":
+    if str(dataframe.loc[x, "Colore"]) == "Yellow, Bright":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "['Hot Pink', ' Bright']":
+    if str(dataframe.loc[x, "Colore"]) == "['Hot Pink', ' Bright']":
         dataframe.loc[x, "Colore"] = "chiaro"
-    if dataframe.loc[x, "Colore"] == "Pink, Pastel":
+    if str(dataframe.loc[x, "Colore"]) == "Pink, Pastel":
         dataframe.loc[x, "Colore"] = "chiaro"
-    if dataframe.loc[x, "Colore"] == "['Pastel', ' Mauve Purple']":
+    if str(dataframe.loc[x, "Colore"]) == "['Pastel', ' Mauve Purple']":
         dataframe.loc[x, "Colore"] = "scuro"
-    if dataframe.loc[x, "Colore"] == "Coral Orange":
+    if str(dataframe.loc[x, "Colore"]) == "Coral Orange":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "Green, Neon":
+    if str(dataframe.loc[x, "Colore"]) == "Green, Neon":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "Red Violet":
+    if str(dataframe.loc[x, "Colore"]) == "Red Violet":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "Dusty Purple":
+    if str(dataframe.loc[x, "Colore"]) == "Dusty Purple":
         dataframe.loc[x, "Colore"] = "scuro"
-    if dataframe.loc[x, "Colore"] == "Ginger":
+    if str(dataframe.loc[x, "Colore"]) == "Ginger":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "['Blue', ' Bright']":
+    if str(dataframe.loc[x, "Colore"]) == "['Blue', ' Bright']":
         dataframe.loc[x, "Colore"] = "scuro"
-    if dataframe.loc[x, "Colore"] == "['Pastel', ' Coral Pink']":
+    if str(dataframe.loc[x, "Colore"]) == "['Pastel', ' Coral Pink']":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "['Bright', ' Watermelon Pink']":
+    if str(dataframe.loc[x, "Colore"]) == "['Bright', ' Watermelon Pink']":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "['Green', ' Pastel']":
+    if str(dataframe.loc[x, "Colore"]) == "['Green', ' Pastel']":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "['Bright', ' Baby Blue']":
+    if str(dataframe.loc[x, "Colore"]) == "['Bright', ' Baby Blue']":
         dataframe.loc[x, "Colore"] = "chiaro"
-    if dataframe.loc[x, "Colore"] == "Pastel, Mint Green":
+    if str(dataframe.loc[x, "Colore"]) == "Pastel, Mint Green":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "Silver":
+    if str(dataframe.loc[x, "Colore"]) == "Silver":
         dataframe.loc[x, "Colore"] = "chiaro"
-    if dataframe.loc[x, "Colore"] == "['Pink', ' Bright']":
+    if str(dataframe.loc[x, "Colore"]) == "['Pink', ' Bright']":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "Pastel, Baby Blue":
+    if str(dataframe.loc[x, "Colore"]) == "Pastel, Baby Blue":
         dataframe.loc[x, "Colore"] = "colorato"
-    if dataframe.loc[x, "Colore"] == "['Blue', ' Bright']":
+    if str(dataframe.loc[x, "Colore"]) == "['Blue', ' Bright']":
         dataframe.loc[x, "Colore"] = "scuro"
-    if dataframe.loc[x, "Colore"] == "Pastel, Dusty Pink":
+    if str(dataframe.loc[x, "Colore"]) == "Pastel, Dusty Pink":
         dataframe.loc[x, "Colore"] = "colorato"
-
 
 # stampiamo il numero di valori presenti nel dataframe per le maniche
 # print(dataframe["Maniche"].value_counts())
 
 # sostituiamo i valori delle maniche con i valori --> lunghi e corti
 for x in dataframe.index:
-    if dataframe.loc[x, "Manica"] == "Long Sleeve":
+    if str(dataframe.loc[x, "Manica"]) == "Long Sleeve":
         dataframe.loc[x, "Manica"] = "lunga"
-    if dataframe.loc[x, "Manica"] == "Short Sleeve":
+    if str(dataframe.loc[x, "Manica"]) == "Short Sleeve":
         dataframe.loc[x, "Manica"] = "corta"
-    if dataframe.loc[x, "Manica"] == "Sleeveless":
+    if str(dataframe.loc[x, "Manica"]) == "Sleeveless":
         dataframe.loc[x, "Manica"] = "corta"
-    if dataframe.loc[x, "Manica"] == "['Short Sleeve', ' Cap Sleeve']":
+    if str(dataframe.loc[x, "Manica"]) == "['Short Sleeve', ' Cap Sleeve']":
         dataframe.loc[x, "Manica"] = "corta"
-    if dataframe.loc[x, "Manica"] == "['Short Sleeve', ' Half Sleeve']":
+    if str(dataframe.loc[x, "Manica"]) == "['Short Sleeve', ' Half Sleeve']":
         dataframe.loc[x, "Manica"] = "corta"
-    if dataframe.loc[x, "Manica"] == "Three Quarter Length Sleeve":
+    if str(dataframe.loc[x, "Manica"]) == "Three Quarter Length Sleeve":
         dataframe.loc[x, "Manica"] = "lunga"
-    if dataframe.loc[x, "Manica"] == "Half Sleeve":
+    if str(dataframe.loc[x, "Manica"]) == "Half Sleeve":
         dataframe.loc[x, "Manica"] = "corta"
-    if dataframe.loc[x, "Manica"] == "Cap Sleeve":
+    if str(dataframe.loc[x, "Manica"]) == "Cap Sleeve":
         dataframe.loc[x, "Manica"] = "corta"
-    if dataframe.loc[x, "Manica"] == "Extra-Long Sleeve":
+    if str(dataframe.loc[x, "Manica"]) == "Extra-Long Sleeve":
         dataframe.loc[x, "Manica"] = "lunga"
 
+
+# mischiamo i dati
+dataframe.sample(frac=1.0)
 
 # esportiamo il dataframe in formato csv
 dataframe.to_csv("../newCsv_all_clothes/top_dataset.csv", index=False)
+
 
