@@ -5,6 +5,7 @@ import java.util.*;
 public class Evaluator {
     private static List<Hashtable<String, Integer>> ranges;
     private static List<Hashtable<String, Integer>> stagionalita;
+    private static Hashtable<String, Hashtable<String, Integer>> valutazioneTypeShoes;
 
     public Evaluator(){
       initTable();
@@ -36,18 +37,13 @@ public class Evaluator {
         ranges.get(0).put("corta",10);
 
         // scarpe
-        ranges.get(0).put("cuoio",5);
-        ranges.get(0).put("camoscio",2);
-        ranges.get(0).put("gomma",3);
-        ranges.get(0).put("pelle",4);
-        ranges.get(0).put("tessuto",9);
-        ranges.get(0).put("ecopelle",6);
-        ranges.get(0).put("tela",10);
-        ranges.get(0).put("eva",8);
-
-        // valutazione collo alto/basso scarpe
-        ranges.get(0).put("alto",2);
-        ranges.get(0).put("basso",8);
+        ranges.get(0).put("inverno",0);
+        ranges.get(0).put("autunno",1);
+        ranges.get(0).put("primavera",2);
+        ranges.get(0).put("estate",5);
+        ranges.get(0).put("primavera_estate",4);
+        ranges.get(0).put("autunno_inverno",1);
+        ranges.get(0).put("all",3);
 
 
 
@@ -70,18 +66,13 @@ public class Evaluator {
         ranges.get(1).put("corta",9);
 
         // scarpe
-        ranges.get(1).put("cuoio",5);
-        ranges.get(1).put("camoscio",2);
-        ranges.get(1).put("gomma",4);
-        ranges.get(1).put("pelle",3);
-        ranges.get(1).put("tessuto",10);
-        ranges.get(1).put("ecopelle",6);
-        ranges.get(1).put("tela",9);
-        ranges.get(1).put("eva",8);
-
-        // valutazione collo alto/basso scarpe
-        ranges.get(1).put("alto",3);
-        ranges.get(1).put("basso",7);
+        ranges.get(1).put("inverno",0);
+        ranges.get(1).put("autunno",1);
+        ranges.get(1).put("primavera",3);
+        ranges.get(1).put("estate",5);
+        ranges.get(1).put("primavera_estate",4);
+        ranges.get(1).put("autunno_inverno",1);
+        ranges.get(1).put("all",3);
 
 
 
@@ -104,18 +95,13 @@ public class Evaluator {
         ranges.get(2).put("corta",6);
 
         // scarpe
-        ranges.get(2).put("cuoio",6);
-        ranges.get(2).put("camoscio",3);
-        ranges.get(2).put("gomma",5);
-        ranges.get(2).put("pelle",4);
-        ranges.get(2).put("tessuto",5);
-        ranges.get(2).put("ecopelle",7);
-        ranges.get(2).put("tela",8);
-        ranges.get(2).put("eva",9);
-
-        // valutazione collo alto/basso scarpe
-        ranges.get(2).put("alto",3);
-        ranges.get(2).put("basso",7);
+        ranges.get(2).put("inverno",0);
+        ranges.get(2).put("autunno",2);
+        ranges.get(2).put("primavera",5);
+        ranges.get(2).put("estate",4);
+        ranges.get(2).put("primavera_estate",4);
+        ranges.get(2).put("autunno_inverno",1);
+        ranges.get(2).put("all",3);
 
 
 
@@ -136,18 +122,13 @@ public class Evaluator {
         ranges.get(3).put("corta",3);
 
         // scarpe
-        ranges.get(3).put("cuoio",7);
-        ranges.get(3).put("camoscio",4);
-        ranges.get(3).put("gomma",6);
-        ranges.get(3).put("pelle",6);
-        ranges.get(3).put("tessuto",5);
-        ranges.get(3).put("ecopelle",6);
-        ranges.get(3).put("tela",7);
-        ranges.get(3).put("eva",9);
-
-        // valutazione collo alto/basso scarpe
-        ranges.get(3).put("alto",4);
-        ranges.get(3).put("basso",6);
+        ranges.get(3).put("inverno",4);
+        ranges.get(3).put("autunno",5);
+        ranges.get(3).put("primavera",4);
+        ranges.get(3).put("estate",3);
+        ranges.get(3).put("primavera_estate",3);
+        ranges.get(3).put("autunno_inverno",4);
+        ranges.get(3).put("all",3);
 
 
 
@@ -168,18 +149,13 @@ public class Evaluator {
         ranges.get(4).put("corta",1);
 
         // scarpe
-        ranges.get(4).put("cuoio",7);
-        ranges.get(4).put("camoscio",5);
-        ranges.get(4).put("gomma",3);
-        ranges.get(4).put("pelle",6);
-        ranges.get(4).put("tessuto",3);
-        ranges.get(4).put("ecopelle",4);
-        ranges.get(4).put("tela",2);
-        ranges.get(4).put("eva",8);
-
-        // valutazione collo alto/basso scarpe
-        ranges.get(4).put("alto",5);
-        ranges.get(4).put("basso",5);
+        ranges.get(4).put("inverno",5);
+        ranges.get(4).put("autunno",5);
+        ranges.get(4).put("primavera",3);
+        ranges.get(4).put("estate",1);
+        ranges.get(4).put("primavera_estate",2);
+        ranges.get(4).put("autunno_inverno",4);
+        ranges.get(4).put("all",3);
 
 
 
@@ -200,18 +176,13 @@ public class Evaluator {
         ranges.get(5).put("corta",0);
 
         // scarpe
-        ranges.get(5).put("cuoio",7);
-        ranges.get(5).put("camoscio",9);
-        ranges.get(5).put("gomma",2);
-        ranges.get(5).put("pelle",8);
-        ranges.get(5).put("tessuto",2);
-        ranges.get(5).put("ecopelle",3);
-        ranges.get(5).put("tela",1);
-        ranges.get(5).put("eva",8);
-
-        // valutazione collo alto/basso scarpe
-        ranges.get(5).put("alto",7);
-        ranges.get(5).put("basso",3);
+        ranges.get(5).put("inverno",5);
+        ranges.get(5).put("autunno",4);
+        ranges.get(5).put("primavera",1);
+        ranges.get(5).put("estate",0);
+        ranges.get(5).put("primavera_estate",0);
+        ranges.get(5).put("autunno_inverno",4);
+        ranges.get(5).put("all",3);
 
 
 
@@ -232,18 +203,13 @@ public class Evaluator {
         ranges.get(6).put("corta",0);
 
         // scarpe
-        ranges.get(6).put("cuoio",8);
-        ranges.get(6).put("camoscio",10);
-        ranges.get(6).put("gomma",3);
-        ranges.get(6).put("pelle",10);
-        ranges.get(6).put("tessuto",2);
-        ranges.get(6).put("ecopelle",4);
-        ranges.get(6).put("tela",1);
-        ranges.get(6).put("eva",6);
-
-        // valutazione collo alto/basso scarpe
-        ranges.get(6).put("alto",9);
-        ranges.get(6).put("basso",1);
+        ranges.get(6).put("inverno",5);
+        ranges.get(6).put("autunno",3);
+        ranges.get(6).put("primavera",1);
+        ranges.get(6).put("estate",0);
+        ranges.get(6).put("primavera_estate",0);
+        ranges.get(6).put("autunno_inverno",3);
+        ranges.get(6).put("all",3);
 
 
         stagionalita = new ArrayList<>();
@@ -251,41 +217,87 @@ public class Evaluator {
             stagionalita.add(new Hashtable<>());
         }
 
-        //stagione inverno
-        stagionalita.get(0).put("inverno", 5);
+        // stagione inverno
+        stagionalita.get(0).put("inverno", 6);
         stagionalita.get(0).put("autunno", 4);
-        stagionalita.get(0).put("primavera", 3);
+        stagionalita.get(0).put("primavera", 2);
         stagionalita.get(0).put("estate", 0);
         stagionalita.get(0).put("primavera_estate", 1);
-        stagionalita.get(0).put("autunno_inverno", 2);
+        stagionalita.get(0).put("autunno_inverno", 5);
         stagionalita.get(0).put("all", 3);
 
-        //primavera
-        stagionalita.get(1).put("primavera", 5);
-        stagionalita.get(1).put("estate", 3);
+        // stagione primavera
+        stagionalita.get(1).put("primavera", 6);
+        stagionalita.get(1).put("estate", 4);
         stagionalita.get(1).put("autunno", 2);
         stagionalita.get(1).put("inverno", 0);
-        stagionalita.get(1).put("primavera_estate", 4);
+        stagionalita.get(1).put("primavera_estate", 5);
         stagionalita.get(1).put("autunno_inverno", 1);
         stagionalita.get(1).put("all", 3);
 
-        //stagione estate
-        stagionalita.get(2).put("estate", 5);
+        // stagione estate
+        stagionalita.get(2).put("estate", 6);
         stagionalita.get(2).put("autunno", 2);
         stagionalita.get(2).put("inverno", 0);
-        stagionalita.get(2).put("primavera", 3);
-        stagionalita.get(2).put("primavera_estate", 4);
+        stagionalita.get(2).put("primavera", 4);
+        stagionalita.get(2).put("primavera_estate", 5);
         stagionalita.get(2).put("autunno_inverno", 1);
         stagionalita.get(2).put( "all", 3);
 
         // stagione autunno
-        stagionalita.get(3).put("autunno", 5);
-        stagionalita.get(3).put("inverno", 2);
-        stagionalita.get(3).put("primavera", 3);
+        stagionalita.get(3).put("autunno", 6);
+        stagionalita.get(3).put("inverno", 4);
+        stagionalita.get(3).put("primavera", 2);
         stagionalita.get(3).put("estate", 0);
         stagionalita.get(3).put("primavera_estate", 1);
-        stagionalita.get(3).put("autunno_inverno", 4);
+        stagionalita.get(3).put("autunno_inverno", 5);
         stagionalita.get(3).put("all", 3);
+
+
+        // mappe valutazioni tipo di scarpe rispetto alle previsioni meteo
+        valutazioneTypeShoes = new Hashtable<>();
+
+        Hashtable<String, Integer> hashTablePioggia = new Hashtable<>();
+        hashTablePioggia.put("Stivaletto alla caviglia",10);
+        hashTablePioggia.put("Scarpa da ginnastica",10);
+        hashTablePioggia.put("Scarpa classica",10);
+        hashTablePioggia.put("Scarpe con tacchi",10);
+        hashTablePioggia.put("Scarpe aperte",10);
+        hashTablePioggia.put("Anfibi",10);
+        hashTablePioggia.put("Stivali",10);
+
+        Hashtable<String, Integer> hashTableSoleggiato = new Hashtable<>();
+        hashTablePioggia.put("Stivaletto alla caviglia",3);
+        hashTablePioggia.put("Scarpa da ginnastica",8);
+        hashTablePioggia.put("Scarpa classica",7);
+        hashTablePioggia.put("Scarpe con tacchi",7);
+        hashTablePioggia.put("Scarpe aperte",9);
+        hashTablePioggia.put("Anfibi",3);
+        hashTablePioggia.put("Stivali",3);
+
+        Hashtable<String, Integer> hashTableNuvoloso = new Hashtable<>();
+        hashTablePioggia.put("Stivaletto alla caviglia",4);
+        hashTablePioggia.put("Scarpa da ginnastica",8);
+        hashTablePioggia.put("Scarpa classica",8);
+        hashTablePioggia.put("Scarpe con tacchi",5);
+        hashTablePioggia.put("Scarpe aperte",2);
+        hashTablePioggia.put("Anfibi",4);
+        hashTablePioggia.put("Stivali",4);
+
+        Hashtable<String, Integer> hashTableNeve = new Hashtable<>();
+        hashTablePioggia.put("Stivaletto alla caviglia",8);
+        hashTablePioggia.put("Scarpa da ginnastica",5);
+        hashTablePioggia.put("Scarpa classica",6);
+        hashTablePioggia.put("Scarpe con tacchi",1);
+        hashTablePioggia.put("Scarpe aperte",0);
+        hashTablePioggia.put("Anfibi",9);
+        hashTablePioggia.put("Stivali",10);
+
+        valutazioneTypeShoes.put("pioggia", hashTablePioggia);
+        valutazioneTypeShoes.put("soleggiato", hashTableSoleggiato);
+        valutazioneTypeShoes.put("nuvoloso", hashTableNuvoloso);
+        valutazioneTypeShoes.put("neve", hashTableNeve);
+
     }
 
     public int valuta(CapoAbbigliamento capoAbbigliamento, MeteoInformation meteoInformation){
@@ -298,17 +310,18 @@ public class Evaluator {
 
     private int valutazioneShoes(CapoAbbigliamento capoAbbigliamento, MeteoInformation meteoInformation){
         int punteggio = 0;
-        punteggio += valutazioneMateriale(capoAbbigliamento, meteoInformation);
+        punteggio += valutazioneTipo((Scarpa)capoAbbigliamento, meteoInformation);
+        punteggio += valutazioneTemperatura(capoAbbigliamento, meteoInformation);
         punteggio += valutazioneStagione(capoAbbigliamento);
-        punteggio += valutazioneAntiscivolo((Scarpa)capoAbbigliamento, meteoInformation);
-        punteggio += valutazioneImpermeabilita((Scarpa)capoAbbigliamento, meteoInformation);
-        punteggio += valutazioneCollo((Scarpa)capoAbbigliamento, meteoInformation);
+        punteggio += valutazioneColore(capoAbbigliamento, meteoInformation);
+        if (meteoInformation.getMeteo().equalsIgnoreCase("pioggia") || meteoInformation.getMeteo().equalsIgnoreCase("neve"))
+            punteggio += valutazionePioggia((Scarpa)capoAbbigliamento, meteoInformation);
         return punteggio;
     }
 
     private int valutazioneTopOrBottom(CapoAbbigliamento capoAbbigliamento, MeteoInformation meteoInformation){
         int punteggio = 0;
-        punteggio += valutazioneMateriale(capoAbbigliamento, meteoInformation);
+        punteggio += valutazioneTemperatura(capoAbbigliamento, meteoInformation);
         punteggio += valutazioneColore(capoAbbigliamento, meteoInformation);
         punteggio += valutazioneLunghezza(capoAbbigliamento, meteoInformation);
         punteggio += valutazioneStagione(capoAbbigliamento);
@@ -343,7 +356,7 @@ public class Evaluator {
         return range;
     }
 
-    private int valutazioneMateriale(CapoAbbigliamento capoAbbigliamento, MeteoInformation meteoInformation) {
+    private int valutazioneTemperatura(CapoAbbigliamento capoAbbigliamento, MeteoInformation meteoInformation) {
         /* Valutazione della maglia inserita dall'utente sulla base delle regole descritte su Drive */
         int temperaturaPercepita = (int) meteoInformation.getTemperaturaPercepita();
         int range = searchRange(temperaturaPercepita);
@@ -352,7 +365,10 @@ public class Evaluator {
 
         //try-catch aggiunto per debug, successivamente può essere rimosso
         try{
-            voto = ranges.get(range).get(capoAbbigliamento.getMateriale());
+            if(capoAbbigliamento.getClass().equals(Maglia.class) || capoAbbigliamento.getClass().equals(Pantalone.class))
+                voto = ranges.get(range).get(capoAbbigliamento.getMateriale());
+            else
+                voto = ranges.get(range).get(capoAbbigliamento.getStagione());
         }catch(NullPointerException e){
             System.out.println(capoAbbigliamento.getMateriale());
             e.printStackTrace();
@@ -419,18 +435,19 @@ public class Evaluator {
         return  stagionalita.get(i).get(capoAbbigliamento.getStagione());
     }
 
-    private int valutazioneAntiscivolo(Scarpa scarpa, MeteoInformation meteoInformation){
-        return meteoInformation.getMeteo().equalsIgnoreCase("pioggia") && scarpa.getAntiscivolo() ? 5: 0;
+    private int valutazionePioggia(Scarpa scarpa, MeteoInformation meteoInformation){
+        if (scarpa.getAntiscivolo() && scarpa.getImpermeabile())
+            return 5;
+        else if (scarpa.getAntiscivolo())
+            return 3;
+        else if (scarpa.getImpermeabile())
+            return 4;
+        else
+            return 0;
     }
 
-    private int valutazioneImpermeabilita(Scarpa scarpa, MeteoInformation meteoInformation){
-        return meteoInformation.getMeteo().equalsIgnoreCase("pioggia") && scarpa.getAntiscivolo() ? 7: 0;
-    }
-
-    private int valutazioneCollo(Scarpa scarpa, MeteoInformation meteoInformation){
-        int temperaturaPercepita = (int) meteoInformation.getTemperaturaPercepita();
-        int range = searchRange(temperaturaPercepita);
-        return ranges.get(range).get(scarpa.getCollo());
+    private int valutazioneTipo(Scarpa scarpa, MeteoInformation meteoInformation){
+        return valutazioneTypeShoes.get(meteoInformation.getMeteo()).get(scarpa.getTipo());
     }
 
 }
