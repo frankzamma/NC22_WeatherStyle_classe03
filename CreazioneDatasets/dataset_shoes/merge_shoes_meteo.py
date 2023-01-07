@@ -6,8 +6,10 @@ df_shoes = pd.read_csv('../newCsv_all_clothes/shoes-dataset.csv')
 
 df_meteo.sample(frac=1.0)
 
-df = pd.concat([df_meteo, df_shoes], axis=1)
+df = pd.concat([df_shoes, df_meteo], axis=1)
 
+df.pop('time')
+df.pop('Mese')
 df.dropna(inplace=True)
 df.drop_duplicates(inplace=True)
 

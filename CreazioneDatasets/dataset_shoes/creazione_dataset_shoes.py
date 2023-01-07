@@ -100,15 +100,15 @@ traduttore_categorie = {
 }
 
 impermeabilita_dict = {
-    'Cuoio': True,
-    'Tessuto': False,
-    'Pelle': True,
-    'Tela': False,
-    'Camoscio': False,
-    'Ecopelle': True,
-    'Sintetico': False,
-    'Gomma': True,
-    'Poliestere': False,
+    'Cuoio': 1,
+    'Tessuto': 0,
+    'Pelle': 1,
+    'Tela': 0,
+    'Camoscio': 0,
+    'Ecopelle': 1,
+    'Sintetico': 0,
+    'Gomma': 1,
+    'Poliestere': 0,
 
 }
 
@@ -136,8 +136,8 @@ df.pop('Closure')
 df.drop_duplicates(inplace=True)
 df.dropna(inplace=True)
 
-df.loc[:, 'Scivoloso'] = False
-df.loc[:, 'Impermeabile'] = False
+df.loc[:, 'Scivoloso'] = 0
+df.loc[:, 'Impermeabile'] = 0
 df.drop(df[(df.SubCategory == 'Slipper Flats')].index, inplace=True)
 df.drop(df[(df.SubCategory == 'Prewalker')].index, inplace=True)
 df.drop(df[(df.SubCategory == 'Firstwalker')].index, inplace=True)
@@ -174,7 +174,7 @@ for i in df.index:
         df.loc[i, 'Insole'] = tmp[0]
 
     if scivoloso[df.loc[i, 'Insole']]:
-        df.loc[i, 'Scivoloso'] = True
+        df.loc[i, 'Scivoloso'] = 1
 
     df.loc[i, 'SubCategory'] = traduttore_categorie[df.loc[i, 'SubCategory']]
 
