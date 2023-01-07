@@ -1,16 +1,28 @@
 """
  #   Column                Non-Null Count  Dtype
 ---  ------                --------------  -----
- 0   time                  5026 non-null   object
- 1   Meteo                 5026 non-null   object
- 2   TemperaturaPercepita  5026 non-null   float64
- 3   StagionePrevisione    5026 non-null   object
- 4   Mese                  5026 non-null   object
+ 0   time                  5026 non-null   object x
+ 1   Meteo                 5026 non-null   object v
+ 2   TemperaturaPercepita  5026 non-null   float64 v
+ 3   StagionePrevisione    5026 non-null   object v
+ 4   Mese                  5026 non-null   object v
  5   Tipo                  5026 non-null   object
- 6   Scivoloso             5026 non-null   bool
- 7   Impermeabile          5026 non-null   bool
- 8   Colore                5026 non-null   object
- 9   Stagione              5026 non-null   object
+ 6   Scivoloso             5026 non-null   bool v
+ 7   Impermeabile          5026 non-null   bool v
+ 8   Colore                5026 non-null   object v
+ 9   Stagione              5026 non-null   object v
+
+
+    Stivaletto alla caviglia    1525
+    Ballerine                    858
+    Sneakers                     770
+    Scarpa da ginnastica         701
+    Scarpa classica              569
+    Scarpe con tacchi            308
+    Scarpe aperte                277
+    Anfibi                        91
+    Stivali                       21
+
  """
 import pandas as pd
 import utils
@@ -120,6 +132,51 @@ stagionalita = [
     }
 ]
 
+valutazione_tipo={
+    'pioggia': {
+        'Stivaletto alla caviglia': 10,
+        'Scarpa da ginnastica': 6,
+        'Scarpa classica': 7,
+        'Scarpe con tacchi': 4,
+        'Scarpe aperte': 0,
+        'Anfibi': 10,
+        'Stivali': 10
+    },
+    'soleggiato': {
+        'Stivaletto alla caviglia': 3,
+        'Scarpa da ginnastica': 8,
+        'Scarpa classica': 7,
+        'Scarpe con tacchi': 7,
+        'Scarpe aperte': 9,
+        'Anfibi': 3,
+        'Stivali': 3
+    },
+
+    'nuvoloso': {
+        'Stivaletto alla caviglia': 4,
+        'Scarpa da ginnastica': 8,
+        'Scarpa classica': 8,
+        'Scarpe con tacchi': 5,
+        'Scarpe aperte': 2,
+        'Anfibi': 4,
+        'Stivali': 4
+    },
+
+    'neve': {
+        'Stivaletto alla caviglia': 8,
+        'Scarpa da ginnastica': 5,
+        'Scarpa classica': 6,
+        'Scarpe con tacchi': 1,
+        'Scarpe aperte': 0,
+        'Anfibi': 9,
+        'Stivali': 10
+    }
+}
+
+
+def evaluate_tipo(meteo, tipo):
+    return valutazione_tipo[meteo][tipo]
+
 
 def evaluate_stagione(stagione_capo, stagione_prev):
     i = utils.calculate_ranges_stagione(stagione_prev)
@@ -150,12 +207,12 @@ for x in df.index:
     p = 0
     p += evaluate_temperature(df.loc[x, "Stagione"], df.loc[x, "TemperaturaPercepita"])
     p += evaluate_stagione(df.loc[x, "Stagione"], df.loc[x, "StagionePrevisione"])
-    p += utils.evaluate_colore(df.loc[x, "Meteo"], df.loc[x, "Colore"],\
-                                 df.loc[x, "TemperaturaPercepita"])
+    p += utils.evaluate_colore(df.loc[x, "Meteo"], df.loc[x, "Colore"], df.loc[x, "TemperaturaPercepita"])
+    p += evaluate_tipo(df.loc[x, "Meteo"], df.loc[x, "Tipo"])
     if df.loc[x, 'Meteo'] == 'pioggia' or df.loc[x, 'Meteo'] == 'neve':
-        p += evaluate_pioggia(df.loc[x, 'Scivoloso'], df.loc[x, 'Scivoloso'])
+        p += evaluate_pioggia(df.loc[x, 'Scivoloso'], df.loc[x, 'Impermeabile'])
 
-    df.loc[x, 'Punteggio']  = p
+    df.loc[x, 'Punteggio'] = p
 print(df.info())
 
 df.to_csv('../newCsv_all_clothes/shoes_meteo_dataset_labeled.csv', index=False)

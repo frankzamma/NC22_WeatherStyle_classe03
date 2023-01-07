@@ -15,6 +15,8 @@ print(df.info())
 
 df.reset_index(inplace=True, drop=True)
 
+print(df_meteo['Meteo'].value_counts().to_string())
+
 df.to_csv('../newCsv_all_clothes/shoes_meteo_dataset.csv', index=False)
 #TODO Aggiungere commenti
 

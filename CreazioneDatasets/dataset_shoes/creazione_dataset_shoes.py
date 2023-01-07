@@ -1,5 +1,5 @@
 import pandas as pd
-import random as rd;
+import random as rd
 
 # Alcuni dizionari usati nel codice -> lo script inzia a riga 106
 dictonary = {
@@ -82,12 +82,9 @@ scivoloso = {
 }
 
 traduttore_categorie = {
-    'Sneakers': 'Sneakers',
-    'Athletic Shoes': 'Scarpa da ginnastica',
+    'Sneakers and Athletic Shoes': 'Scarpa da ginnastica',
     'Ankle': 'Stivaletto alla caviglia',
     'Mid-Calf': 'Stivaletto alla caviglia',
-    'Flat': 'Ballerine',
-    'Flats': 'Ballerine',
     'Heels': 'Scarpe con tacchi',
     'Loafers': 'Scarpa classica',
     'Oxfords': 'Scarpa classica',
@@ -145,6 +142,8 @@ df.drop(df[(df.SubCategory == 'Slipper Flats')].index, inplace=True)
 df.drop(df[(df.SubCategory == 'Prewalker')].index, inplace=True)
 df.drop(df[(df.SubCategory == 'Firstwalker')].index, inplace=True)
 df.drop(df[(df.SubCategory == 'Crib Shoes')].index, inplace=True)
+df.drop(df[(df.SubCategory == 'Flat')].index, inplace=True)
+df.drop(df[(df.SubCategory == 'Flats')].index, inplace=True)
 '''
 - Stagione
 - Impemeabilità
@@ -153,7 +152,7 @@ df.drop(df[(df.SubCategory == 'Crib Shoes')].index, inplace=True)
 '''
 
 df.loc[:, 'Colore'] = 'Chiaro'
-df.loc[:, 'Stagione'] = '';
+df.loc[:, 'Stagione'] = ''
 for i in df.index:
     if df.loc[i, 'Material'].__contains__(';'):
         tmp = str(df.loc[i, 'Material']).split(';')
@@ -164,11 +163,11 @@ for i in df.index:
     if coin == 0:
         df.loc[i, 'Colore'] = 'Scuro'
 
-    if str(df.loc[i, 'SubCategory']) == 'Sneakers and Athletic Shoes':
+    '''if str(df.loc[i, 'SubCategory']) == 'Sneakers and Athletic Shoes':
         if coin == 0:
             df.loc[i, 'SubCategory'] = 'Sneakers'
         else:
-            df.loc[i, 'SubCategory'] = 'Athletic Shoes'
+            df.loc[i, 'SubCategory'] = 'Athletic Shoes'''''
 
     if df.loc[i, 'Insole'].__contains__(';'):
         tmp = str(df.loc[i, 'Insole']).split(';')
