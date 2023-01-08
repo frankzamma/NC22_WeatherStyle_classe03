@@ -1,4 +1,5 @@
 import pandas as pd
+from CreazioneDatasets import utils
 
 # per prima cosa, si importa il dataset contenente i capi d'abbigliamento e il meteo
 dataframe = pd.read_csv("../newCsv_all_clothes/top_meteo_dataset_no_y.csv")
@@ -15,7 +16,7 @@ def sum_values():
         punteggio = 0
         punteggio += evaluate_materiale(dataframe.loc[x, "Materiale"], dataframe.loc[x, "TemperaturaPercepita"])
         punteggio += evaluate_stagione(dataframe.loc[x, "Stagione"], dataframe.loc[x, "StagionePrevisione"])
-        punteggio += evaluate_colore(dataframe.loc[x, "Meteo"], dataframe.loc[x, "Colore"],
+        punteggio += utils.evaluate_colore(dataframe.loc[x, "Meteo"], dataframe.loc[x, "Colore"],
                                      dataframe.loc[x, "TemperaturaPercepita"])
         punteggio += evaluate_manica(dataframe.loc[x, "Manica"], dataframe.loc[x, "TemperaturaPercepita"])
         lista.append(punteggio)
@@ -156,62 +157,20 @@ stagionalita = [
     }
 ]
 
-
-# questa funzione identifica il range corretto in base alla temperatura percepita
-def calculate_ranges_temperatura(temp_perc):
-    if temp_perc >= 30:
-        return 0
-    if 25 <= temp_perc < 30:
-        return 1
-    if 20 <= temp_perc < 25:
-        return 2
-    if 15 <= temp_perc < 20:
-        return 3
-    if 10 <= temp_perc < 15:
-        return 4
-    if 5 <= temp_perc < 10:
-        return 5
-    if temp_perc < 5:
-        return 6
-
-
-def calculate_ranges_stagione(stagione):
-    if stagione == "inverno":
-        return 0
-    if stagione == "primavera":
-        return 1
-    if stagione == "estate":
-        return 2
-    if stagione == "autunno":
-        return 3
-
-
 # questa funzione assegna un punteggio al materiale rispetto alla temperatura percepita
 def evaluate_materiale(materiale, temp_perc):
-    i = calculate_ranges_temperatura(temp_perc)
+    i = utils.calculate_ranges_temperatura(temp_perc)
     return ranges[i][materiale]
 
 
 # questa funzione assegna un punteggio al capo d'abbigliamento in base alla sua stagionalitù
 def evaluate_stagione(stagione_capo, stagione_prev):
-    i = calculate_ranges_stagione(stagione_prev)
+    i = utils.calculate_ranges_stagione(stagione_prev)
     return stagionalita[i][stagione_capo]
-
-
-# questa funzione assegna un punteggio al colore del capo rispetto al meteo e alla temperatura percepita
-def evaluate_colore(meteo, colore, temp_perc):
-    i = calculate_ranges_temperatura(temp_perc)
-    if colore == "chiaro" and meteo == "soleggiato" and i <= 2:
-        return 10
-    elif colore == "scuro" and meteo == "soleggiato" and i <= 2:
-        return 0
-    else:
-        return 5
-
 
 # questa funzione assegna un punteggio alla manica del capo rispetto alla temperatura percepita
 def evaluate_manica(manica, temp_perc):
-    i = calculate_ranges_temperatura(temp_perc)
+    i = utils.calculate_ranges_temperatura(temp_perc)
     return ranges[i][manica]
 
 

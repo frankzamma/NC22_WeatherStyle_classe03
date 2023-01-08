@@ -25,7 +25,7 @@
 
  """
 import pandas as pd
-import utils
+from CreazioneDatasets import utils
 
 ranges = [
     {  # temperatura > 30°
