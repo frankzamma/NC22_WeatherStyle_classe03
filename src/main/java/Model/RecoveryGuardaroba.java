@@ -56,7 +56,7 @@ public class RecoveryGuardaroba {
                 }
             }
         }catch (FileNotFoundException fileNotFoundException){
-            System.out.println("File capoAbbigliamentoList non trovato!");
+            System.out.println("File CapoAbbigliamentoList non trovato!");
         }
 
         guardaroba.setMagliaList(magliaList);
