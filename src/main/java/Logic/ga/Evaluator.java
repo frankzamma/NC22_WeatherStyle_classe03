@@ -260,40 +260,40 @@ public class Evaluator {
         valutazioneTypeShoes = new Hashtable<>();
 
         Hashtable<String, Integer> hashTablePioggia = new Hashtable<>();
-        hashTablePioggia.put("Stivaletto alla caviglia",10);
-        hashTablePioggia.put("Scarpa da ginnastica",10);
-        hashTablePioggia.put("Scarpa classica",10);
-        hashTablePioggia.put("Scarpe con tacchi",10);
-        hashTablePioggia.put("Scarpe aperte",10);
-        hashTablePioggia.put("Anfibi",10);
-        hashTablePioggia.put("Stivali",10);
+        hashTablePioggia.put("stivaletto alla caviglia",10);
+        hashTablePioggia.put("scarpa da ginnastica",10);
+        hashTablePioggia.put("scarpa classica",10);
+        hashTablePioggia.put("scarpe con tacchi",10);
+        hashTablePioggia.put("scarpe aperte",10);
+        hashTablePioggia.put("anfibi",10);
+        hashTablePioggia.put("stivali",10);
 
         Hashtable<String, Integer> hashTableSoleggiato = new Hashtable<>();
-        hashTablePioggia.put("Stivaletto alla caviglia",3);
-        hashTablePioggia.put("Scarpa da ginnastica",8);
-        hashTablePioggia.put("Scarpa classica",7);
-        hashTablePioggia.put("Scarpe con tacchi",7);
-        hashTablePioggia.put("Scarpe aperte",9);
-        hashTablePioggia.put("Anfibi",3);
-        hashTablePioggia.put("Stivali",3);
+        hashTablePioggia.put("stivaletto alla caviglia",3);
+        hashTablePioggia.put("scarpa da ginnastica",8);
+        hashTablePioggia.put("scarpa classica",7);
+        hashTablePioggia.put("scarpe con tacchi",7);
+        hashTablePioggia.put("scarpe aperte",9);
+        hashTablePioggia.put("anfibi",3);
+        hashTablePioggia.put("stivali",3);
 
         Hashtable<String, Integer> hashTableNuvoloso = new Hashtable<>();
-        hashTablePioggia.put("Stivaletto alla caviglia",4);
-        hashTablePioggia.put("Scarpa da ginnastica",8);
-        hashTablePioggia.put("Scarpa classica",8);
-        hashTablePioggia.put("Scarpe con tacchi",5);
-        hashTablePioggia.put("Scarpe aperte",2);
-        hashTablePioggia.put("Anfibi",4);
-        hashTablePioggia.put("Stivali",4);
+        hashTablePioggia.put("stivaletto alla caviglia",4);
+        hashTablePioggia.put("scarpa da ginnastica",8);
+        hashTablePioggia.put("scarpa classica",8);
+        hashTablePioggia.put("scarpe con tacchi",5);
+        hashTablePioggia.put("scarpe aperte",2);
+        hashTablePioggia.put("anfibi",4);
+        hashTablePioggia.put("stivali",4);
 
         Hashtable<String, Integer> hashTableNeve = new Hashtable<>();
-        hashTablePioggia.put("Stivaletto alla caviglia",8);
-        hashTablePioggia.put("Scarpa da ginnastica",5);
-        hashTablePioggia.put("Scarpa classica",6);
-        hashTablePioggia.put("Scarpe con tacchi",1);
-        hashTablePioggia.put("Scarpe aperte",0);
-        hashTablePioggia.put("Anfibi",9);
-        hashTablePioggia.put("Stivali",10);
+        hashTablePioggia.put("stivaletto alla caviglia",8);
+        hashTablePioggia.put("scarpa da ginnastica",5);
+        hashTablePioggia.put("scarpa classica",6);
+        hashTablePioggia.put("scarpe con tacchi",1);
+        hashTablePioggia.put("scarpe aperte",0);
+        hashTablePioggia.put("anfibi",9);
+        hashTablePioggia.put("stivali",10);
 
         valutazioneTypeShoes.put("pioggia", hashTablePioggia);
         valutazioneTypeShoes.put("soleggiato", hashTableSoleggiato);
