@@ -1,8 +1,5 @@
 package Model;
 
-import Model.CapoAbbigliamento;
-
-
 public class ScoreCapoAbbigliamento {
 
     private CapoAbbigliamento capoAbbigliamento;

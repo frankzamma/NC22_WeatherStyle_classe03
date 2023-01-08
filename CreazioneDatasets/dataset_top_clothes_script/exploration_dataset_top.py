@@ -2,7 +2,7 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-df = pd.read_csv("../newCsv_all_clothes/top_meteo_dataset_selection.csv")
+df = pd.read_csv("../newCsv_all_clothes/top_meteo_dataset_labeled.csv")
 
 # descrive il dataset in termini statistici
 print(df.describe())
