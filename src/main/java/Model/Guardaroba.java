@@ -34,4 +34,18 @@ public class Guardaroba {
     public void setScarpaList(List<Scarpa> scarpaList) {
         this.scarpaList = scarpaList;
     }
+
+    public boolean addCapoAbbigliamento(CapoAbbigliamento capoAbbigliamento){
+        if (this.magliaList == null || this.pantaloneList == null || this.scarpaList == null){
+            return false;
+        }
+        if (capoAbbigliamento instanceof Maglia)
+            this.magliaList.add((Maglia) capoAbbigliamento);
+        else if (capoAbbigliamento instanceof Pantalone)
+            this.pantaloneList.add((Pantalone) capoAbbigliamento);
+        else
+            this.scarpaList.add((Scarpa) capoAbbigliamento);
+
+        return true;
+    }
 }
