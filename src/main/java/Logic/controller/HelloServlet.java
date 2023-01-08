@@ -1,4 +1,4 @@
-package Controller;
+package Logic.controller;
 
 import java.io.*;
 

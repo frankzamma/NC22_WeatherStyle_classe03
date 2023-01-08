@@ -185,5 +185,5 @@ dataframe.pop('time')
 dataframe.pop('Mese')
 
 # si esporta nuovamente il dataframe in formato CSV
-dataframe.to_csv("../newCsv_all_clothes/bottom_meteo_dataset_selection.csv", index=False)
+dataframe.to_csv("../newCsv_all_clothes/bottom_meteo_dataset_labeled.csv", index=False)
 

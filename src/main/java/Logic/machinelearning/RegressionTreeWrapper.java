@@ -1,6 +1,7 @@
-package Model.machinelearning;
+package Logic.machinelearning;
 
 import Model.*;
+import Model.ScoreCapoAbbigliamento;
 import weka.classifiers.Evaluation;
 import weka.classifiers.trees.REPTree;
 import weka.core.DenseInstance;
@@ -147,7 +148,7 @@ public class RegressionTreeWrapper {
                 Scarpa scarpa = (Scarpa) capoAbbigliamento;
 
                 instance.setValue(0, scarpa.getTipo());
-                instance.setValue(1, scarpa.getAntiscivolo()? 1 : 0);
+                instance.setValue(1, scarpa.getScivoloso()? 1 : 0);
                 instance.setValue(2, scarpa.getImpermeabile()? 1 : 0);
                 instance.setValue(3, scarpa.getColore());
                 instance.setValue(4, scarpa.getStagione());
@@ -177,7 +178,7 @@ public class RegressionTreeWrapper {
         return scoreCapoAbbigliamentoList;
     }
 
-    public List<ScoreCapoAbbigliamento> getBestThreeTopClothes(List<ScoreCapoAbbigliamento> scoreCapoAbbigliamentoList){
+    public List<ScoreCapoAbbigliamento> getBestThreeClothes(List<ScoreCapoAbbigliamento> scoreCapoAbbigliamentoList){
         List<ScoreCapoAbbigliamento> bests = new ArrayList<>();
         Comparatore comparatore = new Comparatore();
 

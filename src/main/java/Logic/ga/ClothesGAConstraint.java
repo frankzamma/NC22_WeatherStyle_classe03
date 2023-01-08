@@ -1,4 +1,4 @@
-package Model.ga;
+package Logic.ga;
 
 import io.jenetics.Genotype;
 import io.jenetics.IntegerChromosome;

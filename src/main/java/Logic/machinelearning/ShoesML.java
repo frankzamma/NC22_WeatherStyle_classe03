@@ -1,7 +1,8 @@
-package Model.machinelearning;
+package Logic.machinelearning;
 
 import Model.CapoAbbigliamento;
 import Model.MeteoInformation;
+import Model.ScoreCapoAbbigliamento;
 
 import java.util.List;
 
@@ -21,7 +22,7 @@ public class ShoesML {
         List<ScoreCapoAbbigliamento> l = treeWrapper.classifyInstances(list, meteoInformation, stagione);
 
         if(getBestThree){
-            return treeWrapper.getBestThreeTopClothes(l);
+            return treeWrapper.getBestThreeClothes(l);
         }else{
             return l;
         }

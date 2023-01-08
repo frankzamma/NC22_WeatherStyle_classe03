@@ -1,6 +1,7 @@
-package Controller;
+package Logic.controller;
 
-import Model.machinelearning.ShoesML;
+import Logic.machinelearning.BottomML;
+import Logic.machinelearning.ShoesML;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -14,10 +15,12 @@ public class StartupServlet extends HttpServlet {
         super.init(config);
         //Il costruttore crea e allena il ML
         ShoesML shoesML =  new ShoesML();
+        BottomML bottomML = new BottomML();
         //TODO Aggiungere gli altri ML
 
         ServletContext context = this.getServletContext();
         context.setAttribute("shoesML", shoesML);
+        context.setAttribute("bottomML", bottomML);
 
 
     }

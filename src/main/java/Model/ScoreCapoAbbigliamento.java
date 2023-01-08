@@ -1,7 +1,4 @@
-package Model.machinelearning;
-
-import Model.CapoAbbigliamento;
-
+package Model;
 
 public class ScoreCapoAbbigliamento {
 
