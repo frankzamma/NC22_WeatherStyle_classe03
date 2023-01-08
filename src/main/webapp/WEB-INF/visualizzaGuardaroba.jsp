@@ -7,7 +7,7 @@
 <html>
 <head>
     <title>Visualizza Guardaroba</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <%@include file="links.jsp"%>
 </head>
 <body>
     <%
@@ -16,22 +16,7 @@
         List<Pantalone> listaPantaloni = guardaroba.getPantaloneList();
         List<Scarpa> listaScarpe = guardaroba.getScarpaList();
     %>
-
-    <div class="container text-center">
-        <div class="row">
-            <div class="col">
-                <img src="logo.png" class="rounded mx-auto d-block" width="100" height="100">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <h1>WeatherStyle</h1>
-            </div>
-        </div>
-    </div>
-
     <%@include file="navbar.jsp"%>
-
     <%
     if(listaMaglie.size() <= 0) { %>
         <br>
