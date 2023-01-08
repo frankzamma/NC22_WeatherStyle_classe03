@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Driver WeatherStyle</title>
+    <meta charset="utf-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container text-center">
+        <div class="row">
+            <div class="col">
+                <img src="logo.png" class="rounded mx-auto d-block" width="100" height="100">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h1>WeatherStyle</h1>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#e3f2fd;">
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="GuardarobaServlet">Guardaroba</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./loadCapoAbbigliamento.html">Inserisci capo</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <br>
+
+    <form method="post" action="">
+        <div class="container">
+
+            <div class="mb-3">
+                <label> Scegli tipo di capo </label>
+                <select class="form-select" id="tipologia" onchange="changeSelectedParameter()">
+                    <option value="" selected >Apri menu di selezione</option>
+                    <option value="maglia">Maglia</option>
+                    <option value="pantalone">Pantalone</option>
+                    <option value="scarpe">Scarpe</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label> Inserire materiale </label>
+                <select class="form-select" id="materiale" disabled>
+                    <option value="cotone">Cotone</option>
+                    <option value="poliestere">Poliestere</option>
+                    <option value="cashmere">Cashmere</option>
+                    <option value="lino">Lino</option>
+                    <option value="seta">Seta</option>
+                    <option value="tweed">Tweed</option>
+                    <option value="velluto">Velluto</option>
+                    <option value="lana">Lana</option>
+                    <option value="raso">Raso</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label> Inserire colore </label>
+                <select class="form-select" id="colore" disabled>
+                    <option value="chiaro">Chiaro</option>
+                    <option value="scuro">Scuro</option>
+                    <option value="colorato">Colorato</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label> Inserire lunghezza manica </label>
+                <select class="form-select" id="manica" disabled>
+                    <option value="lunga">Lunga</option>
+                    <option value="corta">Corta</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label> Inserire stagione </label>
+                <select class="form-select" id="stagione" disabled>
+                    <option value="inverno">Inverno</option>
+                    <option value="autunno">Autunno</option>
+                    <option value="primavera">Primavera</option>
+                    <option value="estate">Estate</option>
+                    <option value="primavera_estate">Primavera-Estate</option>
+                    <option value="autunno_inverno">Autunno-Inverno</option>
+                    <option value="all">All</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label> Inserire lunghezza pantalone </label>
+                <select class="form-select" id="lungPantalone" disabled>
+                    <option value="lungo">Lungo</option>
+                    <option value="corto">Corto</option>
+                    <option value="medio">Medio</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label> Inserire tipo di scarpa </label>
+                <select class="form-select" id="tipoScarpa"disabled>
+                    <option value="Stivaletto alla caviglia">Stivaletto alla caviglia</option>
+                    <option value="Scarpa da ginnastica">Scarpa da ginnastica</option>
+                    <option value="Scarpa classica">Scarpa classica</option>
+                    <option value="Scarpe con tacchi">Scarpe con tacchi</option>
+                    <option value="Scarpe aperte">Scarpe aperte</option>
+                    <option value="Anfibi">Anfibi</option>
+                    <option value="Stivali">Stivali</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <p> Indicare se è una scarpa scivolosa </p>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="scivsi" disabled>
+                    <label class="form-check-label" for="scivsi"> Si </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="scivno" disabled>
+                    <label class="form-check-label" for="scivno"> No </label>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <p> Indicare se è una scarpa impermeabile </p>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="impsi" disabled>
+                    <label class="form-check-label" for="impsi"> Si </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="impno" disabled>
+                    <label class="form-check-label" for="impno"> No </label>
+                </div>
+            </div>
+
+            <center> <button type="submit" class="btn btn-primary">Carica capo</button> </center>
+        </div>
+    </form>
+
+    <br>
+
+    <script>
+        function changeSelectedParameter(){
+            let x = document.getElementById("tipologia").value;
+            if(x === "maglia"){
+                document.getElementById("materiale").removeAttribute("disabled");
+                document.getElementById("colore").removeAttribute("disabled");
+                document.getElementById("manica").removeAttribute("disabled");
+                document.getElementById("stagione").removeAttribute("disabled");
+                document.getElementById("lungPantalone").setAttribute("disabled","");
+                document.getElementById("tipoScarpa").setAttribute("disabled","");
+                document.getElementById("scivsi").setAttribute("disabled","");
+                document.getElementById("scivno").setAttribute("disabled","");
+                document.getElementById("impsi").setAttribute("disabled","");
+                document.getElementById("impno").setAttribute("disabled","");
+            }else if(x === "pantalone"){
+                document.getElementById("materiale").removeAttribute("disabled");
+                document.getElementById("colore").removeAttribute("disabled");
+                document.getElementById("manica").setAttribute("disabled","");
+                document.getElementById("stagione").removeAttribute("disabled");
+                document.getElementById("lungPantalone").removeAttribute("disabled");
+                document.getElementById("tipoScarpa").setAttribute("disabled","");
+                document.getElementById("scivsi").setAttribute("disabled","");
+                document.getElementById("scivno").setAttribute("disabled","");
+                document.getElementById("impsi").setAttribute("disabled","");
+                document.getElementById("impno").setAttribute("disabled","");
+            }else if(x === "scarpe"){
+                document.getElementById("materiale").setAttribute("disabled","");
+                document.getElementById("colore").removeAttribute("disabled");
+                document.getElementById("manica").setAttribute("disabled","");
+                document.getElementById("stagione").removeAttribute("disabled");
+                document.getElementById("lungPantalone").setAttribute("disabled","");
+                document.getElementById("tipoScarpa").removeAttribute("disabled");
+                document.getElementById("scivsi").removeAttribute("disabled");
+                document.getElementById("scivno").removeAttribute("disabled");
+                document.getElementById("impsi").removeAttribute("disabled");
+                document.getElementById("impno").removeAttribute("disabled");
+            }
+            else {
+                document.getElementById("materiale").setAttribute("disabled","");
+                document.getElementById("colore").setAttribute("disabled","");
+                document.getElementById("manica").setAttribute("disabled","");
+                document.getElementById("stagione").setAttribute("disabled","");
+                document.getElementById("lungPantalone").setAttribute("disabled","");
+                document.getElementById("tipoScarpa").setAttribute("disabled","");
+                document.getElementById("scivsi").setAttribute("disabled","");
+                document.getElementById("scivno").setAttribute("disabled","");
+                document.getElementById("impsi").setAttribute("disabled","");
+                document.getElementById("impno").setAttribute("disabled","");
+            }
+        }
+    </script>
+</body>
+</html>

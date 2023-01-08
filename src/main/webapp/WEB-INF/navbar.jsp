@@ -7,6 +7,9 @@
       <li class="nav-item">
         <a class="nav-link" href="GuardarobaServlet">Guardaroba</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="./loadCapoAbbigliamento.html">Inserisci capo</a>
+      </li>
     </ul>
   </div>
 </nav>
