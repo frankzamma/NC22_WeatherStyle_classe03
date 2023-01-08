@@ -134,42 +134,42 @@ stagionalita = [
 
 valutazione_tipo={
     'pioggia': {
-        'Stivaletto alla caviglia': 10,
-        'Scarpa da ginnastica': 6,
-        'Scarpa classica': 7,
-        'Scarpe con tacchi': 4,
-        'Scarpe aperte': 0,
-        'Anfibi': 10,
-        'Stivali': 10
+        'stivaletto alla caviglia': 10,
+        'scarpa da ginnastica': 6,
+        'scarpa classica': 7,
+        'scarpe con tacchi': 4,
+        'scarpe aperte': 0,
+        'anfibi': 10,
+        'stivali': 10
     },
     'soleggiato': {
-        'Stivaletto alla caviglia': 3,
-        'Scarpa da ginnastica': 8,
-        'Scarpa classica': 7,
-        'Scarpe con tacchi': 7,
-        'Scarpe aperte': 9,
-        'Anfibi': 3,
-        'Stivali': 3
+        'stivaletto alla caviglia': 3,
+        'scarpa da ginnastica': 8,
+        'scarpa classica': 7,
+        'scarpe con tacchi': 7,
+        'scarpe aperte': 9,
+        'anfibi': 3,
+        'stivali': 3
     },
 
     'nuvoloso': {
-        'Stivaletto alla caviglia': 4,
-        'Scarpa da ginnastica': 8,
-        'Scarpa classica': 8,
-        'Scarpe con tacchi': 5,
-        'Scarpe aperte': 2,
-        'Anfibi': 4,
-        'Stivali': 4
+        'stivaletto alla caviglia': 4,
+        'scarpa da ginnastica': 8,
+        'scarpa classica': 8,
+        'scarpe con tacchi': 5,
+        'scarpe aperte': 2,
+        'anfibi': 4,
+        'stivali': 4
     },
 
     'neve': {
-        'Stivaletto alla caviglia': 8,
-        'Scarpa da ginnastica': 5,
-        'Scarpa classica': 6,
-        'Scarpe con tacchi': 1,
-        'Scarpe aperte': 0,
-        'Anfibi': 9,
-        'Stivali': 10
+        'stivaletto alla caviglia': 8,
+        'scarpa da ginnastica': 5,
+        'scarpa classica': 6,
+        'scarpe con tacchi': 1,
+        'scarpe aperte': 0,
+        'anfibi': 9,
+        'stivali': 10
     }
 }
 
@@ -210,7 +210,7 @@ for x in df.index:
     p += utils.evaluate_colore(df.loc[x, "Meteo"], df.loc[x, "Colore"], df.loc[x, "TemperaturaPercepita"])
     p += evaluate_tipo(df.loc[x, "Meteo"], df.loc[x, "Tipo"])
     if df.loc[x, 'Meteo'] == 'pioggia' or df.loc[x, 'Meteo'] == 'neve':
-        p += evaluate_pioggia(df.loc[x, 'Scivoloso'], df.loc[x, 'Impermeabile'])
+        p += evaluate_pioggia(df.loc[x, 'Antiscivolo'], df.loc[x, 'Impermeabile'])
 
     df.loc[x, 'Punteggio'] = p
 print(df.info())

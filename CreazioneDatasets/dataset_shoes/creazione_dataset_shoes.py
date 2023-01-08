@@ -64,21 +64,21 @@ dictonary = {
     'Crochet': 'Tessuto'
 }
 
-scivoloso = {
-    'EVA': False,
+antiscivolo = {
+    'EVA': True,
     'Padded': False,
-    'Leather': True,
-    'Moisture Wicking': False,
-    'Memory Foam': False,
-    'Removable': True,
-    'Latex Lined': False,
-    'Textile': True,
-    'Gel': True,
-    'Orthotic Friendly': False,
-    'Polyurethane': True,
-    'Synthetic Leather': True,
-    'Hypoallergenic': True,
-    'Poron': True,
+    'Leather': False,
+    'Moisture Wicking': True,
+    'Memory Foam': True,
+    'Removable': False,
+    'Latex Lined': True,
+    'Textile': False,
+    'Gel': False,
+    'Orthotic Friendly': True,
+    'Polyurethane': False,
+    'Synthetic Leather': False,
+    'Hypoallergenic': False,
+    'Poron': False,
 }
 
 traduttore_categorie = {
@@ -114,18 +114,17 @@ impermeabilita_dict = {
 
 
 dictonary_stagione = {
-    'Scarpa classica': ['all', 'primavera_estate', 'autunno_inverno', 'inverno'],
-    'Stivaletto alla caviglia': ['inverno', 'autunno_inverno', 'autunno'],
-    'Anfibi': ['autunno_inverno', 'inverno', 'autunno'],
-    'Stivali': ['inverno', 'autunno_inverno', 'autunno'],
-    'Scarpa da ginnastica': ['all', 'primavera_estate', 'autunno_inverno', 'inverno', 'estate'],
-    'Scarpe aperte': ['primavera_estate', 'estate', 'primavera'],
-    'Ballerine': ['primavera', 'primavera_estate', 'autunno_inverno', 'estate'],
-    'Sneakers': ['all', 'primavera_estate', 'autunno_inverno', 'inverno', 'estate', 'autunno'],
-    'Scarpe con tacchi': ['primavera_estate', 'autunno_inverno', 'inverno', 'estate']
+    'scarpa classica': ['all', 'primavera_estate', 'autunno_inverno', 'inverno'],
+    'stivaletto alla caviglia': ['inverno', 'autunno_inverno', 'autunno'],
+    'anfibi': ['autunno_inverno', 'inverno', 'autunno'],
+    'stivali': ['inverno', 'autunno_inverno', 'autunno'],
+    'scarpa da ginnastica': ['all', 'primavera_estate', 'autunno_inverno', 'inverno', 'estate'],
+    'scarpe aperte': ['primavera_estate', 'estate', 'primavera'],
+    'scarpe con tacchi': ['primavera_estate', 'autunno_inverno', 'inverno', 'estate']
 }
 
 df = pd.read_csv('../csv_all_clothes/shoes-dataset.csv')
+df_missing = pd.read_csv('../csv_all_clothes/shoes-missing.csv')
 
 df.pop('CID')
 df.pop('HeelHeight')
@@ -136,7 +135,7 @@ df.pop('Closure')
 df.drop_duplicates(inplace=True)
 df.dropna(inplace=True)
 
-df.loc[:, 'Scivoloso'] = 'n'
+df.loc[:, 'Antiscivolo'] = 'n'
 df.loc[:, 'Impermeabile'] = 'n'
 df.drop(df[(df.SubCategory == 'Slipper Flats')].index, inplace=True)
 df.drop(df[(df.SubCategory == 'Prewalker')].index, inplace=True)
@@ -146,8 +145,8 @@ df.drop(df[(df.SubCategory == 'Flat')].index, inplace=True)
 df.drop(df[(df.SubCategory == 'Flats')].index, inplace=True)
 '''
 - Stagione
-- Impemeabilità
-- Scivolosità 
+- Impermeabile
+- Antiscivolo
 - Stagione 
 '''
 
@@ -159,9 +158,11 @@ for i in df.index:
         df.loc[i, 'Material'] = tmp[0]
     df.loc[i, 'Material'] = dictonary[str(df.loc[i, 'Material'])]
 
-    coin = rd.randint(0, 1)
+    coin = rd.randint(0, 2)
     if coin == 0:
-        df.loc[i, 'Colore'] = 'Scuro'
+        df.loc[i, 'Colore'] = 'scuro'
+    elif coin == 1:
+        df.loc[i, 'Colore'] = 'colorato'
 
     '''if str(df.loc[i, 'SubCategory']) == 'Sneakers and Athletic Shoes':
         if coin == 0:
@@ -173,18 +174,17 @@ for i in df.index:
         tmp = str(df.loc[i, 'Insole']).split(';')
         df.loc[i, 'Insole'] = tmp[0]
 
-    if scivoloso[df.loc[i, 'Insole']]:
-        df.loc[i, 'Scivoloso'] = 'y'
+    if antiscivolo[df.loc[i, 'Insole']]:
+        df.loc[i, 'Antiscivolo'] = 'y'
 
-    df.loc[i, 'SubCategory'] = traduttore_categorie[df.loc[i, 'SubCategory']]
+    df.loc[i, 'SubCategory'] = traduttore_categorie[df.loc[i, 'SubCategory']].lower()
 
-    if df.loc[i, 'SubCategory'] != 'Ballerine' and df.loc[i, 'SubCategory'] != 'Scarpe con tacchi' \
-            and df.loc[i, 'SubCategory'] != 'Scarpe aperte':
+    if df.loc[i, 'SubCategory'] != 'Scarpe con tacchi'.lower() and df.loc[i, 'SubCategory'] != 'scarpe aperte':
         df.loc[i, 'Impermeabile'] = impermeabilita_dict[df.loc[i, 'Material']]
 
     stagione = dictonary_stagione[df.loc[i, 'SubCategory']]
     number = rd.randint(0, len(stagione) - 1)
-    df.loc[i, 'Stagione'] = stagione[number]
+    df.loc[i, 'Stagione'] = stagione[number].lower()
 
 df.pop('Material')
 df.pop('Category')
@@ -201,5 +201,11 @@ print(df.info())
 # print(df['Category'].value_counts().to_string() + '\n\n')
 # print(df['Material'].value_counts().to_string() + '\n\n')
 
+final_df = pd.concat([df, df_missing])
+print(df_missing.info())
+print(final_df.info())
+
+print(final_df['Tipo'].value_counts().to_string())
 df.to_csv('../newCsv_all_clothes/shoes-dataset.csv', index=False)
+
 #TODO Aggiungere commenti

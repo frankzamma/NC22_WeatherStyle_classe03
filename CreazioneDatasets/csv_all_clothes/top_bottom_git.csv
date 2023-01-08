@@ -339,7 +339,7 @@ Dress,Polyester,Black,Long Sleeve,"['Spring', 'Fall']"
 Top,Cotton,White,Short Sleeve,Summer
 Top,Polyester,Black,Short Sleeve,Summer
 Top,Cotton,"['Pastel', ' Mint Green']",Long Sleeve,"['Spring', 'Summer']"
-Bottom,Polyester,Lilac Purple,,
+Bottom,Polyester,Lilac Purple,,Spring
 Top,Polyester,White,,Summer
 Top,Nylon,Black,Long Sleeve,"['Spring', 'Summer']"
 Dress,Velvet,Burgundy,Long Sleeve,"['Fall', 'Winter']"
