@@ -25,7 +25,7 @@ public class IndexServlet extends HttpServlet {
         httpSession.setAttribute("guardaroba", guardaroba);
 
         // rimanda alla home
-        RequestDispatcher dispatcher = request.getRequestDispatcher("home.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/index.jsp");
         dispatcher.forward(request, response);
     }
 
