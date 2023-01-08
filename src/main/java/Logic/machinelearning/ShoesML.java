@@ -22,7 +22,7 @@ public class ShoesML {
         List<ScoreCapoAbbigliamento> l = treeWrapper.classifyInstances(list, meteoInformation, stagione);
 
         if(getBestThree){
-            return treeWrapper.getBestThreeTopClothes(l);
+            return treeWrapper.getBestThreeClothes(l);
         }else{
             return l;
         }

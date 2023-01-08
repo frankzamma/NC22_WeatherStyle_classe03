@@ -178,7 +178,7 @@ public class RegressionTreeWrapper {
         return scoreCapoAbbigliamentoList;
     }
 
-    public List<ScoreCapoAbbigliamento> getBestThreeTopClothes(List<ScoreCapoAbbigliamento> scoreCapoAbbigliamentoList){
+    public List<ScoreCapoAbbigliamento> getBestThreeClothes(List<ScoreCapoAbbigliamento> scoreCapoAbbigliamentoList){
         List<ScoreCapoAbbigliamento> bests = new ArrayList<>();
         Comparatore comparatore = new Comparatore();
 
