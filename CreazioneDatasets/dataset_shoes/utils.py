@@ -1,4 +1,4 @@
-
+#in base alla temperatura percepita, si assegna un determinato range
 def calculate_ranges_temperatura(temp_perc):
     if temp_perc >= 30:
         return 0
@@ -15,7 +15,7 @@ def calculate_ranges_temperatura(temp_perc):
     if temp_perc < 5:
         return 6
 
-
+#in base alla stagione, si fa riferimento ad un dato range
 def calculate_ranges_stagione(stagione):
     if stagione == "inverno":
         return 0
@@ -26,7 +26,7 @@ def calculate_ranges_stagione(stagione):
     if stagione == "autunno":
         return 3
 
-
+#si valuta il colore di un capo facendo riferimento alla temperatura percepita e al meteo
 def evaluate_colore(meteo, colore, temp_perc):
     i = calculate_ranges_temperatura(temp_perc)
     if colore == "chiaro" and meteo == "soleggiato" and i <= 2:
@@ -35,5 +35,3 @@ def evaluate_colore(meteo, colore, temp_perc):
         return 0
     else:
         return 5
-
-#TODO Aggiungere commenti
