@@ -1,7 +1,6 @@
 package Logic.controller;
 
 import Model.Guardaroba;
-import Model.RecoveryGuardaroba;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -18,12 +17,14 @@ public class IndexServlet extends HttpServlet {
         // creo la sessione utente
         HttpSession httpSession = request.getSession();
 
-        // recupero guardaroba
-        RecoveryGuardaroba recoveryGuardaroba = new RecoveryGuardaroba();
-        Guardaroba guardaroba = recoveryGuardaroba.getGuardaroba();
+        Guardaroba guardaroba = (Guardaroba) httpSession.getAttribute("guardaroba");
 
-        // copio nella sessione utente il guardaroba
-        httpSession.setAttribute("guardaroba", guardaroba);
+       if(guardaroba == null){
+           guardaroba = (Guardaroba) this.getServletContext().getAttribute("guardaroba_context");
+           // copio nella sessione utente il guardaroba
+           httpSession.setAttribute("guardaroba", guardaroba);
+       }
+
 
         // rimanda alla home
         RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/index.jsp");

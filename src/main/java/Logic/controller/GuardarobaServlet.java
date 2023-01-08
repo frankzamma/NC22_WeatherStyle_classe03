@@ -12,8 +12,14 @@ import java.io.IOException;
 public class GuardarobaServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/mostraGuardaroba.jsp");
-        dispatcher.forward(request, response);
+        HttpSession session = request.getSession(false);
+        if(session != null){
+            RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/visualizzaGuardaroba.jsp");
+            dispatcher.forward(request, response);
+        }
+        else
+            response.sendRedirect("/index.html");
+
     }
 
     @Override

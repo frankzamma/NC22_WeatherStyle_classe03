@@ -11,9 +11,9 @@ public class RecoveryGuardaroba {
     private Guardaroba guardaroba;
     private String pathFile;
 
-    public RecoveryGuardaroba(){
+    public RecoveryGuardaroba(String pathFile){
         this.guardaroba = new Guardaroba();
-        this.pathFile = "src/main/webapp/WEB-INF/CapoAbbigliamentoList";
+        this.pathFile = pathFile;
         recoveryCapoAbbigliamento();
     }
 
@@ -23,6 +23,8 @@ public class RecoveryGuardaroba {
         List<Scarpa> scarpaList = new ArrayList<>();
 
         File file = new File(pathFile);
+
+        System.out.println("path->" + file.getAbsolutePath());
 
         try {
             Scanner scanner = new Scanner(file);

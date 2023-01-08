@@ -10,10 +10,9 @@ public class BottomML {
 
     private RegressionTreeWrapper treeWrapper;
 
-    public BottomML(){
+    public BottomML(String pathDataset){
         //Si crea e si addestra il l'albero di regressione
-        treeWrapper = new RegressionTreeWrapper("CreazioneDataset/newCsv_all_clothes/bottom_meteo_dataset_labeled",
-                false, false);
+        treeWrapper = new RegressionTreeWrapper(pathDataset,false, false);
     }
 
     public List<ScoreCapoAbbigliamento> classifyInstances(List<CapoAbbigliamento> list, MeteoInformation meteo, String stagione, boolean getBestThree){
