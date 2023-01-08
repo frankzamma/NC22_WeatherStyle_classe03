@@ -26,7 +26,7 @@
   <form>
     <div class="row">
       <div class="col">
-        <label> Inserire meteo </label>
+        <label> Scelga il meteo </label>
         <select class="form-select">
           <option value="soleggiato">Soleggiato</option>
           <option value="pioggia">Piovoso</option>
@@ -34,13 +34,18 @@
         </select>
       </div>
       <div class="col">
-        <label>Inserire temperatura percepita</label>
-        <input type="text" class="form-control" placeholder="Temperatura">
+        <label>Scelga la temperatura percepita</label>
+        <select class="form-select">
+          <option value="temperaturaPercepita"></option>
+          <% for(int i = -15; i<=40; i++){ %>
+                <option value="temperaturaPerceepita"><%=i%></option>
+          <% } %>
+        </select>
       </div>
     </div>
     <br>
 
-    <label>Scegliere l'algoritmo di Intelligenza Artificiale da usare</label>
+    <label>Scelga l'algoritmo di Intelligenza Artificiale da usare</label>
     <div class="custom-control custom-radio custom-control-inline">
       <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
       <label class="custom-control-label" for="customRadioInline1">Algoritmi genetici</label>
