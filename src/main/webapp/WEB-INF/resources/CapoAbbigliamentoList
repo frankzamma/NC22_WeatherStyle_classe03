@@ -17,5 +17,5 @@ pantalone,cotone,chiaro,corto,estate
 pantalone,velluto,scuro,lungo,inverno
 scarpa,Scarpa classica,true,false,chiaro,estate
 scarpa,Anfibi,false,true,scuro,inverno
-scarpa,Scarpe aperte,true,false,primavera
-scarpa,Sneakers,true,true,autunno
+scarpa,Scarpe aperte,true,false,chiaro,primavera
+scarpa,Sneakers,true,true,scuro,autunno
