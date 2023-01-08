@@ -1,4 +1,5 @@
 import pandas as pd
+import random as rd
 
 pd.options.display.max_rows = 15000
 
@@ -30,9 +31,10 @@ for x in dataframe.index:
 # 7     Crochet         --> tweed
 # 8     Linen           --> lino
 
-dataframe.rename(columns={'Manica':'Lunghezza'}, inplace=True)
+dataframe.rename(columns={'Manica': 'Lunghezza'}, inplace=True)
 
 #verifica che la colonna sia stata rinominata correttamente
+#for column in dataframe:
 #for column in dataframe:
 #  print(column)
 
@@ -73,11 +75,12 @@ for x in dataframe.index:
         dataframe.drop(x, inplace=True)
 
 # andiamo a usare la moda per inserire i valori mancanti nelle righe con cella "Lunghezza" vuota
-x = dataframe["Lunghezza"].mode()[0]
-dataframe["Lunghezza"].fillna(x, inplace=True)
+# x = dataframe["Lunghezza"].mode()[0]
+# dataframe["Lunghezza"].fillna(x, inplace=True)
+
+
 
 # eliminiamo tutte le righe che presentano valori vuoti nelle celle
-dataframe.dropna(inplace=True)
 
 #contiamo le occorrenze per ciascuna stagione
 #print(dataframe["Stagione"].value_counts())
@@ -106,10 +109,32 @@ for x in dataframe.index:
     if dataframe.loc[x, "Stagione"] == "All":
         dataframe.loc[x, "Stagione"] = "all"
     if dataframe.loc[x, "Stagione"] == "['Spring', 'Summer', 'Fall']":
-        dataframe.drop(x, inplace=True)
+        dataframe.loc[x, "Stagione"] = "primavera_estate"
+
+
 
 #contiamo le occorrenze dopo aver ordinato il dataset
 #print(dataframe["Stagione"].value_counts())
+dataframe.loc[:, 'Lunghezza'] = 'lunga'
+dataframe.dropna(inplace=True)
+
+dictonary = {
+    'autunno': ['lunga'],
+    'inverno': ['lunga'],
+    'primavera': ['lunga', 'media'],
+    'estate': ['lunga', 'media', 'corta'],
+    'primavera_estate': ['lunga', 'media', 'corta'],
+    'autunno_inverno': ['lunga'],
+    'all': ['lunga']
+}
+
+for i in dataframe.index:
+    print(dataframe.loc[i])
+    array = dictonary[dataframe.loc[i, 'Stagione']]
+    number = rd.randint(0, len(array) - 1)
+    dataframe.loc[i, 'Lunghezza'] = array[number]
+
+dataframe.dropna(inplace=True)
 
 # sostituiamo i colori con i valori --> chiaro, scuro e colorato
 for x in dataframe.index:
@@ -363,6 +388,8 @@ for x in dataframe.index:
         dataframe.loc[x, "Colore"] = "colorato"
     if dataframe.loc[x, "Colore"] == "Bright, Orange":
         dataframe.loc[x, "Colore"] = "colorato"
+
+# TODO aggiungere condizioni per i seguenti colori :Pastel, Violet Purple, ['Bright', ' Mustard Yellow'] , Blue, Pastel
 
 print(dataframe["Colore"].value_counts())
 
