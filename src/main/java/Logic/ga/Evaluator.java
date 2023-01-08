@@ -1,4 +1,6 @@
-package Model;
+package Logic.ga;
+
+import Model.*;
 
 import java.util.*;
 
@@ -436,9 +438,9 @@ public class Evaluator {
     }
 
     private int valutazionePioggia(Scarpa scarpa, MeteoInformation meteoInformation){
-        if (scarpa.getAntiscivolo() && scarpa.getImpermeabile())
+        if ((!scarpa.getScivoloso()) && scarpa.getImpermeabile())
             return 5;
-        else if (scarpa.getAntiscivolo())
+        else if ((!scarpa.getScivoloso()))
             return 3;
         else if (scarpa.getImpermeabile())
             return 4;

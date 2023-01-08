@@ -1,7 +1,6 @@
-package Model.ga;
+package Logic.ga;
 
 import Model.CapoAbbigliamento;
-import Model.Evaluator;
 import Model.MeteoInformation;
 import io.jenetics.*;
 import io.jenetics.engine.Constraint;

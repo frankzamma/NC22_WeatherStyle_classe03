@@ -1,4 +1,4 @@
-package Model.machinelearning;
+package Model;
 
 import Model.CapoAbbigliamento;
 

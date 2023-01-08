@@ -1,7 +1,8 @@
-package Model.machinelearning;
+package Logic.machinelearning;
 
 import Model.CapoAbbigliamento;
 import Model.MeteoInformation;
+import Model.ScoreCapoAbbigliamento;
 
 import java.util.List;
 
