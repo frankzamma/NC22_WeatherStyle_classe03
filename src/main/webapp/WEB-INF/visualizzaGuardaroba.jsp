@@ -147,9 +147,5 @@
             </table>
     <% } %>
 
-    <form action="./loadCapoAbbigliamento">
-        <input type="submit" class="btn btn-primary" value="Carica un nuovo capo" />
-    </form>
-
 </body>
 </html>
