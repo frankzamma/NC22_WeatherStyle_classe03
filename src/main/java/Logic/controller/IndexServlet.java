@@ -8,7 +8,7 @@ import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 
-@WebServlet(name = "/index.html")
+@WebServlet(name = "index", value = "/index.html")
 public class IndexServlet extends HttpServlet {
 
     @Override
