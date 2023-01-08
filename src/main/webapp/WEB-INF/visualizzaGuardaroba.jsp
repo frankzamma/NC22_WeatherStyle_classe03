@@ -30,24 +30,15 @@
         </div>
     </div>
 
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#e3f2fd;">
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="index.html">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="GuardarobaServlet">Guardaroba</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <%@include file="navbar.jsp"%>
 
     <%
-        if(listaMaglie.size() <= 0) { %>
-    <h3 class="display-6">Nessuna maglia presente nel guardaroba.</h3>
+    if(listaMaglie.size() <= 0) { %>
+        <br>
+        <h3 class="display-6">Nessuna maglia presente nel guardaroba.</h3>
     <% }
     else { %>
+            <br>
             <h3 class="display-6">Maglie</h3>
             <table class="table table-striped">
                 <thead>
@@ -76,10 +67,12 @@
             </table>
     <% }
 
-        if(listaPantaloni.size() <= 0) { %>
-    <h3 class="display-6">Nessun pantalone presente nel guardaroba.</h3>
+    if(listaPantaloni.size() <= 0) { %>
+        <br>
+        <h3 class="display-6">Nessun pantalone presente nel guardaroba.</h3>
     <% }
     else { %>
+            <br>
             <h3 class="display-6">Pantaloni</h3>
             <table class="table table-striped">
                 <thead>
@@ -109,9 +102,11 @@
     <% }
 
     if(listaScarpe.size() <= 0) { %>
+        <br>
         <h3 class="display-6">Nessuna scarpa presente nel guardaroba.</h3>
     <% }
     else { %>
+            <br>
             <h3 class="display-6">Scarpe</h3>
             <table class="table table-striped">
                 <thead>
