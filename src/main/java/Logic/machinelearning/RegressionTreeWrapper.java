@@ -33,7 +33,7 @@ public class RegressionTreeWrapper {
             fullDataset = csvLoader.getDataSet();
 
             // stampa del dataset
-            // System.out.println(dataset.toString());
+            // System.out.println(fullDataset.toString());
 
             // setting della variabile dipendente
             fullDataset.setClassIndex(fullDataset.numAttributes()-1);

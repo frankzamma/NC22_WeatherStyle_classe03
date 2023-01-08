@@ -10,9 +10,9 @@ public class TopML {
 
     private RegressionTreeWrapper treeWrapper;
 
-    public TopML(){
+    public TopML(String pathDataset){
         //creazione e allenamento albero di regressione sulle maglie
-        treeWrapper = new RegressionTreeWrapper("CreazioneDataset/newCsv_all_clothes/top_meteo_dataset_labeled", false, false);
+        treeWrapper = new RegressionTreeWrapper(pathDataset, false, false);
     }
 
     public List<ScoreCapoAbbigliamento> classifyInstances(List<CapoAbbigliamento> list, MeteoInformation meteo, String stagione, boolean getBestThree){

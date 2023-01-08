@@ -9,12 +9,10 @@ import java.util.List;
 public class ShoesML {
     private RegressionTreeWrapper treeWrapper;
 
-    public ShoesML(){
+    public ShoesML(String pathDataset){
         //Creazione e allenamento del regressore
         treeWrapper =
-                new RegressionTreeWrapper(
-                        "CreazioneDatasets/newCsv_all_clothes/shoes_meteo_dataset_labeled.csv",
-                        false, false);
+                new RegressionTreeWrapper(pathDataset,false, false);
     }
 
     public List<ScoreCapoAbbigliamento> classifyIstances(List<CapoAbbigliamento> list, MeteoInformation meteoInformation,
