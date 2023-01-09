@@ -5,8 +5,10 @@ import Model.MeteoInformation;
 import io.jenetics.*;
 import io.jenetics.engine.Constraint;
 import io.jenetics.engine.Engine;
+import io.jenetics.engine.EvolutionResult;
 import io.jenetics.util.Factory;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BottomClothesGA {
@@ -62,6 +64,21 @@ public class BottomClothesGA {
         }
 
         return punteggio;
+    }
+
+    public List<CapoAbbigliamento> getBestResult(){
+        Phenotype<IntegerGene, Integer> best =
+                engine.stream().limit(100).collect(EvolutionResult.toBestPhenotype());
+
+        Genotype<IntegerGene> bestGt =  best.genotype();
+
+        List<CapoAbbigliamento> list =  new ArrayList<>();
+
+        list.add(capoAbbigliamentoList.get(bestGt.get(0).gene().intValue()));
+        list.add(capoAbbigliamentoList.get(bestGt.get(1).gene().intValue()));
+        list.add(capoAbbigliamentoList.get(bestGt.get(2).gene().intValue()));
+
+        return list;
     }
 }
 
