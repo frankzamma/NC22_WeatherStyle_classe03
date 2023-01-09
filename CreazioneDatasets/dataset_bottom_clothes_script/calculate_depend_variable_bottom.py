@@ -27,9 +27,9 @@ ranges = [
         'velluto': 3,
         'lana': 0,
         'raso': 8,
-        'lungo': 0,
-        'corto': 10,
-        'medio': 3,
+        'lunga': 0,
+        'corta': 10,
+        'media': 3,
     },
     {  # 25° <= temperatura < 30°
         'cotone': 10,
@@ -41,9 +41,9 @@ ranges = [
         'velluto': 3,
         'lana': 0,
         'raso': 7,
-        'lungo': 2,
-        'corto': 8,
-        'medio': 6
+        'lunga': 2,
+        'corta': 8,
+        'media': 6
     },
     {  # 20° <= temperatura < 25°
         'cotone': 10,
@@ -55,9 +55,9 @@ ranges = [
         'velluto': 4,
         'lana': 1,
         'raso': 6,
-        'lungo': 5,
-        'corto': 5,
-        'medio': 10
+        'lunga': 5,
+        'corta': 5,
+        'media': 10
     },
     {  # 15° <= temperatura < 20°
         'cotone': 10,
@@ -69,9 +69,9 @@ ranges = [
         'velluto': 5,
         'lana': 4,
         'raso': 4,
-        'lungo': 8,
-        'corto': 2,
-        'medio':4
+        'lunga': 8,
+        'corta': 2,
+        'media':4
     },
     {  # 10 <= temperatura < 15°
         'cotone': 9,
@@ -83,9 +83,9 @@ ranges = [
         'velluto': 6,
         'lana': 7,
         'raso': 3,
-        'lungo': 9,
-        'corto': 1,
-        'medio': 3
+        'lunga': 9,
+        'corta': 1,
+        'media': 3
     },
     {  # 5 <= temperatura < 10°
         'cotone': 8,
@@ -97,9 +97,9 @@ ranges = [
         'velluto': 8,
         'lana': 9,
         'raso': 2,
-        'lungo': 10,
-        'corto': 0,
-        'medio': 0
+        'lunga': 10,
+        'corta': 0,
+        'media': 0
     },
     {  # temperatura < 5°
         'cotone': 8,
@@ -111,9 +111,9 @@ ranges = [
         'velluto': 9,
         'lana': 10,
         'raso': 1,
-        'lungo': 10,
-        'corto': 0,
-        'medio': 0
+        'lunga': 10,
+        'corta': 0,
+        'media': 0
     }
 ]
 
