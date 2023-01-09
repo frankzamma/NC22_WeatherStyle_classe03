@@ -1,0 +1,129 @@
+\documentclass[a4paper, 11pt, oneside]{report}
+
+\usepackage[T1]{fontenc}    % fornisce la codifica adatta per il font della lingua italiana
+\usepackage[utf8]{inputenc} % interpreta i caratteri immessi dall'editor, come i caratteri accentati italiani
+\usepackage[italian]{babel} % convenzione per date, capitolo invece di chapter, regole di formattazione...
+
+\usepackage{geometry}       % gestisce il layout del documento
+% heightrounded modifica le regole di contenimento del testo per far rientrare il testo in un numero finito di righe
+\geometry{a4paper, top=2cm, bottom=2cm, left=2.5cm, right=2.5cm, heightrounded}
+
+\pagestyle{plain}           %numeri di pagina in fondo
+
+\usepackage{hyperref}       %usato per collegamenti ipertestuali
+\hypersetup{hidelinks}      %usato per rimuovere i riquadri dai link
+
+% preambolo
+\title{WeatherStyle\\Corso Fondamenti di Intellingenza Artificiale\\Prof. F.Palomba }
+\author{Aurucci Raffaele\\Miglino Annalaura\\Palmieri Angelo\\Zammarrelli Francesco Giuseppe}
+\date{16 gennaio 2023}
+
+\begin{document}
+
+    % sezione dedicata al preambolo
+    \begin{titlepage}
+        \maketitle
+    \end{titlepage}
+
+    % produzione dell'indice automatica
+    \tableofcontents
+
+    \part{Introduzione}
+        \chapter{Cos'è WeatherStyle?}
+
+            \section{Le motivazioni}
+            Introduzione in cui si spiega il motivo per cui nasce il progetto
+
+            \section{Gli obbiettivi}
+            Obiettivi che si vogliono raggiungere
+
+            \section{Specifiche PEAS}
+            Performance Environment Actuators Sensors
+
+            \subsection{Caratteristiche dell'ambiente}
+            Caratteristiche dell'ambiente
+
+    \part{Tecniche di risoluzione}
+        \chapter{La ricerca locale}
+        Brevissima spiegazione di cos'è la ricerca locale
+
+            \section{Gli algoritmi genetici}
+            Parlare brevemente della metaeuristica GA
+
+            \section{Formulazione del problema}
+            Formulazione del GA (codifica individui, operatori genetici - ATTENZIONE! sono stati usati diversi operatori per ogni algoritmo)
+            \par \noindent Funzione di fitness (euristiche generali per il calcolo del punteggio)
+            \par \noindent [potrebbe essere utile fare delle sottosezioni]
+
+            \section{Vantaggi e svantaggi}
+            Cosa ha senso e cosa no nella nostra risoluzione (vincoli, confronto ricerca esaustiva)
+            \par \noindent [potrebbe essere utile fare delle sottosezioni]
+
+            \section{Implementazione}
+            Caratteristiche del framework e passi necessari alla risoluzione (eventuale pseduo codice)
+
+        \chapter{Il machine learning}
+        Brevissima spiegazione di cos'è il machine learning
+
+            \section{CRISP-DM}
+            Brevissima spiegazione di cos'è il modello CRISP-DM
+            \par \noindent [potrebbe essere utile inserire un immagine]
+
+            \section{Business Understanding}
+            Obbiettivi di business, strumenti e tecnologie utilizzate
+
+            \section{Data Understanding}
+            Potrebbe essere utile inserire i link dei dataset trovati online e per ognuno costruire dei piccoli grafici
+            (es: dataset maglie aveva dress, top e bottom e si mostra\ldots)
+                \subsection{Dataset maglie e pantaloni}
+                Questa fase può essere accorpata, magari si fa metà e metà
+                \subsection{Dataset scarpe}
+                Stesso discorso di cui sopra
+
+            \section{Data Preparation}
+            Qui parliamo del feature selection (feature che abbiamo selezionato), della fusione col dataset meteo e come
+            è stata calcolata la variabile dipendente, eventuali imputazioni fatte\ldots
+                \subsection{Dataset maglie e pantaloni}
+                Come è stato costruito, strategia
+                \subsection{Dataset scarpe}
+                Come è stato costruito, strategia
+                \subsection{Dataset meteo}
+                Come è stato costruito, strategia
+                \subsectin{La fusione dei dataset}
+                Qui si parla di come è stata calcolata la variabile dipendente, facendo riferimento alla sezione dedicata
+                alla formulazione del problema per il GA in particolare alla fitness
+
+            \section{Modelling}
+            Qui parliamo della tecnica di machine learning utilizzata, ovvero la regressione e dell'algoritmo utilizzato
+                \subsection{La regressione}
+                Brevissima spiegazione di che cos'è la regressione
+                \subsection{L'albero di regressione}
+                Spiegazione teorica di un albero di regressione
+                \subsection{Ten folds cross-validation}
+                Spiegazione teorica del 10 folds cross validation utilizzato
+                \subsection{Valutazione delle metriche}
+                Qui è possibile parlare delle metriche a cui ci siamo affidati, dei risultati ottenuti per ogni modello
+                e inserire i grafici che mostrano la stima dell'errore rispetto alle predizioni fatte
+
+            \section{Evaluation}
+            Qui parliamo della sperimentazione empirica e dei risultati ottenuti
+
+            \section{Deployment}
+            Qui si parla leggermente dell'implementazione e delle scelte ingegneristiche per rendere il modello usabile
+            quindi eventuali classi interfacce, ecc\ldots
+
+
+            \part{Conclusioni e osservazioni}
+            \chapter{Cosa scegliamo?}
+                \section{Un confronto tra GA e ML}
+                Quando conviene uno e quando conviene l'altro
+                \section{Possiamo fare di meglio}
+                Introduzione alle due osservazioni
+                    \subsection{Usare il ML per il calcolo della funzione di fitness}
+                    Spiegare cosa si può fare
+                    \subsection{Usare un GA per costruire l'albero di regressione}
+                    Spiegare cosa si può fare
+
+
+
+\end{document}
