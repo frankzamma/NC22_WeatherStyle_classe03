@@ -3,17 +3,17 @@ package Model;
 public class Scarpa extends CapoAbbigliamento{
 
     private String tipo;
-    private Boolean scivoloso;
+    private Boolean antiscivolo;
     private Boolean impermeabile;
 
     public Scarpa(){
 
     }
 
-    public Scarpa(String stagione, String colore, String tipo, Boolean scivoloso, Boolean impermeabile) {
+    public Scarpa(String stagione, String colore, String tipo, Boolean antiscivolo, Boolean impermeabile) {
         super(stagione,colore);
         this.tipo = tipo;
-        this.scivoloso = scivoloso;
+        this.antiscivolo = antiscivolo;
         this.impermeabile = impermeabile;
     }
 
@@ -33,11 +33,11 @@ public class Scarpa extends CapoAbbigliamento{
         this.impermeabile = impermeabile;
     }
 
-    public Boolean getScivoloso() {
-        return scivoloso;
+    public Boolean getAntiscivolo() {
+        return antiscivolo;
     }
 
-    public void setScivoloso(Boolean scivoloso) {
-        this.scivoloso = scivoloso;
+    public void setAntiscivolo(Boolean antiscivolo) {
+        this.antiscivolo = antiscivolo;
     }
 }

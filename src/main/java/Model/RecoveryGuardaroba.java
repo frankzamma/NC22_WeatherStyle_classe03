@@ -50,7 +50,7 @@ public class RecoveryGuardaroba {
                 }else {
                     Scarpa scarpa = new Scarpa();
                     scarpa.setTipo(split[1]);
-                    scarpa.setScivoloso(Boolean.valueOf(split[2]));
+                    scarpa.setAntiscivolo(Boolean.valueOf(split[2]));
                     scarpa.setImpermeabile(Boolean.valueOf(split[3]));
                     scarpa.setColore(split[4]);
                     scarpa.setStagione(split[5]);

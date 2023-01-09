@@ -95,7 +95,7 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Tipo</th>
-                    <th scope="col">Scivoloso</th>
+                    <th scope="col">Antiscivolo</th>
                     <th scope="col">Impermeabile</th>
                     <th scope="col">Colore</th>
                     <th scope="col">Stagione</th>
@@ -108,7 +108,7 @@
                         <tr>
                             <td><%=i%></td>
                             <td><%=scarpa.getTipo()%></td>
-                            <% if(scarpa.getScivoloso()){ %>
+                            <% if(scarpa.getAntiscivolo()){ %>
                                 <td>Si</td>
                             <% }
                             else { %>
