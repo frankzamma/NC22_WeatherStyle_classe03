@@ -178,6 +178,7 @@ def evaluate_tipo(meteo, tipo):
     return valutazione_tipo[meteo][tipo]
 
 
+
 def evaluate_stagione(stagione_capo, stagione_prev):
     i = utils.calculate_ranges_stagione(stagione_prev)
     return stagionalita[i][stagione_capo]
@@ -206,9 +207,9 @@ df.loc[:, 'Punteggio'] = 0
 for x in df.index:
     p = 0
     p += evaluate_temperature(df.loc[x, "Stagione"], df.loc[x, "TemperaturaPercepita"])
-    p += evaluate_stagione(df.loc[x, "Stagione"], df.loc[x, "StagionePrevisione"])
     p += utils.evaluate_colore(df.loc[x, "Meteo"], df.loc[x, "Colore"], df.loc[x, "TemperaturaPercepita"])
     p += evaluate_tipo(df.loc[x, "Meteo"], df.loc[x, "Tipo"])
+    p += evaluate_stagione(df.loc[x, "Stagione"],df.loc[x, "StagionePrevisione"] )
     if df.loc[x, 'Meteo'] == 'pioggia' or df.loc[x, 'Meteo'] == 'neve':
         p += evaluate_pioggia(df.loc[x, 'Antiscivolo'], df.loc[x, 'Impermeabile'])
 
