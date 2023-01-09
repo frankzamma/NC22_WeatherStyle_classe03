@@ -33,12 +33,12 @@ for x in dataframe.index:
 
 dataframe.rename(columns={'Manica': 'Lunghezza'}, inplace=True)
 
-#verifica che la colonna sia stata rinominata correttamente
-#for column in dataframe:
-#for column in dataframe:
+# verifica che la colonna sia stata rinominata correttamente
+# for column in dataframe:
+# for column in dataframe:
 #  print(column)
 
-#caricare CSV con dati generati da Excel
+# caricare CSV con dati generati da Excel
 capi_mancanti_df = pd.read_csv("../csv_all_clothes/bottom_missing.csv")
 dataframe = pd.concat([dataframe, capi_mancanti_df])
 
@@ -79,11 +79,10 @@ for x in dataframe.index:
 # dataframe["Lunghezza"].fillna(x, inplace=True)
 
 
-
 # eliminiamo tutte le righe che presentano valori vuoti nelle celle
 
-#contiamo le occorrenze per ciascuna stagione
-#print(dataframe["Stagione"].value_counts())
+# contiamo le occorrenze per ciascuna stagione
+# print(dataframe["Stagione"].value_counts())
 
 # cambiamo i valori delle stagioni in italiano
 i = 0
@@ -111,10 +110,8 @@ for x in dataframe.index:
     if dataframe.loc[x, "Stagione"] == "['Spring', 'Summer', 'Fall']":
         dataframe.loc[x, "Stagione"] = "primavera_estate"
 
-
-
-#contiamo le occorrenze dopo aver ordinato il dataset
-#print(dataframe["Stagione"].value_counts())
+# contiamo le occorrenze dopo aver ordinato il dataset
+# print(dataframe["Stagione"].value_counts())
 dataframe.loc[:, 'Lunghezza'] = 'lunga'
 dataframe.dropna(inplace=True)
 
@@ -388,8 +385,14 @@ for x in dataframe.index:
         dataframe.loc[x, "Colore"] = "colorato"
     if dataframe.loc[x, "Colore"] == "Bright, Orange":
         dataframe.loc[x, "Colore"] = "colorato"
-
-# TODO aggiungere condizioni per i seguenti colori :Pastel, Violet Purple, ['Bright', ' Mustard Yellow'] , Blue, Pastel
+    if dataframe.loc[x, "Colore"] == "Pastel":
+        dataframe.loc[x, "Colore"] = "chiaro"
+    if dataframe.loc[x, "Colore"] == "Violet Purple":
+        dataframe.loc[x, "Colore"] = "scuro"
+    if dataframe.loc[x, "Colore"] == "['Bright', ' Mustard Yellow']":
+        dataframe.loc[x, "Colore"] = "colorato"
+    if dataframe.loc[x, "Colore"] == "Blue":
+        dataframe.loc[x, "Colore"] = "colorato"
 
 print(dataframe["Colore"].value_counts())
 
