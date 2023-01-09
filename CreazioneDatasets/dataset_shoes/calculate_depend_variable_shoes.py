@@ -216,4 +216,5 @@ for x in df.index:
 print(df.info())
 
 df.to_csv('../newCsv_all_clothes/shoes_meteo_dataset_labeled.csv', index=False)
+df.to_csv('../../src/main/webapp/WEB-INF/resources/csv/shoes_meteo_dataset_labeled.csv', index=False)
 #TODO Aggiungere commenti

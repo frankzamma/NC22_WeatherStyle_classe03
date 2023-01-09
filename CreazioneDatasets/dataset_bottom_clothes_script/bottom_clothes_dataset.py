@@ -108,7 +108,7 @@ for x in dataframe.index:
     if dataframe.loc[x, "Stagione"] == "All":
         dataframe.loc[x, "Stagione"] = "all"
     if dataframe.loc[x, "Stagione"] == "['Spring', 'Summer', 'Fall']":
-        dataframe.loc[x, "Stagione"] = "primavera_estate"
+        dataframe.drop(x, inplace=True)
 
 # contiamo le occorrenze dopo aver ordinato il dataset
 # print(dataframe["Stagione"].value_counts())
@@ -126,7 +126,6 @@ dictonary = {
 }
 
 for i in dataframe.index:
-    print(dataframe.loc[i])
     array = dictonary[dataframe.loc[i, 'Stagione']]
     number = rd.randint(0, len(array) - 1)
     dataframe.loc[i, 'Lunghezza'] = array[number]
@@ -395,6 +394,7 @@ for x in dataframe.index:
         dataframe.loc[x, "Colore"] = "colorato"
 
 print(dataframe["Colore"].value_counts())
+print(dataframe.info())
 
 # esportiamo il dataframe in formato csv
 dataframe.to_csv("../newCsv_all_clothes/bottom_dataset.csv", index=False)

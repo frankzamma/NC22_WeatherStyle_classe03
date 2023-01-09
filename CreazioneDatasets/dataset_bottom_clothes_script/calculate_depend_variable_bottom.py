@@ -186,4 +186,4 @@ dataframe.pop('Mese')
 
 # si esporta nuovamente il dataframe in formato CSV
 dataframe.to_csv("../newCsv_all_clothes/bottom_meteo_dataset_labeled.csv", index=False)
-
+dataframe.to_csv('../../src/main/webapp/WEB-INF/resources/csv/bottom_meteo_dataset_labeled.csv', index=False)

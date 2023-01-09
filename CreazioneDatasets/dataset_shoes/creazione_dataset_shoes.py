@@ -208,4 +208,5 @@ print(final_df.info())
 print(final_df['Tipo'].value_counts().to_string())
 df.to_csv('../newCsv_all_clothes/shoes-dataset.csv', index=False)
 
+
 #TODO Aggiungere commenti
