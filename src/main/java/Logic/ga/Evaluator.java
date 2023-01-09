@@ -432,9 +432,9 @@ public class Evaluator {
     }
 
     private int valutazionePioggia(Scarpa scarpa, MeteoInformation meteoInformation){
-        if ((!scarpa.getAntiscivolo()) && scarpa.getImpermeabile())
+        if (scarpa.getAntiscivolo() && scarpa.getImpermeabile())
             return 5;
-        else if ((!scarpa.getAntiscivolo()))
+        else if (scarpa.getAntiscivolo())
             return 3;
         else if (scarpa.getImpermeabile())
             return 4;
