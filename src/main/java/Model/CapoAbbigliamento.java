@@ -1,28 +1,18 @@
 package Model;
 
 public abstract class CapoAbbigliamento {
-    private String materiale, stagione, colore;
+    private String stagione, colore;
 
     public CapoAbbigliamento() {
     }
 
-    public CapoAbbigliamento(String materiale, String stagione, String colore) {
-        this.materiale = materiale;
+    public CapoAbbigliamento(String stagione, String colore) {
         this.stagione = stagione;
         this.colore = colore;
     }
 
-    public CapoAbbigliamento(String materiale, String stagione) {
-        this.materiale = materiale;
+    public CapoAbbigliamento(String stagione) {
         this.stagione = stagione;
-    }
-
-    public String getMateriale() {
-        return materiale;
-    }
-
-    public void setMateriale(String materiale) {
-        this.materiale = materiale;
     }
 
     public String getStagione() {
