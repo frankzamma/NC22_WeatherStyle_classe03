@@ -124,7 +124,7 @@ public class RegressionTreeWrapper {
     }
 
 
-    public List<ScoreCapoAbbigliamento> classifyInstances(List<CapoAbbigliamento> capoAbbigliamentoList,
+    public List<ScoreCapoAbbigliamento> classifyInstances(List<? extends CapoAbbigliamento> capoAbbigliamentoList,
                                                           MeteoInformation meteoInformation, String stagione){
         List<Instance> listInstance = new ArrayList<>();
 

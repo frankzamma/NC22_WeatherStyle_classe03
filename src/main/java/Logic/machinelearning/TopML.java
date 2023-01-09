@@ -1,6 +1,7 @@
 package Logic.machinelearning;
 
-import Model.CapoAbbigliamento;
+
+import Model.Maglia;
 import Model.MeteoInformation;
 import Model.ScoreCapoAbbigliamento;
 
@@ -15,7 +16,7 @@ public class TopML {
         treeWrapper = new RegressionTreeWrapper(pathDataset, false, false);
     }
 
-    public List<ScoreCapoAbbigliamento> classifyInstances(List<CapoAbbigliamento> list, MeteoInformation meteo, String stagione, boolean getBestThree){
+    public List<ScoreCapoAbbigliamento> classifyInstances(List<Maglia> list, MeteoInformation meteo, String stagione, boolean getBestThree){
         List<ScoreCapoAbbigliamento> l = treeWrapper.classifyInstances(list, meteo, stagione);
         if(getBestThree)
             return treeWrapper.getBestThreeClothes(l);
