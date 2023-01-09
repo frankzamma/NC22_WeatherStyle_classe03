@@ -10,8 +10,8 @@ public class Scarpa extends CapoAbbigliamento{
 
     }
 
-    public Scarpa(String materiale, String stagione, String colore, String tipo, Boolean scivoloso, Boolean impermeabile) {
-        super(materiale, stagione,colore);
+    public Scarpa(String stagione, String colore, String tipo, Boolean scivoloso, Boolean impermeabile) {
+        super(stagione,colore);
         this.tipo = tipo;
         this.scivoloso = scivoloso;
         this.impermeabile = impermeabile;
