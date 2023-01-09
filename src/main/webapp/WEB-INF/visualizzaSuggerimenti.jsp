@@ -68,7 +68,7 @@
             <th scope="col">#</th>
             <th scope="col">Materiale</th>
             <th scope="col">Colore</th>
-            <th scope="col">Manica</th>
+            <th scope="col">Lunghezza pantalone</th>
             <th scope="col">Stagione</th>
             <th scope="col">Punteggio</th>
         </tr>

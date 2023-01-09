@@ -44,7 +44,9 @@
             <label class="form-check-label" for="ml-check">Machine Learning</label>
           </div>
         <div class="d-grid gap-2 mt-3">
-          <button class="btn btn-primary" type="submit">Conferma</button>
+          <form method="get" action="RichiestaSuggerimentoServlet">
+            <button class="btn btn-primary" type="submit">Conferma</button>
+          </form>
         </div>
       </form>
     </div>

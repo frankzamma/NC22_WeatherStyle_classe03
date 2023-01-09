@@ -9,12 +9,12 @@ maglia,velluto,scuro,lunga,autunno_inverno
 maglia,lana,chiaro,lunga,inverno
 maglia,poliestere,colorato,corta,autunno
 maglia,raso,colorato,corta,primavera_estate
-pantalone,lino,chiaro,corto,estate
-pantalone,tweed,colorato,lungo,inverno
-pantalone,cotone,colorato,lungo,autunno
-pantalone,seta,colorato,lungo,primavera
-pantalone,cotone,chiaro,corto,estate
-pantalone,velluto,scuro,lungo,inverno
+pantalone,lino,chiaro,corta,estate
+pantalone,tweed,colorato,lunga,inverno
+pantalone,cotone,colorato,lunga,autunno
+pantalone,seta,colorato,lunga,primavera
+pantalone,cotone,chiaro,corta,estate
+pantalone,velluto,scuro,lunga,inverno
 scarpa,Scarpa classica,true,false,chiaro,estate
 scarpa,Anfibi,false,true,scuro,inverno
 scarpa,Scarpe aperte,true,false,chiaro,primavera
