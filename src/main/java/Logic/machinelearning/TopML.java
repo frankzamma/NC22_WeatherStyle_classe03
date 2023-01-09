@@ -16,8 +16,8 @@ public class TopML {
         treeWrapper = new RegressionTreeWrapper(pathDataset, false, false);
     }
 
-    public List<ScoreCapoAbbigliamento> classifyInstances(List<Maglia> list, MeteoInformation meteo, String stagione, boolean getBestThree){
-        List<ScoreCapoAbbigliamento> l = treeWrapper.classifyInstances(list, meteo, stagione);
+    public List<ScoreCapoAbbigliamento> classifyInstances(List<Maglia> list, MeteoInformation meteo, boolean getBestThree){
+        List<ScoreCapoAbbigliamento> l = treeWrapper.classifyInstances(list, meteo);
         if(getBestThree)
             return treeWrapper.getBestThreeClothes(l);
         else

@@ -125,7 +125,7 @@ public class RegressionTreeWrapper {
 
 
     public List<ScoreCapoAbbigliamento> classifyInstances(List<? extends CapoAbbigliamento> capoAbbigliamentoList,
-                                                          MeteoInformation meteoInformation, String stagione){
+                                                          MeteoInformation meteoInformation){
         List<Instance> listInstance = new ArrayList<>();
 
         for (CapoAbbigliamento capoAbbigliamento: capoAbbigliamentoList){
@@ -135,7 +135,7 @@ public class RegressionTreeWrapper {
                 instance.setValue(1, capoAbbigliamento.getColore());
 
                 if(capoAbbigliamento.getClass() == Maglia.class){
-                    instance.setValue(2, ((Maglia)capoAbbigliamento).getLunghezzaManica());
+                    instance.setValue(2, ((Maglia) capoAbbigliamento).getLunghezzaManica());
                     instance.setValue(0, ((Maglia) capoAbbigliamento).getMateriale());
                 }
                 else{
@@ -146,7 +146,7 @@ public class RegressionTreeWrapper {
                 instance.setValue(3, capoAbbigliamento.getStagione());
                 instance.setValue(4, meteoInformation.getMeteo());
                 instance.setValue(5, meteoInformation.getTemperaturaPercepita());
-                instance.setValue(6, stagione);
+                instance.setValue(6, meteoInformation.getStagionePrevisione());
             }else{
                 Scarpa scarpa = (Scarpa) capoAbbigliamento;
 
@@ -157,7 +157,7 @@ public class RegressionTreeWrapper {
                 instance.setValue(4, scarpa.getStagione());
                 instance.setValue(5, meteoInformation.getMeteo());
                 instance.setValue(6, meteoInformation.getTemperaturaPercepita());
-                instance.setValue(7, stagione);
+                instance.setValue(7, meteoInformation.getStagionePrevisione());
             }
 
             listInstance.add(instance);

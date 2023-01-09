@@ -16,8 +16,8 @@ public class BottomML {
         treeWrapper = new RegressionTreeWrapper(pathDataset,false, false);
     }
 
-    public List<ScoreCapoAbbigliamento> classifyInstances(List<Pantalone> list, MeteoInformation meteo, String stagione, boolean getBestThree){
-        List<ScoreCapoAbbigliamento> scoreCapoAbbigliamentoList = treeWrapper.classifyInstances(list, meteo, stagione);
+    public List<ScoreCapoAbbigliamento> classifyInstances(List<Pantalone> list, MeteoInformation meteo, boolean getBestThree){
+        List<ScoreCapoAbbigliamento> scoreCapoAbbigliamentoList = treeWrapper.classifyInstances(list, meteo);
         if(getBestThree)
             return treeWrapper.getBestThreeClothes(scoreCapoAbbigliamentoList);
         else

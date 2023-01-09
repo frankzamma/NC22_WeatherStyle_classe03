@@ -314,7 +314,7 @@ public class Evaluator {
         int punteggio = 0;
         punteggio += valutazioneTipo((Scarpa)capoAbbigliamento, meteoInformation);
         punteggio += valutazioneTemperatura(capoAbbigliamento, meteoInformation);
-        punteggio += valutazioneStagione(capoAbbigliamento);
+        punteggio += valutazioneStagione(capoAbbigliamento, meteoInformation);
         punteggio += valutazioneColore(capoAbbigliamento, meteoInformation);
         if (meteoInformation.getMeteo().equalsIgnoreCase("pioggia") || meteoInformation.getMeteo().equalsIgnoreCase("neve"))
             punteggio += valutazionePioggia((Scarpa)capoAbbigliamento, meteoInformation);
@@ -326,7 +326,7 @@ public class Evaluator {
         punteggio += valutazioneTemperatura(capoAbbigliamento, meteoInformation);
         punteggio += valutazioneColore(capoAbbigliamento, meteoInformation);
         punteggio += valutazioneLunghezza(capoAbbigliamento, meteoInformation);
-        punteggio += valutazioneStagione(capoAbbigliamento);
+        punteggio += valutazioneStagione(capoAbbigliamento, meteoInformation);
         return punteggio;
     }
 
@@ -415,17 +415,8 @@ public class Evaluator {
             return 0;
     }
 
-    private String getStagione(){
-        GregorianCalendar data = new GregorianCalendar();
-        String[] seasons = {
-                "inverno", "inverno", "primavera", "primavera", "primavera", "estate",
-                "estate", "estate", "autunno", "autunno", "autunno", "inverno"
-        };
-        return seasons[data.get(Calendar.MONTH)];
-    }
-
-    private int valutazioneStagione (CapoAbbigliamento capoAbbigliamento){
-        String stagionePrevisione = getStagione();
+    private int valutazioneStagione (CapoAbbigliamento capoAbbigliamento, MeteoInformation meteoInformation){
+        String stagionePrevisione = meteoInformation.getStagionePrevisione();
         int i = -1;
         switch (stagionePrevisione){
             case "inverno": i = 0;
