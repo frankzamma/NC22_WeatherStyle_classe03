@@ -367,12 +367,15 @@ public class Evaluator {
 
         //try-catch aggiunto per debug, successivamente può essere rimosso
         try{
-            if(capoAbbigliamento.getClass().equals(Maglia.class) || capoAbbigliamento.getClass().equals(Pantalone.class))
-                voto = ranges.get(range).get(capoAbbigliamento.getMateriale());
-            else
+            if(capoAbbigliamento.getClass().equals(Maglia.class)){
+                voto = ranges.get(range).get(((Maglia) capoAbbigliamento).getMateriale());
+
+            }else if (capoAbbigliamento.getClass().equals(Pantalone.class)){
+                voto = ranges.get(range).get(((Pantalone) capoAbbigliamento).getMateriale());
+            }else{
                 voto = ranges.get(range).get(capoAbbigliamento.getStagione());
+            }
         }catch(NullPointerException e){
-            System.out.println(capoAbbigliamento.getMateriale());
             e.printStackTrace();
         }
 

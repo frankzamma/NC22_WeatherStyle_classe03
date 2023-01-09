@@ -30,4 +30,5 @@ public abstract class CapoAbbigliamento {
     public void setColore(String colore) {
         this.colore = colore;
     }
+
 }

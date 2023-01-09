@@ -2,7 +2,7 @@ package Model;
 
 public class Maglia extends CapoAbbigliamento{
     private String lunghezzaManica;
-    String materiale;
+    private String materiale;
 
     public Maglia() {
     }
