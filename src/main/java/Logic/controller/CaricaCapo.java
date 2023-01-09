@@ -23,37 +23,37 @@ public class CaricaCapo extends HttpServlet {
 
         if (httpSession!=null) {
             Guardaroba guardaroba = (Guardaroba) httpSession.getAttribute("guardaroba");
-            String tipoCapo = (String) request.getAttribute("tipologia");
+            String tipoCapo = request.getParameter("tipologia");
 
             if (tipoCapo.equals("maglia")) {
-                String materiale = (String) request.getAttribute("materiale");
-                String colore = (String) request.getAttribute("colore");
-                String manica = (String) request.getAttribute("manica");
-                String stagione = (String) request.getAttribute("stagione");
+                String materiale = request.getParameter("materiale");
+                String colore = request.getParameter("colore");
+                String manica = request.getParameter("manica");
+                String stagione = request.getParameter("stagione");
 
                 Maglia m = new Maglia(materiale, stagione, colore, manica);
                 guardaroba.addCapoAbbigliamento(m);
             }
             if (tipoCapo.equals("pantalone")) {
-                String materiale = (String) request.getAttribute("materiale");
-                String colore = (String) request.getAttribute("colore");
-                String stagione = (String) request.getAttribute("stagione");
-                String lunghezza = (String) request.getAttribute("lungPantalone");
+                String materiale = request.getParameter("materiale");
+                String colore = request.getParameter("colore");
+                String stagione = request.getParameter("stagione");
+                String lunghezza = request.getParameter("lungPantalone");
 
                 Pantalone p = new Pantalone(materiale, stagione, colore, lunghezza);
                 guardaroba.addCapoAbbigliamento(p);
             }
             if (tipoCapo.equals("scarpe")) {
-                String colore = (String) request.getAttribute("colore");
-                String stagione = (String) request.getAttribute("stagione");
-                String tipo = (String) request.getAttribute("tipoScarpa");
-                String scivoloso = (String) request.getAttribute("scivoloso");
+                String colore = request.getParameter("colore");
+                String stagione = request.getParameter("stagione");
+                String tipo = request.getParameter("tipoScarpa");
+                String scivoloso = request.getParameter("scivoloso");
                 boolean scivol;
                 if (scivoloso.equals("scivsi"))
                     scivol = true;
                 else
                     scivol = false;
-                String impermeabile = (String) request.getAttribute("impermeabile");
+                String impermeabile = request.getParameter("impermeabile");
                 boolean imper;
                 if (impermeabile.equals("impsi"))
                     imper = true;

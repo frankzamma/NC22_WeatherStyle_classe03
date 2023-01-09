@@ -42,7 +42,7 @@
 
             <div class="mb-3">
                 <label> Scegli tipo di capo </label>
-                <select class="form-select" id="tipologia" onchange="changeSelectedParameter()">
+                <select class="form-select" id="tipologia" name="tipologia" onchange="changeSelectedParameter()">
                     <option value="" selected >Apri menu di selezione</option>
                     <option value="maglia">Maglia</option>
                     <option value="pantalone">Pantalone</option>
@@ -52,7 +52,7 @@
 
             <div class="mb-3">
                 <label> Inserire materiale </label>
-                <select class="form-select" id="materiale" disabled>
+                <select class="form-select" id="materiale" name="materiale" disabled>
                     <option value="cotone">Cotone</option>
                     <option value="poliestere">Poliestere</option>
                     <option value="cashmere">Cashmere</option>
@@ -67,7 +67,7 @@
 
             <div class="mb-3">
                 <label> Inserire colore </label>
-                <select class="form-select" id="colore" disabled>
+                <select class="form-select" id="colore" name="colore" disabled>
                     <option value="chiaro">Chiaro</option>
                     <option value="scuro">Scuro</option>
                     <option value="colorato">Colorato</option>
@@ -76,7 +76,7 @@
 
             <div class="mb-3">
                 <label> Inserire lunghezza manica </label>
-                <select class="form-select" id="manica" disabled>
+                <select class="form-select" id="manica" name="manica" disabled>
                     <option value="lunga">Lunga</option>
                     <option value="corta">Corta</option>
                 </select>
@@ -84,7 +84,7 @@
 
             <div class="mb-3">
                 <label> Inserire stagione </label>
-                <select class="form-select" id="stagione" disabled>
+                <select class="form-select" id="stagione" name="stagione" disabled>
                     <option value="inverno">Inverno</option>
                     <option value="autunno">Autunno</option>
                     <option value="primavera">Primavera</option>
@@ -97,7 +97,7 @@
 
             <div class="mb-3">
                 <label> Inserire lunghezza pantalone </label>
-                <select class="form-select" id="lungPantalone" disabled>
+                <select class="form-select" id="lungPantalone" name="lungPantalone" disabled>
                     <option value="lungo">Lungo</option>
                     <option value="corto">Corto</option>
                     <option value="medio">Medio</option>
@@ -106,7 +106,7 @@
 
             <div class="mb-3">
                 <label> Inserire tipo di scarpa </label>
-                <select class="form-select" id="tipoScarpa"disabled>
+                <select class="form-select" id="tipoScarpa" name="tipoScarpa" disabled>
                     <option value="Stivaletto alla caviglia">Stivaletto alla caviglia</option>
                     <option value="Scarpa da ginnastica">Scarpa da ginnastica</option>
                     <option value="Scarpa classica">Scarpa classica</option>
@@ -120,11 +120,11 @@
             <div class="mb-3">
                 <p> Indicare se è una scarpa scivolosa </p>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="scivoloso" id="scivsi" disabled>
+                    <input class="form-check-input" type="radio" name="scivoloso" id="scivsi" value="scivsi" disabled>
                     <label class="form-check-label" for="scivsi"> Si </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="scivoloso" id="scivno" disabled>
+                    <input class="form-check-input" type="radio" name="scivoloso" id="scivno" value="scivno" disabled>
                     <label class="form-check-label" for="scivno"> No </label>
                 </div>
             </div>
@@ -132,16 +132,16 @@
             <div class="mb-3">
                 <p> Indicare se è una scarpa impermeabile </p>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="impermeabile" id="impsi" disabled>
+                    <input class="form-check-input" type="radio" name="impermeabile" id="impsi" value="impsi" disabled>
                     <label class="form-check-label" for="impsi"> Si </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="impermeabile" id="impno" disabled>
+                    <input class="form-check-input" type="radio" name="impermeabile" id="impno" value="impno" disabled>
                     <label class="form-check-label" for="impno"> No </label>
                 </div>
             </div>
 
-            <center> <button type="submit" class="btn btn-primary">Carica capo</button> </center>
+            <button type="submit" class="btn btn-primary">Carica capo</button>
         </div>
     </form>
 
