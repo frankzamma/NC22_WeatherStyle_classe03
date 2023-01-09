@@ -151,8 +151,8 @@ public class RegressionTreeWrapper {
                 Scarpa scarpa = (Scarpa) capoAbbigliamento;
 
                 instance.setValue(0, scarpa.getTipo());
-                instance.setValue(1, scarpa.getScivoloso()? 1 : 0);
-                instance.setValue(2, scarpa.getImpermeabile()? 1 : 0);
+                instance.setValue(1, scarpa.getScivoloso()? 'y' : 'n');
+                instance.setValue(2, scarpa.getImpermeabile()? 'y' : 'n');
                 instance.setValue(3, scarpa.getColore());
                 instance.setValue(4, scarpa.getStagione());
                 instance.setValue(5, meteoInformation.getMeteo());
