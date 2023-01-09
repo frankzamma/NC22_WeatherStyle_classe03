@@ -1,8 +1,5 @@
-<%@ page import="Model.Guardaroba" %>
 <%@ page import="java.util.List" %>
-<%@ page import="Model.Maglia" %>
-<%@ page import="Model.Pantalone" %>
-<%@ page import="Model.Scarpa" %>
+<%@ page import="Model.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>

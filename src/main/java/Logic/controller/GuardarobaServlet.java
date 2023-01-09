@@ -18,7 +18,7 @@ public class GuardarobaServlet extends HttpServlet {
             dispatcher.forward(request, response);
         }
         else
-            response.sendRedirect("/index.html");
+            response.sendRedirect("index.html");
 
     }
 

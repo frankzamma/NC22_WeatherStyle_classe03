@@ -8,11 +8,11 @@
   <body>
     <%@include file="navbar.jsp"%>
     <div class="container">
-      <form>
+      <form method="post" action="RichiestaSuggerimentoServlet">
         <div class="row mt-3 mb-3">
           <div class="col-12 col-md-4">
             <label for="meteo"> Meteo </label>
-            <select id="meteo" name="meteo" class="form-select">
+            <select id="meteo" name="meteo" class="form-select" required>
               <option value="soleggiato">Soleggiato</option>
               <option value="pioggia">Piovoso</option>
               <option value="nuvoloso">Nuvoloso</option>
@@ -23,20 +23,20 @@
             <select name="temperatura-percepita" id="temperatura-percepita" class="form-select">
               <option value="temperaturaPercepita"></option>
               <% for(int i = -15; i<=40; i++){ %>
-                    <option value="temperaturaPerceepita"><%=i%></option>
+                    <option value=<%=i%>><%=i%></option>
               <% } %>
             </select>
           </div>
 
           <div class="col-12 col-md-4 mt-3 mt-md-0" >
             <label for="data">Data della previsione</label>
-            <input class="form-control" id="data" type="date" name="data">
+            <input class="form-control" id="data" type="date" name="data" required>
           </div>
         </div>
 
           <label>Algoritmo di Intelligenza Artificiale da usare</label>
           <div class="form-check">
-            <input type="radio" id="ga-check" name="algo" value="ga" class="form-check-input">
+            <input type="radio" id="ga-check" name="algo" value="ga" class="form-check-input" checked>
             <label class="form-check-label" for="ga-check">Algoritmi genetici</label>
           </div>
           <div class="form-check">
