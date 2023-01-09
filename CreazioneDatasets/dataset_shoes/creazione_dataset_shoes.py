@@ -150,7 +150,7 @@ df.drop(df[(df.SubCategory == 'Flats')].index, inplace=True)
 - Stagione 
 '''
 
-df.loc[:, 'Colore'] = 'Chiaro'
+df.loc[:, 'Colore'] = 'chiaro'
 df.loc[:, 'Stagione'] = ''
 for i in df.index:
     if df.loc[i, 'Material'].__contains__(';'):
