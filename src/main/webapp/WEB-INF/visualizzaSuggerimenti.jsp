@@ -8,10 +8,11 @@
 </head>
 <body>
     <%
+        String algoritmoIA = (String) request.getAttribute("algoritmoIA");
         MeteoInformation meteoInformation = (MeteoInformation) request.getAttribute("meteoInformation");
-        List<ScoreCapoAbbigliamento> scoreBestTop = (List<ScoreCapoAbbigliamento>) request.getAttribute("scoreBestTop");
-        List<ScoreCapoAbbigliamento> scoreBestBottom = (List<ScoreCapoAbbigliamento>) request.getAttribute("scoreBestBottom");
-        List<ScoreCapoAbbigliamento> scoreBestShoes = (List<ScoreCapoAbbigliamento>) request.getAttribute("scoreBestShoes");
+        List<CapoAbbigliamento> maglieSuggerite = (List<CapoAbbigliamento>) request.getAttribute("maglieSuggerite");
+        List<CapoAbbigliamento> pantaloniSuggeriti = (List<CapoAbbigliamento>) request.getAttribute("pantaloniSuggeriti");
+        List<CapoAbbigliamento> scarpeSuggerite = (List<CapoAbbigliamento>) request.getAttribute("scarpeSuggerite");
     %>
     <%@include file="navbar.jsp"%>
     <div class="container">
@@ -22,6 +23,7 @@
                     <th scope="col">Meteo</th>
                     <th scope="col">Temperatura percepita</th>
                     <th scope="col">Stagione previsione</th>
+                    <th scope="col">Tramite</th>
                 </tr>
             </thead>
             <tbody>
@@ -29,15 +31,29 @@
                     <td><%=meteoInformation.getMeteo()%></td>
                     <td><%=meteoInformation.getTemperaturaPercepita()%> gradi celsius</td>
                     <td><%=meteoInformation.getStagionePrevisione()%></td>
+                    <%
+                        if(algoritmoIA.equals("ga")){
+                            %>
+                                <td>Algoritmo genetico</td>
+                        <% }
+                        else {
+                            if(algoritmoIA.equals("ml")){
+                                %>
+                                    <td>Machine learning</td>
+                            <% }
+                        }
+                    %>
                 </tr>
             </tbody>
         </table>
         <%
-            if(scoreBestTop.size() <= 0) { %>
+            if(maglieSuggerite.size() <= 0) { %>
         <br>
         <h3 class="display-6">Nessuna maglia è stata suggerita.</h3>
         <% }
-        else { %>
+        else {
+                List<Double> punteggiMaglie = (List<Double>) request.getAttribute("punteggiMaglie");
+        %>
         <br>
         <h3 class="display-6">Maglie suggerite</h3>
         <table class="table table-striped">
@@ -48,14 +64,21 @@
                 <th scope="col">Colore</th>
                 <th scope="col">Manica</th>
                 <th scope="col">Stagione</th>
-                <th scope="col">Punteggio</th>
+                <%
+                    if(punteggiMaglie != null){
+                        %>
+                        <th scope="col">Punteggio</th>
+                        <%
+                    }
+                %>
+
             </tr>
             </thead>
             <tbody>
             <%
-                int i = 1;
-                for(ScoreCapoAbbigliamento capo: scoreBestTop){
-                    Maglia maglia = (Maglia) capo.getCapoAbbigliamento();
+                int i = 0;
+                for(CapoAbbigliamento capo: maglieSuggerite){
+                    Maglia maglia = (Maglia) capo;
                 %>
                     <tr>
                         <td><%=i%></td>
@@ -63,7 +86,13 @@
                         <td><%=maglia.getColore()%></td>
                         <td><%=maglia.getLunghezzaManica()%></td>
                         <td><%=maglia.getStagione()%></td>
-                        <td><%=capo.getPunteggio()%></td>
+                        <%
+                            if(punteggiMaglie != null){
+                                %>
+                                    <td><%=punteggiMaglie.get(i)%></td>
+                                <%
+                            }
+                        %>
                     </tr>
                 <%  i++;
                 } %>
@@ -71,11 +100,13 @@
         </table>
         <% }
 
-            if(scoreBestBottom.size() <= 0) { %>
+            if(pantaloniSuggeriti.size() <= 0) { %>
         <br>
         <h3 class="display-6">Nessun pantalone è stato suggerito.</h3>
         <% }
-        else { %>
+        else {
+                List<Double> punteggiPantaloni = (List<Double>) request.getAttribute("punteggiPantaloni");
+        %>
         <br>
         <h3 class="display-6">Pantaloni suggeriti</h3>
         <table class="table table-striped">
@@ -86,14 +117,20 @@
                 <th scope="col">Colore</th>
                 <th scope="col">Lunghezza pantalone</th>
                 <th scope="col">Stagione</th>
-                <th scope="col">Punteggio</th>
+                <%
+                    if(punteggiPantaloni != null){
+                        %>
+                        <th scope="col">Punteggio</th>
+                        <%
+                    }
+                %>
             </tr>
             </thead>
             <tbody>
             <%
-                int i = 1;
-                for(ScoreCapoAbbigliamento capo: scoreBestBottom){
-                    Pantalone pantalone = (Pantalone) capo.getCapoAbbigliamento();
+                int i = 0;
+                for(CapoAbbigliamento capo: pantaloniSuggeriti){
+                    Pantalone pantalone = (Pantalone) capo;
                 %>
                     <tr>
                         <td><%=i%></td>
@@ -101,63 +138,20 @@
                         <td><%=pantalone.getColore()%></td>
                         <td><%=pantalone.getLunghezza()%></td>
                         <td><%=pantalone.getStagione()%></td>
-                        <td><%=capo.getPunteggio()%></td>
+                        <%
+                            if(punteggiPantaloni != null){
+                                %>
+                                <td><%=punteggiPantaloni.get(i)%></td>
+                                <%
+                            }
+                        %>
                     </tr>
                 <%  i++;
             } %>
             </tbody>
         </table>
         <% }
-
-            if(scoreBestShoes.size() <= 0) { %>
-        <br>
-        <h3 class="display-6">Nessuna scarpa è stata suggerita.</h3>
-        <% }
-        else { %>
-        <br>
-        <h3 class="display-6">Scarpe suggerite</h3>
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Tipo</th>
-                <th scope="col">Antiscivolo</th>
-                <th scope="col">Impermeabile</th>
-                <th scope="col">Colore</th>
-                <th scope="col">Stagione</th>
-                <th scope="col">Punteggio</th>
-            </tr>
-            </thead>
-            <tbody>
-            <%
-                int i = 1;
-                for(ScoreCapoAbbigliamento capo: scoreBestShoes){
-                    Scarpa scarpa = (Scarpa) capo.getCapoAbbigliamento();
-                %>
-                    <tr>
-                        <td><%=i%></td>
-                        <td><%=scarpa.getTipo()%></td>
-                        <% if(scarpa.getAntiscivolo()){ %>
-                        <td>Si</td>
-                        <% }
-                        else { %>
-                        <td>No</td>
-                        <% }
-                            if(scarpa.getImpermeabile()){ %>
-                        <td>Si</td>
-                        <% }
-                        else { %>
-                        <td>No</td>
-                        <% } %>
-                        <td><%=scarpa.getColore()%></td>
-                        <td><%=scarpa.getStagione()%></td>
-                        <td><%=capo.getPunteggio()%></td>
-                    </tr>
-                <%  i++;
-            } %>
-            </tbody>
-        </table>
-        <% } %>
+ %>
     </div>
 </body>
 </html>
