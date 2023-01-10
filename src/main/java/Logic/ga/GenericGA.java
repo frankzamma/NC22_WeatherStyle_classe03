@@ -39,9 +39,9 @@ public class GenericGA {
         // Definiamo attraverso il constraint una generazione iniziale pseudo-casuale che rispetta i vincoli
         gtf = constraint.constrain(gtf);
 
-        // Operatore di selezione, l'operatore applicato farà un ordinamento degli individui rispetto al valore di
-        // fitness e selezionerà solamente gli n=3 individui migliori
-        Selector<IntegerGene, Integer> selector =  new TruncationSelector<>();
+        // Operatore di selezione, l'operatore assegna una probabilità di selezione agli individui andando a considerare
+        // nel calcolo il valore di fitness, selezionerà alla fine n individui
+        Selector<IntegerGene, Integer> selector =  new RouletteWheelSelector<>();
 
         // Operatore di crossover, l'operatore opererà in maniera simile al single point crossover, ma utilizzerà
         // per default due punti di crossover in maniera casuale, con una probabilità di 0.25
