@@ -111,8 +111,6 @@ for x in dataframe.index:
 # mischiamo i dati
 dataframe.sample(frac=1.0)
 
-print(dataframe['Colore'].value_counts().to_string())
-
 # esportiamo il dataframe in formato csv
 dataframe.to_csv("../newCsv_all_clothes/top_dataset.csv", index=False)
 

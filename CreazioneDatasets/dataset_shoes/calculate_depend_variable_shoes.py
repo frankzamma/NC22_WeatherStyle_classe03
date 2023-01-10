@@ -26,6 +26,7 @@
  """
 import pandas as pd
 from CreazioneDatasets import utils
+from CreazioneDatasets import utils_depend_variable as udv
 
 ranges = [
     {  # temperatura > 30°
@@ -93,44 +94,6 @@ ranges = [
     }
 ]
 
-stagionalita = [
-    {  # stagione inverno
-        'inverno': 6,
-        'autunno': 4,
-        'primavera': 2,
-        'estate': 0,
-        'primavera_estate': 1,
-        'autunno_inverno': 5,
-        'all': 3
-    },
-    {  # stagione primavera
-        'primavera': 6,
-        'estate': 4,
-        'autunno': 2,
-        'inverno': 0,
-        'primavera_estate': 5,
-        'autunno_inverno': 1,
-        'all': 3
-    },
-    {  # stagione estate
-        'estate': 6,
-        'autunno': 2,
-        'inverno': 0,
-        'primavera': 4,
-        'primavera_estate': 5,
-        'autunno_inverno': 1,
-        'all': 3
-    },
-    {  # stagione autunno
-        'autunno': 6,
-        'inverno': 4,
-        'primavera': 2,
-        'estate': 0,
-        'primavera_estate': 1,
-        'autunno_inverno': 5,
-        'all': 3
-    }
-]
 
 valutazione_tipo={
     'pioggia': {
@@ -178,12 +141,6 @@ def evaluate_tipo(meteo, tipo):
     return valutazione_tipo[meteo][tipo]
 
 
-
-def evaluate_stagione(stagione_capo, stagione_prev):
-    i = utils.calculate_ranges_stagione(stagione_prev)
-    return stagionalita[i][stagione_capo]
-
-
 def evaluate_temperature(stagione_capo, temperatura_percepita):
     i = utils.calculate_ranges_temperatura(temperatura_percepita)
     return ranges[i][stagione_capo]
@@ -209,7 +166,7 @@ for x in df.index:
     p += evaluate_temperature(df.loc[x, "Stagione"], df.loc[x, "TemperaturaPercepita"])
     p += utils.evaluate_colore(df.loc[x, "Meteo"], df.loc[x, "Colore"], df.loc[x, "TemperaturaPercepita"])
     p += evaluate_tipo(df.loc[x, "Meteo"], df.loc[x, "Tipo"])
-    p += evaluate_stagione(df.loc[x, "Stagione"],df.loc[x, "StagionePrevisione"] )
+    p += udv.evaluate_stagione(df.loc[x, "Stagione"],df.loc[x, "StagionePrevisione"] )
     if df.loc[x, 'Meteo'] == 'pioggia' or df.loc[x, 'Meteo'] == 'neve':
         p += evaluate_pioggia(df.loc[x, 'Antiscivolo'], df.loc[x, 'Impermeabile'])
 

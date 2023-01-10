@@ -1,7 +1,7 @@
 import pandas as pd
 import random as rd
 
-# Alcuni dizionari usati nel codice -> lo script inzia a riga 106
+# Alcuni dizionari usati nel codice -> lo script inzia a riga 126
 dictonary = {
     'Leather': 'Cuoio',
     'Suede': 'Camoscio',
@@ -163,13 +163,6 @@ for i in df.index:
         df.loc[i, 'Colore'] = 'scuro'
     elif coin == 1:
         df.loc[i, 'Colore'] = 'colorato'
-
-    '''if str(df.loc[i, 'SubCategory']) == 'Sneakers and Athletic Shoes':
-        if coin == 0:
-            df.loc[i, 'SubCategory'] = 'Sneakers'
-        else:
-            df.loc[i, 'SubCategory'] = 'Athletic Shoes'''''
-
     if df.loc[i, 'Insole'].__contains__(';'):
         tmp = str(df.loc[i, 'Insole']).split(';')
         df.loc[i, 'Insole'] = tmp[0]
