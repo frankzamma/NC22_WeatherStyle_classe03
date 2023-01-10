@@ -47,8 +47,9 @@ public class GenericGA {
         // per default due punti di crossover in maniera casuale, con una probabilità di 0.25
         Alterer<IntegerGene, Integer> crossover =  new MultiPointCrossover<>(0.25);
 
-        // Operatore di mutazione, l'operatore farà uno swap casuale dei geni all'interno di un cromosoma
-        Alterer<IntegerGene, Integer> mutation =  new SwapMutator<>();
+        // Operatore di mutazione, l'operatore cambierà un gene prendendo un numero dalla distribuzione di Gauss
+        // calcolata partendo dal valore corrente del gene
+        Alterer<IntegerGene, Integer> mutation =  new GaussianMutator<>();
 
         //Setup dell'algoritmo genetico
         engine =  Engine.builder(this::eval, gtf)
