@@ -61,7 +61,17 @@
 
     \part{Tecniche di risoluzione}
         \chapter{La ricerca locale}
-        Brevissima spiegazione di cos'è la ricerca locale
+        Gli algoritmi di \textbf{ricerca locale} a differenza degli algoritmi di ricerca tradizionale non hanno come scopo
+        quello di trovare una sequenza di azioni che porti dallo stato iniziale allo stato obbiettivo, bensì lo stato
+        obbiettivo rappresenta esso stesso la soluzione al problema, indipendentemente da come ci si è arrivati.
+        \par \noindent Questo rende gli algoritmi di ricerca locale particolarmente adatti a problemi di configurazione
+        e/o di ottimizzazione. Sono anche detti algoritmi di ``miglioramento iterativo'', poiché partono da un'ipotetica
+        soluzione con lo scopo di migliorarla, secondo quella che viene chiamata \textbf{funzione obbiettivo}, una misura
+        che serve all'algoritmo per comprendere se e quanto sta migliorando nelle iterazioni, condizione fondamentale per
+        la corretta terminazione dell'algoritmo.
+        \par \noindent In ultimo accenniamo al fatto che le soluzioni ottenute non sempre sono soluzioni ottimali, ma il
+        più delle volte soluzioni sub-ottimali, ciò è dovuto dalla mancata esplorazione dell'intero spazio degli stati;
+        compito del progettista è cercare di migliorare la capacità di esplorazione dell'algoritmo.
 
             \section{Gli algoritmi genetici}
             Parlare brevemente della metaeuristica GA
