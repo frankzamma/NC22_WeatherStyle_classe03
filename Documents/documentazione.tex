@@ -46,13 +46,17 @@
                 \begin{itemize}
                     \item \textbf{Tipo di ambiente:} guardaroba con informazioni meteorologiche.
                     \item \textbf{Completamente osservabile:} l'agente attraverso i sensori conosce lo stato
-                    completo dell'ambiente in ogni momento, ossia ha visione completa dei capi presenti nel guardaroba
+                    completo dell'ambiente in ogni momento, ovvero, ha visione completa dei capi presenti nel guardaroba
                     e delle informazioni meteorologiche.
                     \item \textbf{Deterministico:} lo stato successivo dell'ambiente è completamente determinato dallo
-                    stato corrente e dall'azione eseguita dall'agente, quindi è un ambiente che non cambia nel tempo.
+                    stato corrente e dall'azione eseguita dall'agente, dunque, è un ambiente che non cambia nel tempo.
                     \item \textbf{Episodico:} l'esperienza dell'agente si divide in episodi atomici, in ogni episodio
                     esegue una singola azione e non si lascia influenzare da ciò che è accaduto precedentemente.
-                    \item
+                    \item \textbf{Statico:} l'ambiente non cambia nel mentre che l'agente sta eseguendo le proprie azioni.
+                    \item \textbf{Discreto:} l'ambiente fornisce un numero limitato di percezioni\footnote{input percepiti
+                    in un dato istante} e azioni distinte\footnote{una sola azione per ogni episodio}.
+                    \item \textbf{Singolo agente:} l'ambiente consente la presenza di un singolo agente\footnote{nei
+                    capitoli successivi vedremo tre agenti che agiranno singolarmente con uno scopo comune}
                 \end{itemize}
 
     \part{Tecniche di risoluzione}
