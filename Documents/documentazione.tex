@@ -21,6 +21,10 @@
 % Le citazioni sono definite in termini di etichette numeriche come [1],[2],...
 \usepackage[bibstyle=numeric, citestyle=numeric-comp]{biblatex}
 
+\usepackage{quoting}        % usato per citazioni
+\usepackage{algpseudocode}
+\usepackage{algorithmicx}  % usato per scrivere pseudo codice
+
 % preambolo
 \title{\includegraphics[width=0.4\textwidth]{logo}\\WeatherStyle\\Corso Fondamenti di Intellingenza Artificiale\\Prof. F.Palomba}
 \author{Repository github:\\\url{https://github.com/frankzamma/NC22_WeatherStyle_classe03.git}\\\\
@@ -44,10 +48,24 @@
             Introduzione in cui si spiega il motivo per cui nasce il progetto
 
             \section{Gli obbiettivi}
-            Obiettivi che si vogliono raggiungere
+            L'obbiettivo che Weather Style vuole raggiungere è quello di creare un agente intelligente che riesca a fornire
+            all'utente dei suggerimenti sui capi d'abbigliamento che ritiene più adatti, questo basandosi su alcune informazioni
+            metereologiche come la temperatura percepita, il clima e la stagione in cui è effettuata la previsione.
 
             \section{Specifiche PEAS}
-            Performance Environment Actuators Sensors
+            L'acronimo PEAS sta per: Performance Environment Actuators Sensors, e viene utilizzato per descrivere un ambiente.
+            \begin{itemize}
+                \item \textbf{P (Performance)}: è la misura di prestazione adottata per valutare l'operato di un agente.
+                Nel caso di WeatherStyle, la misura di prestazione è data dal consigliare in maniera adeguata i vari capi
+                d'abbigliamento.
+                \item \textbf{E (Environment)}: è la descrizione degli elementi che formano l'ambiente. Nel nostro
+                sistema, l'ambiente è costituito da un insieme di capi d'abbigliamento e dalle previsioni meteo.
+                \item \textbf{A (Actuators)}: servono all'agente per poter compiere delle azioni. L'agente di WeatherStyle
+                si serve di uno schermo per mostrare all'utente i capi d'abbigliamento che ritiene più adeguati.
+                \item \textbf{S (Sensors)}: sono i sensori attraverso i quali l'agente riceve gli input dall'esterno. In
+                questo caso, un sensore è sicuramente la tastiera per poter inserire dei capi d'abbigliamento.
+            \end{itemize}
+
 
             \subsection{Caratteristiche dell'ambiente}
                 \begin{itemize}
@@ -82,9 +100,32 @@
 
             \section{Gli algoritmi genetici}
             Parlare brevemente della metaeuristica GA
+            Sebbene possa sembrare un argomento che si sia affacciato da poco sull'umanità, la storia degli algoritmi genetici
+            ha inizio con il celeberrimo biologo inglese, Charles Darwin.
+            \par \noindent Darwin pubblicò nel 1859 \textit{"L'origine della specie"}, libro che riscosse un enorme
+            successo e nel quale si introduceva per la prima volta il concetto di \textbf{teoria dell'evoluzione} tramite
+            un processo di \textbf{selezione naturale}.
+            \par \noindent Negli anni '50 del XX secolo cominciò il diffondersi degli algoritmi evolutivi,
+            i quali usano tutti i concetti formulati dalla teoria di Darwin, ovvero:
+            \textit{genotipo}, \textit{fenotipo}, \textit{individuo}, \textit{popolazione}, \textit{evoluzione} e via dicendo.
+            \par \noindent
+            \\ \noindent Tra l'insieme degli algoritmi evolutivi troviamo anche gli \textbf{algoritmi genetici} che vennero
+            presentati nel 1975 da John Holland, all'epoca detti \textit{genetic plans}.
+            \par \noindent La definizione di algoritmi genetici è dunque la seguente:
+            procedura di alto livello (meta-euristica) ispirata alla genetica per \textbf{definire}
+            un algoritmo di ricerca.
+            \par \noindent
+            \\ \noindent Partendo da questa definizione si può dire che un algoritmo genetico evolve una \textbf{popolazione}
+            di \textbf{individui} (le cosiddette soluzioni candidate) producendo un iterazione dopo l'altra delle
+            soluzioni che migliorino sempre rispetto ad una \textbf{funzione obbiettivo}, fino a che non si è raggiunta
+            la soluzione \textbf{ottimale} o si sia verificata una \textbf{condizione di terminazione}.
+            Per poter creare nuove \textbf{generazioni} di individui bisogna applicare degli \textbf{operatori genetici},
+            più nello specifico la \textbf{selezione}, il \textbf{crossover} e la \textbf{mutazione}.
+            \par \noindent
 
             \section{Formulazione del problema}
-            Formulazione del GA (codifica individui, operatori genetici)
+            Formulazione del GA (codifica individui\label{codifica:ga} - spostare se necessario, vincoli\label{vincoli:ga}
+            operatori genetici)
             \par \noindent Funzione di fitness (euristiche generali per il calcolo del punteggio)
             \par \noindent [potrebbe essere utile fare delle sottosezioni]
 
@@ -95,6 +136,46 @@
             \section{Implementazione}
             Per l'implementazione della soluzione basata su algoritmo genetico è stato utilizzato il framework
             \textbf{Jenetics} \cite{1}.
+                \subsection{Codifica degli individui}
+                \par \noindent Per prima cosa è stato necessario definire come è fatto un individuo, secondo la logica
+                del framework quando si parla di individuo, esso è chiamato \textbf{Genotype}, a sua volta composto
+                da cromosomi, detti \textbf{Chromosome}, i cromosomi a loro volta sono costituiti da geni, detti
+                \textbf{Gene}.
+                \medskip
+                \par \noindent Rispetto a ciò che è stato detto nella sezione \ref{codifica:ga} possiamo definire
+                i genotipi mediante tre cromosomi, costituti da geni che a loro volta hanno al proprio interno valori
+                interi che variano da \textbf{0} a \textbf{sizeCapi $-$ 1}.
+                \medskip
+                \begin{algorithmic}[1]
+                    \State $firstChromosome \gets Gene(0,sizeCapi-1)$
+                    \State $secondChromosome \gets Gene(0,sizeCapi-1)$
+                    \State $thirdChromosome \gets Gene(0,sizeCapi-1)$
+                    \State $Genotype \gets [firstChromosome, secondChromosome, thirdChromosome]$
+                \end{algorithmic}
+
+                \subsection{Vincoli}
+                \par \noindent Per quel che riguarda la definizione dei vincoli già discussi nella sezione \ref{vincoli:ga}
+                il framework mette a disposizione l'interfaccia \textbf{Constraint} attraverso la quale si vanno a ridefinire
+                due metodi:
+                \begin{itemize}
+                    \item \textbf{test():} metodo che verifica se un genotipo ottenuto in una qualsiasi iterazione è un
+                    buon individuo o meno.
+                    Nello specifico diremo che il test ha avuto esisto positivo se i valori interi di cui è composto il
+                    genotipo sono tre valori diversi, altrimenti diremo che ha avuto esito negativo.
+                    \item \textbf{repair():} metodo che viene chiamato quando un genotipo non ha superato il test e si
+                    cerca quindi di ripararlo.
+                    Nello specifico andremo a costruire un nuovo genotipo che rispetta il vincolo e lo assoceremo a un
+                    \textbf{Phenotype}, ovvero un individuo che è stato valutato; esso viene passato in input al metodo
+                    ed è costituito dal valore di fitness ottenuto e da un numero \emph{i}, ovvero la i-esima generazione
+                    a cui appartiene.
+                \end{itemize}
+
+                \subsection{Funzione di fitness}
+
+                \subsection{Operatori genetici}
+
+                \subsection{Avvio dell'algoritmo}
+
 
         \chapter{Il machine learning}
         Brevissima spiegazione di cos'è il machine learning
