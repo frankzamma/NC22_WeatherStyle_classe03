@@ -22,8 +22,8 @@
 \usepackage[bibstyle=numeric, citestyle=numeric-comp]{biblatex}
 
 \usepackage{quoting}        % usato per citazioni
-\usepackage{algpseudocode}
-\usepackage{algorithmicx}  % usato per scrivere pseudo codice
+\usepackage{algpseudocode}  % usato per scrivere pseudo codice
+\usepackage{algorithm}
 
 % preambolo
 \title{\includegraphics[width=0.4\textwidth]{logo}\\WeatherStyle\\Corso Fondamenti di Intellingenza Artificiale\\Prof. F.Palomba}
@@ -99,7 +99,6 @@
         compito del progettista è cercare di migliorare la capacità di esplorazione dell'algoritmo.
 
             \section{Gli algoritmi genetici}
-            Parlare brevemente della metaeuristica GA
             Sebbene possa sembrare un argomento che si sia affacciato da poco sull'umanità, la storia degli algoritmi genetici
             ha inizio con il celeberrimo biologo inglese, Charles Darwin.
             \par \noindent Darwin pubblicò nel 1859 \textit{"L'origine della specie"}, libro che riscosse un enorme
@@ -150,7 +149,7 @@
                     \State $firstChromosome \gets Gene(0,sizeCapi-1)$
                     \State $secondChromosome \gets Gene(0,sizeCapi-1)$
                     \State $thirdChromosome \gets Gene(0,sizeCapi-1)$
-                    \State $Genotype \gets [firstChromosome, secondChromosome, thirdChromosome]$
+                    \State $genotype \gets [firstChromosome, secondChromosome, thirdChromosome]$
                 \end{algorithmic}
 
                 \subsection{Vincoli}
@@ -171,11 +170,49 @@
                 \end{itemize}
 
                 \subsection{Funzione di fitness}
+                \par \noindent Venendo alla funzione di fitness, come già descritto nella sezione \ref{fitness:ga} il
+                nostro obbiettivo è quello di massimizzare il punteggio ottenuto dalla combinazione dei geni per ogni
+                fenotipo.
+                \par \noindent In termini semplici, per ogni individuo andremo a valutare i tre valori interi, i quali
+                corrisponderanno alle posizioni dei capi d'abbigliamento in una lista, calcoleremo il punteggio per ognuno,
+                faremo una media e restituiremo il risultato.
 
                 \subsection{Operatori genetici}
+                Per la risoluzione del problema sono stati scelti i seguenti operatori genetici:
+                \begin{itemize}
+                    \item \textbf{RouletteWheelSelector:} operatore di selezione, gli individui ricevono una probabilità
+                    di selezione calcolata includendo il corrispettivo valore di fitness. L'algoritmo andrà a selezionare
+                    $n$ individui, saranno consentite ripetizioni degli stessi individui.
+                    \item \textbf{MultiPointCrossover:} operatore di crossover, selezionerà due punti casuali in ogni
+                    individuo, scambierà il patrimonio genetico di quest'ultimi a coppie di due rispetto ai punti di
+                    crossover e genererà per ogni coppia di genitori due nuovi individui figli che costituiranno la
+                    successiva generazione. È stata inoltre inserita una probabilità di crossover pari a $0.25$.
+                    \item \textbf{GaussianMutator:} operatore di mutazione, muterà casualmente un gene dall'individuo
+                    risultante dell'applicazione del crossover, il valore del nuovo gene sarà calcolato prendendo un
+                    valore definito nella distribuzione gaussiana a partire dal gene corrente.
+                \end{itemize}
 
-                \subsection{Avvio dell'algoritmo}
-
+                \subsection{Setup dell'algoritmo}
+                Dopo aver quindi dato una codifica agli individui, definiti i vincoli, la funzione di fitness e aver
+                scelto gli operatori genetici è giunta l'ora di fare il setup dell'algoritmo.
+                \par \noindent Nel seguente pseudo codice riassumiamo i passi fondamentali.
+                \medskip
+                \begin{algorithm}
+                \caption{Setup genetic algorithm}
+                    \label{setup:ga}
+                    \begin{algorithmic}[1]
+                        \State $populationSize \gets 10$
+                        \State $maxEvaluation \gets 100$
+                        \State
+                        \State $constraint \gets ConstraintImplement()$
+                        \State $selector \gets RouletteWheelSelector()$
+                        \State $crossover \gets MultiPointCrossover(0.25)$
+                        \State $mutator \gets GaussianMutator()$
+                        \State
+                        \State $geneticAlgorithm \gets setup(populationSize, maxEvaluation, genotype, fitness,$
+                        \State $\hspace*{12.3em} constraint, selector, crossover, mutator)$
+                    \end{algorithmic}
+                \end{algorithm}
 
         \chapter{Il machine learning}
         Brevissima spiegazione di cos'è il machine learning
