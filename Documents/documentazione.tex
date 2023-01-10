@@ -24,6 +24,7 @@
 \usepackage{quoting}        % usato per citazioni
 \usepackage{algpseudocode}  % usato per scrivere pseudo codice
 \usepackage{algorithm}
+\usepackage{amsmath}
 
 % preambolo
 \title{\includegraphics[width=0.4\textwidth]{logo}\\WeatherStyle\\Corso Fondamenti di Intellingenza Artificiale\\Prof. F.Palomba}
@@ -45,7 +46,14 @@
         \chapter{Cos'è WeatherStyle?}
 
             \section{Le motivazioni}
-            Introduzione in cui si spiega il motivo per cui nasce il progetto
+            Il progetto Weather Style nasce dall'idea di 4 studenti pendolari dell'Università degli Studi di Salerno per
+            risolvere uno dei principali problemi che si trovano ogni giorno ad affrontare.\\
+            In particolare, essi ogni giorno si spostano dalla loro residenza per andare
+            a seguire corsi (o svolgere esami) presso il Campus di Fisciano e devono scegliere l'abbigliamento
+            che sia più adatto per fronteggiare le condizioni climatiche previste.
+            Il problema esposto non riguarda solo gli studenti ma anche tutti coloro che devono spostarsi per lavoro
+            verso un'altra città, quindi un applicativo che lo risolva, seppur parzialmente,
+            potrebbe aiutare un significativo numero di persone.
 
             \section{Gli obbiettivi}
             L'obbiettivo che Weather Style vuole raggiungere è quello di creare un agente intelligente che riesca a fornire
@@ -129,7 +137,33 @@
             \par \noindent [potrebbe essere utile fare delle sottosezioni]
 
             \section{Vantaggi e svantaggi}
-            Cosa ha senso e cosa no nella nostra risoluzione (vincoli, confronto ricerca esaustiva)
+            La soluzione illustrata in questo capitolo presenta dei vantaggi e degli svantaggi, molti dei quali legati
+            alla natura degli algoritmi genetici.
+            Uno dei principali problemi affrontati è stato sulla generazione della popolazione iniziale.
+            In genere, la prima popolazione viene generata in maniera totalmente casuale quindi non è detto che
+            tali individui rispettino il vincolo imposto (i tre elementi devono essere diversi).\\
+            Il problema è stato risolto andando ad impostare una generazione pseudo casuale della prima generazione che permette
+            di avere anche nella prima generazione degli elementi ammissibili e, di conseguenza,
+            la ricerca viene guidata verso soluzioni ammissibili e migliori riducendo il carico computazionale.\\
+
+            Un'osservazione importante da fare riguarda l'efficienza.
+            Con un guardaroba di grandi dimensioni, gli algoritmi genetici,
+            ci permettono sicuramente di effettuare un numero inferiore di computazione rispetto ad una ricerca esaustiva
+            restituendo quasi sempre buon risultato.
+            Tuttavia, con il setup da noi effettuato, cioè \emph{size della popolazione = 10} e
+            \emph{max= 100}, i GA diventano più efficienti della ricerca esaustiva con un numero di capi
+            maggiore strettamente di 10.
+            Infatti, facendo un po' di calcoli il numero stati possibili con 10 capi è pari al numero di disposizioni
+            con ripetizione di 10 elementi raggruppati in classi di 3:
+            \begin{equation*}
+                D_{10,3}^{'}=10^{3}=1000
+            \end{equation*}
+            che è esattamente uguale al numero massimo di valutazione della funzione di fitness che il GA compie durante la sua esecuzione:
+            \begin{equation*}
+                populationSize * maxEvaluation = 10 * 100 = 1000
+            \end{equation*}
+            Dunque, ha senso utilizzare l'approccio basato su algoritmi genetici quando il numero dei capi è maggiore di 10.
+
             \par \noindent [potrebbe essere utile fare delle sottosezioni]
 
             \section{Implementazione}
