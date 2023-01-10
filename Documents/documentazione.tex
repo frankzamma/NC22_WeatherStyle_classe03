@@ -23,6 +23,7 @@
 
 \usepackage{quoting}        % usato per citazioni
 \usepackage{algpseudocode}  % usato per scrivere pseudo codice
+\usepackage{algorithm}
 
 % preambolo
 \title{\includegraphics[width=0.4\textwidth]{logo}\\WeatherStyle\\Corso Fondamenti di Intellingenza Artificiale\\Prof. F.Palomba}
@@ -193,20 +194,25 @@
 
                 \subsection{Setup dell'algoritmo}
                 Dopo aver quindi dato una codifica agli individui, definiti i vincoli, la funzione di fitness e aver
-                scelto gli operatori genetici è giunta loro di fare il setup dell'algoritmo.
+                scelto gli operatori genetici è giunta l'ora di fare il setup dell'algoritmo.
                 \par \noindent Nel seguente pseudo codice riassumiamo i passi fondamentali.
                 \medskip
-                \begin{algorithmic}[1]
-                    \State $populationSize \gets 10$
-                    \State
-                    \State $constraint \gets ConstraintImplement()$
-                    \State $selector \gets RouletteWheelSelector()$
-                    \State $crossover \gets MultiPointCrossover(0.25)$
-                    \State $mutator \gets GaussianMutator()$
-                    \State
-                    \State $geneticAlgorithm \gets (populationSize, genotype, fitness, constraint, selector, crossover, mutator)$
-                \end{algorithmic}
-
+                \begin{algorithm}
+                \caption{Setup genetic algorithm}
+                    \label{setup:ga}
+                    \begin{algorithmic}[1]
+                        \State $populationSize \gets 10$
+                        \State $maxEvaluation \gets 100$
+                        \State
+                        \State $constraint \gets ConstraintImplement()$
+                        \State $selector \gets RouletteWheelSelector()$
+                        \State $crossover \gets MultiPointCrossover(0.25)$
+                        \State $mutator \gets GaussianMutator()$
+                        \State
+                        \State $geneticAlgorithm \gets setup(populationSize, maxEvaluation, genotype, fitness,$
+                        \State $\hspace*{12.3em} constraint, selector, crossover, mutator)$
+                    \end{algorithmic}
+                \end{algorithm}
 
         \chapter{Il machine learning}
         Brevissima spiegazione di cos'è il machine learning
