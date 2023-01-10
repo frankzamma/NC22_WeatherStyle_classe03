@@ -151,7 +151,62 @@
             </tbody>
         </table>
         <% }
- %>
+
+            if(scarpeSuggerite.size() == 0) { %>
+        <br>
+        <h3 class="display-6">Nessun pantalone è stato suggerito.</h3>
+        <% }
+        else {
+            List<Double> punteggiScarpe = (List<Double>) request.getAttribute("punteggiScarpe");
+        %>
+        <br>
+        <h3 class="display-6">Scarpe suggerite</h3>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Colore</th>
+                <th scope="col">Antiscivolo</th>
+                <th scope="col">Impermeabile</th>
+                <th scope="col">Stagione</th>
+                <%
+                    if(punteggiScarpe != null){
+                %>
+                <th scope="col">Punteggio</th>
+                <%
+                    }
+                %>
+            </tr>
+            </thead>
+            <tbody>
+            <%
+                int i = 0;
+                for(CapoAbbigliamento capo: scarpeSuggerite){
+                    Scarpa scarpa = (Scarpa) capo;
+            %>
+            <tr>
+                <td><%=i%></td>
+                <td><%=scarpa.getTipo()%></td>
+                <td><%=scarpa.getColore()%></td>
+                <td><%=scarpa.getAntiscivolo() ? "SI" : "NO"%></td>
+                <td><%=scarpa.getImpermeabile() ? "SI" : "NO"%></td>
+                <td><%=scarpa.getStagione()%></td>
+                <%
+                    if(punteggiScarpe != null){
+                %>
+                <td><%=punteggiScarpe.get(i)%></td>
+                <%
+                    }
+                %>
+            </tr>
+            <%  i++;
+            } %>
+            </tbody>
+        </table>
+        <% }
+        %>
     </div>
+    <%@include file="footer.jsp"%>
 </body>
 </html>

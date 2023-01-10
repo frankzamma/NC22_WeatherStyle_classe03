@@ -119,12 +119,12 @@ public class RichiestaSuggerimentoServlet extends HttpServlet {
                                 //  Si avviano i vari algoritmi genetici
                                 TopClothesGA topClothesGA = new TopClothesGA(listaMaglie, meteoInformation);
                                 BottomClothesGA bottomClothesGA = new BottomClothesGA(listaPantaloni, meteoInformation);
-                                //ShoesClothesGA shoesClothesGA = new ShoesClothesGA(listaScarpe, meteoInformation);
+                                ShoesClothesGA shoesClothesGA = new ShoesClothesGA(listaScarpe, meteoInformation);
 
                                 // Si ottengono i migliori capi per ognuno degli algoritmi genetici avviati prima
                                 maglieSuggerite = topClothesGA.getBestMaglie();
                                 pantaloniSuggeriti = bottomClothesGA.getBestPantaloni();
-                                //scarpeSuggerite = shoesClothesGA.getBestScarpe();
+                                scarpeSuggerite = shoesClothesGA.getBestScarpe();
                             }
 
                         request.setAttribute("maglieSuggerite", maglieSuggerite);
