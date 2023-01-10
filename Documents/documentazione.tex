@@ -8,11 +8,18 @@
 % heightrounded modifica le regole di contenimento del testo per far rientrare il testo in un numero finito di righe
 \geometry{a4paper, top=2cm, bottom=2cm, left=2.5cm, right=2.5cm, heightrounded}
 
-\pagestyle{plain}           %numeri di pagina in fondo
+\pagestyle{plain}           % numeri di pagina in fondo
 
-\usepackage{hyperref}
-\usepackage{graphicx}       %usato per collegamenti ipertestuali
-\hypersetup{hidelinks}      %usato per rimuovere i riquadri dai link
+\usepackage{hyperref}       % usato per collegamenti ipertestuali
+\usepackage{graphicx}       % usato per inserire immagini
+\hypersetup{hidelinks}      % usato per rimuovere i riquadri dai link
+
+% autostyle adatta lo stile delle citazioni alla lingua del documento,
+% italian=gillments racchiude tra le virgolette caporali i campi che prevedono le virgolette
+\usepackage[autostyle,italian=guillemets]{csquotes}
+% usato per la generazione rif bibliografici, richiede l'uso di babel e csquotes, biblatex è il motore usato.
+% Le citazioni sono definite in termini di etichette numeriche come [1],[2],...
+\usepackage[bibstyle=numeric, citestyle=numeric-comp]{biblatex}
 
 % preambolo
 \title{\includegraphics[width=0.4\textwidth]{logo}\\WeatherStyle\\Corso Fondamenti di Intellingenza Artificiale\\Prof. F.Palomba}
@@ -77,7 +84,7 @@
             Parlare brevemente della metaeuristica GA
 
             \section{Formulazione del problema}
-            Formulazione del GA (codifica individui, operatori genetici - ATTENZIONE! sono stati usati diversi operatori per ogni algoritmo)
+            Formulazione del GA (codifica individui, operatori genetici)
             \par \noindent Funzione di fitness (euristiche generali per il calcolo del punteggio)
             \par \noindent [potrebbe essere utile fare delle sottosezioni]
 
@@ -86,7 +93,8 @@
             \par \noindent [potrebbe essere utile fare delle sottosezioni]
 
             \section{Implementazione}
-            Caratteristiche del framework e passi necessari alla risoluzione (eventuale pseduo codice)
+            Per l'implementazione della soluzione basata su algoritmo genetico è stato utilizzato il framework
+            \textbf{Jenetics} \cite{1}.
 
         \chapter{Il machine learning}
         Brevissima spiegazione di cos'è il machine learning
@@ -141,17 +149,27 @@
             quindi eventuali classi interfacce, ecc\ldots
 
 
-            \part{Conclusioni e osservazioni}
-            \chapter{Cosa scegliamo?}
-                \section{Un confronto tra GA e ML}
+    \part{Conclusioni e osservazioni}
+        \chapter{Cosa scegliamo?}
+            \section{Un confronto tra GA e ML}
                 Quando conviene uno e quando conviene l'altro
-                \section{Possiamo fare di meglio}
+            \section{Possiamo fare di meglio}
                 Introduzione alle due osservazioni
-                    \subsection{Usare il ML per il calcolo della funzione di fitness}
-                    Spiegare cosa si può fare
-                    \subsection{Usare un GA per costruire l'albero di regressione}
-                    Spiegare cosa si può fare
+                \subsection{Usare il ML per il calcolo della funzione di fitness}
+                Spiegare cosa si può fare
+                \subsection{Usare un GA per costruire l'albero di regressione}
+                Spiegare cosa si può fare
 
 
+    % sezione dedicata ai riferimenti bibliografici
+    \begin{thebibliography}{9} % meno di 10, 99 meno di 100 e così via...
+        \bibitem{1}
+        Jenetics, Java Genetic Alghorithm Library,
+        \url{https://jenetics.io/}.
+
+        \bibitem{2}
+        Weka, Waikato Environment for Knowledge Analysis,
+        \url{https://www.cs.waikato.ac.nz/ml/weka/}.
+    \end{thebibliography}
 
 \end{document}
