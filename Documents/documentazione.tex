@@ -360,10 +360,48 @@
 
             \newpage
             \section{Data Understanding}
-            In questa sezione andremo ad acquisire i dati, visualizzarli, analizzarli e documentarli rispetto al loro
+            Come già discusso durante la fase di business understanding il principale rischio dell'approccio basato su machine
+            learning è stato l'effettiva mancanza di un dataset che rispondesse appieno alle nostre esigenze.
+            \par \noindent Ciononostante abbiamo trovato diversi dataset che in un qualche modo fusi insieme hanno potuto
+            dar vita al dataset di cui avevamo bisogno, e in buona parte ci siamo riusciti!
+            \par \noindent In questa sezione andremo quindi ad acquisire i dati, visualizzarli, analizzarli e documentarli rispetto al loro
             formato e alla loro qualità.
                 \subsection{Dataset maglie e pantaloni}
-                Questa fase può essere accorpata, magari si fa metà e metà
+                La prima cosa da fare quindi era trovare un dataset che comprendesse i dettagli di diversi capi d'abbigliamento,
+                Github si è dimostrato di grande aiuto e il dataset \cite{6} corrispondeva a ciò di cui avevamo bisogno.
+                \\
+                \par \noindent Il dataset contava più di $14000$ osservazioni.
+                \\
+                \par \noindent La feature che ci ha permesso di distinguere la tipologia dei capi d'abbigliamento
+                era indicata come \textit{Type} i cui valori unici erano \textbf{Top}, \textbf{Bottom} e \textbf{Dress}.
+                Per il nostro problema non sono stati considerati i vestiti da donna, quindi nella fase di data preparation
+                ne terremo conto.
+                \begin{center}
+                    \includegraphics[scale=0.4]{countTopBottom}
+                \end{center}
+                \bigskip
+                \par \noindent Tra le altre feature molto interessanti presenti nel dataset rientra anche la stagione
+                in cui il capo d'abbigliamento è indicato, la colonna corrispondente è denominata \textit{Season}.
+                Qui notiamo molte categorie distinte per la stagione che potremmo eventualmente generalizzare.
+                \begin{center}
+                    \includegraphics[scale=0.4]{countSeasonTopBottom}
+                \end{center}
+                \newpage
+                \par \noindent Altra feature importante presente nel dataset è quella indicata come \textit{Material}
+                dove vanno per la maggiore i capi in \textbf{Cotton} e \textbf{Polyester}. Da non trascurare la presenza
+                di tanti materiali di tipologia diversa e di come questi potrebbero essere generalizzati, ad es: \textbf{Cotton Blends}
+                è possibile generalizzarlo nella categoria Cotton.
+                \begin{center}
+                    \includegraphics[scale=0.4]{countMaterialTopBottom}
+                \end{center}
+                \bigskip
+                \par \noindent Infine come ultima feature molto importante presente nel dataset per quanto riguarda i capi
+                d'abbigliamento della categoria \textbf{Top} è la colonna indicata come \textit{Sleeve Length}. Si può
+                notare come per la maggior parte siano presenti maglie della categoria \textbf{Loong Sleeve} e
+                \textbf{Short Sleeve}.
+                \begin{center}
+                    \includegraphics[scale=0.4]{countLengthTop}
+                \end{center}
                 \subsection{Dataset scarpe}
                 Stesso discorso di cui sopra
                 \subsection{Dataset meteo}
@@ -474,6 +512,10 @@
         \bibitem{5}
         seaborn,
         \url{https://seaborn.pydata.org/}
+
+        \bibitem{6}
+        dataset maglie e pantaloni,
+        \url{https://github.com/justjess678/clothes-scraper.git}
     \end{thebibliography}
 
 \end{document}
