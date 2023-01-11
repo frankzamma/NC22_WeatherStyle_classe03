@@ -444,7 +444,43 @@
                     \includegraphics[scale=0.4]{countLengthTop}
                 \end{center}
                 \subsection{Dataset scarpe}
-                Stesso discorso di cui sopra
+                Il dataset illustrato al punto precedente, non contiene informazioni in merito alle scarpe.
+                Per fortuna, su \cite{3} è disponibile  \cite{7} che ci ha permesso di andare avanti con il nostro lavoro.
+                \\
+                Il dataset contava $50025$ record di scarpe.
+                \\
+                Molte di queste righe, hanno, però dei valori nulli.
+                Eliminando tali righe si scende a $18260$ record.\\
+                Inoltre, il dataset ripulito dai valori nulli presenta molti duplicati, eliminandoli si scende a $7323$ record distinti.\\
+                Il dataset presenta i seguenti attributi:
+                \begin{itemize}
+                    \item CID : colonna che costituisce l'id dei record
+                    \item Category: categorie delle scarpe
+                    Nel seguente grafico si può vedere che sono presenti 4 categorie:
+                    \begin{center}
+                        \includegraphics[scale=0.4]{CategoryShoes}
+                    \end{center}
+                    \item SubCategory: sotto-categorie delle scarpe.
+                    Sono presenti diverse categorie di scarpe:
+                    \begin{center}
+                        \includegraphics[scale=0.4]{SubCategoryShoes}
+                    \end{center}
+                    \item HeelHeight: Altezza del tacco in pollici.
+                    Questa caratteristica è poco interessante per i nostri obiettivi
+                    \item Insole: Materiale della suola.
+                    Anche questa caratteristica, è poco utile ai nostri scopi perché per nella realtà tale dato sarà
+                    difficilmente disponibile a meno che una persona sia un esperto di scarpe.
+                    Tuttavia, nella fase di data preparation ci ritornerà utile per imputare un'altra caratteristica.
+                    \item Closure: rappresenta il modo in cui viene chiusa la scarpe (Eg. Lacci, Strappi).
+                    Neanche questa caratteristica ci aiuta a raggiungere i nostri obiettibi
+                    \item Gender: rappresenta il genere a cui è rivolta la scarpa.
+                    Questo oltre a servire poco per i nostri, può essere considerato un attributo sensibile e,
+                    di conseguenza, verrà eliminato nella fase successiva,
+                    \item Material: Il/i materiale/i di cui è composta la scarpa.
+                    Poco utile, considerazioni simili a quelle fatte per la Insole.
+                    \item ToeStyle: stile della punta.
+                    Anche questo attributo ci aiuta poco.
+                \end{itemize}
                 \subsection{Dataset meteo}
 
             \newpage
@@ -557,6 +593,10 @@
         \bibitem{6}
         dataset maglie e pantaloni,
         \url{https://github.com/justjess678/clothes-scraper.git}
+
+        \bibitem{7}
+        dataset scarpe
+        \url{https://www.kaggle.com/datasets/ramu237/shoes-dataset}
     \end{thebibliography}
 
 \end{document}
