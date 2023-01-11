@@ -75,7 +75,8 @@
                 \item \textbf{A (Actuators)}: servono all'agente per poter compiere delle azioni. L'agente di WeatherStyle
                 si serve di uno schermo per mostrare all'utente i capi d'abbigliamento che ritiene più adeguati.
                 \item \textbf{S (Sensors)}: sono i sensori attraverso i quali l'agente riceve gli input dall'esterno. In
-                questo caso, un sensore è sicuramente la tastiera per poter inserire dei capi d'abbigliamento.
+                questo caso, un sensore è sicuramente la tastiera per poter inserire dei capi d'abbigliamento, e le
+                informazioni metereologiche.
             \end{itemize}
 
 
@@ -136,10 +137,50 @@
 
             \newpage
             \section{Formulazione del problema}
-            Formulazione del GA (codifica individui\label{codifica:ga} - spostare se necessario, vincoli\label{vincoli:ga}
-            operatori genetici)
-            \par \noindent Funzione di fitness (euristiche generali per il calcolo del punteggio)
-            \par \noindent [potrebbe essere utile fare delle sottosezioni]
+            Il primo quesito da porsi nel momento in cui si ha a che fare con un algoritmo genetico è: come vengono
+            codificati gli individui? Nel nostro caso, l'algoritmo dovrà scegliere solamente tre dai capi che si ritengono
+            più adeguati; per questo motivo, la codifica degli individui consiste in un array di tre interi. Questi ultimi
+            rappresentano la posizione del capo d'abbigliamento scelto nella lista di tutti i capi.
+            \par \noindent Dopo aver definito come gli individui devono essere codificati, si passa ad analizzare i vincoli a
+            cui essi sono sottoposti. In questo caso, l'unico vincolo è che, all'interno dell'array, non si ripeta un intero
+            più di una volta, cioè che i capi siano tutti diversi tra loro.
+            \par \noindent La prima parte di un GA consiste nell'inizializzazione di una popolazione. Inizialmente la soluzione
+            verteva verso un'inizializzazione casuale ma, dopo aver constatato che la popolazione non rispettava il vincolo richiesto,
+            si è pensato a un'inizializzazione pseudo-casuale, cioè producendo array ammissibili (che rispettino il vincolo citato sopra)
+            contrastando il fatto che un elemento si possa ripetere più volte.
+            \\ \noindent Dopo aver chiarito la codifica degli individui, bisogna modellare la funzione di fitness.
+            Il nostro obiettivo è quello di fornire all'utente la selezione dei tre capi migliori in base alle condizioni meteo; per
+            ogni capo d'abbigliamento, viene calcolato un punteggio (utilità) che consente di aiutare l'agente nella scelta.
+            \par \noindent Il punteggio si basa su diversi parametri:
+            \begin{itemize}
+                \item \textbf{Temperatura.} Sono stati differenziati ben sette range di temperatura in cui, per ognuno,
+                vengono assegnati i punteggi ai vari materiali di cui può essere composto un capo d'abbigliamento (maglie e pantaloni).
+                Ad esempio, quando la temperatura scende al di sotto dei cinque gradi, verrà assegnato un punteggio maggiore ad un tessuto
+                come la lana piuttosto che ad uno come il lino, essendo tipicamente estivo. Per le scarpe viene, inoltre, incrementato il
+                punteggio anche sulla base della pioggia: se le previsioni metereologiche dichiarano pioggia, verranno assegnati punti "bonus"
+                se la scarpa è antiscivolo e/o impermeabile.
+                \item \textbf{Lunghezza.}Nei range suddetti vengono anche specificati i punteggi relativi
+                alla lunghezza sia dei pantaloni che delle maglie relativamente alla manica; tenendo in considerazione l'esempio precedente, verrà
+                sicuramente preferita una manica lunga e un pantalone lungo rispetto alle altre lunghezze.
+                \item \textbf{Stagionalità.} Inoltre, si assegna una valutazione sulla base della stagionalità del capo; sia per le maglie, che per i
+                pantaloni e per le scarpe, viene dato il massimo del punteggio se la stagione in cui viene richiesto l'intervento dell'agente coincide
+                con quella indicata per quel determinato capo d'abbigliamento.
+                \item \textbf{Tipo di scarpe.} In base alle previsioni meteo e al tipo di scarpe, viene assegnato un determinato punteggio. Ad esempio,
+                in caso di neve, vengono preferiti gli stivali alle classiche scarpe di ginnastica.
+                \item \textbf{Colore.} Si tende, per ognuna delle tre tipologie di capo d'abbigliamento, a preferire colori chiari in caso di meteo
+                soleggiato piuttosto che colori scuri; per i capi colorati, i punti corrispondono a cinque, esattamente a metà tra i dieci per i capi
+                chiari e zero per quelli scuri.
+            \end{itemize}
+            \\ \noindent Riassumendo, per ogni capo d'abbigliamento si calcola la sua utilità. In particolare, per maglie e pantaloni, l'utilità
+            è data da \textit{u(x)=te(x)+c(x)+l(x)+s(x)}, dove \textit{te(x)} rappresenta la temperatura, \textit{c(x)} il colore, \textit{l(x)}
+            la lunghezza, \textit{s(x)} la stagionalità. Allo stesso modo, per le scarpe l'utilità è espressa come \textit{u(x)=ti(x)+te(x)+s(x)+c(x)},
+            in cui \textit{te(x)}, \textit{c(x)} e \textit{s(x)} assumono lo stesso significato detto in precedenza, e \textit{ti(x)} rappresenta il tipo
+            di scarpa.
+            \ \noindent In conclusione, la funzione di fitness è data dalla media dei tre punteggi assegnati ad ogni capo d'abbigliamento, cioè
+        \begin{equation*}
+            \frac{\sum_{n=1}^{3} u_{n}}{3}
+        \end{equation*}
+
 
             \newpage
             \section{Implementazione}
