@@ -227,27 +227,66 @@
             Uno dei principali problemi affrontati è stato sulla generazione della popolazione iniziale.
             In genere, la prima popolazione viene generata in maniera totalmente casuale quindi non è detto che
             tali individui rispettino il vincolo imposto (i tre elementi devono essere diversi).\\
-            Il problema è stato risolto andando ad impostare una generazione pseudo casuale della prima generazione che permette
+            Il problema è stato risolto andando ad impostare una generazione pseudo casuale che permette
             di avere anche nella prima generazione degli elementi ammissibili e, di conseguenza,
             la ricerca viene guidata verso soluzioni ammissibili e migliori riducendo il carico computazionale.\\
-
+            A valle di test empirici, possiamo dire che la soluzione riesce quasi sempre a restituire un risultato ottimale.
+            In particolare, su 10 test effettuati ben x volte il risultato è da considerare ottimo.
+            Di seguito un report del test eseguito:\\
+                \begin{tabular}{ |p{3cm}|p{2cm}|p{2cm}||p{4cm}|}
+                    \hline
+                    \multicolumn{4}{|c|}{Test effettuati} \\
+                    \hline
+                    Data previsione & Meteo & Temperatura Percepita & Risultato\\
+                    \hline
+                    11/09/2022 & piovoso  & 11 & x\\
+                    \hline
+                    02/12/2022 & nuvoloso  & 13 & x\\
+                    \hline
+                    04/04/2022 & piovoso  & 18 & x\\
+                    \hline
+                    01/02/2022 & soleggiato  & 3 & x\\
+                    \hline
+                    13/01/2022 & neve  & 5 & x\\
+                    \hline
+                    20/02/2022 & soleggiato  & 20 & x\\
+                    \hline
+                    16/04/2022 & piovoso  & 15 & x\\
+                    \hline
+                    6/08/2022 & Nuvoloso  & 30 & x\\
+                    \hline
+                \end{tabular}
+            \subsection{Efficienza}\label{subsec:efficienza}
             Un'osservazione importante da fare riguarda l'efficienza.
             Con un guardaroba di grandi dimensioni, gli algoritmi genetici,
-            ci permettono sicuramente di effettuare un numero inferiore di computazione rispetto ad una ricerca esaustiva
+            ci permettono sicuramente di effettuare un numero inferiore di computazioni rispetto ad una ricerca esaustiva
             restituendo quasi sempre buon risultato.
             Tuttavia, con il setup da noi effettuato, cioè \emph{size della popolazione = 10} e
-            \emph{max= 100}, i GA diventano più efficienti della ricerca esaustiva con un numero di capi
-            maggiore strettamente di 10.
-            Infatti, facendo un po' di calcoli il numero stati possibili con 10 capi è pari al numero di disposizioni
-            con ripetizione di 10 elementi raggruppati in classi di 3:
+            \emph{max= 100}, i GA diventano più efficienti di una ricerca esaustiva con un numero di capi
+            maggiore o uguale a 20.
+            Infatti, facendo un po' di calcoli il numero stati ammissibili con 20 capi è pari al numero di combinazioni semplici
+            di 20 elementi raggruppati in classi di 3:
             \begin{equation*}
-                D_{10,3}^{'}=10^{3}=1000
+                C_{20,3}=\binom{20}{3}= 1120
             \end{equation*}
-            che è esattamente uguale al numero massimo di valutazione della funzione di fitness che il GA compie durante la sua esecuzione:
+            che è leggermente superiore al numero massimo di valutazione della funzione di fitness che il GA compie durante la sua esecuzione:
             \begin{equation*}
                 populationSize * maxEvaluation = 10 * 100 = 1000
             \end{equation*}
-            Dunque, ha senso utilizzare l'approccio basato su algoritmi genetici quando il numero dei capi è maggiore di 10.
+            Bisogna però sottolineare, che la precedente osservazione considera che la ricerca esaustiva venga effettuata soltanto
+            tra i possibili stati ammissibili per la soluzione, che richiedono anche essi una computazione per essere generati.
+            Quindi, ritrattando, se consideriamo tutte le soluzioni (ammissibili e non ammissibili) i GA diventano più efficienti già a partire da
+            11 capi d'abbigliamento:
+            \begin{equation*}
+                D_{11,3}^{'}=11^3 = 1331  > 1000 = populationSize * maxEvaluation = 10 * 100 = 100
+            \end{equation*}
+            Per concludere, la soluzione basata su Algoritmi Genetici, riesce a fornire un buon consiglio all'utente
+            in quasi tutte le condizioni meteo.
+            In alcuni casi, essi hanno restituito un risulto sub-ottimo in cui, ad esempio, uno dei tre dei capi non era
+            particolarmente adatto, ma essendo che la scelta tra i tre è effettuata dall'utente, si ritiene che tale soluzione
+            sia applicabile nel sistema finale, eventualmente effettuando un raffinamento della funzione di fitness per
+            evitare i casi di risultati sub-ottimi.
+
 
     \chapter{Il machine learning}
         Quando si parla di \textbf{machine learning} solitamente si tende ad accomunarlo al concetto di ``Intelligenza Artificiale'',
@@ -318,10 +357,48 @@
 
             \newpage
             \section{Data Understanding}
-            In questa sezione andremo ad acquisire i dati, visualizzarli, analizzarli e documentarli rispetto al loro
+            Come già discusso durante la fase di business understanding il principale rischio dell'approccio basato su machine
+            learning è stato l'effettiva mancanza di un dataset che rispondesse appieno alle nostre esigenze.
+            \par \noindent Ciononostante abbiamo trovato diversi dataset che in un qualche modo fusi insieme hanno potuto
+            dar vita al dataset di cui avevamo bisogno, e in buona parte ci siamo riusciti!
+            \par \noindent In questa sezione andremo quindi ad acquisire i dati, visualizzarli, analizzarli e documentarli rispetto al loro
             formato e alla loro qualità.
                 \subsection{Dataset maglie e pantaloni}
-                Questa fase può essere accorpata, magari si fa metà e metà
+                La prima cosa da fare quindi era trovare un dataset che comprendesse i dettagli di diversi capi d'abbigliamento,
+                Github si è dimostrato di grande aiuto e il dataset \cite{6} corrispondeva a ciò di cui avevamo bisogno.
+                \\
+                \par \noindent Il dataset contava più di $14000$ osservazioni.
+                \\
+                \par \noindent La feature che ci ha permesso di distinguere la tipologia dei capi d'abbigliamento
+                era indicata come \textit{Type} i cui valori unici erano \textbf{Top}, \textbf{Bottom} e \textbf{Dress}.
+                Per il nostro problema non sono stati considerati i vestiti da donna, quindi nella fase di data preparation
+                ne terremo conto.
+                \begin{center}
+                    \includegraphics[scale=0.4]{countTopBottom}
+                \end{center}
+                \bigskip
+                \par \noindent Tra le altre feature molto interessanti presenti nel dataset rientra anche la stagione
+                in cui il capo d'abbigliamento è indicato, la colonna corrispondente è denominata \textit{Season}.
+                Qui notiamo molte categorie distinte per la stagione che potremmo eventualmente generalizzare.
+                \begin{center}
+                    \includegraphics[scale=0.4]{countSeasonTopBottom}
+                \end{center}
+                \newpage
+                \par \noindent Altra feature importante presente nel dataset è quella indicata come \textit{Material}
+                dove vanno per la maggiore i capi in \textbf{Cotton} e \textbf{Polyester}. Da non trascurare la presenza
+                di tanti materiali di tipologia diversa e di come questi potrebbero essere generalizzati, ad es: \textbf{Cotton Blends}
+                è possibile generalizzarlo nella categoria Cotton.
+                \begin{center}
+                    \includegraphics[scale=0.4]{countMaterialTopBottom}
+                \end{center}
+                \bigskip
+                \par \noindent Infine come ultima feature molto importante presente nel dataset per quanto riguarda i capi
+                d'abbigliamento della categoria \textbf{Top} è la colonna indicata come \textit{Sleeve Length}. Si può
+                notare come per la maggior parte siano presenti maglie della categoria \textbf{Loong Sleeve} e
+                \textbf{Short Sleeve}.
+                \begin{center}
+                    \includegraphics[scale=0.4]{countLengthTop}
+                \end{center}
                 \subsection{Dataset scarpe}
                 Stesso discorso di cui sopra
                 \subsection{Dataset meteo}
@@ -432,6 +509,10 @@
         \bibitem{5}
         seaborn,
         \url{https://seaborn.pydata.org/}
+
+        \bibitem{6}
+        dataset maglie e pantaloni,
+        \url{https://github.com/justjess678/clothes-scraper.git}
     \end{thebibliography}
 
 \end{document}
