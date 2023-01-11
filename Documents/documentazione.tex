@@ -270,7 +270,7 @@
         In particolare i nostri sforzi saranno incentrati sugli algoritmi di \textbf{regressione}, ovvero tecniche in grado
         di predire il valore di una variabile numerica sulla base degli input forniti.
 
-
+            \bigskip
             \section{CRISP-DM}
             Per progettare una soluzione basata sul \textbf{machine learning} bisogna avere un approccio data \& software
             engineering.
@@ -304,32 +304,32 @@
                 delle risorse ovvero un dataset per ogni capo d'abbigliamento (maglia, pantalone e scarpa),
                 che contiene informazioni riguardo il capo d'abbigliamento specifico e delle informazioni meteo correlate.
                 \par \noindent Purtroppo dopo un'approfondita ricerca non siamo riusciti a trovare nessun dataset che facesse
-                al caso nostro, anche sfruttando siti importanti nell'ambito del machine learning come \url{https://www.kaggle.com},
+                al caso nostro, anche sfruttando piattaforme importanti nell'ambito del machine learning come \textbf{Kaggle} \cite{3},
                 quindi per rimediare a questo abbiamo costruito i dataset che ci servivano acquisendo, analizzando e modellando
                 i dati da altri dataset.
                 \item \textbf{Stima dei rischi}: Il non avere già in partenza dei dataset su cui poter lavorare comporta
                 di certo un rischio non di poco conto dato che bisogna costruirseli da se e dunque i dati non sono adeguatamente testati.
                 \item \textbf{Tecnologie e strumenti}: Per acquisire, analizzare e modellare i dati abbiamo scelto di utilizzare
-                il linguaggio Python poiché mette a disposizione diverse librerie molto utili per i nostri scopi.
+                il linguaggio Python poiché mette a disposizione alcune librerie come \textbf{pandas} \cite{4} e \textbf{seaborn} \cite{5}.
                 L'addestramento e l'implementazione dei modelli invece è fatta in linguaggio Java, questo per comodità dato che
                 l'intero applicativo di Weather Style è scritto usando tale linguaggio di programmazione.
             \end{itemize}
 
-
-    \section{Data Understanding}
-            Potrebbe essere utile inserire i link dei dataset trovati online e per ognuno costruire dei piccoli grafici
-            (es: dataset maglie aveva dress, top e bottom e si mostra\ldots)
+            \newpage
+            \section{Data Understanding}
+            In questa sezione andremo ad acquisire i dati, visualizzarli, analizzarli e documentarli rispetto al loro
+            formato e alla loro qualità.
                 \subsection{Dataset maglie e pantaloni}
                 Questa fase può essere accorpata, magari si fa metà e metà
                 \subsection{Dataset scarpe}
                 Stesso discorso di cui sopra
+                \subsection{Dataset meteo}
 
+            \newpage
             \section{Data Preparation}
-            Qui parliamo del feature selection (feature che abbiamo selezionato), della fusione col dataset meteo e come
-            è stata calcolata la variabile dipendente, eventuali imputazioni fatte\ldots
-                \newpage
+            In questa sezione tratteremo le tecniche adottate per preparare i dati acquisiti nella fase precedente in
+            modo che siano di un formato comprensibile al nostro machine learner.
                 \subsection{Dataset maglie e pantaloni}
-                Come è stato costruito, strategia.
                 Per costruire i dataset contenenti le informazioni delle \textbf{maglie} e dei \textbf{pantaloni} ci siamo serviti delle
                 informazioni ricavate nella fase di Data Understanding \textit{(sottosezione 3.3.1)}.
                 \par \noindent Il procedimento di \textit{Data Preparation} si articola nei seguenti quattro passaggi:
@@ -419,6 +419,18 @@
         \bibitem{2}
         Weka, Waikato Environment for Knowledge Analysis,
         \url{https://www.cs.waikato.ac.nz/ml/weka/}.
+
+        \bibitem{3}
+        Kaggle,
+        \url{https://www.kaggle.com}
+
+        \bibitem{4}
+        pandas,
+        \url{https://pandas.pydata.org/docs/}
+
+        \bibitem{5}
+        seaborn,
+        \url{https://seaborn.pydata.org/}
     \end{thebibliography}
 
 \end{document}
