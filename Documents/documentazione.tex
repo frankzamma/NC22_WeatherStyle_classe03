@@ -753,8 +753,23 @@
                 specificare il numero minimo di istanze che deve avere un nodo foglia.
 
                 \newpage
-                \subsection{Ten folds cross-validation}
-                Spiegazione teorica del 10 folds cross validation utilizzato
+                \subsection{Ten-folds cross validation}
+                Per addestrare e validare un modello di machine learning, si divide il dataset in due insiemi: training
+                set (istanze che l'algoritmo utilizzerà per l'addestramento) e il test set (istanze per cui l'algoritmo
+                addestrato dovrà predire il valore). Esistono diversi modi di dividere training e test set, tra cui
+                considerare il 67\% del dataset come training set e il 33\% come test set. Nel caso di WeatherStyle,
+                invece, è stata usata la \textit{convalida incrociata (o k-fold cross validation)}, con k=10.
+                \\ \noindent La convalida incrociata è un metodo statistico che consiste nella ripetuta partizione e
+                valutazione dell'insieme dei dati di partenza. Si basa sui seguenti step:
+                \begin{itemize}
+                    \item Si mischiano in maniera casuale i dati di partenza.
+                    \item Si dividono i dati in dieci gruppi.
+                    \item Per ogni gruppo, lo si considera come test set e si considerano gli altri nove come training set;
+                    in questo modo, si addestra il modello con i dati del training set, si valutano le prestazioni del modello
+                    e lo si elimina. Banalmente, nel nostro caso, il processo viene iterato dieci volte.
+                \end{itemize}
+                \par \noindent Da sottolineare che i processi di normalizzazione come feature selection e data balancing
+                vengono effettuati ad ogni addestramento.
                 \subsection{Valutazione delle metriche}
                 Qui è possibile parlare delle metriche a cui ci siamo affidati, dei risultati ottenuti per ogni modello
                 e inserire i grafici che mostrano la stima dell'errore rispetto alle predizioni fatte
