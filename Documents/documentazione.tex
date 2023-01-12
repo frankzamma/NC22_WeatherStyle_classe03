@@ -321,7 +321,7 @@
             \end{equation*}
             Bisogna però sottolineare, che la precedente osservazione considera che la ricerca esaustiva venga effettuata soltanto
             tra i possibili stati ammissibili per la soluzione, che richiedono anche essi una computazione per essere generati.
-            Quindi, ritrattando, se consideriamo tutte le soluzioni (ammissibili e non ammissibili) i GA diventano più efficienti già a partire da
+            Quindi, ritrattando, se consideriamo tutte le soluzioni (ammissibili e non ammissibili), gli Algoritmi Genetici diventano più efficienti già a partire da
             11 capi d'abbigliamento:
             \begin{equation*}
                 D_{11,3}^{'}=11^3 = 1331  > 1000 = populationSize * maxEvaluation = 10 * 100 = 100
@@ -630,7 +630,7 @@
                     accorpati.
                     Inoltre, visto che alcuni righe contenevano un elenco di valori, sono state semplificate sostituendo l'elenco con il suo primo valore.
                     L'imputazione logica è stata effettuata sfruttando un dizionario python, per ulteriori dettagli si rimanda allo script
-                    \href{https://github.com/frankzamma/NC22_WeatherStyle_classe03/blob/b8a2eb2de4f72fd37752e2c480e764e8797826f8/CreazioneDatasets/dataset_shoes/creazione_dataset_shoes.py}{creazione_dataset_shoes.py} sulla \href{https://github.com/frankzamma/NC22_WeatherStyle_classe03}{repository GitHub}
+                    \href{https://github.com/frankzamma/NC22_WeatherStyle_classe03/blob/b8a2eb2de4f72fd37752e2c480e764e8797826f8/CreazioneDatasets/dataset_shoes/creazione_dataset_shoes.py}{creazione\_dataset\_shoes.py} sulla \href{https://github.com/frankzamma/NC22_WeatherStyle_classe03}{repository GitHub}
                     L'attributo \emph{stagione} è stato imputato utilizzando la colonna \emph{Tipo} costruita in precedenza: è stato costruito un dizionario
                     che per ogni tipo restituisce un insieme di stagioni possibili, tra queste ne viene scelta una casualmente.
                     L'attributo colore, siccome non poteva essere imputato in nessun modo e visto che non dipende in alcun modo dagli altri attributi
@@ -670,8 +670,15 @@
                 \end{itemize}
 
                 \subsection{La fusione dei dataset}
-                Qui si parla di come è stata calcolata la variabile dipendente, facendo riferimento alla sezione dedicata
-                alla formulazione del problema per il GA in particolare alla fitness
+                Dopo aver costruito il dataset in maniera adeguata per maglie, pantaloni e scarpe, si fonde ognuno di
+                questi con il dataset contenente i dati meteo tramite la funzione Phyton \textit{concat()}. Successivamente,
+                si eliminano anche i duplicati tramite la funzione \textit{drop\_duplicates()} e viene esportato tutto
+                l'insieme di dati in formato CSV, pronto per essere valutato dall'agente. Prima, però, di passare alla valutazione,
+                è necessario che venga inserita una colonna al dataset per poter inserire il valore della variabile dipendente.
+                Per effettuare il calcolo, si segue la stessa logica definita nel paragrafo 2.2 in relazione agli algoritmi genetici:
+                per ogni capo d'abbigliamento, vi è una funzione che calcola il punteggio in relazione a parametri quali la stagionalità
+                di esso, il colore e così via.  \`E necessario sottolineare che, nel dataset completo, le colonne \textit{time}
+                e \textit{mese} vengono eliminate, in quanto non più necessarie non costituendo feature importanti per la predizione.
 
             \newpage
             \section{Modelling}
@@ -833,15 +840,19 @@
 
     \part{Conclusioni e osservazioni}
         \chapter{Cosa scegliamo?}
-            \section{Un confronto tra GA e ML}
-                Quando conviene uno e quando conviene l'altro
+            \section{Un confronto tra Algoritmi Genetici e Machine Learning}
+                L'Algoritmo Genetico, come illustrato nel capitolo 2.4, presenta un importante vantaggio: l'efficienza,
+                ma a discapito del risultato sub-ottimo, perché i capi non sono sempre tutti pertinenti con quelle che
+                sono le condizioni climatiche. La soluzione basata sul Machine Learning, invece, essendo soggetto ad
+                errore, può dare una predizione errata; questo, però, viene mitigato dal fatto che, non dovendo valutare
+                ad ogni istanza la funzione di fitness, potrebbe essere più efficiente dell'algoritmo genetico.
             \section{Possiamo fare di meglio}
                 Dopo aver quindi discusso dei pregi e dei difetti delle due tecniche di risoluzione da noi provate siamo
                 venuti al capo e abbiamo pensato che si potesse ancora fare di meglio, in particolare nelle due prossime
                 sotto-sezioni illustriamo ciò che potrebbe essere eventualmente fatto in futuro.
-                \subsection{Usare il ML per il calcolo della funzione di fitness}
+                \subsection{Usare il Machine Learning per il calcolo della funzione di fitness}
                 Spiegare cosa si può fare
-                \subsection{Usare un GA per costruire l'albero di regressione}
+                \subsection{Usare un Algoritmo Genetico per costruire l'albero di regressione}
                 Avendo provato due tecniche di risoluzione completamente diverse, abbiamo pensato alla possibilità di
                 accorpare le due filosofie, in particolare potrebbe essere eliminata del tutto la fase di addestramento
                 del modello di machine learning, sostituendo quindi la costruzione dell'albero di regressione mediante un
