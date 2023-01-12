@@ -495,7 +495,8 @@
                 rischiando di non riuscire ad effettuare un predizione.
                 Si è deciso di utilizzare, quindi, i dati giornalieri utilizzando le seguenti caratteristiche:
                 \begin{itemize}
-                    \item \emph{WeatherCode} : codice che indica il meteo previsto (Eg. Piovoso, Soleggiato);
+                    \item \emph{Time}: data a cui si riferiscono i dati meteo;
+                    \item \emph{WeatherCode} : codice che indica una condizione meteo (Eg. Piovoso, Soleggiato);
                     \item \emph{Maximum Temperature}  : temperatura massima;
                     \item \emph{Minimum Temperature} : temperatura minima;
                 \end{itemize}
@@ -645,8 +646,29 @@
                 \end{itemize}
                 \subsection{Dataset meteo}
                 Nella fase di data understanding, è stato illustrato che sono stati raccolti 14 diversi dataset con dati meteo per diverse città.
-                Per poterli utilizzare, è stato necessario effettuare alcune operazioni su di essi:
-
+                Per poterli utilizzare, è stato necessario effettuare alcune operazioni su di essi:\\
+                \begin{itemize}
+                    \item Data Cleaning:\\
+                    In questa fase, è stato necessario andare a ripulire la colonna \emph{WeatherCode} per 2 motivi:
+                        \begin{enumerate}
+                            \item i valori della colonna sono dei numeri ma in realtà tale colonna dovrebbe essere un variabile categorica
+                            \item le condizioni meteo considerate sono troppe e alcune simili tra loro.
+                        \end{enumerate}
+                    Dunque, i valori di tale colonna sono stati sostituiti con dei nomi di condizioni meteo in italiano (Eg.
+                    \emph{Soleggiato}) e i valori simili sono stati successivamente accorpati.
+                    \item Feature Scaling:\\
+                    Nel dataset sono presenti due colonne con valori numerici, cioè
+                    \emph{Minimum Apparent Temperature} e \emph{Maximum Apparent Temperature},
+                    ma sono già espressi nella stessa scala e dunque non si ritiene necessario effettuare una normalizzazione.
+                    \item Feature Selection:\\
+                    Le feature già presenti sono già molto buone, tuttavia è possibile fare dei miglioramenti
+                    Le caratteristiche {Minimum Apparent Temperature} e \emph{Maximum Apparent Temperature}
+                    possono essere sostituite da una singola colonna in cui si va ad inserire le medie tra i due valori.
+                    Inoltre, la colonna \emph{Time} così com'è risulta essere poco utile, tuttavia è possibile utilizzarla per
+                    creare una nuova colonna che contenga la stagione (Eg \emph{Autunno}, \emph{Agosto},\ldots).
+                    \item Data Balacing:\\
+                    Non è stato necessario effettuare un bilanciamento del dataset.
+                \end{itemize}
 
                 \subsection{La fusione dei dataset}
                 Qui si parla di come è stata calcolata la variabile dipendente, facendo riferimento alla sezione dedicata
