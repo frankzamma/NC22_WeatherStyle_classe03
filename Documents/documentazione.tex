@@ -490,7 +490,7 @@
                 \subsection{Dataset meteo}
                 Per poter consigliare un outfit sulla base delle previsioni meteo, sono ovviamente necessari
                 uno o più dataset che contengano questi dati.\\
-                Il sito Open-meteo\cite{8} permette di scaricare dati storici delle previsioni meteorologiche.
+                Il sito Open-meteo\cite{9} permette di scaricare dati storici delle previsioni meteorologiche.
                 Sono molti i dati meteo sia orari che giornalieri che esso fornisce, tuttavia se li utilizzassimo tutti rischieremo di scendere troppo nel dettaglio
                 rischiando di non riuscire ad effettuare un predizione.
                 Si è deciso di utilizzare, quindi, i dati giornalieri utilizzando le seguenti caratteristiche:
@@ -520,7 +520,7 @@
                     \item Salerno
                     \item Treviso
                 \end{itemize}
-
+            Nella successiva fase di data preparation, i diversi dataset divisi per città verranno fusi in uno solo.
 
             \newpage
             \section{Data Preparation}
@@ -588,53 +588,66 @@
                     tra i valori contenuti nelle celle di riferimento.
                 \end{itemize}
                 \subsection{Dataset scarpe}
-            \subsection{Dataset scarpe}
-            Il dataset illustrato nella fase di Data Understanding, ci è stato utile per costruire un dataset utilizzabile per il training.
-            In particolare, partendo dal ragionamento fatto per la soluzione basata su ricerca, per poter determinare il valore di utilità
-            di una scarpa sono necessarie le seguenti caratteristiche:
-            \begin{itemize}
-                \item \emph{Tipo}
-                \item \emph{Antiscivolo}
-                \item \emph{Impermeabile}
-                \item \emph{Colore}
-                \item \emph{Stagione}
-            \end{itemize}
-            Tali caratteristiche non erano immediatamente disponibili, tuttavia si è riusciti a ricavarle durante
-            i vari step del  \emph{Data Preparation}:
+                Il dataset illustrato nella fase di Data Understanding, ci è stato utile per costruire un dataset utilizzabile per il training.
+                In particolare, partendo dal ragionamento fatto per la soluzione basata su ricerca, per poter determinare il valore di utilità
+                di una scarpa sono necessarie le seguenti caratteristiche:
                 \begin{itemize}
-            \item Data Cleaning:\\
-            Come già accennato nel Data Understanding, il dataset contiene molti righe con valori nulli.
-            Ci sono diverse tecniche di Data Imputation che permettono di risolvere tale problema,
-            in questo caso si scelto uno dei più semplici: eliminazioni di righe contenenti valori nulli.
-            Oltre ai valori nulli sono stati eliminati anche i duplicati, per poi procedere all'adattamento
-            del dataset alle nostre esigenze.\\
-            Per ottenere la variabile \emph{Tipo} si è utilizzata la caratteristica \emph{SubCategory}.
-            In tale colonna, come si nota dal grafico presente nel capitolo paragrafo precedente, ci sono molti valori
-            alcuni dei quali non utili ai nostri scopi come :
-            \begin{itemize}
-                \item \emph{Flat} e \emph{Flat} : Scarpe del tipo "Ballerine";
-                \item \emph{Slipper Flats} : Pantofole basse;
-                \item \emph{Prewalker} : scarpe per neonati;
-                \item \emph{Fistwalker} : scarpe per i primi passi;
-                \item \emph{Crib Shoes} : scarpe da culla;
-            \end{itemize}
-            Le righe contenenti tali valori sono stati eliminati.
-            Per le altre si è proceduto a tradurle in italiano e accorpare valori con significato simile,
-            si provveduto anche a modificare il nome della colonna in Tipo
-            Il risultato ottenuto è visibile dal seguente grafico.
-            \begin{center}
-                \includegraphics[scale=0.4]{countTipoShoes}
-            \end{center}
-            Per quanto riguarda gli attributi  \emph{Antiscivolo} e \emph{Impermeabile} sono stati imputati
-            logicamente sfruttando rispettivamente le colonne \emph{Insole} e \emph{Material}.
-            In breve, i valori di tali campi sono stati tradotti in italiano e, come per \emph{itemize}, i valori con significato simile sono stati
-            accorpati.
-            Inoltre, visto che alcuni righe contenevano un elenco di valori, sono state semplificate sostituendo l'elenco con il suo primo valore.
-            L'imputazione logica è stata effettuata sfruttando un dizionario python, per ulteriori dettagli si rimanda allo script
-            \href{https://github.com/frankzamma/NC22_WeatherStyle_classe03/blob/b8a2eb2de4f72fd37752e2c480e764e8797826f8/CreazioneDatasets/dataset_shoes/creazione_dataset_shoes.py}{creazione_dataset_shoes.py} sulla \href{https://github.com/frankzamma/NC22_WeatherStyle_classe03}{repository GitHub}
-        \end{itemize}
+                    \item \emph{Tipo}
+                    \item \emph{Antiscivolo}
+                    \item \emph{Impermeabile}
+                    \item \emph{Colore}
+                    \item \emph{Stagione}
+                \end{itemize}
+                Tali caratteristiche non erano immediatamente disponibili, tuttavia si è riusciti a ricavarle durante
+                i vari step del  \emph{Data Preparation}:
+                \begin{itemize}
+                    \item Data Cleaning:\\
+                    Come già accennato nel Data Understanding, il dataset contiene molti righe con valori nulli.
+                    Ci sono diverse tecniche di Data Imputation che permettono di risolvere tale problema,
+                    in questo caso si scelto uno dei più semplici: eliminazioni di righe contenenti valori nulli.
+                    Oltre ai valori nulli sono stati eliminati anche i duplicati, per poi procedere all'adattamento
+                    del dataset alle nostre esigenze.\\
+                    Per ottenere la variabile \emph{Tipo} si è utilizzata la caratteristica \emph{SubCategory}.
+                    In tale colonna, come si nota dal grafico presente nel capitolo paragrafo precedente, ci sono molti valori
+                    alcuni dei quali non utili ai nostri scopi come :
+                    \begin{itemize}
+                        \item \emph{Flat} e \emph{Flat} : Scarpe del tipo "Ballerine";
+                        \item \emph{Slipper Flats} : Pantofole basse;
+                        \item \emph{Prewalker} : scarpe per neonati;
+                        \item \emph{Fistwalker} : scarpe per i primi passi;
+                        \item \emph{Crib Shoes} : scarpe da culla;
+                    \end{itemize}
+                    Le righe contenenti tali valori sono stati eliminati.
+                    Per le altre si è proceduto a tradurle in italiano e accorpare valori con significato simile,
+                    si provveduto anche a modificare il nome della colonna in Tipo
+                    Il risultato ottenuto è visibile dal seguente grafico.
+                    \begin{center}
+                        \includegraphics[scale=0.4]{countTipoShoes}
+                    \end{center}
+                    Per quanto riguarda gli attributi  \emph{Antiscivolo} e \emph{Impermeabile} sono stati imputati
+                    logicamente sfruttando rispettivamente le colonne \emph{Insole} e \emph{Material}.
+                    In breve, i valori di tali campi sono stati tradotti in italiano e, come per \emph{itemize}, i valori con significato simile sono stati
+                    accorpati.
+                    Inoltre, visto che alcuni righe contenevano un elenco di valori, sono state semplificate sostituendo l'elenco con il suo primo valore.
+                    L'imputazione logica è stata effettuata sfruttando un dizionario python, per ulteriori dettagli si rimanda allo script
+                    \href{https://github.com/frankzamma/NC22_WeatherStyle_classe03/blob/b8a2eb2de4f72fd37752e2c480e764e8797826f8/CreazioneDatasets/dataset_shoes/creazione_dataset_shoes.py}{creazione_dataset_shoes.py} sulla \href{https://github.com/frankzamma/NC22_WeatherStyle_classe03}{repository GitHub}
+                    L'attributo \emph{stagione} è stato imputato utilizzando la colonna \emph{Tipo} costruita in precedenza: è stato costruito un dizionario
+                    che per ogni tipo restituisce un insieme di stagioni possibili, tra queste ne viene scelta una casualmente.
+                    L'attributo colore, siccome non poteva essere imputato in nessun modo e visto che non dipende in alcun modo dagli altri attributi
+                    è stato imputato in maniera casuale scegliendo un valore tra i tre che abbiamo considerato: \emph{chiaro}, \emph{scuro} e \emph{colorato}.
+                    \item Feature Scaling:\\
+                    Non sono presenti dati numerici, di conseguenza, non è stato necessario applicare il feature scaling.
+                    \item Feature Selection:
+                    Le feature selezionate sono quelle citate precedentemente (\emph{Tipo}, \emph{Antiscivolo}, \emph{Impermeabile},\emph{Colore}, \emph{Stagione}), tutte le altre caratteristiche sono state rimosse.
+                    \footnote{Nello script, la rimozione degli attributi che non vengono considerati o utilizzati per imputarne altri viene fatta all'inizio, per poter effettuare una rimozione dei valori e nulli e duplicati più efficiente}
+                    \item Data Balacing\\
+                    Il dataset presentava poche osservazioni relative a due tipologie di scarpe (\emph{Anfibi} e \emph{Stivali}), per questo motivo, è stato bilanciato aggiungendo dei dati generati per quei tipi tramite Google Sheet.
+                \end{itemize}
                 \subsection{Dataset meteo}
-                Come è stato costruito, strategia
+                Nella fase di data understanding, è stato illustrato che sono stati raccolti 14 diversi dataset con dati meteo per diverse città.
+                Per poterli utilizzare, è stato necessario effettuare alcune operazioni su di essi:
+
+
                 \subsection{La fusione dei dataset}
                 Qui si parla di come è stata calcolata la variabile dipendente, facendo riferimento alla sezione dedicata
                 alla formulazione del problema per il GA in particolare alla fitness
@@ -809,6 +822,10 @@
         \bibitem{8}
         Analisi della varianza,
         \url{https://it.wikipedia.org/wiki/Analisi_della_varianza}
+
+        \bibitem{9}
+        Open-meteo
+        \url{https://open-meteo.com/}
     \end{thebibliography}
 
 \end{document}
