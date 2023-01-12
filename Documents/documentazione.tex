@@ -436,7 +436,10 @@
                     \includegraphics[scale=0.4]{countMaterialTopBottom}
                 \end{center}
                 \bigskip
-                \par \noindent Infine come ultima feature molto importante presente nel dataset per quanto riguarda i capi
+                \par \noindent \textit{Color} è un'altra feature di cui abbiamo fatto uso per costruire il dataset. Avendo,
+                però, definito il colore in tre macrocategorie (chiaro, scuro e colorato), è diventata necessaria effettuare
+                un'operazione di smistamento dei vari colori nelle relative macrocategorie.
+                \\ \noindent Infine come ultima feature molto importante presente nel dataset per quanto riguarda i capi
                 d'abbigliamento della categoria \textbf{Top} è la colonna indicata come \textit{Sleeve Length}. Si può
                 notare come per la maggior parte siano presenti maglie della categoria \textbf{Loong Sleeve} e
                 \textbf{Short Sleeve}.
@@ -523,7 +526,23 @@
                     normalizzare o scalare l'insieme di valori di una caratteristica.
                     \par \noindent Nel caso della preparazione dei nostri dataset di maglie e pantaloni non è stata effettuata
                     il  \textit{feature scaling} poiché tutte le feature sono di tipo categorico e non numerico.
-                    \item \textbf{Feature selection}:
+                    \item \textbf{Feature selection}: Il \textit{feature selection} rientra nell'ambito del \textit{feature engineering},
+                    cioè il processo nel quale un progettista usa la propria conoscenza del dominio per determinare le caratteristiche
+                    (feature) dai dati grezzi estraibili tramite tecniche di data mining. Il \textit{feature selection} è un processo tramite
+                    il quale vengono selezionate le feature più rilevanti per un problema, a partire da un insieme di caratteristiche esistenti.
+                    Le feature considerate più rilevanti (sia per le maglie che per i pantaloni) sono:
+                    \begin{itemize}
+                        \item \textbf{Materiale.} La feature è discriminante, in quanto ci consente di capire se un determinato materiale è adatto per
+                        una certa temperatura o meno. Ad esempio, il lino è un tessuto tipicamente estivo, di conseguenza non è indossabile nella
+                        stagione invernale.
+                        \item \textbf{Colore.} Anche in questo caso, la caratteristica è determinante perché, a parità di meteo soleggiato, bisogna preferire
+                        un capo di colore chiaro rispetto a uno di colore scuro.
+                        \item \textbf{Lunghezza.} La lunghezza dei pantaloni oppure la lunghezza della manica per le maglie sono rilevanti ai fini della
+                        risoluzione del problema; infatti, una manica corta sicuramente sarà da preferire ad una manica lunga se si è in estate.
+                        \item \textbf{Stagione.} La feature è rilevante, in quanto viene considerata la differenza tra la stagione in cui viene richiesto il
+                        suggerimento e stagionalità del capo: se, ad esempio, il suggerimento viene richiesto a febbraio, sicuramente non verrà considerato
+                        un capo dichiarato come "estivo".
+                    \end{itemize}
                     \item \textbf{Data balancing}:
                 \end{itemize}
                 \subsection{Dataset scarpe}
