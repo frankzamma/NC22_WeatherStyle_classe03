@@ -739,11 +739,19 @@
             \section{Un confronto tra GA e ML}
                 Quando conviene uno e quando conviene l'altro
             \section{Possiamo fare di meglio}
-                Introduzione alle due osservazioni
+                Dopo aver quindi discusso dei pregi e dei difetti delle due tecniche di risoluzione da noi provate siamo
+                venuti al capo e abbiamo pensato che si potesse ancora fare di meglio, in particolare nelle due prossime
+                sotto-sezioni illustriamo ciò che potrebbe essere eventualmente fatto in futuro.
                 \subsection{Usare il ML per il calcolo della funzione di fitness}
                 Spiegare cosa si può fare
                 \subsection{Usare un GA per costruire l'albero di regressione}
-                Spiegare cosa si può fare
+                Avendo provato due tecniche di risoluzione completamente diverse, abbiamo pensato alla possibilità di
+                accorpare le due filosofie, in particolare potrebbe essere eliminata del tutto la fase di addestramento
+                del modello di machine learning, sostituendo quindi la costruzione dell'albero di regressione mediante un
+                algoritmo genetico.
+                \par \noindent L'idea sarebbe quella di evolvere un \textbf{insieme di regole}, inizialmente
+                generate in maniera pseudo-casuale per poi arrivare ad un punto sub-ottimale in cui avremo delle regole
+                ben definite che descriveranno tutti i possibili percorsi dell'albero di regressione.
 
 
     % sezione dedicata ai riferimenti bibliografici
