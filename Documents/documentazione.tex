@@ -546,7 +546,13 @@
                         suggerimento e stagionalità del capo: se, ad esempio, il suggerimento viene richiesto a febbraio, sicuramente non verrà considerato
                         un capo dichiarato come "estivo".
                     \end{itemize}
-                    \item \textbf{Data balancing}:
+                    \item \textbf{Data balancing}: con \textit{data balancing} si intende l'insieme delle tecniche per convertire un dataset sbilanciato in un
+                    dataset bilanciato. Nel nostro caso, abbiamo fatto uso delle tecniche di oversampling per aggiungere righe al dataset.
+                    Nel caso delle maglie, essendo che nel dataset di partenza i capi erano prevalentemente estivi, sono state aggiunte più righe per quanto riguarda
+                    la stagione invernale, compensando la mancanza di dati nell'insieme di dati iniziale. In maniera del tutto analoga, per i pantaloni sono state
+                    generate righe casuali, focalizzando particolarmente l'attenzione su capi invernali. La generazione dei dati, sia per le maglie che per i pantaloni,
+                    è stata effettuata con l'ausilio di Google Sheet, tramite la funzione \textit{SCEGLI(CASUALE.TRA...)}, con cui era possibile scegliere un valore a caso
+                    tra i valori contenuti nelle celle di riferimento.
                 \end{itemize}
                 \subsection{Dataset scarpe}
                 Come è stato costruito, strategia
@@ -560,7 +566,14 @@
             \section{Modelling}
             Qui parliamo della tecnica di machine learning utilizzata, ovvero la regressione e dell'algoritmo utilizzato
                 \subsection{La regressione}
-                Brevissima spiegazione di che cos'è la regressione
+                La regressione è un task di apprendimento supervisionato in cui l'obiettivo è quello di predire il valore
+                di una variabile numerica (variabile dipendente) tramite l'utilizzo di un training set. La regressione
+                porta alla costruzione di un modello, cioè di uno strumento che fa uso di un algoritmo di apprendimento
+                (regressore) per predire i nuovi elementi sulla base del training set. Il regressore è una funzione matematica
+                che descrive i dati e si effettua la distinzione tra regressione singola e multipla a seconda che ci sia
+                rispettivamente una o più variabili indipendenti che aiutino nella predizione. Nel nostro caso, si parla di
+                regressione multipla, in quanto ci sono più feature che contribuiscono nell'assegnazione di un punteggio ad
+                un capo d'abbigliamento.
                 \subsection{L'albero di regressione}
                 Un \textbf{albero di regressione} segue sostanzialmente la logica di un albero decisionale con la principale
                 differenza che anziché predire il valore di una variabile categorica, si occupa di predire il valore di
