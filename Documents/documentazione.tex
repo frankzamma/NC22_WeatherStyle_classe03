@@ -20,14 +20,13 @@
 % usato per la generazione rif bibliografici, richiede l'uso di babel e csquotes, biblatex è il motore usato.
 % Le citazioni sono definite in termini di etichette numeriche come [1],[2],...
 \usepackage[bibstyle=numeric, citestyle=numeric-comp]{biblatex}
-
 \usepackage{quoting}        % usato per citazioni
 \usepackage{algpseudocode}  % usato per scrivere pseudo codice
 \usepackage{algorithm}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{sidecap}
 
-\usepackage{sidecap}        %aggiungere didascalie alle immagini
 
 % preambolo
 \title{\includegraphics[width=0.4\textwidth]{logo}\\WeatherStyle\\Corso Fondamenti di Intellingenza Artificiale\\Prof. F.Palomba}
@@ -800,10 +799,36 @@
             Qui parliamo della sperimentazione empirica e dei risultati ottenuti
             Il risultato ottenuto non è da sottovalutare sicuramente per la non disponibilità dei dati.
             In particolare valutiamo
-
+            \newpage
             \section{Deployment}
-            Qui si parla leggermente dell'implementazione e delle scelte ingegneristiche per rendere il modello usabile
-            quindi eventuali classi interfacce, ecc\ldots
+            Per l'implementazione della soluzione basata su Machine Learning è stato utilizzato il framework Weka\cite{2}\\
+            Tra modelli di albero di regressione disponibili, è stato \emph{RepTree} che nella documentazione di weka è descritto nel seguente modo:
+            \begin{center}
+                \emph{Fast decision tree learner. Builds a decision/regression tree using information gain/variance and prunes it using reduced-error pruning (with backfitting).
+                Only sorts values for numeric attributes once. Missing values are dealt with by splitting the corresponding instances into pieces}
+            \end{center}
+            Una volta creato l'oggetto \emph{RepTree} e caricato il dataset in un oggetto di tipo \emph{DataSource} è sufficiente richiamare il metodo
+            \emph{buildClassifier} per effettuare il training del modello.
+            Dopo diversi test empirici, come illustrato nella sezione precedente, si è giunti alla conclusione che per aumentare l'efficienza è necessario
+            impostare il numero minimo di righe per foglia a 10, nell'implementazione tale passo è possibile farlo utilizzando il metodo \emph{setMinNum}.
+            Di seguito un riepilogo dei passi da effettuare
+            \medskip
+            \begin{algorithm}
+                \caption{Setup Machine Learning}
+                \label{alg:ml}
+                \begin{algorithmic}[2]
+                    \State $repTree \gets new RepTree()$
+                    \State $dataSet \gets new DataSource(data/set/path)$
+                    \State
+                    \State $repTree.setMinNum(10)$
+                    \State $repTree.buildClassifier(dataSet)$
+                \end{algorithmic}
+            \end{algorithm}
+            \par \noindent Per effettuare la predizione di una nuova istanza è possibile utilizzare il metodo \emph{classifyInstance}.
+
+
+
+
 
 
     \part{Conclusioni e osservazioni}
