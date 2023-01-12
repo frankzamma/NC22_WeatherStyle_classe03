@@ -322,7 +322,7 @@
             \end{equation*}
             Bisogna però sottolineare, che la precedente osservazione considera che la ricerca esaustiva venga effettuata soltanto
             tra i possibili stati ammissibili per la soluzione, che richiedono anche essi una computazione per essere generati.
-            Quindi, ritrattando, se consideriamo tutte le soluzioni (ammissibili e non ammissibili) i GA diventano più efficienti già a partire da
+            Quindi, ritrattando, se consideriamo tutte le soluzioni (ammissibili e non ammissibili), gli Algoritmi Genetici diventano più efficienti già a partire da
             11 capi d'abbigliamento:
             \begin{equation*}
                 D_{11,3}^{'}=11^3 = 1331  > 1000 = populationSize * maxEvaluation = 10 * 100 = 100
@@ -815,15 +815,19 @@
 
     \part{Conclusioni e osservazioni}
         \chapter{Cosa scegliamo?}
-            \section{Un confronto tra GA e ML}
-                Quando conviene uno e quando conviene l'altro
+            \section{Un confronto tra Algoritmi Genetici e Machine Learning}
+                L'Algoritmo Genetico, come illustrato nel capitolo 2.4, presenta un importante vantaggio: l'efficienza,
+                ma a discapito del risultato sub-ottimo, perché i capi non sono sempre tutti pertinenti con quelle che
+                sono le condizioni climatiche. La soluzione basata sul Machine Learning, invece, essendo soggetto ad
+                errore, può dare una predizione errata; questo, però, viene mitigato dal fatto che, non dovendo valutare
+                ad ogni istanza la funzione di fitness, potrebbe essere più efficiente dell'algoritmo genetico.
             \section{Possiamo fare di meglio}
                 Dopo aver quindi discusso dei pregi e dei difetti delle due tecniche di risoluzione da noi provate siamo
                 venuti al capo e abbiamo pensato che si potesse ancora fare di meglio, in particolare nelle due prossime
                 sotto-sezioni illustriamo ciò che potrebbe essere eventualmente fatto in futuro.
-                \subsection{Usare il ML per il calcolo della funzione di fitness}
+                \subsection{Usare il Machine Learning per il calcolo della funzione di fitness}
                 Spiegare cosa si può fare
-                \subsection{Usare un GA per costruire l'albero di regressione}
+                \subsection{Usare un Algoritmo Genetico per costruire l'albero di regressione}
                 Avendo provato due tecniche di risoluzione completamente diverse, abbiamo pensato alla possibilità di
                 accorpare le due filosofie, in particolare potrebbe essere eliminata del tutto la fase di addestramento
                 del modello di machine learning, sostituendo quindi la costruzione dell'albero di regressione mediante un
