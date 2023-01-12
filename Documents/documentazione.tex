@@ -631,7 +631,7 @@
                     accorpati.
                     Inoltre, visto che alcuni righe contenevano un elenco di valori, sono state semplificate sostituendo l'elenco con il suo primo valore.
                     L'imputazione logica è stata effettuata sfruttando un dizionario python, per ulteriori dettagli si rimanda allo script
-                    \href{https://github.com/frankzamma/NC22_WeatherStyle_classe03/blob/b8a2eb2de4f72fd37752e2c480e764e8797826f8/CreazioneDatasets/dataset_shoes/creazione_dataset_shoes.py}{creazione_dataset_shoes.py} sulla \href{https://github.com/frankzamma/NC22_WeatherStyle_classe03}{repository GitHub}
+                    \href{https://github.com/frankzamma/NC22_WeatherStyle_classe03/blob/b8a2eb2de4f72fd37752e2c480e764e8797826f8/CreazioneDatasets/dataset_shoes/creazione_dataset_shoes.py}{creazione\_dataset\_shoes.py} sulla \href{https://github.com/frankzamma/NC22_WeatherStyle_classe03}{repository GitHub}
                     L'attributo \emph{stagione} è stato imputato utilizzando la colonna \emph{Tipo} costruita in precedenza: è stato costruito un dizionario
                     che per ogni tipo restituisce un insieme di stagioni possibili, tra queste ne viene scelta una casualmente.
                     L'attributo colore, siccome non poteva essere imputato in nessun modo e visto che non dipende in alcun modo dagli altri attributi
@@ -671,8 +671,15 @@
                 \end{itemize}
 
                 \subsection{La fusione dei dataset}
-                Qui si parla di come è stata calcolata la variabile dipendente, facendo riferimento alla sezione dedicata
-                alla formulazione del problema per il GA in particolare alla fitness
+                Dopo aver costruito il dataset in maniera adeguata per maglie, pantaloni e scarpe, si fonde ognuno di
+                questi con il dataset contenente i dati meteo tramite la funzione Phyton \textit{concat()}. Successivamente,
+                si eliminano anche i duplicati tramite la funzione \textit{drop\_duplicates()} e viene esportato tutto
+                l'insieme di dati in formato CSV, pronto per essere valutato dall'agente. Prima, però, di passare alla valutazione,
+                è necessario che venga inserita una colonna al dataset per poter inserire il valore della variabile dipendente.
+                Per effettuare il calcolo, si segue la stessa logica definita nel paragrafo 2.2 in relazione agli algoritmi genetici:
+                per ogni capo d'abbigliamento, vi è una funzione che calcola il punteggio in relazione a parametri quali la stagionalità
+                di esso, il colore e così via.  \`E necessario sottolineare che, nel dataset completo, le colonne \textit{time}
+                e \textit{mese} vengono eliminate, in quanto non più necessarie non costituendo feature importanti per la predizione.
 
             \newpage
             \section{Modelling}
