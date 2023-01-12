@@ -13,7 +13,7 @@ public class BottomML {
 
     public BottomML(String pathDataset){
         //Si crea e si addestra il l'albero di regressione
-        treeWrapper = new RegressionTreeWrapper(pathDataset,false, false);
+        treeWrapper = new RegressionTreeWrapper(pathDataset,false, true);
     }
 
     public List<ScoreCapoAbbigliamento> classifyInstances(List<Pantalone> list, MeteoInformation meteo, boolean getBestThree){

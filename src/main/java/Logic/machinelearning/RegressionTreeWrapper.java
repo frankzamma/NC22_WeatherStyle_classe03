@@ -26,6 +26,9 @@ public class RegressionTreeWrapper {
     public RegressionTreeWrapper(String pathDatasetFile, Boolean buildWithTrainingSetAndTestSet, boolean balanceDate) {
         repTree = new REPTree();
 
+        // setting min numero d'istanze per i nodi foglia
+        repTree.setMinNum(10);
+
         // caricamento del dataset
         CSVLoader csvLoader = new CSVLoader();
         try {

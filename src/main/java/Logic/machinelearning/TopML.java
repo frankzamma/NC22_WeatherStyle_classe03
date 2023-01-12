@@ -13,7 +13,7 @@ public class TopML {
 
     public TopML(String pathDataset){
         //creazione e allenamento albero di regressione sulle maglie
-        treeWrapper = new RegressionTreeWrapper(pathDataset, false, false);
+        treeWrapper = new RegressionTreeWrapper(pathDataset, false, true);
     }
 
     public List<ScoreCapoAbbigliamento> classifyInstances(List<Maglia> list, MeteoInformation meteo, boolean getBestThree){
