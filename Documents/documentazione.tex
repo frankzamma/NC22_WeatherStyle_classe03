@@ -577,24 +577,147 @@
                     \item \textbf{Data balancing}:
                 \end{itemize}
                 \subsection{Dataset scarpe}
-                Il dataset illustrato nella fase di Data Understanding, ci è stato utile per costruire un dataset utilizzabile per il training.
-                In particolare, partendo dal ragionamento fatto per la soluzione basata su ricerca, per poter determinare il valore di utilità
-                di una scarpa sono necessarie le seguenti caratteristiche:
-                \begin{itemize}
-                    \item
-                \end{itemize}
-                \subsection{Dataset meteo}
+    \subsection{Dataset scarpe}
+    Il dataset illustrato nella fase di Data Understanding, ci è stato utile per costruire un dataset utilizzabile per il training.
+    In particolare, partendo dal ragionamento fatto per la soluzione basata su ricerca, per poter determinare il valore di utilità
+    di una scarpa sono necessarie le seguenti caratteristiche:
+    \begin{itemize}
+        \item \emph{Tipo}
+        \item \emph{Antiscivolo}
+        \item \emph{Impermeabile}
+        \item \emph{Colore}
+        \item \emph{Stagione}
+    \end{itemize}
+    Tali caratteristiche non erano immediatamente disponibili, tuttavia si è riusciti a ricavarle durante
+    i vari step del  \emph{Data Preparation}:
+    \begin{itemize}
+        \item Data Cleaning:\\
+        Come già accennato nel Data Understanding, il dataset contiene molti righe con valori nulli.
+        Ci sono diverse tecniche di Data Imputation che permettono di risolvere tale problema,
+        in questo caso si è optato per uno dei più semplici: eliminazioni di righe contenenti valori nulli.
+        Oltre ai valori nulli sono stati eliminati anche i duplicati, per poi procedere all'adattamento
+        del dataset alle nostre esigenze.\\
+        Per ottenere la variabile \emph{Tipo} si è utilizzata la caratteristica \emph{SubCategory}.
+        In tale colonna, come si nota dal grafico presente nel capitolo paragrafo precedente, ci sono molti valori
+        alcuni dei quali non utili ai nostri scopi come :
+        \begin{itemize}
+            \item \emph{Flat} e \emph{Flat} : Scarpe del tipo "Ballerine";
+            \item \emph{Slipper Flats} : Pantofole basse;
+            \item \emph{Prewalker} : scarpe per neonati;
+            \item \emph{Fistwalker} : scarpe per i primi passi;
+            \item \emph{Crib Shoes} : scarpe da culla;
+        \end{itemize}
+        Le righe contenenti tali valori sono stati eliminati.
+        Per le altre si è proceduto a tradurle in italiano e accorpare valori con significato simile,
+        si provveduto anche a modificare il nome della colonna in Tipo
+        Il risultato ottenuto è visibile dal seguente grafico.
+        \begin{center}
+            \includegraphics[scale=0.4]{countTipoShoes}
+        \end{center}
+        Per quanto riguarda gli attributi  \emph{Antiscivolo} e \emph{Impermeabile} sono stati imputati
+        logicamente sfruttando rispettivamente le colonne \emph{Insole} e \emph{}
+    \end{itemize}
+
+    \subsection{Dataset meteo}
                 Come è stato costruito, strategia
                 \subsection{La fusione dei dataset}
                 Qui si parla di come è stata calcolata la variabile dipendente, facendo riferimento alla sezione dedicata
                 alla formulazione del problema per il GA in particolare alla fitness
 
+            \newpage
             \section{Modelling}
             Qui parliamo della tecnica di machine learning utilizzata, ovvero la regressione e dell'algoritmo utilizzato
                 \subsection{La regressione}
                 Brevissima spiegazione di che cos'è la regressione
                 \subsection{L'albero di regressione}
-                Spiegazione teorica di un albero di regressione
+                Un \textbf{albero di regressione} segue sostanzialmente la logica di un albero decisionale con la principale
+                differenza che anziché predire il valore di una variabile categorica, si occupa di predire il valore di
+                una variabile numerica, apprendendo semplici regole inferite dai dati di training.
+                \par \noindent L'algoritmo di addestramento mira quindi a creare un albero i cui nodi rappresentano un sottoinsieme
+                di caratteristiche del problema e i cui archi rappresentano delle decisioni.
+                \par \noindent Una volta ottenuto il modello sarà molto semplice comprendere il motivo di una predizione
+                seguendo la path relativa agli input forniti.\\
+                \par \noindent Nella sua istanza generale, che si tratti di un albero di decisione o di regressione, i
+                passi dell'algoritmo saranno i seguenti:
+                \begin{enumerate}
+                    \item Posizionare la miglior caratteristica del training set come radice dell'albero.
+                    \item Dividere il training set in sotto-insiemi. Ogni sotto-insieme dovrebbe essere composto di valori
+                    simili per una certa caratteristica.
+                    \item Ripetere gli step 1. e 2. fin quando non viene raggiunto un nodo foglia in ogni sotto-albero.
+                \end{enumerate}
+                \medskip
+                \par \noindent Come ben sappiamo per poter piazzare la miglior caratteristica come radice dell'albero e/o
+                di un sotto-albero, in modo che riesca a dividere bene le istanze del dataset, nei problemi di classificazione
+                viene utilizzato l'\textbf{Information Gain}, mentre nei problemi di regressione abbiamo bisogno di un'indice
+                diverso, dunque fa il suo ingresso l'\textbf{errore quadratico medio (MSE)}\footnote{come vedremo nelle
+                successive sezioni, questo dipende fortemente da aspetti implementativi, talvolta si sceglie di utilizzare
+                la \textbf{varianza} poiché quest'ultima permette di costruire un albero di regressione andando ad utilizzare
+                variabili indipendenti che siano di natura numerica o nominale, nell'ultimo caso si vanno ad associare dei
+                pesi ad ogni variabile rispetto alle frequenze degli attributi \cite{8}.}
+                \[
+                    MSE = \frac{1}{n}\sum_{i=1}^{n}(y_i - \overline{y_i})^2
+                \]
+                \\
+                \par \noindent Supponiamo di avere un dataset come il seguente e di voler costruire un albero di regressione
+                che preveda al meglio la Y data la X:
+                \begin{center}
+                    \begin{tabular}{| l | c |}      %barra tra una linea ed un altra
+                        \hline                      %linee orizzontali
+                        X & Y\\                     %le \\ indicano il termine riga
+                        \hline
+                        1 & 1\\
+                        \hline
+                        2 & 1.2\\
+                        \hline
+                        3 & 1.4\\
+                        \hline
+                        4 & 1.1\\
+                        \hline
+                        5 & 1\\
+                        \hline
+                        6 & 5.5\\
+                        \hline
+                    \end{tabular}
+                \end{center}
+
+                \newpage
+                \par \noindent I passaggi che farà l'algoritmo saranno i seguenti:
+                \begin{itemize}
+                    \item \textbf{Primo passaggio:} ordina i dati nella colonna X (in questo caso sono già ordinati).
+                    Prende la media delle prime due righe della colonna X, ovvero $(1+2)/3 = 1.5$, quindi divide il dataset
+                    in due parti, la \textit{parte A} con $X < 1.5$ e la \textit{parte B} con $X \geq 1.5$.
+                    \\Adesso farà la media di tutti i valori presenti in ambedue le parti e questi valori
+                    definiranno l'output per l'albero di regressione in quel punto. Quindi calcola l'\textbf{MSE}
+                    utilizzando i valori previsti $\overline{y_i}$ e i valori originali $y_i$, utilizzando le istanze
+                    delle due parti.
+                    \item \textbf{Secondo passaggio:} ripete il passaggio precedente con le successive righe della colonna
+                    X, ovvero con i corrispettivi valori 2 e 3, 3 e 4, \ldots, fino all'$n-1$esimo numero, calcolandosi
+                    l'MSE.
+                    \item \textbf{Terzo passaggio:} una volta fatti i doverosi calcoli, l'algoritmo deciderà il punto in cui
+                    dividere il dataset, ossia i valori che hanno permesso di ottenere un valore più basso in termini di MSE, questo decreterà
+                    il punto di \textbf{radice}, dopodiché opererà allo stesso in maniera ricorsiva sui nodi figli, sino a raggiungere
+                    una \textbf{foglia}\footnote{il numero minimo di istanze che compongono una foglia devono essere decisi durante
+                    l'implementazione.}.
+                \end{itemize}
+                \medskip
+                \begin{center}
+                    \hspace*{5em}\includegraphics[scale=0.7]{albero}
+                    \par \noindet Albero di regressione, immagine indicativa, non associata al dataset esposto.
+                \end{center}
+                \bigskip \bigskip
+                \par \noindent \textbf{Cosa succede quando ci sono più variabili indipendenti?} In questo caso l'algoritmo
+                procede allo stesso modo di come è stato descritto sopra con la differenza che i calcoli verrebbero fatti
+                per ogni variabile indipendente. I punti che minimizzano l'MSE verrebbero calcolati per ogni variabile
+                indipendente e verrebbero quindi scelti quelli meno intrinsechi all'errore.
+                \\
+                \par \noindent \textbf{Un grosso difetto...} gli alberi di decisione soffrono molto di \textbf{overfitting},
+                ovvero tendono a fare un ragionamento eccessivamente complesso sui dati a disposizione, senza comprenderne
+                l'essenza e la struttura. Questo rende gli alberi di decisone difficili da addestrare, nel caso dell'albero
+                di regressione questo andrebbe avanti ricorsivamente nel tentativo di ridurre l'MSE, arrivando anche ad
+                avere foglie con una sola istanza dove l'errore quadratico medio è nullo. Dunque è sempre consigliato
+                specificare il numero minimo di istanze che deve avere un nodo foglia.
+
+                \newpage
                 \subsection{Ten folds cross-validation}
                 Spiegazione teorica del 10 folds cross validation utilizzato
                 \subsection{Valutazione delle metriche}
@@ -652,9 +775,6 @@
         \bibitem{7}
         dataset scarpe,
         \url{https://www.kaggle.com/datasets/ramu237/shoes-dataset}
-        \bibitem{8}
-        Open Meteo,
-        \url{https://open-meteo.com/}
     \end{thebibliography}
 
 \end{document}

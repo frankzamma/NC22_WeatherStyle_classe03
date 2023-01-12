@@ -27,3 +27,6 @@ for x in df.index:
 
 sns.countplot(data=df, x="Type", hue="Sleeve Length")
 plt.show()
+
+sns.countplot(data=df, y="Color")
+plt.show()
