@@ -94,8 +94,7 @@ ranges = [
     }
 ]
 
-
-valutazione_tipo={
+valutazione_tipo = {
     'pioggia': {
         'stivaletto alla caviglia': 10,
         'scarpa da ginnastica': 6,
@@ -149,7 +148,7 @@ def evaluate_temperature(stagione_capo, temperatura_percepita):
 def evaluate_pioggia(scivoloso, impermeabile):
     if scivoloso and impermeabile:
         return 5
-    elif scivoloso :
+    elif scivoloso:
         return 3
     elif impermeabile:
         return 4
@@ -165,8 +164,10 @@ for x in df.index:
     p = 0
     p += evaluate_temperature(df.loc[x, "Stagione"], df.loc[x, "TemperaturaPercepita"])
     p += utils.evaluate_colore(df.loc[x, "Meteo"], df.loc[x, "Colore"], df.loc[x, "TemperaturaPercepita"])
-    p += evaluate_tipo(df.loc[x, "Meteo"], df.loc[x, "Tipo"])
-    p += udv.evaluate_stagione(df.loc[x, "Stagione"],df.loc[x, "StagionePrevisione"] )
+    if (df.loc[x, "Meteo"] == "soleggiato") and (df.loc[x, "TemperaturaPercepita"] > 20) or (
+            df.loc[x, "Meteo"] != "soleggiato"):
+        p += evaluate_tipo(df.loc[x, "Meteo"], df.loc[x, "Tipo"])
+    p += udv.evaluate_stagione(df.loc[x, "Stagione"], df.loc[x, "StagionePrevisione"])
     if df.loc[x, 'Meteo'] == 'pioggia' or df.loc[x, 'Meteo'] == 'neve':
         p += evaluate_pioggia(df.loc[x, 'Antiscivolo'], df.loc[x, 'Impermeabile'])
 
@@ -175,4 +176,4 @@ print(df.info())
 
 df.to_csv('../newCsv_all_clothes/shoes_meteo_dataset_labeled.csv', index=False)
 df.to_csv('../../src/main/webapp/WEB-INF/resources/csv/shoes_meteo_dataset_labeled.csv', index=False)
-#TODO Aggiungere commenti
+# TODO Aggiungere commenti

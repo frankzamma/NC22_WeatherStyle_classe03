@@ -312,7 +312,10 @@ public class Evaluator {
 
     private int valutazioneShoes(CapoAbbigliamento capoAbbigliamento, MeteoInformation meteoInformation){
         int punteggio = 0;
-        punteggio += valutazioneTipo((Scarpa)capoAbbigliamento, meteoInformation);
+        if(!meteoInformation.getMeteo().equalsIgnoreCase("soleggiato") ||
+                (meteoInformation.getMeteo().equalsIgnoreCase("soleggiato") && meteoInformation.getTemperaturaPercepita() > 20)){
+            punteggio += valutazioneTipo((Scarpa)capoAbbigliamento, meteoInformation);
+        }
         punteggio += valutazioneTemperatura(capoAbbigliamento, meteoInformation);
         punteggio += valutazioneStagione(capoAbbigliamento, meteoInformation);
         punteggio += valutazioneColore(capoAbbigliamento, meteoInformation);
