@@ -47,26 +47,23 @@
 
     \part{Introduzione}
         \chapter{Cos'è WeatherStyle?}
-            WeatherStyle è un progetto che racchiude un sogno che è quello di cercare di mitigare una delle conseguenze
-            dei cambiamenti climatici che affligge le persone ogni giorno: vestirsi in maniera adeguata alle condizioni
+            WeatherStyle è un progetto che racchiude un sogno, ovvero quello di cercare di mitigare una delle conseguenze
+            dei cambiamenti climatici che affligge le persone ogni giorno: vestirsi in maniera adeguata rispetto alle condizioni
             meteorologiche previste.
 
             \section{Le motivazioni}
-            Il progetto Weather Style nasce dall'idea di 4 studenti pendolari dell'Università degli Studi di Salerno per
-            risolvere uno dei principali problemi che si trovano ogni giorno ad affrontare.\\
-            In particolare, essi si spostano dalla loro residenza per andare
-            a seguire corsi (o svolgere esami) presso il Campus di Fisciano e devono scegliere l'abbigliamento
-            che sia più adatto per fronteggiare le condizioni climatiche previste.
-            Il problema esposto non riguarda solo gli studenti ma anche tutti coloro che devono spostarsi per lavoro
-            verso un'altra città, quindi un applicativo che lo risolva, seppur parzialmente,
-            potrebbe aiutare un significativo numero di persone.
+            Il progetto WeatherStyle nasce dall'idea di quattro studenti pendolari dell'Università degli Studi di Salerno, per
+            risolvere uno dei principali problemi che si trovano ogni giorno ad affrontare, ovvero scegliere l'abbigliamento
+            più adatto a fronteggiare le condizioni climatiche (a volte estreme) previste al Campus di Fisciano.
+            \par \noindent Il problema esposto non riguarda solo gli studenti, ma anche tutti coloro che devono spostarsi per lavoro
+            verso un'altra città, quindi avere un applicativo che lo risolva, seppur parzialmente,
+            aiuterà un significativo numero di persone.
 
             \section{Gli obbiettivi}
-            L'obiettivo che Weather Style vuole raggiungere è quello di creare un agente intelligente che riesca a fornire
-            all'utente dei suggerimenti sui capi d'abbigliamento che ritiene più adatti, questo basandosi su alcune informazioni
-            metereologiche come la temperatura percepita, il clima e la stagione in cui è effettuata la previsione.
+            L'obiettivo che WeatherStyle vuole raggiungere è quello di creare un agente intelligente che riesca a fornire
+            agli utenti dei suggerimenti sui capi d'abbigliamento che ritiene più adatti, basandosi su alcune informazioni
+            meteorologiche come la temperatura percepita, il clima e la stagione in cui viene effettuata la previsione.
 
-            \bigskip
             \section{Specifiche PEAS}
             L'acronimo PEAS sta per: Performance Environment Actuators Sensors, e viene utilizzato per descrivere un ambiente.
             \begin{itemize}
@@ -74,12 +71,12 @@
                 Nel caso di WeatherStyle, la misura di prestazione è data dal consigliare in maniera adeguata i vari capi
                 d'abbigliamento.
                 \item \textbf{E (Environment)}: è la descrizione degli elementi che formano l'ambiente. Nel nostro
-                sistema, l'ambiente è costituito da un insieme di capi d'abbigliamento e dalle previsioni meteo.
+                sistema, l'ambiente è costituito dal guardaroba dell'utente e dalle previsioni meteorologiche.
                 \item \textbf{A (Actuators)}: servono all'agente per poter compiere delle azioni. L'agente di WeatherStyle
-                si serve di uno schermo per mostrare all'utente i capi d'abbigliamento che ritiene più adeguati.
-                \item \textbf{S (Sensors)}: sono i sensori attraverso i quali l'agente riceve gli input dall'esterno. In
-                questo caso, un sensore è sicuramente la tastiera per poter inserire dei capi d'abbigliamento, e le
-                informazioni metereologiche.
+                si serve di uno schermo per mostrare agli utenti i capi d'abbigliamento che ritiene più adeguati.
+                \item \textbf{S (Sensors)}: sono i sensori attraverso i quali l'agente riceve gli input dall'esterno.
+                \\ I sensori a sua disposizione sono la tastiera per poter inserire le informazioni meteorologiche e la
+                data della previsione, e infine il contenuto di un file per recuperare il guardaroba di un utente.
             \end{itemize}
 
 
@@ -87,18 +84,20 @@
                 \begin{itemize}
                     \item \textbf{Tipo di ambiente:} guardaroba con informazioni meteorologiche.
                     \item \textbf{Completamente osservabile:} l'agente attraverso i sensori conosce lo stato
-                    completo dell'ambiente in ogni momento, ovvero, ha visione completa dei capi presenti nel guardaroba
-                    e delle informazioni meteorologiche.
+                    completo dell'ambiente in ogni momento, ovvero, ha visione completa dei capi d'abbigliamento presenti
+                    nel guardaroba dell'utente e delle informazioni meteorologiche.
                     \item \textbf{Deterministico:} lo stato successivo dell'ambiente è completamente determinato dallo
                     stato corrente e dall'azione eseguita dall'agente, dunque, è un ambiente che non cambia nel tempo.
                     \item \textbf{Episodico:} l'esperienza dell'agente si divide in episodi atomici, in ogni episodio
                     esegue una singola azione e non si lascia influenzare da ciò che è accaduto precedentemente.
-                    \item \textbf{Statico:} l'ambiente non cambia nel mentre che l'agente sta eseguendo le proprie azioni.
-                    \item \textbf{Discreto:} l'ambiente fornisce un numero limitato di percezioni\footnote{input percepiti
-                    in un dato istante} e azioni distinte\footnote{una sola azione per ogni episodio}.
-                    \item \textbf{Singolo agente:} l'ambiente consente la presenza di un singolo agente\footnote{nei
-                    capitoli successivi vedremo tre agenti che agiranno singolarmente con uno scopo comune}
+                    \item \textbf{Statico:} l'ambiente resta invariato nel mentre che l'agente sta eseguendo le proprie azioni.
+                    \item \textbf{Discreto:} l'ambiente fornisce un numero limitato di percezioni e azioni distinte.
+                    \item \textbf{Singolo agente:} l'ambiente consente la presenza di un singolo agente.
                 \end{itemize}
+                \bigskip
+                \par \noindent Nei capitoli successivi vedremo due tipi di agenti che agiranno singolarmente ma con uno stesso
+                scopo comune, ovvero vedremo prima un \textbf{agente basato su utilità} in grado di quantificare la desiderabilità
+                degli stati raggiunti, e poi a seguire un \textbf{agente capace di apprendere}.
 
     \part{Tecniche di risoluzione}
         \chapter{La ricerca locale}
@@ -115,7 +114,7 @@
         compito del progettista è cercare di migliorare la capacità di esplorazione dell'algoritmo.
 
             \section{Gli algoritmi genetici}
-            Sebbene possa sembrare un argomento che si sia affacciato da poco sull'umanità, la storia degli algoritmi genetici
+            Sebbene possa sembrare un argomento che si sia affacciato da poco all'umanità, la storia degli algoritmi genetici
             ha inizio con il celeberrimo biologo inglese, Charles Darwin.
             \par \noindent Darwin pubblicò nel 1859 \textit{"L'origine della specie"}, libro che riscosse un enorme
             successo e nel quale si introduceva per la prima volta il concetto di \textbf{teoria dell'evoluzione} tramite
@@ -131,59 +130,92 @@
             un algoritmo di ricerca.
             \par \noindent
             \\ \noindent Partendo da questa definizione si può dire che un algoritmo genetico evolve una \textbf{popolazione}
-            di \textbf{individui} (le cosiddette soluzioni candidate) producendo un iterazione dopo l'altra delle
-            soluzioni che migliorino sempre rispetto ad una \textbf{funzione obbiettivo}, fino a che non si è raggiunta
-            la soluzione \textbf{ottimale} o si sia verificata una \textbf{condizione di terminazione}.
-            Per poter creare nuove \textbf{generazioni} di individui bisogna applicare degli \textbf{operatori genetici},
-            più nello specifico la \textbf{selezione}, il \textbf{crossover} e la \textbf{mutazione}.
-            \par \noindent
+            di \textbf{individui} (le soluzioni candidate) producendo ad ogni iterazione delle
+            soluzioni che vengono valutate rispetto al proprio grado di adattamento, attraverso la cosiddetta
+            \textbf{funzione di fitness}. Si procede in questo modo fino a quando non si è raggiunta
+            una soluzione \textbf{(sub-)ottimale} o si sia verificata una \textbf{condizione di terminazione}, ad esempio
+            l'assenza di miglioramenti degli individui rispetto alle generazioni precedenti.
+            \par \noindent Per poter creare nuove \textbf{generazioni} di individui bisogna applicare gli \textbf{operatori genetici},
+            più nello specifico la \textbf{selezione}, che preleva in ogni generazione gli individui che ben si
+            adattano al problema, il \textbf{crossover} che va ad incrociare gli individui selezionati, e la \textbf{mutazione} che
+            va a cambiare il patrimonio genetico degli individui risultanti dall'applicazione del crossover.
 
             \newpage
             \section{Formulazione del problema}
-            Il primo quesito da porsi nel momento in cui si ha a che fare con un algoritmo genetico è: come vengono
-            codificati gli individui? Nel nostro caso, l'algoritmo dovrà scegliere solamente tre dai capi che si ritengono
-            più adeguati; per questo motivo, la codifica degli individui consiste in un array di tre interi. Questi ultimi
-            rappresentano la posizione del capo d'abbigliamento scelto nella lista di tutti i capi.
-            \par \noindent Dopo aver definito come gli individui devono essere codificati, si passa ad analizzare i vincoli a
+            Il primo quesito da porsi nel momento in cui si ha a che fare con un algoritmo genetico è: \textbf{come vengono
+            codificati gli individui?} Nel nostro caso, l'algoritmo dovrà scegliere solamente tre dai capi che si ritengono
+            più adeguati; per questo motivo, la codifica degli individui consiste in un array di tre interi. Questi valori
+            rappresentano la posizione dei capi d'abbigliamenti nella lista di maglie, pantaloni e scarpe
+            presenti nel guardaroba\footnote{come si può intuire gli agenti saranno tre e ognuno lavorerà su una singola
+            istanza del problema, ossia maglie, pantaloni o scarpe}.
+            \\
+            \par \noindent Dopo aver definito come gli individui devono essere codificati, si passa ad analizzare i \textbf{vincoli} a
             cui essi sono sottoposti. In questo caso, l'unico vincolo è che, all'interno dell'array, non si ripeta un intero
             più di una volta, cioè che i capi siano tutti diversi tra loro.
+            \\
             \par \noindent La prima parte di un GA consiste nell'inizializzazione di una popolazione. Inizialmente la soluzione
             verteva verso un'inizializzazione casuale ma, dopo aver constatato che la popolazione non rispettava il vincolo richiesto,
-            si è pensato a un'inizializzazione pseudo-casuale, cioè producendo array ammissibili (che rispettino il vincolo citato sopra)
-            contrastando il fatto che un elemento si possa ripetere più volte.
-            \\ \noindent Dopo aver chiarito la codifica degli individui, bisogna modellare la funzione di fitness.
-            Il nostro obiettivo è quello di fornire all'utente la selezione dei tre capi migliori in base alle condizioni meteo; per
-            ogni capo d'abbigliamento, viene calcolato un punteggio (utilità) che consente di aiutare l'agente nella scelta.
+            si è optato verso un'inizializzazione pseudo-casuale, cioè producendo array ammissibili che rispettassero il vincolo.
+            \\
+            \par \noindent Adesso bisogna modellare la \textbf{funzione di fitness}.
+            Il nostro obiettivo è quello di fornire all'utente la selezione dei tre capi migliori rispetto alle condizioni
+            meteorologiche; per ogni capo d'abbigliamento, viene calcolato un \textbf{punteggio} (utilità) che consente di aiutare
+            l'agente nella scelta.
+            \\
             \par \noindent Il punteggio si basa su diversi parametri:
             \begin{itemize}
-                \item \textbf{Temperatura.} Sono stati differenziati ben sette range di temperatura in cui, per ognuno,
-                vengono assegnati i punteggi ai vari materiali di cui può essere composto un capo d'abbigliamento (maglie e pantaloni).
+                \item \textbf{Temperatura:} sia per maglie, pantaloni e scarpe sono stati differenziati sette range di temperatura
+                $(t>30, 25<t\leq 30, 20<t\leq 25, 15<t\leq 20, 10<t\leq 15, 5<t\leq 10, t\leq 5)$ in cui,
+                solo per maglie e pantaloni sono assegnati i punteggi rispetto ai materiali di cui sono composti.
                 Ad esempio, quando la temperatura scende al di sotto dei cinque gradi, verrà assegnato un punteggio maggiore ad un tessuto
-                come la lana piuttosto che ad uno come il lino, essendo tipicamente estivo. Per le scarpe viene, inoltre, incrementato il
-                punteggio anche sulla base della pioggia: se le previsioni metereologiche dichiarano pioggia, verranno assegnati punti "bonus"
-                se la scarpa è antiscivolo e/o impermeabile.
-                \item \textbf{Lunghezza.}Nei range suddetti vengono anche specificati i punteggi relativi
-                alla lunghezza sia dei pantaloni che delle maglie relativamente alla manica; tenendo in considerazione l'esempio precedente, verrà
-                sicuramente preferita una manica lunga e un pantalone lungo rispetto alle altre lunghezze.
-                \item \textbf{Stagionalità.} Inoltre, si assegna una valutazione sulla base della stagionalità del capo; sia per le maglie, che per i
-                pantaloni e per le scarpe, viene dato il massimo del punteggio se la stagione in cui viene richiesto l'intervento dell'agente coincide
+                come la lana piuttosto che ad uno come il lino, essendo tipicamente estivo.
+                Mentre per le scarpe il punteggio viene assegnato per ogni range rispetto alla stagione in cui è indicata per essere
+                indossata.
+                \item \textbf{Lunghezza:} solo per maglie e pantaloni, rispetto ai range precedenti vengono specificati i punteggi relativi
+                alla lunghezza di un pantalone (lungo, medio, corto), che della lunghezza delle maniche per una maglia (lunga, corta);
+                tenendo in considerazione l'esempio precedente, verrà sicuramente preferita una maglia a manica lunga e un pantalone
+                lungo rispetto alle altre lunghezze.
+                \item \textbf{Stagionalità:} si assegna una valutazione sulla base della stagionalità del capo; sia per maglie, che per
+                pantaloni, che per scarpe, viene dato il massimo del punteggio se la stagione in cui viene richiesto l'intervento dell'agente coincide
                 con quella indicata per quel determinato capo d'abbigliamento.
-                \item \textbf{Tipo di scarpe.} In base alle previsioni meteo e al tipo di scarpe, viene assegnato un determinato punteggio. Ad esempio,
-                in caso di neve, vengono preferiti gli stivali alle classiche scarpe di ginnastica.
-                \item \textbf{Colore.} Si tende, per ognuna delle tre tipologie di capo d'abbigliamento, a preferire colori chiari in caso di meteo
-                soleggiato piuttosto che colori scuri; per i capi colorati, i punti corrispondono a cinque, esattamente a metà tra i dieci per i capi
-                chiari e zero per quelli scuri.
+                \item \textbf{Tipo di scarpe:} in base alle previsioni meteo e al tipo di scarpe, viene assegnato un determinato punteggio.
+                Ad esempio, in caso di neve, vengono preferiti gli stivali alle classiche scarpe di ginnastica.
+                \item \textbf{Antisivolo e/o impermeabile:} per le scarpe viene incrementato il
+                punteggio secondo le previsioni, se queste dichiarano pioggia, verranno assegnati punti ``bonus'' se la
+                scarpa è antiscivolo e/o impermeabile.
+                \item \textbf{Colore:} sia per maglie, pantaloni e scarpe si tende a preferire colori chiari in caso di meteo
+                soleggiato piuttosto che colori scuri; per i capi colorati, i punti corrispondono a cinque, esattamente a
+                metà tra i dieci per i capi chiari e zero per quelli scuri.
             \end{itemize}
-            \\ \noindent Riassumendo, per ogni capo d'abbigliamento si calcola la sua utilità. In particolare, per maglie e pantaloni, l'utilità
-            è data da \textit{u(x)=te(x)+c(x)+l(x)+s(x)}, dove \textit{te(x)} rappresenta la temperatura, \textit{c(x)} il colore, \textit{l(x)}
-            la lunghezza, \textit{s(x)} la stagionalità. Allo stesso modo, per le scarpe l'utilità è espressa come \textit{u(x)=ti(x)+te(x)+s(x)+c(x)},
-            in cui \textit{te(x)}, \textit{c(x)} e \textit{s(x)} assumono lo stesso significato detto in precedenza, e \textit{ti(x)} rappresenta il tipo
-            di scarpa.
-            \ \noindent In conclusione, la funzione di fitness è data dalla media dei tre punteggi assegnati ad ogni capo d'abbigliamento, cioè
-        \begin{equation*}
-            \frac{\sum_{n=1}^{3} u_{n}}{3}
-        \end{equation*}
-
+            \newpage
+            \par \noindent Riassumendo, per ogni capo d'abbigliamento si calcola il suo valore di utilità.
+            \\
+            \par \noindent In particolare, \textbf{per maglie e pantaloni}, l'utilità è data da:
+            \[
+                u(x)=te(x)+c(x)+l(x)+s(x)
+            \]
+            dove $te(x)$ rappresenta la temperatura, $c(x)$ il colore, $l(x)$ la lunghezza, $s(x)$ la stagionalità.
+            \\
+            \par \noindent Allo stesso modo, per le \textbf{scarpe} l'utilità è data da:
+            \[
+                u(x)=ti(x)+te(x)+s(x)+c(x)
+            \]
+            dove $te(x)$, $c(x)$ e $s(x)$ assumono il significato precedente, e $ti(x)$ rappresenta il tipo di scarpa.
+            \\
+            \par \noindent La funzione di fitness è data dalla media dei tre punteggi assegnati
+            ad ogni tipologia di capo d'abbigliamento, che siano essi scarpe, pantaloni o maglie, il nostro obbiettivo
+            chiaramente è quello di massimizzare questa funzione:
+            \[
+                \frac{\sum_{n=1}^{3} u_{n}}{3}
+            \]
+            \\
+            \par \noindent Per quel che riguarda la scelta degli \textbf{operatori genetici} si è optato per:
+            \begin{itemize}
+                \item \textbf{RouletteWheel}
+                \item \textbf{MultiPointCrossover}
+                \item \textbf{GaussianMutator}
+            \end{itemize}
+            Si rimanda alla sezione 2.3.4 per ulteriori dettagli su questi operatori.
 
             \newpage
             \section{Implementazione}
@@ -268,6 +300,7 @@
                     \end{algorithmic}
                 \end{algorithm}
 
+            \newpage
             \section{Vantaggi e svantaggi}
             La soluzione illustrata in questo capitolo presenta dei vantaggi e degli svantaggi, molti dei quali legati
             alla natura degli algoritmi genetici.
@@ -279,7 +312,8 @@
             la ricerca viene guidata verso soluzioni ammissibili e migliori riducendo il carico computazionale.\\
             A valle di test empirici, possiamo dire che la soluzione riesce quasi sempre a restituire un risultato ottimale.
             In particolare, su 10 test effettuati ben x volte il risultato è da considerare ottimo.
-            Di seguito un report del test eseguito:\\
+            Di seguito un report del test eseguito:
+            \begin{center}
                 \begin{tabular}{ |p{3cm}|p{2cm}|p{2cm}||p{4cm}|}
                     \hline
                     \multicolumn{4}{|c|}{Test effettuati} \\
@@ -303,6 +337,7 @@
                     6/08/2022 & Nuvoloso  & 30 & x\\
                     \hline
                 \end{tabular}
+            \end{center}
             \subsection{Efficienza}\label{subsec:efficienza}
             Un'osservazione importante da fare riguarda l'efficienza.
             Con un guardaroba di grandi dimensioni, gli algoritmi genetici,
