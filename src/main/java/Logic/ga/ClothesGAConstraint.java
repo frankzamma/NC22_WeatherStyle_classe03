@@ -37,7 +37,7 @@ public class ClothesGAConstraint implements Constraint<IntegerGene, Integer> {
 
         int max = phenotype.genotype().gene().max();
         do{
-            distinctValue.add((int) (Math.floor(Math.random()* (max + 1))));
+            distinctValue.add((int) (Math.floor(Math.random() * (max + 1))));
             System.out.println(distinctValue);
         }while (distinctValue.size() != 3);
 
@@ -51,6 +51,6 @@ public class ClothesGAConstraint implements Constraint<IntegerGene, Integer> {
 
         Phenotype<IntegerGene,Integer> p = Phenotype.of(genotype,l);
 
-        return p;
+        return phenotype;
     }
 }

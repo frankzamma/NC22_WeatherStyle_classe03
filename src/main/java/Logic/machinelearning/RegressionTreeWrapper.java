@@ -47,9 +47,9 @@ public class RegressionTreeWrapper {
             // ten cross validation ha mostrato che l'intero dataset su cui sarà addestrato il modello dà buoni risultati
             // quindi è preferibile addestrarlo sull'intero dataset e non su una parte di esso
             if(buildWithTrainingSetAndTestSet)
-                buildModelWithTrainingSetAndTestSet(67, 33, balanceDate);
+                testModelWithTrainingSetAndTestSet(67, 33, balanceDate);
             else
-                buildModelWithTenFoldsCrossValidation(balanceDate);
+                testModelWithTenFoldsCrossValidation(balanceDate);
         } catch (IOException e) {
             throw new RuntimeException("File csv non trovato" + e);
         } catch (Exception e){
@@ -58,7 +58,7 @@ public class RegressionTreeWrapper {
 
     }
 
-    private void buildModelWithTrainingSetAndTestSet(double percentTrain, double percentTest, boolean balanceDate) throws Exception {
+    private void testModelWithTrainingSetAndTestSet(double percentTrain, double percentTest, boolean balanceDate) throws Exception {
 
         // randomizza fullDataset
         Randomize randomize = new Randomize();
@@ -91,13 +91,12 @@ public class RegressionTreeWrapper {
         evaluation = new Evaluation(trainingSet);
         evaluation.evaluateModel(repTree, testSet);
 
-
         // output valutazioni
         System.out.println( modelName + " valutato con Training Set (" + percentTrain + ")%" + "e Test Set (" +
                 percentTest + "%):\n" + evaluation.toSummaryString());
     }
 
-    private void buildModelWithTenFoldsCrossValidation(boolean balanceDate) throws Exception{
+    private void testModelWithTenFoldsCrossValidation(boolean balanceDate) throws Exception{
 
         // valutiamo quanto buono sarà il regressore mediante 10 folds cross validation
         evaluation = new Evaluation(fullDataset);
