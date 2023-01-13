@@ -28,9 +28,8 @@ Per clonare la repository all'interno dell'IDE [Intellij IDEA Ultimate](https://
 Nella finestra che appare inserire l'[url](https://github.com/frankzamma/NC22_WeatherStyle_classe03.git) della repository come nella seguente immagine.
 ![image](https://user-images.githubusercontent.com/65612000/212434444-0b0d9b92-e4c8-40ba-b081-06bbe352f995.png)
 <br>
-<br>
 ### Esecuzione degli script python (in IntellJ)
-1. Aprendo uno script python (contenuti nella directory *CreateDatasets*, intellij vi mostrerà il seguente messaggio.
+1. Aprendo uno script python (contenuti nella directory *CreateDatasets*), intellij vi mostrerà il seguente messaggio.
 <img width="692" alt="image" src="https://user-images.githubusercontent.com/65612000/212434840-f51f3f7f-2908-4f38-82f8-b3274770fbb6.png">
 <br>
 **NOTA** : Per eseguire i seguenti passaggi si pressupone che abbiate installato il [Plugin IntelliJ per Phyton](https://plugins.jetbrains.com/plugin/631-python)
