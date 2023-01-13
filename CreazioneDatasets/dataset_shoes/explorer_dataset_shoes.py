@@ -12,9 +12,11 @@ df.drop_duplicates(inplace=True)
 print(df["HeelHeight"].value_counts())
 
 # sb.countplot(data=df, y=df['Category'])
-# sb.countplot(data=df, y=df['SubCategory'])
+
+sb.set(rc={"figure.figsize":(20, 10)})
+sb.countplot(data=df, y=df['SubCategory'])
 # sb.countplot(data=df, y=df['Insole'])
-sb.set(rc={"figure.figsize":(10, 6)})
-sb.countplot(data=df_new, x=df_new['Tipo'])
+
+# sb.countplot(data=df_new, =df_new['Tipo'])
 
 plt.show()
