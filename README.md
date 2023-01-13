@@ -29,17 +29,18 @@ Nella finestra che appare inserire l'[url](https://github.com/frankzamma/NC22_We
 ![image](https://user-images.githubusercontent.com/65612000/212434444-0b0d9b92-e4c8-40ba-b081-06bbe352f995.png)
 <br>
 ### Esecuzione degli script python (in IntellJ)
-1.Aprendo uno script python (contenuti nella directory *CreateDatasets*), intellij vi mostrerà il seguente messaggio.
+1 Aprendo uno script python (contenuti nella directory *CreateDatasets*), intellij vi mostrerà il seguente messaggio.
 <img width="692" alt="image" src="https://user-images.githubusercontent.com/65612000/212434840-f51f3f7f-2908-4f38-82f8-b3274770fbb6.png">
-2.Cliccando su *Configure Python Interpeter* si aprirà la seguente schermata
+<br>
+2 Cliccando su *Configure Python Interpeter* si aprirà la seguente schermata
 <br>
 _Immagine_Da_Inserire1_
 <br>
-3.Bisognerà cliccare su *+* in alto a sinistra e selezionare *Python*<br>
-<img width="238" alt="image" src="https://user-images.githubusercontent.com/65612000/212435464-0b9d64dd-8c8f-4fb3-bca1-b30ee777eedc.png">
+3 Bisognerà cliccare su *+* in alto a sinistra e selezionare *Python*<br>
+<img width="238" alt="image" src="https://user-images.githubusercontent.com/65612000/212435464-0b9d64dd-8c8f-4fb3-bca1-b30ee777eedc.png"><br>
 Se non avete mai usato il [Plugin IntelliJ per Phyton](https://plugins.jetbrains.com/plugin/631-python) , vi apparirà la seguente schermata.<br>
 ![image](https://user-images.githubusercontent.com/65612000/212435627-78ac2cff-4c17-4704-837c-3dccc3fa35e3.png)
-
+<br>
 Se avete già usato, [Plugin IntelliJ per Phyton](https://plugins.jetbrains.com/plugin/631-python) e al posto di *<No-interpeter>* vi appare un sdk già configurato potete passare direttamente al punto 5.
   
   
