@@ -5,7 +5,7 @@ import io.jenetics.IntegerChromosome;
 import io.jenetics.IntegerGene;
 import io.jenetics.Phenotype;
 import io.jenetics.engine.Constraint;
-import io.jenetics.util.IntRange;
+
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -36,21 +36,21 @@ public class ClothesGAConstraint implements Constraint<IntegerGene, Integer> {
         Set<Integer> distinctValue = new HashSet<>();
 
         int max = phenotype.genotype().gene().max();
+        int min = phenotype.genotype().gene().min();
+        System.out.println(max);
         do{
-            distinctValue.add((int) (Math.floor(Math.random()* (max + 1))));
+            distinctValue.add((int) (Math.floor(Math.random() * (max + 1))));
             System.out.println(distinctValue);
         }while (distinctValue.size() != 3);
 
         ArrayList<Integer> values =  new ArrayList<>(distinctValue);
         Genotype<IntegerGene> genotype = Genotype.of(
-                IntegerChromosome.of(IntRange.of(values.get(0))),
-                IntegerChromosome.of(IntRange.of(values.get(1))),
-                IntegerChromosome.of(IntRange.of(values.get(2)))
+                IntegerChromosome.of(IntegerGene.of(values.get(0),min, max)),
+                IntegerChromosome.of(IntegerGene.of(values.get(1), min, max)),
+                IntegerChromosome.of(IntegerGene.of(values.get(2), min, max))
         );
 
 
-        Phenotype<IntegerGene,Integer> p = Phenotype.of(genotype,l);
-
-        return p;
+        return Phenotype.of(genotype,l);
     }
 }
