@@ -45,6 +45,7 @@ Se non avete mai usato il [Plugin IntelliJ per Phyton](https://plugins.jetbrains
 Se avete già usato, [Plugin IntelliJ per Phyton](https://plugins.jetbrains.com/plugin/631-python) e al posto di *<No-interpeter>* vi appare un sdk già configurato potete passare direttamente al punto 5.
   
   
+  
 
 
 
