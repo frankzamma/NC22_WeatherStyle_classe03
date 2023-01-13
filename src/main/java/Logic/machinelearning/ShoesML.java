@@ -13,7 +13,7 @@ public class ShoesML {
     public ShoesML(String pathDataset){
         //Creazione e allenamento del regressore
         treeWrapper =
-                new RegressionTreeWrapper(pathDataset,false, true);
+                new RegressionTreeWrapper(pathDataset,false, true, "ScarpeML");
     }
 
     public List<ScoreCapoAbbigliamento> classifyIstances(List<Scarpa> list, MeteoInformation meteoInformation, boolean getBestThree){
