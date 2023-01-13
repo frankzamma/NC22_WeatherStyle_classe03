@@ -19,3 +19,7 @@ scarpa,scarpa classica,false,false,chiaro,estate
 scarpa,anfibi,true,true,scuro,inverno
 scarpa,scarpe aperte,false,false,chiaro,primavera
 scarpa,scarpa da ginnastica,true,false,scuro,autunno
+scarpa,scarpa da ginnastica,false,true,chiara,primavera
+scarpa,anfibi,true,true,scuro,autunno
+scarpa,scarpe aperte,true,false,chiara,estate
+scarpa,scarpa da ginnastica,false,false,chiaro,estate

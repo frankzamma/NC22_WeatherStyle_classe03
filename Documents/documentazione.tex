@@ -26,6 +26,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{sidecap}
+\usepackage{algorithmicx}
 
 \graphicspath{ {./images/} }
 
@@ -145,9 +146,11 @@
             Il primo quesito da porsi nel momento in cui si ha a che fare con un algoritmo genetico è: \textbf{come vengono
             codificati gli individui?} Nel nostro caso, l'algoritmo dovrà scegliere solamente tre dai capi che si ritengono
             più adeguati; per questo motivo, la codifica degli individui consiste in un array di tre interi. Questi valori
-            rappresentano la posizione dei capi d'abbigliamenti nella lista di maglie, pantaloni e scarpe
-            presenti nel guardaroba\footnote{come si può intuire gli agenti saranno tre e ognuno lavorerà su una singola
-            istanza del problema, ossia maglie, pantaloni o scarpe}.
+            rappresenteranno la posizione dei capi d'abbigliamenti nella lista di maglie, pantaloni e scarpe
+            presenti nel guardaroba\footnote{è bene chiarire che gli agenti saranno tre e ognuno lavorerà su una singola
+            istanza del problema, ossia maglie, pantaloni e scarpe, poiché risolvere il tutto con un solo agente sarebbe
+            risultato difficile: ci avrebbe portato a considerare altri aspetti, come la combinazione
+            cromatica che non rientra tra i nostri obbiettivi.}.
             \\
             \par \noindent Dopo aver definito come gli individui devono essere codificati, si passa ad analizzare i \textbf{vincoli} a
             cui essi sono sottoposti. In questo caso, l'unico vincolo è che, all'interno dell'array, non si ripeta un intero
@@ -221,14 +224,17 @@
             \newpage
             \section{Implementazione}
             Per l'implementazione della soluzione basata su algoritmo genetico è stato utilizzato il framework
-            \textbf{Jenetics} \cite{1}.
+            \textbf{Jenetics} \cite{1}. In questa sezione tratteremo l'istanza generale per la costruzione dell'algoritmo
+            genetico, come già discusso nella sezione 2.2 gli agenti saranno tre e ognuno lavorerà su una singola istanza
+            del problema, ovvero maglie, pantaloni e scarpe, differenziandosi per i calcoli effettuati dalla funzione di
+            fitness.
                 \subsection{Codifica degli individui}
                 \par \noindent Per prima cosa è stato necessario definire come è fatto un individuo, secondo la logica
                 del framework quando si parla di individuo, esso è chiamato \textbf{Genotype}, a sua volta composto
                 da cromosomi, detti \textbf{Chromosome}, i cromosomi a loro volta sono costituiti da geni, detti
                 \textbf{Gene}.
                 \medskip
-                \par \noindent Rispetto a ciò che è stato detto nella sezione \ref{codifica:ga} possiamo definire
+                \par \noindent Rispetto a ciò che è stato detto nella sezione 2.2 possiamo definire
                 i genotipi mediante tre cromosomi, costituti da geni che a loro volta hanno al proprio interno valori
                 interi che variano da \textbf{0} a \textbf{sizeCapi $-$ 1}.
                 \medskip
@@ -240,7 +246,7 @@
                 \end{algorithmic}
 
                 \subsection{Vincoli}
-                \par \noindent Per quel che riguarda la definizione dei vincoli già discussi nella sezione \ref{vincoli:ga}
+                \par \noindent Per quel che riguarda la definizione dei vincoli già discussi nella sezione 2.2
                 il framework mette a disposizione l'interfaccia \textbf{Constraint} attraverso la quale si vanno a ridefinire
                 due metodi:
                 \begin{itemize}
@@ -257,7 +263,7 @@
                 \end{itemize}
 
                 \subsection{Funzione di fitness}
-                \par \noindent Venendo alla funzione di fitness, come già descritto nella sezione \ref{fitness:ga} il
+                \par \noindent Venendo alla funzione di fitness, come già descritto nella sezione 2.2 il
                 nostro obbiettivo è quello di massimizzare il punteggio ottenuto dalla combinazione dei geni per ogni
                 fenotipo.
                 \par \noindent In termini semplici, per ogni individuo andremo a valutare i tre valori interi, i quali
@@ -289,14 +295,14 @@
                     \label{setup:ga}
                     \begin{algorithmic}[1]
                         \State $populationSize \gets 10$
-                        \State $maxEvaluation \gets 100$
+                        \State $maxEvolutions \gets 100$
                         \State
                         \State $constraint \gets ConstraintImplement()$
                         \State $selector \gets RouletteWheelSelector()$
                         \State $crossover \gets MultiPointCrossover(0.25)$
                         \State $mutator \gets GaussianMutator()$
                         \State
-                        \State $geneticAlgorithm \gets setup(populationSize, maxEvaluation, genotype, fitness,$
+                        \State $geneticAlgorithm \gets setup(populationSize, maxEvolutions, genotype, fitness,$
                         \State $\hspace*{12.3em} constraint, selector, crossover, mutator)$
                     \end{algorithmic}
                 \end{algorithm}
@@ -305,7 +311,7 @@
             \section{Vantaggi e svantaggi}
             La soluzione illustrata in questo capitolo presenta dei vantaggi e degli svantaggi, molti dei quali legati
             alla natura degli algoritmi genetici.
-            Uno dei principali problemi affrontati è stato sulla generazione della popolazione iniziale.
+            \par \noindent Uno dei principali problemi affrontati è stato sulla generazione della \textbf{popolazione iniziale}.
             In genere, la prima popolazione viene generata in maniera totalmente casuale quindi non è detto che
             tali individui rispettino il vincolo imposto (i tre elementi devono essere diversi).\\
             Il problema è stato risolto andando ad impostare una generazione pseudo casuale che permette
@@ -345,7 +351,7 @@
             ci permettono sicuramente di effettuare un numero inferiore di computazioni rispetto ad una ricerca esaustiva
             restituendo quasi sempre buon risultato.
             Tuttavia, con il setup da noi effettuato, cioè \emph{size della popolazione = 10} e
-            \emph{max= 100}, i GA diventano più efficienti di una ricerca esaustiva con un numero di capi
+            \emph{max evoluzioni = 100}, i GA diventano più efficienti di una ricerca esaustiva con un numero di capi
             maggiore o uguale a 20.
             Infatti, facendo un po' di calcoli il numero stati ammissibili con 20 capi è pari al numero di combinazioni semplici
             di 20 elementi raggruppati in classi di 3:
@@ -354,14 +360,14 @@
             \end{equation*}
             che è leggermente superiore al numero massimo di valutazione della funzione di fitness che il GA compie durante la sua esecuzione:
             \begin{equation*}
-                populationSize * maxEvaluation = 10 * 100 = 1000
+                populationSize * maxEvolutions = 10 * 100 = 1000
             \end{equation*}
             Bisogna però sottolineare, che la precedente osservazione considera che la ricerca esaustiva venga effettuata soltanto
             tra i possibili stati ammissibili per la soluzione, che richiedono anche essi una computazione per essere generati.
             Quindi, ritrattando, se consideriamo tutte le soluzioni (ammissibili e non ammissibili), gli Algoritmi Genetici diventano più efficienti già a partire da
             11 capi d'abbigliamento:
             \begin{equation*}
-                D_{11,3}^{'}=11^3 = 1331  > 1000 = populationSize * maxEvaluation = 10 * 100 = 100
+                D_{11,3}^{'}=11^3 = 1331  > 1000 = populationSize * maxEvolutions = 10 * 100 = 1000
             \end{equation*}
             Per concludere, la soluzione basata su Algoritmi Genetici, riesce a fornire un buon consiglio all'utente
             in quasi tutte le condizioni meteo.
@@ -375,7 +381,7 @@
         Quando si parla di \textbf{machine learning} solitamente si tende ad accomunarlo al concetto di ``Intelligenza Artificiale'',
         ma (s)fortunatamente non è così.
         \par \noindent Il machine learning altro non è che una branca dell'Intelligenza Artificiale, una delle forme
-        di apprendimento automatico con origini più antiche, sin nei tardi anni 50 Alan Turing avanzò la proposta
+        di apprendimento automatico con origini più antiche, sin nei tardi anni '50 Alan Turing avanzò la proposta
         di realizzare algoritmi per costruire macchine in grado di apprendere.
         \par \noindent \textbf{Dunque in cosa consiste?} Sostanzialmente è lo studio degli algoritmi e delle tecniche in
         grado di apprendere dai dati.
@@ -399,11 +405,11 @@
             Questo è necessario perché la stragrande maggioranza dei sistemi software che non sono adeguatamente ingegnerizzati
             falliscono e rischiano di arrecare danni a cose, persone e ambiente circostante.
             \par \noindent Per avere un corretto approccio ingegneristico è possibile scegliere uno dei vari cicli di vita
-            di progetti basati su intelligenza artificiale e data science, uno dei più conosciuti è il CRISP-DM ed è anche
-            il modello che abbiamo adottato noi per progettare la nostra soluzione.
+            di progetti basati su intelligenza artificiale e data science, uno dei più conosciuti è il \textbf{CRISP-DM} ed è anche
+            il modello che abbiamo adottato per progettare la nostra soluzione.
             \par \noindent
             \\ \noindent Il CRISP-DM (Cross-Industry Standard Process for Data Mining) è formato da diverse fasi che possono
-            essere eseguite un numero illimitato di volte il che lo rende un modello \textit{non} sequenziale.
+            essere eseguite un numero illimitato di volte il che lo rende un modello \textit{non sequenziale}.
             Nelle sezioni che seguono andremo ad analizzare le fasi del CRISP-DM, mostrando cosa è stato fatto in ognuna di esse
             al fine di poter raggiungere il nostro obiettivo tramite una soluzione basata sul machine learning.
             \par \noindent
@@ -419,22 +425,23 @@
             \par \noindent
             \begin{itemize}
                 \item \textbf{Obiettivi di business}: Il machine learner che stiamo progettando avrà come obiettivo quello di
-                saper stimare adeguatamente, attraverso un punteggio numerico, quali capi d'abbigliamento sono più adatti basandosi
-                sulle caratteristiche dei capi e sulle informazioni metereologiche quali temperatura percepita, clima e
+                stimare attraverso un punteggio numerico quali capi d'abbigliamento sono più adatti da indossare in
+                determinate circostanze, basandosi
+                sulle caratteristiche dei capi e sulle informazioni meteorologiche, quali temperatura percepita, previsione e
                 stagione della previsione.
                 \item \textbf{Disponibilità delle risorse}: Per raggiungere il nostro obbiettivo principale ci serviranno
-                delle risorse ovvero un dataset per ogni capo d'abbigliamento (maglia, pantalone e scarpa),
-                che contiene informazioni riguardo il capo d'abbigliamento specifico e delle informazioni meteo correlate.
+                delle risorse, ovvero un dataset per ogni capo d'abbigliamento (maglie, pantaloni e scarpe),
+                che contenga informazioni riguardo il capo d'abbigliamento specifico e delle informazioni meteo correlate.
                 \par \noindent Purtroppo dopo un'approfondita ricerca non siamo riusciti a trovare nessun dataset che facesse
-                al caso nostro, anche sfruttando piattaforme importanti nell'ambito del machine learning come \textbf{Kaggle} \cite{3},
-                quindi per rimediare a questo abbiamo costruito i dataset che ci servivano acquisendo, analizzando e modellando
-                i dati da altri dataset.
+                al 100\% al caso nostro, anche sfruttando piattaforme importanti per la raccolta dati come \textbf{Kaggle} \cite{3}.
+                Quindi per rimediare a questo abbiamo costruito i dataset che ci servivano acquisendo, analizzando e modellando
+                i dati di altri dataset.
                 \item \textbf{Stima dei rischi}: Il non avere già in partenza dei dataset su cui poter lavorare comporta
-                di certo un rischio non di poco conto dato che bisogna costruirseli da se e dunque i dati non sono adeguatamente testati.
+                di certo un rischio non di poco conto dato che bisogna costruirli e dunque i dati non sono adeguatamente testati.
                 \item \textbf{Tecnologie e strumenti}: Per acquisire, analizzare e modellare i dati abbiamo scelto di utilizzare
                 il linguaggio Python poiché mette a disposizione alcune librerie come \textbf{pandas} \cite{4} e \textbf{seaborn} \cite{5}.
-                L'addestramento e l'implementazione dei modelli invece è stata realizzata in linguaggio Java,
-                sfruttando il framework \textbf{Weka} \cite{2}, questo per comodità dato che l'intero applicativo di Weather Style
+                L'addestramento dei modelli invece è stata realizzata
+                sfruttando il framework \textbf{Weka} \cite{2} in linguaggio Java, dato che l'intero applicativo di WeatherStyle
                 è scritto usando tale linguaggio di programmazione.
             \end{itemize}
 
@@ -442,8 +449,8 @@
             \section{Data Understanding}
             Come già discusso durante la fase di business understanding il principale rischio dell'approccio basato su machine
             learning è stato l'effettiva mancanza di un dataset che rispondesse appieno alle nostre esigenze.
-            \par \noindent Ciononostante abbiamo trovato diversi dataset che in un qualche modo fusi insieme hanno potuto
-            dar vita al dataset di cui avevamo bisogno, e in buona parte ci siamo riusciti!
+            \par \noindent Ciononostante abbiamo trovato diversi dataset che fusi insieme hanno potuto
+            dar vita ai dataset di cui avevamo bisogno, e in buona parte ci siamo riusciti!
             \par \noindent In questa sezione andremo quindi ad acquisire i dati, visualizzarli, analizzarli e documentarli rispetto al loro
             formato e alla loro qualità.
                 \subsection{Dataset maglie e pantaloni}
@@ -475,72 +482,77 @@
                     \includegraphics[scale=0.4]{countMaterialTopBottom}
                 \end{center}
                 \bigskip
-                \par \noindent \textit{Color} è un'altra feature di cui abbiamo fatto uso per costruire il dataset. Avendo,
-                però, definito il colore in tre macrocategorie (chiaro, scuro e colorato), è diventata necessaria effettuare
-                un'operazione di smistamento dei vari colori nelle relative macrocategorie.
-                \\ \noindent Infine come ultima feature molto importante presente nel dataset per quanto riguarda i capi
+                \par \noindent Tra le tante altre feature interessanti c'era il colore del capo d'abbigliamento, indicato
+                come \textit{Color}, tenendo conto però che i colori erano troppo specifici, quindi avremmo bisogno di
+                generalizzarli in macro-categorie distinte.
+                \\
+                \par \noindent Infine come ultima feature molto importante presente nel dataset per quanto riguarda i capi
                 d'abbigliamento della categoria \textbf{Top} è la colonna indicata come \textit{Sleeve Length}. Si può
                 notare come per la maggior parte siano presenti maglie della categoria \textbf{Loong Sleeve} e
                 \textbf{Short Sleeve}.
                 \begin{center}
                     \includegraphics[scale=0.4]{countLengthTop}
                 \end{center}
+                \newpage
                 \subsection{Dataset scarpe}
                 Il dataset illustrato al punto precedente, non contiene informazioni in merito alle scarpe.
-                Per fortuna, su \cite{3} è disponibile  \cite{7} che ci ha permesso di andare avanti con il nostro lavoro.
+                Per fortuna, su Kaggle \cite{3} è disponibile il dataset \cite{7} che ci ha permesso di andare avanti con il nostro lavoro.
                 \\
-                Il dataset contava $50025$ record di scarpe.
+                \par \noindent Il dataset contava $50025$ record di scarpe.
                 \\
                 Molte di queste righe, hanno, però dei valori nulli.
                 Eliminando tali righe si scende a $18260$ record.\\
                 Inoltre, il dataset ripulito dai valori nulli presenta molti duplicati, eliminandoli si scende a $7323$ record distinti.\\
-                Il dataset presenta i seguenti attributi:
+                \\
+                \par \noindent Il dataset presenta i seguenti attributi:
                 \begin{itemize}
-                    \item CID : colonna che costituisce l'id dei record
-                    \item Category: categorie delle scarpe
+                    \item \textit{CID}: colonna che costituisce l'id dei record
+                    \item \textit{Category}: categorie delle scarpe
                     Nel seguente grafico si può vedere che sono presenti 4 categorie:
                     \begin{center}
                         \includegraphics[scale=0.4]{CategoryShoes}
                     \end{center}
-                    \item SubCategory: sotto-categorie delle scarpe.
+                    \item \textit{SubCategory}: sotto-categorie delle scarpe.
                     Sono presenti diverse categorie di scarpe:
                     \begin{center}
                         \includegraphics[scale=0.4]{SubCategoryShoes}
                     \end{center}
-                    \item HeelHeight: Altezza del tacco in pollici.
-                    Questa caratteristica è poco interessante per i nostri obiettivi
-                    \item Insole: Materiale della suola.
+                    \item \textit{HeelHeight}: Altezza del tacco in pollici.
+                    Questa caratteristica è poco interessante per i nostri obiettivi.
+                    \item \textit{Insole}: Materiale della suola.
                     Anche questa caratteristica, è poco utile ai nostri scopi perché per nella realtà tale dato sarà
                     difficilmente disponibile a meno che una persona sia un esperto di scarpe.
                     Tuttavia, nella fase di data preparation ci ritornerà utile per imputare un'altra caratteristica.
-                    \item Closure: rappresenta il modo in cui viene chiusa la scarpe (Eg. Lacci, Strappi).
-                    Neanche questa caratteristica ci aiuta a raggiungere i nostri obiettibi
-                    \item Gender: rappresenta il genere a cui è rivolta la scarpa.
+                    \item \textit{Closure}: rappresenta il modo in cui viene chiusa la scarpe (Eg. Lacci, Strappi).
+                    Neanche questa caratteristica ci aiuta a raggiungere i nostri obiettivi.
+                    \item \textit{Gender}: rappresenta il genere a cui è rivolta la scarpa.
                     Questo oltre a servire poco per i nostri, può essere considerato un attributo sensibile e,
-                    di conseguenza, verrà eliminato nella fase successiva,
-                    \item Material: Il/i materiale/i di cui è composta la scarpa.
+                    di conseguenza, verrà eliminato nella fase successiva.
+                    \item \textit{Material}: Il/i materiale/i di cui è composta la scarpa.
                     Poco utile, considerazioni simili a quelle fatte per la Insole.
-                    \item ToeStyle: stile della punta.
+                    \item \textit{ToeStyle}: stile della punta.
                     Anche questo attributo ci aiuta poco.
                 \end{itemize}
+                \newpage
                 \subsection{Dataset meteo}
-                Per poter consigliare un outfit sulla base delle previsioni meteo, sono ovviamente necessari
+                Per poter consigliare i capi d'abbigliamento sulla base delle previsioni meteorologiche, sono ovviamente necessari
                 uno o più dataset che contengano questi dati.\\
-                Il sito Open-meteo\cite{9} permette di scaricare dati storici delle previsioni meteorologiche.
-                Sono molti i dati meteo sia orari che giornalieri che esso fornisce, tuttavia se li utilizzassimo tutti rischieremo di scendere troppo nel dettaglio
-                rischiando di non riuscire ad effettuare un predizione.
+                Il sito Open-meteo \cite{9} permette di scaricare dati storici delle previsioni meteorologiche.
+                Sono molti i dati meteo sia orari che giornalieri che esso fornisce, tuttavia se li utilizzassimo tutti
+                rischieremo di scendere troppo nel dettaglio rischiando di non riuscire ad effettuare un predizione.
                 Si è deciso di utilizzare, quindi, i dati giornalieri utilizzando le seguenti caratteristiche:
                 \begin{itemize}
                     \item \emph{Time}: data a cui si riferiscono i dati meteo;
-                    \item \emph{WeatherCode} : codice che indica una condizione meteo (Eg. Piovoso, Soleggiato);
-                    \item \emph{Maximum Temperature}  : temperatura massima;
-                    \item \emph{Minimum Temperature} : temperatura minima;
+                    \item \emph{WeatherCode}: codice che indica una condizione meteo (Eg. Piovoso, Soleggiato);
+                    \item \emph{Maximum Temperature}: temperatura massima;
+                    \item \emph{Minimum Temperature}: temperatura minima;
                 \end{itemize}
                 Successivamente, vedendo che le feature \emph{Minimum Temperature} e \emph{Minimum Temperature} non avevano un
                 forte potere predittivo, si è deciso di sostituirli con \emph{Minimum Apparent Temperature}
                 e \emph{Minimum Apparent Temperature} che indica la temperatura percepita, ovvero la temperatura influenzata dal vento e dall'umidità
-                Inoltre, per ottenere un quantità di dati che comprenda più osservazioni possibili abbiamo scelto di scaricare i dati di
-                14 città italiane diverse:
+                \\
+                \par \noindent Inoltre, per ottenere un quantità di dati che comprenda più osservazioni possibili abbiamo scelto di scaricare i dati di
+                14 città italiane distinte:
                 \begin{itemize}
                     \item Aosta
                     \item Belluno
@@ -557,7 +569,8 @@
                     \item Salerno
                     \item Treviso
                 \end{itemize}
-            Nella successiva fase di data preparation, i diversi dataset divisi per città verranno fusi in uno solo.
+            Nella successiva fase di data preparation, i vari dataset divisi per città verranno fusi in un unico grande
+            dataset.
 
             \newpage
             \section{Data Preparation}
@@ -566,35 +579,46 @@
                 \subsection{Dataset maglie e pantaloni}
                 Per costruire i dataset contenenti le informazioni delle \textbf{maglie} e dei \textbf{pantaloni} ci siamo serviti delle
                 informazioni ricavate nella fase di Data Understanding \textit{(sottosezione 3.3.1)}.
-                \par \noindent Il procedimento di \textit{Data Preparation} si articola nei seguenti quattro passaggi:
+                \\
+                \par \noindent Il procedimento di Data Preparation si articola nei seguenti quattro passaggi:
                 \begin{itemize}
-                    \item \textbf{Data cleaning}: la cosidetta \textit{"pulizia dei dati"} si occupa di
+                    \item \textbf{Data cleaning}: la cosiddetta \textit{"pulizia dei dati"} si occupa di
                     rimediare a problemi che sorgono quando ci sono righe del dataset che hanno dei dati \textbf{mancanti}, ma più
                     in generale ha come obbiettivo quello di fornire un dataset dotato di una \textbf{qualità} ritenuta adeguata
                     per poter procedere con i successivi passaggi.
-                    \par \noindent Nel nostro specifico caso abbiamo individuato alcuni dati mancanti in corrispondenza della
-                    colonna della \textit{lunghezza della manica} (dataset maglie) e della \textit{lunghezza del pantalone}.
-                    \par \noindent Si è scelto, in entrambi i casi sia per il dataset delle maglie che per il dataset
-                    dei pantaloni, di non andare a rimuovere le colonne dai due dataset poiché le consideriamo due caratteristiche
-                    molto utili per il nostro machine learner nel momento in cui dovrà effettuare delle previsioni.
-                    Si è scelto, sempre in ambedue i dataset, di non andare a rimuovere le righe che avevano celle mancanti
+                    \par \noindent Nel nostro specifico caso abbiamo avuto la necessità di dividere il dataset \cite{6} in
+                    due, ossia considerando separatamente le osservazioni per le maglie e le osservazioni per i pantaloni,
+                    ed escludendo a priori le osservazioni per i vestiti da donna.
+                    \par \noindent Abbiamo individuato alcuni dati mancanti in corrispondenza della
+                    colonna \textbf{lunghezza manica} per quel che riguarda il dataset delle maglie.
+                    \par \noindent Si è scelto di non andare a rimuovere tale colonna dal dataset poiché le consideriamo una caratteristica
+                    molto utile per il nostro machine learner nel momento in cui dovrà effettuare delle previsioni.
+                    Si è scelto quindi di non andare a rimuovere le righe che avevano celle mancanti
                     perché ci si è resi conto che il numero di istanze diminuiva notevolmente.
                     \par \noindent Abbiamo dunque scelto di affidarci al \textbf{data imputation}, insieme di tecniche che
                     possono stimare il valore dei dati mancanti sulla base dei dati a nostra disposizione.
                     Nello specifico abbiamo adottato la tecnica di imputazione \textit{"most frequent imputation"} che permette
-                    di sostituire i dati mancanti col valore più frequente contenuto in una colonna.
-                    \par \noindent Fatto ciò non si avranno più dati mancanti, successivamente abbiamo riscontrato una grande
-                    diversificazione di valori nella colonna relativa al materiale, sia nelle maglie che nei pantaloni.
+                    di sostituire i dati mancanti col valore più frequente contenuto in una colonna. Dopodichè abbiamo
+                    escluso le categorie di maniche meno frequenti, tenendo in considerazione solo \textit{manica lunga} e
+                    \textit{manica corta}.
+                    Fatto ciò non si avranno più dati mancanti in corrispondenza della colonna lunghezza manica.
+                    \par \noindent Mentre per quanto riguarda la \textbf{lunghezza dei pantaloni} nell'altra parte del
+                    dataset abbiamo avuto la necessità di costruire la colonna derivandola semplicemente dalla stagione della previsione.
+                    \par \noindent Successivamente abbiamo riscontrato una grande
+                    diversificazione di valori nella colonna relativa al \textbf{materiale}, sia nelle maglie che nei pantaloni.
                     Si è dunque deciso di ricondurre questi valori ad un elenco di materiali più ristretto in modo tale da ridurre
                     la complessità in fase di addestramento e previsione.
-                    Ciò è stato possibile poiché abbiamo scelto con cura il nostro elenco di materiali in modo tale che fossero;
+                    Ciò è stato possibile poiché abbiamo scelto con cura il nostro elenco di materiali in modo tale che fossero
                     quelli più comuni sul mercato, facilmente riconoscibili dagli utenti che utilizzeranno l'applicativo e
                     facilmente riconducibili all'elenco di materiali di partenza.
-                    \par \noindent Inoltre si è trasformato la colonna dei colori in modo che indicasse se la maglia o il pantalone
+                    \par \noindent Inoltre si è trasformata la colonna dei \textbf{colori} in modo che indicasse se la maglia o il pantalone
                     fosse chiaro, scuro o colorato.
                     Questo perché il nostro obbiettivo \textbf{non} è quello di fornire un punteggio ad un determinato capo andando ad
                     analizzare le varie combinazioni di colori che si possono ottenere.
+                    \par \noindent Come ultima colonna, ossia la \textbf{stagione} abbiamo escluso capi con più di 3 stagioni
+                    e includere le \textit{singole stagioni}, le \textit{doppie stagioni}, e quelle indicate come \textit{all}.
                     \par \noindent Infine si è tradotto, per una scelta convenzionale, dall'inglese all'italiano ogni valore.
+                    \newpage
                     \item \textbf{Feature scaling}: Il \textit{feature scaling} è un insieme di tecniche che permettono di
                     normalizzare o scalare l'insieme di valori di una caratteristica.
                     \par \noindent Nel caso della preparazione dei nostri dataset di maglie e pantaloni non è stata effettuata
@@ -605,14 +629,14 @@
                     il quale vengono selezionate le feature più rilevanti per un problema, a partire da un insieme di caratteristiche esistenti.
                     Le feature considerate più rilevanti (sia per le maglie che per i pantaloni) sono:
                     \begin{itemize}
-                        \item \textbf{Materiale.} La feature è discriminante, in quanto ci consente di capire se un determinato materiale è adatto per
+                        \item \textbf{Materiale:} la feature è discriminante, in quanto ci consente di capire se un determinato materiale è adatto per
                         una certa temperatura o meno. Ad esempio, il lino è un tessuto tipicamente estivo, di conseguenza non è indossabile nella
                         stagione invernale.
-                        \item \textbf{Colore.} Anche in questo caso, la caratteristica è determinante perché, a parità di meteo soleggiato, bisogna preferire
+                        \item \textbf{Colore:} anche in questo caso, la caratteristica è determinante perché, a parità di meteo soleggiato, bisogna preferire
                         un capo di colore chiaro rispetto a uno di colore scuro.
-                        \item \textbf{Lunghezza.} La lunghezza dei pantaloni oppure la lunghezza della manica per le maglie sono rilevanti ai fini della
+                        \item \textbf{Lunghezza:} la lunghezza dei pantaloni oppure la lunghezza della manica per le maglie sono rilevanti ai fini della
                         risoluzione del problema; infatti, una manica corta sicuramente sarà da preferire ad una manica lunga se si è in estate.
-                        \item \textbf{Stagione.} La feature è rilevante, in quanto viene considerata la differenza tra la stagione in cui viene richiesto il
+                        \item \textbf{Stagione:} la feature è rilevante, in quanto viene considerata la differenza tra la stagione in cui viene richiesto il
                         suggerimento e stagionalità del capo: se, ad esempio, il suggerimento viene richiesto a febbraio, sicuramente non verrà considerato
                         un capo dichiarato come "estivo".
                     \end{itemize}
@@ -624,6 +648,7 @@
                     è stata effettuata con l'ausilio di Google Sheet, tramite la funzione \textit{SCEGLI(CASUALE.TRA...)}, con cui era possibile scegliere un valore a caso
                     tra i valori contenuti nelle celle di riferimento.
                 \end{itemize}
+                \newpage
                 \subsection{Dataset scarpe}
                 Il dataset illustrato nella fase di Data Understanding, ci è stato utile per costruire un dataset utilizzabile per il training.
                 In particolare, partendo dal ragionamento fatto per la soluzione basata su ricerca, per poter determinare il valore di utilità
@@ -638,8 +663,7 @@
                 Tali caratteristiche non erano immediatamente disponibili, tuttavia si è riusciti a ricavarle durante
                 i vari step del  \emph{Data Preparation}:
                 \begin{itemize}
-                    \item Data Cleaning:\\
-                    Come già accennato nel Data Understanding, il dataset contiene molti righe con valori nulli.
+                    \item \textbf{Data Cleaning:} come già accennato nel Data Understanding, il dataset contiene molti righe con valori nulli.
                     Ci sono diverse tecniche di Data Imputation che permettono di risolvere tale problema,
                     in questo caso si scelto uno dei più semplici: eliminazioni di righe contenenti valori nulli.
                     Oltre ai valori nulli sono stati eliminati anche i duplicati, per poi procedere all'adattamento
@@ -672,60 +696,65 @@
                     che per ogni tipo restituisce un insieme di stagioni possibili, tra queste ne viene scelta una casualmente.
                     L'attributo colore, siccome non poteva essere imputato in nessun modo e visto che non dipende in alcun modo dagli altri attributi
                     è stato imputato in maniera casuale scegliendo un valore tra i tre che abbiamo considerato: \emph{chiaro}, \emph{scuro} e \emph{colorato}.
-                    \item Feature Scaling:\\
-                    Non sono presenti dati numerici, di conseguenza, non è stato necessario applicare il feature scaling.
-                    \item Feature Selection:
-                    Le feature selezionate sono quelle citate precedentemente (\emph{Tipo}, \emph{Antiscivolo}, \emph{Impermeabile},\emph{Colore}, \emph{Stagione}), tutte le altre caratteristiche sono state rimosse.
-                    \footnote{Nello script, la rimozione degli attributi che non vengono considerati o utilizzati per imputarne altri viene fatta all'inizio, per poter effettuare una rimozione dei valori e nulli e duplicati più efficiente}
-                    \item Data Balacing\\
-                    Il dataset presentava poche osservazioni relative a due tipologie di scarpe (\emph{Anfibi} e \emph{Stivali}), per questo motivo, è stato bilanciato aggiungendo dei dati generati per quei tipi tramite Google Sheet.
+                    \item \textbf{Feature Scaling:} non sono presenti dati numerici, di conseguenza, non è stato necessario applicare il feature scaling.
+                    \item \textbf{Feature Selection}: le feature selezionate sono quelle citate in precedenza (\emph{Tipo}, \emph{Antiscivolo}, \emph{Impermeabile}, \emph{Colore}, \emph{Stagione}),
+                    tutte le altre sono state rimosse\footnote{Nello script, la rimozione degli attributi che non vengono
+                    considerati o utilizzati per imputarne altri viene fatta all'inizio, per poter effettuare una rimozione dei valori nulli e duplicati più efficiente}.
+                    \item \textbf{Data Balacing:} il dataset presentava poche osservazioni relative a due tipologie di scarpe (\emph{Anfibi} e \emph{Stivali}), per questo motivo, è stato bilanciato aggiungendo dei dati generati per quei tipi tramite Google Sheet.
                 \end{itemize}
+                \newpage
                 \subsection{Dataset meteo}
                 Nella fase di data understanding, è stato illustrato che sono stati raccolti 14 diversi dataset con dati meteo per diverse città.
                 Per poterli utilizzare, è stato necessario effettuare alcune operazioni su di essi:\\
                 \begin{itemize}
-                    \item Data Cleaning:\\
-                    In questa fase, è stato necessario andare a ripulire la colonna \emph{WeatherCode} per 2 motivi:
+                    \item \textbf{Data Cleaning:} in questa fase, è stato necessario andare a ripulire la colonna \emph{WeatherCode} per 2 motivi:
                         \begin{enumerate}
                             \item i valori della colonna sono dei numeri ma in realtà tale colonna dovrebbe essere un variabile categorica
                             \item le condizioni meteo considerate sono troppe e alcune simili tra loro.
                         \end{enumerate}
                     Dunque, i valori di tale colonna sono stati sostituiti con dei nomi di condizioni meteo in italiano (Eg.
                     \emph{Soleggiato}) e i valori simili sono stati successivamente accorpati.
-                    \item Feature Scaling:\\
-                    Nel dataset sono presenti due colonne con valori numerici, cioè
+                    \item \textbf{Feature Scaling:} nel dataset sono presenti due colonne con valori numerici, cioè
                     \emph{Minimum Apparent Temperature} e \emph{Maximum Apparent Temperature},
                     ma sono già espressi nella stessa scala e dunque non si ritiene necessario effettuare una normalizzazione.
-                    \item Feature Selection:\\
-                    Le feature già presenti sono già molto buone, tuttavia è possibile fare dei miglioramenti
-                    Le caratteristiche {Minimum Apparent Temperature} e \emph{Maximum Apparent Temperature}
+                    \item \textbf{Feature Selection:} le feature già presenti sono già molto buone, tuttavia è possibile fare dei miglioramenti
+                    Le caratteristiche \emph{Minimum Apparent Temperature} e \emph{Maximum Apparent Temperature}
                     possono essere sostituite da una singola colonna in cui si va ad inserire le medie tra i due valori.
                     Inoltre, la colonna \emph{Time} così com'è risulta essere poco utile, tuttavia è possibile utilizzarla per
                     creare una nuova colonna che contenga la stagione (Eg \emph{Autunno}, \emph{Agosto},\ldots).
-                    \item Data Balacing:\\
-                    Non è stato necessario effettuare un bilanciamento del dataset.
+                    \item \textbf{Data Balacing:} non è stato necessario effettuare un bilanciamento del dataset.
                 \end{itemize}
+
+                \bigskip
 
                 \subsection{La fusione dei dataset}
                 Dopo aver costruito il dataset in maniera adeguata per maglie, pantaloni e scarpe, si fonde ognuno di
                 questi con il dataset contenente i dati meteo tramite la funzione Phyton \textit{concat()}. Successivamente,
-                si eliminano anche i duplicati tramite la funzione \textit{drop\_duplicates()} e viene esportato tutto
-                l'insieme di dati in formato CSV, pronto per essere valutato dall'agente. Prima, però, di passare alla valutazione,
-                è necessario che venga inserita una colonna al dataset per poter inserire il valore della variabile dipendente.
+                si eliminano anche i duplicati tramite la funzione \textit{drop\_duplicates()} e viene esportato ogni insieme
+                di dati in formato CSV, pronto per essere dato in pasto all'algoritmo di addestramento, con il quale realizzeremo
+                tre machine learner, in cui ognuno lavorerà singolarmente su una singola istanza del problema, ovvero maglie, pantaloni
+                e scarpe.\\
+                \par \noindent Prima, però, di passare all'addestramento,
+                è necessario che venga inserita una colonna ad ogni dataset per poter assegnare il \textbf{valore della variabile dipendente}.
                 Per effettuare il calcolo, si segue la stessa logica definita nel paragrafo 2.2 in relazione agli algoritmi genetici:
                 per ogni capo d'abbigliamento, vi è una funzione che calcola il punteggio in relazione a parametri quali la stagionalità
-                di esso, il colore e così via.  \`E necessario sottolineare che, nel dataset completo, le colonne \textit{time}
+                di esso, il colore e così via, dove però chiaramente non considereremo di fare la media dei punteggi dei
+                tre capi, ma faremo una valutazione dell'utilità del singolo capo.\\
+                \par \noindent \`E necessario sottolineare che, nel dataset completo, le colonne \textit{time}
                 e \textit{mese} vengono eliminate, in quanto non più necessarie non costituendo feature importanti per la predizione.
 
             \newpage
             \section{Modelling}
-            Qui parliamo della tecnica di machine learning utilizzata, ovvero la regressione e dell'algoritmo utilizzato
+            In questa fase procediamo a valutare la tecnica di machine learning da utilizzare, in particolare come si è
+            potuto già intuire in precedenza utilizzeremo una tecnica di apprendimento supervisionata, nel dettaglio la
+            regressione.
                 \subsection{La regressione}
-                La regressione è un task di apprendimento supervisionato in cui l'obiettivo è quello di predire il valore
-                di una variabile numerica (variabile dipendente) tramite l'utilizzo di un training set. La regressione
+                La \textbf{regressione} è un task di apprendimento supervisionato in cui l'obiettivo è quello di predire il valore
+                di una variabile numerica (variabile dipendente) tramite l'utilizzo di un training set.
+                \\La regressione
                 porta alla costruzione di un modello, cioè di uno strumento che fa uso di un algoritmo di apprendimento
                 (regressore) per predire i nuovi elementi sulla base del training set. Il regressore è una funzione matematica
-                che descrive i dati e si effettua la distinzione tra regressione singola e multipla a seconda che ci sia
+                che descrive i dati e si effettua la distinzione tra \textbf{regressione singola} e \textbf{multipla}, a seconda che ci siano
                 rispettivamente una o più variabili indipendenti che aiutino nella predizione. Nel nostro caso, si parla di
                 regressione multipla, in quanto ci sono più feature che contribuiscono nell'assegnazione di un punteggio ad
                 un capo d'abbigliamento.
@@ -755,11 +784,11 @@
                 variabili indipendenti che siano di natura numerica o nominale, nell'ultimo caso si vanno ad associare dei
                 pesi ad ogni variabile rispetto alle frequenze degli attributi \cite{8}.}
                 \[
-                    MSE = \frac{1}{n}\sum_{i=1}^{n}(y_i - \overline{y_i})^2
+                    MSE = \frac{1}{n}\sum_{i=1}^{n}(\tilde{y_i} - y_i)^2
                 \]
-                \\
+                \newpage
                 \par \noindent Supponiamo di avere un dataset come il seguente e di voler costruire un albero di regressione
-                che preveda al meglio la Y data la X:
+                che preveda al meglio la variabile Y data la X:
                 \begin{center}
                     \begin{tabular}{| l | c |}      %barra tra una linea ed un altra
                         \hline                      %linee orizzontali
@@ -775,20 +804,17 @@
                         \hline
                         5 & 1\\
                         \hline
-                        6 & 5.5\\
-                        \hline
                     \end{tabular}
                 \end{center}
-
-                \newpage
-                \par \noindent I passaggi che farà l'algoritmo saranno i seguenti:
+                \medskip
+                \par \noindent I passaggi che farà l'algoritmo di addestramento saranno i seguenti:
                 \begin{itemize}
                     \item \textbf{Primo passaggio:} ordina i dati nella colonna X (in questo caso sono già ordinati).
                     Prende la media delle prime due righe della colonna X, ovvero $(1+2)/3 = 1.5$, quindi divide il dataset
                     in due parti, la \textit{parte A} con $X < 1.5$ e la \textit{parte B} con $X \geq 1.5$.
                     \\Adesso farà la media di tutti i valori presenti in ambedue le parti e questi valori
                     definiranno l'output per l'albero di regressione in quel punto. Quindi calcola l'\textbf{MSE}
-                    utilizzando i valori previsti $\overline{y_i}$ e i valori originali $y_i$, utilizzando le istanze
+                    utilizzando i valori previsti $\tilde{y_i}$ e i valori originali $y_i$, utilizzando le istanze
                     delle due parti.
                     \item \textbf{Secondo passaggio:} ripete il passaggio precedente con le successive righe della colonna
                     X, ovvero con i corrispettivi valori 2 e 3, 3 e 4, \ldots, fino all'$n-1$esimo numero, calcolandosi
@@ -804,7 +830,7 @@
                     \hspace*{5em}\includegraphics[scale=0.7]{albero}
                     \par \noindet Albero di regressione, immagine indicativa, non associata al dataset esposto.
                 \end{center}
-                \bigskip \bigskip
+                \bigskip
                 \par \noindent \textbf{Cosa succede quando ci sono più variabili indipendenti?} In questo caso l'algoritmo
                 procede allo stesso modo di come è stato descritto sopra con la differenza che i calcoli verrebbero fatti
                 per ogni variabile indipendente. I punti che minimizzano l'MSE verrebbero calcolati per ogni variabile
@@ -816,14 +842,16 @@
                 di regressione questo andrebbe avanti ricorsivamente nel tentativo di ridurre l'MSE, arrivando anche ad
                 avere foglie con una sola istanza dove l'errore quadratico medio è nullo. Dunque è sempre consigliato
                 specificare il numero minimo di istanze che deve avere un nodo foglia.
-
+                \\
                 \newpage
                 \subsection{Ten-folds cross validation}
-                Per addestrare e validare un modello di machine learning, si divide il dataset in due insiemi: training
+                Solitamente per addestrare e validare il modello di machine learning, si divide il dataset in due insiemi: training
                 set (istanze che l'algoritmo utilizzerà per l'addestramento) e il test set (istanze per cui l'algoritmo
                 addestrato dovrà predire il valore). Esistono diversi modi di dividere training e test set, tra cui
-                considerare il 67\% del dataset come training set e il 33\% come test set. Nel caso di WeatherStyle,
-                invece, è stata usata la \textit{convalida incrociata (o k-fold cross validation)}, con k=10.
+                considerare il 67\% del dataset come training set e il 33\% come test set.
+                \\
+                \par \noindent Nel caso di WeatherStyle,invece, si è preferito addestrare i modelli sull'intero set di
+                training e di validarli mediante l'ausilio della \textbf{convalida incrociata} (o k-fold cross validation), con $k=10$.
                 \\ \noindent La convalida incrociata è un metodo statistico che consiste nella ripetuta partizione e
                 valutazione dell'insieme dei dati di partenza. Si basa sui seguenti step:
                 \begin{itemize}
@@ -831,109 +859,144 @@
                     \item Si dividono i dati in dieci gruppi.
                     \item Per ogni gruppo, lo si considera come test set e si considerano gli altri nove come training set;
                     in questo modo, si addestra il modello con i dati del training set, si valutano le prestazioni del modello
-                    e lo si elimina. Banalmente, nel nostro caso, il processo viene iterato dieci volte.
+                    e lo si elimina. Il processo viene dunque ripetuto dieci volte e infine verrà restituita la media delle
+                    valutazioni ottenute nella realizzazione dei $k$ modelli.
                 \end{itemize}
-                \par \noindent Da sottolineare che i processi di normalizzazione come feature selection e data balancing
-                vengono effettuati ad ogni addestramento.
-                \subsection{Valutazione delle metriche}
-                Qui è possibile parlare delle metriche a cui ci siamo affidati, dei risultati ottenuti per ogni modello
-                e inserire i grafici che mostrano la stima dell'errore rispetto alle predizioni fatte.
+
+                \subsection{Valutazione dei modelli}
                 Una volta che i nostri modelli sono stati addestrati e testati, bisogna analizzare i risultati ottenuti
-                dall'addestramento.
-                \par \noindent Per fare ciò ci siamo serviti di diverse \textbf{metriche}, nello specifico:
+                dall'addestramento. Per fare ciò ci siamo serviti di diverse \textbf{metriche}, nello specifico:
                 \begin{itemize}
-                    \item \textbf{Mean Squared Error (MSE)}: la metrica MSE indica l'errore quadratico medio commesso
-                    sui dati presenti nel test set.
+                    \item \textbf{Mean Absolute Error (MAE)}: la metrica MAE indica la media aritmetica degli errori
+                    assoluti commessi sui dati presenti nel test set.
                     \[
-                        MSE = \frac{\sum_{i=1}^{n}(\tilde{y} - y)^2}{n}
+                        MSE = \frac{\sum_{i=1}^{n}(\tilde{y_i} - y_i)}{n}
                     \]
                     \item \textbf{Root Mean Squared Error (RMSE)}: la metrica RMSE indica la radice quadrata dell'errore
                     quadratico medio commessosui dati presenti nel test set.
                     \[
-                        RMSE = \sqrt {\frac{\sum_{i=1}^{n}(\tilde{y} - y)^2}{n}}
+                        RMSE = \sqrt {\frac{\sum_{i=1}^{n}(\tilde{y_i} - y_i)^2}{n}}
                     \]
                 \end{itemize}
                 \par \noindent Chiaramente il nostro intento è stato quello di minimizzare i valori di \textbf{MSE} e
                 \textbf{RMSE}.
-                \par \noindent
+                \\
                 \par \noindent Oltre a queste due metriche, altre due informazioni ci sono state molto utili: il \textbf{coefficiente
                 di correlazione} e la \textbf{dimensione dell'albero di regressione}.
+                \\
                 \par \noindent Il coefficiente di correlazione è una misura bilanciata di accuratezza, che misura l'indice
                 di correlazione tra le varie variabili indipendenti di un dataset e può variare nell'intervallo continuo tra [-1, 1].
                 Un coefficiente pari a 1 indica una stima \textbf{perfetta}, più il coefficiente si avvicina a 0 invece e più la
                 stima è \textbf{casuale}, quando invece è pari a -1 indica una stima \textbf{inversa}.
+                \\
                 \par \noindent La dimensione dell'albero di regressione ci indica il numero di \textbf{nodi} da cui è
                 composto l'albero di regressione.
                 Ovviamente vogliamo evitare che la dimensione dell'albero sia troppo grande perché questo porterebbe a problemi
                 di \textbf{overfitting}, ovvero l'albero si complicherebbe troppo la vita andando a creare molti più nodi
                 del necessario, impattando chiaramente in maniera negativa sulle performance del modello.
-                \par \noindent
+                \\
                 \par \noindent Di seguito sono riportati alcuni dati relativi alle metriche sopracitate ottenuti tramite
                 sperimentazione empirica effettuata su \textbf{Weka}.
-                Il modello di riferimento è quello delle \textbf{maglie}.
-                \par \noindent Inizialmente le metriche ottenute dopo aver effettuato erano queste riportate di sotto.
-                \par \noindent
+                Il modello di riferimento è quello delle \textbf{maglie}. Concentreremo la nostra attenzione su questo
+                modello, poiché sono stati eseguiti gli stessi lavori per i modelli relativi a pantaloni e scarpe.
+                \newpage
+                \par \noindent Inizialmente le metriche ottenute dopo aver effettuato la 10 folds cross validation
+                erano queste riportate di sotto.
+
                 \begin{center}
-                    \includegraphics{metricheIniziali}
+                    \includegraphics[scale=0.8]{metricheIniziali}
                 \end{center}
-                \par \noindent Come si può notare, il coefficiente di correlazione è molto vicino ad 1 e quindi
-                fornisca una stima quasi perfetta, il MSE e il RMSE non siano molto elevati.
-                Sebbene questi siano degli ottimi dati, purtroppo la dimensione dell'albero arriva a oltre 1600 nodi, che
-                sono un numero molto elevato, e quindi si innalza di molto l'overfitting.
-                \par \noindent
-                \par \noindent Per risolvere questo si è provato a cambiare un parametro che influenza la costruzione dell'albero
-                di regressione ovvero \textit{minNum}: indica il numero minimo di istanze che devono esserci per ogni nodo
+                \par \noindent Come si può notare, il coefficiente di correlazione è molto vicino ad \textbf{1} e quindi
+                fornisca una stima quasi perfetta, il \textbf{MAE} e il \textbf{RMSE} non siano molto elevati.
+                Sebbene questi siano degli ottimi dati, purtroppo la dimensione dell'albero arriva a oltre \textbf{1600 nodi}, che
+                sono un numero molto elevato, e quindi si innalza di molto l'\textbf{overfitting}.
+                \\
+                \par \noindent Per risolvere il problema dell'overfitting si è provato a cambiare un parametro che influenza la costruzione dell'albero
+                di regressione ovvero \textit{minNum}: indica il numero minimo di istanze che possono comporre un nodo
                 foglia.
                 Questo parametro è di default impostato uguale a 2, noi lo abbiamo impostato a 10 e il risultato è stato il seguente.
-                \par \noindent
+
                 \begin{center}
-                    \includegraphics{metricheMinNum10}
+                    \includegraphics[scale=0.85]{metricheMinNum10}
                 \end{center}
                 \par \noindent A differenza di prima si osserva che il coefficiente di correlazione si abbassa molto leggermente,
-                mentre si alzano un pò di più il MSE e il RMSE.
-                La dimensione dell'albero è invece diminuita drasticamente di circa 1200 nodi
-                \par \noindent
+                mentre si alzano un pò di più il MAE e il RMSE.
+                La dimensione dell'albero è invece diminuita drasticamente arrivando a contare poco meno di \textbf{500 nodi}.
+                \\
                 \par \noindent I risultati relativi al tentativo di diminuire il numero di nodi che compongono l'albero di
                 regressione sono stati ottimi, ma non eravamo ancora soddisfatti.
-                Così abbiamo cercato di abbassare ancora di più la dimensione dell'albero e per farlo ci siamo serviti del
-                \textbf{Class Balancer} che Weka ci ha messo a disposizione.
-                \par \noindent
+                Così abbiamo cercato di abbassare ancora di più la \textbf{size} dell'albero, dunque ci siamo serviti del
+                filtro \textbf{Class Balancer} di Weka.
+
                 \begin{center}
-                    \includegraphics{metricheDefinitive}
+                    \includegraphics[scale=0.85]{metricheDefinitive}
                 \end{center}
-                \par \noindent Ora il numero di nodi totale è sceso a 349 e accettiamo il compromesso di avere il
-                \textit{mean squared error} e il \textit{root mean squared error} un pò più elevati ma lo stesso accettabili,
-                e costruire un albero che abbia un numero di nodi circa cinque volte più piccolo rispetto all'inizio.
-                \par \noindent Pertanto abbiamo deciso che questo sarà il nostro modello finale.
+                \par \noindent Ora siamo a poco più di \textbf{300 nodi}, quindi accettiamo il compromesso di avere il
+                MAE e il RMSE un pò più elevati ma allo stesso tempo accettabili,
+                arrivando quindi a costruire un albero che abbia un numero di nodi circa cinque volte più piccolo rispetto all'inizio.
+                \par \noindent Pertanto abbiamo deciso che questo sarà il nostro \textbf{modello finale}.
 
 
     \section{Evaluation}
-            Qui parliamo della sperimentazione empirica e dei risultati ottenuti
-            Il risultato ottenuto non è da sottovalutare sicuramente per la non disponibilità dei dati.
-            In particolare valutiamo
+            La fase di \textbf{evaluation} è per sommi capi il momento in cui tutti i nodi vengono al pettine,
+            e ha come compiti principale quelli di valutare:
+            \begin{itemize}
+                \item la \textbf{chiarezza} dei risultati ottenuti in fase di \textit{data modelling};
+                \item la bontà dei risultati, ovvero se \textbf{soddisfano} gli \textbf{obbiettivi di business} redatti in
+                fase di \textit{business understanding};
+            \end{itemize}
+            In aggiunta a quanto appena detto, l'evaluation si occupa anche di verificare che l'intero processo sia
+            \textbf{solido} e \textbf{consistente}, o se esistono \textit{alternative metodologiche} che porterebbero ad altri risultati,
+            alle quali noi progettisti non avevamo inizialmente arrecato il nostro pensiero.
+            \par \noindent Nel nostro specifico caso possiamo dire che i risultati ottenuti in fase di data modeling sono
+            \textbf{piuttosto chiari}, ed è facile dedurre che i machine learner progettati hanno delle \textbf{buone prestazioni}.
+            Inoltre possiamo essere più che soddisfatti comparando i risultati ottenuti con gli obbiettivi di business
+            definiti all'inizio del processo di sviluppo, questo perché vanno ricordate due ragioni:
+            \begin{itemize}
+                \item partivamo da una situazione in cui \textbf{non eravamo provvisti di dataset pronti per l'utilizzo}, ma abbiamo
+                dovuto comporre noi i dataset necessari;
+                \item la tecnica di machine learning che abbiamo deciso di utilizzare in fase di \textit{data modelling},
+                l'albero di regressione, è per sua natura intrinseca \textbf{tendente all'overfitting}.
+                Quindi essere riusciti a mitigare non poco questo aspetto è di certo un qualcosa da tener conto e di cui essere
+                pienamente soddisfatti.
+            \end{itemize}
+            \par \noindent Detto questo osserviamo anche che lungo il procedimento ci siamo resi conto che si potrebbe far
+            fare la \textbf{feature selection} dei vari dataset ad un \textbf{algoritmo genetico}.
+            Quest'alternativa potrebbe portare probabilmente a risultati diversi e potrebbe impattare meglio su di essi.
+            Non abbiamo però avuto il modo di verificare tale alternativa per via di due fattori strettamente
+            correlati tra loro: il tempo e la data di scadenza per la consegna.
+            \par \noindent
+            \par \noindent Siamo comunque, come già detto poco fa, \textbf{ampiamente soddisfatti} di ciò che abbiamo progettato
+            e pertanto si può procedere con l'ultima fase del \textbf{CRISP-DM}, il \textbf{Deployment}.
             \newpage
+
             \section{Deployment}
             Per l'implementazione della soluzione basata su Machine Learning è stato utilizzato il framework Weka\cite{2}\\
-            Tra modelli di albero di regressione disponibili, è stato \emph{RepTree} che nella documentazione di weka è descritto nel seguente modo:
+            \par \noindent Tra i modelli di alberi di regressione disponibili, è stato scelto \emph{RepTree} che nella documentazione di Weka è descritto nel seguente modo:
             \begin{center}
-                \emph{Fast decision tree learner. Builds a decision/regression tree using information gain/variance and prunes it using reduced-error pruning (with backfitting).
-                Only sorts values for numeric attributes once. Missing values are dealt with by splitting the corresponding instances into pieces}
+                \emph{``Fast decision tree learner. Builds a decision/regression tree using information gain/variance and prunes it using reduced-error pruning (with backfitting).
+                Only sorts values for numeric attributes once. Missing values are dealt with by splitting the corresponding instances into pieces''}
             \end{center}
             Una volta creato l'oggetto \emph{RepTree} e caricato il dataset in un oggetto di tipo \emph{DataSource} è sufficiente richiamare il metodo
             \emph{buildClassifier} per effettuare il training del modello.
-            Dopo diversi test empirici, come illustrato nella sezione precedente, si è giunti alla conclusione che per aumentare l'efficienza è necessario
-            impostare il numero minimo di righe per foglia a 10, nell'implementazione tale passo è possibile farlo utilizzando il metodo \emph{setMinNum}.
-            Di seguito un riepilogo dei passi da effettuare
+            \par \noindent Dopo diversi test empirici, come illustrato nella sezione precedente, si è giunti alla conclusione che per aumentare l'efficienza è necessario
+            impostare il numero minimo di istanze per foglia a 10, ciò è possibile utilizzando il metodo \emph{setMinNum}.
+            \par \noindent E infine per ridurre ancora di più la size dell'albero come discusso nella sezione 3.5 abbiamo utilizzato il
+            filtro \emph{ClassBalancer} che effettua operazioni di oversampling e undersampling sui dati presenti nel
+            dataset, nel nostro caso cerca di ridistribuire le istanze del dataset sia nel caso di variabili nominali che
+            numeriche.\\
+            \par \noindent Di seguito un riepilogo dei passi da effettuare:
             \medskip
             \begin{algorithm}
-                \caption{Setup Machine Learning}
+                \caption{Setup regression tree}
                 \label{alg:ml}
-                \begin{algorithmic}[2]
-                    \State $repTree \gets new RepTree()$
-                    \State $dataSet \gets new DataSource(data/set/path)$
+                \begin{algorithmic}[1]
+                    \State $repTree \gets RepTree()$
+                    \State $dataSet \gets DataSource(data/set/path)$
+                    \State $newDataSet \gets ClassBalancer(dataset)$
                     \State
                     \State $repTree.setMinNum(10)$
-                    \State $repTree.buildClassifier(dataSet)$
+                    \State $repTree.buildClassifier(newDataSet)$
                 \end{algorithmic}
             \end{algorithm}
             \par \noindent Per effettuare la predizione di una nuova istanza è possibile utilizzare il metodo \emph{classifyInstance}.
