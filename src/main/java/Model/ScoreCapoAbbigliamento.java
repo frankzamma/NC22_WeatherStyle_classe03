@@ -25,4 +25,11 @@ public class ScoreCapoAbbigliamento {
     public void setPunteggio(Double punteggio) {
         this.punteggio = punteggio;
     }
+
+    @Override
+    public String toString() {
+        return "[" + capoAbbigliamento +
+                ", punteggio=" + punteggio + "]"
+                ;
+    }
 }
