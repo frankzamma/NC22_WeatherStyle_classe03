@@ -71,19 +71,22 @@
                 \item \textbf{P (Performance)}: è la misura di prestazione adottata per valutare l'operato di un agente.
                 Nel caso di WeatherStyle, la misura di prestazione è data dal consigliare in maniera adeguata i vari capi
                 d'abbigliamento.
-                \item \textbf{E (Environment)}: è la descrizione degli elementi che formano l'ambiente. Nel nostro
+                \item \textbf{E (Environment)}: è la descrizione degli elementi che formano l'ambiente.Nel nostro
                 sistema, l'ambiente è costituito dal guardaroba dell'utente e dalle previsioni meteorologiche.
                 \item \textbf{A (Actuators)}: servono all'agente per poter compiere delle azioni. L'agente di WeatherStyle
                 si serve di uno schermo per mostrare agli utenti i capi d'abbigliamento che ritiene più adeguati.
                 \item \textbf{S (Sensors)}: sono i sensori attraverso i quali l'agente riceve gli input dall'esterno.
-                \\ I sensori a sua disposizione sono la tastiera per poter inserire le informazioni meteorologiche e la
-                data della previsione, e infine il contenuto di un file per recuperare il guardaroba di un utente.
+                \\ I sensori a sua disposizione sono una sorgente da cui ottenere informazioni meteorologiche\footnote{Nel driver sviluppato per testare il modello, tale sensore è sostituito dalla tastiera,
+                    è l'utente che deve specificare le condizioni meteo e la data in cui il consiglio viene fornito}
+                    e un database da cui ottenere i capi d'abbigliamento dell'utente\footnote{Il driver realizzato non fa uso del database.
+                Viene utilizzato un File per caricare dei capi d'esempio su cui poter effettuare dei test.
+                Inoltre, è possibile aggiungere altri capi che saranno salvati nella sessione del browser utilizzato per il testing (Una volta chiuso dovranno essere ricaricati).}.
             \end{itemize}
 
 
             \subsection{Caratteristiche dell'ambiente}
                 \begin{itemize}
-                    \item \textbf{Tipo di ambiente:} guardaroba con informazioni meteorologiche.
+                    \item \textbf{Tipo di ambiente:} suggeritore di capi d'abbigliamento adatti al meteo.
                     \item \textbf{Completamente osservabile:} l'agente attraverso i sensori conosce lo stato
                     completo dell'ambiente in ogni momento, ovvero, ha visione completa dei capi d'abbigliamento presenti
                     nel guardaroba dell'utente e delle informazioni meteorologiche.
@@ -96,9 +99,21 @@
                     \item \textbf{Singolo agente:} l'ambiente consente la presenza di un singolo agente.
                 \end{itemize}
                 \bigskip
-                \par \noindent Nei capitoli successivi vedremo due tipi di agenti che agiranno singolarmente ma con uno stesso
-                scopo comune, ovvero vedremo prima un \textbf{agente basato su utilità} in grado di quantificare la desiderabilità
-                degli stati raggiunti, e poi a seguire un \textbf{agente capace di apprendere}.
+                \par \noindent Nei capitoli successivi vengono proposti due tipi di agenti che possono essere una soluzione per il problema illustrato:
+                 un \textbf{agente basato su utilità} in grado di quantificare la desiderabilità
+                degli stati raggiunti e un \textbf{agente capace di apprendere}.
+    \section{Un'importante premessa}
+    \label{sec:premessa}
+    Il problema, nella sua formulazione completa, richiede di fornire all'utente un outfit che sia adatto
+    alle condizioni climatiche.\\
+    Tale formulazione, contiene in sè una serie di sotto-problemi non di poco conto in particolare oltre
+    a valutare che i capi siano adatti alle condizione meteorologiche, bisogna anche considerare quanto si abbinano bene
+    tra loro sotto diversi aspetti come stile, colore ecc\ldots\\
+    In buona sostanza, una formulazione del genere fa esplodere la complessità del problema in quanto considera troppi dettagli.\\
+    Si è deciso quindi di formulare diversamente il problema tralasciando l'aspetto stilistico che viene lasciato all'utente.\\
+    Nello specifico, sono state considerate tre categorie di capi d'abbigliamento (maglie, pantaloni e scarpe) e per ognuna di queste verrà realizzato
+    un agente intelligente in grado di fornire i tre capi migliori rispetto alle condizioni meteo.
+    Nella versione finale dell'applicativo l'utente potrà scegliere un capo per ogni categoria e costruire l'outfit che più gli piace\footnote{Nel driver realizzato, è possibile solo visualizzare i tre capi d'abbigliamento consigliati per ogni categoria}.
 
     \part{Tecniche di risoluzione}
         \chapter{La ricerca locale}
@@ -144,17 +159,16 @@
             \newpage
             \section{Formulazione del problema}
             Il primo quesito da porsi nel momento in cui si ha a che fare con un algoritmo genetico è: \textbf{come vengono
-            codificati gli individui?} Nel nostro caso, l'algoritmo dovrà scegliere solamente tre dai capi che si ritengono
-            più adeguati; per questo motivo, la codifica degli individui consiste in un array di tre interi. Questi valori
-            rappresenteranno la posizione dei capi d'abbigliamento nell'intera lista di maglie, pantaloni e scarpe
-            presenti nel guardaroba\footnote{è bene chiarire che gli agenti saranno tre e ognuno lavorerà su una singola
-            istanza del problema, ossia maglie, pantaloni e scarpe, poiché risolvere il tutto con un solo agente sarebbe
-            risultato difficile: ci avrebbe portato a considerare altri aspetti, come la combinazione
-            cromatica che non rientra tra i nostri obiettivi.}.
+            codificati gli individui?} Nel nostro caso, come illustrato alla sezione \ref{sec:premessa}, l'algoritmo dovrà
+            scegliere solamente tre dai capi che si ritengono più adeguati;
+            per questo motivo, la codifica degli individui consiste in un array di tre interi.
+            Questi valori rappresenteranno la posizione dei capi d'abbigliamento nell'intera lista di maglie, pantaloni
+            e scarpe presenti nel guardaroba
             \\
             \par \noindent Dopo aver definito come gli individui devono essere codificati, si passa ad analizzare i \textbf{vincoli} a
-            cui essi sono sottoposti. In questo caso, l'unico vincolo è che, all'interno dell'array, non si ripeta un intero
-            più di una volta, cioè che i capi siano tutti diversi tra loro.
+            cui essi sono sottoposti.
+            In questo caso, l'unico vincolo è che, all'interno dell'array, non si ripeta un intero più di una volta,
+            cioè che i capi siano tutti diversi tra loro.
             \\
             \par \noindent La prima parte di un GA consiste nell'inizializzazione di una popolazione. Inizialmente la soluzione
             verteva verso un'inizializzazione casuale ma, dopo aver constatato che la popolazione non rispettava il vincolo richiesto,
@@ -182,7 +196,9 @@
                 pantaloni, che per scarpe, viene dato il massimo del punteggio se la stagione in cui viene richiesto l'intervento dell'agente coincide
                 con quella indicata per quel determinato capo d'abbigliamento.
                 \item \textbf{Tipo di scarpe:} in base alle previsioni meteo e al tipo di scarpe, viene assegnato un determinato punteggio.
-                Ad esempio, in caso di neve, vengono preferiti gli stivali alle classiche scarpe di ginnastica.
+                Ad esempio, in caso di neve, vengono preferiti gli stivali alle classiche scarpe di ginnastica.\footnote{Tale valutazione,
+                    non viene effettuata in caso in cui la temperatura sia inferiore ai 20 gradi in quanto e il meteo è soleggiato,
+                    in quanto, a seguito di test empirici, si è visto che visto che tale condizione portava l'agente ad avere un comportamento errato: consigliava scarpe estive anche se non erano adatte}
                 \item \textbf{Antisivolo e/o impermeabile:} per le scarpe viene incrementato il
                 punteggio secondo le previsioni, se queste dichiarano pioggia, assegnando punti ``bonus'' se la
                 scarpa è antiscivolo e/o impermeabile.
@@ -210,7 +226,7 @@
             ad ogni tipologia di capo d'abbigliamento, che siano essi scarpe, pantaloni o maglie. Il nostro obbiettivo,
             chiaramente, è quello di massimizzare questa funzione:
             \[
-                \frac{\sum_{n=1}^{3} u_{n}}{3}
+                f((x_{1},x_{2},x_{3}))=\frac{\sum_{n=1}^{3} u(x_{n})}{3}
             \]
             \\
             \par \noindent Per quel che riguarda la scelta degli \textbf{operatori genetici} si è optato per:
@@ -219,13 +235,13 @@
                 \item \textbf{MultiPointCrossover}
                 \item \textbf{GaussianMutator}
             \end{itemize}
-            Si rimanda alla sezione 2.3.4 per ulteriori dettagli su questi operatori.
+            Si rimanda alla sezione \ref{subsec:op_gen} per ulteriori dettagli su questi operatori.
 
             \newpage
             \section{Implementazione}
             Per l'implementazione della soluzione basata su algoritmo genetico è stato utilizzato il framework
             \textbf{Jenetics} \cite{1}. In questa sezione, tratteremo l'istanza generale per la costruzione dell'algoritmo
-            genetico. Come già discusso nella sezione 2.2, gli agenti saranno tre, e ognuno lavorerà su una singola istanza
+            genetico. Come già discusso nella sezione \ref{sec:premessa}, gli agenti saranno tre, e ognuno lavorerà su una singola istanza
             del problema, ovvero maglie, pantaloni e scarpe, differenziandosi per i calcoli effettuati dalla funzione di
             fitness.
                 \subsection{Codifica degli individui}
@@ -270,7 +286,7 @@
                 corrisponderanno alle posizioni dei capi d'abbigliamento in una lista, calcoleremo il punteggio per ognuno,
                 faremo una media e restituiremo il risultato.
 
-                \subsection{Operatori genetici}
+                \subsection{Operatori genetici}\label{subsec:op_gen}
                 Per la risoluzione del problema sono stati scelti i seguenti operatori genetici:
                 \begin{itemize}
                     \item \textbf{RouletteWheelSelector:} operatore di selezione; gli individui ricevono una probabilità
@@ -314,8 +330,8 @@
             \par \noindent Uno dei principali problemi affrontati è stato sulla generazione della \textbf{popolazione iniziale}.
             In genere, la prima popolazione viene generata in maniera totalmente casuale, quindi non è detto che
             tali individui rispettino il vincolo imposto (i tre elementi devono essere diversi).\\
-            Il problema è stato risolto andando ad impostare una generazione pseudo casuale che permette
-            di avere anche nella prima generazione degli elementi ammissibili e, di conseguenza,
+            Come illustrato nei paragrafi precedenti, il problema è stato risolto andando ad impostare una generazione
+            pseudo casuale che permette di avere anche nella prima generazione degli elementi ammissibili e, di conseguenza,
             la ricerca viene guidata verso soluzioni ammissibili e migliori riducendo il carico computazionale.\\
             A valle di test empirici, possiamo dire che la soluzione riesce quasi sempre a restituire un risultato ottimale.
             In particolare, su 10 test effettuati ben x volte il risultato è da considerare ottimo.
@@ -547,9 +563,10 @@
                     \item \emph{Maximum Temperature}: temperatura massima;
                     \item \emph{Minimum Temperature}: temperatura minima;
                 \end{itemize}
-                Successivamente, vedendo che le feature \emph{Minimum Temperature} e \emph{Minimum Temperature} non avevano un
-                forte potere predittivo, si è deciso di sostituirli con \emph{Minimum Apparent Temperature}
-                e \emph{Minimum Apparent Temperature} che indica la temperatura percepita, ovvero la temperatura influenzata dal vento e dall'umidità
+                Successivamente, vedendo che le feature \emph{Maximum Temperature} e \emph{Minimum Temperature} non avevano un
+                forte potere predittivo, si è deciso di sostituirli con \emph{Maximum Apparent Temperature}
+                e \emph{Minimum Apparent Temperature} che indica la temperatura percepita massima e minima,
+                ovvero la temperatura influenzata dal vento e dall'umidità
                 \\
                 \par \noindent Inoltre, per ottenere un quantità di dati che comprenda più osservazioni possibili abbiamo scelto di scaricare i dati di
                 14 città italiane distinte:
@@ -613,7 +630,8 @@
                     facilmente riconducibili all'elenco di materiali di partenza.
                     \par \noindent Inoltre, si è trasformata la colonna dei \textbf{colori} in modo che indicasse se la maglia o il pantalone
                     fosse chiaro, scuro o colorato.
-                    Questo perché il nostro obbiettivo \textbf{non} è quello di fornire un punteggio ad un determinato capo andando ad
+                    Questo perché, come spiegato nella sezione \ref{sec:premessa} il nostro obbiettivo
+                    \item \textbf{non} è quello di fornire un punteggio ad un determinato capo andando ad
                     analizzare le varie combinazioni di colori che si possono ottenere.
                     \par \noindent Come ultima colonna, ossia la \textbf{stagione}, abbiamo escluso capi con più di 3 stagioni
                     e includere le \textit{singole stagioni}, le \textit{doppie stagioni}, e quelle indicate come \textit{all}.
@@ -630,9 +648,9 @@
                     Le feature considerate più rilevanti (sia per le maglie che per i pantaloni) sono:
                     \begin{itemize}
                         \item \textbf{Materiale:} la feature è discriminante, in quanto ci consente di capire se un determinato materiale è adatto per
-                        una certa temperatura o meno. Ad esempio, il lino è un tessuto tipicamente estivo, di conseguenza non è indossabile nella
+                        una certa temperatura o meno. Ad esempio, il lino è un tessuto tipicamente estivo, di conseguenza non è molto adatto alla
                         stagione invernale.
-                        \item \textbf{Colore:} anche in questo caso, la caratteristica è determinante perché, a parità di meteo soleggiato, bisogna preferire
+                        \item \textbf{Colore:} anche in questo caso, la caratteristica è determinante perché, in caso di meteo soleggiato, bisogna preferire
                         un capo di colore chiaro rispetto a uno di colore scuro.
                         \item \textbf{Lunghezza:} la lunghezza dei pantaloni oppure la lunghezza della manica per le maglie sono rilevanti ai fini della
                         risoluzione del problema; infatti, una manica corta sicuramente sarà da preferire ad una manica lunga se si è in estate.
@@ -731,8 +749,8 @@
                 Dopo aver costruito il dataset in maniera adeguata per maglie, pantaloni e scarpe, si fonde ognuno di
                 questi con il dataset contenente i dati meteo tramite la funzione Phyton \textit{concat()}. Successivamente,
                 si eliminano anche i duplicati tramite la funzione \textit{drop\_duplicates()} e viene esportato ogni insieme
-                di dati in formato CSV, pronto per essere dato in pasto all'algoritmo di addestramento, con il quale realizzeremo
-                tre machine learner, in cui ognuno lavorerà singolarmente su una singola istanza del problema, ovvero maglie, pantaloni
+                di dati in formato CSV, pronto per essere utilizzato per l'addestramento dei tre machine learner,
+                i quali lavoreranno ognuno su una singola istanza del problema, ovvero maglie, pantaloni
                 e scarpe.\\
                 \par \noindent Prima, però, di passare all'addestramento,
                 è necessario che venga inserita una colonna ad ogni dataset per poter assegnare il \textbf{valore della variabile dipendente}.
