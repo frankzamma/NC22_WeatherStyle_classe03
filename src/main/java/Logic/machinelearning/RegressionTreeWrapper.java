@@ -23,7 +23,10 @@ public class RegressionTreeWrapper {
     private Instances fullDataset;
     private Evaluation evaluation;
 
-    public RegressionTreeWrapper(String pathDatasetFile, Boolean buildWithTrainingSetAndTestSet, boolean balanceDate) {
+    private String modelName;
+
+    public RegressionTreeWrapper(String pathDatasetFile, Boolean buildWithTrainingSetAndTestSet, boolean balanceDate, String modelName) {
+        this.modelName =  modelName;
         repTree = new REPTree();
 
         // setting min numero d'istanze per i nodi foglia
@@ -76,18 +79,18 @@ public class RegressionTreeWrapper {
         Instances testSet = Filter.useFilter(fullDataset, removePercentage);
         testSet.setClassIndex(testSet.numAttributes() -1);
 
-        // bilanciamento dati di training
-        ClassBalancer classBalancer = (ClassBalancer) createClassBalancer(trainingSet);
-        Filter.useFilter(trainingSet, classBalancer);
-
+        if(balanceDate) {
+            // bilanciamento dati di training
+            ClassBalancer classBalancer = (ClassBalancer) createClassBalancer(trainingSet);
+            Filter.useFilter(trainingSet, classBalancer);
+        }
         // addestramento regressore
         repTree.buildClassifier(trainingSet);
 
         // valutazione metriche
-        if(balanceDate) {
-            evaluation = new Evaluation(trainingSet);
-            evaluation.evaluateModel(repTree, testSet);
-        }
+        evaluation = new Evaluation(trainingSet);
+        evaluation.evaluateModel(repTree, testSet);
+
 
         // output valutazioni
         System.out.println("TopClothesRT evaluate with Training Set (" + percentTrain + ")%" + "and Test Set (" +
