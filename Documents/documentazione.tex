@@ -26,6 +26,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{sidecap}
+\usepackage{algorithmicx}
 
 \graphicspath{ {./images/} }
 
@@ -937,9 +938,36 @@
 
 
     \section{Evaluation}
-            Qui parliamo della sperimentazione empirica e dei risultati ottenuti
-            Il risultato ottenuto non è da sottovalutare sicuramente per la non disponibilità dei dati.
-            In particolare valutiamo
+            La fase di \textbf{evaluation} è per sommi capi il momento in cui tutti i nodi vengono al pettine,
+            e ha come compiti principale quelli di valutare:
+            \begin{itemize}
+                \item la \textbf{chiarezza} dei risultati ottenuti in fase di \textit{data modelling};
+                \item la bontà dei risultati, ovvero se \textbf{soddisfano} gli \textbf{obbiettivi di business} redatti in
+                fase di \textit{business understanding};
+            \end{itemize}
+            In aggiunta a quanto appena detto, l'evaluation si occupa anche di verificare che l'intero processo sia
+            \textbf{solido} e \textbf{consistente}, o se esistono \textit{alternative metodologiche} che porterebbero ad altri risultati,
+            alle quali noi progettisti non avevamo inizialmente arrecato il nostro pensiero.
+            \par \noindent Nel nostro specifico caso possiamo dire che i risultati ottenuti in fase di data modeling sono
+            \textbf{piuttosto chiari}, ed è facile dedurre che i machine learner progettati hanno delle \textbf{buone prestazioni}.
+            Inoltre possiamo essere più che soddisfatti comparando i risultati ottenuti con gli obbiettivi di business
+            definiti all'inizio del processo di sviluppo, questo perché vanno ricordate due ragioni:
+            \begin{itemize}
+                \item partivamo da una situazione in cui \textbf{non eravamo provvisti di dataset pronti per l'utilizzo}, ma abbiamo
+                dovuto comporre noi i dataset necessari;
+                \item la tecnica di machine learning che abbiamo deciso di utilizzare in fase di \textit{data modelling},
+                l'albero di regressione, è per sua natura intrinseca \textbf{tendente all'overfitting}.
+                Quindi essere riusciti a mitigare non poco questo aspetto è di certo un qualcosa da tener conto e di cui essere
+                pienamente soddisfatti.
+            \end{itemize}
+            \par \noindent Detto questo osserviamo anche che lungo il procedimento ci siamo resi conto che si potrebbe far
+            fare la \textbf{feature selection} dei vari dataset ad un \textbf{algoritmo genetico}.
+            Quest'alternativa potrebbe portare probabilmente a risultati diversi e potrebbe impattare meglio su di essi.
+            Non abbiamo però avuto il modo di verificare tale alternativa per via di due fattori strettamente
+            correlati tra loro: il tempo e la data di scadenza per la consegna.
+            \par \noindent
+            \par \noindent Siamo comunque, come già detto poco fa, \textbf{ampiamente soddisfatti} di ciò che abbiamo progettato
+            e pertanto si può procedere con l'ultima fase del \textbf{CRISP-DM}, il \textbf{Deployment}.
             \newpage
 
             \section{Deployment}
