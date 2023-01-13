@@ -24,7 +24,7 @@ Per poter eseguire completamente il progetto è necessario aver installato le se
 Consigliamo [Plugin IntelliJ per Phyton](https://plugins.jetbrains.com/plugin/631-python) che permette di includere tutte le funzionalità di PyCharm all'interno di Intellij.
 
 ## Guida alla configurazione
-Per clonare la repository all'interno dell'IDE [Intellij IDEA Ultimate](https://www.jetbrains.com/idea/download) andare in *File* > *New* > *Project From Version Control*
+Per clonare la repository all'interno dell'IDE [Intellij IDEA Ultimate](https://www.jetbrains.com/idea/download) andare in *File* > *New* > *Project From Version Control*<br>
 Nella finestra che appare inserire l'[url](https://github.com/frankzamma/NC22_WeatherStyle_classe03.git) della repository come nella seguente immagine.
 ![image](https://user-images.githubusercontent.com/65612000/212434444-0b0d9b92-e4c8-40ba-b081-06bbe352f995.png)
 
