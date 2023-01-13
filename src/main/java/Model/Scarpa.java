@@ -40,4 +40,15 @@ public class Scarpa extends CapoAbbigliamento{
     public void setAntiscivolo(Boolean antiscivolo) {
         this.antiscivolo = antiscivolo;
     }
+
+    @Override
+    public String toString() {
+        return "Scarpa[" +
+                "colore = " + super.getColore() +
+                ", stagione = " + super.getStagione() +
+                ", tipo = " + tipo +
+                ", antiscivolo = " + antiscivolo +
+                ", impermeabile = " + impermeabile +
+                ']';
+    }
 }

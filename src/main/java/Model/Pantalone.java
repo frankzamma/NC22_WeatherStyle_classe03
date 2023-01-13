@@ -34,8 +34,8 @@ public class Pantalone extends CapoAbbigliamento{
         return "Pantalone[" +
                 "stagione = "+ super.getStagione() +
                 "colore = "+ super.getColore() +
-                "lunghezza='" + lunghezza + '\'' +
-                ", materiale='" + materiale + '\'' +
+                "lunghezza = " + lunghezza +
+                ", materiale = " + materiale +
                 ']';
     }
 }
