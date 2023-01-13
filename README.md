@@ -13,6 +13,7 @@ Team components:
 
 ### NOTA: Attualmente la repository contiene un driver che permette di testare i moduli di intelligenza artificiale
 <hr>
+
 ## Dipendenze
 Il progetto è stato realizzato tramite l'IDE [Intellij IDEA Ultimate](https://www.jetbrains.com/idea/download), la guida del prossimo paragrafo farà riferimento ad esso per la configurazione.
 Per poter eseguire completamente il progetto è necessario aver installato le seguenti dipendenze
