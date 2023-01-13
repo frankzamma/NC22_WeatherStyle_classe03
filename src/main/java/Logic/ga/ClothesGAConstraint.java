@@ -51,6 +51,6 @@ public class ClothesGAConstraint implements Constraint<IntegerGene, Integer> {
 
         Phenotype<IntegerGene,Integer> p = Phenotype.of(genotype,l);
 
-        return phenotype;
+        return p;
     }
 }
