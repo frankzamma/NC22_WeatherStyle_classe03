@@ -19,8 +19,10 @@ public class GenericGA {
     private List<CapoAbbigliamento> listaCapi;
     private static final Evaluator evaluator = new Evaluator();
     private MeteoInformation meteoInformation;
+    private String gaName;
 
-    public GenericGA(List<? extends  CapoAbbigliamento> list, MeteoInformation meteoInformation) {
+    public GenericGA(List<? extends  CapoAbbigliamento> list, MeteoInformation meteoInformation, String gaName) {
+        this.gaName = gaName;
         this.listaCapi = (List<CapoAbbigliamento>) list;
         this.meteoInformation = meteoInformation;
 

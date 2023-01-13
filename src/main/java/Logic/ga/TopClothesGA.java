@@ -10,7 +10,7 @@ public class TopClothesGA{
     private GenericGA genericGA;
 
     public TopClothesGA(List<Maglia> listaMaglie, MeteoInformation meteoInformation){
-        genericGA = new GenericGA(listaMaglie, meteoInformation);
+        genericGA = new GenericGA(listaMaglie, meteoInformation, "maglieGA");
     }
 
     public List<CapoAbbigliamento> getBestMaglie(){

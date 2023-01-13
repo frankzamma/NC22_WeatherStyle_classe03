@@ -23,7 +23,10 @@ public class RegressionTreeWrapper {
     private Instances fullDataset;
     private Evaluation evaluation;
 
-    public RegressionTreeWrapper(String pathDatasetFile, Boolean buildWithTrainingSetAndTestSet, boolean balanceDate) {
+    private String modelName;
+
+    public RegressionTreeWrapper(String pathDatasetFile, Boolean buildWithTrainingSetAndTestSet, boolean balanceDate, String modelName) {
+        this.modelName =  modelName;
         repTree = new REPTree();
 
         // setting min numero d'istanze per i nodi foglia
@@ -76,21 +79,21 @@ public class RegressionTreeWrapper {
         Instances testSet = Filter.useFilter(fullDataset, removePercentage);
         testSet.setClassIndex(testSet.numAttributes() -1);
 
-        // bilanciamento dati di training
-        ClassBalancer classBalancer = (ClassBalancer) createClassBalancer(trainingSet);
-        Filter.useFilter(trainingSet, classBalancer);
-
+        if(balanceDate) {
+            // bilanciamento dati di training
+            ClassBalancer classBalancer = (ClassBalancer) createClassBalancer(trainingSet);
+            Filter.useFilter(trainingSet, classBalancer);
+        }
         // addestramento regressore
         repTree.buildClassifier(trainingSet);
 
         // valutazione metriche
-        if(balanceDate) {
-            evaluation = new Evaluation(trainingSet);
-            evaluation.evaluateModel(repTree, testSet);
-        }
+        evaluation = new Evaluation(trainingSet);
+        evaluation.evaluateModel(repTree, testSet);
+
 
         // output valutazioni
-        System.out.println("TopClothesRT evaluate with Training Set (" + percentTrain + ")%" + "and Test Set (" +
+        System.out.println( modelName + " valutato con Training Set (" + percentTrain + ")%" + "e Test Set (" +
                 percentTest + "%):\n" + evaluation.toSummaryString());
     }
 
@@ -100,15 +103,15 @@ public class RegressionTreeWrapper {
         evaluation = new Evaluation(fullDataset);
         evaluation.crossValidateModel(repTree, fullDataset, 10, new Random(1));
 
-        // output valutazioni
-        System.out.println("TopClothesRT evaluate with Ten Folds Cross Validation:\n"+ evaluation.toSummaryString());
-
-
         // bilanciamento dati di training
         if(balanceDate) {
             ClassBalancer classBalancer = (ClassBalancer) createClassBalancer(fullDataset);
             Filter.useFilter(fullDataset, classBalancer);
         }
+
+        // output valutazioni
+        System.out.println(modelName +" valutato con Ten Folds Cross Validation:\n"+ evaluation.toSummaryString());
+
         // addestramento regressore
         repTree.buildClassifier(fullDataset);
     }
@@ -176,6 +179,8 @@ public class RegressionTreeWrapper {
                 ScoreCapoAbbigliamento scoreCapoAbbigliamento = new ScoreCapoAbbigliamento(capoAbbigliamentoList.get(i), predict);
                 scoreCapoAbbigliamentoList.add(scoreCapoAbbigliamento);
                 i++;
+
+                System.out.println("Valutata istanza:" + scoreCapoAbbigliamento  );
             }catch (Exception e){
                 throw new RuntimeException("Predict blocked on " + i + "instance" + e);
             }

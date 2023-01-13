@@ -28,4 +28,14 @@ public class Maglia extends CapoAbbigliamento{
     public void setLunghezzaManica(String lunghezzaManica) {
         this.lunghezzaManica = lunghezzaManica;
     }
+
+    @Override
+    public String toString() {
+        return "Maglia[" +
+                "colore="+super.getColore()+
+                "stagione="+super.getStagione()+
+                "lunghezzaManica='" + lunghezzaManica +
+                ", materiale='" + materiale +
+                ']';
+    }
 }

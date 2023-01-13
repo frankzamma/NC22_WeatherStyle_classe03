@@ -28,4 +28,14 @@ public class Pantalone extends CapoAbbigliamento{
     public void setLunghezza(String lunghezza) {
         this.lunghezza = lunghezza;
     }
+
+    @Override
+    public String toString() {
+        return "Pantalone[" +
+                "stagione = "+ super.getStagione() +
+                "colore = "+ super.getColore() +
+                "lunghezza = " + lunghezza +
+                ", materiale = " + materiale +
+                ']';
+    }
 }
