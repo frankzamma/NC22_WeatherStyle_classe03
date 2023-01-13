@@ -783,7 +783,7 @@
                 variabili indipendenti che siano di natura numerica o nominale, nell'ultimo caso si vanno ad associare dei
                 pesi ad ogni variabile rispetto alle frequenze degli attributi \cite{8}.}
                 \[
-                    MSE = \frac{1}{n}\sum_{i=1}^{n}(y_i - \overline{y_i})^2
+                    MSE = \frac{1}{n}\sum_{i=1}^{n}(\tilde{y_i} - y_i)^2
                 \]
                 \newpage
                 \par \noindent Supponiamo di avere un dataset come il seguente e di voler costruire un albero di regressione
@@ -813,7 +813,7 @@
                     in due parti, la \textit{parte A} con $X < 1.5$ e la \textit{parte B} con $X \geq 1.5$.
                     \\Adesso farà la media di tutti i valori presenti in ambedue le parti e questi valori
                     definiranno l'output per l'albero di regressione in quel punto. Quindi calcola l'\textbf{MSE}
-                    utilizzando i valori previsti $\overline{y_i}$ e i valori originali $y_i$, utilizzando le istanze
+                    utilizzando i valori previsti $\tilde{y_i}$ e i valori originali $y_i$, utilizzando le istanze
                     delle due parti.
                     \item \textbf{Secondo passaggio:} ripete il passaggio precedente con le successive righe della colonna
                     X, ovvero con i corrispettivi valori 2 e 3, 3 e 4, \ldots, fino all'$n-1$esimo numero, calcolandosi
@@ -862,76 +862,78 @@
                     valutazioni ottenute nella realizzazione dei $k$ modelli.
                 \end{itemize}
 
-                \subsection{Valutazione del modello}
-                Qui è possibile parlare delle metriche a cui ci siamo affidati, dei risultati ottenuti per ogni modello
-                e inserire i grafici che mostrano la stima dell'errore rispetto alle predizioni fatte.
+                \subsection{Valutazione dei modelli}
                 Una volta che i nostri modelli sono stati addestrati e testati, bisogna analizzare i risultati ottenuti
-                dall'addestramento.
-                \par \noindent Per fare ciò ci siamo serviti di diverse \textbf{metriche}, nello specifico:
+                dall'addestramento. Per fare ciò ci siamo serviti di diverse \textbf{metriche}, nello specifico:
                 \begin{itemize}
-                    \item \textbf{Mean Squared Error (MSE)}: la metrica MSE indica l'errore quadratico medio commesso
-                    sui dati presenti nel test set.
+                    \item \textbf{Mean Absolute Error (MAE)}: la metrica MAE indica la media aritmetica degli errori
+                    assoluti commessi sui dati presenti nel test set.
                     \[
-                        MSE = \frac{\sum_{i=1}^{n}(\tilde{y} - y)^2}{n}
+                        MSE = \frac{\sum_{i=1}^{n}(\tilde{y_i} - y_i)}{n}
                     \]
                     \item \textbf{Root Mean Squared Error (RMSE)}: la metrica RMSE indica la radice quadrata dell'errore
                     quadratico medio commessosui dati presenti nel test set.
                     \[
-                        RMSE = \sqrt {\frac{\sum_{i=1}^{n}(\tilde{y} - y)^2}{n}}
+                        RMSE = \sqrt {\frac{\sum_{i=1}^{n}(\tilde{y_i} - y_i)^2}{n}}
                     \]
                 \end{itemize}
                 \par \noindent Chiaramente il nostro intento è stato quello di minimizzare i valori di \textbf{MSE} e
                 \textbf{RMSE}.
-                \par \noindent
+                \\
                 \par \noindent Oltre a queste due metriche, altre due informazioni ci sono state molto utili: il \textbf{coefficiente
                 di correlazione} e la \textbf{dimensione dell'albero di regressione}.
+                \\
                 \par \noindent Il coefficiente di correlazione è una misura bilanciata di accuratezza, che misura l'indice
                 di correlazione tra le varie variabili indipendenti di un dataset e può variare nell'intervallo continuo tra [-1, 1].
                 Un coefficiente pari a 1 indica una stima \textbf{perfetta}, più il coefficiente si avvicina a 0 invece e più la
                 stima è \textbf{casuale}, quando invece è pari a -1 indica una stima \textbf{inversa}.
+                \\
                 \par \noindent La dimensione dell'albero di regressione ci indica il numero di \textbf{nodi} da cui è
                 composto l'albero di regressione.
                 Ovviamente vogliamo evitare che la dimensione dell'albero sia troppo grande perché questo porterebbe a problemi
                 di \textbf{overfitting}, ovvero l'albero si complicherebbe troppo la vita andando a creare molti più nodi
                 del necessario, impattando chiaramente in maniera negativa sulle performance del modello.
-                \par \noindent
+                \\
                 \par \noindent Di seguito sono riportati alcuni dati relativi alle metriche sopracitate ottenuti tramite
                 sperimentazione empirica effettuata su \textbf{Weka}.
-                Il modello di riferimento è quello delle \textbf{maglie}.
-                \par \noindent Inizialmente le metriche ottenute dopo aver effettuato erano queste riportate di sotto.
-                \par \noindent
+                Il modello di riferimento è quello delle \textbf{maglie}. Concentreremo la nostra attenzione su questo
+                modello, poiché sono stati eseguiti gli stessi lavori per i modelli relativi a pantaloni e scarpe.
+                \newpage
+                \par \noindent Inizialmente le metriche ottenute dopo aver effettuato la 10 folds cross validation
+                erano queste riportate di sotto.
+
                 \begin{center}
-                    \includegraphics{metricheIniziali}
+                    \includegraphics[scale=0.8]{metricheIniziali}
                 \end{center}
-                \par \noindent Come si può notare, il coefficiente di correlazione è molto vicino ad 1 e quindi
-                fornisca una stima quasi perfetta, il MSE e il RMSE non siano molto elevati.
-                Sebbene questi siano degli ottimi dati, purtroppo la dimensione dell'albero arriva a oltre 1600 nodi, che
-                sono un numero molto elevato, e quindi si innalza di molto l'overfitting.
-                \par \noindent
-                \par \noindent Per risolvere questo si è provato a cambiare un parametro che influenza la costruzione dell'albero
-                di regressione ovvero \textit{minNum}: indica il numero minimo di istanze che devono esserci per ogni nodo
+                \par \noindent Come si può notare, il coefficiente di correlazione è molto vicino ad \textbf{1} e quindi
+                fornisca una stima quasi perfetta, il \textbf{MAE} e il \textbf{RMSE} non siano molto elevati.
+                Sebbene questi siano degli ottimi dati, purtroppo la dimensione dell'albero arriva a oltre \textbf{1600 nodi}, che
+                sono un numero molto elevato, e quindi si innalza di molto l'\textbf{overfitting}.
+                \\
+                \par \noindent Per risolvere il problema dell'overfitting si è provato a cambiare un parametro che influenza la costruzione dell'albero
+                di regressione ovvero \textit{minNum}: indica il numero minimo di istanze che possono comporre un nodo
                 foglia.
                 Questo parametro è di default impostato uguale a 2, noi lo abbiamo impostato a 10 e il risultato è stato il seguente.
-                \par \noindent
+
                 \begin{center}
-                    \includegraphics{metricheMinNum10}
+                    \includegraphics[scale=0.85]{metricheMinNum10}
                 \end{center}
                 \par \noindent A differenza di prima si osserva che il coefficiente di correlazione si abbassa molto leggermente,
-                mentre si alzano un pò di più il MSE e il RMSE.
-                La dimensione dell'albero è invece diminuita drasticamente di circa 1200 nodi
-                \par \noindent
+                mentre si alzano un pò di più il MAE e il RMSE.
+                La dimensione dell'albero è invece diminuita drasticamente arrivando a contare poco meno di \textbf{500 nodi}.
+                \\
                 \par \noindent I risultati relativi al tentativo di diminuire il numero di nodi che compongono l'albero di
                 regressione sono stati ottimi, ma non eravamo ancora soddisfatti.
-                Così abbiamo cercato di abbassare ancora di più la dimensione dell'albero e per farlo ci siamo serviti del
-                \textbf{Class Balancer} che Weka ci ha messo a disposizione.
-                \par \noindent
+                Così abbiamo cercato di abbassare ancora di più la \textbf{size} dell'albero, dunque ci siamo serviti del
+                filtro \textbf{Class Balancer} di Weka.
+
                 \begin{center}
-                    \includegraphics{metricheDefinitive}
+                    \includegraphics[scale=0.85]{metricheDefinitive}
                 \end{center}
-                \par \noindent Ora il numero di nodi totale è sceso a 349 e accettiamo il compromesso di avere il
-                \textit{mean squared error} e il \textit{root mean squared error} un pò più elevati ma lo stesso accettabili,
-                e costruire un albero che abbia un numero di nodi circa cinque volte più piccolo rispetto all'inizio.
-                \par \noindent Pertanto abbiamo deciso che questo sarà il nostro modello finale.
+                \par \noindent Ora siamo a poco più di \textbf{300 nodi}, quindi accettiamo il compromesso di avere il
+                MAE e il RMSE un pò più elevati ma allo stesso tempo accettabili,
+                arrivando quindi a costruire un albero che abbia un numero di nodi circa cinque volte più piccolo rispetto all'inizio.
+                \par \noindent Pertanto abbiamo deciso che questo sarà il nostro \textbf{modello finale}.
 
 
     \section{Evaluation}
