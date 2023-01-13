@@ -31,7 +31,6 @@ Nella finestra che appare inserire l'[url](https://github.com/frankzamma/NC22_We
 ### Esecuzione degli script python (in IntellJ)
 1. Aprendo uno script python (contenuti nella directory *CreateDatasets*), intellij vi mostrerà il seguente messaggio.
 <img width="692" alt="image" src="https://user-images.githubusercontent.com/65612000/212434840-f51f3f7f-2908-4f38-82f8-b3274770fbb6.png">
- **NOTA** : Per eseguire i seguenti passaggi si pressuppone che abbiate installato il [Plugin IntelliJ per Phyton](https://plugins.jetbrains.com/plugin/631-python)
 2. Cliccando su *Configure Python Interpeter* si aprirà la seguente schermata
 <br>
 _Immagine_Da_Inserire1_
