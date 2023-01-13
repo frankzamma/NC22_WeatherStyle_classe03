@@ -1015,16 +1015,28 @@
                 errore, può dare una predizione errata; questo, però, viene mitigato dal fatto che, non dovendo valutare
                 ad ogni istanza la funzione di fitness, potrebbe essere più efficiente dell'algoritmo genetico.
             \section{Possiamo fare di meglio}
-                Dopo aver quindi discusso dei pregi e dei difetti delle due tecniche di risoluzione da noi provate siamo
-                venuti al capo e abbiamo pensato che si potesse ancora fare di meglio, in particolare nelle due prossime
-                sotto-sezioni illustriamo ciò che potrebbe essere eventualmente fatto in futuro.
+                Dopo aver discusso dei pregi e dei difetti delle due tecniche di risoluzione da noi provate possiamo dire
+                che sicuramente non siamo all'arrivo ma un punto di partenza su cui poter lavorare per realizzare una soluzione
+                più efficiente.
+                Nei prossimi due paragrafi, qualche idea di ciò che potrebbe essere eventualmente realizzato in futuro,
+                utilizzando le tecniche illustrate in questa documento.
+
                 \subsection{Usare il Machine Learning per il calcolo della funzione di fitness}
-                Spiegare cosa si può fare
+                Uno dei principali problemi degli algoritmi genetici che ne determina l'efficienza è il fatto che la funzione di fitness
+                viene valutata tantissime volte.
+                La regressione può aiutare, almeno in parte, a risolvere il problema.
+                Infatti, come illustrato nei paragrafi precedenti la regressione è un modello di machine learning che permette di stimare
+                un valore numerico.\\
+                Con più dati a disposizione, o meglio, con dati migliori a disposizione si potrebbe creare un modello con basso errore e alta efficienza
+                che potrebbe sostituire l'attuale funzione di fitness.
+                Attualmente, il modello realizzato è meno efficiente della funzione di fitness e quindi non avrebbe avuto senso sostituirlo.
+
+
                 \subsection{Usare un Algoritmo Genetico per costruire l'albero di regressione}
-                Avendo provato due tecniche di risoluzione completamente diverse, abbiamo pensato alla possibilità di
-                accorpare le due filosofie, in particolare potrebbe essere eliminata del tutto la fase di addestramento
-                del modello di machine learning, sostituendo quindi la costruzione dell'albero di regressione mediante un
-                algoritmo genetico.
+                Il problema principale riscontrato nella realizzazione del modello di Machine Learning è stata quella di avere
+                un dataset che permettesse di effettuare il training del modello.
+                Tuttavia, avendo utilizzato un albero di regressione la fase di addestramento potrebbe essere completamente eliminata,
+                effettuando costruzione dell'albero tramite un algoritmo genetico.
                 \par \noindent L'idea sarebbe quella di evolvere un \textbf{insieme di regole}, inizialmente
                 generate in maniera pseudo-casuale per poi arrivare ad un punto sub-ottimale in cui avremo delle regole
                 ben definite che descriveranno tutti i possibili percorsi dell'albero di regressione.
