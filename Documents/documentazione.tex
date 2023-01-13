@@ -960,12 +960,14 @@
                 Quindi essere riusciti a mitigare non poco questo aspetto è di certo un qualcosa da tener conto e di cui essere
                 pienamente soddisfatti.
             \end{itemize}
-            \par \noindent Detto questo osserviamo anche che lungo il procedimento ci siamo resi conto che si potrebbe far
-            fare la \textbf{feature selection} dei vari dataset ad un \textbf{algoritmo genetico}.
-            Quest'alternativa potrebbe portare probabilmente a risultati diversi e potrebbe impattare meglio su di essi.
-            Non abbiamo però avuto il modo di verificare tale alternativa per via di due fattori strettamente
-            correlati tra loro: il tempo e la data di scadenza per la consegna.
-            \par \noindent
+            \par \noindent Detto questo, osserviamo anche che lungo il procedimento ci siamo resi conto che è possibile
+            effettuare \textbf{feature selection} dei vari dataset con un \textbf{algoritmo genetico}.
+            Quest'alternativa potrebbe portare probabilmente a risultati diversi, impattando meglio o peggio
+            su di essi. Con un'attenta riflessione però possiamo dire che nella nostra situazione sarebbe più uno svantaggio
+            dal momento che i dataset sono costruiti appositamente per il problema trattato, e l'esclusione di eventuali
+            feature come ad esempio il \emph{meteo} o la \emph{temperatura} farebbero perdere il senso di ciò che è stato
+            detto e fatto fino ad ora.
+            \\
             \par \noindent Siamo comunque, come già detto poco fa, \textbf{ampiamente soddisfatti} di ciò che abbiamo progettato
             e pertanto si può procedere con l'ultima fase del \textbf{CRISP-DM}, il \textbf{Deployment}.
             \newpage
@@ -1009,11 +1011,15 @@
     \part{Conclusioni e osservazioni}
         \chapter{Cosa scegliamo?}
             \section{Un confronto tra Algoritmi Genetici e Machine Learning}
-                L'Algoritmo Genetico, come illustrato nel capitolo 2.4, presenta un importante vantaggio: l'efficienza,
-                ma a discapito del risultato sub-ottimo, perché i capi non sono sempre tutti pertinenti con quelle che
-                sono le condizioni climatiche. La soluzione basata sul Machine Learning, invece, essendo soggetto ad
-                errore, può dare una predizione errata; questo, però, viene mitigato dal fatto che, non dovendo valutare
-                ad ogni istanza la funzione di fitness, potrebbe essere più efficiente dell'algoritmo genetico.
+                L'Algoritmo Genetico, come illustrato nella sezione 2.4, presenta un importante vantaggio: l'\textbf{efficienza}
+                rispetto ad una ricerca completa nell'intero spazio degli stati, questo a discapito del \textbf{risultato sub-ottimo},
+                perché i capi non sempre sono tutti pertinenti con quelle che sono le condizioni climatiche.
+                \par \noindent La soluzione basata su Machine Learning, invece, essendo soggetta ad
+                \textbf{errore}, può dare una predizione errata. Questo, però, viene mitigato dal fatto che, non dovendo valutare
+                per ogni istanza la funzione di fitness, e non dovendo evolvere una popolazione di individui, risulta essere
+                sulla carta più efficiente a livello computazionale dell'algoritmo genetico.
+                \par \noindent Quindi non c'è una vera e propria scelta su quale soluzione sia migliore, sono entrambe
+                ampiamente funzionali e in linea agli obbiettivi iniziali.
             \section{Possiamo fare di meglio}
                 Dopo aver discusso dei pregi e dei difetti delle due tecniche di risoluzione da noi provate possiamo dire
                 che sicuramente non siamo all'arrivo ma un punto di partenza su cui poter lavorare per realizzare una soluzione
