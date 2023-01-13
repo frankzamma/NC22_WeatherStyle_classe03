@@ -9,17 +9,44 @@ maglia,velluto,scuro,lunga,autunno_inverno
 maglia,lana,chiaro,lunga,inverno
 maglia,poliestere,colorato,corta,autunno
 maglia,raso,colorato,corta,primavera_estate
+maglia,velluto,colorato,lunga,autunno_inverno
+maglia,velluto,scuro,corta,estate
+maglia,raso,chiaro,corta,primavera_estate
+maglia,poliestere,scuro,corta,estate
+maglia,poliestere,scuro,lunga,autunno
+maglia,cashmere,colorato,lunga,inverno
 pantalone,lino,chiaro,corta,estate
 pantalone,tweed,colorato,lunga,inverno
 pantalone,cotone,colorato,lunga,autunno
 pantalone,seta,colorato,lunga,primavera
 pantalone,cotone,chiaro,corta,estate
 pantalone,velluto,scuro,lunga,inverno
+pantalone,raso,chiaro,corta,estate
+pantalone,lino,colorato,lunga,estate
+pantalone,lino,colorato,corta,estate
+pantalone,cashmere,colorato,lunga,inverno
+pantalone,poliestere,chiaro,corta,estate
+pantalone,velluto,colorato,lunga,autunno_inverno
+pantalone,tweed,chiaro,corta,estate
+pantalone,tweed,colorato,lunga,inverno
+pantalone,seta,scuro,corta,estate
+pantalone,cashmere,scuro,lunga,autunno_inverno
+pantalone,poliestere,scuro,lunga,inverno
+pantalone,velluto,chiaro,lunga,inverno
 scarpa,scarpa classica,false,false,chiaro,estate
 scarpa,anfibi,true,true,scuro,inverno
 scarpa,scarpe aperte,false,false,chiaro,primavera
 scarpa,scarpa da ginnastica,true,false,scuro,autunno
-scarpa,scarpa da ginnastica,false,true,chiara,primavera
+scarpa,scarpa da ginnastica,false,true,chiaro,primavera
 scarpa,anfibi,true,true,scuro,autunno
-scarpa,scarpe aperte,true,false,chiara,estate
+scarpa,scarpe aperte,true,false,chiaro,estate
 scarpa,scarpa da ginnastica,false,false,chiaro,estate
+scarpa,scarpa classica,true,true,scuro,inverno
+scarpa,anfibi,true,false,scuro,autunno
+scarpa,scarpe aperte,false,false,scuro,primavera
+scarpa,scarpa da ginnastica,true,false,scuro,autunno
+scarpa,scarpa da ginnastica,false,true,chiaro,primavera
+scarpa,scarpe con tacchi,false,false,scuro,estate
+scarpa,scarpe aperte,true,false,chiaro,estate
+scarpa,stivaletto alla caviglia,true,false,chiaro,autunno
+scarpa,stivaletto alla caviglia,false,true,chiaro,estate
