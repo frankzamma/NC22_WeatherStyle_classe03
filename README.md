@@ -9,7 +9,7 @@
 | Aurucci Raffaele | 0512110832 |
 | Miglino Annalaura | 0512110868 |
 | Palmieri Angelo | 0512111009 |
-| Zammarrelli Francesco Giuseppe | 0512110964 |
+| Zammarrelli Francesco Giuseppe | 0512110694 |
 
 **NOTA**: Attualmente la repository contiene un driver che permette di testare i moduli di intelligenza artificiale
 <hr>
@@ -54,7 +54,7 @@ Nella finestra che appare inserire l'[url](https://github.com/frankzamma/NC22_We
 ![image](https://user-images.githubusercontent.com/65612000/212434444-0b0d9b92-e4c8-40ba-b081-06bbe352f995.png)
 <br>
 ### Esecuzione degli script Python (in IntelliJ)
-**1.** Aprendo uno script python (contenuti nella directory *CreateDatasets*), IntelliJ vi mostrerà il seguente messaggio.
+**1.** Aprendo uno script python (contenuti nella directory *CreateDatasets*), IntelliJ vi mostrerà il seguente messaggio
 <br>
 <img width="692" alt="image" src="https://user-images.githubusercontent.com/65612000/212434840-f51f3f7f-2908-4f38-82f8-b3274770fbb6.png">
 <br><br>
@@ -65,11 +65,11 @@ Nella finestra che appare inserire l'[url](https://github.com/frankzamma/NC22_We
 **3.** Bisognerà cliccare su **(+)** in alto a sinistra e selezionare *Python*<br>
 <img width="238" alt="image" src="https://user-images.githubusercontent.com/65612000/212435464-0b9d64dd-8c8f-4fb3-bca1-b30ee777eedc.png">
 <br><br>
-**4.** Se non avete mai usato il [Plugin IntelliJ per Phyton](https://plugins.jetbrains.com/plugin/631-python) , vi apparirà la seguente schermata.
+**4.** Se non avete mai usato il [Plugin IntelliJ per Phyton](https://plugins.jetbrains.com/plugin/631-python) , vi apparirà la seguente schermata
 <br>
 <img width="692" alt="image" src="https://user-images.githubusercontent.com/114738583/212468507-bd13211e-2d57-4aab-918b-fa21d9176565.png">
 <br>
-Se avete già usato [Plugin IntelliJ per Phyton](https://plugins.jetbrains.com/plugin/631-python) e al posto di *No-interpeter* vi apparirà un *Python SDK* già configurato potete passare al punto **8**.
+Se avete già usato [Plugin IntelliJ per Phyton](https://plugins.jetbrains.com/plugin/631-python) e al posto di *No-interpeter* vi apparirà un *Python SDK* già configurato potete passare al punto **8**
 <br><br>
 **5.** A questo punto sarà necessario cliccare sui **(...)** e vi sarà presentata la seguente schermata:<br>
 <img width="692" alt="image" src="https://user-images.githubusercontent.com/114738583/212468400-4e970ab6-ba37-471e-b8ff-d73778c705b1.png">
@@ -100,7 +100,7 @@ Se avete già usato [Plugin IntelliJ per Phyton](https://plugins.jetbrains.com/p
 <br>
 <img width="450" alt="image" src="https://user-images.githubusercontent.com/114738583/212471290-d89542f7-95ae-490d-9e9c-8e7645213295.png">
 <br><br>
-**5.** A questo punto tornare nella sezione *Server*, aggiungere la **JRE** selezionando una delle **JDK** scaricate in  precedenza e cliccare su **Apply**.
+**5.** A questo punto tornare nella sezione *Server*, aggiungere la **JRE** selezionando una delle **JDK** scaricate in  precedenza e cliccare su **Apply**
 <br>
 <img width="692" alt="image" src="https://user-images.githubusercontent.com/114738583/212471729-3ce7a5fa-2043-480f-8cec-db5a1660274a.png">
 <br><br>
