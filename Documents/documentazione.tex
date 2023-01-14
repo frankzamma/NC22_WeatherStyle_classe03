@@ -42,7 +42,6 @@
     \begin{titlepage}
         \maketitle
     \end{titlepage}
-
     % produzione dell'indice automatica
     \tableofcontents
 
@@ -163,6 +162,7 @@
 
             \newpage
             \section{Formulazione del problema}
+            \label{sec:formulazione-problema-ga}
             Il primo quesito da porsi nel momento in cui si ha a che fare con un algoritmo genetico è: \textbf{come vengono
             codificati gli individui?} Nel nostro caso, come illustrato alla sezione \ref{sec:premessa}, l'algoritmo dovrà
             scegliere solamente tre dai capi che si ritengono più adeguati;
@@ -175,14 +175,14 @@
             In questo caso, l'unico vincolo è che, all'interno dell'array, non si ripeta un intero più di una volta,
             cioè che i capi siano tutti diversi tra loro.
             \\
-            \par \noindent La prima parte di un GA consiste nell'inizializzazione di una popolazione. Inizialmente la soluzione
-            verteva verso un'inizializzazione casuale ma, dopo aver constatato che la popolazione non rispettava il vincolo richiesto,
+            \par \noindent La prima parte di un GA consiste nell'inizializzazione di una popolazione.
+            Inizialmente, la soluzione verteva verso un'inizializzazione casuale ma, dopo aver constatato che la popolazione non rispettava il vincolo richiesto,
             si è optato verso un'inizializzazione pseudo-casuale, cioè producendo array ammissibili che rispettassero il vincolo.
             \\
             \par \noindent In seguito, bisogna modellare la \textbf{funzione di fitness}.
             Il nostro obiettivo è quello di fornire all'utente la selezione dei tre capi migliori rispetto alle condizioni
-            meteorologiche; per ogni capo d'abbigliamento, viene calcolato un \textbf{punteggio} (utilità) che consente di aiutare
-            l'agente nella scelta.
+            meteorologiche;
+            per ogni capo d'abbigliamento, viene calcolato un \textbf{punteggio} (utilità) che consente di aiutare l'agente nella scelta.
             \\
             \par \noindent Il punteggio si basa su diversi parametri:
             \begin{itemize}
@@ -197,19 +197,19 @@
                 alla lunghezza di un pantalone (lungo, medio, corto), che della lunghezza delle maniche per una maglia (lunga, corta);
                 tenendo in considerazione l'esempio precedente, verrà sicuramente preferita una maglia a manica lunga e un pantalone
                 lungo rispetto alle altre lunghezze.
-                \item \textbf{Stagionalità:} si assegna una valutazione sulla base della stagionalità del capo; sia per maglie, che per
-                pantaloni, che per scarpe, viene dato il massimo del punteggio se la stagione in cui viene richiesto l'intervento dell'agente coincide
+                \item \textbf{Stagionalità:} si assegna una valutazione sulla base della stagionalità del capo;
+                sia per maglie, che per pantaloni, che per scarpe, viene dato il massimo del punteggio se la stagione in cui viene richiesto l'intervento dell'agente coincide
                 con quella indicata per quel determinato capo d'abbigliamento.
                 \item \textbf{Tipo di scarpe:} in base alle previsioni meteo e al tipo di scarpe, viene assegnato un determinato punteggio.
                 Ad esempio, in caso di neve, vengono preferiti gli stivali alle classiche scarpe di ginnastica.\footnote{Tale valutazione,
-                    non viene effettuata in caso in cui la temperatura sia inferiore ai 20 gradi in quanto e il meteo è soleggiato,
-                    in quanto, a seguito di test empirici, si è visto che visto che tale condizione portava l'agente ad avere un comportamento errato: consigliava scarpe estive anche se non erano adatte}
+                    non viene effettuata in caso in cui la temperatura sia inferiore ai 20 gradi e il meteo è soleggiato
+                    in quanto, a seguito di test empirici, si è visto che tale condizione portava l'agente ad avere un comportamento errato: consigliava scarpe estive non essendo adatte}
                 \item \textbf{Antisivolo e/o impermeabile:} per le scarpe viene incrementato il
                 punteggio secondo le previsioni, se queste dichiarano pioggia, assegnando punti ``bonus'' se la
                 scarpa è antiscivolo e/o impermeabile.
                 \item \textbf{Colore:} sia per maglie, pantaloni e scarpe si tende a preferire colori chiari in caso di meteo
-                soleggiato piuttosto che colori scuri; per i capi colorati, i punti corrispondono a cinque, esattamente a
-                metà tra i dieci per i capi chiari e zero per quelli scuri.
+                soleggiato piuttosto che colori scuri;
+                per i capi colorati, i punti corrispondono a cinque, esattamente a metà tra i dieci per i capi chiari e zero per quelli scuri.
             \end{itemize}
             \newpage
             \par \noindent Riassumendo, per ogni capo d'abbigliamento si calcola il suo valore di utilità.
@@ -228,8 +228,8 @@
             $i(x)$ l'impermeabilità e l'antiscivolo.
             \\
             \par \noindent La funzione di fitness è data dalla media dei tre punteggi assegnati
-            ad ogni tipologia di capo d'abbigliamento, che siano essi scarpe, pantaloni o maglie. Il nostro obiettivo,
-            chiaramente, è quello di massimizzare questa funzione:
+            ad ogni tipologia di capo d'abbigliamento, che siano essi scarpe, pantaloni o maglie.
+            Il nostro obiettivo, chiaramente, è quello di massimizzare questa funzione:
             \[
                 f((x_{1},x_{2},x_{3}))=\frac{\sum_{n=1}^{3} u(x_{n})}{3}
             \]
@@ -245,18 +245,19 @@
             \newpage
             \section{Implementazione}
             Per l'implementazione della soluzione basata su algoritmo genetico è stato utilizzato il framework
-            \textbf{Jenetics} \cite{1}. In questa sezione, tratteremo l'istanza generale per la costruzione dell'algoritmo
-            genetico. Come già discusso nella sezione \ref{sec:premessa}, gli agenti saranno tre, e ognuno lavorerà su una singola istanza
+            \textbf{Jenetics} \cite{1}.
+            In questa sezione, tratteremo l'istanza generale per la costruzione dell'algoritmo genetico.
+            Come già discusso nella sezione \ref{sec:premessa}, gli agenti saranno tre, e ognuno lavorerà su una singola istanza
             del problema, ovvero maglie, pantaloni e scarpe, differenziandosi per i calcoli effettuati dalla funzione di
             fitness.
                 \subsection{Codifica degli individui}
-                \par \noindent Per prima cosa è stato necessario definire come è fatto un individuo, secondo la logica
-                del framework quando si parla di individuo, esso è chiamato \textbf{Genotype}, a sua volta composto
+                \par \noindent Per prima cosa è stato necessario definire come è fatto un individuo.
+                Secondo la logica del framework, quando si parla di individuo, esso è chiamato \textbf{Genotype}, a sua volta composto
                 da cromosomi, detti \textbf{Chromosome}, a loro volta costituiti da geni, detti
                 \textbf{Gene}.
                 \medskip
-                \par \noindent Rispetto a ciò che è stato detto nella sezione 2.2 possiamo definire
-                i genotipi mediante tre cromosomi, costituti da geni che, a loro volta, hanno al proprio interno valori
+                \par \noindent Rispetto a ciò che è stato detto nella sezione \ref{sec:formulazione-problema-ga}, possiamo definire
+                i genotipi mediante tre cromosomi costituti da geni che, a loro volta, hanno al proprio interno valori
                 interi che variano da \textbf{0} a \textbf{sizeCapi $-$ 1}.
                 \medskip
                 \begin{algorithmic}[1]
@@ -267,24 +268,25 @@
                 \end{algorithmic}
 
                 \subsection{Vincoli}
-                \par \noindent Per quel che riguarda la definizione dei vincoli, già discussi nella sezione 2.2,
-                il framework mette a disposizione l'interfaccia \textbf{Constraint} attraverso la quale si vanno a ridefinire
+                \par \noindent Per quel che riguarda la definizione dei vincoli, già discussi nella sezione \ref{sec:formulazione-problema-ga},
+                il framework mette a disposizione l'interfaccia \textbf{Constraint}, attraverso la quale si vanno a ridefinire
                 due metodi:
                 \begin{itemize}
                     \item \textbf{test():} metodo che verifica se un genotipo ottenuto in una qualsiasi iterazione è un
                     buon individuo o meno.
-                    Nello specifico diremo che il test ha avuto esisto positivo se i valori interi di cui è composto il
+                    Nello specifico, diremo che il test ha avuto esisto positivo se i valori interi di cui è composto il
                     genotipo sono tre valori diversi, altrimenti diremo che ha avuto esito negativo.
                     \item \textbf{repair():} metodo che viene chiamato quando un genotipo non ha superato il test e si
                     cerca quindi di ripararlo.
                     Nello specifico, andremo a costruire un nuovo genotipo che rispetta il vincolo e lo assoceremo a un
-                    \textbf{Phenotype}, ovvero un individuo che è stato valutato; esso viene passato in input al metodo
-                    ed è costituito dal valore di fitness ottenuto e da un numero \emph{i}, ovvero la i-esima generazione
+                    \textbf{Phenotype}, ovvero un individuo che è stato valutato;
+                    esso viene passato in input al metodo ed è costituito dal valore di fitness ottenuto e da un numero \emph{i},
+                    ovvero la i-esima generazione
                     a cui appartiene.
                 \end{itemize}
 
                 \subsection{Funzione di fitness}
-                \par \noindent Come già descritto nella sezione 2.2, il
+                \par \noindent Come già descritto nella sezione \ref{sec:formulazione-problema-ga}, il
                 nostro obiettivo è quello di massimizzare il punteggio ottenuto dalla combinazione dei geni per ogni
                 fenotipo.
                 \par \noindent In termini semplici, per ogni individuo andremo a valutare i tre valori interi, i quali
@@ -294,15 +296,20 @@
                 \subsection{Operatori genetici}\label{subsec:op_gen}
                 Per la risoluzione del problema sono stati scelti i seguenti operatori genetici:
                 \begin{itemize}
-                    \item \textbf{RouletteWheelSelector:} operatore di selezione; gli individui ricevono una probabilità
-                    di selezione calcolata includendo il corrispettivo valore di fitness. L'algoritmo andrà a selezionare
+                    \item \textbf{RouletteWheelSelector:} operatore di selezione;
+                    gli individui ricevono una probabilità
+                    di selezione calcolata includendo il corrispettivo valore di fitness.
+                    L'algoritmo andrà a selezionare
                     $n$ individui, e saranno consentite ripetizioni degli stessi individui.
-                    \item \textbf{MultiPointCrossover:} operatore di crossover; selezionerà due punti casuali in ogni
+                    \item \textbf{MultiPointCrossover:} operatore di crossover;
+                    selezionerà due punti casuali in ogni
                     individuo, scambierà il patrimonio genetico di quest'ultimi a coppie di due rispetto ai punti di
                     crossover e genererà per ogni coppia di genitori due nuovi individui figli che costituiranno la
-                    successiva generazione. È stata inoltre inserita una probabilità di crossover pari a $0.25$.
-                    \item \textbf{GaussianMutator:} operatore di mutazione; muterà casualmente un gene dall'individuo
-                    risultante dell'applicazione del crossover, e il valore del nuovo gene sarà calcolato prendendo un
+                    successiva generazione.
+                    È stata, inoltre, inserita una probabilità di crossover pari a $0.25$.
+                    \item \textbf{GaussianMutator:} operatore di mutazione;
+                    muterà casualmente un gene dall'individuo
+                    risultante dall'applicazione del crossover, e il valore del nuovo gene sarà calcolato prendendo un
                     valore definito nella distribuzione gaussiana a partire dal gene corrente.
                 \end{itemize}
 
@@ -336,10 +343,10 @@
             In genere, la prima popolazione viene generata in maniera totalmente casuale, quindi non è detto che
             tali individui rispettino il vincolo imposto (i tre elementi devono essere diversi).\\
             Come illustrato nei paragrafi precedenti, il problema è stato risolto andando ad impostare una generazione
-            pseudo casuale che permette di avere anche nella prima generazione degli elementi ammissibili e, di conseguenza,
+            pseudo casuale che permetta di avere anche nella prima generazione degli elementi ammissibili e, di conseguenza,
             la ricerca viene guidata verso soluzioni ammissibili e migliori riducendo il carico computazionale.\\
             A valle di test empirici, possiamo dire che la soluzione riesce quasi sempre a restituire un risultato ottimale.
-            In particolare, su 8 test effettuati ben 5 volte il risultato è da considerare ottimo.
+            In particolare, su 8 test effettuati, ben 5 volte il risultato è da considerare ottimo.
             Di seguito un report del test eseguito:
             \begin{center}
                 \begin{tabular}{ |p{3cm}|p{2cm}|p{2cm}||p{4cm}|}
@@ -374,7 +381,7 @@
             Tuttavia, con il setup da noi effettuato, cioè \emph{size della popolazione = 10} e
             \emph{max evoluzioni = 100}, i GA diventano più efficienti di una ricerca esaustiva con un numero di capi
             maggiore o uguale a 20.
-            Infatti, facendo un po' di calcoli il numero stati ammissibili con 20 capi è pari al numero di combinazioni semplici
+            Infatti, facendo un po' di calcoli, il numero stati ammissibili con 20 capi è pari al numero di combinazioni semplici
             di 20 elementi raggruppati in classi di 3:
             \begin{equation*}
                 C_{20,3}=\binom{20}{3}= 1120
@@ -385,15 +392,15 @@
             \end{equation*}
             Bisogna però sottolineare, che la precedente osservazione considera che la ricerca esaustiva venga effettuata soltanto
             tra i possibili stati ammissibili per la soluzione, che richiedono anche essi una computazione per essere generati.
-            Quindi, ritrattando, se consideriamo tutte le soluzioni (ammissibili e non ammissibili), gli Algoritmi Genetici diventano più efficienti già a partire da
+            Quindi, ritrattando, se consideriamo tutte le soluzioni (ammissibili e non), gli Algoritmi Genetici diventano più efficienti già a partire da
             11 capi d'abbigliamento:
             \begin{equation*}
-                D_{11,3}^{'}=11^3 = 1331  > 1000 = populationSize * maxEvolutions = 10 * 100 = 1000
+                D_{11,3}^{'}=11^3 = 1331  > 1000 = populationSize * maxEvolutions
             \end{equation*}
-            Per concludere, la soluzione basata su Algoritmi Genetici, riesce a fornire un buon consiglio all'utente
+            Per concludere, la soluzione basata su Algoritmi Genetici riesce a fornire un buon consiglio all'utente
             in quasi tutte le condizioni meteo.
-            In alcuni casi, essi hanno restituito un risulto sub-ottimo in cui, ad esempio, uno dei tre dei capi non era
-            particolarmente adatto, ma essendo che la scelta tra i tre è effettuata dall'utente, si ritiene che tale soluzione
+            In alcuni casi, essi hanno restituito un risulto sub-ottimo in cui, ad esempio, uno dei tre capi non era
+            particolarmente adatto ma, essendo che la scelta tra i tre è effettuata dall'utente, si ritiene che tale soluzione
             sia applicabile nel sistema finale, eventualmente effettuando un raffinamento della funzione di fitness per
             evitare i casi di risultati sub-ottimi.
 
@@ -402,19 +409,20 @@
         Quando si parla di \textbf{machine learning} solitamente si tende ad accomunarlo al concetto di ``Intelligenza Artificiale'',
         ma (s)fortunatamente non è così.
         \par \noindent Il machine learning altro non è che una branca dell'Intelligenza Artificiale, una delle forme
-        di apprendimento automatico con origini più antiche, sin nei tardi anni '50 Alan Turing avanzò la proposta
+        di apprendimento automatico con origini più antiche: sin nei tardi anni '50, Alan Turing avanzò la proposta
         di realizzare algoritmi per costruire macchine in grado di apprendere.
         \par \noindent \textbf{Dunque in cosa consiste?} Sostanzialmente è lo studio degli algoritmi e delle tecniche in
         grado di apprendere dai dati.
         Si discosta moltissimo da quella che è la classica programmazione\ldots quando si effettua machine learning non
         è più il programmatore a scrivere la funzione $f(x)$ con input e output ben definiti, ma il
-        programmatore dovrà semplicemente preoccuparsi di fornire i dati ad un algoritmo di addestramento che sulla base
-        di questi costruirà un modello in grado di fare delle predizioni. A loro volta queste predizioni sono fornite
+        programmatore dovrà semplicemente preoccuparsi di fornire i dati ad un algoritmo di addestramento che, sulla base
+        di questi, costruirà un modello in grado di fare delle predizioni. A loro volta, queste predizioni sono fornite
         mediante un ulteriore algoritmo dopo aver dato in pasto degli input al modello addestrato.
         \\
-        \par \noindent Ci sono diversi modi di fare machine learning, in questo capitolo ci concentreremo sull'
+        \par \noindent Ci sono diversi modi di fare machine learning.
+        In questo capitolo, ci concentreremo sull'
         \textbf{apprendimento supervisionato}, ovvero problemi in cui bisogna fornire ad un algoritmo di addestramento
-        dati etichettati, ovvero osservazioni in cui sia disponibile la variabile dipendente: il valore che
+        dati etichettati, cioè osservazioni in cui sia disponibile la variabile dipendente: il valore che
         dovrà essere in grado di predire il modello una volta addestrato.
         In particolare i nostri sforzi saranno incentrati sugli algoritmi di \textbf{regressione}, ovvero tecniche in grado
         di predire il valore di una variabile numerica sulla base degli input forniti.
@@ -1109,5 +1117,6 @@
         Open-meteo
         \url{https://open-meteo.com/}
     \end{thebibliography}
+
 
 \end{document}
