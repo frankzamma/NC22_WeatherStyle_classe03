@@ -16,7 +16,11 @@
 
 ## Indice
 - [Introduzione](#introduzione)
-
+- [Contenuto della repository](#contenuto-della-repository)
+- [Dipendenze](#dipendenze)
+- [Guida alla configurazione](#guida-alla-configurazione)
+   - [Esecuzione degli script Python (in IntelliJ)](#esecuzione-degli-script-python-in-intellij)
+   - [Setup Tomcat](#setup-tomcat)
 
 ## Introduzione
 Il progetto **WeatherStyle** nasce dall'idea di quattro studenti pendolari dell'Università degli Studi di Salerno, per risolvere uno dei principali problemi che si trovano ogni giorno ad affrontare, ovvero scegliere l'abbigliamento più adatto a fronteggiare le condizioni climatiche (a volte estreme) previste al Campus di Fisciano.<br>
