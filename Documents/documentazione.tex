@@ -76,11 +76,8 @@
                 \item \textbf{A (Actuators)}: servono all'agente per poter compiere delle azioni. L'agente di WeatherStyle
                 si serve di uno schermo per mostrare agli utenti i capi d'abbigliamento che ritiene più adeguati.
                 \item \textbf{S (Sensors)}: sono i sensori attraverso i quali l'agente riceve gli input dall'esterno.
-                \\ I sensori a sua disposizione sono una sorgente da cui ottenere informazioni meteorologiche\footnote{Nel driver sviluppato per testare il modello, tale sensore è sostituito dalla tastiera,
-                    è l'utente che deve specificare le condizioni meteo e la data in cui il consiglio viene fornito}
-                    e un database da cui ottenere i capi d'abbigliamento dell'utente\footnote{Il driver realizzato non fa uso del database.
-                Viene utilizzato un File per caricare dei capi d'esempio su cui poter effettuare dei test.
-                Inoltre, è possibile aggiungere altri capi che saranno salvati nella sessione del browser utilizzato per il testing (Una volta chiuso dovranno essere ricaricati).}.
+                \\ I sensori a sua disposizione sono una sorgente da cui ottenere informazioni meteorologiche
+                    e un database da cui ottenere i capi d'abbigliamento dell'utente
             \end{itemize}
 
 
@@ -104,6 +101,7 @@
                 degli stati raggiunti e un \textbf{agente capace di apprendere}.
     \section{Un'importante premessa}
     \label{sec:premessa}
+    \subsection{Tanti problemi nel problema}
     Il problema, nella sua formulazione completa, richiede di fornire all'utente un outfit che sia adatto
     alle condizioni climatiche.\\
     Tale formulazione, contiene in sè una serie di sotto-problemi non di poco conto in particolare oltre
@@ -114,6 +112,7 @@
     Nello specifico, sono state considerate tre categorie di capi d'abbigliamento (maglie, pantaloni e scarpe) e per ognuna di queste verrà realizzato
     un agente intelligente in grado di fornire i tre capi migliori rispetto alle condizioni meteo.
     Nella versione finale dell'applicativo l'utente potrà scegliere un capo per ogni categoria e costruire l'outfit che più gli piace\footnote{Nel driver realizzato, è possibile solo visualizzare i tre capi d'abbigliamento consigliati per ogni categoria}.
+    \subsection{Scelte implementative}
 
     \part{Tecniche di risoluzione}
         \chapter{La ricerca locale}
