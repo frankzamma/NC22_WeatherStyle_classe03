@@ -155,7 +155,6 @@ public class RegressionTreeWrapper {
             }else{
                 Scarpa scarpa = (Scarpa) capoAbbigliamento;
 
-                System.out.println(scarpa.getTipo());
                 instance.setValue(0, scarpa.getTipo().toLowerCase());
                 instance.setValue(1, scarpa.getAntiscivolo()? 'y' : 'n');
                 instance.setValue(2, scarpa.getImpermeabile()? 'y' : 'n');

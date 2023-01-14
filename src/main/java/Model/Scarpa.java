@@ -49,6 +49,6 @@ public class Scarpa extends CapoAbbigliamento{
                 ", " + tipo +
                 ", " + (antiscivolo ? "Con Antiscivolo" : "Senza Antiscivolo") +
                 ", " + (impermeabile ? "Impermeabile" : "Non Impermeabile") +
-                ']';
+                "\n";
     }
 }
