@@ -120,11 +120,11 @@
     \part{Tecniche di risoluzione}
         \chapter{La ricerca locale}
         Gli algoritmi di \textbf{ricerca locale}, a differenza degli algoritmi di ricerca tradizionale, non hanno come scopo
-        quello di trovare una sequenza di azioni che porti dallo stato iniziale allo stato obbiettivo, bensì lo stato
-        obbiettivo rappresenta esso stesso la soluzione al problema, indipendentemente da come ci si è arrivati.
+        quello di trovare una sequenza di azioni che porti dallo stato iniziale allo stato obiettivo, bensì lo stato
+        obiettivo rappresenta esso stesso la soluzione al problema, indipendentemente da come ci si è arrivati.
         \par \noindent Questo rende gli algoritmi di ricerca locale particolarmente adatti a problemi di configurazione
         e/o di ottimizzazione. Sono anche detti algoritmi di ``miglioramento iterativo'', poiché partono da un'ipotetica
-        soluzione con lo scopo di migliorarla, secondo quella che viene chiamata \textbf{funzione obbiettivo}, una misura
+        soluzione con lo scopo di migliorarla, secondo quella che viene chiamata \textbf{funzione obiettivo}, una misura
         che serve all'algoritmo per comprendere se e quanto sta migliorando nelle iterazioni, condizione fondamentale per
         la corretta terminazione dell'algoritmo.
         \par \noindent Infine, accenniamo al fatto che le soluzioni ottenute non sempre sono soluzioni ottimali, ma il
@@ -225,7 +225,7 @@
             $i(x)$ l'impermeabilità e l'antiscivolo.
             \\
             \par \noindent La funzione di fitness è data dalla media dei tre punteggi assegnati
-            ad ogni tipologia di capo d'abbigliamento, che siano essi scarpe, pantaloni o maglie. Il nostro obbiettivo,
+            ad ogni tipologia di capo d'abbigliamento, che siano essi scarpe, pantaloni o maglie. Il nostro obiettivo,
             chiaramente, è quello di massimizzare questa funzione:
             \[
                 f((x_{1},x_{2},x_{3}))=\frac{\sum_{n=1}^{3} u(x_{n})}{3}
@@ -282,7 +282,7 @@
 
                 \subsection{Funzione di fitness}
                 \par \noindent Come già descritto nella sezione 2.2, il
-                nostro obbiettivo è quello di massimizzare il punteggio ottenuto dalla combinazione dei geni per ogni
+                nostro obiettivo è quello di massimizzare il punteggio ottenuto dalla combinazione dei geni per ogni
                 fenotipo.
                 \par \noindent In termini semplici, per ogni individuo andremo a valutare i tre valori interi, i quali
                 corrisponderanno alle posizioni dei capi d'abbigliamento in una lista, calcoleremo il punteggio per ognuno,
@@ -447,7 +447,7 @@
                 determinate circostanze, basandosi
                 sulle caratteristiche dei capi e sulle informazioni meteorologiche, quali temperatura percepita, previsione e
                 stagione della previsione.
-                \item \textbf{Disponibilità delle risorse}: Per raggiungere il nostro obbiettivo principale ci serviranno
+                \item \textbf{Disponibilità delle risorse}: Per raggiungere il nostro obiettivo principale ci serviranno
                 delle risorse, ovvero un dataset per ogni capo d'abbigliamento (maglie, pantaloni e scarpe),
                 che contenga informazioni riguardo il capo d'abbigliamento specifico e delle informazioni meteo correlate.
                 \par \noindent Purtroppo, dopo un'approfondita ricerca, non siamo riusciti a trovare nessun dataset che facesse
@@ -603,7 +603,7 @@
                 \begin{itemize}
                     \item \textbf{Data cleaning}: la cosiddetta \textit{"pulizia dei dati"} si occupa di
                     rimediare a problemi che sorgono quando ci sono righe del dataset che hanno dei dati \textbf{mancanti}, ma più
-                    in generale ha come obbiettivo quello di fornire un dataset dotato di una \textbf{qualità} ritenuta adeguata
+                    in generale ha come obiettivo quello di fornire un dataset dotato di una \textbf{qualità} ritenuta adeguata
                     per poter procedere con i successivi passaggi.
                     \par \noindent Nel nostro specifico caso abbiamo avuto la necessità di dividere il dataset \cite{6} in
                     due, ossia considerando separatamente le osservazioni per le maglie e le osservazioni per i pantaloni,
@@ -632,7 +632,7 @@
                     facilmente riconducibili all'elenco di materiali di partenza.
                     \par \noindent Inoltre, si è trasformata la colonna dei \textbf{colori} in modo che indicasse se la maglia o il pantalone
                     fosse chiaro, scuro o colorato.
-                    Questo perché, come spiegato nella sezione \ref{sec:premessa} il nostro obbiettivo
+                    Questo perché, come spiegato nella sezione \ref{sec:premessa} il nostro obiettivo
                     {non} è quello di fornire un punteggio ad un determinato capo andando ad
                     analizzare le varie combinazioni di colori che si possono ottenere.
                     \par \noindent Come ultima colonna, ossia la \textbf{stagione}, abbiamo escluso capi con più di 3 stagioni
