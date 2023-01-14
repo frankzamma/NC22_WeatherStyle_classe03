@@ -136,7 +136,7 @@
             \section{Gli algoritmi genetici}
             Sebbene possa sembrare un argomento che si sia affacciato da poco all'umanità, la storia degli algoritmi genetici
             ha inizio con il celeberrimo biologo inglese, Charles Darwin.
-            \par \noindent Darwin pubblicò nel 1859 \textit{``Lorigine della specie''}, libro che riscosse un enorme
+            \par \noindent Darwin pubblicò nel 1859 \textit{``Lorigine della specie}, libro che riscosse un enorme
             successo e nel quale si introduceva per la prima volta il concetto di \textbf{teoria dell'evoluzione} tramite
             un processo di \textbf{selezione naturale}.
             \par \noindent Negli anni '50 del XX secolo cominciò il diffondersi degli algoritmi evolutivi,
@@ -612,22 +612,22 @@
                 \\
                 \par \noindent Il procedimento di Data Preparation si articola nei seguenti quattro passaggi:
                 \begin{itemize}
-                    \item \textbf{Data cleaning}: la cosiddetta \textit{"pulizia dei dati"} si occupa di
+                    \item \textbf{Data cleaning}: la cosiddetta \textit{``pulizia dei dati''} si occupa di
                     rimediare a problemi che sorgono quando ci sono righe del dataset che hanno dei dati \textbf{mancanti}, ma più
                     in generale ha come obiettivo quello di fornire un dataset dotato di una \textbf{qualità} ritenuta adeguata
                     per poter procedere con i successivi passaggi.
                     \par \noindent Nel nostro specifico caso abbiamo avuto la necessità di dividere il dataset \cite{6} in
-                    due, ossia considerando separatamente le osservazioni per le maglie e le osservazioni per i pantaloni,
-                    ed escludendo a priori le osservazioni per i vestiti da donna.
+                    due parti, ossia considerando separatamente le osservazioni per le maglie e le osservazioni per i pantaloni,
+                    ed escludendo a priori le osservazioni per gli abiti da donna.
                     \par \noindent Abbiamo individuato alcuni dati mancanti in corrispondenza della
                     colonna \textbf{lunghezza manica} per quel che riguarda il dataset delle maglie.
-                    \par \noindent Si è scelto di non andare a rimuovere tale colonna dal dataset, poiché le consideriamo una caratteristica
+                    \par \noindent Si è scelto di non andare a rimuovere tale colonna dal dataset, poiché la consideriamo una caratteristica
                     molto utile per il nostro machine learner nel momento in cui dovrà effettuare delle previsioni.
-                    Si è scelto quindi di non andare a rimuovere le righe che avevano celle mancanti
+                    Si è scelto, quindi, di non andare a rimuovere le righe che avevano celle mancanti,
                     perché ci si è resi conto che il numero di istanze diminuiva notevolmente.
                     \par \noindent Abbiamo dunque scelto di affidarci al \textbf{data imputation}, insieme di tecniche che
                     possono stimare il valore dei dati mancanti sulla base dei dati a nostra disposizione.
-                    Nello specifico abbiamo adottato la tecnica di imputazione \textit{"most frequent imputation"}, che permette
+                    Nello specifico, abbiamo adottato la tecnica di imputazione \textit{``most frequent imputation''}, che permette
                     di sostituire i dati mancanti col valore più frequente contenuto in una colonna. Dopodichè abbiamo
                     escluso le categorie di maniche meno frequenti, tenendo in considerazione solo \textit{manica lunga} e
                     \textit{manica corta}.
@@ -643,7 +643,7 @@
                     facilmente riconducibili all'elenco di materiali di partenza.
                     \par \noindent Inoltre, si è trasformata la colonna dei \textbf{colori} in modo che indicasse se la maglia o il pantalone
                     fosse chiaro, scuro o colorato.
-                    Questo perché, come spiegato nella sezione \ref{sec:premessa} il nostro obiettivo
+                    Questo perché, come spiegato nella sezione \ref{sec:premessa}, il nostro obiettivo
                     {non} è quello di fornire un punteggio ad un determinato capo andando ad
                     analizzare le varie combinazioni di colori che si possono ottenere.
                     \par \noindent Come ultima colonna, ossia la \textbf{stagione}, abbiamo escluso capi con più di 3 stagioni
@@ -663,19 +663,20 @@
                         \item \textbf{Materiale:} la feature è discriminante, in quanto ci consente di capire se un determinato materiale è adatto per
                         una certa temperatura o meno. Ad esempio, il lino è un tessuto tipicamente estivo, di conseguenza non è molto adatto alla
                         stagione invernale.
-                        \item \textbf{Colore:} anche in questo caso, la caratteristica è determinante perché, in caso di meteo soleggiato, bisogna preferire
+                        \item \textbf{Colore:} anche in questo caso la caratteristica è determinante perché, in caso di meteo soleggiato, bisogna preferire
                         un capo di colore chiaro rispetto a uno di colore scuro.
                         \item \textbf{Lunghezza:} la lunghezza dei pantaloni oppure la lunghezza della manica per le maglie sono rilevanti ai fini della
                         risoluzione del problema; infatti, una manica corta sicuramente sarà da preferire ad una manica lunga se si è in estate.
                         \item \textbf{Stagione:} la feature è rilevante, in quanto viene considerata la differenza tra la stagione in cui viene richiesto il
-                        suggerimento e stagionalità del capo: se, ad esempio, il suggerimento viene richiesto a febbraio, sicuramente non verrà considerato
-                        un capo dichiarato come "estivo".
+                        suggerimento e stagionalità del capo: se, ad esempio, il suggerimento viene richiesto a febbraio, sicuramente verrà assegnato ad
+                        un capo dichiarato come ``estivo'' un punteggio più basso.
                     \end{itemize}
                     \item \textbf{Data balancing}: con \textit{data balancing} si intende l'insieme delle tecniche per convertire un dataset sbilanciato in un
                     dataset bilanciato. Nel nostro caso, abbiamo fatto uso delle tecniche di oversampling per aggiungere righe al dataset.
                     Nel caso delle maglie, essendo che nel dataset di partenza i capi erano prevalentemente estivi, sono state aggiunte più righe per quanto riguarda
                     la stagione invernale, compensando la mancanza di dati nell'insieme di dati iniziale. In maniera del tutto analoga, per i pantaloni sono state
-                    generate righe casuali, focalizzando particolarmente l'attenzione su capi invernali. La generazione dei dati, sia per le maglie che per i pantaloni,
+                    generate righe casuali, focalizzando particolarmente l'attenzione su capi invernali.
+                    \par \noindent La generazione dei dati, sia per le maglie che per i pantaloni,
                     è stata effettuata con l'ausilio di Google Sheet, tramite la funzione \textit{SCEGLI(CASUALE.TRA...)}, con cui era possibile scegliere un valore a caso
                     tra i valori contenuti nelle celle di riferimento.
                 \end{itemize}
@@ -700,38 +701,38 @@
                     Oltre ai valori nulli, sono stati eliminati anche i duplicati, per poi procedere all'adattamento
                     del dataset alle nostre esigenze.\\
                     Per ottenere la variabile \emph{Tipo} si è utilizzata la caratteristica \emph{SubCategory}.
-                    In tale colonna, come si nota dal grafico presente nel capitolo paragrafo precedente, ci sono molti valori
+                    In tale colonna, come si nota dal grafico presente nel capitolo precedente, ci sono molti valori
                     alcuni dei quali non utili ai nostri scopi come :
                     \begin{itemize}
-                        \item \emph{Flat} e \emph{Flat} : Scarpe di tipo "Ballerina";
+                        \item \emph{Flat} e \emph{Flats} : Scarpe di tipo "Ballerina";
                         \item \emph{Slipper Flats} : Pantofole basse;
                         \item \emph{Prewalker} : scarpe per neonati;
                         \item \emph{Fistwalker} : scarpe per i primi passi;
                         \item \emph{Crib Shoes} : scarpe da culla;
                     \end{itemize}
                     Le righe contenenti tali valori sono stati eliminati.
-                    Per le altre si è proceduto a tradurle in italiano e accorpare valori con significato simile,
-                    si provveduto anche a modificare il nome della colonna in Tipo
+                    Per le altre si è proceduto a tradurle in italiano e accorpare valori con significato simile;
+                    si provveduto anche a modificare il nome della colonna in Tipo.
                     Il risultato ottenuto è visibile dal seguente grafico.
                     \begin{center}
-                        \includegraphics[scale=0.4]{countTipoShoes}
+                        \includegraphics[scale=0.3]{countTipoShoes}
                     \end{center}
                     Per quanto riguarda gli attributi  \emph{Antiscivolo} e \emph{Impermeabile}, sono stati imputati
                     logicamente sfruttando rispettivamente le colonne \emph{Insole} e \emph{Material}.
                     In breve, i valori di tali campi sono stati tradotti in italiano e, come per \emph{itemize}, i valori con significato simile sono stati
                     accorpati.
-                    Inoltre, visto che alcuni righe contenevano un elenco di valori, sono state semplificate sostituendo l'elenco con il suo primo valore.
-                    L'imputazione logica è stata effettuata sfruttando un dizionario python, per ulteriori dettagli si rimanda allo script
-                    \href{https://github.com/frankzamma/NC22_WeatherStyle_classe03/blob/b8a2eb2de4f72fd37752e2c480e764e8797826f8/CreazioneDatasets/dataset_shoes/creazione_dataset_shoes.py}{creazione\_dataset\_shoes.py} sulla \href{https://github.com/frankzamma/NC22_WeatherStyle_classe03}{repository GitHub}.
+                    Inoltre, visto che alcune righe contenevano un elenco di valori, sono state semplificate sostituendo l'elenco con il suo primo valore.
+                    L'imputazione logica è stata effettuata sfruttando un dizionario python; per ulteriori dettagli si rimanda allo script
+                    \textbf{\href{https://github.com/frankzamma/NC22_WeatherStyle_classe03/blob/b8a2eb2de4f72fd37752e2c480e764e8797826f8/CreazioneDatasets/dataset_shoes/creazione_dataset_shoes.py}}{creazione\_dataset\_shoes.py} sulla \href{https://github.com/frankzamma/NC22_WeatherStyle_classe03}{repository GitHub}.
                     L'attributo \emph{stagione} è stato imputato utilizzando la colonna \emph{Tipo} costruita in precedenza: è stato costruito un dizionario
                     che, per ogni tipo, restituisce un insieme di stagioni possibili e, tra queste, ne viene scelta una casualmente.
-                    L'attributo colore, siccome non poteva essere imputato in nessun modo e, visto che non dipende in alcun modo dagli altri attributi,
+                    L'attributo \emph{colore}, siccome non poteva essere imputato in nessun modo e, visto che non dipende in alcun modo dagli altri attributi,
                     è stato imputato in maniera casuale scegliendo un valore tra i tre che abbiamo considerato: \emph{chiaro}, \emph{scuro} e \emph{colorato}.
                     \item \textbf{Feature Scaling:} non sono presenti dati numerici; di conseguenza, non è stato necessario applicare il feature scaling.
                     \item \textbf{Feature Selection}: le feature selezionate sono quelle citate in precedenza (\emph{Tipo}, \emph{Antiscivolo}, \emph{Impermeabile}, \emph{Colore}, \emph{Stagione}),
                     tutte le altre sono state rimosse\footnote{Nello script, la rimozione degli attributi che non vengono
                     considerati o utilizzati per imputarne altri viene fatta all'inizio, per poter effettuare una rimozione dei valori nulli e duplicati più efficiente}.
-                    \item \textbf{Data Balacing:} il dataset presentava poche osservazioni relative a due tipologie di scarpe (\emph{Anfibi} e \emph{Stivali}), per questo motivo, è stato bilanciato aggiungendo dei dati generati per quei tipi tramite Google Sheet.
+                    \item \textbf{Data Balacing:} il dataset presentava poche osservazioni relative a due tipologie di scarpe (\emph{Anfibi} e \emph{Stivali}). Per questo motivo, è stato bilanciato aggiungendo dei dati generati per quei tipi tramite Google Sheet.
                 \end{itemize}
                 \newpage
                 \subsection{Dataset meteo}
@@ -740,7 +741,7 @@
                 \begin{itemize}
                     \item \textbf{Data Cleaning:} in questa fase, è stato necessario andare a ripulire la colonna \emph{WeatherCode} per 2 motivi:
                         \begin{enumerate}
-                            \item i valori della colonna sono dei numeri ma in realtà tale colonna dovrebbe essere un variabile categorica
+                            \item i valori della colonna sono dei numeri, ma in realtà tale colonna dovrebbe essere un variabile categorica.
                             \item le condizioni meteo considerate sono troppe e alcune simili tra loro.
                         \end{enumerate}
                     Dunque, i valori di tale colonna sono stati sostituiti con dei nomi di condizioni meteo in italiano (Eg.
@@ -748,7 +749,7 @@
                     \item \textbf{Feature Scaling:} nel dataset sono presenti due colonne con valori numerici, cioè
                     \emph{Minimum Apparent Temperature} e \emph{Maximum Apparent Temperature},
                     ma sono già espressi nella stessa scala e dunque non si ritiene necessario effettuare una normalizzazione.
-                    \item \textbf{Feature Selection:} le feature già presenti sono già molto buone, tuttavia è possibile fare dei miglioramenti.
+                    \item \textbf{Feature Selection:} le feature presenti sono già molto buone, tuttavia è possibile fare dei miglioramenti.
                     Le caratteristiche \emph{Minimum Apparent Temperature} e \emph{Maximum Apparent Temperature}
                     possono essere sostituite da una singola colonna in cui si va ad inserire la media tra i due valori.
                     Inoltre, la colonna \emph{Time} così com'è risulta essere poco utile, tuttavia è possibile utilizzarla per
@@ -767,12 +768,12 @@
                 e scarpe.\\
                 \par \noindent Prima, però, di passare all'addestramento,
                 è necessario che venga inserita una colonna ad ogni dataset per poter assegnare il \textbf{valore della variabile dipendente}.
-                Per effettuare il calcolo, si segue la stessa logica definita nel paragrafo 2.2 in relazione agli algoritmi genetici:
+                Per effettuare il calcolo, si segue la stessa logica definita nella sezione \ref{sec:formulazione-problema-ga} in relazione agli algoritmi genetici:
                 per ogni capo d'abbigliamento, vi è una funzione che calcola il punteggio in relazione a parametri quali la stagionalità
                 di esso, il colore e così via, dove però chiaramente non considereremo di fare la media dei punteggi dei
                 tre capi, ma faremo una valutazione dell'utilità del singolo capo.\\
                 \par \noindent \`E necessario sottolineare che, nel dataset completo, le colonne \textit{time}
-                e \textit{mese} vengono eliminate, in quanto non più necessarie non costituendo feature importanti per la predizione.
+                e \textit{mese} vengono eliminate, in quanto non più necessarie costituendo feature poco importanti per la predizione.
 
             \newpage
             \section{Modelling}
@@ -806,13 +807,13 @@
                     \item Ripetere gli step 1. e 2. fin quando non viene raggiunto un nodo foglia in ogni sotto-albero.
                 \end{enumerate}
                 \medskip
-                \par \noindent Come ben sappiamo, per poter piazzare la miglior caratteristica come radice dell'albero e/o
+                \par \noindent Come ben sappiamo, per poter inserire la miglior caratteristica come radice dell'albero e/o
                 di un sotto-albero in modo che riesca a dividere bene le istanze del dataset, nei problemi di classificazione
                 viene utilizzato l'\textbf{Information Gain}, mentre nei problemi di regressione abbiamo bisogno di un'indice
                 diverso: l'\textbf{errore quadratico medio (MSE)}\footnote{come vedremo nelle
-                successive sezioni, questo dipende fortemente da aspetti implementativi, talvolta si sceglie di utilizzare
-                la \textbf{varianza} poiché quest'ultima permette di costruire un albero di regressione andando ad utilizzare
-                variabili indipendenti che siano di natura numerica o nominale, nell'ultimo caso si vanno ad associare dei
+                successive sezioni, questo dipende fortemente da aspetti implementativi. Talvolta si sceglie di utilizzare
+                la \textbf{varianza}, poiché quest'ultima permette di costruire un albero di regressione andando ad utilizzare
+                variabili indipendenti che siano di natura numerica o nominale; nell'ultimo caso, si vanno ad associare dei
                 pesi ad ogni variabile rispetto alle frequenze degli attributi \cite{8}.}
                 \[
                     MSE = \frac{1}{n}\sum_{i=1}^{n}(\tilde{y_i} - y_i)^2
@@ -842,8 +843,8 @@
                 \begin{itemize}
                     \item \textbf{Primo passaggio:} ordina i dati nella colonna X (in questo caso sono già ordinati).
                     Prende la media delle prime due righe della colonna X, ovvero $(1+2)/3 = 1.5$, quindi divide il dataset
-                    in due parti, la \textit{parte A} con $X < 1.5$ e la \textit{parte B} con $X \geq 1.5$.
-                    \\Adesso farà la media di tutti i valori presenti in ambedue le parti e questi valori
+                    in due parti: la \textit{parte A} con $X < 1.5$ e la \textit{parte B} con $X \geq 1.5$.
+                    \\Farà la media di tutti i valori presenti in ambedue le parti, e questi valori
                     definiranno l'output per l'albero di regressione in quel punto. Quindi calcola l'\textbf{MSE}
                     utilizzando i valori previsti $\tilde{y_i}$ e i valori originali $y_i$, utilizzando le istanze
                     delle due parti.
@@ -852,8 +853,8 @@
                     l'MSE.
                     \item \textbf{Terzo passaggio:} una volta fatti i doverosi calcoli, l'algoritmo deciderà il punto in cui
                     dividere il dataset, ossia i valori che hanno permesso di ottenere un valore più basso in termini di MSE. Questo decreterà
-                    il punto di \textbf{radice}, dopodiché opererà allo stesso in maniera ricorsiva sui nodi figli, sino a raggiungere
-                    una \textbf{foglia}\footnote{il numero minimo di istanze che compongono una foglia devono essere decisi durante
+                    il punto di \textbf{radice}, dopodiché opererà allo stesso modo in maniera ricorsiva sui nodi figli, sino a raggiungere
+                    una \textbf{foglia}\footnote{il numero minimo di istanze che compongono una foglia deve essere deciso durante
                     l'implementazione.}.
                 \end{itemize}
                 \medskip
@@ -871,17 +872,17 @@
                 ovvero tendono a fare un ragionamento eccessivamente complesso sui dati a disposizione, senza comprenderne
                 l'essenza e la struttura. Questo rende gli alberi di decisone difficili da addestrare; nel caso dell'albero
                 di regressione questo andrebbe avanti ricorsivamente nel tentativo di ridurre l'MSE, arrivando anche ad
-                avere foglie con una sola istanza dove l'errore quadratico medio è nullo. Dunque è sempre consigliato
+                avere foglie con una sola istanza dove l'errore quadratico medio è nullo. Dunque, è sempre consigliato
                 specificare il numero minimo di istanze che deve avere un nodo foglia.
                 \\
                 \newpage
                 \subsection{Ten-folds cross validation}
-                Solitamente per addestrare e validare il modello di machine learning, si divide il dataset in due insiemi: training
+                Solitamente, per addestrare e validare il modello di machine learning, si divide il dataset in due insiemi: training
                 set (istanze che l'algoritmo utilizzerà per l'addestramento) e il test set (istanze per cui l'algoritmo
                 addestrato dovrà predire il valore). Esistono diversi modi di dividere training e test set, tra cui
                 considerare il 67\% del dataset come training set e il 33\% come test set.
                 \\
-                \par \noindent Nel caso di WeatherStyle,invece, si è preferito addestrare i modelli sull'intero set di
+                \par \noindent Nel caso di WeatherStyle, invece, si è preferito addestrare i modelli sull'intero set di
                 training e di validarli mediante l'ausilio della \textbf{convalida incrociata} (o k-fold cross validation), con $k=10$.
                 \\ \noindent La convalida incrociata è un metodo statistico che consiste nella ripetuta partizione e
                 valutazione dell'insieme dei dati di partenza. Si basa sui seguenti step:
@@ -909,7 +910,7 @@
                         RMSE = \sqrt {\frac{\sum_{i=1}^{n}(\tilde{y_i} - y_i)^2}{n}}
                     \]
                 \end{itemize}
-                \par \noindent Chiaramente il nostro intento è stato quello di minimizzare i valori di \textbf{MSE} e
+                \par \noindent Chiaramente il nostro intento è stato quello di minimizzare i valori di \textbf{MAE} e
                 \textbf{RMSE}.
                 \\
                 \par \noindent Oltre a queste due metriche, altre due informazioni ci sono state molto utili: il \textbf{coefficiente
@@ -929,7 +930,7 @@
                 \par \noindent Di seguito, sono riportati alcuni dati relativi alle metriche sopracitate ottenuti tramite
                 sperimentazione empirica effettuata su \textbf{Weka}.
                 Il modello di riferimento è quello delle \textbf{maglie}. Concentreremo la nostra attenzione su questo
-                modello, poiché sono stati eseguiti gli stessi lavori per i modelli relativi a pantaloni e scarpe.
+                modello, poiché sono stati eseguiti gli stessi procedimenti per i modelli relativi a pantaloni e scarpe.
                 \newpage
                 \par \noindent Inizialmente le metriche ottenute dopo aver effettuato la 10 folds cross validation
                 erano queste riportate sotto.
@@ -957,7 +958,7 @@
                 \par \noindent I risultati relativi al tentativo di diminuire il numero di nodi che compongono l'albero di
                 regressione sono stati ottimi, ma non eravamo ancora soddisfatti.
                 Così abbiamo cercato di abbassare ancora di più la \textbf{size} dell'albero, servendoci del
-                filtro \textbf{Class Balancer} di Weka.
+                filtro \textbf{Class Balancer}\label{class:balancer} di Weka.
 
                 \begin{center}
                     \includegraphics[scale=0.85]{metricheDefinitive}
@@ -981,7 +982,7 @@
             alle quali noi progettisti non avevamo inizialmente pensato.
             \par \noindent Nel nostro specifico caso, possiamo dire che i risultati ottenuti in fase di data modeling sono
             \textbf{piuttosto chiari}, ed è facile dedurre che i machine learner progettati hanno delle \textbf{buone prestazioni}.
-            Inoltre possiamo essere più che soddisfatti comparando i risultati ottenuti con gli obiettivi di business
+            Inoltre, possiamo essere più che soddisfatti comparando i risultati ottenuti con gli obiettivi di business
             definiti all'inizio del processo di sviluppo, considerando che:
             \begin{itemize}
                 \item partivamo da una situazione in cui \textbf{non eravamo provvisti di dataset pronti per l'utilizzo}, ma abbiamo
@@ -1004,7 +1005,7 @@
             \newpage
 
             \section{Deployment}
-            Per l'implementazione della soluzione basata su Machine Learning è stato utilizzato il framework Weka\cite{2}\\
+            Per l'implementazione della soluzione basata su Machine Learning è stato utilizzato il framework Weka.\cite{2}\\
             \par \noindent Tra i modelli di alberi di regressione disponibili, è stato scelto \emph{RepTree} che nella documentazione di Weka è descritto nel seguente modo:
             \begin{center}
                 \emph{``Fast decision tree learner. Builds a decision/regression tree using information gain/variance and prunes it using reduced-error pruning (with backfitting).
@@ -1014,9 +1015,9 @@
             \emph{buildClassifier} per effettuare il training del modello.
             \par \noindent Dopo diversi test empirici, come illustrato nella sezione precedente, si è giunti alla conclusione che, per aumentare l'efficienza, è necessario
             impostare il numero minimo di istanze per foglia a 10, e ciò è possibile utilizzando il metodo \emph{setMinNum}.
-            \par \noindent Infine, per ridurre ancora di più la size dell'albero come discusso nella sezione 3.5, abbiamo utilizzato il
+            \par \noindent Infine, per ridurre ancora di più la size dell'albero come discusso nella sezione \ref{class:balancer}, abbiamo utilizzato il
             filtro \emph{ClassBalancer} che effettua operazioni di oversampling e undersampling sui dati presenti nel
-            dataset, nel nostro caso cerca di ridistribuire le istanze del dataset sia nel caso di variabili nominali che
+            dataset; nel nostro caso cerca di ridistribuire le istanze del dataset sia nel caso di variabili nominali che
             numeriche.\\
             \par \noindent Di seguito un riepilogo dei passi da effettuare:
             \medskip
@@ -1042,14 +1043,14 @@
     \part{Conclusioni e osservazioni}
         \chapter{Cosa scegliamo?}
             \section{Un confronto tra Algoritmi Genetici e Machine Learning}
-                L'Algoritmo Genetico, come illustrato nella sezione 2.4, presenta un importante vantaggio: l'\textbf{efficienza}
+                L'Algoritmo Genetico, come illustrato nella sezione \ref{subsec:efficienza}, presenta un importante vantaggio: l'\textbf{efficienza}
                 rispetto ad una ricerca completa nell'intero spazio degli stati; questo a discapito del \textbf{risultato sub-ottimo},
                 perché i capi non sempre sono tutti pertinenti con quelle che sono le condizioni climatiche.
                 \par \noindent La soluzione basata su Machine Learning, invece, essendo soggetta ad
                 \textbf{errore}, può dare una predizione errata. Questo, però, viene mitigato dal fatto che, non dovendo valutare
                 per ogni istanza la funzione di fitness, e non dovendo evolvere una popolazione di individui, risulta essere
                 in teoria più efficiente a livello computazionale dell'algoritmo genetico.
-                \par \noindent Quindi, non c'è una vera e propria scelta su quale soluzione sia migliore, sono entrambe
+                \par \noindent Quindi, non c'è una vera e propria scelta su quale soluzione sia migliore; sono entrambe
                 ampiamente funzionali e in linea con gli obiettivi iniziali.
             \section{Possiamo fare di meglio}
                 Dopo aver discusso dei pregi e dei difetti delle due tecniche di risoluzione da noi provate, possiamo dire
@@ -1062,7 +1063,7 @@
                 Uno dei principali problemi degli algoritmi genetici che ne determina l'efficienza è il fatto che la funzione di fitness
                 viene valutata tantissime volte.
                 La regressione può aiutare, almeno in parte, a risolvere il problema.
-                Infatti, come illustrato nei paragrafi precedenti la regressione è un modello di machine learning che permette di stimare
+                Infatti, come illustrato nei paragrafi precedenti, la regressione è un modello di machine learning che permette di stimare
                 un valore numerico.\\
                 Con più dati a disposizione, o meglio con dati migliori a disposizione, si potrebbe creare un modello con basso errore e alta efficienza
                 che potrebbe sostituire l'attuale funzione di fitness.
