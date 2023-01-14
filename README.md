@@ -14,6 +14,14 @@
 **NOTA**: Attualmente la repository contiene un driver che permette di testare i moduli di intelligenza artificiale
 <hr>
 
+## Indice
+
+## Introduzione
+Il progetto **WeatherStyle** nasce dall'idea di quattro studenti pendolari dell'Università degli Studi di Salerno, per risolvere uno dei principali problemi che si trovano ogni giorno ad affrontare, ovvero scegliere l'abbigliamento più adatto a fronteggiare le condizioni climatiche (a volte estreme) previste al Campus di Fisciano.<br>
+Il problema esposto non riguarda solo gli studenti, ma anche tutti coloro che devono spostarsi per lavoro verso un'altra città, quindi avere un applicativo che lo risolva, seppur parzialmente, aiuterà un significativo numero di persone.
+<br>
+L'**obiettivo** di WeatherStyle è quello di realizzare un agente intelligente che aiuti gli utenti a scegliere quali, tra i propri capi d'abbigliamento, siano più adatti considerando le condizioni meteorologiche.
+
 ## Contenuto della repository
 * Nella cartella *src/main/java/* sono disponbili i package *Logic* e *Model*
     * **Logic.ga** contiene tutte le classi necessarie alla realizzazione degli algoritmi genetici
