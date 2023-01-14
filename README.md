@@ -15,21 +15,21 @@ Team components:
 <hr>
 
 ## Dipendenze
-Il progetto è stato realizzato tramite l'IDE [Intellij IDEA Ultimate](https://www.jetbrains.com/idea/download), la guida del prossimo paragrafo farà riferimento ad esso per la configurazione.
+Il progetto è stato realizzato tramite l'IDE [IntelliJ IDEA Ultimate](https://www.jetbrains.com/idea/download), la guida del prossimo paragrafo farà riferimento ad esso per la configurazione.
 Per poter eseguire completamente il progetto è necessario aver installato le seguenti dipendenze
 * [Phyton3](https://www.python.org/download/releases/3.0/)
 * [JDK 17](https://www.oracle.com/java/technologies/downloads/#java17)
 * [Tomcat 10.0.17](https://archive.apache.org/dist/tomcat/tomcat-10/v10.0.17/bin/)
 
-Consigliamo [Plugin IntelliJ per Phyton](https://plugins.jetbrains.com/plugin/631-python) che permette di includere tutte le funzionalità di PyCharm all'interno di Intellij.
+Consigliamo [Plugin IntelliJ per Phyton](https://plugins.jetbrains.com/plugin/631-python) che permette di includere tutte le funzionalità di PyCharm all'interno di IntelliJ.
 
 ## Guida alla configurazione
-Per clonare la repository all'interno dell'IDE [Intellij IDEA Ultimate](https://www.jetbrains.com/idea/download) andare in *File* > *New* > *Project From Version Control*<br>
+Per clonare la repository all'interno dell'IDE [IntelliJ IDEA Ultimate](https://www.jetbrains.com/idea/download) andare in *File* > *New* > *Project From Version Control*<br>
 Nella finestra che appare inserire l'[url](https://github.com/frankzamma/NC22_WeatherStyle_classe03.git) della repository come nella seguente immagine.
 ![image](https://user-images.githubusercontent.com/65612000/212434444-0b0d9b92-e4c8-40ba-b081-06bbe352f995.png)
 <br>
-### Esecuzione degli script python (in IntelliJ)
-**1.** Aprendo uno script python (contenuti nella directory *CreateDatasets*), Intellij vi mostrerà il seguente messaggio.
+### Esecuzione degli script Python (in IntelliJ)
+**1.** Aprendo uno script python (contenuti nella directory *CreateDatasets*), IntelliJ vi mostrerà il seguente messaggio.
 <br>
 <img width="692" alt="image" src="https://user-images.githubusercontent.com/65612000/212434840-f51f3f7f-2908-4f38-82f8-b3274770fbb6.png">
 <br><br>
@@ -57,6 +57,31 @@ Se avete già usato [Plugin IntelliJ per Phyton](https://plugins.jetbrains.com/p
 <br><br>
 **8.** Arrivati qui sarà necessario selezionare la *Python SDK* scaricata in precedenza e cliccare su **Apply** <br>
 <img width="692" alt="image" src="https://user-images.githubusercontent.com/114738583/212469739-025e73af-9eff-43cc-a090-dbaf663f0ce2.png">
+<br>
+### Setup Tomcat
+**1.** Per poter eseguire correttamente il progetto è necessario prima configurare l'**ambiente di deployment**, andando su *Add Configuration* verrà presentata la seguente schermata, quindi cliccare su **(+)** in alto a sinistra
+<br>
+<img width="692" alt="image" src="https://user-images.githubusercontent.com/114738583/212470483-f751dd2c-129d-4087-9465-4e662e339e68.png">
+<br><br>
+**2.** Bisognerà quindi selezionare *Tomcat Server* > *Local*
+<br>
+<img width="238" alt="image" src="https://user-images.githubusercontent.com/114738583/212470726-4de58ace-42c7-41e1-a602-3cd461b41a05.png">
+<br><br>
+**3.** Dunque andare nella sezione *Deployment*, cliccare su **(+)** e quindi su *Artifact...* 
+<br>
+<img width="692" alt="image" src="https://user-images.githubusercontent.com/114738583/212471078-f29af068-8178-4788-9d87-a23a82b18d9e.png">
+<br><br>
+**4.** Selezionare *WeatherStyle:war exploded* 
+<br>
+<img width="450" alt="image" src="https://user-images.githubusercontent.com/114738583/212471290-d89542f7-95ae-490d-9e9c-8e7645213295.png">
+<br><br>
+**5.** A questo punto tornare nella sezione *Server*, aggiungere la **JRE** selezionando una delle **JDK** scaricate in  precedenza e cliccare su **Apply**.
+<br>
+<img width="692" alt="image" src="https://user-images.githubusercontent.com/114738583/212471729-3ce7a5fa-2043-480f-8cec-db5a1660274a.png">
+<br><br>
+
+
+
 
 
 
