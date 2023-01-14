@@ -65,6 +65,7 @@
             agli utenti dei suggerimenti sui capi d'abbigliamento che ritiene più adatti, basandosi su alcune informazioni
             meteorologiche come la temperatura percepita, il clima e la stagione in cui viene effettuata la previsione.
 
+            \bigskip \bigskip \bigskip
             \section{Specifiche PEAS}
             L'acronimo PEAS sta per: Performance Environment Actuators Sensors, e viene utilizzato per descrivere un ambiente.
             \begin{itemize}
@@ -98,10 +99,11 @@
                     \item \textbf{Discreto:} l'ambiente fornisce un numero limitato di percezioni e azioni distinte.
                     \item \textbf{Singolo agente:} l'ambiente consente la presenza di un singolo agente.
                 \end{itemize}
-                \bigskip
+                \medskip
                 \par \noindent Nei capitoli successivi vengono proposti due tipi di agenti che possono essere una soluzione per il problema illustrato:
                  un \textbf{agente basato su utilità} in grado di quantificare la desiderabilità
                 degli stati raggiunti e un \textbf{agente capace di apprendere}.
+    \bigskip
     \section{Un'importante premessa}
     \label{sec:premessa}
     Il problema, nella sua formulazione completa, richiede di fornire all'utente un outfit che sia adatto
@@ -531,7 +533,7 @@
                     \item \textit{SubCategory}: sotto-categorie delle scarpe.
                     Sono presenti diverse categorie di scarpe:
                     \begin{center}
-                        \includegraphics[scale=0.4]{SubCategoryShoes}
+                        \includegraphics[scale=0.2]{SubCategoryShoes}
                     \end{center}
                     \item \textit{HeelHeight}: Altezza del tacco in pollici.
                     Questa caratteristica è poco interessante per i nostri obiettivi.
@@ -631,10 +633,10 @@
                     \par \noindent Inoltre, si è trasformata la colonna dei \textbf{colori} in modo che indicasse se la maglia o il pantalone
                     fosse chiaro, scuro o colorato.
                     Questo perché, come spiegato nella sezione \ref{sec:premessa} il nostro obbiettivo
-                    \item \textbf{non} è quello di fornire un punteggio ad un determinato capo andando ad
+                    {non} è quello di fornire un punteggio ad un determinato capo andando ad
                     analizzare le varie combinazioni di colori che si possono ottenere.
                     \par \noindent Come ultima colonna, ossia la \textbf{stagione}, abbiamo escluso capi con più di 3 stagioni
-                    e includere le \textit{singole stagioni}, le \textit{doppie stagioni}, e quelle indicate come \textit{all}.
+                    e incluso le \textit{singole stagioni}, le \textit{doppie stagioni}, e quelle indicate come \textit{all}.
                     \par \noindent Infine si è tradotto, per una scelta convenzionale, dall'inglese all'italiano ogni valore.
                     \newpage
                     \item \textbf{Feature scaling}: Il \textit{feature scaling} è un insieme di tecniche che permettono di
