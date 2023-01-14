@@ -28,20 +28,34 @@ Per clonare la repository all'interno dell'IDE [Intellij IDEA Ultimate](https://
 Nella finestra che appare inserire l'[url](https://github.com/frankzamma/NC22_WeatherStyle_classe03.git) della repository come nella seguente immagine.
 ![image](https://user-images.githubusercontent.com/65612000/212434444-0b0d9b92-e4c8-40ba-b081-06bbe352f995.png)
 <br>
-### Esecuzione degli script python (in IntellJ)
-1 Aprendo uno script python (contenuti nella directory *CreateDatasets*), intellij vi mostrerà il seguente messaggio.
+### Esecuzione degli script python (in IntelliJ)
+**1.** Aprendo uno script python (contenuti nella directory *CreateDatasets*), Intellij vi mostrerà il seguente messaggio.
+<br>
 <img width="692" alt="image" src="https://user-images.githubusercontent.com/65612000/212434840-f51f3f7f-2908-4f38-82f8-b3274770fbb6.png">
+<br><br>
+**2.** Cliccando su *Configure Python Interpeter* si aprirà la seguente schermata
 <br>
-2 Cliccando su *Configure Python Interpeter* si aprirà la seguente schermata
+<img width="692" alt="image" src="https://user-images.githubusercontent.com/114738583/212468674-2c825904-a3d5-4c6e-867c-159c601abd0b.png">
+<br><br>
+**3.** Bisognerà cliccare su **(+)** in alto a sinistra e selezionare *Python*<br>
+<img width="238" alt="image" src="https://user-images.githubusercontent.com/65612000/212435464-0b9d64dd-8c8f-4fb3-bca1-b30ee777eedc.png">
+<br><br>
+**4.** Se non avete mai usato il [Plugin IntelliJ per Phyton](https://plugins.jetbrains.com/plugin/631-python) , vi apparirà la seguente schermata.
 <br>
-_Immagine_Da_Inserire1_
+<img width="692" alt="image" src="https://user-images.githubusercontent.com/114738583/212468507-bd13211e-2d57-4aab-918b-fa21d9176565.png">
 <br>
-3 Bisognerà cliccare su *+* in alto a sinistra e selezionare *Python*<br>
-<img width="238" alt="image" src="https://user-images.githubusercontent.com/65612000/212435464-0b9d64dd-8c8f-4fb3-bca1-b30ee777eedc.png"><br>
-Se non avete mai usato il [Plugin IntelliJ per Phyton](https://plugins.jetbrains.com/plugin/631-python) , vi apparirà la seguente schermata.<br>
-![image](https://user-images.githubusercontent.com/65612000/212435627-78ac2cff-4c17-4704-837c-3dccc3fa35e3.png)
-<br>
-Se avete già usato, [Plugin IntelliJ per Phyton](https://plugins.jetbrains.com/plugin/631-python) e al posto di *<No-interpeter>* vi appare un sdk già configurato potete passare direttamente al punto 5.
+Se avete già usato [Plugin IntelliJ per Phyton](https://plugins.jetbrains.com/plugin/631-python) e al posto di *No-interpeter* vi apparirà un *Python SDK* già configurato potete passare al punto **7**.
+<br><br>
+**5.** A questo punto sarà necessario cliccare sui **(...)** e vi sarà presentata la seguente schermata:<br>
+<img width="692" alt="image" src="https://user-images.githubusercontent.com/114738583/212468400-4e970ab6-ba37-471e-b8ff-d73778c705b1.png">
+<br><br>
+**6.** Bisognerà cliccare su **(+)** in alto a sinistra e selezionare *Add Python SDK...*<br>
+<img width="238" alt="image" src="https://user-images.githubusercontent.com/114738583/212469041-f6bb794a-6dbc-43a2-b032-5122f0a8d44a.png">
+<br><br>
+**7.** Arrivati qui sarà necessario selezionare la *Python SDK* scaricata in precedenza e cliccare su **Apply** <br>
+<img width="692" alt="image" src="https://user-images.githubusercontent.com/114738583/212469174-dcc7b2a3-87d6-4e83-8063-8fd3132fbebe.png">
+
+
   
   
   
