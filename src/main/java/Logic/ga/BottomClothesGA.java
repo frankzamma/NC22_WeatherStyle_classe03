@@ -14,6 +14,10 @@ public class BottomClothesGA{
     }
 
     public List<CapoAbbigliamento> getBestPantaloni(){
-        return genericGA.getBestResult();
+        System.out.println("Avvio Algoritmo Genetico Pantaloni");
+        List<CapoAbbigliamento> list = genericGA.getBestResult();
+
+        System.out.println(list);
+        return list;
     }
 }

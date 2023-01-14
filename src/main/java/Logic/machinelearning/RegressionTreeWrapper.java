@@ -39,7 +39,7 @@ public class RegressionTreeWrapper {
             fullDataset = csvLoader.getDataSet();
 
             // stampa del dataset
-             System.out.println(fullDataset.toString());
+            //System.out.println(fullDataset.toString());
 
             // setting della variabile dipendente
             fullDataset.setClassIndex(fullDataset.numAttributes()-1);
@@ -109,7 +109,7 @@ public class RegressionTreeWrapper {
         }
 
         // output valutazioni
-        System.out.println(modelName +" valutato con Ten Folds Cross Validation:\n"+ evaluation.toSummaryString());
+        System.out.println(modelName +" addestrato.\nValutazione con Ten Folds Cross Validation:\n"+ evaluation.toSummaryString());
 
         // addestramento regressore
         repTree.buildClassifier(fullDataset);

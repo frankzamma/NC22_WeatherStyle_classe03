@@ -84,7 +84,7 @@ public class GenericGA {
                 engine.stream().limit(100).collect(EvolutionResult.toBestPhenotype());
 
         Genotype<IntegerGene> bestGt =  best.genotype();
-
+        System.out.println("Miglior Individuo: " +  bestGt);
         List<CapoAbbigliamento> list =  new ArrayList<>();
 
         list.add(listaCapi.get(bestGt.get(0).gene().intValue()));

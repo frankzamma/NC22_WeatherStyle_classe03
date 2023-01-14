@@ -37,10 +37,8 @@ public class ClothesGAConstraint implements Constraint<IntegerGene, Integer> {
 
         int max = phenotype.genotype().gene().max();
         int min = phenotype.genotype().gene().min();
-        System.out.println(max);
         do{
             distinctValue.add((int) (Math.floor(Math.random() * (max + 1))));
-            System.out.println(distinctValue);
         }while (distinctValue.size() != 3);
 
         ArrayList<Integer> values =  new ArrayList<>(distinctValue);

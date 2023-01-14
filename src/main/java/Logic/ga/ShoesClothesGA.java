@@ -14,7 +14,11 @@ public class ShoesClothesGA{
     }
 
     public List<CapoAbbigliamento> getBestScarpe(){
-        return genericGA.getBestResult();
+        System.out.println("Avvio Algoritmo Genetico Scarpe");
+        List<CapoAbbigliamento> list = genericGA.getBestResult();
+
+        System.out.println(list);
+        return list;
     }
 }
 

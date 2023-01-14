@@ -24,8 +24,6 @@ public class RecoveryGuardaroba {
 
         File file = new File(pathFile);
 
-        System.out.println("path->" + file.getAbsolutePath());
-
         try {
             Scanner scanner = new Scanner(file);
 
