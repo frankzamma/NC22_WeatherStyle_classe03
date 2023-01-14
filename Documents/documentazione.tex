@@ -424,22 +424,22 @@
         \textbf{apprendimento supervisionato}, ovvero problemi in cui bisogna fornire ad un algoritmo di addestramento
         dati etichettati, cioè osservazioni in cui sia disponibile la variabile dipendente: il valore che
         dovrà essere in grado di predire il modello una volta addestrato.
-        In particolare i nostri sforzi saranno incentrati sugli algoritmi di \textbf{regressione}, ovvero tecniche in grado
+        In particolare, i nostri sforzi saranno incentrati sugli algoritmi di \textbf{regressione}, ovvero tecniche in grado
         di predire il valore di una variabile numerica sulla base degli input forniti.
 
             \bigskip
             \section{CRISP-DM}
-            Per progettare una soluzione basata sul \textbf{machine learning} bisogna avere un approccio data \& software
+            Per progettare una soluzione basata sul \textbf{machine learning}, bisogna avere un approccio data \& software
             engineering.
-            Questo è necessario perché la stragrande maggioranza dei sistemi software che non sono adeguatamente ingegnerizzati
+            Questo è necessario perché la stragrande maggioranza dei sistemi software, che non sono adeguatamente ingegnerizzati,
             falliscono e rischiano di arrecare danni a cose, persone e ambiente circostante.
-            \par \noindent Per avere un corretto approccio ingegneristico è possibile scegliere uno dei vari cicli di vita
-            di progetti basati su intelligenza artificiale e data science, uno dei più conosciuti è il \textbf{CRISP-DM} ed è anche
+            \par \noindent Per avere un corretto approccio ingegneristico, è possibile scegliere uno dei vari cicli di vita
+            di progetti basati su intelligenza artificiale e data science; uno dei più conosciuti è il \textbf{CRISP-DM}, ed è anche
             il modello che abbiamo adottato per progettare la nostra soluzione.
             \par \noindent
             \\ \noindent Il CRISP-DM (Cross-Industry Standard Process for Data Mining) è formato da diverse fasi che possono
             essere eseguite un numero illimitato di volte, il che lo rende un modello \textit{non sequenziale}.
-            Nelle sezioni che seguono andremo ad analizzare le fasi del CRISP-DM, mostrando cosa è stato fatto in ognuna di esse
+            Nelle sezioni che seguono, andremo ad analizzare le fasi del CRISP-DM, mostrando cosa è stato fatto in ognuna di esse
             al fine di poter raggiungere il nostro obiettivo tramite una soluzione basata sul machine learning.
             \par \noindent
             \begin{center}
@@ -456,7 +456,7 @@
                 \item \textbf{Obiettivi di business}: Il machine learner che stiamo progettando avrà come obiettivo quello di
                 stimare, attraverso un punteggio numerico, quali capi d'abbigliamento sono più adatti da indossare in
                 determinate circostanze, basandosi
-                sulle caratteristiche dei capi e sulle informazioni meteorologiche, quali temperatura percepita, previsione e
+                sulle caratteristiche dei capi e sulle informazioni meteorologiche, quali temperatura percepita, meteo e
                 stagione della previsione.
                 \item \textbf{Disponibilità delle risorse}: Per raggiungere il nostro obiettivo principale ci serviranno
                 delle risorse, ovvero un dataset per ogni capo d'abbigliamento (maglie, pantaloni e scarpe),
@@ -478,32 +478,32 @@
             \section{Data Understanding}
             Come già discusso durante la fase di business understanding, il principale rischio dell'approccio basato su machine
             learning è stato l'effettiva mancanza di un dataset che rispondesse appieno alle nostre esigenze.
-            \par \noindent Ciononostante, abbiamo trovato diversi dataset che fusi insieme hanno potuto
+            \par \noindent Ciononostante, abbiamo trovato diversi dataset che, fusi insieme, hanno potuto
             dar vita ai dataset di cui avevamo bisogno, e in buona parte ci siamo riusciti!
             \par \noindent In questa sezione andremo quindi ad acquisire i dati, visualizzarli, analizzarli e documentarli rispetto al loro
             formato e alla loro qualità.
                 \subsection{Dataset maglie e pantaloni}
-                La prima cosa da fare, quindi, era trovare un dataset che comprendesse i dettagli di diversi capi d'abbigliamento,
+                La prima cosa da fare, quindi, era trovare un dataset che comprendesse i dettagli di diversi capi d'abbigliamento;
                 Github si è dimostrato di grande aiuto e il dataset \cite{6} corrispondeva a ciò di cui avevamo bisogno.
                 \\
                 \par \noindent Il dataset contava più di $14000$ osservazioni.
                 \\
                 \par \noindent La feature che ci ha permesso di distinguere la tipologia dei capi d'abbigliamento
-                era indicata come \textit{Type} i cui valori unici erano \textbf{Top}, \textbf{Bottom} e \textbf{Dress}.
-                Per il nostro problema non sono stati considerati i vestiti da donna, quindi nella fase di data preparation
-                ne terremo conto.
+                era indicata come \textit{Type}, i cui valori unici erano \textbf{Top}, \textbf{Bottom} e \textbf{Dress}.
+                Per il nostro problema non sono stati considerati gli abiti da donna, non essendo classificabili,
+                quindi nella fase di data preparation ne terremo conto.
                 \begin{center}
                     \includegraphics[scale=0.4]{countTopBottom}
                 \end{center}
                 \bigskip
-                \par \noindent Tra le altre feature molto interessanti presenti nel dataset rientra anche la stagione
-                in cui il capo d'abbigliamento è indicato, la colonna corrispondente è denominata \textit{Season}.
+                \par \noindent Tra le altre feature molto interessanti presenti nel dataset, rientra anche la stagione
+                in cui il capo d'abbigliamento è indicato: la colonna corrispondente è denominata \textit{Season}.
                 Qui notiamo molte categorie distinte per la stagione che potremmo eventualmente generalizzare.
                 \begin{center}
                     \includegraphics[scale=0.4]{countSeasonTopBottom}
                 \end{center}
                 \newpage
-                \par \noindent Altra feature importante presente nel dataset è quella indicata come \textit{Material}
+                \par \noindent Altra feature importante presente nel dataset è quella indicata come \textit{Material},
                 dove vanno per la maggiore i capi in \textbf{Cotton} e \textbf{Polyester}. Da non trascurare la presenza
                 di tanti materiali di tipologia diversa, e di come questi potrebbero essere generalizzati, ad es: \textbf{Cotton Blends}
                 è possibile generalizzarlo nella categoria Cotton.
@@ -512,12 +512,12 @@
                 \end{center}
                 \bigskip
                 \par \noindent Tra le tante altre feature interessanti c'era il colore del capo d'abbigliamento, indicato
-                come \textit{Color}, tenendo conto però che i colori erano troppo specifici, per cui bisognava
+                come \textit{Color}, tenendo conto però che i colori erano troppo specifici, per cui bisogna
                 generalizzarli in macro-categorie distinte.
                 \\
-                \par \noindent Infine, come ultima feature molto importante presente nel dataset per quanto riguarda i capi
+                \par \noindent Infine, l'ultima feature molto importante presente nel dataset per quanto riguarda i capi
                 d'abbigliamento della categoria \textbf{Top}, è la colonna indicata come \textit{Sleeve Length}. Si può
-                notare come per la maggior parte siano presenti maglie della categoria \textbf{Loong Sleeve} e
+                notare come, per la maggior parte, siano presenti maglie della categoria \textbf{Long Sleeve} e
                 \textbf{Short Sleeve}.
                 \begin{center}
                     \includegraphics[scale=0.4]{countLengthTop}
@@ -529,27 +529,27 @@
                 \\
                 \par \noindent Il dataset contava $50025$ record di scarpe.
                 \\
-                Molte di queste righe, hanno, però dei valori nulli.
+                Molte di queste righe hanno, però, dei valori nulli.
                 Eliminando tali righe si scende a $18260$ record.\\
-                Inoltre, il dataset ripulito dai valori nulli presenta molti duplicati, eliminandoli si scende a $7323$ record distinti.\\
+                Inoltre il dataset ripulito dai valori nulli presenta molti duplicati: eliminandoli, si scende a $7323$ record distinti.\\
                 \\
                 \par \noindent Il dataset presenta i seguenti attributi:
                 \begin{itemize}
-                    \item \textit{CID}: colonna che costituisce l'id dei record
-                    \item \textit{Category}: categorie delle scarpe
+                    \item \textit{CID}: colonna che costituisce l'id dei record.
+                    \item \textit{Category}: categorie delle scarpe.
                     Nel seguente grafico si può vedere che sono presenti 4 categorie:
                     \begin{center}
                         \includegraphics[scale=0.4]{CategoryShoes}
                     \end{center}
                     \item \textit{SubCategory}: sotto-categorie delle scarpe.
-                    Sono presenti diverse categorie di scarpe:
+                    Ne sono presenti diverse:
                     \begin{center}
                         \includegraphics[scale=0.2]{SubCategoryShoes}
                     \end{center}
                     \item \textit{HeelHeight}: Altezza del tacco in pollici.
                     Questa caratteristica è poco interessante per i nostri obiettivi.
                     \item \textit{Insole}: Materiale della suola.
-                    Anche questa caratteristica è poco utile ai nostri scopi, perché nella realtà tale dato sarà
+                    Anche questa caratteristica è poco utile ai nostri scopi perché, nella realtà, tale dato sarà
                     difficilmente disponibile, a meno che una persona sia un esperto di scarpe.
                     Tuttavia, nella fase di data preparation ci ritornerà utile per imputare un'altra caratteristica.
                     \item \textit{Closure}: rappresenta il modo in cui viene chiusa la scarpe (Eg. Lacci, Strappi).
@@ -579,9 +579,9 @@
                 Successivamente, vedendo che le feature \emph{Maximum Temperature} e \emph{Minimum Temperature} non avevano un
                 forte potere predittivo, si è deciso di sostituirli con \emph{Maximum Apparent Temperature}
                 e \emph{Minimum Apparent Temperature} che indica la temperatura percepita massima e minima,
-                ovvero la temperatura influenzata dal vento e dall'umidità
+                ovvero la temperatura influenzata dal vento e dall'umidità.
                 \\
-                \par \noindent Inoltre, per ottenere un quantità di dati che comprenda più osservazioni possibili abbiamo scelto di scaricare i dati di
+                \par \noindent Inoltre, per ottenere un quantità di dati che comprenda più osservazioni possibili, abbiamo scelto di scaricare i dati di
                 14 città italiane distinte:
                 \begin{itemize}
                     \item Aosta
@@ -604,7 +604,7 @@
 
             \newpage
             \section{Data Preparation}
-            In questa sezione tratteremo le tecniche adottate per preparare i dati acquisiti nella fase precedente in
+            In questa sezione, tratteremo le tecniche adottate per preparare i dati acquisiti nella fase precedente in
             modo che siano di un formato comprensibile al nostro machine learner.
                 \subsection{Dataset maglie e pantaloni}
                 Per costruire i dataset contenenti le informazioni delle \textbf{maglie} e dei \textbf{pantaloni} ci siamo serviti delle
