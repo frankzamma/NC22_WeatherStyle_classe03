@@ -20,7 +20,7 @@
           </div>
           <div class="col-12 col-md-4 mt-3 mt-md-0" >
             <label for="temperatura-percepita">Temperatura percepita</label>
-            <select name="temperatura-percepita" id="temperatura-percepita" class="form-select">
+            <select name="temperatura-percepita" id="temperatura-percepita" class="form-select" required>
               <option value="temperaturaPercepita"></option>
               <% for(int i = -15; i<=40; i++){ %>
                     <option value=<%=i%>><%=i%></option>
