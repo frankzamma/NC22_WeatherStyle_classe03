@@ -1,8 +1,8 @@
 # WeatherStyle
-Repository project: Ingegneria del Software e Fondamenti di Intelligenza Artificiale<br>
-Name Project: WeatherStyle<br>
+**Repository project:** Ingegneria del Software e Fondamenti di Intelligenza Artificiale<br>
+**Name Project:** WeatherStyle<br>
 
-Team components:
+**Team components:**
 
 | Nome | Matricola |
 | ---- | --------- |
@@ -14,7 +14,18 @@ Team components:
 **NOTA**: Attualmente la repository contiene un driver che permette di testare i moduli di intelligenza artificiale
 <hr>
 
+## Contenuto della repository
+* Nella cartella *src/main/java/* sono disponbili i package *Logic* e *Model*
+    * **Logic.ga** contiene tutte le classi necessarie alla realizzazione degli algoritmi genetici
+    * **Logic.machinelearning** contiene tutte le classi necessarie all'addestramento dei modelli di machine learning
+    * **Logic.controller** contiene tutte le classi servlet necessarie per la logica di controllo dell'applicazione
+    * **Model** contiene la logica di storage e i java beans
+* Nella cartella *src/main/webapp/WEB-INF/* è disponibile la logica di presentazione, proseguendo in *./resources/* sono presenti i CSV necessari alle classi presenti in **Logic.machinelearning**
+* Nella cartella *CreazioneDatasets/* sono disponibili tutti gli script necessari alla creazione dei datasets per addestrare i modelli di machine learning, nonchè i relativi file CSV da cui dipendono.
+
+
 ## Dipendenze
+
 Il progetto è stato realizzato tramite l'IDE [IntelliJ IDEA Ultimate](https://www.jetbrains.com/idea/download), la guida del prossimo paragrafo farà riferimento ad esso per la configurazione.
 Per poter eseguire completamente il progetto è necessario aver installato le seguenti dipendenze
 * [Phyton3](https://www.python.org/download/releases/3.0/)
