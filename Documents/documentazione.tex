@@ -84,7 +84,7 @@
             \subsection{Caratteristiche dell'ambiente}
                 \begin{itemize}
                     \item \textbf{Tipo di ambiente:} suggeritore di capi d'abbigliamento adatti al meteo.
-                    \item \textbf{Completamente osservabile:} l'agente attraverso i sensori conosce lo stato
+                    \item \textbf{Completamente osservabile:} l'agente, attraverso i sensori, conosce lo stato
                     completo dell'ambiente in ogni momento, ovvero, ha visione completa dei capi d'abbigliamento presenti
                     nel guardaroba dell'utente e delle informazioni meteorologiche.
                     \item \textbf{Deterministico:} lo stato successivo dell'ambiente è completamente determinato dallo
@@ -105,21 +105,21 @@
     \subsection{Tanti problemi nel problema}
     Il problema, nella sua formulazione completa, richiede di fornire all'utente un outfit che sia adatto
     alle condizioni climatiche.\\
-    Tale formulazione, contiene in sè una serie di sotto-problemi non di poco conto in particolare oltre
-    a valutare che i capi siano adatti alle condizione meteorologiche, bisogna anche considerare quanto si abbinano bene
+    Tale formulazione, contiene in sè una serie di sotto-problemi non di poco conto;
+    in particolare, oltre a valutare che i capi siano adatti alle condizioni meteorologiche, bisogna anche considerare quanto si abbinano bene
     tra loro sotto diversi aspetti come stile, colore ecc\ldots\\
-    In buona sostanza, una formulazione del genere fa esplodere la complessità del problema in quanto considera troppi dettagli.\\
-    Si è deciso quindi di formulare diversamente il problema tralasciando l'aspetto stilistico che viene lasciato all'utente.\\
+    In buona sostanza, una formulazione del genere fa esplodere la complessità del problema, in quanto considera troppi dettagli.\\
+    Si è deciso, quindi, di formulare diversamente il problema tralasciando l'aspetto stilistico, che viene lasciato all'utente.\\
     Nello specifico, sono state considerate tre categorie di capi d'abbigliamento (maglie, pantaloni e scarpe) e per ognuna di queste verrà realizzato
     un agente intelligente in grado di fornire i tre capi migliori rispetto alle condizioni meteo.
-    Nella versione finale dell'applicativo l'utente potrà scegliere un capo per ogni categoria e costruire l'outfit che più gli piace\footnote{Nel driver realizzato, è possibile solo visualizzare i tre capi d'abbigliamento consigliati per ogni categoria}.
+    Nella versione finale dell'applicativo, l'utente potrà scegliere un capo per ogni categoria e costruire l'outfit che più gli piace\footnote{Nel driver realizzato, è possibile solo visualizzare i tre capi d'abbigliamento consigliati per ogni categoria}.
     \subsection{Scelte implementative}
     Nel driver presentato ci sono alcune differenze rispetto alla specifiche \emph{P.E.A.S.} del paragrafo precedente, le quali fanno
     riferimento alla versione finale dell'applicativo.\\
     In particolare, i sensori \emph{Sorgente per informazioni meteo} e \emph{Database per i capi d'abbigliamento} sono stati rispettivamente sostituiti
     da tastiera e file.
-    Inoltre, è stata implementata la possibilità di aggiungere dei nuovi capi d'abbigliamento oltre a quelli già presenti, questi ultimi
-    saranno salvati all'interno della sessione del browser (una volta chiuso andranno persi).
+    Inoltre, è stata implementata la possibilità di aggiungere dei nuovi capi d'abbigliamento oltre a quelli già presenti;
+    questi ultimi saranno salvati all'interno della sessione del browser (una volta chiuso andranno persi).
     \part{Tecniche di risoluzione}
         \chapter{La ricerca locale}
         Gli algoritmi di \textbf{ricerca locale}, a differenza degli algoritmi di ricerca tradizionale, non hanno come scopo
