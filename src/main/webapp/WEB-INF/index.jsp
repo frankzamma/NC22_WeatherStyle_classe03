@@ -16,6 +16,7 @@
               <option value="soleggiato">Soleggiato</option>
               <option value="pioggia">Piovoso</option>
               <option value="nuvoloso">Nuvoloso</option>
+              <option value="neve">Neve</option>
             </select>
           </div>
           <div class="col-12 col-md-4 mt-3 mt-md-0" >
