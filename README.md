@@ -44,7 +44,7 @@ Nella finestra che appare inserire l'[url](https://github.com/frankzamma/NC22_We
 <br>
 <img width="692" alt="image" src="https://user-images.githubusercontent.com/114738583/212468507-bd13211e-2d57-4aab-918b-fa21d9176565.png">
 <br>
-Se avete già usato [Plugin IntelliJ per Phyton](https://plugins.jetbrains.com/plugin/631-python) e al posto di *No-interpeter* vi apparirà un *Python SDK* già configurato potete passare al punto **7**.
+Se avete già usato [Plugin IntelliJ per Phyton](https://plugins.jetbrains.com/plugin/631-python) e al posto di *No-interpeter* vi apparirà un *Python SDK* già configurato potete passare al punto **8**.
 <br><br>
 **5.** A questo punto sarà necessario cliccare sui **(...)** e vi sarà presentata la seguente schermata:<br>
 <img width="692" alt="image" src="https://user-images.githubusercontent.com/114738583/212468400-4e970ab6-ba37-471e-b8ff-d73778c705b1.png">
@@ -52,8 +52,12 @@ Se avete già usato [Plugin IntelliJ per Phyton](https://plugins.jetbrains.com/p
 **6.** Bisognerà cliccare su **(+)** in alto a sinistra e selezionare *Add Python SDK...*<br>
 <img width="238" alt="image" src="https://user-images.githubusercontent.com/114738583/212469041-f6bb794a-6dbc-43a2-b032-5122f0a8d44a.png">
 <br><br>
-**7.** Arrivati qui sarà necessario selezionare la *Python SDK* scaricata in precedenza e cliccare su **Apply** <br>
-<img width="692" alt="image" src="https://user-images.githubusercontent.com/114738583/212469174-dcc7b2a3-87d6-4e83-8063-8fd3132fbebe.png">
+**7.** Bisognerà quindi selezionare *Virtualenv Environment* e cliccare su **OK**<br>
+<img width="692" alt="image" src="https://user-images.githubusercontent.com/114738583/212470023-76d1bc68-27d1-4f15-9502-67b02c9182e7.png">
+<br><br>
+**8.** Arrivati qui sarà necessario selezionare la *Python SDK* scaricata in precedenza e cliccare su **Apply** <br>
+<img width="692" alt="image" src="https://user-images.githubusercontent.com/114738583/212469739-025e73af-9eff-43cc-a090-dbaf663f0ce2.png">
+
 
 
   
