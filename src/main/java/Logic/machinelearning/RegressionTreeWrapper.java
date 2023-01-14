@@ -109,7 +109,7 @@ public class RegressionTreeWrapper {
         }
 
         // output valutazioni
-        System.out.println(modelName +" addestrato.\nValutazione con Ten Folds Cross Validation:\n"+ evaluation.toSummaryString());
+        System.out.println(modelName +" addestrato.\nValutazione con Ten Folds Cross Validation:"+ evaluation.toSummaryString());
 
         // addestramento regressore
         repTree.buildClassifier(fullDataset);
