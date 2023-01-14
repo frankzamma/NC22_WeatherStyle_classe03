@@ -15,6 +15,8 @@
 <hr>
 
 ## Indice
+- [Introduzione](#introduzione)
+
 
 ## Introduzione
 Il progetto **WeatherStyle** nasce dall'idea di quattro studenti pendolari dell'Università degli Studi di Salerno, per risolvere uno dei principali problemi che si trovano ogni giorno ad affrontare, ovvero scegliere l'abbigliamento più adatto a fronteggiare le condizioni climatiche (a volte estreme) previste al Campus di Fisciano.<br>
