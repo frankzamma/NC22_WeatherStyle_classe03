@@ -31,11 +31,8 @@ public class Maglia extends CapoAbbigliamento{
 
     @Override
     public String toString() {
-        return "Maglia[" +
-                "colore="+super.getColore()+
-                "stagione="+super.getStagione()+
-                "lunghezzaManica='" + lunghezzaManica +
-                ", materiale='" + materiale +
-                ']';
+        return "Maglia[" +super.getColore()+ ", " + super.getStagione() + ", " +
+                ", " + lunghezzaManica + ", " + materiale +
+                "]\n";
     }
 }

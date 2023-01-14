@@ -31,11 +31,7 @@ public class Pantalone extends CapoAbbigliamento{
 
     @Override
     public String toString() {
-        return "Pantalone[" +
-                "stagione = "+ super.getStagione() +
-                "colore = "+ super.getColore() +
-                "lunghezza = " + lunghezza +
-                ", materiale = " + materiale +
-                ']';
+        return "Pantalone[" + super.getStagione() +", "+ super.getColore() +", "
+                + lunghezza + ", " +  materiale +"]\n";
     }
 }

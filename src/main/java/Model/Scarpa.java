@@ -44,11 +44,11 @@ public class Scarpa extends CapoAbbigliamento{
     @Override
     public String toString() {
         return "Scarpa[" +
-                "colore = " + super.getColore() +
-                ", stagione = " + super.getStagione() +
-                ", tipo = " + tipo +
-                ", antiscivolo = " + antiscivolo +
-                ", impermeabile = " + impermeabile +
+                super.getColore() +
+                ", " + super.getStagione() +
+                ", " + tipo +
+                ", " + (antiscivolo ? "Con Antiscivolo" : "Senza Antiscivolo") +
+                ", " + (impermeabile ? "Impermeabile" : "Non Impermeabile") +
                 ']';
     }
 }
