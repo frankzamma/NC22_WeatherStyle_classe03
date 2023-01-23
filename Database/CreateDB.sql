@@ -12,6 +12,12 @@ use weatherstyle;
     SUGGERIMENTO (ID, data, valutazione, IDutente*,IDcitta*, IDoutfit*)
 */
 
+    CREATE TABLE Guardaroba (
+        ID INT PRIMARY KEY,
+        nome VARCHAR(30) NOT NULL,
+        numeroCapi INT NOT NULL
+    );
+
     CREATE TABLE Utente (
         ID INT PRIMARY KEY,
         nome VARCHAR(30) NOT NULL,
@@ -44,6 +50,11 @@ use weatherstyle;
                 ON UPDATE CASCADE
                 ON DELETE CASCADE,
         PRIMARY KEY(IDutente, IDcitta)
+    );
+
+    CREATE TABLE Outfit (
+        ID INT PRIMARY KEY,
+        nome varchar (30) NOT NULL
     );
 
     CREATE TABLE Suggerimento (
@@ -79,16 +90,50 @@ use weatherstyle;
     RICHIESTAPROMOZIONE (ID, tematiche, esperienze, IDutente*, IDadmin*)
     ADMIN (ID, nome, cognome)
 */
-    CREATE TABLE Guardaroba (
+
+    CREATE TABLE Meteo (
+        IDsuggerimento INT,
+        FOREIGN KEY (IDsuggerimento)
+            REFERENCES Suggerimento(ID)
+            ON UPDATE CASCADE
+            ON DELETE CASCADE,
+        temperatura INT NOT NULL,
+        meteo VARCHAR (30) NOT NULL,
+        stagione VARCHAR (20) NOT NULL
+    );
+
+    CREATE TABLE CapoAbbigliamento (
         ID INT PRIMARY KEY,
-        nome VARCHAR(30) NOT NULL,
-        numeroCapi INT NOT NULL
+        nome VARCHAR (50) NOT NULL,
+        categoria VARCHAR (10) NOT NULL,
+        stagione VARCHAR(20) NOT NULL,
+        colore VARCHAR(10) NOT NULL,
+        materiale VARCHAR(15) NOT NULL,
+        immagine VARCHAR(60) NOT NULL,
+        IDguardaroba INT,
+            FOREIGN KEY (IDguardaroba)
+            REFERENCES Guardaroba(ID)
+            ON UPDATE CASCADE
+            ON DELETE CASCADE
+    );
+
+    CREATE TABLE Comporre (
+        IDoutfit INT,
+        FOREIGN KEY (IDoutfit)
+            REFERENCES Outfit(ID)
+            ON UPDATE CASCADE
+            ON DELETE CASCADE,
+        IDcapoAbbigliamento INT,
+        FOREIGN KEY (IDcapoAbbigliamento)
+            REFERENCES CapoAbbigliamento(ID)
+            ON UPDATE CASCADE
+            ON DELETE CASCADE
     );
 
     CREATE TABLE Amministratore (
         ID INT PRIMARY KEY,
         nome VARCHAR(30) NOT NULL,
-        cognome VARCHAR(30) NOT NULL,
+        cognome VARCHAR(30) NOT NULL
     );
 
     CREATE TABLE RichiestaPromozione (
