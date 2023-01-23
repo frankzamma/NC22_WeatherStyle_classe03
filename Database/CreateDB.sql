@@ -10,6 +10,63 @@ use weatherstyle;
     CITTA (ID, nome, latit, longit)
     SALVARE (IDutente, IDcitta)
     SUGGERIMENTO (ID, data, valutazione, IDutente*,IDcitta*, IDoutfit*)
+*/
+
+    CREATE TABLE Utente (
+        ID INT PRIMARY KEY,
+        nome VARCHAR(30) NOT NULL,
+        cognome VARCHAR(30) NOT NULL,
+        dataNascita DATE NOT NULL,
+        cittaNascita VARCHAR(30) NOT NULL,
+        IDguardaroba INT,
+        FOREIGN KEY (IDguardaroba)
+            REFERENCES Guardaroba(ID)
+                ON UPDATE CASCADE
+                ON DELETE CASCADE
+    );
+
+    CREATE TABLE Citta (
+        ID INT PRIMARY KEY,
+        nome VARCHAR(30) NOT NULL,
+        latitudine VARCHAR(100) NOT NULL,
+        longitudine VARCHAR(100) NOT NULL
+    );
+
+    CREATE TABLE Salvare (
+        IDutente INT,
+        IDcitta INT,
+        FOREIGN KEY (IDutente)
+            REFERENCES Utente(ID)
+                ON UPDATE CASCADE
+                ON DELETE CASCADE,
+        FOREIGN KEY (IDcitta)
+            REFERENCES Citta(ID)
+                ON UPDATE CASCADE
+                ON DELETE CASCADE,
+        PRIMARY KEY(IDutente, IDcitta)
+    );
+
+    CREATE TABLE Suggerimento (
+        ID INT PRIMARY KEY,
+        dataSuggerimento DATE NOT NULL,
+        IDutente INT,
+        FOREIGN KEY (IDutente)
+            REFERENCES Utente(ID)
+                ON UPDATE CASCADE
+                ON DELETE CASCADE,
+        IDcitta INT,
+        FOREIGN KEY (IDcitta)
+            REFERENCES Citta(ID)
+                ON UPDATE CASCADE
+                ON DELETE CASCADE,
+        IDoutfit INT,
+        FOREIGN KEY (IDoutfit)
+            REFERENCES Outfit(ID)
+                ON UPDATE CASCADE
+                ON DELETE CASCADE
+    );
+
+/*
 
     Annalaura
     METEO(IDsuggerimento, temperatura, meteo, stagione)
@@ -39,10 +96,12 @@ use weatherstyle;
         tematiche VARCHAR(50) NOT NULL,
         esperienze VARCHAR(250) NOT NULL,
         stato VARCHAR(15) NOT NULL,
+        IDutente INT,
         FOREIGN KEY (IDutente)
             REFERENCES Utente(ID)
                 ON UPDATE CASCADE
                 ON DELETE CASCADE,
+        IDadmin INT,
         FOREIGN KEY (IDadmin)
             REFERENCES Amministratore(ID)
                 ON UPDATE CASCADE
@@ -51,7 +110,6 @@ use weatherstyle;
 /*
 
     Francesco
-    POST (ID, data, titolo, descrizione, IDutente*)
     ECOLOGISTA (IDutente)
     EVENTO (ID, data, luogo, obiettivo, IDutente*)
 
