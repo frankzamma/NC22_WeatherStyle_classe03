@@ -157,6 +157,25 @@ use weatherstyle;
     Francesco
     ECOLOGISTA (IDutente)
     EVENTO (ID, data, luogo, obiettivo, IDutente*)
-
-
     */
+
+    CREATE TABLE Ecologista(
+        IDutente INT,
+        FOREIGN KEY (IDutente)
+            REFERENCES Utente(ID)
+            ON UPDATE CASCADE
+            ON DELETE CASCADE
+    );
+
+    CREATE TABLE Evento (
+        ID INT PRIMARY KEY,
+        data DATE NOT NULL,
+        luogo VARCHAR(60) NOT NULL,
+        obiettivo VARCHAR(250),
+        IDutente INT,
+        FOREIGN KEY (IDutente)
+            REFERENCES Utente(ID)
+            ON UPDATE CASCADE
+            ON DELETE CASCADE
+    );
+
