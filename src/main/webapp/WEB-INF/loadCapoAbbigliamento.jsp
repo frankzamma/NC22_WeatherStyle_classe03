@@ -18,7 +18,7 @@
                 <select class="form-select" id="tipologia" name="tipologia" onchange="changeSelectedParameter()">
                     <option value="" selected >Apri menu di selezione</option>
                     <option value="maglia">Maglia</option>
-                    <option value="pantalone">Pantalone</option>
+                    <option value="pantaloni">Pantalone</option>
                     <option value="scarpe">Scarpe</option>
                 </select>
             </div>
@@ -69,7 +69,7 @@
             </div>
 
             <div class="mb-3">
-                <label> Inserire lunghezza pantalone </label>
+                <label> Inserire lunghezza pantaloni </label>
                 <select class="form-select" id="lungPantalone" name="lungPantalone" disabled>
                     <option value="lunga">Lungo</option>
                     <option value="corta">Corto</option>
@@ -134,7 +134,7 @@
                 document.getElementById("scivno").setAttribute("disabled","");
                 document.getElementById("impsi").setAttribute("disabled","");
                 document.getElementById("impno").setAttribute("disabled","");
-            }else if(x === "pantalone"){
+            }else if(x === "pantaloni"){
                 document.getElementById("materiale").removeAttribute("disabled");
                 document.getElementById("colore").removeAttribute("disabled");
                 document.getElementById("manica").setAttribute("disabled","");
