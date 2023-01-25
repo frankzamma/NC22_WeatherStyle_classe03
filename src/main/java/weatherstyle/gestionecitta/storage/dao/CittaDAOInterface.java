@@ -6,5 +6,5 @@ public interface CittaDAOInterface {
 
     boolean doSaveCitta(Citta citta);
     Citta doRetrieveCittaBySuggerimentoID(int idSuggerimento);
-    boolean doRetrieveCittaByLatLon(Citta citta);
+    boolean doRetrieveCittaByLatLon(String lat, String lon);
 }
