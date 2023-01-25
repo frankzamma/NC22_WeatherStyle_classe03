@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface CittaLogicInterface {
 
-    int salvaCitta(Citta citta);
+    boolean salvaCitta(Citta citta);
     List<Citta> recuperaCittaDaSuggerimentiID(List<Integer> idSuggerimenti);
     List<Citta> ottieniCittaByName(String name);
 

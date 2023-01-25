@@ -18,7 +18,7 @@ public class CittaLogicService implements CittaLogicInterface{
     }
 
     @Override
-    public int salvaCitta(Citta citta) {
+    public boolean salvaCitta(Citta citta) {
         if(citta == null)
             throw new IllegalArgumentException("Città non può essere null");
 

@@ -4,7 +4,7 @@ import weatherstyle.gestionecitta.applicationlogic.logic.beans.Citta;
 
 public interface CittaDAOInterface {
 
-    int doSaveCitta(Citta citta);
+    boolean doSaveCitta(Citta citta);
     Citta doRetrieveCittaBySuggerimentoID(int idSuggerimento);
 
 }

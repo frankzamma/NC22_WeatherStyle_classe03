@@ -4,22 +4,14 @@ CREATE DATABASE weatherstyle;
 
 use weatherstyle;
 
-/*
-    Raffaele
-    UTENTE (ID, nome, cognome, dataNascita, cittaNascita, IDguardaroba*)
-    CITTA (ID, nome, latit, longit)
-    SALVARE (IDutente, IDcitta)
-    SUGGERIMENTO (ID, data, valutazione, IDutente*,IDcitta*, IDoutfit*)
-*/
-
     CREATE TABLE Guardaroba (
-        ID INT PRIMARY KEY,
+        ID INT PRIMARY KEY auto_increment,
         nome VARCHAR(30) NOT NULL,
         numeroCapi INT NOT NULL
     );
 
     CREATE TABLE Utente (
-        ID INT PRIMARY KEY,
+        ID INT PRIMARY KEY auto_increment,
         nome VARCHAR(30) NOT NULL,
         cognome VARCHAR(30) NOT NULL,
         dataNascita DATE NOT NULL,
@@ -32,8 +24,8 @@ use weatherstyle;
     );
 
     CREATE TABLE Citta (
-        ID INT PRIMARY KEY,
-        nome VARCHAR(30) NOT NULL,
+        ID INT PRIMARY KEY auto_increment,
+        nome VARCHAR(100) NOT NULL,
         latitudine VARCHAR(100) NOT NULL,
         longitudine VARCHAR(100) NOT NULL
     );
@@ -53,12 +45,12 @@ use weatherstyle;
     );
 
     CREATE TABLE Outfit (
-        ID INT PRIMARY KEY,
+        ID INT PRIMARY KEY auto_increment,
         nome varchar (30) NOT NULL
     );
 
     CREATE TABLE Suggerimento (
-        ID INT PRIMARY KEY,
+        ID INT PRIMARY KEY auto_increment,
         dataSuggerimento DATE NOT NULL,
         IDutente INT,
         FOREIGN KEY (IDutente)
@@ -77,20 +69,6 @@ use weatherstyle;
                 ON DELETE CASCADE
     );
 
-/*
-
-    Annalaura
-    METEO(IDsuggerimento, temperatura, meteo, stagione)
-    OUTFIT (ID, nome)
-    CAPOABBIGLIAMENTO (ID, nome, categoria, stagione, colore, materiale, immagine, IDguardaroba*)
-    COMPORRE (IDoutfit, IDcapoAbbigliamento)
-
-    Angelo
-    GUARDAROBA (ID, nome, numeroCapi)
-    RICHIESTAPROMOZIONE (ID, tematiche, esperienze, IDutente*, IDadmin*)
-    ADMIN (ID, nome, cognome)
-*/
-
     CREATE TABLE Meteo (
         IDsuggerimento INT,
         FOREIGN KEY (IDsuggerimento)
@@ -103,7 +81,7 @@ use weatherstyle;
     );
 
     CREATE TABLE CapoAbbigliamento (
-        ID INT PRIMARY KEY,
+        ID INT PRIMARY KEY auto_increment,
         nome VARCHAR (50) NOT NULL,
         categoria VARCHAR (10) NOT NULL,
         stagione VARCHAR(20) NOT NULL,
@@ -131,13 +109,13 @@ use weatherstyle;
     );
 
     CREATE TABLE Amministratore (
-        ID INT PRIMARY KEY,
+        ID INT PRIMARY KEY auto_increment,
         nome VARCHAR(30) NOT NULL,
         cognome VARCHAR(30) NOT NULL
     );
 
     CREATE TABLE RichiestaPromozione (
-        ID INT PRIMARY KEY,
+        ID INT PRIMARY KEY auto_increment,
         tematiche VARCHAR(50) NOT NULL,
         esperienze VARCHAR(250) NOT NULL,
         stato VARCHAR(15) NOT NULL,
@@ -152,12 +130,6 @@ use weatherstyle;
                 ON UPDATE CASCADE
                 ON DELETE CASCADE
     );
-/*
-
-    Francesco
-    ECOLOGISTA (IDutente)
-    EVENTO (ID, data, luogo, obiettivo, IDutente*)
-    */
 
     CREATE TABLE Ecologista(
         IDutente INT,
@@ -168,7 +140,7 @@ use weatherstyle;
     );
 
     CREATE TABLE Evento (
-        ID INT PRIMARY KEY,
+        ID INT PRIMARY KEY auto_increment,
         data DATE NOT NULL,
         luogo VARCHAR(60) NOT NULL,
         obiettivo VARCHAR(250),
