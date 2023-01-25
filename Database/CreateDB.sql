@@ -5,13 +5,13 @@ CREATE DATABASE weatherstyle;
 use weatherstyle;
 
     CREATE TABLE Guardaroba (
-        ID INT PRIMARY KEY auto_increment,
+        ID INT PRIMARY KEY AUTO_INCREMENT,
         nome VARCHAR(30) NOT NULL,
         numeroCapi INT NOT NULL
     );
 
     CREATE TABLE Utente (
-        ID INT PRIMARY KEY auto_increment,
+        ID INT PRIMARY KEY AUTO_INCREMENT,
         nome VARCHAR(30) NOT NULL,
         cognome VARCHAR(30) NOT NULL,
         dataNascita DATE NOT NULL,
@@ -24,7 +24,7 @@ use weatherstyle;
     );
 
     CREATE TABLE Citta (
-        ID INT PRIMARY KEY auto_increment,
+        ID INT PRIMARY KEY AUTO_INCREMENT,
         nome VARCHAR(100) NOT NULL,
         latitudine VARCHAR(100) NOT NULL,
         longitudine VARCHAR(100) NOT NULL
@@ -45,12 +45,12 @@ use weatherstyle;
     );
 
     CREATE TABLE Outfit (
-        ID INT PRIMARY KEY auto_increment,
+        ID INT PRIMARY KEY AUTO_INCREMENT,
         nome varchar (30) NOT NULL
     );
 
     CREATE TABLE Suggerimento (
-        ID INT PRIMARY KEY auto_increment,
+        ID INT PRIMARY KEY AUTO_INCREMENT,
         dataSuggerimento DATE NOT NULL,
         IDutente INT,
         FOREIGN KEY (IDutente)
@@ -81,7 +81,7 @@ use weatherstyle;
     );
 
     CREATE TABLE CapoAbbigliamento (
-        ID INT PRIMARY KEY auto_increment,
+        ID INT PRIMARY KEY AUTO_INCREMENT,
         nome VARCHAR (50) NOT NULL,
         categoria VARCHAR (10) NOT NULL,
         stagione VARCHAR(20) NOT NULL,
@@ -109,13 +109,13 @@ use weatherstyle;
     );
 
     CREATE TABLE Amministratore (
-        ID INT PRIMARY KEY auto_increment,
+        ID INT PRIMARY KEY AUTO_INCREMENT,
         nome VARCHAR(30) NOT NULL,
         cognome VARCHAR(30) NOT NULL
     );
 
     CREATE TABLE RichiestaPromozione (
-        ID INT PRIMARY KEY auto_increment,
+        ID INT PRIMARY KEY AUTO_INCREMENT,
         tematiche VARCHAR(50) NOT NULL,
         esperienze VARCHAR(250) NOT NULL,
         stato VARCHAR(15) NOT NULL,
@@ -140,7 +140,7 @@ use weatherstyle;
     );
 
     CREATE TABLE Evento (
-        ID INT PRIMARY KEY auto_increment,
+        ID INT PRIMARY KEY AUTO_INCREMENT,
         data DATE NOT NULL,
         luogo VARCHAR(60) NOT NULL,
         obiettivo VARCHAR(250),
