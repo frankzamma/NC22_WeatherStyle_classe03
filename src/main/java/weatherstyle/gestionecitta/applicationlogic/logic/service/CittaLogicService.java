@@ -22,7 +22,7 @@ public class CittaLogicService implements CittaLogicInterface{
         if (citta == null)
             throw new IllegalArgumentException("Città non può essere null");
 
-        if (cittaDAO.doRetrieveCittaByLatLon(citta))
+        if (cittaDAO.doRetrieveCittaByLatLon(citta.getLat(), citta.getLon()))
             return false;
 
         return cittaDAO.doSaveCitta(citta);

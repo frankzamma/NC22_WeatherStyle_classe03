@@ -63,7 +63,7 @@ public class CittaDAOImpl implements CittaDAOInterface{
         return citta;
     }
 
-    public boolean doRetrieveCittaByLatLon(Citta citta){
+    public boolean doRetrieveCittaByLatLon(String lat, String lon){
 
         try (Connection connection = ConnectionPool.getConnection()) {
 
@@ -71,8 +71,8 @@ public class CittaDAOImpl implements CittaDAOInterface{
                     "SELECT latitudine, longitudine " +
                             "FROM Citta c  " +
                             "where c.latitudine=? and c.longitudine=?");
-            preparedStatement.setString(1, citta.getLat());
-            preparedStatement.setString(2, citta.getLon());
+            preparedStatement.setString(1, lat);
+            preparedStatement.setString(2, lon);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
