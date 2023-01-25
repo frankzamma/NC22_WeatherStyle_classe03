@@ -1,4 +1,4 @@
-package Logic.machinelearning;
+package Logics.machinelearning;
 
 
 import Model.Maglia;

@@ -1,7 +1,5 @@
-package Logic.controller;
+package Logics.controller;
 
-import Logic.machinelearning.BottomML;
-import Logic.machinelearning.ShoesML;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;

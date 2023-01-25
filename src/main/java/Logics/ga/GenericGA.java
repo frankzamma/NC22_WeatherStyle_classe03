@@ -1,4 +1,4 @@
-package Logic.ga;
+package Logics.ga;
 
 import Model.CapoAbbigliamento;
 import Model.MeteoInformation;

@@ -1,11 +1,10 @@
-package Logic.controller;
+package Logics.controller;
 
 import Model.Guardaroba;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
-import java.io.File;
 import java.io.IOException;
 
 @WebServlet(name = "index", value = "/index.html")

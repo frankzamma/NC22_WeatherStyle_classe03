@@ -1,11 +1,11 @@
-package Logic.controller;
+package Logics.controller;
 
-import Logic.ga.BottomClothesGA;
-import Logic.ga.ShoesClothesGA;
-import Logic.ga.TopClothesGA;
-import Logic.machinelearning.BottomML;
-import Logic.machinelearning.ShoesML;
-import Logic.machinelearning.TopML;
+import Logics.ga.BottomClothesGA;
+import Logics.ga.ShoesClothesGA;
+import Logics.ga.TopClothesGA;
+import Logics.machinelearning.BottomML;
+import Logics.machinelearning.ShoesML;
+import Logics.machinelearning.TopML;
 import Model.*;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;

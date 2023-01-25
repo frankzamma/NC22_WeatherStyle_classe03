@@ -1,4 +1,4 @@
-package Logic.controller;
+package Logics.controller;
 
 import Model.Guardaroba;
 import jakarta.servlet.*;

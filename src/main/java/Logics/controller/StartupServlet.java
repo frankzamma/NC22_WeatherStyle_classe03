@@ -1,8 +1,8 @@
-package Logic.controller;
+package Logics.controller;
 
-import Logic.machinelearning.BottomML;
-import Logic.machinelearning.ShoesML;
-import Logic.machinelearning.TopML;
+import Logics.machinelearning.BottomML;
+import Logics.machinelearning.ShoesML;
+import Logics.machinelearning.TopML;
 import Model.Guardaroba;
 import Model.RecoveryGuardaroba;
 import jakarta.servlet.*;
