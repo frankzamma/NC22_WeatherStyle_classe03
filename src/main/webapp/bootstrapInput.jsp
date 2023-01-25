@@ -19,22 +19,22 @@
                 <input type="text" class="form-control" id="example" placeholder="name@example.com">
             </div>
             <div class="col-md-6">
-                <label for="example" class="form-label">Email address</label>
-                <input type="text" class="form-control" id="example" placeholder="name@example.com">
+                <label for="example1" class="form-label">Email address</label>
+                <input type="text" class="form-control" id="example1" placeholder="name@example.com">
             </div>
         </div>
         <div class="row">
             <div class="col-md-4">
-                <label for="example" class="form-label">Email address</label>
-                <input type="text" class="form-control" id="example" placeholder="name@example.com">
+                <label for="example2" class="form-label">Email address</label>
+                <input type="text" class="form-control" id="example2" placeholder="name@example.com">
             </div>
             <div class="col-md-4">
-                <label for="example" class="form-label">Email address</label>
-                <input type="text" class="form-control" id="example" placeholder="name@example.com">
+                <label for="example3" class="form-label">Email address</label>
+                <input type="text" class="form-control" id="example3" placeholder="name@example.com">
             </div>
             <div class="col-md-4">
-                <label for="example" class="form-label">Email address</label>
-                <input type="text" class="form-control" id="example" placeholder="name@example.com">
+                <label for="example4" class="form-label">Email address</label>
+                <input type="text" class="form-control" id="example4" placeholder="name@example.com">
             </div>
             <!-- Per i button, per ottenere il responsive è necessario usare anche il div esterno-->
             <div class="d-grid gap-2 mt-2">
