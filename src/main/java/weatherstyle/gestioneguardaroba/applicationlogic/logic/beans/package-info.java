@@ -1,0 +1,1 @@
+package weatherstyle.gestioneguardaroba.applicationlogic.logic.beans;
