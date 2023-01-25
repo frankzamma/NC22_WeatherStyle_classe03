@@ -1,6 +1,8 @@
 package weatherstyle.gestionesuggerimentiia.applicationlogic.logic.beans;
 
 import weatherstyle.gestionecitta.applicationlogic.logic.beans.Citta;
+import weatherstyle.gestionemeteo.applicationlogic.logic.beans.MeteoDaily;
+import weatherstyle.gestioneutenti.applicationlogic.logic.beans.Utente;
 
 import java.sql.Date;
 

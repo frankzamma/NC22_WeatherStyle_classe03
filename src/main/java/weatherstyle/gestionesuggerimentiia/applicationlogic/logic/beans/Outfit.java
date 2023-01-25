@@ -1,11 +1,16 @@
 package weatherstyle.gestionesuggerimentiia.applicationlogic.logic.beans;
 
+
+import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Maglia;
+import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Pantaloni;
+import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Scarpa;
+
 public class Outfit {
 
     private int id;
     private String nome;
     private Maglia maglia;
-    private Pantalone pantalone;
+    private Pantaloni pantalone;
     private Scarpa scarpa;
 
     public Outfit() {
@@ -35,11 +40,11 @@ public class Outfit {
         this.maglia = maglia;
     }
 
-    public Pantalone getPantalone() {
+    public Pantaloni getPantalone() {
         return pantalone;
     }
 
-    public void setPantalone(Pantalone pantalone) {
+    public void setPantaloni(Pantaloni pantalone) {
         this.pantalone = pantalone;
     }
 
