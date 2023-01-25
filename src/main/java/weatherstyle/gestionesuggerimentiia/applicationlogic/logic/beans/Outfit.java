@@ -39,11 +39,11 @@ public class Outfit {
         this.maglia = maglia;
     }
 
-    public Pantaloni getPantalone() {
+    public Pantaloni getPantaloni() {
         return pantaloni;
     }
 
-    public void setPantalone(Pantaloni pantalone) {
+    public void setPantaloni(Pantaloni pantalone) {
         this.pantaloni = pantalone;
     }
 
