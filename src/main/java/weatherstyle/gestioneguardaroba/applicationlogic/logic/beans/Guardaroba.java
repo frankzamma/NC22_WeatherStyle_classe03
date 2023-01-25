@@ -15,7 +15,7 @@ public class Guardaroba {
         private String nome;
         private List<Maglia> maglie;
         private List<Pantaloni> pantaloni;
-        private List<Scarpa> scarpe;
+        private List<Scarpe> scarpe;
 
         /**
          Costruttore vuoto. Inizializza il numero di capi a zero e
@@ -120,14 +120,14 @@ public class Guardaroba {
         /**
          @return la lista di scarpe nel guardaroba.
          */
-        public List<Scarpa> getScarpe() {
+        public List<Scarpe> getScarpe() {
             return scarpe;
         }
 
         /**
          @param scarpe sarà la nuova lista di scarpe presente nel guardaroba.
          */
-        public void setScarpe(List<Scarpa> scarpe) {
+        public void setScarpe(List<Scarpe> scarpe) {
             this.scarpe = scarpe;
         }
 }

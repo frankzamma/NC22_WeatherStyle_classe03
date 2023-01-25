@@ -1,5 +1,9 @@
 package weatherstyle.gestionesuggerimentiia.storage.dao;
 
+
+import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Maglia;
+import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Pantaloni;
+import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Scarpe;
 import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.beans.Outfit;
 
 public class OutfitDAOImpl implements OutfitDAOInterface {
@@ -20,7 +24,7 @@ public class OutfitDAOImpl implements OutfitDAOInterface {
     }
 
     @Override
-    public Pantalone doSearchPantaloneByOutfitID(int outfitID) {
+    public Pantaloni doSearchPantaloneByOutfitID(int outfitID) {
         return null;
     }
 

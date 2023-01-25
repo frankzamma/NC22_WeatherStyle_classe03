@@ -1,11 +1,14 @@
 package weatherstyle.gestionesuggerimentiia.applicationlogic.logic.service;
 
+import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.CapoAbbigliamento;
+import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Guardaroba;
 import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.beans.Outfit;
 import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.beans.Suggerimento;
 import weatherstyle.gestionesuggerimentiia.storage.dao.OutfitDAOInterface;
 import weatherstyle.gestionesuggerimentiia.storage.dao.SuggerimentoDAOInterface;
 
 import java.util.List;
+import java.util.Set;
 
 public class SuggerimentoLogicService implements SuggerimentoLogicInterface{
 
