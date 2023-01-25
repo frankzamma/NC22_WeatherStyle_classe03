@@ -9,8 +9,8 @@ import java.util.List;
 
 public class CittaLogicService implements CittaLogicInterface{
 
-    private CittaDAOInterface cittaDAO;
-    private InfoCittaService infoCittaService;
+    private final CittaDAOInterface cittaDAO;
+    private final InfoCittaService infoCittaService;
 
     public CittaLogicService(CittaDAOInterface cittaDAO, InfoCittaService infoCittaService){
         this.cittaDAO= cittaDAO;
@@ -39,7 +39,6 @@ public class CittaLogicService implements CittaLogicInterface{
 
         return cittaList;
     }
-
 
     @Override
     public List<Citta> ottieniCittaByName(String name) {
