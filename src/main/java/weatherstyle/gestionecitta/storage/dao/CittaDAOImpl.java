@@ -10,6 +10,7 @@ public class CittaDAOImpl implements CittaDAOInterface{
 
     @Override
     public boolean doSaveCitta(Citta citta) {
+
         try (Connection connection = ConnectionPool.getConnection()) {
 
             PreparedStatement ps = connection.prepareStatement(
@@ -60,5 +61,28 @@ public class CittaDAOImpl implements CittaDAOInterface{
         }
 
         return citta;
+    }
+
+    public boolean doRetrieveCittaByLatLon(Citta citta){
+
+        try (Connection connection = ConnectionPool.getConnection()) {
+
+            PreparedStatement preparedStatement = connection.prepareStatement(
+                    "SELECT latitudine, longitudine " +
+                            "FROM Citta c  " +
+                            "where c.latitudine=? and c.longitudine=?");
+            preparedStatement.setString(1, citta.getLat());
+            preparedStatement.setString(2, citta.getLon());
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next())
+                return true;
+
+        } catch (SQLException sql) {
+            throw new RuntimeException();
+        }
+
+        return false;
     }
 }

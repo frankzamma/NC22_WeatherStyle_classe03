@@ -70,11 +70,7 @@ use weatherstyle;
     );
 
     CREATE TABLE Meteo (
-        IDsuggerimento INT,
-        FOREIGN KEY (IDsuggerimento)
-            REFERENCES Suggerimento(ID)
-            ON UPDATE CASCADE
-            ON DELETE CASCADE,
+        IDmeteo INT PRIMARY KEY AUTO_INCREMENT,
         temperatura INT NOT NULL,
         meteo VARCHAR (30) NOT NULL,
         stagione VARCHAR (20) NOT NULL
@@ -83,16 +79,45 @@ use weatherstyle;
     CREATE TABLE CapoAbbigliamento (
         ID INT PRIMARY KEY AUTO_INCREMENT,
         nome VARCHAR (50) NOT NULL,
-        categoria VARCHAR (10) NOT NULL,
         stagione VARCHAR(20) NOT NULL,
         colore VARCHAR(10) NOT NULL,
-        materiale VARCHAR(15) NOT NULL,
         immagine VARCHAR(60) NOT NULL,
         IDguardaroba INT,
             FOREIGN KEY (IDguardaroba)
             REFERENCES Guardaroba(ID)
             ON UPDATE CASCADE
             ON DELETE CASCADE
+    );
+
+    CREATE TABLE Maglia (
+        IDcapoAbbigliamento INT,
+        FOREIGN KEY (IDcapoAbbigliamento)
+            REFERENCES CapoAbbigliamento(ID)
+            ON UPDATE CASCADE
+            ON DELETE CASCADE,
+        manica VARCHAR (20) NOT NULL,
+        materiale VARCHAR (20) NOT NULL
+    );
+
+    CREATE TABLE Pantaloni (
+        IDcapoAbbigliamento INT,
+        FOREIGN KEY (IDcapoAbbigliamento)
+            REFERENCES CapoAbbigliamento(ID)
+            ON UPDATE CASCADE
+            ON DELETE CASCADE,
+        lunghezza VARCHAR (20) NOT NULL,
+        materiale VARCHAR (20) NOT NULL
+    );
+
+    CREATE TABLE Scarpe (
+        IDcapoAbbigliamento INT,
+        FOREIGN KEY (IDcapoAbbigliamento)
+            REFERENCES CapoAbbigliamento(ID)
+            ON UPDATE CASCADE
+            ON DELETE CASCADE,
+        tipo VARCHAR (20) NOT NULL,
+        antiscivolo BIT NOT NULL,
+        impermeabile BIT NOT NULL
     );
 
     CREATE TABLE Comporre (
