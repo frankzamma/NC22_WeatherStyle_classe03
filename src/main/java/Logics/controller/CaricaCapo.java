@@ -2,7 +2,7 @@ package Logics.controller;
 
 import Model.Guardaroba;
 import Model.Maglia;
-import Model.Pantalone;
+import Model.Pantaloni;
 import Model.Scarpa;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -40,7 +40,7 @@ public class CaricaCapo extends HttpServlet {
                 String stagione = request.getParameter("stagione");
                 String lunghezza = request.getParameter("lungPantalone");
 
-                Pantalone p = new Pantalone(materiale, stagione, colore, lunghezza);
+                Pantaloni p = new Pantaloni(materiale, stagione, colore, lunghezza);
                 guardaroba.addCapoAbbigliamento(p);
             }
             if (tipoCapo.equals("scarpe")) {

@@ -15,7 +15,8 @@ use weatherstyle;
         nome VARCHAR(30) NOT NULL,
         cognome VARCHAR(30) NOT NULL,
         dataNascita DATE NOT NULL,
-        cittaNascita VARCHAR(30) NOT NULL,
+        email VARCHAR(254) NOT NULL,
+        password VARCHAR (255) NOT NULL,
         IDguardaroba INT,
         FOREIGN KEY (IDguardaroba)
             REFERENCES Guardaroba(ID)
@@ -133,10 +134,12 @@ use weatherstyle;
             ON DELETE CASCADE
     );
 
-    CREATE TABLE Amministratore (
+    CREATE TABLE Admin (
         ID INT PRIMARY KEY AUTO_INCREMENT,
         nome VARCHAR(30) NOT NULL,
-        cognome VARCHAR(30) NOT NULL
+        cognome VARCHAR(30) NOT NULL,
+        email VARCHAR(254) NOT NULL,
+        password VARCHAR (255) NOT NULL,
     );
 
     CREATE TABLE RichiestaPromozione (
@@ -151,7 +154,7 @@ use weatherstyle;
                 ON DELETE CASCADE,
         IDadmin INT,
         FOREIGN KEY (IDadmin)
-            REFERENCES Amministratore(ID)
+            REFERENCES Admin(ID)
                 ON UPDATE CASCADE
                 ON DELETE CASCADE
     );

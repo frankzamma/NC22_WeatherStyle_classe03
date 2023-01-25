@@ -12,7 +12,7 @@
         <%
             Guardaroba guardaroba = (Guardaroba) session.getAttribute("guardaroba");
             List<Maglia> listaMaglie = guardaroba.getMagliaList();
-            List<Pantalone> listaPantaloni = guardaroba.getPantaloneList();
+            List<Pantaloni> listaPantaloni = guardaroba.getPantaloneList();
             List<Scarpa> listaScarpe = guardaroba.getScarpaList();
         %>
 
@@ -53,7 +53,7 @@
 
             if(listaPantaloni.size() <= 0) { %>
         <br>
-        <h3 class="display-6">Nessun pantalone presente nel guardaroba.</h3>
+        <h3 class="display-6">Nessun pantaloni presente nel guardaroba.</h3>
         <% }
         else { %>
         <br>
@@ -71,13 +71,13 @@
             <tbody>
             <%
                 int i = 1;
-                for(Pantalone pantalone: listaPantaloni){ %>
+                for(Pantaloni pantaloni : listaPantaloni){ %>
             <tr>
                 <td><%=i%></td>
-                <td><%=pantalone.getMateriale()%></td>
-                <td><%=pantalone.getColore()%></td>
-                <td><%=pantalone.getLunghezza()%></td>
-                <td><%=pantalone.getStagione()%></td>
+                <td><%=pantaloni.getMateriale()%></td>
+                <td><%=pantaloni.getColore()%></td>
+                <td><%=pantaloni.getLunghezza()%></td>
+                <td><%=pantaloni.getStagione()%></td>
             </tr>
             <%  i++;
             } %>

@@ -5,7 +5,7 @@ import java.util.List;
 public class Guardaroba {
 
     private List<Maglia> magliaList;
-    private List<Pantalone> pantaloneList;
+    private List<Pantaloni> pantaloniList;
     private List<Scarpa> scarpaList;
 
     public Guardaroba() {
@@ -19,12 +19,12 @@ public class Guardaroba {
         this.magliaList = magliaList;
     }
 
-    public List<Pantalone> getPantaloneList() {
-        return pantaloneList;
+    public List<Pantaloni> getPantaloneList() {
+        return pantaloniList;
     }
 
-    public void setPantaloneList(List<Pantalone> pantaloneList) {
-        this.pantaloneList = pantaloneList;
+    public void setPantaloneList(List<Pantaloni> pantaloniList) {
+        this.pantaloniList = pantaloniList;
     }
 
     public List<Scarpa> getScarpaList() {
@@ -36,13 +36,13 @@ public class Guardaroba {
     }
 
     public boolean addCapoAbbigliamento(CapoAbbigliamento capoAbbigliamento){
-        if (this.magliaList == null || this.pantaloneList == null || this.scarpaList == null){
+        if (this.magliaList == null || this.pantaloniList == null || this.scarpaList == null){
             return false;
         }
         if (capoAbbigliamento instanceof Maglia)
             this.magliaList.add((Maglia) capoAbbigliamento);
-        else if (capoAbbigliamento instanceof Pantalone)
-            this.pantaloneList.add((Pantalone) capoAbbigliamento);
+        else if (capoAbbigliamento instanceof Pantaloni)
+            this.pantaloniList.add((Pantaloni) capoAbbigliamento);
         else
             this.scarpaList.add((Scarpa) capoAbbigliamento);
 

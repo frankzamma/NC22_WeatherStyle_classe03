@@ -66,7 +66,7 @@ public class RichiestaSuggerimentoServlet extends HttpServlet {
                         Guardaroba guardaroba = (Guardaroba) session.getAttribute("guardaroba");
                         //  Si prendono le varie liste di capi d'abbigliamento presenti nel guardaroba
                         List<Maglia> listaMaglie = guardaroba.getMagliaList();
-                        List<Pantalone> listaPantaloni = guardaroba.getPantaloneList();
+                        List<Pantaloni> listaPantaloni = guardaroba.getPantaloneList();
                         List<Scarpa> listaScarpe = guardaroba.getScarpaList();
 
                         //  Si istanziano le liste che conterranno i capi suggeriti

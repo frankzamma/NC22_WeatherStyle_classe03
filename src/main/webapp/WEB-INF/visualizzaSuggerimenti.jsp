@@ -102,7 +102,7 @@
 
             if(pantaloniSuggeriti.size() <= 0) { %>
         <br>
-        <h3 class="display-6">Nessun pantalone è stato suggerito.</h3>
+        <h3 class="display-6">Nessun pantaloni è stato suggerito.</h3>
         <% }
         else {
                 List<Double> punteggiPantaloni = (List<Double>) request.getAttribute("punteggiPantaloni");
@@ -115,7 +115,7 @@
                 <th scope="col">#</th>
                 <th scope="col">Materiale</th>
                 <th scope="col">Colore</th>
-                <th scope="col">Lunghezza pantalone</th>
+                <th scope="col">Lunghezza pantaloni</th>
                 <th scope="col">Stagione</th>
                 <%
                     if(punteggiPantaloni != null){
@@ -130,14 +130,14 @@
             <%
                 int i = 0;
                 for(CapoAbbigliamento capo: pantaloniSuggeriti){
-                    Pantalone pantalone = (Pantalone) capo;
+                    Pantaloni pantaloni = (Pantaloni) capo;
                 %>
                     <tr>
                         <td><%=i%></td>
-                        <td><%=pantalone.getMateriale()%></td>
-                        <td><%=pantalone.getColore()%></td>
-                        <td><%=pantalone.getLunghezza()%></td>
-                        <td><%=pantalone.getStagione()%></td>
+                        <td><%=pantaloni.getMateriale()%></td>
+                        <td><%=pantaloni.getColore()%></td>
+                        <td><%=pantaloni.getLunghezza()%></td>
+                        <td><%=pantaloni.getStagione()%></td>
                         <%
                             if(punteggiPantaloni != null){
                                 %>
@@ -154,7 +154,7 @@
 
             if(scarpeSuggerite.size() == 0) { %>
         <br>
-        <h3 class="display-6">Nessun pantalone è stato suggerito.</h3>
+        <h3 class="display-6">Nessun pantaloni è stato suggerito.</h3>
         <% }
         else {
             List<Double> punteggiScarpe = (List<Double>) request.getAttribute("punteggiScarpe");

@@ -136,7 +136,7 @@ public class RegressionTreeWrapper {
         for (CapoAbbigliamento capoAbbigliamento: capoAbbigliamentoList){
             Instance instance = new DenseInstance(capoAbbigliamento.getClass() != Scarpa.class ? 7 : 8);
             instance.setDataset(fullDataset);
-            if(capoAbbigliamento.getClass() == Maglia.class || capoAbbigliamento.getClass() == Pantalone.class){
+            if(capoAbbigliamento.getClass() == Maglia.class || capoAbbigliamento.getClass() == Pantaloni.class){
                 instance.setValue(1, capoAbbigliamento.getColore());
 
                 if(capoAbbigliamento.getClass() == Maglia.class){
@@ -144,8 +144,8 @@ public class RegressionTreeWrapper {
                     instance.setValue(0, ((Maglia) capoAbbigliamento).getMateriale());
                 }
                 else{
-                    instance.setValue(2,((Pantalone)capoAbbigliamento).getLunghezza() );
-                    instance.setValue(0, ((Pantalone) capoAbbigliamento).getMateriale());
+                    instance.setValue(2,((Pantaloni)capoAbbigliamento).getLunghezza() );
+                    instance.setValue(0, ((Pantaloni) capoAbbigliamento).getMateriale());
                 }
 
                 instance.setValue(3, capoAbbigliamento.getStagione());

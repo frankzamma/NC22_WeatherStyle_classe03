@@ -2,14 +2,14 @@ package Logics.ga;
 
 import Model.CapoAbbigliamento;
 import Model.MeteoInformation;
-import Model.Pantalone;
+import Model.Pantaloni;
 
 import java.util.List;
 
 public class BottomClothesGA{
     private GenericGA genericGA;
 
-    public BottomClothesGA(List<Pantalone> listaPantaloni, MeteoInformation meteoInformation){
+    public BottomClothesGA(List<Pantaloni> listaPantaloni, MeteoInformation meteoInformation){
         genericGA = new GenericGA(listaPantaloni, meteoInformation, "pantaloniGA");
     }
 

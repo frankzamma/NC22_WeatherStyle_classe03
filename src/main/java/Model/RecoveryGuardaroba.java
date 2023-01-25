@@ -19,7 +19,7 @@ public class RecoveryGuardaroba {
 
     private void recoveryCapoAbbigliamento(){
         List<Maglia> magliaList = new ArrayList<>();
-        List<Pantalone> pantaloneList = new ArrayList<>();
+        List<Pantaloni> pantaloniList = new ArrayList<>();
         List<Scarpa> scarpaList = new ArrayList<>();
 
         File file = new File(pathFile);
@@ -38,13 +38,13 @@ public class RecoveryGuardaroba {
                     maglia.setLunghezzaManica(split[3]);
                     maglia.setStagione(split[4]);
                     magliaList.add(maglia);
-                }else if (split[0].equalsIgnoreCase("pantalone")){
-                    Pantalone pantalone = new Pantalone();
-                    pantalone.setMateriale(split[1]);
-                    pantalone.setColore(split[2]);
-                    pantalone.setLunghezza(split[3]);
-                    pantalone.setStagione(split[4]);
-                    pantaloneList.add(pantalone);
+                }else if (split[0].equalsIgnoreCase("pantaloni")){
+                    Pantaloni pantaloni = new Pantaloni();
+                    pantaloni.setMateriale(split[1]);
+                    pantaloni.setColore(split[2]);
+                    pantaloni.setLunghezza(split[3]);
+                    pantaloni.setStagione(split[4]);
+                    pantaloniList.add(pantaloni);
                 }else {
                     Scarpa scarpa = new Scarpa();
                     scarpa.setTipo(split[1]);
@@ -60,7 +60,7 @@ public class RecoveryGuardaroba {
         }
 
         guardaroba.setMagliaList(magliaList);
-        guardaroba.setPantaloneList(pantaloneList);
+        guardaroba.setPantaloneList(pantaloniList);
         guardaroba.setScarpaList(scarpaList);
 
     }

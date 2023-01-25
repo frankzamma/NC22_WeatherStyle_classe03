@@ -303,7 +303,7 @@ public class Evaluator {
     }
 
     public int valuta(CapoAbbigliamento capoAbbigliamento, MeteoInformation meteoInformation){
-        if(capoAbbigliamento.getClass().equals(Maglia.class) || capoAbbigliamento.getClass().equals(Pantalone.class)){
+        if(capoAbbigliamento.getClass().equals(Maglia.class) || capoAbbigliamento.getClass().equals(Pantaloni.class)){
             return valutazioneTopOrBottom(capoAbbigliamento, meteoInformation);
         }else{
             return valutazioneShoes(capoAbbigliamento, meteoInformation);
@@ -373,8 +373,8 @@ public class Evaluator {
             if(capoAbbigliamento.getClass().equals(Maglia.class)){
                 voto = ranges.get(range).get(((Maglia) capoAbbigliamento).getMateriale());
 
-            }else if (capoAbbigliamento.getClass().equals(Pantalone.class)){
-                voto = ranges.get(range).get(((Pantalone) capoAbbigliamento).getMateriale());
+            }else if (capoAbbigliamento.getClass().equals(Pantaloni.class)){
+                voto = ranges.get(range).get(((Pantaloni) capoAbbigliamento).getMateriale());
             }else{
                 voto = ranges.get(range).get(capoAbbigliamento.getStagione());
             }
@@ -410,9 +410,9 @@ public class Evaluator {
         }
 
         else
-            if(capoAbbigliamento.getClass().equals(Pantalone.class)) {
-                Pantalone pantalone = (Pantalone) capoAbbigliamento;
-                return ranges.get(range).get(pantalone.getLunghezza());
+            if(capoAbbigliamento.getClass().equals(Pantaloni.class)) {
+                Pantaloni pantaloni = (Pantaloni) capoAbbigliamento;
+                return ranges.get(range).get(pantaloni.getLunghezza());
             }
 
             return 0;
