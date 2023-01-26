@@ -10,6 +10,7 @@ Ha un nome, ed è possibile anche tenere traccia di quanti capi contiene.
  */
 
 public class Guardaroba {
+        private int id;
         private int numeroCapi;
         private List<Maglia> maglie;
         private List<Pantaloni> pantaloni;
@@ -26,6 +27,22 @@ public class Guardaroba {
             scarpe = new ArrayList<>();
         }
 
+        public Guardaroba(int id) {
+            this.id = id;
+            numeroCapi = 0;
+            maglie = new ArrayList<>();
+            pantaloni = new ArrayList<>();
+            scarpe = new ArrayList<>();
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+
         /**
          @return il numero di capi d'abbigliamento presenti nel guardaroba.
          */
@@ -37,7 +54,7 @@ public class Guardaroba {
          @param numeroCapi setta la quantità di capi d'abbigliamento
          presenti nel guardaroba.
          */
-            public void setNumeroCapi(int numeroCapi) {
+        public void setNumeroCapi(int numeroCapi) {
                 this.numeroCapi = numeroCapi;
             }
 
