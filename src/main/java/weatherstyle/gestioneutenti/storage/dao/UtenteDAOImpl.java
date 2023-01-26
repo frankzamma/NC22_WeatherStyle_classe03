@@ -50,7 +50,13 @@ public class UtenteDAOImpl implements UtenteDAOInterface {
             statement.setInt(1, id);
 
             ResultSet res =  statement.executeQuery();
-            return creaUtente(res);
+
+            if(res.next()){
+                return creaUtente(res);
+            }else {
+                return null;
+            }
+
         }catch (SQLException e){
             throw new RuntimeException(e);
         }
@@ -97,12 +103,12 @@ public class UtenteDAOImpl implements UtenteDAOInterface {
     private Utente creaUtente(ResultSet res) throws SQLException {
         Utente u = new Utente();
 
-        int id =  res.getInt(0);
-        String nome =  res.getString(1);
-        String cognome  = res.getString(2);
-        LocalDate dataNascita =  res.getDate(3).toLocalDate();
-        String email =  res.getString(4);
-        String password =  res.getString(5);
+        int id =  res.getInt(1);
+        String nome =  res.getString(2);
+        String cognome  = res.getString(3);
+        LocalDate dataNascita =  res.getDate(4).toLocalDate();
+        String email =  res.getString(5);
+        String password =  res.getString(6);
 
         u.setId(id);
         u.setNome(nome);
