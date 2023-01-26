@@ -12,7 +12,7 @@ public class Utente {
     /**
      * identificatore di un utente.
      */
-    private int id;
+    private Integer id;
     /**
      * nome di un utente.
      */
@@ -49,14 +49,14 @@ public class Utente {
     /**
      * @return Utente.id
      */
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
     /**
      * @param id = identificatore utente
      */
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

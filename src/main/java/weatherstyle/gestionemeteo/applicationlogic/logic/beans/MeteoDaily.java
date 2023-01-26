@@ -2,7 +2,7 @@ package weatherstyle.gestionemeteo.applicationlogic.logic.beans;
 
 public class MeteoDaily {
 
-    private int id;
+    private Integer id;
     private String meteo;
     private double temperatura;
     private String stagionePrevisione;
@@ -10,11 +10,11 @@ public class MeteoDaily {
     public MeteoDaily() {
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

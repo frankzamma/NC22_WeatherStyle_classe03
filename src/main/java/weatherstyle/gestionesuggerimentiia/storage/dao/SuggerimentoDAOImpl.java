@@ -23,6 +23,7 @@ public class SuggerimentoDAOImpl implements SuggerimentoDAOInterface{
 
     @Override
     public boolean doSaveSuggerimento(Suggerimento suggerimento) {
+
         return false;
     }
 

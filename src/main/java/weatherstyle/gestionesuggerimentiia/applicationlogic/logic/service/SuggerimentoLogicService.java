@@ -28,17 +28,34 @@ public class SuggerimentoLogicService implements SuggerimentoLogicInterface{
         this.outfitDAO = outfitDAO;
     }
 
+    /**
+     * @param suggerimento il suggerimento che si vuole salvare nel DB
+     * @throws IllegalArgumentException
+     * if (suggerimento == null)
+     * else
+     *  if (suggerimento.getUtente().getId() != null &&
+     *     suggerimento.getCitta().getId() != null &&
+     *     suggerimento.getOutfit().getId() != null &&
+     *     suggerimento.getMeteoDaily().getId() != null)
+     * @return vero se è stato possibile salvare il suggerimento
+     */
     @Override
     public boolean salvaSuggerimento(Suggerimento suggerimento) {
         if (suggerimento == null)
             throw new IllegalArgumentException("Suggerimento non può essere null");
+        else
+            if (suggerimento.getUtente().getId() != null &&
+                suggerimento.getCitta().getId() != null &&
+                suggerimento.getOutfit().getId() != null &&
+                suggerimento.getMeteoDaily().getId() != null)
+                    throw new IllegalArgumentException("Suggerimento non ha gli id impostati");
 
         return suggerimentoDAO.doSaveSuggerimento(suggerimento);
     }
 
     @Override
     public List<Suggerimento> ottieniCronologiaSuggerimentiUtente(int idUtente) {
-
+        return suggerimentoDAO.doRetrieveCronologiaSuggerimentiByUtenteID(idUtente);
     }
 
     @Override
