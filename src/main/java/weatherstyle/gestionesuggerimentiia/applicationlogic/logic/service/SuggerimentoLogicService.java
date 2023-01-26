@@ -3,6 +3,7 @@ package weatherstyle.gestionesuggerimentiia.applicationlogic.logic.service;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.CapoAbbigliamento;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Guardaroba;
 import weatherstyle.gestionemeteo.applicationlogic.logic.beans.MeteoDaily;
+import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.algorithms.ImplementorAlgorithm;
 import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.beans.Outfit;
 import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.beans.Suggerimento;
 import weatherstyle.gestionesuggerimentiia.storage.dao.OutfitDAOInterface;
@@ -61,8 +62,9 @@ public class SuggerimentoLogicService implements SuggerimentoLogicInterface{
 
 
     @Override
-    public Set<Set<CapoAbbigliamento>> ottieniSuggerimentiCapi(Guardaroba guardaroba, MeteoDaily meteoDaily) {
-        return null;
+    public <T> Set<Set<CapoAbbigliamento>> ottieniSuggerimentiCapi(ImplementorAlgorithm<T> implementorAlgorithm,
+                                                                   Guardaroba guardaroba, MeteoDaily meteoDaily) {
+
     }
 
 
