@@ -1,11 +1,13 @@
 package weatherstyle.gestioneutenti.applicationlogic.logic.beans;
 
 import weatherstyle.gestionecitta.applicationlogic.logic.beans.Citta;
+import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Guardaroba;
 
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.time.LocalDate;
 import java.util.List;
 
 public class Utente {
@@ -24,7 +26,7 @@ public class Utente {
     /**
      * data di nascita di un utente.
      */
-    private String dataNascita;
+    private LocalDate dataNascita;
     /**
      * email di un utente.
      */
@@ -37,6 +39,7 @@ public class Utente {
      * città preferite di un utente.
      */
     private List<Citta> citta;
+    private Guardaroba guardaroba;
     /**
      * indica se l'utente è un ecologista o meno.
      */
@@ -77,11 +80,11 @@ public class Utente {
         this.cognome = cognome;
     }
 
-    public String getDataNascita() {
+    public LocalDate getDataNascita() {
         return dataNascita;
     }
 
-    public void setDataNascita(String dataNascita) {
+    public void setDataNascita(LocalDate dataNascita) {
         this.dataNascita = dataNascita;
     }
 
@@ -122,5 +125,13 @@ public class Utente {
 
     public void setEcologista(boolean ecologista) {
         this.ecologista = ecologista;
+    }
+
+    public Guardaroba getGuardaroba() {
+        return guardaroba;
+    }
+
+    public void setGuardaroba(Guardaroba guardaroba) {
+        this.guardaroba = guardaroba;
     }
 }
