@@ -13,7 +13,7 @@ public class GuardarobaDAOImpl implements GuardarobaDAOInterface {
     @Override
     public Guardaroba doRetrieveGuardarobaById(int id) {
         try (Connection connection =  ConnectionPool.getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("SELECT * " + "from Guardaroba WHERE ID = ?");
+            PreparedStatement statement = connection.prepareStatement("SELECT * from Guardaroba WHERE ID = ?");
 
             statement.setInt(1, id);
 
@@ -33,8 +33,7 @@ public class GuardarobaDAOImpl implements GuardarobaDAOInterface {
     public boolean doSaveGuardaroba(int idUtente) {
         try (Connection connection = ConnectionPool.getConnection()) {
             PreparedStatement statement =  connection.prepareStatement(
-                    "insert into Guardaroba (ID, numeroCapi) values"
-                            + " (?,0)", Statement.RETURN_GENERATED_KEYS);
+                    "insert into Guardaroba (ID, numeroCapi) values (?,0)", Statement.RETURN_GENERATED_KEYS);
 
             statement.setInt(1, idUtente);
 
