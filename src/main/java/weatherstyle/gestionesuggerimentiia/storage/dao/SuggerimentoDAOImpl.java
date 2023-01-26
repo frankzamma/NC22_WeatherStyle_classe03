@@ -4,6 +4,8 @@ import weatherstyle.gestionecitta.applicationlogic.logic.beans.Citta;
 import weatherstyle.gestionecitta.storage.dao.CittaDAOImpl;
 import weatherstyle.gestionecitta.storage.dao.CittaDAOInterface;
 import weatherstyle.gestionemeteo.applicationlogic.logic.beans.MeteoDaily;
+import weatherstyle.gestionemeteo.storage.dao.MeteoDAOImpl;
+import weatherstyle.gestionemeteo.storage.dao.MeteoDAOInterface;
 import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.beans.Outfit;
 import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.beans.Suggerimento;
 import weatherstyle.utils.ConnectionPool;
@@ -17,9 +19,9 @@ import java.util.List;
 
 public class SuggerimentoDAOImpl implements SuggerimentoDAOInterface{
 
-    private CittaDAOInterface cittaDAO = new CittaDAOImpl();
-    private MeteoDAOInterface meteoDAO = new MeteoDAOImpl();
-    private OutfitDAOInterface outfitDAO = new OutfitDAOImpl();
+    private final CittaDAOInterface cittaDAO = new CittaDAOImpl();
+    private final MeteoDAOInterface meteoDAO = new MeteoDAOImpl();
+    private final OutfitDAOInterface outfitDAO = new OutfitDAOImpl();
 
     @Override
     public boolean doSaveSuggerimento(Suggerimento suggerimento) {
