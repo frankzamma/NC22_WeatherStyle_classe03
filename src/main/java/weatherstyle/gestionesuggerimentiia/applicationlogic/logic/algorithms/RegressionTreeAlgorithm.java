@@ -137,9 +137,9 @@ class RegressionTreeAlgorithm<T> implements ImplementorAlgorithm<T>{
 
         List<T> bestList = new ArrayList<>();
 
-        bestList.add((scoreCapoAbbigliamentoList.get(0).getCapoAbbigliamento()));
-        bestList.add((scoreCapoAbbigliamentoList.get(1).getCapoAbbigliamento()));
-        bestList.add((scoreCapoAbbigliamentoList.get(2).getCapoAbbigliamento()));
+        bestList.add((bests.get(0).getCapoAbbigliamento()));
+        bestList.add((bests.get(1).getCapoAbbigliamento()));
+        bestList.add((bests.get(2).getCapoAbbigliamento()));
 
         return bestList;
     }
