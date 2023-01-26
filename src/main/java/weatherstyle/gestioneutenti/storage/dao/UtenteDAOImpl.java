@@ -2,6 +2,10 @@ package weatherstyle.gestioneutenti.storage.dao;
 
 import weatherstyle.gestionecitta.applicationlogic.logic.beans.Citta;
 import weatherstyle.gestionecitta.storage.dao.CittaDAOImpl;
+import weatherstyle.gestionecitta.storage.dao.CittaDAOInterface;
+import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Guardaroba;
+import weatherstyle.gestioneguardaroba.storage.dao.GuardarobaDAOImpl;
+import weatherstyle.gestioneguardaroba.storage.dao.GuardarobaDAOInterface;
 import weatherstyle.gestioneutenti.applicationlogic.logic.beans.Utente;
 import weatherstyle.utils.ConnectionPool;
 
@@ -30,6 +34,15 @@ public class UtenteDAOImpl implements UtenteDAOInterface {
             }else{
                 ResultSet resultSet = statement.getGeneratedKeys();
                 int id =  resultSet.getInt(1);
+
+                GuardarobaDAOInterface guardarobaDAO = new GuardarobaDAOImpl();
+                guardarobaDAO.doSaveGuardaroba(id);
+
+                if(!utente.getCitta().isEmpty()){
+                    CittaDAOInterface cittaDAO =  new CittaDAOImpl();
+
+                    cittaDAO.doSaveCittaUtente(id,utente.getCitta().get(0));
+                }
 
                 utente.setId(id);
                 return true;
@@ -121,7 +134,11 @@ public class UtenteDAOImpl implements UtenteDAOInterface {
         List<Citta> citta =  cittaDAO.doRetrieveCittaByUtenteID(id);
 
         u.setCitta(citta);
-        //TODO aggiungere setGuardaroba
+        GuardarobaDAOInterface guardarobaDAOInterface = new GuardarobaDAOImpl();
+
+        Guardaroba g = guardarobaDAOInterface.doRetrieveGuardarobaById(id);
+        u.setGuardaroba(g);
+
 
         boolean ecologista =  checkEcologista(id);
         u.setEcologista(ecologista);
