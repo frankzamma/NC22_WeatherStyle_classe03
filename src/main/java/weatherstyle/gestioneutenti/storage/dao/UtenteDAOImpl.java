@@ -14,7 +14,7 @@ public class UtenteDAOImpl implements UtenteDAOInterface {
     public boolean doSaveUtente(Utente utente) {
         try(Connection connection = ConnectionPool.getConnection()){
             PreparedStatement statement =  connection.prepareStatement(
-                    "insert into utente  nome, cognome, dataNascita, email, password) values" +
+                    "insert into Utente (nome, cognome, dataNascita, email, password) values" +
                             " ( ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
 
             statement.setString(2, utente.getNome());
