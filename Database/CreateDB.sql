@@ -3,26 +3,25 @@ drop database if exists weatherstyle;
 CREATE DATABASE weatherstyle;
 
 use weatherstyle;
+        CREATE TABLE Utente (
+            ID INT PRIMARY KEY AUTO_INCREMENT,
+            nome VARCHAR(30) NOT NULL,
+            cognome VARCHAR(30) NOT NULL,
+            dataNascita DATE NOT NULL,
+            email VARCHAR(254) NOT NULL,
+            password VARCHAR (255) NOT NULL
+        );
+
 
     CREATE TABLE Guardaroba (
-        ID INT PRIMARY KEY AUTO_INCREMENT,
+        ID INT PRIMARY KEY,
         nome VARCHAR(30) NOT NULL,
-        numeroCapi INT NOT NULL
+        numeroCapi INT NOT NULL,
+
+        FOREIGN KEY (ID) REFERENCES Utente(ID)
+
     );
 
-    CREATE TABLE Utente (
-        ID INT PRIMARY KEY AUTO_INCREMENT,
-        nome VARCHAR(30) NOT NULL,
-        cognome VARCHAR(30) NOT NULL,
-        dataNascita DATE NOT NULL,
-        email VARCHAR(254) NOT NULL,
-        password VARCHAR (255) NOT NULL,
-        IDguardaroba INT,
-        FOREIGN KEY (IDguardaroba)
-            REFERENCES Guardaroba(ID)
-                ON UPDATE CASCADE
-                ON DELETE CASCADE
-    );
 
     CREATE TABLE Citta (
         ID INT PRIMARY KEY AUTO_INCREMENT,
@@ -49,6 +48,12 @@ use weatherstyle;
         ID INT PRIMARY KEY AUTO_INCREMENT,
         nome varchar (30) NOT NULL
     );
+        CREATE TABLE Meteo (
+           ID INT PRIMARY KEY AUTO_INCREMENT,
+           temperatura INT NOT NULL,
+           meteo VARCHAR (30) NOT NULL,
+           stagione VARCHAR (20) NOT NULL
+        );
 
     CREATE TABLE Suggerimento (
         ID INT PRIMARY KEY AUTO_INCREMENT,
@@ -73,13 +78,6 @@ use weatherstyle;
             REFERENCES Meteo(ID)
             ON UPDATE CASCADE
             ON DELETE CASCADE
-    );
-
-    CREATE TABLE Meteo (
-        ID INT PRIMARY KEY AUTO_INCREMENT,
-        temperatura INT NOT NULL,
-        meteo VARCHAR (30) NOT NULL,
-        stagione VARCHAR (20) NOT NULL
     );
 
     CREATE TABLE CapoAbbigliamento (
@@ -144,7 +142,7 @@ use weatherstyle;
         nome VARCHAR(30) NOT NULL,
         cognome VARCHAR(30) NOT NULL,
         email VARCHAR(254) NOT NULL,
-        password VARCHAR (255) NOT NULL,
+        password VARCHAR (255) NOT NULL
     );
 
     CREATE TABLE RichiestaPromozione (
