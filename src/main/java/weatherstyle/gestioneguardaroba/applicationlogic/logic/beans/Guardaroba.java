@@ -10,7 +10,6 @@ Ha un nome, ed è possibile anche tenere traccia di quanti capi contiene.
  */
 
 public class Guardaroba {
-        private int id;
         private int numeroCapi;
         private String nome;
         private List<Maglia> maglie;
@@ -30,34 +29,15 @@ public class Guardaroba {
 
         /**
          Metodo costruttore.
-         @param id costituisce l'identificativo univoco del guardaroba.
          @param nome è il nome del guardaroba.
          */
-        public Guardaroba(int id, String nome) {
-            this.id = id;
+        public Guardaroba(String nome) {
             this.nome = nome;
             numeroCapi = 0;
             maglie = new ArrayList<>();
             pantaloni = new ArrayList<>();
             scarpe = new ArrayList<>();
         }
-
-        /**
-         Restituisce l'ID del guardaroba su cui si effettua la chiamata.
-         @return l'ID del guardaroba.
-         */
-        public int getId() {
-            return id;
-        }
-
-        /**
-         Setta l'ID del guardaroba su cui si effettua la chiamata.
-         @param id sarà il nuovo ID del guardaroba.
-         */
-        public void setId(int id) {
-                this.id = id;
-            }
-
 
         /**
          @return il numero di capi d'abbigliamento presenti nel guardaroba.
