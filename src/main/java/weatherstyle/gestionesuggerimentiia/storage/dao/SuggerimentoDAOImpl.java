@@ -24,7 +24,30 @@ public class SuggerimentoDAOImpl implements SuggerimentoDAOInterface{
     @Override
     public boolean doSaveSuggerimento(Suggerimento suggerimento) {
 
-        return false;
+        try (Connection connection = ConnectionPool.getConnection()) {
+
+            PreparedStatement preparedStatement = connection.prepareStatement(
+                    "INSERT INTO Suggerimento (dataSuggerimento, IDutente, IDcitta, IDoutfit)" +
+                            "VALUES(?,?,?,?)");
+            preparedStatement.setDate(1, suggerimento.getDate());
+            preparedStatement.setInt(2, suggerimento.getUtente().getId());
+            preparedStatement.setInt(3, suggerimento.getCitta().getId());
+            preparedStatement.setInt(4, suggerimento.getOutfit().getId());
+
+            if (preparedStatement.executeUpdate() != 1) {
+                return false;
+            }
+
+            ResultSet resultSet = preparedStatement.getGeneratedKeys();
+            resultSet.next();
+            int idSuggerimento = resultSet.getInt(1);
+            suggerimento.setId(idSuggerimento);
+
+        } catch (SQLException sql) {
+            throw new RuntimeException();
+        }
+
+        return true;
     }
 
     @Override

@@ -15,6 +15,5 @@ public interface SuggerimentoLogicInterface {
     List<Suggerimento> ottieniCronologiaSuggerimentiUtente(int idUtente);
     Set<Set<CapoAbbigliamento>> ottieniSuggerimentiCapi(Guardaroba guardaroba, MeteoDaily meteoDaily);
     boolean salvaOutfit(Outfit outfit);
-    List<Suggerimento> ottieniOutfitDaSuggerimentoID(List<Integer> idSuggerimenti);
 
 }
