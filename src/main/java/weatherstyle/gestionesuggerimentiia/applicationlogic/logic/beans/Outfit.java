@@ -6,7 +6,7 @@ import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Scarpe;
 
 public class Outfit {
 
-    private int id;
+    private Integer id;
     private String nome;
     private Maglia maglia;
     private Pantaloni pantaloni;
@@ -15,11 +15,11 @@ public class Outfit {
     public Outfit() {
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

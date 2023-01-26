@@ -16,20 +16,20 @@ public class CittaDAOImpl implements CittaDAOInterface{
 
         try (Connection connection = ConnectionPool.getConnection()) {
 
-            PreparedStatement ps = connection.prepareStatement(
+            PreparedStatement preparedStatement = connection.prepareStatement(
                     "INSERT INTO Citta (nome, latitudine, longitudine) VALUES(?,?,?)",
                     Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, citta.getNome());
-            ps.setString(2, citta.getLat());
-            ps.setString(3, citta.getLon());
+            preparedStatement.setString(1, citta.getNome());
+            preparedStatement.setString(2, citta.getLat());
+            preparedStatement.setString(3, citta.getLon());
 
-            if (ps.executeUpdate() != 1) {
+            if (preparedStatement.executeUpdate() != 1) {
                 return false;
             }
 
-            ResultSet rs = ps.getGeneratedKeys();
-            rs.next();
-            int idCitta = rs.getInt(1);
+            ResultSet resultSet = preparedStatement.getGeneratedKeys();
+            resultSet.next();
+            int idCitta = resultSet.getInt(1);
             citta.setId(idCitta);
         } catch (SQLException e) {
             e.printStackTrace();

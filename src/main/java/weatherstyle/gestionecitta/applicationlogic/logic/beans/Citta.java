@@ -2,7 +2,7 @@ package weatherstyle.gestionecitta.applicationlogic.logic.beans;
 
 public class Citta {
 
-    private int id;
+    private Integer id;
     private String nome;
     private String lat;
     private String lon;
@@ -10,11 +10,11 @@ public class Citta {
     public Citta() {
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
