@@ -1,5 +1,6 @@
 package weatherstyle.gestionesuggerimentiia.applicationlogic.logic.algorithms;
 
+import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.CapoAbbigliamento;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Maglia;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Pantaloni;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Scarpe;
@@ -19,7 +20,7 @@ import java.io.IOException;
 import java.util.*;
 
 
-class RegressionTreeAlgorithm<T> implements ImplementorAlgorithm<T>{
+class RegressionTreeAlgorithm<T extends CapoAbbigliamento> implements ImplementorAlgorithm<T>{
 
     private final REPTree repTree;
     private final Instances fullDataset;

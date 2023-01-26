@@ -12,7 +12,7 @@ import weatherstyle.gestionemeteo.applicationlogic.logic.beans.MeteoDaily;
 import java.util.ArrayList;
 import java.util.List;
 
-class GeneticAlgorithm<T> implements ImplementorAlgorithm<T>{
+class GeneticAlgorithm<T extends CapoAbbigliamento> implements ImplementorAlgorithm<T>{
 
     private static final int populationSize = 10;
     private static final EvaluatorGA evaluator = new EvaluatorGA();

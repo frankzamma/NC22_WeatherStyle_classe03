@@ -14,8 +14,9 @@ public interface SuggerimentoLogicInterface {
 
     boolean salvaSuggerimento(Suggerimento suggerimento);
     List<Suggerimento> ottieniCronologiaSuggerimentiUtente(Integer idUtente);
-    public <T> Set<Set<CapoAbbigliamento>> ottieniSuggerimentiCapi(ImplementorAlgorithm<T> implementorAlgorithm,
-                                                                   Guardaroba guardaroba, MeteoDaily meteoDaily);
+    <T extends CapoAbbigliamento> List<T> ottieniSuggerimentiCapi(ImplementorAlgorithm<T> implementorAlgorithm,
+                                                                  List<T> capiAbbigliamento,
+                                                                  MeteoDaily meteoDaily);
     boolean salvaOutfit(Outfit outfit);
 
 }
