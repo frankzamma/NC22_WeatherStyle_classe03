@@ -12,7 +12,7 @@ import java.util.Set;
 public interface SuggerimentoLogicInterface {
 
     boolean salvaSuggerimento(Suggerimento suggerimento);
-    List<Suggerimento> ottieniSuggerimentiUtente(int idUtente);
+    List<Suggerimento> ottieniCronologiaSuggerimentiUtente(int idUtente);
     Set<Set<CapoAbbigliamento>> ottieniSuggerimentiCapi(Guardaroba guardaroba, MeteoDaily meteoDaily);
     boolean salvaOutfit(Outfit outfit);
     List<Suggerimento> ottieniOutfitDaSuggerimentoID(List<Integer> idSuggerimenti);

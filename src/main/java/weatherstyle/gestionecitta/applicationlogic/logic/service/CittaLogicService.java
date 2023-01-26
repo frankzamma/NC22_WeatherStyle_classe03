@@ -22,9 +22,6 @@ public class CittaLogicService implements CittaLogicInterface{
         if (citta == null)
             throw new IllegalArgumentException("Città non può essere null");
 
-        if (cittaDAO.doRetrieveCittaByLatLon(citta.getLat(), citta.getLon()))
-            return false;
-
         return cittaDAO.doSaveCitta(citta);
     }
 
@@ -35,7 +32,7 @@ public class CittaLogicService implements CittaLogicInterface{
 
         List<Citta> cittaList = new ArrayList<>();
 
-        for (Integer id: idSuggerimenti){
+        for (Integer id: idSuggerimenti) {
             Citta citta = cittaDAO.doRetrieveCittaBySuggerimentoID(id);
             cittaList.add(citta);
         }

@@ -11,6 +11,9 @@ public class CittaDAOImpl implements CittaDAOInterface{
     @Override
     public boolean doSaveCitta(Citta citta) {
 
+        if (doRetrieveCittaByLatLon(citta.getLat(), citta.getLon()))
+            return false;
+
         try (Connection connection = ConnectionPool.getConnection()) {
 
             PreparedStatement ps = connection.prepareStatement(
@@ -63,7 +66,7 @@ public class CittaDAOImpl implements CittaDAOInterface{
         return citta;
     }
 
-    public boolean doRetrieveCittaByLatLon(String lat, String lon){
+    private boolean doRetrieveCittaByLatLon(String lat, String lon) {
 
         try (Connection connection = ConnectionPool.getConnection()) {
 

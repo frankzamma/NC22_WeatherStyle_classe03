@@ -67,11 +67,16 @@ use weatherstyle;
         FOREIGN KEY (IDoutfit)
             REFERENCES Outfit(ID)
                 ON UPDATE CASCADE
-                ON DELETE CASCADE
+                ON DELETE CASCADE,
+        IDmeteo INT,
+        FOREIGN KEY (IDmeteo)
+            REFERENCES Meteo(ID)
+            ON UPDATE CASCADE
+            ON DELETE CASCADE
     );
 
     CREATE TABLE Meteo (
-        IDmeteo INT PRIMARY KEY AUTO_INCREMENT,
+        ID INT PRIMARY KEY AUTO_INCREMENT,
         temperatura INT NOT NULL,
         meteo VARCHAR (30) NOT NULL,
         stagione VARCHAR (20) NOT NULL
