@@ -3,19 +3,19 @@ drop database if exists weatherstyle;
 CREATE DATABASE weatherstyle;
 
 use weatherstyle;
-        CREATE TABLE Utente (
+
+    CREATE TABLE Utente (
             ID INT PRIMARY KEY AUTO_INCREMENT,
             nome VARCHAR(30) NOT NULL,
             cognome VARCHAR(30) NOT NULL,
             dataNascita DATE NOT NULL,
             email VARCHAR(254) NOT NULL,
             password VARCHAR (255) NOT NULL
-        );
+    );
 
 
     CREATE TABLE Guardaroba (
         ID INT PRIMARY KEY,
-        nome VARCHAR(30) NOT NULL,
         numeroCapi INT NOT NULL,
 
         FOREIGN KEY (ID) REFERENCES Utente(ID)
@@ -172,9 +172,11 @@ use weatherstyle;
 
     CREATE TABLE Evento (
         ID INT PRIMARY KEY AUTO_INCREMENT,
-        data DATE NOT NULL,
+        nome VARCHAR(40) NOT NULL,
+        dataOraEvento TIMESTAMP NOT NULL,
         luogo VARCHAR(60) NOT NULL,
-        obiettivo VARCHAR(250),
+        descrizione VARCHAR(255) NOT NULL,
+        altreInformazioni VARCHAR(255) NOT NULL,
         IDutente INT,
         FOREIGN KEY (IDutente)
             REFERENCES Utente(ID)
