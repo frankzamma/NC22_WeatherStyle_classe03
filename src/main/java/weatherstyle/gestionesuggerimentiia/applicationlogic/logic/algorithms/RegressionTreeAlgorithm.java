@@ -81,6 +81,9 @@ class RegressionTreeAlgorithm<T> implements ImplementorAlgorithm<T>{
             instance.setValue(2, ((Maglia) capoAbbigliamento).getLunghezzaManica());
             instance.setValue(0, ((Maglia) capoAbbigliamento).getMateriale());
             instance.setValue(3, ((Maglia)capoAbbigliamento).getStagione());
+            instance.setValue(4, meteoDaily.getMeteo());
+            instance.setValue(5, meteoDaily.getTemperatura());
+            instance.setValue(6, meteoDaily.getStagionePrevisione());
         }
 
         if (capoAbbigliamento.getClass() == Pantaloni.class) {
@@ -88,11 +91,10 @@ class RegressionTreeAlgorithm<T> implements ImplementorAlgorithm<T>{
             instance.setValue(2, ((Pantaloni) capoAbbigliamento).getLunghezza());
             instance.setValue(0, ((Pantaloni) capoAbbigliamento).getMateriale());
             instance.setValue(3, ((Pantaloni)capoAbbigliamento).getStagione());
+            instance.setValue(4, meteoDaily.getMeteo());
+            instance.setValue(5, meteoDaily.getTemperatura());
+            instance.setValue(6, meteoDaily.getStagionePrevisione());
         }
-
-        instance.setValue(4, meteoDaily.getMeteo());
-        instance.setValue(5, meteoDaily.getTemperatura());
-        instance.setValue(6, meteoDaily.getStagionePrevisione());
 
         if (capoAbbigliamento.getClass() == Scarpe.class){
             Scarpe scarpe = (Scarpe) capoAbbigliamento;
