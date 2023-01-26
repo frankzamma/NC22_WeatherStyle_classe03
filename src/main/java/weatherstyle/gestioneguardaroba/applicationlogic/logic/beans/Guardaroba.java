@@ -11,7 +11,6 @@ Ha un nome, ed è possibile anche tenere traccia di quanti capi contiene.
 
 public class Guardaroba {
         private int numeroCapi;
-        private String nome;
         private List<Maglia> maglie;
         private List<Pantaloni> pantaloni;
         private List<Scarpe> scarpe;
@@ -21,18 +20,6 @@ public class Guardaroba {
          crea le tre liste: maglie, pantaloni e scarpe.
          */
         public Guardaroba() {
-            numeroCapi = 0;
-            maglie = new ArrayList<>();
-            pantaloni = new ArrayList<>();
-            scarpe = new ArrayList<>();
-        }
-
-        /**
-         Metodo costruttore.
-         @param nome è il nome del guardaroba.
-         */
-        public Guardaroba(String nome) {
-            this.nome = nome;
             numeroCapi = 0;
             maglie = new ArrayList<>();
             pantaloni = new ArrayList<>();
@@ -53,20 +40,6 @@ public class Guardaroba {
             public void setNumeroCapi(int numeroCapi) {
                 this.numeroCapi = numeroCapi;
             }
-
-        /**
-         @return il nome del guardaroba.
-         */
-        public String getNome() {
-                return nome;
-        }
-
-        /**
-         @param nome setta il nome del guardaroba.
-         */
-        public void setNome(String nome) {
-                this.nome = nome;
-        }
 
         /**
         @return la lista di maglie presenti nel guardaroba.

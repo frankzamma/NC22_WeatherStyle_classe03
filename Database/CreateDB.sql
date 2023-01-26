@@ -15,7 +15,6 @@ use weatherstyle;
 
     CREATE TABLE Guardaroba (
         ID INT PRIMARY KEY,
-        nome VARCHAR(30) NOT NULL,
         numeroCapi INT NOT NULL,
 
         FOREIGN KEY (ID) REFERENCES Utente(ID)
