@@ -5,6 +5,7 @@ import weatherstyle.gestionecitta.applicationlogic.logic.beans.Citta;
 import weatherstyle.utils.ConnectionPool;
 
 import java.sql.*;
+import java.util.List;
 
 public class CittaDAOImpl implements CittaDAOInterface{
 
@@ -64,6 +65,16 @@ public class CittaDAOImpl implements CittaDAOInterface{
         }
 
         return citta;
+    }
+
+    @Override
+    public List<Citta> doRetrieveCittaByUtenteID(int idUtente) {
+        return null;
+    }
+
+    @Override
+    public boolean doSaveCittaUtente(int idUtente, Citta citta) {
+        return false;
     }
 
     private boolean doRetrieveCittaByLatLon(String lat, String lon) {
