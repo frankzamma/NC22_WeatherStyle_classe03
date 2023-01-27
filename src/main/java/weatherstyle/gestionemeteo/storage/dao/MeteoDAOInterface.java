@@ -5,4 +5,5 @@ import weatherstyle.gestionemeteo.applicationlogic.logic.beans.MeteoDaily;
 public interface MeteoDAOInterface {
 
     MeteoDaily doRetrieveMeteoBySuggerimentoID(int idSuggerimento);
+    boolean doSaveMeteo(MeteoDaily meteo);
 }
