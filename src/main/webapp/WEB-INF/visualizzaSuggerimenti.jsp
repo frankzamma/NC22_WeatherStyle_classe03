@@ -9,10 +9,10 @@
 <body>
     <%
         String algoritmoIA = (String) request.getAttribute("algoritmoIA");
-        MeteoInformation meteoInformation = (MeteoInformation) request.getAttribute("meteoInformation");
-        List<CapoAbbigliamento> maglieSuggerite = (List<CapoAbbigliamento>) request.getAttribute("maglieSuggerite");
-        List<CapoAbbigliamento> pantaloniSuggeriti = (List<CapoAbbigliamento>) request.getAttribute("pantaloniSuggeriti");
-        List<CapoAbbigliamento> scarpeSuggerite = (List<CapoAbbigliamento>) request.getAttribute("scarpeSuggerite");
+        MeteoInformationLegacy meteoInformationLegacy = (MeteoInformationLegacy) request.getAttribute("meteoInformation");
+        List<CapoAbbigliamentoLegacy> maglieSuggerite = (List<CapoAbbigliamentoLegacy>) request.getAttribute("maglieSuggerite");
+        List<CapoAbbigliamentoLegacy> pantaloniSuggeriti = (List<CapoAbbigliamentoLegacy>) request.getAttribute("pantaloniSuggeriti");
+        List<CapoAbbigliamentoLegacy> scarpeSuggerite = (List<CapoAbbigliamentoLegacy>) request.getAttribute("scarpeSuggerite");
     %>
     <%@include file="navbar.jsp"%>
     <div class="container">
@@ -28,9 +28,9 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><%=meteoInformation.getMeteo()%></td>
-                    <td><%=meteoInformation.getTemperaturaPercepita()%> gradi celsius</td>
-                    <td><%=meteoInformation.getStagionePrevisione()%></td>
+                    <td><%=meteoInformationLegacy.getMeteo()%></td>
+                    <td><%=meteoInformationLegacy.getTemperaturaPercepita()%> gradi celsius</td>
+                    <td><%=meteoInformationLegacy.getStagionePrevisione()%></td>
                     <%
                         if(algoritmoIA.equals("ga")){
                             %>
@@ -77,15 +77,15 @@
             <tbody>
             <%
                 int i = 0;
-                for(CapoAbbigliamento capo: maglieSuggerite){
-                    Maglia maglia = (Maglia) capo;
+                for(CapoAbbigliamentoLegacy capo: maglieSuggerite){
+                    MagliaLegacy magliaLegacy = (MagliaLegacy) capo;
                 %>
                     <tr>
                         <td><%=i%></td>
-                        <td><%=maglia.getMateriale()%></td>
-                        <td><%=maglia.getColore()%></td>
-                        <td><%=maglia.getLunghezzaManica()%></td>
-                        <td><%=maglia.getStagione()%></td>
+                        <td><%=magliaLegacy.getMateriale()%></td>
+                        <td><%=magliaLegacy.getColore()%></td>
+                        <td><%=magliaLegacy.getLunghezzaManica()%></td>
+                        <td><%=magliaLegacy.getStagione()%></td>
                         <%
                             if(punteggiMaglie != null){
                                 %>
@@ -129,8 +129,8 @@
             <tbody>
             <%
                 int i = 0;
-                for(CapoAbbigliamento capo: pantaloniSuggeriti){
-                    Pantaloni pantaloni = (Pantaloni) capo;
+                for(CapoAbbigliamentoLegacy capo: pantaloniSuggeriti){
+                    PantaloniLegacy pantaloni = (PantaloniLegacy) capo;
                 %>
                     <tr>
                         <td><%=i%></td>
@@ -182,8 +182,8 @@
             <tbody>
             <%
                 int i = 0;
-                for(CapoAbbigliamento capo: scarpeSuggerite){
-                    Scarpa scarpa = (Scarpa) capo;
+                for(CapoAbbigliamentoLegacy capo: scarpeSuggerite){
+                    ScarpaLegacy scarpa = (ScarpaLegacy) capo;
             %>
             <tr>
                 <td><%=i%></td>

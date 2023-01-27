@@ -1,13 +1,13 @@
 package Model;
 
-public class Maglia extends CapoAbbigliamento{
+public class MagliaLegacy extends CapoAbbigliamentoLegacy {
     private String lunghezzaManica;
     private String materiale;
 
-    public Maglia() {
+    public MagliaLegacy() {
     }
 
-    public Maglia(String materiale,String stagione,String colore,String lunghezzaManica) {
+    public MagliaLegacy(String materiale, String stagione, String colore, String lunghezzaManica) {
         super(stagione,colore);
         this.materiale = materiale;
         this.lunghezzaManica = lunghezzaManica;

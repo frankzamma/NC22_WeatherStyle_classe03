@@ -1,16 +1,16 @@
 package Model;
 
-public class Scarpa extends CapoAbbigliamento{
+public class ScarpaLegacy extends CapoAbbigliamentoLegacy {
 
     private String tipo;
     private Boolean antiscivolo;
     private Boolean impermeabile;
 
-    public Scarpa() {
+    public ScarpaLegacy() {
 
     }
 
-    public Scarpa(String stagione,String colore,String tipo,Boolean antiscivolo,Boolean impermeabile) {
+    public ScarpaLegacy(String stagione, String colore, String tipo, Boolean antiscivolo, Boolean impermeabile) {
         super(stagione,colore);
         this.tipo = tipo;
         this.antiscivolo = antiscivolo;

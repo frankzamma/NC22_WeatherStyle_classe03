@@ -1,9 +1,9 @@
 package Logics.machinelearning;
 
 
-import Model.MeteoInformation;
-import Model.Scarpa;
-import Model.ScoreCapoAbbigliamento;
+import Model.MeteoInformationLegacy;
+import Model.ScarpaLegacy;
+import Model.ScoreCapoAbbigliamentoLegacy;
 
 import java.util.List;
 
@@ -16,8 +16,8 @@ public class ShoesML {
                 new RegressionTreeWrapper(pathDataset,false,true,"ScarpeML");
     }
 
-    public List<ScoreCapoAbbigliamento> classifyIstances(List<Scarpa> list,MeteoInformation meteoInformation,boolean getBestThree) {
-        List<ScoreCapoAbbigliamento> l = treeWrapper.classifyInstances(list,meteoInformation);
+    public List<ScoreCapoAbbigliamentoLegacy> classifyIstances(List<ScarpaLegacy> list, MeteoInformationLegacy meteoInformation, boolean getBestThree) {
+        List<ScoreCapoAbbigliamentoLegacy> l = treeWrapper.classifyInstances(list,meteoInformation);
 
         if (getBestThree) {
             return treeWrapper.getBestThreeClothes(l);

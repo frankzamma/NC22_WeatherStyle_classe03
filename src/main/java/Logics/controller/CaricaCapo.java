@@ -1,9 +1,9 @@
 package Logics.controller;
 
-import Model.Guardaroba;
-import Model.Maglia;
-import Model.Pantaloni;
-import Model.Scarpa;
+import Model.GuardarobaLegacy;
+import Model.MagliaLegacy;
+import Model.PantaloniLegacy;
+import Model.ScarpaLegacy;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -22,7 +22,7 @@ public class CaricaCapo extends HttpServlet {
         HttpSession httpSession = request.getSession(false);
 
         if (httpSession != null) {
-            Guardaroba guardaroba = (Guardaroba) httpSession.getAttribute("guardaroba");
+            GuardarobaLegacy guardaroba = (GuardarobaLegacy) httpSession.getAttribute("guardaroba");
             String tipoCapo = request.getParameter("tipologia");
 
             if ("maglia".equals(tipoCapo)) {
@@ -31,7 +31,7 @@ public class CaricaCapo extends HttpServlet {
                 String manica = request.getParameter("manica");
                 String stagione = request.getParameter("stagione");
 
-                Maglia m = new Maglia(materiale,stagione,colore,manica);
+                MagliaLegacy m = new MagliaLegacy(materiale,stagione,colore,manica);
                 guardaroba.addCapoAbbigliamento(m);
             }
             if ("pantalone".equals(tipoCapo)) {
@@ -40,7 +40,7 @@ public class CaricaCapo extends HttpServlet {
                 String stagione = request.getParameter("stagione");
                 String lunghezza = request.getParameter("lungPantalone");
 
-                Pantaloni p = new Pantaloni(materiale,stagione,colore,lunghezza);
+                PantaloniLegacy p = new PantaloniLegacy(materiale,stagione,colore,lunghezza);
                 guardaroba.addCapoAbbigliamento(p);
             }
             if ("scarpe".equals(tipoCapo)) {
@@ -62,7 +62,7 @@ public class CaricaCapo extends HttpServlet {
                     imper = false;
                 }
 
-                Scarpa s = new Scarpa(stagione,colore,tipo,scivol,imper);
+                ScarpaLegacy s = new ScarpaLegacy(stagione,colore,tipo,scivol,imper);
                 guardaroba.addCapoAbbigliamento(s);
             }
             RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/visualizzaGuardaroba.jsp");

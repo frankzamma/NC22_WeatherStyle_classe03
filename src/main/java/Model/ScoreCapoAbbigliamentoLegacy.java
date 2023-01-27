@@ -1,20 +1,20 @@
 package Model;
 
-public class ScoreCapoAbbigliamento {
+public class ScoreCapoAbbigliamentoLegacy {
 
-    private CapoAbbigliamento capoAbbigliamento;
+    private CapoAbbigliamentoLegacy capoAbbigliamento;
     private Double punteggio;
 
-    public ScoreCapoAbbigliamento(CapoAbbigliamento capoAbbigliamento,Double punteggio) {
+    public ScoreCapoAbbigliamentoLegacy(CapoAbbigliamentoLegacy capoAbbigliamento, Double punteggio) {
         this.capoAbbigliamento = capoAbbigliamento;
         this.punteggio = punteggio;
     }
 
-    public CapoAbbigliamento getCapoAbbigliamento() {
+    public CapoAbbigliamentoLegacy getCapoAbbigliamento() {
         return capoAbbigliamento;
     }
 
-    public void setCapoAbbigliamento(CapoAbbigliamento capoAbbigliamento) {
+    public void setCapoAbbigliamento(CapoAbbigliamentoLegacy capoAbbigliamento) {
         this.capoAbbigliamento = capoAbbigliamento;
     }
 

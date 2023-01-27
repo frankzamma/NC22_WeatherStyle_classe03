@@ -1,14 +1,14 @@
 package Model;
 
-public class MeteoInformation {
+public class MeteoInformationLegacy {
     private double temperaturaPercepita;
     private String meteo;
     private String stagionePrevisione;
 
-    public MeteoInformation() {
+    public MeteoInformationLegacy() {
     }
 
-    public MeteoInformation(double temperaturaPercepita,String meteo,String stagionePrevisione) {
+    public MeteoInformationLegacy(double temperaturaPercepita, String meteo, String stagionePrevisione) {
         this.temperaturaPercepita = temperaturaPercepita;
         this.meteo = meteo;
         this.stagionePrevisione = stagionePrevisione;

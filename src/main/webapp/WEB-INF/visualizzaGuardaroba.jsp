@@ -10,10 +10,10 @@
     <%@include file="navbar.jsp"%>
     <div class="container">
         <%
-            Guardaroba guardaroba = (Guardaroba) session.getAttribute("guardaroba");
-            List<Maglia> listaMaglie = guardaroba.getMagliaList();
-            List<Pantaloni> listaPantaloni = guardaroba.getPantaloneList();
-            List<Scarpa> listaScarpe = guardaroba.getScarpaList();
+            GuardarobaLegacy guardarobaLegacy = (GuardarobaLegacy) session.getAttribute("guardaroba");
+            List<MagliaLegacy> listaMaglie = guardarobaLegacy.getMagliaList();
+            List<PantaloniLegacy> listaPantaloniLegacy = guardarobaLegacy.getPantaloneList();
+            List<ScarpaLegacy> listaScarpe = guardarobaLegacy.getScarpaList();
         %>
 
         <%
@@ -37,7 +37,7 @@
             <tbody>
             <%
                 int i = 1;
-                for(Maglia maglia: listaMaglie){ %>
+                for(MagliaLegacy maglia: listaMaglie){ %>
             <tr>
                 <td><%=i%></td>
                 <td><%=maglia.getMateriale()%></td>
@@ -51,7 +51,7 @@
         </table>
         <% }
 
-            if(listaPantaloni.size() <= 0) { %>
+            if(listaPantaloniLegacy.size() <= 0) { %>
         <br>
         <h3 class="display-6">Nessun pantaloni presente nel guardaroba.</h3>
         <% }
@@ -71,7 +71,7 @@
             <tbody>
             <%
                 int i = 1;
-                for(Pantaloni pantaloni : listaPantaloni){ %>
+                for(PantaloniLegacy pantaloni : listaPantaloniLegacy){ %>
             <tr>
                 <td><%=i%></td>
                 <td><%=pantaloni.getMateriale()%></td>
@@ -106,24 +106,24 @@
             <tbody>
             <%
                 int i = 1;
-                for(Scarpa scarpa: listaScarpe){ %>
+                for(ScarpaLegacy scarpaLegacy : listaScarpe){ %>
             <tr>
                 <td><%=i%></td>
-                <td><%=scarpa.getTipo()%></td>
-                <% if(scarpa.getAntiscivolo()){ %>
+                <td><%=scarpaLegacy.getTipo()%></td>
+                <% if(scarpaLegacy.getAntiscivolo()){ %>
                 <td>Si</td>
                 <% }
                 else { %>
                 <td>No</td>
                 <% }
-                    if(scarpa.getImpermeabile()){ %>
+                    if(scarpaLegacy.getImpermeabile()){ %>
                 <td>Si</td>
                 <% }
                 else { %>
                 <td>No</td>
                 <% } %>
-                <td><%=scarpa.getColore()%></td>
-                <td><%=scarpa.getStagione()%></td>
+                <td><%=scarpaLegacy.getColore()%></td>
+                <td><%=scarpaLegacy.getStagione()%></td>
             </tr>
             <%  i++;
             } %>

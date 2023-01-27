@@ -12,5 +12,6 @@ public interface RichiestaPromozioneDAOInterface {
     boolean doUpdateStatoById(RichiestaPromozione richiestaPromozione,String nuovoStato,Admin admin);
     List<RichiestaPromozione> doRetrieveRichiestaPromozioneByStato(String stato);
     RichiestaPromozione doRetrieveByIdUtente(int idUtente);
+    RichiestaPromozione doRetrieveById(int idRichiestaPromozione);
 
 }

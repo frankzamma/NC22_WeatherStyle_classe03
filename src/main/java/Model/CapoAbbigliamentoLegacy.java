@@ -1,17 +1,17 @@
 package Model;
 
-public abstract class CapoAbbigliamento {
+public abstract class CapoAbbigliamentoLegacy {
     private String stagione, colore;
 
-    public CapoAbbigliamento() {
+    public CapoAbbigliamentoLegacy() {
     }
 
-    public CapoAbbigliamento(String stagione,String colore) {
+    public CapoAbbigliamentoLegacy(String stagione, String colore) {
         this.stagione = stagione;
         this.colore = colore;
     }
 
-    public CapoAbbigliamento(String stagione) {
+    public CapoAbbigliamentoLegacy(String stagione) {
         this.stagione = stagione;
     }
 

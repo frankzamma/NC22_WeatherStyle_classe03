@@ -1,9 +1,13 @@
-package Logics.controller;
+package weatherstyle.utils;
 
-import Model.Guardaroba;
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
+import Model.GuardarobaLegacy;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
@@ -12,19 +16,6 @@ public class IndexServlet extends HttpServlet {
 
     @Override
     public void doGet(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
-
-        // creo la sessione utente
-        HttpSession httpSession = request.getSession();
-
-        Guardaroba guardaroba = (Guardaroba) httpSession.getAttribute("guardaroba");
-
-       if (guardaroba == null) {
-           guardaroba = (Guardaroba) this.getServletContext().getAttribute("guardaroba_context");
-           // copio nella sessione utente il guardaroba
-           httpSession.setAttribute("guardaroba",guardaroba);
-       }
-
-
         // rimanda alla home
         RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/index.jsp");
         dispatcher.forward(request,response);
