@@ -4,8 +4,13 @@ public class MeteoDaily {
 
     private Integer id;
     private String meteo;
-    private double temperatura;
+    private double temperaturaPercepitaMedia;
     private String stagionePrevisione;
+
+    private int weatherCode;
+    private double temperaturaPercepitaMinima;
+    private double temperaturaPercepitaMassima;
+
 
     public MeteoDaily() {
     }
@@ -26,12 +31,40 @@ public class MeteoDaily {
         this.meteo = meteo;
     }
 
-    public double getTemperatura() {
-        return temperatura;
+    public String getMeteo() {
+        return meteo;
     }
 
-    public void setTemperatura(double temperatura) {
-        this.temperatura = temperatura;
+    public int getWeatherCode() {
+        return weatherCode;
+    }
+
+    public void setWeatherCode(int weatherCode) {
+        this.weatherCode = weatherCode;
+    }
+
+    public double getTemperaturaPercepitaMinima() {
+        return temperaturaPercepitaMinima;
+    }
+
+    public void setTemperaturaPercepitaMinima(double temperaturaPercepitaMinima) {
+        this.temperaturaPercepitaMinima = temperaturaPercepitaMinima;
+    }
+
+    public double getTemperaturaPercepitaMassima() {
+        return temperaturaPercepitaMassima;
+    }
+
+    public void setTemperaturaPercepitaMassima(double temperaturaPercepitaMassima) {
+        this.temperaturaPercepitaMassima = temperaturaPercepitaMassima;
+    }
+
+    public double getTemperaturaPercepitaMedia() {
+        return temperaturaPercepitaMedia;
+    }
+
+    public void setTemperaturaPercepitaMedia(double temperaturaPercepitaMedia) {
+        this.temperaturaPercepitaMedia = temperaturaPercepitaMedia;
     }
 
     public String getStagionePrevisione() {
@@ -42,5 +75,16 @@ public class MeteoDaily {
         this.stagionePrevisione = stagionePrevisione;
     }
 
-
+    @Override
+    public String toString() {
+        return "MeteoDaily{" +
+                "id=" + id +
+                ", meteo='" + meteo + '\'' +
+                ", temperaturaPercepitaMedia=" + temperaturaPercepitaMedia +
+                ", stagionePrevisione='" + stagionePrevisione + '\'' +
+                ", weatherCode=" + weatherCode +
+                ", temperaturaPercepitaMinima=" + temperaturaPercepitaMinima +
+                ", temperaturaPercepitaMassima=" + temperaturaPercepitaMassima +
+                '}';
+    }
 }

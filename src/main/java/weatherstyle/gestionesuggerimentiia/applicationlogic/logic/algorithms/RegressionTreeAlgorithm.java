@@ -103,8 +103,8 @@ class RegressionTreeAlgorithm<T extends CapoAbbigliamento> implements Implemento
             instance.setValue(2, ((Maglia) capoAbbigliamento).getLunghezzaManica());
             instance.setValue(0, ((Maglia) capoAbbigliamento).getMateriale());
             instance.setValue(3, ((Maglia) capoAbbigliamento).getStagione());
-            instance.setValue(4, meteoDaily.getMeteo());
-            instance.setValue(5, meteoDaily.getTemperatura());
+            instance.setValue(4, meteoDaily.getMeteoStringMin());
+            instance.setValue(5, meteoDaily.getTemperaturaPercepitaMedia());
             instance.setValue(6, meteoDaily.getStagionePrevisione());
         }
 
@@ -113,8 +113,8 @@ class RegressionTreeAlgorithm<T extends CapoAbbigliamento> implements Implemento
             instance.setValue(2,((Pantaloni) capoAbbigliamento).getLunghezza());
             instance.setValue(0,((Pantaloni) capoAbbigliamento).getMateriale());
             instance.setValue(3,((Pantaloni) capoAbbigliamento).getStagione());
-            instance.setValue(4,meteoDaily.getMeteo());
-            instance.setValue(5,meteoDaily.getTemperatura());
+            instance.setValue(4,meteoDaily.getMeteoStringMin());
+            instance.setValue(5,meteoDaily.getTemperaturaPercepitaMedia());
             instance.setValue(6,meteoDaily.getStagionePrevisione());
         }
 
@@ -125,8 +125,8 @@ class RegressionTreeAlgorithm<T extends CapoAbbigliamento> implements Implemento
             instance.setValue(2,scarpe.isImpermeabile() ? 'y' : 'n');
             instance.setValue(3,scarpe.getColore().toLowerCase());
             instance.setValue(4,scarpe.getStagione());
-            instance.setValue(5,meteoDaily.getMeteo());
-            instance.setValue(6,meteoDaily.getTemperatura());
+            instance.setValue(5,meteoDaily.getMeteoStringMin());
+            instance.setValue(6,meteoDaily.getTemperaturaPercepitaMedia());
             instance.setValue(7,meteoDaily.getStagionePrevisione());
         }
 

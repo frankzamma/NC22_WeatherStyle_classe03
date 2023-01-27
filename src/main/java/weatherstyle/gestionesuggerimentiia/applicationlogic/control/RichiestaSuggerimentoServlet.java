@@ -63,7 +63,7 @@ public class RichiestaSuggerimentoServlet extends HttpServlet {
             MeteoDaily meteoDaily = new MeteoDaily();
             meteoDaily.setMeteo(meteo);
             meteoDaily.setStagionePrevisione(stagionePrevisione);
-            meteoDaily.setTemperatura(temperaturaPercepita);
+            meteoDaily.setTemperaturaPercepitaMedia(temperaturaPercepita);
 
             //Restiutisce la sessione, se non c'è allora non la crea
             HttpSession session = request.getSession(false);
