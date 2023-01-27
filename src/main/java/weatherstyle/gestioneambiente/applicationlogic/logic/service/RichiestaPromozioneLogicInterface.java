@@ -9,8 +9,9 @@ public interface RichiestaPromozioneLogicInterface {
 
     RichiestaPromozione ottieniRichiestaPromozionePerIdUtente(int idUtente);
     boolean salvaRichiestaPromozione(RichiestaPromozione richiestaPromozione);
-    List<RichiestaPromozione> ottieniListaRichiestePromozioni();
-    List<RichiestaPromozione> ottieniListaRichiestePromozioniPerStato(String stato);
-    boolean aggiornaStatoRichiestaPromozionePerId(RichiestaPromozione richiestaPromozione,String nuovoStato,Admin admin);
+    List<RichiestaPromozione> ottieniListaRichiestePromozione();
+    List<RichiestaPromozione> ottieniListaRichiestePromozionePerStato(String stato);
+    boolean aggiornaStatoRichiestaPromozione(RichiestaPromozione richiestaPromozione,String nuovoStato,Admin admin);
+    RichiestaPromozione ottieniRichiestaPromozionePerId(int idRichiestaPromozione);
 
 }
