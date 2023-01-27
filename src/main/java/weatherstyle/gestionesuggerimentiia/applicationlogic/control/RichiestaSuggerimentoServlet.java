@@ -23,6 +23,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * classe che raccoglie tutte le informazioni necessarie per fornire suggerimenti all'utente
+ */
 @WebServlet(name = "RichiestaSuggerimentoServlet",value = "/RichiestaSuggerimentoServlet")
 public class RichiestaSuggerimentoServlet extends HttpServlet {
 
