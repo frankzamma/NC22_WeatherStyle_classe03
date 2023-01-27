@@ -6,14 +6,45 @@ import weatherstyle.gestioneutenti.applicationlogic.logic.beans.Utente;
 
 import java.sql.Date;
 
+/**
+ * @author Raffaele Aurucci
+ * classe che rappresenta il suggerimento dato dal sistema all'utente
+ */
 public class Suggerimento {
 
+    /**
+     * id suggerimento
+     */
     private int id;
+
+    /**
+     * data del suggerimento
+     */
     private Date date;
+
+    /**
+     * valutazione data dall'utente all'outfit. NB: in questa versione non è stato gestito il feedback dell'utente
+     */
     private int valutazione;
+
+    /**
+     * utente a cui fa riferimento il suggerimento
+     */
     private Utente utente;
+
+    /**
+     * citta a cui fa riferimento il suggerimento
+     */
     private Citta citta;
+
+    /**
+     * outfit a cui fa riferimento il suggerimento
+     */
     private Outfit outfit;
+
+    /**
+     * informazioni meteorologiche a cui fa riferimento il suggerimento
+     */
     private MeteoDaily meteoDaily;
 
     public Suggerimento() {

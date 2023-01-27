@@ -10,7 +10,11 @@ import weatherstyle.gestionesuggerimentiia.storage.dao.SuggerimentoDAOInterface;
 
 import java.util.List;
 
-public class SuggerimentoLogicService implements SuggerimentoLogicInterface{
+/**
+ * @author Raffaele Aurucci
+ * classe che definisce tutti i servizi offerti alle servlet in merito ai Suggerimenti
+ */
+public class SuggerimentoLogicService implements SuggerimentoLogicInterface {
 
     private final SuggerimentoDAOInterface suggerimentoDAO;
     private final OutfitDAOInterface outfitDAO;
@@ -22,11 +26,8 @@ public class SuggerimentoLogicService implements SuggerimentoLogicInterface{
 
     /**
      * @param suggerimento il suggerimento che si vuole salvare nel DB
-     * @throws IllegalArgumentException
-     * if (suggerimento == null || (suggerimento.getUtente().getId() == null
-     *          || suggerimento.getCitta().getId() == null
-     *          || suggerimento.getOutfit().getId() == null
-     *          || suggerimento.getMeteoDaily().getId() == null))
+     * @throws IllegalArgumentException se suggerimento è null oppure non ha settato tutti gli id degli elementi al suo
+     * interno
      * @return true se è stato possibile salvare il suggerimento, altrimenti false
      */
     @Override
@@ -44,11 +45,8 @@ public class SuggerimentoLogicService implements SuggerimentoLogicInterface{
     }
 
     /**
-     *
      * @param idUtente di cui si vuole ottenere i suggerimenti
-     * @pre idUtente != null
-     * @post foreach suggerimento s : list --> s.getCitta() != null && s.getOutfit() != null
-     *                                              && s.getMeteoDaily() != null
+     * @throws IllegalArgumentException se idUtente è null
      * @return lista di suggerimenti
      */
     @Override
@@ -59,7 +57,6 @@ public class SuggerimentoLogicService implements SuggerimentoLogicInterface{
     }
 
     /**
-     *
      * @param implementorAlgorithm istanza ottenuta dalla servlet mediante AbstractAlgorithm
      * @param capiAbbigliamento lista di capi d'abbigliamento
      * @param meteoDaily informazioni meteorologiche
@@ -77,12 +74,8 @@ public class SuggerimentoLogicService implements SuggerimentoLogicInterface{
     }
 
     /**
-     *
-     * @param outfit che si vuole salvare nel DB
-     * @throws IllegalArgumentException
-     * if (outfit == null || (outfit.getMaglia() == null
-     *          || outfit.getPantaloni() == null
-     *          || outfit.getScarpe() == null))
+     * @param outfit outfit che si vuole salvare nel DB
+     * @throws IllegalArgumentException se outfit è null oppure se non contiene maglia, pantaloni e scarpe
      * @return true se è stato possibile salvare l'outfit, altrimenti false
      */
     @Override

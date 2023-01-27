@@ -1,11 +1,31 @@
 package weatherstyle.gestionecitta.applicationlogic.logic.beans;
 
+/**
+ * @author Raffaele Aurucci
+ * citta che l'utente salva tra i preferiti oppure di cui ha ricevuto un suggerimento
+ */
 public class Citta {
 
+    /**
+     * id citta
+     */
     private Integer id;
+
+    /**
+     * nome citta
+     */
     private String nome;
+
+    /**
+     * latitudine
+     */
     private String lat;
+
+    /**
+     * longitudine
+     */
     private String lon;
+
 
     public Citta() {
     }

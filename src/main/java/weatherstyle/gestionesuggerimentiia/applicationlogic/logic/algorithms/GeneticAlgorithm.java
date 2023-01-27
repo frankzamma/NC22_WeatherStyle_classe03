@@ -12,6 +12,14 @@ import weatherstyle.gestionemeteo.applicationlogic.logic.beans.MeteoDaily;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Raffaele Aurucci, Angelo Palmieri, Annalaura Miglino, Francesco Giuseppe Zammarelli
+ * classe che permette di fare il setup di un algoritmo genetico, lavora su una singola categoria di capi
+ * d'abbigliamento per volta. Se si vogliono suggerimenti per diverse categorie è necessario istanziare una classe
+ * per ogni categoria.
+ * @param <T> tipo della categoria di capo d'abbigliamento, al momento è possibile lavorare solo su Maglie, Pantaloni e
+ * Scarpe.
+ */
 class GeneticAlgorithm<T extends CapoAbbigliamento> implements ImplementorAlgorithm<T>{
 
     private static final int populationSize = 10;
@@ -20,7 +28,7 @@ class GeneticAlgorithm<T extends CapoAbbigliamento> implements ImplementorAlgori
     private MeteoDaily meteoDaily;
 
     /**
-     *
+     * metodo che ritorna i tre capi d'abbigliamento migliori mediante l'ausilio della ricerca con algoritmo genetico
      * @param capoAbbigliamentoList lista di capi d'abbigliamento da cui si vogliono ottenere i tre migliori
      * @param meteoDaily informazioni meteo
      * @return lista dei tre capi d'abbigliamento migliori
@@ -84,7 +92,7 @@ class GeneticAlgorithm<T extends CapoAbbigliamento> implements ImplementorAlgori
     }
 
     /**
-     *
+     * rappresenta la funzione di fitness
      * @param genotype individuo passato in input dall'algoritmo genetico
      * @return il punteggio rispetto all'individuo
      */

@@ -19,12 +19,21 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
-
+/**
+ * @author Raffaele Aurucci, Angelo Palmieri, Annalaura Miglino, Francesco Giuseppe Zammarelli
+ * classe che addestra un modello di machine learning attraverso l'utilizzo dell'algoritmo RepTree il quale realizza un
+ * albero di regressione.
+ * @param <T> tipo della categoria di capo d'abbigliamento, al momento è possibile lavorare solo su Maglie, Pantaloni e
+ * Scarpe.
+ */
 class RegressionTreeAlgorithm<T extends CapoAbbigliamento> implements ImplementorAlgorithm<T>{
 
     private final REPTree repTree;
     private final Instances fullDataset;
 
+    /**
+     * @param pathDatasetFile path del file csv dove sono presenti i dati di training
+     */
     public RegressionTreeAlgorithm(String pathDatasetFile) {
         this.repTree = new REPTree();
 
@@ -50,6 +59,10 @@ class RegressionTreeAlgorithm<T extends CapoAbbigliamento> implements Implemento
         }
     }
 
+    /**
+     * addestra il modello di machine learning valutandone prestazioni attraverso la ten folds cross validation
+     * @throws Exception se non è stato possibile effettuare la validazione
+     */
     private void testModelWithTenFoldsCrossValidation() throws Exception {
 
         // applichiamo 10 folds cross validation
@@ -64,14 +77,22 @@ class RegressionTreeAlgorithm<T extends CapoAbbigliamento> implements Implemento
         repTree.buildClassifier(fullDataset);
     }
 
-    // il filtro si occuperà di ponderare le istanze del dataset sia che vi siano variabili numeriche che nominali
-    // in modo che abbiano lo stesso peso, facendo undersampling e oversampling
+    /**
+     * filtro si occuperà di ponderare le istanze del dataset sia che vi siano variabili numeriche che nominali
+     * in modo che abbiano lo stesso peso, facendo undersampling e oversampling
+     */
     private Filter createClassBalancer(Instances trainingSet) throws Exception {
         ClassBalancer classBalancer = new ClassBalancer();
         classBalancer.setInputFormat(trainingSet);
         return classBalancer;
     }
 
+    /**
+     * metodo che stipola il punteggio di una istanza del tipo della classe
+     * @param capoAbbigliamento un capo d'abbigliamento del tipo della classe
+     * @param meteoDaily informazioni meteorologiche
+     * @return un oggetto che incapsula il capo d'abbigliamento con il relativo punteggio
+     */
     private ScoreCapoAbbigliamento classifyInstance(T capoAbbigliamento, MeteoDaily meteoDaily) {
 
         Instance instance = new DenseInstance(capoAbbigliamento.getClass() != Scarpe.class ? 7 : 8);
@@ -81,7 +102,7 @@ class RegressionTreeAlgorithm<T extends CapoAbbigliamento> implements Implemento
             instance.setValue(1, ((Maglia) capoAbbigliamento).getColore());
             instance.setValue(2, ((Maglia) capoAbbigliamento).getLunghezzaManica());
             instance.setValue(0, ((Maglia) capoAbbigliamento).getMateriale());
-            instance.setValue(3, ((Maglia)capoAbbigliamento).getStagione());
+            instance.setValue(3, ((Maglia) capoAbbigliamento).getStagione());
             instance.setValue(4, meteoDaily.getMeteo());
             instance.setValue(5, meteoDaily.getTemperatura());
             instance.setValue(6, meteoDaily.getStagionePrevisione());
@@ -91,7 +112,7 @@ class RegressionTreeAlgorithm<T extends CapoAbbigliamento> implements Implemento
             instance.setValue(1, ((Pantaloni) capoAbbigliamento).getColore());
             instance.setValue(2, ((Pantaloni) capoAbbigliamento).getLunghezza());
             instance.setValue(0, ((Pantaloni) capoAbbigliamento).getMateriale());
-            instance.setValue(3, ((Pantaloni)capoAbbigliamento).getStagione());
+            instance.setValue(3, ((Pantaloni) capoAbbigliamento).getStagione());
             instance.setValue(4, meteoDaily.getMeteo());
             instance.setValue(5, meteoDaily.getTemperatura());
             instance.setValue(6, meteoDaily.getStagionePrevisione());
@@ -120,6 +141,12 @@ class RegressionTreeAlgorithm<T extends CapoAbbigliamento> implements Implemento
         return scoreCapoAbbigliamento;
     }
 
+    /**
+     * metodo che restitusice una lista dei tre capi migliori rispetto alla lista dei capi della categoria della classe
+     * @param capoAbbigliamentoList lista di capi della categoria della classe
+     * @param meteoDaily informazioni meteorologiche
+     * @return lista dei tre capi migliori del tipo della classe
+     */
     @Override
     public List<T> getBestThreeCapoAbbigliamento(List<T> capoAbbigliamentoList, MeteoDaily meteoDaily) {
 
@@ -147,6 +174,9 @@ class RegressionTreeAlgorithm<T extends CapoAbbigliamento> implements Implemento
         return bestList;
     }
 
+    /**
+     * classe privata che incapsula un capo d'abbigliamento del tipo della classe e il punteggio ottenuto
+     */
     private class ScoreCapoAbbigliamento {
 
         private T capoAbbigliamento;

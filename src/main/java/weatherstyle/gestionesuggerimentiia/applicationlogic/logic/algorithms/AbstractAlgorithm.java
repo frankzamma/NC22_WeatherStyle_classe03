@@ -5,8 +5,11 @@ import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.CapoAbbiglia
 import java.io.File;
 
 /**
+ * @author Raffaele Aurucci
  * classe che fa da ponte alle classi che implementano gli algoritmi di intelligenza artificiale,
- * mediante questa è possibile ottenere le istanze delle due implementazioni realizzate
+ * mediante questa è possibile ottenere le istanze delle due implementazioni realizzate.
+ * @param <T> tipo della categoria di capo d'abbigliamento, al momento è possibile lavorare solo su Maglie, Pantaloni e
+ * Scarpe.
  */
 public class AbstractAlgorithm<T extends CapoAbbigliamento> {
 
@@ -50,7 +53,7 @@ public class AbstractAlgorithm<T extends CapoAbbigliamento> {
     }
 
     /**
-     * @return un modello di machine learning addestrato del tipo della classe istanziata
+     * @return un modello di machine learning addestrato sul tipo della classe istanziata
      */
     public ImplementorAlgorithm<T> getImplementorML(){
         String pathDataset = "";

@@ -4,12 +4,35 @@ import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Maglia;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Pantaloni;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Scarpe;
 
+/**
+ * @author Raffaele Aurucci
+ * classe che rappresenta un outfit costruito da un utente dopo aver ottenuto i suggerimenti dal sistema
+ */
 public class Outfit {
 
+    /**
+     * id outfit
+     */
     private Integer id;
+
+    /**
+     * nome outfit dato dall'utente
+     */
     private String nome;
+
+    /**
+     * maglia scelta dall'utente
+     */
     private Maglia maglia;
+
+    /**
+     * pantaloni scelti dall'utente
+     */
     private Pantaloni pantaloni;
+
+    /**
+     * scarpe scelte dall'utente
+     */
     private Scarpe scarpe;
 
     public Outfit() {

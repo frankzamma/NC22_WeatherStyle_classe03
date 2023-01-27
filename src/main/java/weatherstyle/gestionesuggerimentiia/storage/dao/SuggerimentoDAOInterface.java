@@ -4,6 +4,10 @@ import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.beans.Suggerim
 
 import java.util.List;
 
+/**
+* @author Raffaele Aurucci
+* interfaccia che definisce i metodi che deve avere SuggerimentoDAO
+*/
 public interface SuggerimentoDAOInterface {
 
     boolean doSaveSuggerimento(Suggerimento suggerimento);

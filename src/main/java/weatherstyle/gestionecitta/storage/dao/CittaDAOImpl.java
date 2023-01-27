@@ -1,14 +1,24 @@
 package weatherstyle.gestionecitta.storage.dao;
 
-import com.sun.xml.bind.v2.TODO;
 import weatherstyle.gestionecitta.applicationlogic.logic.beans.Citta;
 import weatherstyle.utils.ConnectionPool;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Raffaele Aurucci
+ * classe che si interfaccia al DB e lavora sulle tabelle in merito alle Citta, in particolare sulle tabelle Citta e
+ * Salvare
+ */
 public class CittaDAOImpl implements CittaDAOInterface{
 
+    /**
+     * salva citta nel DB e dopodichè riempie l'id dell'oggetto passato con la chiave restituita dal DB
+     * @param citta citta da salvare
+     * @return true se è stato possibile salvare la citta, false altrimenti
+     */
     @Override
     public boolean doSaveCitta(Citta citta) {
 
@@ -39,7 +49,11 @@ public class CittaDAOImpl implements CittaDAOInterface{
         return true;
     }
 
-    //TODO da testare ancora
+    /**
+     * recupera una citta nel DB rispetto ad un determinato suggerimento
+     * @param idSuggerimento id del suggerimento
+     * @return citta con tutti i campi settati
+     */
     @Override
     public Citta doRetrieveCittaBySuggerimentoID(int idSuggerimento) {
         Citta citta = new Citta();
@@ -48,7 +62,7 @@ public class CittaDAOImpl implements CittaDAOInterface{
 
             PreparedStatement preparedStatement = connection.prepareStatement(
                     "SELECT ID, nome, latitudine, longitudine " +
-                            "FROM Citta c join Suggerimento s on s.IDCitta = c.ID " +
+                            "FROM Citta c join Suggerimento s on s.IDcitta = c.ID " +
                             "where s.IDCitta=?");
             preparedStatement.setInt(1, idSuggerimento);
 
@@ -67,14 +81,59 @@ public class CittaDAOImpl implements CittaDAOInterface{
         return citta;
     }
 
-    @Override
-    public List<Citta> doRetrieveCittaByUtenteID(int idUtente) {
-        return null;
+    public List<Citta> doRetrieveCittaPreferiteByUtenteID(int idUtente) {
+
+        List<Citta> cittaList = new ArrayList<>();
+
+        try (Connection connection = ConnectionPool.getConnection()) {
+
+            PreparedStatement preparedStatement = connection.prepareStatement(
+                    "SELECT c.ID, nome, latitudine, longitudine " +
+                            "FROM Citta c join Salvare s on s.IDcitta = c.ID " +
+                            "where s.IDutente=?");
+            preparedStatement.setInt(1, idUtente);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()){
+                Citta citta = new Citta();
+                citta.setId(resultSet.getInt("ID"));
+                citta.setNome(resultSet.getString("nome"));
+                citta.setLat(resultSet.getString("latitudine"));
+                citta.setLon(resultSet.getString("longitudine"));
+                cittaList.add(citta);
+            }
+
+        } catch (SQLException sql) {
+            throw new RuntimeException();
+        }
+
+        return cittaList;
     }
 
     @Override
-    public boolean doSaveCittaUtente(int idUtente, Citta citta) {
-        return false;
+    public boolean doSaveCittaByUtenteID(int idUtente, Citta citta) {
+
+        try (Connection connection = ConnectionPool.getConnection()) {
+
+            PreparedStatement preparedStatement = connection.prepareStatement(
+                    "INSERT INTO Salvare (IDutente, IDcitta) VALUES(?,?)");
+            preparedStatement.setInt(1, idUtente);
+            preparedStatement.setInt(2, citta.getId());
+
+            if (preparedStatement.executeUpdate() != 1) {
+                return false;
+            }
+
+            ResultSet resultSet = preparedStatement.getGeneratedKeys();
+            resultSet.next();
+            int idCitta = resultSet.getInt(1);
+            citta.setId(idCitta);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return true;
     }
 
     private boolean doRetrieveCittaByLatLon(String lat, String lon) {

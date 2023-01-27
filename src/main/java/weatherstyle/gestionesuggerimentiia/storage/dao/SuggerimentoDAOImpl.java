@@ -1,12 +1,9 @@
 package weatherstyle.gestionesuggerimentiia.storage.dao;
 
-import weatherstyle.gestionecitta.applicationlogic.logic.beans.Citta;
 import weatherstyle.gestionecitta.storage.dao.CittaDAOImpl;
 import weatherstyle.gestionecitta.storage.dao.CittaDAOInterface;
-import weatherstyle.gestionemeteo.applicationlogic.logic.beans.MeteoDaily;
 import weatherstyle.gestionemeteo.storage.dao.MeteoDAOImpl;
 import weatherstyle.gestionemeteo.storage.dao.MeteoDAOInterface;
-import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.beans.Outfit;
 import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.beans.Suggerimento;
 import weatherstyle.utils.ConnectionPool;
 
@@ -17,12 +14,33 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Raffaele Aurucci
+ * classe che si interfaccia al DB e lavora sulle tabelle in merito al Suggerimento, in particolare sulla tabella
+ * Suggerimento
+ */
 public class SuggerimentoDAOImpl implements SuggerimentoDAOInterface{
 
+    /**
+     * usa cittaDAO per recuperare la città relativa a un suggerimento
+     */
     private final CittaDAOInterface cittaDAO = new CittaDAOImpl();
+
+    /**
+     * usa meteoDAO per recuperare il meteo relativo a un suggerimento
+     */
     private final MeteoDAOInterface meteoDAO = new MeteoDAOImpl();
+
+    /**
+     * usa outfitDAO per recuperare un outfit rispetto al suggerimento
+     */
     private final OutfitDAOInterface outfitDAO = new OutfitDAOImpl();
 
+    /**
+     * salva un suggerimento nel DB, dopodichè riempie l'oggetto con la chiave restituita dal DB
+     * @param suggerimento che si vuole salvare
+     * @return true se è stato possibile salvare, false altrimenti
+     */
     @Override
     public boolean doSaveSuggerimento(Suggerimento suggerimento) {
 
@@ -52,6 +70,11 @@ public class SuggerimentoDAOImpl implements SuggerimentoDAOInterface{
         return true;
     }
 
+    /**
+     * permette di recuperare la cronologia completa dei suggerimenti dell'utente
+     * @param utenteID id dell'utente di cui si vogliono i suggerimenti
+     * @return una lista di suggerimenti con tutti i campi settati
+     */
     @Override
     public List<Suggerimento> doRetrieveCronologiaSuggerimentiByUtenteID(int utenteID) {
 

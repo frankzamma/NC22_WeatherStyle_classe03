@@ -118,7 +118,7 @@ public class UtenteDAOImpl implements UtenteDAOInterface {
         u.setPassword(password);
 
         CittaDAOImpl cittaDAO =  new CittaDAOImpl();
-        List<Citta> citta =  cittaDAO.doRetrieveCittaByUtenteID(id);
+        List<Citta> citta =  cittaDAO.doRetrieveCittaPreferiteByUtenteID(id);
 
         u.setCitta(citta);
         //TODO aggiungere setGuardaroba

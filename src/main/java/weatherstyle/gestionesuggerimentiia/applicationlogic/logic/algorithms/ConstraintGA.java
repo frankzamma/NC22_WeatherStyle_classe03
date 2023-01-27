@@ -10,10 +10,15 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * @author Raffaele Aurucci, Angelo Palmieri, Annalaura Miglino, Francesco Giuseppe Zammarelli
+ * classe che definisce i metodi per i vincoli degli individui
+ */
 class ConstraintGA implements Constraint<IntegerGene, Integer> {
 
     /**
      * Metodo che viene chiamato per testare se i nuovi individui rispettano il vincolo
+     * @param phenotype testa il fenotipo di una generica iterazione
      **/
     @Override
     public boolean test(Phenotype<IntegerGene, Integer> phenotype) {
@@ -28,10 +33,12 @@ class ConstraintGA implements Constraint<IntegerGene, Integer> {
     }
 
     /**
-    *   Meteodo che viene utilizzato per riparare gli individui che non rispettano il vincolo
+     * Meteodo che viene utilizzato per riparare gli individui che non rispettano il vincolo
+     * @param phenotype fenotipo di una generica iterazione
+     * @param numberGeneration numero della generazione a cui appartiene l'individuo
     **/
     @Override
-    public Phenotype<IntegerGene, Integer> repair(Phenotype<IntegerGene, Integer> phenotype, long l) {
+    public Phenotype<IntegerGene, Integer> repair(Phenotype<IntegerGene, Integer> phenotype, long numberGeneration) {
         Set<Integer> distinctValue = new HashSet<>();
 
         int max = phenotype.genotype().gene().max();
@@ -47,7 +54,6 @@ class ConstraintGA implements Constraint<IntegerGene, Integer> {
                 IntegerChromosome.of(IntegerGene.of(values.get(2), min, max))
         );
 
-
-        return Phenotype.of(genotype,l);
+        return Phenotype.of(genotype,numberGeneration);
     }
 }

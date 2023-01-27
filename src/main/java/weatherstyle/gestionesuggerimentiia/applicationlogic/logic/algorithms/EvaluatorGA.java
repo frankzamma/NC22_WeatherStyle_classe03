@@ -10,6 +10,11 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 
+/**
+ * @author Raffaele Aurucci, Angelo Palmieri, Annalaura Miglino, Francesco Giuseppe Zammarelli
+ * classe che effettua le valutazioni dei capi d'abbigliamento assegnando punteggi incrementali mediante
+ * euristiche ben definite
+ */
 class EvaluatorGA {
 
     private static List<Hashtable<String, Integer>> ranges;

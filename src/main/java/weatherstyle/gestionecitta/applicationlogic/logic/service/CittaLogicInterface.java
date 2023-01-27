@@ -4,10 +4,13 @@ import weatherstyle.gestionecitta.applicationlogic.logic.beans.Citta;
 
 import java.util.List;
 
+/**
+ * @author Raffaele Aurucci
+ * interfaccia che definisce i servizi disponibili nel package gestionecitta
+ */
 public interface CittaLogicInterface {
 
     boolean salvaCitta(Citta citta);
-    List<Citta> recuperaCittaDaSuggerimentiID(List<Integer> idSuggerimenti);
     List<Citta> ottieniCittaByName(String name);
 
 }

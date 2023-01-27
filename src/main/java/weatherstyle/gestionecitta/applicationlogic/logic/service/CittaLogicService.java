@@ -4,12 +4,22 @@ import weatherstyle.gestionecitta.applicationlogic.logic.beans.Citta;
 import weatherstyle.gestionecitta.storage.dao.CittaDAOInterface;
 import weatherstyle.gestionecitta.storage.service.InfoCittaService;
 
-import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Raffaele Aurucci
+ * classe che offre servizi alle servlet in merito alle città
+ */
 public class CittaLogicService implements CittaLogicInterface{
 
+    /**
+     * interfaccia verso il DB
+     */
     private final CittaDAOInterface cittaDAO;
+
+    /**
+     * interfaccia adapter verso l'API città
+     */
     private final InfoCittaService infoCittaService;
 
     public CittaLogicService(CittaDAOInterface cittaDAO, InfoCittaService infoCittaService){
@@ -17,6 +27,12 @@ public class CittaLogicService implements CittaLogicInterface{
         this.infoCittaService = infoCittaService;
     }
 
+    /**
+     * metodo che permette di salvare una citta nel DB
+     * @param citta che si vuole salvare dopo aver ricevuto un suggerimento
+     * @throws IllegalArgumentException se città è null
+     * @return true se è stato possibile salvare la città, false altrimenti
+     */
     @Override
     public boolean salvaCitta(Citta citta) {
         if (citta == null)
@@ -25,21 +41,12 @@ public class CittaLogicService implements CittaLogicInterface{
         return cittaDAO.doSaveCitta(citta);
     }
 
-    @Override
-    public List<Citta> recuperaCittaDaSuggerimentiID(List<Integer> idSuggerimenti) {
-        if (idSuggerimenti == null || idSuggerimenti.size() == 0)
-            throw new IllegalArgumentException("Lista id suggerimenti vuota o null");
-
-        List<Citta> cittaList = new ArrayList<>();
-
-        for (Integer id: idSuggerimenti) {
-            Citta citta = cittaDAO.doRetrieveCittaBySuggerimentoID(id);
-            cittaList.add(citta);
-        }
-
-        return cittaList;
-    }
-
+    /**
+     * metodo che permette di ottenere una lista di citta rispetto al nome inserito dall'utente
+     * @param name della città ricercata
+     * @throws IllegalArgumentException se città è null
+     * @return lista di città con name passata in input
+     */
     @Override
     public List<Citta> ottieniCittaByName(String name) {
         if (name == null || name.length() == 0)

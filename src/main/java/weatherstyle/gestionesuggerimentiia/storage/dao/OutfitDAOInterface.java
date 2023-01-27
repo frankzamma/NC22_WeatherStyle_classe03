@@ -1,10 +1,11 @@
 package weatherstyle.gestionesuggerimentiia.storage.dao;
 
-import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Maglia;
-import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Pantaloni;
-import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Scarpe;
 import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.beans.Outfit;
 
+/**
+ * @author Raffaele Aurucci
+ * interfaccia che definisce i metodi che deve avere OutfitDAO
+ */
 public interface OutfitDAOInterface {
 
     boolean doSaveOutfit(Outfit outfit);

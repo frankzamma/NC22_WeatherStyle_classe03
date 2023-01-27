@@ -16,6 +16,12 @@ import java.net.http.HttpResponse;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Raffaele Aurucci
+ * classe adapter che si interfaccia con l'API Nominatim per ottenere una lista di città a partire da una stringa
+ * inserita dall'utente. I dati vengono convertiti dal formato JSON in formato stringa per poi salvare i campi di
+ * interesse in oggetti Citta.
+ */
 public class InfoCittaImpl implements InfoCittaService {
 
     @Override
