@@ -22,7 +22,7 @@ public class CittaDAOImpl implements CittaDAOInterface{
     @Override
     public boolean doSaveCitta(Citta citta) {
 
-        if (doRetrieveCittaByLatLon(citta.getLat(),citta.getLon())) {
+        if (doRetrieveCittaByLatLon(citta)) {
             return false;
         }
 
@@ -82,6 +82,12 @@ public class CittaDAOImpl implements CittaDAOInterface{
         return citta;
     }
 
+    /**
+     * recupera citta preferite di un utente
+     * @param idUtente di cui si vogliono le citta preferite
+     * @return una lista di citta preferite salvate dall'utente
+     */
+    @Override
     public List<Citta> doRetrieveCittaPreferiteByUtenteID(int idUtente) {
 
         List<Citta> cittaList = new ArrayList<>();
@@ -112,6 +118,12 @@ public class CittaDAOImpl implements CittaDAOInterface{
         return cittaList;
     }
 
+    /**
+     * salva una citta preferita dell'utente
+     * @param idUtente di cui si vuole salvare la citta
+     * @param citta che si vuole salvare
+     * @return true se è stato possibile salvare la citta, false altrimenti
+     */
     @Override
     public boolean doSaveCittaByUtenteID(int idUtente, Citta citta) {
 
@@ -137,21 +149,27 @@ public class CittaDAOImpl implements CittaDAOInterface{
         return true;
     }
 
-    private boolean doRetrieveCittaByLatLon(String lat,String lon) {
+    /**
+     * metodo che verifica se una determinata citta di cui si vuole il suggerimento non è stata già salvata nel DB
+     * @param citta i cui campi sono stati già settati
+     * @return true se è stato possibile salvare la citta, false altrimenti
+     */
+    private boolean doRetrieveCittaByLatLon(Citta citta) {
 
         try (Connection connection = ConnectionPool.getConnection()) {
 
             PreparedStatement preparedStatement = connection.prepareStatement(
-                    "SELECT latitudine, longitudine "
+                    "SELECT ID "
                             + "FROM Citta c  "
                             + "where c.latitudine=? and c.longitudine=?");
-            preparedStatement.setString(1,lat);
-            preparedStatement.setString(2,lon);
+            preparedStatement.setString(1, citta.getLat());
+            preparedStatement.setString(2, citta.getLon());
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
-                return true;
+                citta.setId(resultSet.getInt("ID"));
+                return false;
             }
 
         } catch (SQLException sql) {
