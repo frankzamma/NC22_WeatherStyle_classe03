@@ -8,10 +8,7 @@ import weatherstyle.gestioneguardaroba.storage.dao.CapoAbbigliamentoDAOInterface
 import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.beans.Outfit;
 import weatherstyle.utils.ConnectionPool;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 /**
  * @author Raffaele Aurucci
@@ -27,17 +24,27 @@ public class OutfitDAOImpl implements OutfitDAOInterface {
 
     /**
      * salva un oufit nel DB, richiede che l'outfit sia stato già riempito con tutti i campi di cui è composto, eccetto
-     * la chiave
+     * la chiave.
      * @param outfit che si vuole salvare
      * @return true se è stato possibile salvare l'outfit, false altrimenti
      */
     @Override
     public boolean doSaveOutfit(Outfit outfit) {
 
+        int id1 = doRetrieveComporreOutfitByCapoAbbigliamentoID(outfit.getMaglia().getId());
+        int id2 = doRetrieveComporreOutfitByCapoAbbigliamentoID(outfit.getPantaloni().getId());
+        int id3 = doRetrieveComporreOutfitByCapoAbbigliamentoID(outfit.getScarpe().getId());
+
+        if ( (id1 == id2) && (id1 == id3) && (id2 == id3) ){
+            outfit.setId(id1);
+            return true;
+        }
+
         try (Connection connection = ConnectionPool.getConnection()) {
 
             PreparedStatement preparedStatement = connection.prepareStatement(
-                    "INSERT INTO Outfit (nome) VALUES(?)");
+                    "INSERT INTO Outfit (nome) VALUES(?)",
+                    Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1,outfit.getNome());
 
             if (preparedStatement.executeUpdate() != 1) {
@@ -54,12 +61,12 @@ public class OutfitDAOImpl implements OutfitDAOInterface {
                     && doSaveScarpeByOutfitID(outfit.getScarpe(),outfit.getId())) {
                 return true;
             }
+            else
+                return false;
 
         } catch (SQLException sql) {
             throw new RuntimeException();
         }
-
-        return true;
     }
 
     /**
@@ -261,5 +268,32 @@ public class OutfitDAOImpl implements OutfitDAOInterface {
         }
 
         return true;
+    }
+
+    /**
+     * controlla se non esiste già un capo d'abbigliamento associato a quell'outfit, chiamato tre volte permette di
+     * capire se un outfit già esiste.
+     * @param capoAbbigliamentoID id del capo d'abbigliamento
+     * @return la chiave dell'outfit, -1 altrimenti
+     */
+    private int doRetrieveComporreOutfitByCapoAbbigliamentoID(int capoAbbigliamentoID){
+
+        try (Connection connection = ConnectionPool.getConnection()) {
+
+            PreparedStatement preparedStatement = connection.prepareStatement(
+                    "SELECT * FROM Comporre WHERE IDcapoAbbigliamento=?");
+            preparedStatement.setInt(1, capoAbbigliamentoID);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                return resultSet.getInt("IDoutfit");
+            }
+
+        } catch (SQLException sql) {
+            throw new RuntimeException();
+        }
+
+        return -1;
     }
 }
