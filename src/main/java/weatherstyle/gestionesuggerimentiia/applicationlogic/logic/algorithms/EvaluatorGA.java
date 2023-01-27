@@ -332,7 +332,7 @@ class EvaluatorGA {
 
         if (!"soleggiato".equalsIgnoreCase(meteoDaily.getMeteoStringMin())
                 || ("soleggiato".equalsIgnoreCase(meteoDaily.getMeteoStringMin())
-                && meteoDaily.getTemperatura() > 20)) {
+                && meteoDaily.getTemperaturaPercepitaMedia() > 20)) {
             punteggio += valutazioneTipoScarpa((Scarpe) capoAbbigliamento,meteoDaily);
         }
 
@@ -386,7 +386,7 @@ class EvaluatorGA {
     }
 
     private int valutazioneTemperatura(CapoAbbigliamento capoAbbigliamento,MeteoDaily meteoDaily) {
-        int temperaturaPercepita = (int) meteoDaily.getTemperatura();
+        int temperaturaPercepita = (int) meteoDaily.getTemperaturaPercepitaMedia();
         int range = searchRange(temperaturaPercepita);
 
         int voto;
@@ -405,7 +405,7 @@ class EvaluatorGA {
     private int valutazioneColore(CapoAbbigliamento capoAbbigliamento,MeteoDaily meteoDaily) {
         int voto;
 
-        int i = searchRange((int) meteoDaily.getTemperatura());
+        int i = searchRange((int) meteoDaily.getTemperaturaPercepitaMedia());
 
         if ("chiaro".equalsIgnoreCase(capoAbbigliamento.getColore())
                 && "soleggiato".equalsIgnoreCase(meteoDaily.getMeteoStringMin())
@@ -423,7 +423,7 @@ class EvaluatorGA {
     }
 
     private int valutazioneLunghezza(CapoAbbigliamento capoAbbigliamento,MeteoDaily meteoDaily) {
-        int temperaturaPercepita = (int) meteoDaily.getTemperatura();
+        int temperaturaPercepita = (int) meteoDaily.getTemperaturaPercepitaMedia();
         int range = searchRange(temperaturaPercepita);
 
         if (capoAbbigliamento.getClass().equals(Maglia.class)) {
