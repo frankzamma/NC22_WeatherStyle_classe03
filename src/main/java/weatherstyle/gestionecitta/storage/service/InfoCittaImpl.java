@@ -24,8 +24,17 @@ import java.util.List;
  */
 public class InfoCittaImpl implements InfoCittaService {
 
+    /**
+     * metodo che permette di ottenere una lista di città dall'API
+     * @param name della città cercata
+     * @return una lista di città contente la stringa cercata
+     */
     @Override
     public List<Citta> getCittaByName(final String name) {
+
+        if (name.length() == 0)
+            throw new IllegalArgumentException("Name deve avere almeno un carattere");
+
         String[] nameSplit = name.split(" ");
         String splitting = nameSplit[0];
 

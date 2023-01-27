@@ -15,7 +15,7 @@ import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Pantaloni;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Scarpe;
 import weatherstyle.gestionemeteo.applicationlogic.logic.beans.MeteoDaily;
 import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.algorithms.ImplementorAlgorithm;
-import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.service.SuggerimentoLogicService;
+import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.service.SuggerimentoLogicImpl;
 import weatherstyle.gestionesuggerimentiia.storage.dao.OutfitDAOImpl;
 import weatherstyle.gestionesuggerimentiia.storage.dao.SuggerimentoDAOImpl;
 
@@ -100,18 +100,18 @@ public class RichiestaSuggerimentoServlet extends HttpServlet {
                             getServletContext().getAttribute("scarpeML");
 
                     //  Si ottengono le migliori maglie, pantaloni e scarpe con i rispettivi punteggi
-                    SuggerimentoLogicService suggerimentoLogicService = new SuggerimentoLogicService(
+                    SuggerimentoLogicImpl suggerimentoLogicImpl = new SuggerimentoLogicImpl(
                             new SuggerimentoDAOImpl(), new OutfitDAOImpl());
 
-                    maglieSuggerite = suggerimentoLogicService.ottieniSuggerimentiCapi(magliaImplementorAlgorithmML,
+                    maglieSuggerite = suggerimentoLogicImpl.ottieniSuggerimentiCapi(magliaImplementorAlgorithmML,
                             listaMaglie, meteoDaily);
                     System.out.println(maglieSuggerite);
 
-                    pantaloniSuggeriti = suggerimentoLogicService.ottieniSuggerimentiCapi(pantaloniImplementorAlgorithmML,
+                    pantaloniSuggeriti = suggerimentoLogicImpl.ottieniSuggerimentiCapi(pantaloniImplementorAlgorithmML,
                             listaPantaloni, meteoDaily);
                     System.out.println(pantaloniSuggeriti);
 
-                    scarpeSuggerite = suggerimentoLogicService.ottieniSuggerimentiCapi(scarpeImplementorAlgorithmML,
+                    scarpeSuggerite = suggerimentoLogicImpl.ottieniSuggerimentiCapi(scarpeImplementorAlgorithmML,
                             listaScarpe, meteoDaily);
                     System.out.println(scarpeSuggerite);
                 }
@@ -130,18 +130,18 @@ public class RichiestaSuggerimentoServlet extends HttpServlet {
                             getServletContext().getAttribute("scarpeGA");
 
                     //  Si ottengono le migliori maglie, pantaloni e scarpe con i rispettivi punteggi
-                    SuggerimentoLogicService suggerimentoLogicService = new SuggerimentoLogicService(
+                    SuggerimentoLogicImpl suggerimentoLogicImpl = new SuggerimentoLogicImpl(
                             new SuggerimentoDAOImpl(), new OutfitDAOImpl());
 
-                    maglieSuggerite = suggerimentoLogicService.ottieniSuggerimentiCapi(magliaImplementorAlgorithmGA,
+                    maglieSuggerite = suggerimentoLogicImpl.ottieniSuggerimentiCapi(magliaImplementorAlgorithmGA,
                             listaMaglie, meteoDaily);
                     System.out.println(maglieSuggerite);
 
-                    pantaloniSuggeriti = suggerimentoLogicService.ottieniSuggerimentiCapi(pantaloniImplementorAlgorithmGA,
+                    pantaloniSuggeriti = suggerimentoLogicImpl.ottieniSuggerimentiCapi(pantaloniImplementorAlgorithmGA,
                             listaPantaloni, meteoDaily);
                     System.out.println(pantaloniSuggeriti);
 
-                    scarpeSuggerite = suggerimentoLogicService.ottieniSuggerimentiCapi(scarpeImplementorAlgorithmGA,
+                    scarpeSuggerite = suggerimentoLogicImpl.ottieniSuggerimentiCapi(scarpeImplementorAlgorithmGA,
                             listaScarpe, meteoDaily);
                     System.out.println(scarpeSuggerite);
 
