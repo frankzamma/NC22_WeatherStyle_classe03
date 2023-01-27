@@ -36,6 +36,9 @@ public class EventoLogicService implements EventoLogicInterface{
             throw new IllegalArgumentException("Errore, evento null.");
         }
 
+        if(!evento.getUtente().isEcologista())
+            throw new IllegalArgumentException("Per poter creare un evento bisogna necessariamente essere ecologisti.");
+
         if (evento.getNome() == null || (evento.getNome().length() < 1 || evento.getNome().length() > 40)) {
             throw new IllegalArgumentException("Lunghezza nome Evento non valida.");
         }
