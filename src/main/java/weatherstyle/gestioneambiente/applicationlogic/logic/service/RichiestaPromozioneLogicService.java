@@ -1,6 +1,7 @@
 package weatherstyle.gestioneambiente.applicationlogic.logic.service;
 
 import weatherstyle.gestioneambiente.applicationlogic.logic.beans.RichiestaPromozione;
+import weatherstyle.gestioneambiente.storage.dao.RichiestaPromozioneDAOImpl;
 import weatherstyle.gestioneambiente.storage.dao.RichiestaPromozioneDAOInterface;
 import weatherstyle.gestioneutenti.applicationlogic.logic.beans.Admin;
 
@@ -8,6 +9,10 @@ import java.util.List;
 
 public class RichiestaPromozioneLogicService implements RichiestaPromozioneLogicInterface{
     private final RichiestaPromozioneDAOInterface richiestaPromozioneDAO;
+
+    public RichiestaPromozioneLogicService() {
+        this.richiestaPromozioneDAO = new RichiestaPromozioneDAOImpl();
+    }
 
     public RichiestaPromozioneLogicService(RichiestaPromozioneDAOInterface richiestaPromozioneDAO) {
         this.richiestaPromozioneDAO = richiestaPromozioneDAO;
