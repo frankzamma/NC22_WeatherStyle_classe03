@@ -330,8 +330,8 @@ class EvaluatorGA {
     private int valutazioneScarpe(CapoAbbigliamento capoAbbigliamento,MeteoDaily meteoDaily) {
         int punteggio = 0;
 
-        if (!"soleggiato".equalsIgnoreCase(meteoDaily.getMeteo())
-                || ("soleggiato".equalsIgnoreCase(meteoDaily.getMeteo())
+        if (!"soleggiato".equalsIgnoreCase(meteoDaily.getMeteoStringMin())
+                || ("soleggiato".equalsIgnoreCase(meteoDaily.getMeteoStringMin())
                 && meteoDaily.getTemperatura() > 20)) {
             punteggio += valutazioneTipoScarpa((Scarpe) capoAbbigliamento,meteoDaily);
         }
@@ -340,8 +340,8 @@ class EvaluatorGA {
         punteggio += valutazioneStagionePrevisione(capoAbbigliamento,meteoDaily);
         punteggio += valutazioneColore(capoAbbigliamento,meteoDaily);
 
-        if ("pioggia".equalsIgnoreCase(meteoDaily.getMeteo())
-                || "neve".equalsIgnoreCase(meteoDaily.getMeteo())) {
+        if ("pioggia".equalsIgnoreCase(meteoDaily.getMeteoStringMin())
+                || "neve".equalsIgnoreCase(meteoDaily.getMeteoStringMin())) {
             punteggio += valutazionePioggia((Scarpe) capoAbbigliamento);
         }
 
@@ -408,11 +408,11 @@ class EvaluatorGA {
         int i = searchRange((int) meteoDaily.getTemperatura());
 
         if ("chiaro".equalsIgnoreCase(capoAbbigliamento.getColore())
-                && "soleggiato".equalsIgnoreCase(meteoDaily.getMeteo())
+                && "soleggiato".equalsIgnoreCase(meteoDaily.getMeteoStringMin())
                 && i <= 2) {
             voto = 10;
         } else if ("scuro".equalsIgnoreCase(capoAbbigliamento.getColore())
-                    && "soleggiato".equalsIgnoreCase(meteoDaily.getMeteo())
+                    && "soleggiato".equalsIgnoreCase(meteoDaily.getMeteoStringMin())
                     && i <= 2) {
                 voto = 0;
         } else {
@@ -470,7 +470,7 @@ class EvaluatorGA {
     }
 
     private int valutazioneTipoScarpa(Scarpe scarpe,MeteoDaily meteoDaily) {
-        return valutazioneTipoScarpa.get(meteoDaily.getMeteo()).get(scarpe.getTipo());
+        return valutazioneTipoScarpa.get(meteoDaily.getMeteoStringMin()).get(scarpe.getTipo());
     }
 
 }

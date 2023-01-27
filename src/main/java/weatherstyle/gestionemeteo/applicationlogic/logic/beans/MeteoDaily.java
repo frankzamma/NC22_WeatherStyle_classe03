@@ -18,7 +18,7 @@ public class MeteoDaily {
         this.id = id;
     }
 
-    public String getMeteo() {
+    public String getMeteoStringMin() {
         return meteo;
     }
 
