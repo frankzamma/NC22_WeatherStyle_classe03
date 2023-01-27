@@ -7,7 +7,7 @@ import io.jenetics.engine.EvolutionResult;
 import io.jenetics.util.Factory;
 
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.CapoAbbigliamento;
-import weatherstyle.gestionemeteo.applicationlogic.logic.beans.MeteoDaily;
+import weatherstyle.gestionemeteo.applicationlogic.logic.beans.MeteoDailyMin;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,18 +25,18 @@ class GeneticAlgorithm<T extends CapoAbbigliamento> implements ImplementorAlgori
     private static final int populationSize = 10;
     private static final EvaluatorGA evaluator = new EvaluatorGA();
     private List<T> capoAbbigliamentoList;
-    private MeteoDaily meteoDaily;
+    private MeteoDailyMin meteoDailyMin;
 
     /**
      * metodo che ritorna i tre capi d'abbigliamento migliori mediante l'ausilio della ricerca con algoritmo genetico
      * @param capoAbbigliamentoList lista di capi d'abbigliamento da cui si vogliono ottenere i tre migliori
-     * @param meteoDaily informazioni meteo
+     * @param meteoDailyMin informazioni meteo
      * @return lista dei tre capi d'abbigliamento migliori
      */
     @Override
-    public List<T> getBestThreeCapoAbbigliamento(List<T> capoAbbigliamentoList,MeteoDaily meteoDaily) {
+    public List<T> getBestThreeCapoAbbigliamento(List<T> capoAbbigliamentoList, MeteoDailyMin meteoDailyMin) {
 
-        this.meteoDaily = meteoDaily;
+        this.meteoDailyMin = meteoDailyMin;
         this.capoAbbigliamentoList = capoAbbigliamentoList;
 
         /*  La Factory permette di generare la prima generazione di individui, ovvero stabilendo come saranno fatti.
@@ -106,7 +106,7 @@ class GeneticAlgorithm<T extends CapoAbbigliamento> implements ImplementorAlgori
         } else {
             for (int i = 0; i < genotype.length(); i++) {
                 punteggio += evaluator.valuta((CapoAbbigliamento) capoAbbigliamentoList
-                        .get(genotype.get(i).gene().intValue()),meteoDaily);
+                        .get(genotype.get(i).gene().intValue()), meteoDailyMin);
             }
             punteggio = punteggio / 3;
         }

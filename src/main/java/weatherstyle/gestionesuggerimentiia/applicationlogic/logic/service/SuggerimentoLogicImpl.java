@@ -1,7 +1,7 @@
 package weatherstyle.gestionesuggerimentiia.applicationlogic.logic.service;
 
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.CapoAbbigliamento;
-import weatherstyle.gestionemeteo.applicationlogic.logic.beans.MeteoDaily;
+import weatherstyle.gestionemeteo.applicationlogic.logic.beans.MeteoDailyMin;
 import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.algorithms.ImplementorAlgorithm;
 import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.beans.Outfit;
 import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.beans.Suggerimento;
@@ -61,20 +61,20 @@ public class SuggerimentoLogicImpl implements SuggerimentoLogicService {
     /**
      * @param implementorAlgorithm istanza ottenuta dalla servlet mediante AbstractAlgorithm
      * @param capiAbbigliamento lista di capi d'abbigliamento
-     * @param meteoDaily informazioni meteorologiche
+     * @param meteoDailyMin informazioni meteorologiche
      * @throws IllegalArgumentException se lista ha meno di tre capi d'abbigliamento o meteo è null
      * @return lista dei tre capi migliori passati al metodo
      */
     @Override
     public <T extends CapoAbbigliamento> List<T> ottieniSuggerimentiCapi(ImplementorAlgorithm<T> implementorAlgorithm,
                                                                          List<T> capiAbbigliamento,
-                                                                         MeteoDaily meteoDaily) {
-        if (capiAbbigliamento.size() < 3 || meteoDaily == null
+                                                                         MeteoDailyMin meteoDailyMin) {
+        if (capiAbbigliamento.size() < 3 || meteoDailyMin == null
                 || implementorAlgorithm == null) {
             throw new IllegalArgumentException("Lista capi d'abbigliamento troppo corta o meteo null");
         }
 
-        return implementorAlgorithm.getBestThreeCapoAbbigliamento(capiAbbigliamento,meteoDaily);
+        return implementorAlgorithm.getBestThreeCapoAbbigliamento(capiAbbigliamento, meteoDailyMin);
     }
 
     /**
