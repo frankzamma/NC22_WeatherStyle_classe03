@@ -23,7 +23,7 @@ public class CittaDAOImpl implements CittaDAOInterface{
     public boolean doSaveCitta(Citta citta) {
 
         if (doRetrieveCittaByLatLon(citta)) {
-            return false;
+            return true;
         }
 
         try (Connection connection = ConnectionPool.getConnection()) {
@@ -150,7 +150,8 @@ public class CittaDAOImpl implements CittaDAOInterface{
     }
 
     /**
-     * metodo che verifica se una determinata citta di cui si vuole il suggerimento non è stata già salvata nel DB
+     * metodo che verifica se una determinata citta di cui si vuole il suggerimento non è stata già salvata nel DB, se
+     * è già presente recupera il suo id
      * @param citta i cui campi sono stati già settati
      * @return true se è stato possibile salvare la citta, false altrimenti
      */

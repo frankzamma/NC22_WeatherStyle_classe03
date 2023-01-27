@@ -1,7 +1,7 @@
 package weatherstyle.gestionesuggerimentiia.applicationlogic.logic.beans;
 
 import weatherstyle.gestionecitta.applicationlogic.logic.beans.Citta;
-import weatherstyle.gestionemeteo.applicationlogic.logic.beans.MeteoDaily;
+import weatherstyle.gestionemeteo.applicationlogic.logic.beans.MeteoDailyMin;
 import weatherstyle.gestioneutenti.applicationlogic.logic.beans.Utente;
 
 import java.sql.Date;
@@ -45,7 +45,7 @@ public class Suggerimento {
     /**
      * informazioni meteorologiche a cui fa riferimento il suggerimento
      */
-    private MeteoDaily meteoDaily;
+    private MeteoDailyMin meteoDailyMin;
 
     public Suggerimento() {
     }
@@ -98,11 +98,11 @@ public class Suggerimento {
         this.outfit = outfit;
     }
 
-    public MeteoDaily getMeteoDaily() {
-        return meteoDaily;
+    public MeteoDailyMin getMeteoDaily() {
+        return meteoDailyMin;
     }
 
-    public void setMeteoDaily(MeteoDaily meteoDaily) {
-        this.meteoDaily = meteoDaily;
+    public void setMeteoDaily(MeteoDailyMin meteoDailyMin) {
+        this.meteoDailyMin = meteoDailyMin;
     }
 }

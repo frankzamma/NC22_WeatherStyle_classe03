@@ -13,9 +13,9 @@ import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Guardaroba;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Maglia;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Pantaloni;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Scarpe;
-import weatherstyle.gestionemeteo.applicationlogic.logic.beans.MeteoDaily;
+import weatherstyle.gestionemeteo.applicationlogic.logic.beans.MeteoDailyMin;
 import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.algorithms.ImplementorAlgorithm;
-import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.service.SuggerimentoLogicService;
+import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.service.SuggerimentoLogicImpl;
 import weatherstyle.gestionesuggerimentiia.storage.dao.OutfitDAOImpl;
 import weatherstyle.gestionesuggerimentiia.storage.dao.SuggerimentoDAOImpl;
 
@@ -23,6 +23,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * classe che raccoglie tutte le informazioni necessarie per fornire suggerimenti all'utente
+ */
 @WebServlet(name = "RichiestaSuggerimentoServlet",value = "/RichiestaSuggerimentoServlet")
 public class RichiestaSuggerimentoServlet extends HttpServlet {
 
@@ -60,10 +63,10 @@ public class RichiestaSuggerimentoServlet extends HttpServlet {
                 /*  Si costruisce l'oggetto meteoInformation contenente gli attributi:
                     temperaturaPercepita, meteo e stagionePrevisione
                  */
-            MeteoDaily meteoDaily = new MeteoDaily();
-            meteoDaily.setMeteo(meteo);
-            meteoDaily.setStagionePrevisione(stagionePrevisione);
-            meteoDaily.setTemperatura(temperaturaPercepita);
+            MeteoDailyMin meteoDailyMin = new MeteoDailyMin();
+            meteoDailyMin.setMeteo(meteo);
+            meteoDailyMin.setStagionePrevisione(stagionePrevisione);
+            meteoDailyMin.setTemperaturaPercepitaMedia(temperaturaPercepita);
 
             //Restiutisce la sessione, se non c'è allora non la crea
             HttpSession session = request.getSession(false);
@@ -100,19 +103,19 @@ public class RichiestaSuggerimentoServlet extends HttpServlet {
                             getServletContext().getAttribute("scarpeML");
 
                     //  Si ottengono le migliori maglie, pantaloni e scarpe con i rispettivi punteggi
-                    SuggerimentoLogicService suggerimentoLogicService = new SuggerimentoLogicService(
+                    SuggerimentoLogicImpl suggerimentoLogicImpl = new SuggerimentoLogicImpl(
                             new SuggerimentoDAOImpl(), new OutfitDAOImpl());
 
-                    maglieSuggerite = suggerimentoLogicService.ottieniSuggerimentiCapi(magliaImplementorAlgorithmML,
-                            listaMaglie, meteoDaily);
+                    maglieSuggerite = suggerimentoLogicImpl.ottieniSuggerimentiCapi(magliaImplementorAlgorithmML,
+                            listaMaglie, meteoDailyMin);
                     System.out.println(maglieSuggerite);
 
-                    pantaloniSuggeriti = suggerimentoLogicService.ottieniSuggerimentiCapi(pantaloniImplementorAlgorithmML,
-                            listaPantaloni, meteoDaily);
+                    pantaloniSuggeriti = suggerimentoLogicImpl.ottieniSuggerimentiCapi(pantaloniImplementorAlgorithmML,
+                            listaPantaloni, meteoDailyMin);
                     System.out.println(pantaloniSuggeriti);
 
-                    scarpeSuggerite = suggerimentoLogicService.ottieniSuggerimentiCapi(scarpeImplementorAlgorithmML,
-                            listaScarpe, meteoDaily);
+                    scarpeSuggerite = suggerimentoLogicImpl.ottieniSuggerimentiCapi(scarpeImplementorAlgorithmML,
+                            listaScarpe, meteoDailyMin);
                     System.out.println(scarpeSuggerite);
                 }
                 else if ("ga".equalsIgnoreCase(algoritmoIA)) {
@@ -130,19 +133,19 @@ public class RichiestaSuggerimentoServlet extends HttpServlet {
                             getServletContext().getAttribute("scarpeGA");
 
                     //  Si ottengono le migliori maglie, pantaloni e scarpe con i rispettivi punteggi
-                    SuggerimentoLogicService suggerimentoLogicService = new SuggerimentoLogicService(
+                    SuggerimentoLogicImpl suggerimentoLogicImpl = new SuggerimentoLogicImpl(
                             new SuggerimentoDAOImpl(), new OutfitDAOImpl());
 
-                    maglieSuggerite = suggerimentoLogicService.ottieniSuggerimentiCapi(magliaImplementorAlgorithmGA,
-                            listaMaglie, meteoDaily);
+                    maglieSuggerite = suggerimentoLogicImpl.ottieniSuggerimentiCapi(magliaImplementorAlgorithmGA,
+                            listaMaglie, meteoDailyMin);
                     System.out.println(maglieSuggerite);
 
-                    pantaloniSuggeriti = suggerimentoLogicService.ottieniSuggerimentiCapi(pantaloniImplementorAlgorithmGA,
-                            listaPantaloni, meteoDaily);
+                    pantaloniSuggeriti = suggerimentoLogicImpl.ottieniSuggerimentiCapi(pantaloniImplementorAlgorithmGA,
+                            listaPantaloni, meteoDailyMin);
                     System.out.println(pantaloniSuggeriti);
 
-                    scarpeSuggerite = suggerimentoLogicService.ottieniSuggerimentiCapi(scarpeImplementorAlgorithmGA,
-                            listaScarpe, meteoDaily);
+                    scarpeSuggerite = suggerimentoLogicImpl.ottieniSuggerimentiCapi(scarpeImplementorAlgorithmGA,
+                            listaScarpe, meteoDailyMin);
                     System.out.println(scarpeSuggerite);
 
                 }

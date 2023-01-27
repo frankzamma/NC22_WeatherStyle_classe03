@@ -1,8 +1,9 @@
 package weatherstyle.gestionemeteo.storage.dao;
 
-import weatherstyle.gestionemeteo.applicationlogic.logic.beans.MeteoDaily;
+import weatherstyle.gestionemeteo.applicationlogic.logic.beans.MeteoDailyMin;
 
 public interface MeteoDAOInterface {
 
-    MeteoDaily doRetrieveMeteoBySuggerimentoID(int idSuggerimento);
+    MeteoDailyMin doRetrieveMeteoBySuggerimentoID(int idSuggerimento);
+    boolean doSaveMeteo(MeteoDailyMin meteo);
 }

@@ -8,10 +8,7 @@ import weatherstyle.gestioneguardaroba.storage.dao.CapoAbbigliamentoDAOInterface
 import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.beans.Outfit;
 import weatherstyle.utils.ConnectionPool;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 /**
  * @author Raffaele Aurucci
@@ -27,17 +24,27 @@ public class OutfitDAOImpl implements OutfitDAOInterface {
 
     /**
      * salva un oufit nel DB, richiede che l'outfit sia stato già riempito con tutti i campi di cui è composto, eccetto
-     * la chiave
+     * la chiave.
      * @param outfit che si vuole salvare
      * @return true se è stato possibile salvare l'outfit, false altrimenti
      */
     @Override
     public boolean doSaveOutfit(Outfit outfit) {
 
+        int id1 = doRetrieveComporreOutfitByCapoAbbigliamentoID(outfit.getMaglia().getId());
+        int id2 = doRetrieveComporreOutfitByCapoAbbigliamentoID(outfit.getPantaloni().getId());
+        int id3 = doRetrieveComporreOutfitByCapoAbbigliamentoID(outfit.getScarpe().getId());
+
+        if ( (id1 == id2) && (id1 == id3) && (id2 == id3) ){
+            outfit.setId(id1);
+            return true;
+        }
+
         try (Connection connection = ConnectionPool.getConnection()) {
 
             PreparedStatement preparedStatement = connection.prepareStatement(
-                    "INSERT INTO Outfit (nome) VALUES(?)");
+                    "INSERT INTO Outfit (nome) VALUES(?)",
+                    Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1,outfit.getNome());
 
             if (preparedStatement.executeUpdate() != 1) {
@@ -49,17 +56,17 @@ public class OutfitDAOImpl implements OutfitDAOInterface {
             int idOutfit = resultSet.getInt(1);
             outfit.setId(idOutfit);
 
-            if (doSaveMagliaByOutfitID(outfit.getMaglia(),outfit.getId())
-                    && doSavePantaloniByOutfitID(outfit.getPantaloni(),outfit.getId())
-                    && doSaveScarpeByOutfitID(outfit.getScarpe(),outfit.getId())) {
+            if (doSaveComporreCapoAbbigliamentoByOutfitID(outfit.getMaglia().getId(),outfit.getId())
+                    && doSaveComporreCapoAbbigliamentoByOutfitID(outfit.getPantaloni().getId(),outfit.getId())
+                    && doSaveComporreCapoAbbigliamentoByOutfitID(outfit.getScarpe().getId(),outfit.getId())) {
                 return true;
             }
+            else
+                return false;
 
         } catch (SQLException sql) {
             throw new RuntimeException();
         }
-
-        return true;
     }
 
     /**
@@ -186,18 +193,18 @@ public class OutfitDAOImpl implements OutfitDAOInterface {
 
     /**
      * salva una maglia nel DB, rappresenta la scelta dell'utente che ha composto un outfit
-     * @param maglia che si vuole salvare
+     * @param capoAbbigliamentoID che si vuole salvare
      * @param outfitID a cui appartiene
      * @return true se è stato possibile salvare, false altrimenti
      */
-    private boolean doSaveMagliaByOutfitID(Maglia maglia, Integer outfitID) {
+    private boolean doSaveComporreCapoAbbigliamentoByOutfitID(int capoAbbigliamentoID, int outfitID) {
 
         try (Connection connection = ConnectionPool.getConnection()) {
 
             PreparedStatement preparedStatement = connection.prepareStatement(
                     "INSERT INTO Comporre (IDoutfit, IDcapoAbbigliamento) VALUES(?,?)");
             preparedStatement.setInt(1,outfitID);
-            preparedStatement.setInt(2,maglia.getId());
+            preparedStatement.setInt(2,capoAbbigliamentoID);
 
             if (preparedStatement.executeUpdate() != 1) {
                 return false;
@@ -211,55 +218,29 @@ public class OutfitDAOImpl implements OutfitDAOInterface {
     }
 
     /**
-     * salva dei pantalini nel DB, rappresenta la scelta dell'utente che ha composto un outfit
-     * @param pantaloni che si vogliono salvare
-     * @param outfitID a cui appartengono
-     * @return true se è stato possibile salvare, false altrimenti
+     * controlla se non esiste già un capo d'abbigliamento associato a quell'outfit, chiamato tre volte permette di
+     * capire se un outfit già esiste.
+     * @param capoAbbigliamentoID id del capo d'abbigliamento
+     * @return la chiave dell'outfit, -1 altrimenti
      */
-    private boolean doSavePantaloniByOutfitID(Pantaloni pantaloni, Integer outfitID) {
+    private int doRetrieveComporreOutfitByCapoAbbigliamentoID(int capoAbbigliamentoID){
 
         try (Connection connection = ConnectionPool.getConnection()) {
 
             PreparedStatement preparedStatement = connection.prepareStatement(
-                    "INSERT INTO Comporre (IDoutfit, IDcapoAbbigliamento) VALUES(?,?)");
-            preparedStatement.setInt(1,outfitID);
-            preparedStatement.setInt(2,pantaloni.getId());
+                    "SELECT * FROM Comporre WHERE IDcapoAbbigliamento=?");
+            preparedStatement.setInt(1, capoAbbigliamentoID);
 
-            if (preparedStatement.executeUpdate() != 1) {
-                return false;
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                return resultSet.getInt("IDoutfit");
             }
 
         } catch (SQLException sql) {
             throw new RuntimeException();
         }
 
-        return true;
-    }
-
-
-    /**
-     * salva delle scarpe nel DB, rappresenta la scelta dell'utente che ha composto un outfit
-     * @param scarpe che si vuole salvare
-     * @param outfitID a cui appartiene
-     * @return true se è stato possibile salvare, false altrimenti
-     */
-    private boolean doSaveScarpeByOutfitID(Scarpe scarpe, Integer outfitID) {
-
-        try (Connection connection = ConnectionPool.getConnection()) {
-
-            PreparedStatement preparedStatement = connection.prepareStatement(
-                    "INSERT INTO Comporre (IDoutfit, IDcapoAbbigliamento) VALUES(?,?)");
-            preparedStatement.setInt(1,outfitID);
-            preparedStatement.setInt(2,scarpe.getId());
-
-            if (preparedStatement.executeUpdate() != 1) {
-                return false;
-            }
-
-        } catch (SQLException sql) {
-            throw new RuntimeException();
-        }
-
-        return true;
+        return -1;
     }
 }

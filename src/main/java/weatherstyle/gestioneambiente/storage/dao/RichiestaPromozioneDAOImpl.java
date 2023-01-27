@@ -82,7 +82,7 @@ public class RichiestaPromozioneDAOImpl implements RichiestaPromozioneDAOInterfa
     }
 
     @Override
-    public boolean doUpdateStatoById(RichiestaPromozione richiestaPromozione,String nuovoStato,Admin admin) {
+    public boolean doUpdateStato(RichiestaPromozione richiestaPromozione,String nuovoStato,Admin admin) {
         try (Connection connection = ConnectionPool.getConnection()) {
             PreparedStatement ps = connection.prepareStatement(
                     "UPDATE RichiestaPromozione SET stato=? AND IDadmin=? WHERE ID=?");
