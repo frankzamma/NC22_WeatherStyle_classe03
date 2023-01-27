@@ -12,5 +12,6 @@ public interface CittaLogicService {
 
     boolean salvaCitta(Citta citta);
     List<Citta> ottieniCittaByName(String name);
+    String ottieniJsonDaCitta(List<Citta> cittaList);
 
 }
