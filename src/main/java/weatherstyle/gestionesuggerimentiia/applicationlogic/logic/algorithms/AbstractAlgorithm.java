@@ -34,7 +34,7 @@ public class AbstractAlgorithm<T extends CapoAbbigliamento> {
     /**
      * costruttore vuoto, pensato per l'implementazione basata su algoritmo genetico
      */
-    public AbstractAlgorithm(){
+    public AbstractAlgorithm() {
     }
 
     /**
@@ -42,9 +42,10 @@ public class AbstractAlgorithm<T extends CapoAbbigliamento> {
      * @param typeOfClass tipo della classe
      * @param realPath stringa passata dalla servlet
      */
-    public AbstractAlgorithm(int typeOfClass, String realPath){
-        if (typeOfClass != 0 && typeOfClass != 1 && typeOfClass != 2)
+    public AbstractAlgorithm(int typeOfClass,String realPath) {
+        if (typeOfClass != 0 && typeOfClass != 1 && typeOfClass != 2) {
             throw new IllegalArgumentException("Tipo di classe deve essere Maglia, Pantaloni o Scarpe");
+        }
         this.typeOfClass = typeOfClass;
         this.realPath = realPath;
     }
@@ -52,20 +53,23 @@ public class AbstractAlgorithm<T extends CapoAbbigliamento> {
     /**
      * @return un modello di machine learning addestrato del tipo della classe istanziata
      */
-    public ImplementorAlgorithm<T> getImplementorML(){
+    public ImplementorAlgorithm<T> getImplementorML() {
         String pathDataset = "";
 
-        if (typeOfClass == MAGLIA)
+        if (typeOfClass == MAGLIA) {
             pathDataset += this.realPath + File.separator + "WEB-INF" + File.separator + "resources"
                     + File.separator + "csv" + File.separator + "top_meteo_dataset_labeled.csv";
+        }
 
-        if (typeOfClass == PANTALONI)
+        if (typeOfClass == PANTALONI) {
             pathDataset += this.realPath + File.separator + "WEB-INF" + File.separator + "resources"
                     + File.separator + "csv" + File.separator + "bottom_meteo_dataset_labeled.csv";
+        }
 
-        if (typeOfClass == SCARPE)
+        if (typeOfClass == SCARPE) {
             pathDataset += this.realPath + File.separator + "WEB-INF" + File.separator + "resources"
                     + File.separator + "csv" + File.separator + "shoes_meteo_dataset_labeled.csv";
+        }
 
         impl = new RegressionTreeAlgorithm<>(pathDataset);
         return impl;
@@ -74,7 +78,7 @@ public class AbstractAlgorithm<T extends CapoAbbigliamento> {
     /**
      * @return un algoritmo genetico che lavora sul tipo della classe istanziata
      */
-    public ImplementorAlgorithm<T> getImplementorGA(){
+    public ImplementorAlgorithm<T> getImplementorGA() {
         impl = new GeneticAlgorithm<>();
         return impl;
     }

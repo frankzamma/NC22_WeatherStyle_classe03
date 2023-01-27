@@ -13,6 +13,9 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ *
+ */
 public class UtenteLogicService implements UtenteLogicServiceInterface{
     private UtenteDAOInterface utenteDAO;
 
@@ -25,32 +28,36 @@ public class UtenteLogicService implements UtenteLogicServiceInterface{
     }
 
     @Override
-    public Utente registraUtente(String nome, String cognome, LocalDate dataNascita, String email, String password, Citta citta) throws ErrorParameterException{
+    public Utente registraUtente(String nome,String cognome,LocalDate dataNascita,String email,String password,Citta citta) throws ErrorParameterException {
             List<String> errorParameter =  new ArrayList<>();
 
-        if (email==null || (!email.matches("^[a-z0-9\\.\\_]+@[a-z]+\\.[a-z]{2,3}$")))
+        if (email == null || (!email.matches("^[a-z0-9\\.\\_]+@[a-z]+\\.[a-z]{2,3}$"))) {
             errorParameter.add("email");
+        }
 
         Pattern pattern = Pattern.compile("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!_;,:+.-]).{8,20}$");
         Matcher matcher = pattern.matcher(password);
-        if (password==null || !matcher.matches())
+        if (password == null || !matcher.matches()) {
             errorParameter.add("password");
+        }
 
-        if (nome==null || nome.length()<3 || !nome.matches("^[A-Za-z\\s]{3,30}$"))
+        if (nome == null || nome.length() < 3 || !nome.matches("^[A-Za-z\\s]{3,30}$")) {
             errorParameter.add("nome");
+        }
 
-        if (cognome==null || cognome.length()<3 || !cognome.matches("^[A-Za-z\\s]{3,30}$"))
+        if (cognome == null || cognome.length() < 3 || !cognome.matches("^[A-Za-z\\s]{3,30}$")) {
             errorParameter.add("cognome");
+        }
 
 
         LocalDate today =  LocalDate.now();
 
-        if(!dataNascita.isBefore(today)){
+        if (!dataNascita.isBefore(today)) {
             errorParameter.add("data-nascita");
         }
 
 
-        if(errorParameter.isEmpty()){
+        if (errorParameter.isEmpty()) {
             Utente u = new Utente();
 
             u.setNome(nome);
@@ -60,7 +67,7 @@ public class UtenteLogicService implements UtenteLogicServiceInterface{
             u.setEcologista(false);
             u.setEmail(email);
             List<Citta> cittaList =  new ArrayList<>();
-            if(citta != null){
+            if (citta != null) {
                 cittaList.add(citta);
             }
             u.setCitta(cittaList);
@@ -68,30 +75,36 @@ public class UtenteLogicService implements UtenteLogicServiceInterface{
             utenteDAO.doSaveUtente(u);
 
             return u;
-        }else{
+        } else {
             throw new ErrorParameterException(errorParameter);
         }
     }
 
+    /**
+     *
+     * @param email
+     * @param password
+     * @return
+     */
     @Override
-    public Utente loginUtente(String email, String password) {
+    public Utente loginUtente(String email,String password) {
 
-        if(email == null && password == null){
+        if (email == null && password == null) {
             Pattern pattern =  Pattern.compile("^[a-z0-9\\.\\_]+@[a-z]+\\.[a-z]{2,3}$");
             Matcher matcher = pattern.matcher(email);
 
-            if(matcher.matches()){
-                Utente u = utenteDAO.doRetrieveUtenteByUsernameAndPassword(email, password);
+            if (matcher.matches()) {
+                Utente u = utenteDAO.doRetrieveUtenteByUsernameAndPassword(email,password);
 
-                if(u != null){
+                if (u != null) {
                     return u;
-                }else{
+                } else {
                     throw new IllegalArgumentException("Email e/o password non corretti");
                 }
-            }else{
+            } else {
                 throw new IllegalArgumentException("Formato email non corretto");
             }
-        }else{
+        } else {
             throw new IllegalArgumentException("Email e password richiesti per accedere!");
         }
     }
@@ -103,9 +116,9 @@ public class UtenteLogicService implements UtenteLogicServiceInterface{
 
     @Override
     public boolean existsUtente(String email) {
-        if (email==null || (!email.matches("^[a-z0-9\\.\\_]+@[a-z]+\\.[a-z]{2,3}$"))){
+        if (email == null || (!email.matches("^[a-z0-9\\.\\_]+@[a-z]+\\.[a-z]{2,3}$"))) {
             return utenteDAO.doExistsEmail(email);
-        }else{
+        } else {
             throw new IllegalArgumentException("Formato Email non corretto");
         }
     }

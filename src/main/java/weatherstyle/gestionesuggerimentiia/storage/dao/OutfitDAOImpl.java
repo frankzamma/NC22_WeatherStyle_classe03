@@ -25,7 +25,7 @@ public class OutfitDAOImpl implements OutfitDAOInterface {
 
             PreparedStatement preparedStatement = connection.prepareStatement(
                     "INSERT INTO Outfit (nome) VALUES(?)");
-            preparedStatement.setString(1, outfit.getNome());
+            preparedStatement.setString(1,outfit.getNome());
 
             if (preparedStatement.executeUpdate() != 1) {
                 return false;
@@ -36,9 +36,9 @@ public class OutfitDAOImpl implements OutfitDAOInterface {
             int idOutfit = resultSet.getInt(1);
             outfit.setId(idOutfit);
 
-            if (doSaveMagliaByOutfitID(outfit.getMaglia(), outfit.getId())
-                    && doSavePantaloniByOutfitID(outfit.getPantaloni(), outfit.getId())
-                    && doSaveScarpeByOutfitID(outfit.getScarpe(), outfit.getId())){
+            if (doSaveMagliaByOutfitID(outfit.getMaglia(),outfit.getId())
+                    && doSavePantaloniByOutfitID(outfit.getPantaloni(),outfit.getId())
+                    && doSaveScarpeByOutfitID(outfit.getScarpe(),outfit.getId())) {
                 return true;
             }
 
@@ -57,10 +57,10 @@ public class OutfitDAOImpl implements OutfitDAOInterface {
         try (Connection connection = ConnectionPool.getConnection()) {
 
             PreparedStatement preparedStatement = connection.prepareStatement(
-                    "SELECT o.ID, o.nome " +
-                        "FROM Outfit o join Suggerimento s on o.ID = s.IDoutfit " +
-                        "where s.ID=?");
-            preparedStatement.setInt(1, suggerimentoID);
+                    "SELECT o.ID, o.nome "
+                        + "FROM Outfit o join Suggerimento s on o.ID = s.IDoutfit "
+                        + "where s.ID=?");
+            preparedStatement.setInt(1,suggerimentoID);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -88,7 +88,7 @@ public class OutfitDAOImpl implements OutfitDAOInterface {
 
             PreparedStatement preparedStatement = connection.prepareStatement(
                     "SELECT IDcapoAbbigliamento FROM Comporre WHERE IDoutfit=?");
-            preparedStatement.setInt(1, outfitID);
+            preparedStatement.setInt(1,outfitID);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -113,7 +113,7 @@ public class OutfitDAOImpl implements OutfitDAOInterface {
 
             PreparedStatement preparedStatement = connection.prepareStatement(
                     "SELECT IDcapoAbbigliamento FROM Comporre WHERE IDoutfit=?");
-            preparedStatement.setInt(1, outfitID);
+            preparedStatement.setInt(1,outfitID);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -138,7 +138,7 @@ public class OutfitDAOImpl implements OutfitDAOInterface {
 
             PreparedStatement preparedStatement = connection.prepareStatement(
                     "SELECT IDcapoAbbigliamento FROM Comporre WHERE IDoutfit=?");
-            preparedStatement.setInt(1, outfitID);
+            preparedStatement.setInt(1,outfitID);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -155,14 +155,14 @@ public class OutfitDAOImpl implements OutfitDAOInterface {
     }
 
 
-    private boolean doSaveMagliaByOutfitID(Maglia maglia, Integer outfitID) {
+    private boolean doSaveMagliaByOutfitID(Maglia maglia,Integer outfitID) {
 
         try (Connection connection = ConnectionPool.getConnection()) {
 
             PreparedStatement preparedStatement = connection.prepareStatement(
                     "INSERT INTO Comporre (IDoutfit, IDcapoAbbigliamento) VALUES(?,?)");
-            preparedStatement.setInt(1, outfitID);
-            preparedStatement.setInt(2, maglia.getId());
+            preparedStatement.setInt(1,outfitID);
+            preparedStatement.setInt(2,maglia.getId());
 
             if (preparedStatement.executeUpdate() != 1) {
                 return false;
@@ -176,14 +176,14 @@ public class OutfitDAOImpl implements OutfitDAOInterface {
     }
 
 
-    private boolean doSavePantaloniByOutfitID(Pantaloni pantaloni, Integer outfitID) {
+    private boolean doSavePantaloniByOutfitID(Pantaloni pantaloni,Integer outfitID) {
 
         try (Connection connection = ConnectionPool.getConnection()) {
 
             PreparedStatement preparedStatement = connection.prepareStatement(
                     "INSERT INTO Comporre (IDoutfit, IDcapoAbbigliamento) VALUES(?,?)");
-            preparedStatement.setInt(1, outfitID);
-            preparedStatement.setInt(2, pantaloni.getId());
+            preparedStatement.setInt(1,outfitID);
+            preparedStatement.setInt(2,pantaloni.getId());
 
             if (preparedStatement.executeUpdate() != 1) {
                 return false;
@@ -197,14 +197,14 @@ public class OutfitDAOImpl implements OutfitDAOInterface {
     }
 
 
-    private boolean doSaveScarpeByOutfitID(Scarpe scarpe, Integer outfitID) {
+    private boolean doSaveScarpeByOutfitID(Scarpe scarpe,Integer outfitID) {
 
         try (Connection connection = ConnectionPool.getConnection()) {
 
             PreparedStatement preparedStatement = connection.prepareStatement(
                     "INSERT INTO Comporre (IDoutfit, IDcapoAbbigliamento) VALUES(?,?)");
-            preparedStatement.setInt(1, outfitID);
-            preparedStatement.setInt(2, scarpe.getId());
+            preparedStatement.setInt(1,outfitID);
+            preparedStatement.setInt(2,scarpe.getId());
 
             if (preparedStatement.executeUpdate() != 1) {
                 return false;

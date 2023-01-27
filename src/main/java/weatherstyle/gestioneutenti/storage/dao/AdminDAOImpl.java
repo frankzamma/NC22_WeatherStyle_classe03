@@ -15,42 +15,42 @@ import java.util.List;
 
 public class AdminDAOImpl implements AdminDAOInterface{
     @Override
-    public Admin doRetrieveAdminByEmailAndPassword(String email, String password) {
-        try(Connection connection =  ConnectionPool.getConnection()){
+    public Admin doRetrieveAdminByEmailAndPassword(String email,String password) {
+        try (Connection connection =  ConnectionPool.getConnection()) {
             PreparedStatement statement =
                     connection.prepareStatement("SELECT * from admin WHERE email = ? AND password = ?");
 
-            statement.setString(1, email);
-            statement.setString(2, password);
+            statement.setString(1,email);
+            statement.setString(2,password);
 
             ResultSet res =  statement.executeQuery();
-            if(res.next()){
+            if (res.next()) {
                 return creaAdmin(res);
-            }else{
+            } else {
                 return null;
             }
 
-        }catch (SQLException e){
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
     @Override
     public Admin doRetrieveAdminById(int id) {
-        try(Connection connection =  ConnectionPool.getConnection()){
+        try (Connection connection =  ConnectionPool.getConnection()) {
             PreparedStatement statement =
                     connection.prepareStatement("SELECT * from admin WHERE id = ?");
 
-            statement.setInt(1, id);
+            statement.setInt(1,id);
 
             ResultSet res =  statement.executeQuery();
-            if(res.next()){
+            if (res.next()) {
                 return creaAdmin(res);
-            }else{
+            } else {
                 return null;
             }
 
-        }catch (SQLException e){
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }

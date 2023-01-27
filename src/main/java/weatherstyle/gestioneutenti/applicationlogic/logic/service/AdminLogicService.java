@@ -19,23 +19,23 @@ public class AdminLogicService implements AdminLogicServiceInterface{
     }
 
     @Override
-    public Admin loginAdmin(String email, String password) {
-        if(email == null && password == null){
+    public Admin loginAdmin(String email,String password) {
+        if (email == null && password == null) {
             Pattern pattern =  Pattern.compile("^[a-z0-9\\.\\_]+@[a-z]+\\.[a-z]{2,3}$");
             Matcher matcher = pattern.matcher(email);
 
-            if(matcher.matches()){
-                Admin u = adminDAO.doRetrieveAdminByEmailAndPassword(email, password);
+            if (matcher.matches()) {
+                Admin u = adminDAO.doRetrieveAdminByEmailAndPassword(email,password);
 
-                if(u != null){
+                if (u != null) {
                     return u;
-                }else{
+                } else {
                     throw new IllegalArgumentException("Email e/o password non corretti");
                 }
-            }else{
+            } else {
                 throw new IllegalArgumentException("Formato email non corretto");
             }
-        }else{
+        } else {
             throw new IllegalArgumentException("Email e/o password richiesti per accedere!");
         }
     }

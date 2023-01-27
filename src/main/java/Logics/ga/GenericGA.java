@@ -15,13 +15,13 @@ import java.util.List;
 public class GenericGA {
 
     private static final int populationSize = 10;
-    private Engine<IntegerGene,Integer> engine;
+    private Engine<IntegerGene, Integer> engine;
     private List<CapoAbbigliamento> listaCapi;
     private static final Evaluator evaluator = new Evaluator();
     private MeteoInformation meteoInformation;
     private String gaName;
 
-    public GenericGA(List<? extends  CapoAbbigliamento> list, MeteoInformation meteoInformation, String gaName) {
+    public GenericGA(List<? extends  CapoAbbigliamento> list,MeteoInformation meteoInformation,String gaName) {
         this.gaName = gaName;
         this.listaCapi = (List<CapoAbbigliamento>) list;
         this.meteoInformation = meteoInformation;
@@ -32,8 +32,8 @@ public class GenericGA {
          *  Ogni cromosoma ha un gene di tipo Integer che ha come valore minimo 0 e come massimo list.size()-1
          *  (Il numero di capi d'abbigliamento nella lista)
          * */
-        Factory<Genotype<IntegerGene>> gtf = Genotype.of(IntegerChromosome.of(0, list.size() -1),
-                IntegerChromosome.of(0, list.size() - 1) , IntegerChromosome.of(0, list.size() -1));
+        Factory<Genotype<IntegerGene>> gtf = Genotype.of(IntegerChromosome.of(0,list.size() - 1),
+                IntegerChromosome.of(0,list.size() - 1),IntegerChromosome.of(0,list.size() - 1));
 
         // Vincoli per le nuove generazioni d'individui
         Constraint<IntegerGene, Integer> constraint = new ClothesGAConstraint();
@@ -54,10 +54,10 @@ public class GenericGA {
         Alterer<IntegerGene, Integer> mutation =  new GaussianMutator<>();
 
         //Setup dell'algoritmo genetico
-        engine =  Engine.builder(this::eval, gtf)
+        engine =  Engine.builder(this::eval,gtf)
                 .selector(selector)
                 .populationSize(populationSize)
-                .alterers(crossover, mutation)
+                .alterers(crossover,mutation)
                 .constraint(constraint)
                 .build();
     }
@@ -65,21 +65,21 @@ public class GenericGA {
     private int eval(Genotype<IntegerGene> gt) {
         int punteggio = 0;
 
-        if(gt.get(0).gene().intValue() == gt.get(1).gene().intValue()
+        if (gt.get(0).gene().intValue() == gt.get(1).gene().intValue()
                 || gt.get(0).gene().intValue() == gt.get(2).gene().intValue()
-                || gt.get(1).gene().intValue() == gt.get(2).gene().intValue()){
+                || gt.get(1).gene().intValue() == gt.get(2).gene().intValue()) {
             punteggio = 0;
-        }else{
-            for(int i = 0; i < gt.length(); i++) {
-                punteggio += evaluator.valuta(listaCapi.get(gt.get(i).gene().intValue()), meteoInformation);
+        } else {
+            for (int i = 0; i < gt.length(); i++) {
+                punteggio += evaluator.valuta(listaCapi.get(gt.get(i).gene().intValue()),meteoInformation);
             }
-            punteggio = punteggio/3;
+            punteggio = punteggio / 3;
         }
 
         return punteggio;
     }
 
-    public List<CapoAbbigliamento> getBestResult(){
+    public List<CapoAbbigliamento> getBestResult() {
         Phenotype<IntegerGene, Integer> best =
                 engine.stream().limit(100).collect(EvolutionResult.toBestPhenotype());
 

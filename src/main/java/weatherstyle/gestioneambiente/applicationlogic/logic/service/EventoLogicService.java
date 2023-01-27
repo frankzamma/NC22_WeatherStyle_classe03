@@ -12,7 +12,7 @@ public class EventoLogicService implements EventoLogicInterface{
     private final EventoDAOInterface eventoDAO;
     private final InfoCittaService infoCitta;
 
-    public EventoLogicService(EventoDAOInterface eventoDAO, InfoCittaService infoCitta){
+    public EventoLogicService(EventoDAOInterface eventoDAO,InfoCittaService infoCitta) {
         this.eventoDAO = eventoDAO;
         this.infoCitta = infoCitta;
     }
@@ -24,24 +24,30 @@ public class EventoLogicService implements EventoLogicInterface{
 
     @Override
     public boolean salvaEvento(Evento evento) {
-        if(evento == null)
+        if (evento == null) {
             throw new IllegalArgumentException("Errore, evento null.");
+        }
 
-        if(evento.getNome() == null || (evento.getNome().length() < 1 || evento.getNome().length() > 40))
+        if (evento.getNome() == null || (evento.getNome().length() < 1 || evento.getNome().length() > 40)) {
             throw new IllegalArgumentException("Lunghezza nome Evento non valida.");
+        }
 
         List<Citta> list = infoCitta.getCittaByName(evento.getLuogo());
-        if(list == null)
+        if (list == null) {
             throw new IllegalArgumentException("Luogo evento inesistente.");
+        }
 
-        if(evento.getDataOraEvento().before(new Timestamp(System.currentTimeMillis())))
+        if (evento.getDataOraEvento().before(new Timestamp(System.currentTimeMillis()))) {
             throw new IllegalArgumentException("Data nel passato.");
+        }
 
-        if(evento.getDescrizione() == null || (evento.getDescrizione().length() < 1 || evento.getDescrizione().length() > 255))
+        if (evento.getDescrizione() == null || (evento.getDescrizione().length() < 1 || evento.getDescrizione().length() > 255)) {
             throw new IllegalArgumentException("Lunghezza descrizione evento non valida.");
+        }
 
-        if(evento.getAltreInformazioni() == null || (evento.getAltreInformazioni().length() < 1 || evento.getAltreInformazioni().length() > 255))
+        if (evento.getAltreInformazioni() == null || (evento.getAltreInformazioni().length() < 1 || evento.getAltreInformazioni().length() > 255)) {
             throw new IllegalArgumentException("Lunghezza altre informazioni evento non valida.");
+        }
 
         return eventoDAO.doSaveEvento(evento);
     }

@@ -12,7 +12,7 @@ public class CapoAbbigliamentoDAOImpl implements CapoAbbigliamentoDAOInterface{
         try (Connection connection =  ConnectionPool.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("SELECT * from CapoAbbigliamento WHERE ID = ?");
 
-            statement.setInt(1, idCapoAbbigliamento);
+            statement.setInt(1,idCapoAbbigliamento);
 
             ResultSet res =  statement.executeQuery();
             if (res.next()) {
@@ -31,7 +31,7 @@ public class CapoAbbigliamentoDAOImpl implements CapoAbbigliamentoDAOInterface{
         try (Connection connection =  ConnectionPool.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("SELECT * from Maglia WHERE IDcapoAbbigliamento = ?");
 
-            statement.setInt(1, idCapoAbbigliamento);
+            statement.setInt(1,idCapoAbbigliamento);
 
             ResultSet res =  statement.executeQuery();
             if (res.next()) {
@@ -50,7 +50,7 @@ public class CapoAbbigliamentoDAOImpl implements CapoAbbigliamentoDAOInterface{
         try (Connection connection =  ConnectionPool.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("SELECT * from Pantaloni WHERE IDcapoAbbigliamento = ?");
 
-            statement.setInt(1, idCapoAbbigliamento);
+            statement.setInt(1,idCapoAbbigliamento);
 
             ResultSet res =  statement.executeQuery();
             if (res.next()) {
@@ -69,7 +69,7 @@ public class CapoAbbigliamentoDAOImpl implements CapoAbbigliamentoDAOInterface{
         try (Connection connection =  ConnectionPool.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("SELECT * from Scarpe WHERE IDcapoAbbigliamento = ?");
 
-            statement.setInt(1, idCapoAbbigliamento);
+            statement.setInt(1,idCapoAbbigliamento);
 
             ResultSet res =  statement.executeQuery();
             if (res.next()) {
@@ -88,11 +88,11 @@ public class CapoAbbigliamentoDAOImpl implements CapoAbbigliamentoDAOInterface{
         try (Connection connection = ConnectionPool.getConnection()) {
             int id = doSaveCapo(m);
             PreparedStatement statement =  connection.prepareStatement(
-                    "insert into Maglia (IDcapoAbbigliamento, materiale, manica) values (?,?,?)", Statement.RETURN_GENERATED_KEYS);
+                    "insert into Maglia (IDcapoAbbigliamento, materiale, manica) values (?,?,?)",Statement.RETURN_GENERATED_KEYS);
 
-            statement.setInt(1, id);
-            statement.setString(2, m.getMateriale());
-            statement.setString(3, m.getLunghezzaManica());
+            statement.setInt(1,id);
+            statement.setString(2,m.getMateriale());
+            statement.setString(3,m.getLunghezzaManica());
 
             int res =  statement.executeUpdate();
 
@@ -113,11 +113,11 @@ public class CapoAbbigliamentoDAOImpl implements CapoAbbigliamentoDAOInterface{
         try (Connection connection = ConnectionPool.getConnection()) {
             int id = doSaveCapo(p);
             PreparedStatement statement =  connection.prepareStatement(
-                    "insert into Pantaloni (IDcapoAbbigliamento, lunghezza, materiale) values (?,?,?)", Statement.RETURN_GENERATED_KEYS);
+                    "insert into Pantaloni (IDcapoAbbigliamento, lunghezza, materiale) values (?,?,?)",Statement.RETURN_GENERATED_KEYS);
 
-            statement.setInt(1, id);
-            statement.setString(2, p.getLunghezza());
-            statement.setString(3, p.getMateriale());
+            statement.setInt(1,id);
+            statement.setString(2,p.getLunghezza());
+            statement.setString(3,p.getMateriale());
 
             int res =  statement.executeUpdate();
 
@@ -136,12 +136,12 @@ public class CapoAbbigliamentoDAOImpl implements CapoAbbigliamentoDAOInterface{
         try (Connection connection = ConnectionPool.getConnection()) {
             int id = doSaveCapo(s);
             PreparedStatement statement =  connection.prepareStatement(
-                    "insert into Scarpe (IDcapoAbbigliamento, tipo, antiscivolo, impermeabile) values (?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+                    "insert into Scarpe (IDcapoAbbigliamento, tipo, antiscivolo, impermeabile) values (?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
 
-            statement.setInt(1, id);
-            statement.setString(2, s.getTipo());
-            statement.setBoolean(3, s.isAntiscivolo());
-            statement.setBoolean(4, s.isImpermeabile());
+            statement.setInt(1,id);
+            statement.setString(2,s.getTipo());
+            statement.setBoolean(3,s.isAntiscivolo());
+            statement.setBoolean(4,s.isImpermeabile());
 
             int res =  statement.executeUpdate();
 
@@ -161,7 +161,7 @@ public class CapoAbbigliamentoDAOImpl implements CapoAbbigliamentoDAOInterface{
      * Questo metodo restituisce un oggetto <code>CapoAbbigliamento</code>.
      * Viene creato a partire dal risultato della query.
      */
-    public CapoAbbigliamento creaCapo (ResultSet res) throws SQLException {
+    public CapoAbbigliamento creaCapo(ResultSet res) throws SQLException {
         CapoAbbigliamento c = new CapoAbbigliamento();
 
         int id = res.getInt(1);
@@ -207,7 +207,7 @@ public class CapoAbbigliamentoDAOImpl implements CapoAbbigliamentoDAOInterface{
      * Questo metodo restituisce un oggetto <code>Pantaloni</code>.
      * Viene creato a partire dal risultato della query.
      */
-    public Pantaloni creaPantaloni (ResultSet res) throws SQLException {
+    public Pantaloni creaPantaloni(ResultSet res) throws SQLException {
         Pantaloni p = new Pantaloni();
 
         int id =  res.getInt(1);
@@ -231,7 +231,7 @@ public class CapoAbbigliamentoDAOImpl implements CapoAbbigliamentoDAOInterface{
      * Questo metodo restituisce un oggetto <code>Scarpe</code>.
      * Viene creato a partire dal risultato della query.
      */
-    public Scarpe creaScarpe (ResultSet res) throws SQLException {
+    public Scarpe creaScarpe(ResultSet res) throws SQLException {
         Scarpe s = new Scarpe();
 
         int id =  res.getInt(1);
@@ -257,15 +257,15 @@ public class CapoAbbigliamentoDAOImpl implements CapoAbbigliamentoDAOInterface{
      * Questo metodo salva un capo d'abbigliamento nella suddetta tabella.
      * Viene integrato nei metodi di maglie, pantaloni e scarpe.
      */
-    public int doSaveCapo (CapoAbbigliamento c){
+    public int doSaveCapo(CapoAbbigliamento c) {
         try (Connection connection = ConnectionPool.getConnection()) {
             PreparedStatement statement =  connection.prepareStatement(
-                    "insert into CapoAbbigliamento (nome, stagione, colore, immagine) values (?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+                    "insert into CapoAbbigliamento (nome, stagione, colore, immagine) values (?, ?, ?, ?)",Statement.RETURN_GENERATED_KEYS);
 
-            statement.setString(1, c.getNome());
-            statement.setString(2, c.getStagione());
-            statement.setString(3, c.getColore());
-            statement.setString(4, c.getDirImmagine());
+            statement.setString(1,c.getNome());
+            statement.setString(2,c.getStagione());
+            statement.setString(3,c.getColore());
+            statement.setString(4,c.getDirImmagine());
 
             int res =  statement.executeUpdate();
 

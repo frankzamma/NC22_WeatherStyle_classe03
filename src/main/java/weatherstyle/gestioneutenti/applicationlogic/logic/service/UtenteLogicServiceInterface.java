@@ -8,9 +8,9 @@ import java.time.LocalDate;
 
 public interface UtenteLogicServiceInterface {
 
-    Utente registraUtente(String nome, String cognome, LocalDate dataNascita,
-                          String email, String password, Citta citta)  throws ErrorParameterException;
-    Utente loginUtente(String username, String password);
+    Utente registraUtente(String nome,String cognome,LocalDate dataNascita,
+                          String email,String password,Citta citta)  throws ErrorParameterException;
+    Utente loginUtente(String username,String password);
     void promuoviUtenteAdEcologista(Utente utente);
     boolean existsUtente(String email);
 

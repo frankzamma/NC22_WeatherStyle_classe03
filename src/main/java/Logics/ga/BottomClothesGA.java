@@ -9,11 +9,11 @@ import java.util.List;
 public class BottomClothesGA{
     private GenericGA genericGA;
 
-    public BottomClothesGA(List<Pantaloni> listaPantaloni, MeteoInformation meteoInformation){
-        genericGA = new GenericGA(listaPantaloni, meteoInformation, "pantaloniGA");
+    public BottomClothesGA(List<Pantaloni> listaPantaloni,MeteoInformation meteoInformation) {
+        genericGA = new GenericGA(listaPantaloni,meteoInformation,"pantaloniGA");
     }
 
-    public List<CapoAbbigliamento> getBestPantaloni(){
+    public List<CapoAbbigliamento> getBestPantaloni() {
         System.out.println("Avvio Algoritmo Genetico Pantaloni");
         List<CapoAbbigliamento> list = genericGA.getBestResult();
 

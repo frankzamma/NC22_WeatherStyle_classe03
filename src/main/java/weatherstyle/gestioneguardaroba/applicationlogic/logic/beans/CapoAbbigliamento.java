@@ -30,8 +30,8 @@ public class CapoAbbigliamento {
      * @param stagione rappresenta la stagione in cui viene indossato il capo.
      * @param colore è il colore del capo.
      */
-    public CapoAbbigliamento(int id, String nome, String dirImmagine,
-                             String stagione, String colore) {
+    public CapoAbbigliamento(int id,String nome,String dirImmagine,
+                             String stagione,String colore) {
         this.id = id;
         this.nome = nome;
         this.dirImmagine = dirImmagine;

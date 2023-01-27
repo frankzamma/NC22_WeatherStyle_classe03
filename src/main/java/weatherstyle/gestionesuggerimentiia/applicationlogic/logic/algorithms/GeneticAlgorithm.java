@@ -12,7 +12,7 @@ import weatherstyle.gestionemeteo.applicationlogic.logic.beans.MeteoDaily;
 import java.util.ArrayList;
 import java.util.List;
 
-class GeneticAlgorithm<T extends CapoAbbigliamento> implements ImplementorAlgorithm<T>{
+class GeneticAlgorithm<T extends CapoAbbigliamento> implements ImplementorAlgorithm<T> {
 
     private static final int populationSize = 10;
     private static final EvaluatorGA evaluator = new EvaluatorGA();
@@ -26,7 +26,7 @@ class GeneticAlgorithm<T extends CapoAbbigliamento> implements ImplementorAlgori
      * @return lista dei tre capi d'abbigliamento migliori
      */
     @Override
-    public List<T> getBestThreeCapoAbbigliamento(List<T> capoAbbigliamentoList, MeteoDaily meteoDaily) {
+    public List<T> getBestThreeCapoAbbigliamento(List<T> capoAbbigliamentoList,MeteoDaily meteoDaily) {
 
         this.meteoDaily = meteoDaily;
         this.capoAbbigliamentoList = capoAbbigliamentoList;
@@ -37,9 +37,9 @@ class GeneticAlgorithm<T extends CapoAbbigliamento> implements ImplementorAlgori
            Ogni cromosoma ha un gene di tipo Integer che ha come valore minimo 0 e come massimo list.size()-1
            (Il numero di capi d'abbigliamento nella lista)
          */
-        Factory<Genotype<IntegerGene>> gtf = Genotype.of(IntegerChromosome.of(0, capoAbbigliamentoList.size() -1),
-                IntegerChromosome.of(0, capoAbbigliamentoList.size() - 1) ,
-                IntegerChromosome.of(0, capoAbbigliamentoList.size() -1));
+        Factory<Genotype<IntegerGene>> gtf = Genotype.of(IntegerChromosome.of(0,capoAbbigliamentoList.size() - 1),
+                IntegerChromosome.of(0,capoAbbigliamentoList.size() - 1),
+                IntegerChromosome.of(0,capoAbbigliamentoList.size() - 1));
 
         // Vincoli per le nuove generazioni d'individui
         Constraint<IntegerGene, Integer> constraint = new ConstraintGA();
@@ -60,10 +60,10 @@ class GeneticAlgorithm<T extends CapoAbbigliamento> implements ImplementorAlgori
         Alterer<IntegerGene, Integer> mutation =  new GaussianMutator<>();
 
         // Setup dell'algoritmo genetico
-        Engine<IntegerGene, Integer> engine = Engine.builder(this::eval, gtf)
+        Engine<IntegerGene, Integer> engine = Engine.builder(this::eval,gtf)
                 .selector(selector)
                 .populationSize(populationSize)
-                .alterers(crossover, mutation)
+                .alterers(crossover,mutation)
                 .constraint(constraint)
                 .build();
 
@@ -91,16 +91,16 @@ class GeneticAlgorithm<T extends CapoAbbigliamento> implements ImplementorAlgori
     private int eval(Genotype<IntegerGene> genotype) {
         int punteggio = 0;
 
-        if(genotype.get(0).gene().intValue() == genotype.get(1).gene().intValue()
+        if (genotype.get(0).gene().intValue() == genotype.get(1).gene().intValue()
                 || genotype.get(0).gene().intValue() == genotype.get(2).gene().intValue()
-                || genotype.get(1).gene().intValue() == genotype.get(2).gene().intValue()){
+                || genotype.get(1).gene().intValue() == genotype.get(2).gene().intValue()) {
             punteggio = 0;
-        }else{
-            for(int i = 0; i < genotype.length(); i++) {
+        } else {
+            for (int i = 0; i < genotype.length(); i++) {
                 punteggio += evaluator.valuta((CapoAbbigliamento) capoAbbigliamentoList
-                        .get(genotype.get(i).gene().intValue()), meteoDaily);
+                        .get(genotype.get(i).gene().intValue()),meteoDaily);
             }
-            punteggio = punteggio/3;
+            punteggio = punteggio / 3;
         }
 
         return punteggio;

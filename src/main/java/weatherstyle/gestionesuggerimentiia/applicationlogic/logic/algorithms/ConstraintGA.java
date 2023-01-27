@@ -20,9 +20,9 @@ class ConstraintGA implements Constraint<IntegerGene, Integer> {
         Genotype<IntegerGene> g = phenotype.genotype();
         if (g.get(0).gene().intValue() != g.get(1).gene().intValue()
                 && g.get(0).gene().intValue() != g.get(2).gene().intValue()
-                && g.get(1).gene().intValue() != g.get(2).gene().intValue()){
+                && g.get(1).gene().intValue() != g.get(2).gene().intValue()) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
@@ -31,20 +31,20 @@ class ConstraintGA implements Constraint<IntegerGene, Integer> {
     *   Meteodo che viene utilizzato per riparare gli individui che non rispettano il vincolo
     **/
     @Override
-    public Phenotype<IntegerGene, Integer> repair(Phenotype<IntegerGene, Integer> phenotype, long l) {
+    public Phenotype<IntegerGene, Integer> repair(Phenotype<IntegerGene, Integer> phenotype,long l) {
         Set<Integer> distinctValue = new HashSet<>();
 
         int max = phenotype.genotype().gene().max();
         int min = phenotype.genotype().gene().min();
-        do{
+        do {
             distinctValue.add((int) (Math.floor(Math.random() * (max + 1))));
-        }while (distinctValue.size() != 3);
+        } while (distinctValue.size() != 3);
 
         ArrayList<Integer> values =  new ArrayList<>(distinctValue);
         Genotype<IntegerGene> genotype = Genotype.of(
-                IntegerChromosome.of(IntegerGene.of(values.get(0),min, max)),
-                IntegerChromosome.of(IntegerGene.of(values.get(1), min, max)),
-                IntegerChromosome.of(IntegerGene.of(values.get(2), min, max))
+                IntegerChromosome.of(IntegerGene.of(values.get(0),min,max)),
+                IntegerChromosome.of(IntegerGene.of(values.get(1),min,max)),
+                IntegerChromosome.of(IntegerGene.of(values.get(2),min,max))
         );
 
 

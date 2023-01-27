@@ -6,11 +6,11 @@ public class Scarpa extends CapoAbbigliamento{
     private Boolean antiscivolo;
     private Boolean impermeabile;
 
-    public Scarpa(){
+    public Scarpa() {
 
     }
 
-    public Scarpa(String stagione, String colore, String tipo, Boolean antiscivolo, Boolean impermeabile) {
+    public Scarpa(String stagione,String colore,String tipo,Boolean antiscivolo,Boolean impermeabile) {
         super(stagione,colore);
         this.tipo = tipo;
         this.antiscivolo = antiscivolo;
@@ -43,12 +43,12 @@ public class Scarpa extends CapoAbbigliamento{
 
     @Override
     public String toString() {
-        return "Scarpa[" +
-                super.getColore() +
-                ", " + super.getStagione() +
-                ", " + tipo +
-                ", " + (antiscivolo ? "Con Antiscivolo" : "Senza Antiscivolo") +
-                ", " + (impermeabile ? "Impermeabile" : "Non Impermeabile") +
-                "\n";
+        return "Scarpa["
+                + super.getColore()
+                + ", " + super.getStagione()
+                + ", " + tipo
+                + ", " + (antiscivolo ? "Con Antiscivolo" : "Senza Antiscivolo")
+                + ", " + (impermeabile ? "Impermeabile" : "Non Impermeabile")
+                + "\n";
     }
 }

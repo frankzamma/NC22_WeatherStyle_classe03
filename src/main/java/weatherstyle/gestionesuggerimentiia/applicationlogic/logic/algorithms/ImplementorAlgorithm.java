@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface ImplementorAlgorithm<T extends CapoAbbigliamento> {
 
-    List<T> getBestThreeCapoAbbigliamento(List<T> capoAbbigliamentoList, MeteoDaily meteoDaily);
+    List<T> getBestThreeCapoAbbigliamento(List<T> capoAbbigliamentoList,MeteoDaily meteoDaily);
 }

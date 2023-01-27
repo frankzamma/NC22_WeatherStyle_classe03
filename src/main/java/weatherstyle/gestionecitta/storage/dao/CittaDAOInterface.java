@@ -9,5 +9,5 @@ public interface CittaDAOInterface {
     boolean doSaveCitta(Citta citta);
     Citta doRetrieveCittaBySuggerimentoID(int idSuggerimento);
     List<Citta> doRetrieveCittaByUtenteID(int idUtente);
-    boolean doSaveCittaUtente(int idUtente, Citta citta);
+    boolean doSaveCittaUtente(int idUtente,Citta citta);
 }

@@ -46,14 +46,14 @@ public class InfoCittaImpl implements InfoCittaService {
 
         HttpResponse<String> response = null;
         try {
-            response = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
+            response = httpClient.send(httpRequest,HttpResponse.BodyHandlers.ofString());
         } catch (IOException | InterruptedException e) {
             throw new IllegalArgumentException("Invio richiesta API Citta fallita");
         }
 
-        JsonArray jsonArray = gson.fromJson(response.body(), JsonArray.class);
+        JsonArray jsonArray = gson.fromJson(response.body(),JsonArray.class);
 
-        for (JsonElement element : jsonArray) {
+        for (JsonElement element: jsonArray) {
             JsonObject jsonObject = element.getAsJsonObject();
             jsonObject.remove("place_id");
             jsonObject.remove("licence");
