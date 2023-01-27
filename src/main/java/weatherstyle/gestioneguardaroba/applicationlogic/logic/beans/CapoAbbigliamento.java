@@ -24,15 +24,13 @@ public class CapoAbbigliamento {
 
     /**
      Metodo costruttore.
-     * @param id rappresenta l'identificativo univoco del capo.
      * @param nome è il nome del capo.
      * @param dirImmagine rappresenta il path in cui vi è l'immagine del capo.
      * @param stagione rappresenta la stagione in cui viene indossato il capo.
      * @param colore è il colore del capo.
      */
-    public CapoAbbigliamento(int id,String nome,String dirImmagine,
+    public CapoAbbigliamento(String nome,String dirImmagine,
                              String stagione,String colore) {
-        this.id = id;
         this.nome = nome;
         this.dirImmagine = dirImmagine;
         this.stagione = stagione;

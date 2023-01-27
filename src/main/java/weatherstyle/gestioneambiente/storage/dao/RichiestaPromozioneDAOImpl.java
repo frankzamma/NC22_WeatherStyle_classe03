@@ -136,4 +136,22 @@ public class RichiestaPromozioneDAOImpl implements RichiestaPromozioneDAOInterfa
 
         return richiestaPromozione;
     }
+
+    @Override
+    public RichiestaPromozione doRetrieveById(int idRichiestaPromozione) {
+        RichiestaPromozione richiestaPromozione;
+
+        try (Connection connection = ConnectionPool.getConnection()) {
+            PreparedStatement prepareStatement = connection.prepareStatement(
+                    "SELECT * FROM RichiestaPromozione WHERE ID=?");
+            prepareStatement.setInt(1,idRichiestaPromozione);
+            ResultSet resultSet = prepareStatement.executeQuery();
+            richiestaPromozione = creaRichiestaPromozione(resultSet);
+
+        } catch (SQLException sql) {
+            throw new RuntimeException();
+        }
+
+        return richiestaPromozione;
+    }
 }

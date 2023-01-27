@@ -29,9 +29,9 @@ public class Maglia extends CapoAbbigliamento {
      * @param lunghezzaManica è la lunghezza della manica della maglia.
      * @param materiale è il materiale di cui è costituita la maglia.
      */
-    public Maglia(int id,String nome,String dirImmagine,String stagione,
+    public Maglia(String nome,String dirImmagine,String stagione,
                   String colore,String lunghezzaManica,String materiale) {
-        super(id,nome,dirImmagine,stagione,colore);
+        super(nome,dirImmagine,stagione,colore);
         this.lunghezzaManica = lunghezzaManica;
         this.materiale = materiale;
     }
