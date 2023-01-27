@@ -45,7 +45,7 @@ public class AbstractAlgorithm<T extends CapoAbbigliamento> {
      * @param typeOfClass tipo della classe
      * @param realPath stringa passata dalla servlet
      */
-    public AbstractAlgorithm(int typeOfClass,String realPath) {
+    public AbstractAlgorithm(int typeOfClass, String realPath) {
         if (typeOfClass != 0 && typeOfClass != 1 && typeOfClass != 2) {
             throw new IllegalArgumentException("Tipo di classe deve essere Maglia, Pantaloni o Scarpe");
         }

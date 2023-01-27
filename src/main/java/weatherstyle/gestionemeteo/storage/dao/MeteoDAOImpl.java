@@ -7,4 +7,9 @@ public class MeteoDAOImpl implements MeteoDAOInterface{
     public MeteoDaily doRetrieveMeteoBySuggerimentoID(int idSuggerimento) {
         return null;
     }
+
+    @Override
+    public boolean doSaveMeteo(MeteoDaily meteo) {
+        return false;
+    }
 }
