@@ -4,10 +4,10 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import weatherstyle.gestionecitta.applicationlogic.logic.beans.Citta;
 import weatherstyle.gestionemeteo.applicationlogic.logic.beans.MeteoDaily;
+import weatherstyle.gestionemeteo.applicationlogic.logic.beans.MeteoDailyMin;
 
 import java.io.IOException;
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
@@ -43,13 +43,12 @@ public class InfoMeteoDailyiImpl implements InfoMeteoDailyService {
                    int weatherCode =  meteoJson.get("daily").getAsJsonObject().get("weathercode").getAsInt();
                    double temperaturaPercepitaMassima =  meteoJson.get("daily").getAsJsonObject().get("temperature_2m_max").getAsDouble();
                    double temperaturaPercepitaMinima =  meteoJson.get("daily").getAsJsonObject().get("temperature_2m_min").getAsDouble();
-
-
                    MeteoDaily meteoDaily =  new MeteoDaily();
-                   meteoDaily.setTemperaturaPercepitaMassima( temperaturaPercepitaMassima);
-                   meteoDaily.setTemperaturaPercepitaMinima(temperaturaPercepitaMinima);
+                   meteoDaily.setTime(day);
                    meteoDaily.setWeatherCode(weatherCode);
-                   //TODO aggiungere stagione
+                   meteoDaily.setTemperaturaPercepitaMinima(temperaturaPercepitaMinima);
+                   meteoDaily.setTemperaturaPercepitaMassima(temperaturaPercepitaMassima);
+
                    return meteoDaily;
 
                }catch (IllegalArgumentException e){
@@ -65,7 +64,6 @@ public class InfoMeteoDailyiImpl implements InfoMeteoDailyService {
         }else{
             throw new IllegalArgumentException("Parametro citta non consistente");
         }
-
     }
 
     @Override

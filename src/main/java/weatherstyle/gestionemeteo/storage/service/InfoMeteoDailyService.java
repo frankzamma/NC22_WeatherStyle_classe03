@@ -2,6 +2,7 @@ package weatherstyle.gestionemeteo.storage.service;
 
 import weatherstyle.gestionecitta.applicationlogic.logic.beans.Citta;
 import weatherstyle.gestionemeteo.applicationlogic.logic.beans.MeteoDaily;
+import weatherstyle.gestionemeteo.applicationlogic.logic.beans.MeteoDailyMin;
 
 import java.time.LocalDate;
 import java.util.List;

@@ -4,7 +4,7 @@ import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.CapoAbbiglia
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Maglia;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Pantaloni;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Scarpe;
-import weatherstyle.gestionemeteo.applicationlogic.logic.beans.MeteoDaily;
+import weatherstyle.gestionemeteo.applicationlogic.logic.beans.MeteoDailyMin;
 
 import weka.classifiers.Evaluation;
 import weka.classifiers.trees.REPTree;
@@ -90,10 +90,10 @@ class RegressionTreeAlgorithm<T extends CapoAbbigliamento> implements Implemento
     /**
      * metodo che stipola il punteggio di una istanza del tipo della classe
      * @param capoAbbigliamento un capo d'abbigliamento del tipo della classe
-     * @param meteoDaily informazioni meteorologiche
+     * @param meteoDailyMin informazioni meteorologiche
      * @return un oggetto che incapsula il capo d'abbigliamento con il relativo punteggio
      */
-    private ScoreCapoAbbigliamento classifyInstance(T capoAbbigliamento, MeteoDaily meteoDaily) {
+    private ScoreCapoAbbigliamento classifyInstance(T capoAbbigliamento, MeteoDailyMin meteoDailyMin) {
 
         Instance instance = new DenseInstance(capoAbbigliamento.getClass() != Scarpe.class ? 7 : 8);
         instance.setDataset(fullDataset);
@@ -103,9 +103,9 @@ class RegressionTreeAlgorithm<T extends CapoAbbigliamento> implements Implemento
             instance.setValue(2, ((Maglia) capoAbbigliamento).getLunghezzaManica());
             instance.setValue(0, ((Maglia) capoAbbigliamento).getMateriale());
             instance.setValue(3, ((Maglia) capoAbbigliamento).getStagione());
-            instance.setValue(4, meteoDaily.getMeteoStringMin());
-            instance.setValue(5, meteoDaily.getTemperaturaPercepitaMedia());
-            instance.setValue(6, meteoDaily.getStagionePrevisione());
+            instance.setValue(4, meteoDailyMin.getMeteoStringMin());
+            instance.setValue(5, meteoDailyMin.getTemperaturaPercepitaMedia());
+            instance.setValue(6, meteoDailyMin.getStagionePrevisione());
         }
 
         if (capoAbbigliamento.getClass() == Pantaloni.class) {
@@ -113,9 +113,9 @@ class RegressionTreeAlgorithm<T extends CapoAbbigliamento> implements Implemento
             instance.setValue(2,((Pantaloni) capoAbbigliamento).getLunghezza());
             instance.setValue(0,((Pantaloni) capoAbbigliamento).getMateriale());
             instance.setValue(3,((Pantaloni) capoAbbigliamento).getStagione());
-            instance.setValue(4,meteoDaily.getMeteoStringMin());
-            instance.setValue(5,meteoDaily.getTemperaturaPercepitaMedia());
-            instance.setValue(6,meteoDaily.getStagionePrevisione());
+            instance.setValue(4, meteoDailyMin.getMeteoStringMin());
+            instance.setValue(5, meteoDailyMin.getTemperaturaPercepitaMedia());
+            instance.setValue(6, meteoDailyMin.getStagionePrevisione());
         }
 
         if (capoAbbigliamento.getClass() == Scarpe.class) {
@@ -125,9 +125,9 @@ class RegressionTreeAlgorithm<T extends CapoAbbigliamento> implements Implemento
             instance.setValue(2,scarpe.isImpermeabile() ? 'y' : 'n');
             instance.setValue(3,scarpe.getColore().toLowerCase());
             instance.setValue(4,scarpe.getStagione());
-            instance.setValue(5,meteoDaily.getMeteoStringMin());
-            instance.setValue(6,meteoDaily.getTemperaturaPercepitaMedia());
-            instance.setValue(7,meteoDaily.getStagionePrevisione());
+            instance.setValue(5, meteoDailyMin.getMeteoStringMin());
+            instance.setValue(6, meteoDailyMin.getTemperaturaPercepitaMedia());
+            instance.setValue(7, meteoDailyMin.getStagionePrevisione());
         }
 
         ScoreCapoAbbigliamento scoreCapoAbbigliamento;
@@ -144,16 +144,16 @@ class RegressionTreeAlgorithm<T extends CapoAbbigliamento> implements Implemento
     /**
      * metodo che restitusice una lista dei tre capi migliori rispetto alla lista dei capi della categoria della classe
      * @param capoAbbigliamentoList lista di capi della categoria della classe
-     * @param meteoDaily informazioni meteorologiche
+     * @param meteoDailyMin informazioni meteorologiche
      * @return lista dei tre capi migliori del tipo della classe
      */
     @Override
-    public List<T> getBestThreeCapoAbbigliamento(List<T> capoAbbigliamentoList,MeteoDaily meteoDaily) {
+    public List<T> getBestThreeCapoAbbigliamento(List<T> capoAbbigliamentoList, MeteoDailyMin meteoDailyMin) {
 
         List<ScoreCapoAbbigliamento> scoreCapoAbbigliamentoList = new ArrayList<>();
 
         for (T capoAbbigliamento: capoAbbigliamentoList)
-            scoreCapoAbbigliamentoList.add(classifyInstance(capoAbbigliamento,meteoDaily));
+            scoreCapoAbbigliamentoList.add(classifyInstance(capoAbbigliamento, meteoDailyMin));
 
 
         List<ScoreCapoAbbigliamento> bests = new ArrayList<>();
