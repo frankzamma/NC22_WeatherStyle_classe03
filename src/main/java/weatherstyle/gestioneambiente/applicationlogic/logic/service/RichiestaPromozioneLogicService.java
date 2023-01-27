@@ -45,12 +45,12 @@ public class RichiestaPromozioneLogicService implements RichiestaPromozioneLogic
     }
 
     @Override
-    public List<RichiestaPromozione> ottieniListaRichiestePromozioni() {
+    public List<RichiestaPromozione> ottieniListaRichiestePromozione() {
         return richiestaPromozioneDAO.doRetrieveAll();
     }
 
     @Override
-    public List<RichiestaPromozione> ottieniListaRichiestePromozioniPerStato(String stato) {
+    public List<RichiestaPromozione> ottieniListaRichiestePromozionePerStato(String stato) {
         if (!"in attesa".equals(stato) && !"approvata".equals(stato) && !"rifiutata".equals(stato)) {
             throw new IllegalArgumentException("Lo stato di una richiesta può essere solo: in attesa, approvata o rifiutata.");
         }
@@ -59,7 +59,7 @@ public class RichiestaPromozioneLogicService implements RichiestaPromozioneLogic
     }
 
     @Override
-    public boolean aggiornaStatoRichiestaPromozionePerId(RichiestaPromozione richiestaPromozione,String nuovoStato,Admin admin) {
+    public boolean aggiornaStatoRichiestaPromozione(RichiestaPromozione richiestaPromozione,String nuovoStato,Admin admin) {
         if (!"in attesa".equals(nuovoStato) && !"approvata".equals(nuovoStato) && !"rifiutata".equals(nuovoStato)) {
             throw new IllegalArgumentException("Lo stato di una richiesta può essere solo: in attesa, approvata o rifiutata.");
         }
@@ -72,7 +72,12 @@ public class RichiestaPromozioneLogicService implements RichiestaPromozioneLogic
             throw new IllegalArgumentException("Questa operazione deve essere eseguita da un amministratore.");
         }
 
-        return richiestaPromozioneDAO.doUpdateStatoById(richiestaPromozione,nuovoStato,admin);
+        return richiestaPromozioneDAO.doUpdateStato(richiestaPromozione,nuovoStato,admin);
+    }
+
+    @Override
+    public RichiestaPromozione ottieniRichiestaPromozionePerId(int idRichiestaPromozione) {
+        return richiestaPromozioneDAO.doRetrieveById(idRichiestaPromozione);
     }
 
 }
