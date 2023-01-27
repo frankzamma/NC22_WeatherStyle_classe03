@@ -1,5 +1,10 @@
 package Model;
 
+import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Guardaroba;
+import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Maglia;
+import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Pantaloni;
+import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Scarpe;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -20,7 +25,7 @@ public class RecoveryGuardaroba {
     private void recoveryCapoAbbigliamento() {
         List<Maglia> magliaList = new ArrayList<>();
         List<Pantaloni> pantaloniList = new ArrayList<>();
-        List<Scarpa> scarpaList = new ArrayList<>();
+        List<Scarpe> scarpaList = new ArrayList<>();
 
         File file = new File(pathFile);
 
@@ -46,22 +51,22 @@ public class RecoveryGuardaroba {
                     pantaloni.setStagione(split[4]);
                     pantaloniList.add(pantaloni);
                 } else {
-                    Scarpa scarpa = new Scarpa();
-                    scarpa.setTipo(split[1]);
-                    scarpa.setAntiscivolo(Boolean.valueOf(split[2]));
-                    scarpa.setImpermeabile(Boolean.valueOf(split[3]));
-                    scarpa.setColore(split[4]);
-                    scarpa.setStagione(split[5]);
-                    scarpaList.add(scarpa);
+                    Scarpe scarpe = new Scarpe();
+                    scarpe.setTipo(split[1]);
+                    scarpe.setAntiscivolo(Boolean.valueOf(split[2]));
+                    scarpe.setImpermeabile(Boolean.valueOf(split[3]));
+                    scarpe.setColore(split[4]);
+                    scarpe.setStagione(split[5]);
+                    scarpaList.add(scarpe);
                 }
             }
         } catch (FileNotFoundException fileNotFoundException) {
             System.out.println("File CapoAbbigliamentoList non trovato!");
         }
 
-        guardaroba.setMagliaList(magliaList);
-        guardaroba.setPantaloneList(pantaloniList);
-        guardaroba.setScarpaList(scarpaList);
+        guardaroba.setMaglie(magliaList);
+        guardaroba.setPantaloni(pantaloniList);
+        guardaroba.setScarpe(scarpaList);
 
     }
 

@@ -1,7 +1,7 @@
 package Logics.machinelearning;
 
 import Model.*;
-import Model.ScoreCapoAbbigliamento;
+import Model.ScoreCapoAbbigliamentoLegacy;
 import weka.classifiers.Evaluation;
 import weka.classifiers.trees.REPTree;
 import weka.core.DenseInstance;
@@ -130,31 +130,31 @@ public class RegressionTreeWrapper {
     }
 
 
-    public List<ScoreCapoAbbigliamento> classifyInstances(List<? extends CapoAbbigliamento> capoAbbigliamentoList,
-                                                          MeteoInformation meteoInformation) {
+    public List<ScoreCapoAbbigliamentoLegacy> classifyInstances(List<? extends CapoAbbigliamentoLegacy> capoAbbigliamentoList,
+                                                                MeteoInformationLegacy meteoInformation) {
         List<Instance> listInstance = new ArrayList<>();
 
-        for (CapoAbbigliamento capoAbbigliamento: capoAbbigliamentoList) {
-            Instance instance = new DenseInstance(capoAbbigliamento.getClass() != Scarpa.class ? 7 : 8);
+        for (CapoAbbigliamentoLegacy capoAbbigliamentoLegacy : capoAbbigliamentoList) {
+            Instance instance = new DenseInstance(capoAbbigliamentoLegacy.getClass() != ScarpaLegacy.class ? 7 : 8);
             instance.setDataset(fullDataset);
-            if (capoAbbigliamento.getClass() == Maglia.class || capoAbbigliamento.getClass() == Pantaloni.class) {
-                instance.setValue(1,capoAbbigliamento.getColore());
+            if (capoAbbigliamentoLegacy.getClass() == MagliaLegacy.class || capoAbbigliamentoLegacy.getClass() == PantaloniLegacy.class) {
+                instance.setValue(1, capoAbbigliamentoLegacy.getColore());
 
-                if (capoAbbigliamento.getClass() == Maglia.class) {
-                    instance.setValue(2,((Maglia) capoAbbigliamento).getLunghezzaManica());
-                    instance.setValue(0,((Maglia) capoAbbigliamento).getMateriale());
+                if (capoAbbigliamentoLegacy.getClass() == MagliaLegacy.class) {
+                    instance.setValue(2,((MagliaLegacy) capoAbbigliamentoLegacy).getLunghezzaManica());
+                    instance.setValue(0,((MagliaLegacy) capoAbbigliamentoLegacy).getMateriale());
                 }
                 else {
-                    instance.setValue(2,((Pantaloni) capoAbbigliamento).getLunghezza());
-                    instance.setValue(0,((Pantaloni) capoAbbigliamento).getMateriale());
+                    instance.setValue(2,((PantaloniLegacy) capoAbbigliamentoLegacy).getLunghezza());
+                    instance.setValue(0,((PantaloniLegacy) capoAbbigliamentoLegacy).getMateriale());
                 }
 
-                instance.setValue(3,capoAbbigliamento.getStagione());
+                instance.setValue(3, capoAbbigliamentoLegacy.getStagione());
                 instance.setValue(4,meteoInformation.getMeteo());
                 instance.setValue(5,meteoInformation.getTemperaturaPercepita());
                 instance.setValue(6,meteoInformation.getStagionePrevisione());
             } else {
-                Scarpa scarpa = (Scarpa) capoAbbigliamento;
+                ScarpaLegacy scarpa = (ScarpaLegacy) capoAbbigliamentoLegacy;
 
                 instance.setValue(0,scarpa.getTipo().toLowerCase());
                 instance.setValue(1,scarpa.getAntiscivolo() ? 'y' : 'n');
@@ -169,17 +169,17 @@ public class RegressionTreeWrapper {
             listInstance.add(instance);
         }
 
-        List<ScoreCapoAbbigliamento> scoreCapoAbbigliamentoList = new ArrayList<>();
+        List<ScoreCapoAbbigliamentoLegacy> scoreCapoAbbigliamentoList = new ArrayList<>();
 
         int i = 0;
         for (Instance instance: listInstance) {
             try {
                 double predict = repTree.classifyInstance(instance);
-                ScoreCapoAbbigliamento scoreCapoAbbigliamento = new ScoreCapoAbbigliamento(capoAbbigliamentoList.get(i),predict);
-                scoreCapoAbbigliamentoList.add(scoreCapoAbbigliamento);
+                ScoreCapoAbbigliamentoLegacy scoreCapoAbbigliamentoLegacy = new ScoreCapoAbbigliamentoLegacy(capoAbbigliamentoList.get(i),predict);
+                scoreCapoAbbigliamentoList.add(scoreCapoAbbigliamentoLegacy);
                 i++;
 
-                System.out.println("Valutata istanza:" + scoreCapoAbbigliamento  );
+                System.out.println("Valutata istanza:" + scoreCapoAbbigliamentoLegacy);
             } catch (Exception e) {
                 throw new RuntimeException("Predict blocked on " + i + "instance" + e);
             }
@@ -189,21 +189,21 @@ public class RegressionTreeWrapper {
         return scoreCapoAbbigliamentoList;
     }
 
-    public List<ScoreCapoAbbigliamento> getBestThreeClothes(List<ScoreCapoAbbigliamento> scoreCapoAbbigliamentoList) {
-        List<ScoreCapoAbbigliamento> bests = new ArrayList<>();
+    public List<ScoreCapoAbbigliamentoLegacy> getBestThreeClothes(List<ScoreCapoAbbigliamentoLegacy> scoreCapoAbbigliamentoList) {
+        List<ScoreCapoAbbigliamentoLegacy> bests = new ArrayList<>();
         Comparatore comparatore = new Comparatore();
 
         for (int i = 0; i < 3; i++) {
-            ScoreCapoAbbigliamento scoreCapoAbbigliamentoMax = Collections.max(scoreCapoAbbigliamentoList,comparatore);
+            ScoreCapoAbbigliamentoLegacy scoreCapoAbbigliamentoMax = Collections.max(scoreCapoAbbigliamentoList,comparatore);
             bests.add(scoreCapoAbbigliamentoMax);
             scoreCapoAbbigliamentoList.remove(scoreCapoAbbigliamentoMax);
         }
         return bests;
     }
 
-    private static class Comparatore implements Comparator<ScoreCapoAbbigliamento>{
+    private static class Comparatore implements Comparator<ScoreCapoAbbigliamentoLegacy>{
         @Override
-        public int compare(ScoreCapoAbbigliamento o1,ScoreCapoAbbigliamento o2) {
+        public int compare(ScoreCapoAbbigliamentoLegacy o1, ScoreCapoAbbigliamentoLegacy o2) {
             return o1.getPunteggio().compareTo(o2.getPunteggio());
         }
     }

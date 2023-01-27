@@ -1,6 +1,6 @@
 package Logics.controller;
 
-import Model.Guardaroba;
+import Model.GuardarobaLegacy;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -13,7 +13,7 @@ public class CaricaCapoForwardingServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
 
-        Guardaroba guardaroba = (Guardaroba) session.getAttribute("guardaroba");
+        GuardarobaLegacy guardaroba = (GuardarobaLegacy) session.getAttribute("guardaroba");
 
         if (guardaroba == null) {
             response.sendRedirect("./index.html");

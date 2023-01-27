@@ -1,21 +1,21 @@
 package Logics.ga;
 
-import Model.CapoAbbigliamento;
-import Model.Maglia;
-import Model.MeteoInformation;
+import Model.CapoAbbigliamentoLegacy;
+import Model.MagliaLegacy;
+import Model.MeteoInformationLegacy;
 
 import java.util.List;
 
 public class TopClothesGA{
     private GenericGA genericGA;
 
-    public TopClothesGA(List<Maglia> listaMaglie,MeteoInformation meteoInformation) {
+    public TopClothesGA(List<MagliaLegacy> listaMaglie, MeteoInformationLegacy meteoInformation) {
         genericGA = new GenericGA(listaMaglie,meteoInformation,"maglieGA");
     }
 
-    public List<CapoAbbigliamento> getBestMaglie() {
+    public List<CapoAbbigliamentoLegacy> getBestMaglie() {
         System.out.println("Avvio Algoritmo Genetico Maglie");
-        List<CapoAbbigliamento> list = genericGA.getBestResult();
+        List<CapoAbbigliamentoLegacy> list = genericGA.getBestResult();
 
         System.out.println(list);
         return list;

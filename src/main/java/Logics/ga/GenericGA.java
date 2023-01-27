@@ -1,7 +1,7 @@
 package Logics.ga;
 
-import Model.CapoAbbigliamento;
-import Model.MeteoInformation;
+import Model.CapoAbbigliamentoLegacy;
+import Model.MeteoInformationLegacy;
 
 import io.jenetics.*;
 import io.jenetics.engine.Constraint;
@@ -16,14 +16,14 @@ public class GenericGA {
 
     private static final int populationSize = 10;
     private Engine<IntegerGene, Integer> engine;
-    private List<CapoAbbigliamento> listaCapi;
+    private List<CapoAbbigliamentoLegacy> listaCapi;
     private static final Evaluator evaluator = new Evaluator();
-    private MeteoInformation meteoInformation;
+    private MeteoInformationLegacy meteoInformation;
     private String gaName;
 
-    public GenericGA(List<? extends  CapoAbbigliamento> list,MeteoInformation meteoInformation,String gaName) {
+    public GenericGA(List<? extends CapoAbbigliamentoLegacy> list, MeteoInformationLegacy meteoInformation, String gaName) {
         this.gaName = gaName;
-        this.listaCapi = (List<CapoAbbigliamento>) list;
+        this.listaCapi = (List<CapoAbbigliamentoLegacy>) list;
         this.meteoInformation = meteoInformation;
 
         /*  La Factory permette di generare la prima generazione di individui, ovvero stabilendo come saranno fatti.
@@ -79,13 +79,13 @@ public class GenericGA {
         return punteggio;
     }
 
-    public List<CapoAbbigliamento> getBestResult() {
+    public List<CapoAbbigliamentoLegacy> getBestResult() {
         Phenotype<IntegerGene, Integer> best =
                 engine.stream().limit(100).collect(EvolutionResult.toBestPhenotype());
 
         Genotype<IntegerGene> bestGt =  best.genotype();
         System.out.println("Miglior Individuo: " +  bestGt);
-        List<CapoAbbigliamento> list =  new ArrayList<>();
+        List<CapoAbbigliamentoLegacy> list =  new ArrayList<>();
 
         list.add(listaCapi.get(bestGt.get(0).gene().intValue()));
         list.add(listaCapi.get(bestGt.get(1).gene().intValue()));
