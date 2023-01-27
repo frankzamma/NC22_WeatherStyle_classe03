@@ -31,9 +31,9 @@ public class Scarpe extends CapoAbbigliamento{
      * @param antiscivolo rappresenta il fatto che la scarpa sia antiscivolo.
      * @param impermeabile definisce l'impermeabilità della scarpa.
      */
-    public Scarpe(int id,String nome,String dirImmagine,String stagione,
+    public Scarpe(String nome,String dirImmagine,String stagione,
                   String colore,String tipo,boolean antiscivolo,boolean impermeabile) {
-        super(id,nome,dirImmagine,stagione,colore);
+        super(nome,dirImmagine,stagione,colore);
         this.tipo = tipo;
         this.antiscivolo = antiscivolo;
         this.impermeabile = impermeabile;
