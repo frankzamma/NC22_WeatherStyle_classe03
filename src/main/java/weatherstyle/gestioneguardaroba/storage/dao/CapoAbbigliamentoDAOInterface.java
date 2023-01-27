@@ -18,7 +18,7 @@ public interface  CapoAbbigliamentoDAOInterface {
      * @param idCapoAbbigliamento è l'ID da cercare.
      * @return il capo d'abbigliamento corrispondente.
      */
-    CapoAbbigliamento doRetrieveCapoById (int idCapoAbbigliamento);
+    CapoAbbigliamento doRetrieveCapoById(int idCapoAbbigliamento);
 
     /**
      * Cerca una maglia in base all'ID.
@@ -46,19 +46,19 @@ public interface  CapoAbbigliamentoDAOInterface {
      * @param m è la maglia da salvare.
      * @return vero se il salvataggio è andato a buon fine, falso altrimenti.
      */
-    boolean doSaveMaglia (Maglia m);
+    boolean doSaveMaglia(Maglia m);
 
     /**
      * Salva un paio di pantaloni nel database
      * @param p è il paio di pantaloni da salvare.
      * @return vero se il salvataggio è andato a buon fine, falso altrimenti.
      */
-    boolean doSavePantaloni (Pantaloni p);
+    boolean doSavePantaloni(Pantaloni p);
 
     /**
      * Salva un paio di scarpe nel database
      * @param s è il paio di pantaloni da salvare.
      * @return vero se il salvataggio è andato a buon fine, falso altrimenti.
      */
-    boolean doSaveScarpe (Scarpe s);
+    boolean doSaveScarpe(Scarpe s);
 }

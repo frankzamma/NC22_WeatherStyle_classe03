@@ -12,12 +12,12 @@ import java.sql.*;
 import java.util.List;
 
 public class EventoDAOImpl implements EventoDAOInterface{
-    private static Evento creaEvento(ResultSet resultSet){
+    private static Evento creaEvento(ResultSet resultSet) {
         Evento evento = new Evento();
         UtenteDAOInterface utenteDAO = new UtenteDAOImpl();
 
-        try{
-            if (resultSet.next()){
+        try {
+            if (resultSet.next()) {
                 evento.setId(resultSet.getInt("ID"));
                 evento.setNome(resultSet.getString("nome"));
                 evento.setDataOraEvento(resultSet.getTimestamp("dataOraEvento"));
@@ -28,7 +28,7 @@ public class EventoDAOImpl implements EventoDAOInterface{
 
                 return evento;
             }
-        }catch (SQLException sql){
+        } catch (SQLException sql) {
             throw new RuntimeException();
         }
 
@@ -39,14 +39,14 @@ public class EventoDAOImpl implements EventoDAOInterface{
     public Evento doRetrieveById(int idEvento) {
         Evento evento;
 
-        try (Connection connection = ConnectionPool.getConnection()){
+        try (Connection connection = ConnectionPool.getConnection()) {
             PreparedStatement prepareStatement = connection.prepareStatement(
                     "SELECT * FROM Evento WHERE ID=?");
-            prepareStatement.setInt(1, idEvento);
+            prepareStatement.setInt(1,idEvento);
             ResultSet resultSet = prepareStatement.executeQuery();
             evento = creaEvento(resultSet);
 
-        } catch (SQLException sql){
+        } catch (SQLException sql) {
             throw new RuntimeException();
         }
 
@@ -60,12 +60,12 @@ public class EventoDAOImpl implements EventoDAOInterface{
             PreparedStatement prepareStatement = connection.prepareStatement(
                     "INSERT INTO Evento (nome, dataOraEvento, luogo, descrizione, altreInformazioni, IDutente) VALUES(?,?,?,?,?,?)",
                     Statement.RETURN_GENERATED_KEYS);
-            prepareStatement.setString(1, evento.getNome());
-            prepareStatement.setTimestamp(2, evento.getDataOraEvento());
-            prepareStatement.setString(3, evento.getLuogo());
-            prepareStatement.setString(4, evento.getDescrizione());
-            prepareStatement.setString(5, evento.getAltreInformazioni());
-            prepareStatement.setInt(6, evento.getUtente().getId());
+            prepareStatement.setString(1,evento.getNome());
+            prepareStatement.setTimestamp(2,evento.getDataOraEvento());
+            prepareStatement.setString(3,evento.getLuogo());
+            prepareStatement.setString(4,evento.getDescrizione());
+            prepareStatement.setString(5,evento.getAltreInformazioni());
+            prepareStatement.setInt(6,evento.getUtente().getId());
 
             if (prepareStatement.executeUpdate() != 1) {
                 return false;
@@ -86,14 +86,14 @@ public class EventoDAOImpl implements EventoDAOInterface{
     public List<Evento> doRetrieveAfterCurrentDate() {
         List<Evento> list = null;
 
-        try (Connection connection = ConnectionPool.getConnection()){
+        try (Connection connection = ConnectionPool.getConnection()) {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT * FROM Evento WHERE TIMESTAMPDIFF(MINUTE, CURRENT_TIMESTAMP(), dataOraEvento) > 0;");
-            while(resultSet.next()){
+            while (resultSet.next()) {
                 list.add(creaEvento(resultSet));
             }
 
-        } catch (SQLException sql){
+        } catch (SQLException sql) {
             throw new RuntimeException();
         }
 
@@ -104,14 +104,14 @@ public class EventoDAOImpl implements EventoDAOInterface{
     public List<Evento> doRetrieveAll() {
         List<Evento> list = null;
 
-        try (Connection connection = ConnectionPool.getConnection()){
+        try (Connection connection = ConnectionPool.getConnection()) {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT * FROM Evento;");
-            while(resultSet.next()){
+            while (resultSet.next()) {
                 list.add(creaEvento(resultSet));
             }
 
-        } catch (SQLException sql){
+        } catch (SQLException sql) {
             throw new RuntimeException();
         }
 

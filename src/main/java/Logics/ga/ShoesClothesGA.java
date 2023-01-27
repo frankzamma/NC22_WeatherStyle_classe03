@@ -9,11 +9,11 @@ import java.util.List;
 public class ShoesClothesGA{
     private GenericGA genericGA;
 
-    public ShoesClothesGA(List<Scarpa> listaScarpe, MeteoInformation meteoInformation){
-        genericGA = new GenericGA(listaScarpe, meteoInformation, "scarpeGA");
+    public ShoesClothesGA(List<Scarpa> listaScarpe,MeteoInformation meteoInformation) {
+        genericGA = new GenericGA(listaScarpe,meteoInformation,"scarpeGA");
     }
 
-    public List<CapoAbbigliamento> getBestScarpe(){
+    public List<CapoAbbigliamento> getBestScarpe() {
         System.out.println("Avvio Algoritmo Genetico Scarpe");
         List<CapoAbbigliamento> list = genericGA.getBestResult();
 
@@ -21,4 +21,3 @@ public class ShoesClothesGA{
         return list;
     }
 }
-

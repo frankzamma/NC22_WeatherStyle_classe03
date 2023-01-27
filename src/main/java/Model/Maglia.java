@@ -7,8 +7,8 @@ public class Maglia extends CapoAbbigliamento{
     public Maglia() {
     }
 
-    public Maglia(String materiale, String stagione, String colore, String lunghezzaManica) {
-        super(stagione, colore);
+    public Maglia(String materiale,String stagione,String colore,String lunghezzaManica) {
+        super(stagione,colore);
         this.materiale = materiale;
         this.lunghezzaManica = lunghezzaManica;
     }
@@ -31,8 +31,8 @@ public class Maglia extends CapoAbbigliamento{
 
     @Override
     public String toString() {
-        return "Maglia[" +super.getColore()+ ", " + super.getStagione() + ", " +
-                ", " + lunghezzaManica + ", " + materiale +
-                "]\n";
+        return "Maglia[" + super.getColore() + ", " + super.getStagione() + ", "
+                + ", " + lunghezzaManica + ", " + materiale
+                + "]\n";
     }
 }

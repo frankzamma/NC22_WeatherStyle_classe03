@@ -65,13 +65,13 @@ public class RichiestaPromozione {
 
     @Override
     public String toString() {
-        return "RichiestaPromozione{" +
-                "id=" + id +
-                ", tematiche='" + tematiche + '\'' +
-                ", esperienze='" + esperienze + '\'' +
-                ", stato='" + stato + '\'' +
-                ", utente=" + utente +
-                ", admin=" + admin +
-                '}';
+        return "RichiestaPromozione{"
+                + "id=" + id
+                + ", tematiche='" + tematiche + '\''
+                + ", esperienze='" + esperienze + '\''
+                + ", stato='" + stato + '\''
+                + ", utente=" + utente
+                + ", admin=" + admin
+                + '}';
     }
 }

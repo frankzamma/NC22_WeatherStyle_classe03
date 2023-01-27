@@ -20,17 +20,21 @@ public class RichiestaPromozioneLogicService implements RichiestaPromozioneLogic
 
     @Override
     public boolean salvaRichiestaPromozione(RichiestaPromozione richiestaPromozione) {
-        if(richiestaPromozione == null)
+        if (richiestaPromozione == null) {
             throw new IllegalArgumentException("Errore, richiestaPromozione null.");
+        }
 
-        if(richiestaPromozioneDAO.doRetrieveByIdUtente(richiestaPromozione.getUtente().getId()) == null)
+        if (richiestaPromozioneDAO.doRetrieveByIdUtente(richiestaPromozione.getUtente().getId()) == null) {
             throw new IllegalArgumentException("L'utente ha già richiesto la promozione ad ecologista.");
+        }
 
-        if(richiestaPromozione.getTematiche() == null || richiestaPromozione.getTematiche().equals(""))
+        if (richiestaPromozione.getTematiche() == null || "".equals(richiestaPromozione.getTematiche())) {
             throw new IllegalArgumentException("Mancano le tematiche.");
+        }
 
-        if(richiestaPromozione.getEsperienze() == null || (richiestaPromozione.getEsperienze().length() < 5 || richiestaPromozione.getEsperienze().length() >250))
+        if (richiestaPromozione.getEsperienze() == null || (richiestaPromozione.getEsperienze().length() < 5 || richiestaPromozione.getEsperienze().length() > 250)) {
             throw new IllegalArgumentException("La lunghezza della stringa esperienze non è valida.");
+        }
 
         return richiestaPromozioneDAO.doSaveRichiestaPromozione(richiestaPromozione);
     }
@@ -42,24 +46,28 @@ public class RichiestaPromozioneLogicService implements RichiestaPromozioneLogic
 
     @Override
     public List<RichiestaPromozione> ottieniListaRichiestePromozioniPerStato(String stato) {
-        if(!stato.equals("in attesa") && !stato.equals("approvata") && !stato.equals("rifiutata"))
+        if (!"in attesa".equals(stato) && !"approvata".equals(stato) && !"rifiutata".equals(stato)) {
             throw new IllegalArgumentException("Lo stato di una richiesta può essere solo: in attesa, approvata o rifiutata.");
+        }
 
         return richiestaPromozioneDAO.doRetrieveRichiestaPromozioneByStato(stato);
     }
 
     @Override
-    public boolean aggiornaStatoRichiestaPromozionePerId(RichiestaPromozione richiestaPromozione, String nuovoStato, Admin admin) {
-        if(!nuovoStato.equals("in attesa") && !nuovoStato.equals("approvata") && !nuovoStato.equals("rifiutata"))
+    public boolean aggiornaStatoRichiestaPromozionePerId(RichiestaPromozione richiestaPromozione,String nuovoStato,Admin admin) {
+        if (!"in attesa".equals(nuovoStato) && !"approvata".equals(nuovoStato) && !"rifiutata".equals(nuovoStato)) {
             throw new IllegalArgumentException("Lo stato di una richiesta può essere solo: in attesa, approvata o rifiutata.");
+        }
 
-        if(richiestaPromozione == null || !richiestaPromozione.getStato().equals("in attesa"))
+        if (richiestaPromozione == null || !"in attesa".equals(richiestaPromozione.getStato())) {
             throw new IllegalArgumentException("La richiesta di promozione è già stata valutata precedentemente.");
+        }
 
-        if(admin == null)
+        if (admin == null) {
             throw new IllegalArgumentException("Questa operazione deve essere eseguita da un amministratore.");
+        }
 
-        return richiestaPromozioneDAO.doUpdateStatoById(richiestaPromozione, nuovoStato, admin);
+        return richiestaPromozioneDAO.doUpdateStatoById(richiestaPromozione,nuovoStato,admin);
     }
 
 }

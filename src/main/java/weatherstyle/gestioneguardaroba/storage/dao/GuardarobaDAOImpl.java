@@ -15,7 +15,7 @@ public class GuardarobaDAOImpl implements GuardarobaDAOInterface {
         try (Connection connection =  ConnectionPool.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("SELECT * from Guardaroba WHERE ID = ?");
 
-            statement.setInt(1, id);
+            statement.setInt(1,id);
 
             ResultSet res =  statement.executeQuery();
             if (res.next()) {
@@ -33,9 +33,9 @@ public class GuardarobaDAOImpl implements GuardarobaDAOInterface {
     public boolean doSaveGuardaroba(int idUtente) {
         try (Connection connection = ConnectionPool.getConnection()) {
             PreparedStatement statement =  connection.prepareStatement(
-                    "insert into Guardaroba (ID, numeroCapi) values (?,0)", Statement.RETURN_GENERATED_KEYS);
+                    "insert into Guardaroba (ID, numeroCapi) values (?,0)",Statement.RETURN_GENERATED_KEYS);
 
-            statement.setInt(1, idUtente);
+            statement.setInt(1,idUtente);
 
             int res =  statement.executeUpdate();
 

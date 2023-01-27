@@ -19,7 +19,7 @@ public class SuggerimentoLogicService implements SuggerimentoLogicInterface {
     private final SuggerimentoDAOInterface suggerimentoDAO;
     private final OutfitDAOInterface outfitDAO;
 
-    public SuggerimentoLogicService(SuggerimentoDAOInterface suggerimentoDAO, OutfitDAOInterface outfitDAO){
+    public SuggerimentoLogicService(SuggerimentoDAOInterface suggerimentoDAO,OutfitDAOInterface outfitDAO) {
         this.suggerimentoDAO = suggerimentoDAO;
         this.outfitDAO = outfitDAO;
     }
@@ -32,14 +32,15 @@ public class SuggerimentoLogicService implements SuggerimentoLogicInterface {
      */
     @Override
     public boolean salvaSuggerimento(Suggerimento suggerimento) {
-        if (suggerimento == null)
+        if (suggerimento == null) {
             throw new IllegalArgumentException("Suggerimento non può essere null");
-        else
+        } else
             if (suggerimento.getUtente().getId() == null
                     || suggerimento.getCitta().getId() == null
                     || suggerimento.getOutfit().getId() == null
-                    || suggerimento.getMeteoDaily().getId() == null)
+                    || suggerimento.getMeteoDaily().getId() == null) {
                 throw new IllegalArgumentException("Suggerimento non ha gli id impostati");
+            }
 
         return suggerimentoDAO.doSaveSuggerimento(suggerimento);
     }
@@ -51,8 +52,9 @@ public class SuggerimentoLogicService implements SuggerimentoLogicInterface {
      */
     @Override
     public List<Suggerimento> ottieniCronologiaSuggerimentiUtente(Integer idUtente) {
-        if (idUtente == null)
+        if (idUtente == null) {
             throw new IllegalArgumentException("Id utente non può essere null");
+        }
         return suggerimentoDAO.doRetrieveCronologiaSuggerimentiByUtenteID(idUtente);
     }
 
@@ -67,10 +69,11 @@ public class SuggerimentoLogicService implements SuggerimentoLogicInterface {
     public <T extends CapoAbbigliamento> List<T> ottieniSuggerimentiCapi(ImplementorAlgorithm<T> implementorAlgorithm,
                                                                          List<T> capiAbbigliamento,
                                                                          MeteoDaily meteoDaily) {
-        if (capiAbbigliamento.size() < 3 || meteoDaily == null)
+        if (capiAbbigliamento.size() < 3 || meteoDaily == null) {
             throw new IllegalArgumentException("Lista capi d'abbigliamento troppo corta o meteo null");
+        }
 
-        return implementorAlgorithm.getBestThreeCapoAbbigliamento(capiAbbigliamento, meteoDaily);
+        return implementorAlgorithm.getBestThreeCapoAbbigliamento(capiAbbigliamento,meteoDaily);
     }
 
     /**
@@ -80,13 +83,14 @@ public class SuggerimentoLogicService implements SuggerimentoLogicInterface {
      */
     @Override
     public boolean salvaOutfit(Outfit outfit) {
-        if (outfit == null)
+        if (outfit == null) {
             throw new IllegalArgumentException("Outfit non può essere null");
-        else
+        } else
             if (outfit.getMaglia() == null
                     || outfit.getPantaloni() == null
-                    || outfit.getScarpe() == null)
+                    || outfit.getScarpe() == null) {
                 throw new IllegalArgumentException("Outfit non contiene maglia, pantaloni o scarpe");
+            }
         return outfitDAO.doSaveOutfit(outfit);
     }
 

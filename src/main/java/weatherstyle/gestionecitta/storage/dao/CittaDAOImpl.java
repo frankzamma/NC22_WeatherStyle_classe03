@@ -22,17 +22,18 @@ public class CittaDAOImpl implements CittaDAOInterface{
     @Override
     public boolean doSaveCitta(Citta citta) {
 
-        if (doRetrieveCittaByLatLon(citta.getLat(), citta.getLon()))
+        if (doRetrieveCittaByLatLon(citta.getLat(),citta.getLon())) {
             return false;
+        }
 
         try (Connection connection = ConnectionPool.getConnection()) {
 
             PreparedStatement preparedStatement = connection.prepareStatement(
                     "INSERT INTO Citta (nome, latitudine, longitudine) VALUES(?,?,?)",
                     Statement.RETURN_GENERATED_KEYS);
-            preparedStatement.setString(1, citta.getNome());
-            preparedStatement.setString(2, citta.getLat());
-            preparedStatement.setString(3, citta.getLon());
+            preparedStatement.setString(1,citta.getNome());
+            preparedStatement.setString(2,citta.getLat());
+            preparedStatement.setString(3,citta.getLon());
 
             if (preparedStatement.executeUpdate() != 1) {
                 return false;
@@ -136,21 +137,22 @@ public class CittaDAOImpl implements CittaDAOInterface{
         return true;
     }
 
-    private boolean doRetrieveCittaByLatLon(String lat, String lon) {
+    private boolean doRetrieveCittaByLatLon(String lat,String lon) {
 
         try (Connection connection = ConnectionPool.getConnection()) {
 
             PreparedStatement preparedStatement = connection.prepareStatement(
-                    "SELECT latitudine, longitudine " +
-                            "FROM Citta c  " +
-                            "where c.latitudine=? and c.longitudine=?");
-            preparedStatement.setString(1, lat);
-            preparedStatement.setString(2, lon);
+                    "SELECT latitudine, longitudine "
+                            + "FROM Citta c  "
+                            + "where c.latitudine=? and c.longitudine=?");
+            preparedStatement.setString(1,lat);
+            preparedStatement.setString(2,lon);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            if (resultSet.next())
+            if (resultSet.next()) {
                 return true;
+            }
 
         } catch (SQLException sql) {
             throw new RuntimeException();

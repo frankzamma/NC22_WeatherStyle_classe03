@@ -8,7 +8,7 @@ public class MeteoInformation {
     public MeteoInformation() {
     }
 
-    public MeteoInformation(double temperaturaPercepita, String meteo, String stagionePrevisione) {
+    public MeteoInformation(double temperaturaPercepita,String meteo,String stagionePrevisione) {
         this.temperaturaPercepita = temperaturaPercepita;
         this.meteo = meteo;
         this.stagionePrevisione = stagionePrevisione;

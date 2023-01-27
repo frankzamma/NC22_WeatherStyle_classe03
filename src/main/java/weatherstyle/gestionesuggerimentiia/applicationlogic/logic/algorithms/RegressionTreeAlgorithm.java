@@ -26,7 +26,7 @@ import java.util.*;
  * @param <T> tipo della categoria di capo d'abbigliamento, al momento è possibile lavorare solo su Maglie, Pantaloni e
  * Scarpe.
  */
-class RegressionTreeAlgorithm<T extends CapoAbbigliamento> implements ImplementorAlgorithm<T>{
+class RegressionTreeAlgorithm<T extends CapoAbbigliamento> implements ImplementorAlgorithm<T> {
 
     private final REPTree repTree;
     private final Instances fullDataset;
@@ -47,14 +47,14 @@ class RegressionTreeAlgorithm<T extends CapoAbbigliamento> implements Implemento
             fullDataset = csvLoader.getDataSet();
 
             // setting della variabile dipendente
-            fullDataset.setClassIndex(fullDataset.numAttributes()-1);
+            fullDataset.setClassIndex(fullDataset.numAttributes() - 1);
 
             // ten cross validation ha mostrato che l'intero dataset su cui sarà addestrato il modello dà buoni risultati
             // quindi lo addestreremo sull'intero dataset
             testModelWithTenFoldsCrossValidation();
         } catch (IOException e) {
             throw new RuntimeException("File csv non trovato" + e);
-        } catch (Exception e){
+        } catch (Exception e) {
             throw new RuntimeException("Problemi nella costruzione del modello [WEKA]" + e);
         }
     }
@@ -67,11 +67,11 @@ class RegressionTreeAlgorithm<T extends CapoAbbigliamento> implements Implemento
 
         // applichiamo 10 folds cross validation
         Evaluation evaluation = new Evaluation(fullDataset);
-        evaluation.crossValidateModel(repTree, fullDataset, 10, new Random(1));
+        evaluation.crossValidateModel(repTree,fullDataset,10,new Random(1));
 
         // bilanciamento dati di training
         ClassBalancer classBalancer = (ClassBalancer) createClassBalancer(fullDataset);
-        Filter.useFilter(fullDataset, classBalancer);
+        Filter.useFilter(fullDataset,classBalancer);
 
         // addestramento regressore
         repTree.buildClassifier(fullDataset);
@@ -109,31 +109,31 @@ class RegressionTreeAlgorithm<T extends CapoAbbigliamento> implements Implemento
         }
 
         if (capoAbbigliamento.getClass() == Pantaloni.class) {
-            instance.setValue(1, ((Pantaloni) capoAbbigliamento).getColore());
-            instance.setValue(2, ((Pantaloni) capoAbbigliamento).getLunghezza());
-            instance.setValue(0, ((Pantaloni) capoAbbigliamento).getMateriale());
-            instance.setValue(3, ((Pantaloni) capoAbbigliamento).getStagione());
-            instance.setValue(4, meteoDaily.getMeteo());
-            instance.setValue(5, meteoDaily.getTemperatura());
-            instance.setValue(6, meteoDaily.getStagionePrevisione());
+            instance.setValue(1,((Pantaloni) capoAbbigliamento).getColore());
+            instance.setValue(2,((Pantaloni) capoAbbigliamento).getLunghezza());
+            instance.setValue(0,((Pantaloni) capoAbbigliamento).getMateriale());
+            instance.setValue(3,((Pantaloni) capoAbbigliamento).getStagione());
+            instance.setValue(4,meteoDaily.getMeteo());
+            instance.setValue(5,meteoDaily.getTemperatura());
+            instance.setValue(6,meteoDaily.getStagionePrevisione());
         }
 
-        if (capoAbbigliamento.getClass() == Scarpe.class){
+        if (capoAbbigliamento.getClass() == Scarpe.class) {
             Scarpe scarpe = (Scarpe) capoAbbigliamento;
-            instance.setValue(0, scarpe.getTipo().toLowerCase());
-            instance.setValue(1, scarpe.isAntiscivolo() ? 'y' : 'n');
-            instance.setValue(2, scarpe.isImpermeabile() ? 'y' : 'n');
-            instance.setValue(3, scarpe.getColore().toLowerCase());
-            instance.setValue(4, scarpe.getStagione());
-            instance.setValue(5, meteoDaily.getMeteo());
-            instance.setValue(6, meteoDaily.getTemperatura());
-            instance.setValue(7, meteoDaily.getStagionePrevisione());
+            instance.setValue(0,scarpe.getTipo().toLowerCase());
+            instance.setValue(1,scarpe.isAntiscivolo() ? 'y' : 'n');
+            instance.setValue(2,scarpe.isImpermeabile() ? 'y' : 'n');
+            instance.setValue(3,scarpe.getColore().toLowerCase());
+            instance.setValue(4,scarpe.getStagione());
+            instance.setValue(5,meteoDaily.getMeteo());
+            instance.setValue(6,meteoDaily.getTemperatura());
+            instance.setValue(7,meteoDaily.getStagionePrevisione());
         }
 
         ScoreCapoAbbigliamento scoreCapoAbbigliamento;
         try {
             double predict = repTree.classifyInstance(instance);
-            scoreCapoAbbigliamento = new ScoreCapoAbbigliamento(capoAbbigliamento, predict);
+            scoreCapoAbbigliamento = new ScoreCapoAbbigliamento(capoAbbigliamento,predict);
         } catch (Exception e) {
             throw new RuntimeException("Predict blocked");
         }
@@ -148,19 +148,19 @@ class RegressionTreeAlgorithm<T extends CapoAbbigliamento> implements Implemento
      * @return lista dei tre capi migliori del tipo della classe
      */
     @Override
-    public List<T> getBestThreeCapoAbbigliamento(List<T> capoAbbigliamentoList, MeteoDaily meteoDaily) {
+    public List<T> getBestThreeCapoAbbigliamento(List<T> capoAbbigliamentoList,MeteoDaily meteoDaily) {
 
         List<ScoreCapoAbbigliamento> scoreCapoAbbigliamentoList = new ArrayList<>();
 
         for (T capoAbbigliamento: capoAbbigliamentoList)
-            scoreCapoAbbigliamentoList.add(classifyInstance(capoAbbigliamento, meteoDaily));
+            scoreCapoAbbigliamentoList.add(classifyInstance(capoAbbigliamento,meteoDaily));
 
 
         List<ScoreCapoAbbigliamento> bests = new ArrayList<>();
 
-        for(int i = 0; i < 3; i++) {
+        for (int i = 0; i < 3; i++) {
             ScoreCapoAbbigliamento scoreCapoAbbigliamentoMax = Collections.max(scoreCapoAbbigliamentoList,
-            (o1, o2) -> o1.getPunteggio().compareTo(o2.getPunteggio()));
+            (o1,o2) -> o1.getPunteggio().compareTo(o2.getPunteggio()));
             bests.add(scoreCapoAbbigliamentoMax);
             scoreCapoAbbigliamentoList.remove(scoreCapoAbbigliamentoMax);
         }
@@ -182,7 +182,7 @@ class RegressionTreeAlgorithm<T extends CapoAbbigliamento> implements Implemento
         private T capoAbbigliamento;
         private Double punteggio;
 
-        public ScoreCapoAbbigliamento(T capoAbbigliamento, Double punteggio) {
+        public ScoreCapoAbbigliamento(T capoAbbigliamento,Double punteggio) {
             this.capoAbbigliamento = capoAbbigliamento;
             this.punteggio = punteggio;
         }

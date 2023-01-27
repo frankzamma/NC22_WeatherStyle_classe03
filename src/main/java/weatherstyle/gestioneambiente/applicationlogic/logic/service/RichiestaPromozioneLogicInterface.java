@@ -11,6 +11,6 @@ public interface RichiestaPromozioneLogicInterface {
     boolean salvaRichiestaPromozione(RichiestaPromozione richiestaPromozione);
     List<RichiestaPromozione> ottieniListaRichiestePromozioni();
     List<RichiestaPromozione> ottieniListaRichiestePromozioniPerStato(String stato);
-    boolean aggiornaStatoRichiestaPromozionePerId(RichiestaPromozione richiestaPromozione, String nuovoStato, Admin admin);
+    boolean aggiornaStatoRichiestaPromozionePerId(RichiestaPromozione richiestaPromozione,String nuovoStato,Admin admin);
 
 }

@@ -79,12 +79,6 @@ buildNumber.properties
 
 .idea/
 
-.mvn/
-
-mvnw
-
-*.cmd
-
 venv/
 
 out/

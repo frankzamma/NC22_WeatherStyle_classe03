@@ -5,7 +5,7 @@ public class ScoreCapoAbbigliamento {
     private CapoAbbigliamento capoAbbigliamento;
     private Double punteggio;
 
-    public ScoreCapoAbbigliamento(CapoAbbigliamento capoAbbigliamento, Double punteggio) {
+    public ScoreCapoAbbigliamento(CapoAbbigliamento capoAbbigliamento,Double punteggio) {
         this.capoAbbigliamento = capoAbbigliamento;
         this.punteggio = punteggio;
     }
@@ -28,8 +28,8 @@ public class ScoreCapoAbbigliamento {
 
     @Override
     public String toString() {
-        return "[" + capoAbbigliamento +
-                ", punteggio=" + punteggio + "]"
+        return "[" + capoAbbigliamento
+                + ", punteggio=" + punteggio + "]"
                 ;
     }
 }

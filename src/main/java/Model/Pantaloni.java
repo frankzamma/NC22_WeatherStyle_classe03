@@ -3,12 +3,12 @@ package Model;
 public class Pantaloni extends CapoAbbigliamento{
     private String lunghezza, materiale;
 
-    public Pantaloni(){
+    public Pantaloni() {
 
     }
 
-    public Pantaloni(String materiale, String stagione, String colore, String lunghezza){
-        super (stagione,colore);
+    public Pantaloni(String materiale,String stagione,String colore,String lunghezza) {
+        super(stagione,colore);
         this.materiale = materiale;
         this.lunghezza = lunghezza;
     }
@@ -31,7 +31,7 @@ public class Pantaloni extends CapoAbbigliamento{
 
     @Override
     public String toString() {
-        return "Pantaloni[" + super.getStagione() +", "+ super.getColore() +", "
-                + lunghezza + ", " +  materiale +"]\n";
+        return "Pantaloni[" + super.getStagione() + ", " + super.getColore() + ", "
+                + lunghezza + ", " +  materiale + "]\n";
     }
 }

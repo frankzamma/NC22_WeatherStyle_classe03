@@ -25,7 +25,7 @@ public class RegressionTreeWrapper {
 
     private String modelName;
 
-    public RegressionTreeWrapper(String pathDatasetFile, Boolean buildWithTrainingSetAndTestSet, boolean balanceDate, String modelName) {
+    public RegressionTreeWrapper(String pathDatasetFile,Boolean buildWithTrainingSetAndTestSet,boolean balanceDate,String modelName) {
         this.modelName =  modelName;
         repTree = new REPTree();
 
@@ -42,74 +42,75 @@ public class RegressionTreeWrapper {
             //System.out.println(fullDataset.toString());
 
             // setting della variabile dipendente
-            fullDataset.setClassIndex(fullDataset.numAttributes()-1);
+            fullDataset.setClassIndex(fullDataset.numAttributes() - 1);
 
             // ten cross validation ha mostrato che l'intero dataset su cui sarà addestrato il modello dà buoni risultati
             // quindi è preferibile addestrarlo sull'intero dataset e non su una parte di esso
-            if(buildWithTrainingSetAndTestSet)
-                testModelWithTrainingSetAndTestSet(67, 33, balanceDate);
-            else
+            if (buildWithTrainingSetAndTestSet) {
+                testModelWithTrainingSetAndTestSet(67,33,balanceDate);
+            } else {
                 testModelWithTenFoldsCrossValidation(balanceDate);
+            }
         } catch (IOException e) {
             throw new RuntimeException("File csv non trovato" + e);
-        } catch (Exception e){
+        } catch (Exception e) {
             throw new RuntimeException("Problemi nella costruzione del modello [WEKA]" + e);
         }
 
     }
 
-    private void testModelWithTrainingSetAndTestSet(double percentTrain, double percentTest, boolean balanceDate) throws Exception {
+    private void testModelWithTrainingSetAndTestSet(double percentTrain,double percentTest,boolean balanceDate) throws Exception {
 
         // randomizza fullDataset
         Randomize randomize = new Randomize();
         randomize.setInputFormat(fullDataset);
-        fullDataset = Filter.useFilter(fullDataset, randomize);
+        fullDataset = Filter.useFilter(fullDataset,randomize);
 
         // ottiene il training set dal 67% del fullDataset
         RemovePercentage removePercentage = new RemovePercentage();
         removePercentage.setPercentage(percentTrain);
         removePercentage.setInputFormat(fullDataset);
-        Instances trainingSet = Filter.useFilter(fullDataset, removePercentage);
-        trainingSet.setClassIndex(trainingSet.numAttributes() -1);
+        Instances trainingSet = Filter.useFilter(fullDataset,removePercentage);
+        trainingSet.setClassIndex(trainingSet.numAttributes() - 1);
 
         // ottiene il test set dal 33% del fullDataset
         removePercentage.setInvertSelection(true);
         removePercentage.setPercentage(percentTest);
         removePercentage.setInputFormat(fullDataset);
-        Instances testSet = Filter.useFilter(fullDataset, removePercentage);
-        testSet.setClassIndex(testSet.numAttributes() -1);
+        Instances testSet = Filter.useFilter(fullDataset,removePercentage);
+        testSet.setClassIndex(testSet.numAttributes() - 1);
 
-        if(balanceDate) {
+        if (balanceDate) {
             // bilanciamento dati di training
             ClassBalancer classBalancer = (ClassBalancer) createClassBalancer(trainingSet);
-            Filter.useFilter(trainingSet, classBalancer);
+            Filter.useFilter(trainingSet,classBalancer);
         }
         // addestramento regressore
         repTree.buildClassifier(trainingSet);
 
         // valutazione metriche
         evaluation = new Evaluation(trainingSet);
-        evaluation.evaluateModel(repTree, testSet);
+        evaluation.evaluateModel(repTree,testSet);
 
         // output valutazioni
-        System.out.println( modelName + " valutato con Training Set (" + percentTrain + ")%" + "e Test Set (" +
-                percentTest + "%):\n" + evaluation.toSummaryString());
+        System.out.println(modelName + " valutato con Training Set (" + percentTrain + ")%" + "e Test Set ("
+                + percentTest + "%):\n" + evaluation.toSummaryString());
     }
 
-    private void testModelWithTenFoldsCrossValidation(boolean balanceDate) throws Exception{
+    private void testModelWithTenFoldsCrossValidation(boolean balanceDate) throws Exception {
 
         // valutiamo quanto buono sarà il regressore mediante 10 folds cross validation
         evaluation = new Evaluation(fullDataset);
-        evaluation.crossValidateModel(repTree, fullDataset, 10, new Random(1));
+        evaluation.crossValidateModel(repTree,fullDataset,10,new Random(1));
 
         // bilanciamento dati di training
-        if(balanceDate) {
+        if (balanceDate) {
             ClassBalancer classBalancer = (ClassBalancer) createClassBalancer(fullDataset);
-            Filter.useFilter(fullDataset, classBalancer);
+            Filter.useFilter(fullDataset,classBalancer);
         }
 
         // output valutazioni
-        System.out.println(modelName +" addestrato.\nValutazione con Ten Folds Cross Validation:"+ evaluation.toSummaryString());
+        System.out.println(modelName + " addestrato.\nValutazione con Ten Folds Cross Validation:" + evaluation.toSummaryString());
 
         // addestramento regressore
         repTree.buildClassifier(fullDataset);
@@ -124,45 +125,45 @@ public class RegressionTreeWrapper {
     }
 
 
-    public String getEvaluation(){
-        return (evaluation != null) ? evaluation.toSummaryString(): "null";
+    public String getEvaluation() {
+        return (evaluation != null) ? evaluation.toSummaryString() : "null";
     }
 
 
     public List<ScoreCapoAbbigliamento> classifyInstances(List<? extends CapoAbbigliamento> capoAbbigliamentoList,
-                                                          MeteoInformation meteoInformation){
+                                                          MeteoInformation meteoInformation) {
         List<Instance> listInstance = new ArrayList<>();
 
-        for (CapoAbbigliamento capoAbbigliamento: capoAbbigliamentoList){
+        for (CapoAbbigliamento capoAbbigliamento: capoAbbigliamentoList) {
             Instance instance = new DenseInstance(capoAbbigliamento.getClass() != Scarpa.class ? 7 : 8);
             instance.setDataset(fullDataset);
-            if(capoAbbigliamento.getClass() == Maglia.class || capoAbbigliamento.getClass() == Pantaloni.class){
-                instance.setValue(1, capoAbbigliamento.getColore());
+            if (capoAbbigliamento.getClass() == Maglia.class || capoAbbigliamento.getClass() == Pantaloni.class) {
+                instance.setValue(1,capoAbbigliamento.getColore());
 
-                if(capoAbbigliamento.getClass() == Maglia.class){
-                    instance.setValue(2, ((Maglia) capoAbbigliamento).getLunghezzaManica());
-                    instance.setValue(0, ((Maglia) capoAbbigliamento).getMateriale());
+                if (capoAbbigliamento.getClass() == Maglia.class) {
+                    instance.setValue(2,((Maglia) capoAbbigliamento).getLunghezzaManica());
+                    instance.setValue(0,((Maglia) capoAbbigliamento).getMateriale());
                 }
-                else{
-                    instance.setValue(2,((Pantaloni)capoAbbigliamento).getLunghezza() );
-                    instance.setValue(0, ((Pantaloni) capoAbbigliamento).getMateriale());
+                else {
+                    instance.setValue(2,((Pantaloni) capoAbbigliamento).getLunghezza());
+                    instance.setValue(0,((Pantaloni) capoAbbigliamento).getMateriale());
                 }
 
-                instance.setValue(3, capoAbbigliamento.getStagione());
-                instance.setValue(4, meteoInformation.getMeteo());
-                instance.setValue(5, meteoInformation.getTemperaturaPercepita());
-                instance.setValue(6, meteoInformation.getStagionePrevisione());
-            }else{
+                instance.setValue(3,capoAbbigliamento.getStagione());
+                instance.setValue(4,meteoInformation.getMeteo());
+                instance.setValue(5,meteoInformation.getTemperaturaPercepita());
+                instance.setValue(6,meteoInformation.getStagionePrevisione());
+            } else {
                 Scarpa scarpa = (Scarpa) capoAbbigliamento;
 
-                instance.setValue(0, scarpa.getTipo().toLowerCase());
-                instance.setValue(1, scarpa.getAntiscivolo()? 'y' : 'n');
-                instance.setValue(2, scarpa.getImpermeabile()? 'y' : 'n');
-                instance.setValue(3, scarpa.getColore().toLowerCase());
-                instance.setValue(4, scarpa.getStagione());
-                instance.setValue(5, meteoInformation.getMeteo());
-                instance.setValue(6, meteoInformation.getTemperaturaPercepita());
-                instance.setValue(7, meteoInformation.getStagionePrevisione());
+                instance.setValue(0,scarpa.getTipo().toLowerCase());
+                instance.setValue(1,scarpa.getAntiscivolo() ? 'y' : 'n');
+                instance.setValue(2,scarpa.getImpermeabile() ? 'y' : 'n');
+                instance.setValue(3,scarpa.getColore().toLowerCase());
+                instance.setValue(4,scarpa.getStagione());
+                instance.setValue(5,meteoInformation.getMeteo());
+                instance.setValue(6,meteoInformation.getTemperaturaPercepita());
+                instance.setValue(7,meteoInformation.getStagionePrevisione());
             }
 
             listInstance.add(instance);
@@ -171,15 +172,15 @@ public class RegressionTreeWrapper {
         List<ScoreCapoAbbigliamento> scoreCapoAbbigliamentoList = new ArrayList<>();
 
         int i = 0;
-        for(Instance instance: listInstance) {
-            try{
+        for (Instance instance: listInstance) {
+            try {
                 double predict = repTree.classifyInstance(instance);
-                ScoreCapoAbbigliamento scoreCapoAbbigliamento = new ScoreCapoAbbigliamento(capoAbbigliamentoList.get(i), predict);
+                ScoreCapoAbbigliamento scoreCapoAbbigliamento = new ScoreCapoAbbigliamento(capoAbbigliamentoList.get(i),predict);
                 scoreCapoAbbigliamentoList.add(scoreCapoAbbigliamento);
                 i++;
 
                 System.out.println("Valutata istanza:" + scoreCapoAbbigliamento  );
-            }catch (Exception e){
+            } catch (Exception e) {
                 throw new RuntimeException("Predict blocked on " + i + "instance" + e);
             }
 
@@ -188,12 +189,12 @@ public class RegressionTreeWrapper {
         return scoreCapoAbbigliamentoList;
     }
 
-    public List<ScoreCapoAbbigliamento> getBestThreeClothes(List<ScoreCapoAbbigliamento> scoreCapoAbbigliamentoList){
+    public List<ScoreCapoAbbigliamento> getBestThreeClothes(List<ScoreCapoAbbigliamento> scoreCapoAbbigliamentoList) {
         List<ScoreCapoAbbigliamento> bests = new ArrayList<>();
         Comparatore comparatore = new Comparatore();
 
-        for(int i=0; i<3; i++){
-            ScoreCapoAbbigliamento scoreCapoAbbigliamentoMax = Collections.max(scoreCapoAbbigliamentoList, comparatore);
+        for (int i = 0; i < 3; i++) {
+            ScoreCapoAbbigliamento scoreCapoAbbigliamentoMax = Collections.max(scoreCapoAbbigliamentoList,comparatore);
             bests.add(scoreCapoAbbigliamentoMax);
             scoreCapoAbbigliamentoList.remove(scoreCapoAbbigliamentoMax);
         }
@@ -202,7 +203,7 @@ public class RegressionTreeWrapper {
 
     private static class Comparatore implements Comparator<ScoreCapoAbbigliamento>{
         @Override
-        public int compare(ScoreCapoAbbigliamento o1, ScoreCapoAbbigliamento o2) {
+        public int compare(ScoreCapoAbbigliamento o1,ScoreCapoAbbigliamento o2) {
             return o1.getPunteggio().compareTo(o2.getPunteggio());
         }
     }

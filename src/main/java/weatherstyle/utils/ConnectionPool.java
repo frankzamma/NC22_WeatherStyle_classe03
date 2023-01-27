@@ -28,5 +28,7 @@ public class ConnectionPool {
         }
         return datasource.getConnection();
     }
-}
 
+    private ConnectionPool() {
+    }
+}

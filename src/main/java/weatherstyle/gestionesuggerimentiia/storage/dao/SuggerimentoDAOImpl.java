@@ -47,12 +47,12 @@ public class SuggerimentoDAOImpl implements SuggerimentoDAOInterface{
         try (Connection connection = ConnectionPool.getConnection()) {
 
             PreparedStatement preparedStatement = connection.prepareStatement(
-                    "INSERT INTO Suggerimento (dataSuggerimento, IDutente, IDcitta, IDoutfit)" +
-                            "VALUES(?,?,?,?)");
-            preparedStatement.setDate(1, suggerimento.getDate());
-            preparedStatement.setInt(2, suggerimento.getUtente().getId());
-            preparedStatement.setInt(3, suggerimento.getCitta().getId());
-            preparedStatement.setInt(4, suggerimento.getOutfit().getId());
+                    "INSERT INTO Suggerimento (dataSuggerimento, IDutente, IDcitta, IDoutfit)"
+                            + "VALUES(?,?,?,?)");
+            preparedStatement.setDate(1,suggerimento.getDate());
+            preparedStatement.setInt(2,suggerimento.getUtente().getId());
+            preparedStatement.setInt(3,suggerimento.getCitta().getId());
+            preparedStatement.setInt(4,suggerimento.getOutfit().getId());
 
             if (preparedStatement.executeUpdate() != 1) {
                 return false;
@@ -83,8 +83,8 @@ public class SuggerimentoDAOImpl implements SuggerimentoDAOInterface{
         try (Connection connection = ConnectionPool.getConnection()) {
 
             PreparedStatement preparedStatement = connection.prepareStatement(
-                    "SELECT * FROM Suggerimento where s.IDutente=?");
-            preparedStatement.setInt(1, utenteID);
+                    "SELECT * FROM Suggerimento s where s.IDutente=?");
+            preparedStatement.setInt(1,utenteID);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 

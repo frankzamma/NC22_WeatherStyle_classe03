@@ -22,8 +22,8 @@ public class CittaLogicService implements CittaLogicInterface{
      */
     private final InfoCittaService infoCittaService;
 
-    public CittaLogicService(CittaDAOInterface cittaDAO, InfoCittaService infoCittaService){
-        this.cittaDAO= cittaDAO;
+    public CittaLogicService(CittaDAOInterface cittaDAO,InfoCittaService infoCittaService) {
+        this.cittaDAO = cittaDAO;
         this.infoCittaService = infoCittaService;
     }
 
@@ -35,8 +35,9 @@ public class CittaLogicService implements CittaLogicInterface{
      */
     @Override
     public boolean salvaCitta(Citta citta) {
-        if (citta == null)
+        if (citta == null) {
             throw new IllegalArgumentException("Città non può essere null");
+        }
 
         return cittaDAO.doSaveCitta(citta);
     }
@@ -49,8 +50,9 @@ public class CittaLogicService implements CittaLogicInterface{
      */
     @Override
     public List<Citta> ottieniCittaByName(String name) {
-        if (name == null || name.length() == 0)
+        if (name == null || name.length() == 0) {
             throw new IllegalArgumentException("Stringa name troppo corta o null");
+        }
 
         return infoCittaService.getCittaByName(name);
     }
