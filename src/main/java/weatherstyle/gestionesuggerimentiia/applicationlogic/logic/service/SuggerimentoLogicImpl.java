@@ -69,7 +69,8 @@ public class SuggerimentoLogicImpl implements SuggerimentoLogicService {
     public <T extends CapoAbbigliamento> List<T> ottieniSuggerimentiCapi(ImplementorAlgorithm<T> implementorAlgorithm,
                                                                          List<T> capiAbbigliamento,
                                                                          MeteoDaily meteoDaily) {
-        if (capiAbbigliamento.size() < 3 || meteoDaily == null) {
+        if (capiAbbigliamento.size() < 3 || meteoDaily == null
+                || implementorAlgorithm == null) {
             throw new IllegalArgumentException("Lista capi d'abbigliamento troppo corta o meteo null");
         }
 

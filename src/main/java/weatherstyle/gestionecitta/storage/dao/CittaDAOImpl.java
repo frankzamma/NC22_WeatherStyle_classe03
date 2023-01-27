@@ -23,7 +23,7 @@ public class CittaDAOImpl implements CittaDAOInterface{
     public boolean doSaveCitta(Citta citta) {
 
         if (doRetrieveCittaByLatLon(citta)) {
-            return false;
+            return true;
         }
 
         try (Connection connection = ConnectionPool.getConnection()) {
