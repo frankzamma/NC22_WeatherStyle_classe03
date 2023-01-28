@@ -1,7 +1,9 @@
 package weatherstyle.gestionesuggerimentiia.applicationlogic.logic.service;
 
+import weatherstyle.gestionecitta.applicationlogic.logic.service.CittaLogicService;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.CapoAbbigliamento;
 import weatherstyle.gestionemeteo.applicationlogic.logic.beans.MeteoDailyMin;
+import weatherstyle.gestionemeteo.applicationlogic.logic.service.MeteoLogicService;
 import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.algorithms.ImplementorAlgorithm;
 import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.beans.Outfit;
 import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.beans.Suggerimento;
@@ -18,29 +20,31 @@ public class SuggerimentoLogicImpl implements SuggerimentoLogicService {
 
     private final SuggerimentoDAOInterface suggerimentoDAO;
     private final OutfitDAOInterface outfitDAO;
+    private final CittaLogicService cittaLogicService;
+    private final MeteoLogicService meteoLogicService;
 
-    public SuggerimentoLogicImpl(SuggerimentoDAOInterface suggerimentoDAO, OutfitDAOInterface outfitDAO) {
+    public SuggerimentoLogicImpl(SuggerimentoDAOInterface suggerimentoDAO, OutfitDAOInterface outfitDAO,
+                                 CittaLogicService cittaLogicService, MeteoLogicService meteoLogicService) {
         this.suggerimentoDAO = suggerimentoDAO;
         this.outfitDAO = outfitDAO;
+        this.cittaLogicService = cittaLogicService;
+        this.meteoLogicService = meteoLogicService;
     }
 
     /**
      * @param suggerimento il suggerimento che si vuole salvare nel DB
-     * @throws IllegalArgumentException se suggerimento è null oppure non ha settato tutti gli id degli elementi al suo
-     * interno
+     * @throws IllegalArgumentException se suggerimento è null
      * @return true se è stato possibile salvare il suggerimento, altrimenti false
      */
     @Override
     public boolean salvaSuggerimento(Suggerimento suggerimento) {
         if (suggerimento == null) {
             throw new IllegalArgumentException("Suggerimento non può essere null");
-        } else
-            if (suggerimento.getUtente().getId() == null
-                    || suggerimento.getCitta().getId() == null
-                    || suggerimento.getOutfit().getId() == null
-                    || suggerimento.getMeteoDaily().getId() == null) {
-                throw new IllegalArgumentException("Suggerimento non ha gli id impostati");
-            }
+        } else {
+            cittaLogicService.salvaCitta(suggerimento.getCitta());
+            meteoLogicService.salvaMeteo(suggerimento.getMeteoDaily());
+            this.salvaOutfit(suggerimento.getOutfit());
+        }
 
         return suggerimentoDAO.doSaveSuggerimento(suggerimento);
     }

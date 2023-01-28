@@ -2,9 +2,11 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import weatherstyle.gestionecitta.applicationlogic.logic.service.CittaLogicService;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Maglia;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Pantaloni;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Scarpe;
+import weatherstyle.gestionemeteo.applicationlogic.logic.service.MeteoLogicService;
 import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.beans.Outfit;
 import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.service.SuggerimentoLogicImpl;
 import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.service.SuggerimentoLogicService;
@@ -18,12 +20,16 @@ public class SalvaOutfitTest {
     private static SuggerimentoLogicService suggerimentoLogicService;
     private static SuggerimentoDAOImpl suggerimentoDAO;
     private static OutfitDAOImpl outfitDAO;
+    private static CittaLogicService cittaLogicService;
+    private static MeteoLogicService meteoLogicService;
 
     @BeforeAll
     public static void init(){
         suggerimentoDAO = Mockito.mock(SuggerimentoDAOImpl.class);
         outfitDAO = Mockito.mock(OutfitDAOImpl.class);
-        suggerimentoLogicService = new SuggerimentoLogicImpl(suggerimentoDAO, outfitDAO);
+        cittaLogicService = Mockito.mock(CittaLogicService.class);
+        meteoLogicService = Mockito.mock(MeteoLogicService.class);
+        suggerimentoLogicService = new SuggerimentoLogicImpl(suggerimentoDAO, outfitDAO, cittaLogicService, meteoLogicService);
     }
 
     @Test
@@ -35,7 +41,7 @@ public class SalvaOutfitTest {
 
         Mockito.when(outfitDAO.doSaveOutfit(outfit)).thenReturn(false);
 
-        suggerimentoLogicService = new SuggerimentoLogicImpl(suggerimentoDAO, outfitDAO);
+        suggerimentoLogicService = new SuggerimentoLogicImpl(suggerimentoDAO, outfitDAO, cittaLogicService, meteoLogicService);
 
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class,
                 () -> suggerimentoLogicService.salvaOutfit(outfit));
