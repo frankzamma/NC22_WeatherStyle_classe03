@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-@WebServlet(name = "index",value = "/index.html")
+@WebServlet(name = "index",value = "/old_index.html")
 public class IndexServlet extends HttpServlet {
 
     @Override

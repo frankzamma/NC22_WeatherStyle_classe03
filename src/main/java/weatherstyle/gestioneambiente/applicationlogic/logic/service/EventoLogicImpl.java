@@ -11,16 +11,38 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.regex.Pattern;
 
-public class EventoLogicService implements EventoLogicInterface{
+/**
+ * @author angelopalmieri
+ * Classe che gestisce le operazioni di business che riguardano gli eventi
+ * a favore dell'ambiente creati dagli ecologisti.
+ */
+public class EventoLogicImpl implements EventoLogicInterface{
+
+    /**
+     * DAO di evento per interagire direttamente col database.
+     */
     private final EventoDAOInterface eventoDAO;
+    /**
+     * Service di InfoCitta per poter sfruttare i suoi servizi.
+     */
     private final InfoCittaService infoCitta;
 
-    public EventoLogicService() {
+    /**
+     * Costruttore vuoto che istanzia eventoDAOe infoCitta.
+     */
+    public EventoLogicImpl() {
         this.eventoDAO = new EventoDAOImpl();
         this.infoCitta = new InfoCittaImpl();
     }
 
-    public EventoLogicService(EventoDAOInterface eventoDAO,InfoCittaService infoCitta) {
+    /**
+     * Costruttore in cui si assegna eventoDAO e infoCitta.
+     * @param eventoDAO rappresenta il DAO di evento che andrà a usare questa
+     *                  classe per interagire direttamente col database.
+     * @param infoCitta rappresenta l'oggetto che andrà a usare questa
+     *                  classe per usufruire dei servizi offerti da InfoCitta.
+     */
+    public EventoLogicImpl(EventoDAOInterface eventoDAO, InfoCittaService infoCitta) {
         this.eventoDAO = eventoDAO;
         this.infoCitta = infoCitta;
     }
@@ -49,8 +71,8 @@ public class EventoLogicService implements EventoLogicInterface{
         }
 
         Pattern DATE_PATTERN = Pattern.compile("[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01][0-9]):[0-5][0-9]:[0-5][0-9].[0-9]");
-        if (DATE_PATTERN.matcher(evento.getDataOraEvento().toString()).matches())
-            throw new IllegalArgumentException("Formato della data non valido");
+        if (!DATE_PATTERN.matcher(evento.getDataOraEvento().toString()).matches())
+            throw new IllegalArgumentException("Formato della data non valido.");
 
         if (evento.getDataOraEvento().before(new Timestamp(System.currentTimeMillis()))) {
             throw new IllegalArgumentException("Data nel passato.");

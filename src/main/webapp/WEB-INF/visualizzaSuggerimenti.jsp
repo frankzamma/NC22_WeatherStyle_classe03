@@ -1,5 +1,10 @@
+<%@ page import="weatherstyle.gestionemeteo.applicationlogic.logic.beans.MeteoDailyMin" %>
+<%@ page import="weatherstyle.gestionesuggerimentiia.applicationlogic.logic.beans.Suggerimento" %>
+<%@ page import="weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Maglia" %>
 <%@ page import="java.util.List" %>
-<%@ page import="Model.*" %>
+<%@ page import="weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Pantaloni" %>
+<%@ page import="weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Scarpe" %>
+<%@ page import="weatherstyle.gestionecitta.applicationlogic.logic.beans.Citta" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -8,11 +13,12 @@
 </head>
 <body>
     <%
-        String algoritmoIA = (String) request.getAttribute("algoritmoIA");
-        MeteoInformationLegacy meteoInformationLegacy = (MeteoInformationLegacy) request.getAttribute("meteoInformation");
-        List<CapoAbbigliamentoLegacy> maglieSuggerite = (List<CapoAbbigliamentoLegacy>) request.getAttribute("maglieSuggerite");
-        List<CapoAbbigliamentoLegacy> pantaloniSuggeriti = (List<CapoAbbigliamentoLegacy>) request.getAttribute("pantaloniSuggeriti");
-        List<CapoAbbigliamentoLegacy> scarpeSuggerite = (List<CapoAbbigliamentoLegacy>) request.getAttribute("scarpeSuggerite");
+        Suggerimento suggerimento = (Suggerimento) request.getAttribute("suggerimento");
+        List<Maglia> maglieSuggerite = (List<Maglia>) request.getAttribute("maglieSuggerite");
+        List<Pantaloni> pantaloniSuggeriti = (List<Pantaloni>) request.getAttribute("pantaloniSuggeriti");
+        List<Scarpe> scarpeSuggerite = (List<Scarpe>) request.getAttribute("scarpeSuggerite");
+        MeteoDailyMin meteoDailyMin = suggerimento.getMeteoDailyMin();
+        Citta citta = suggerimento.getCitta();
     %>
     <%@include file="navbar.jsp"%>
     <div class="container">
@@ -28,77 +34,46 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><%=meteoInformationLegacy.getMeteo()%></td>
-                    <td><%=meteoInformationLegacy.getTemperaturaPercepita()%> gradi celsius</td>
-                    <td><%=meteoInformationLegacy.getStagionePrevisione()%></td>
-                    <%
-                        if(algoritmoIA.equals("ga")){
-                            %>
-                                <td>Algoritmo genetico</td>
-                        <% }
-                        else {
-                            if(algoritmoIA.equals("ml")){
-                                %>
-                                    <td>Machine learning</td>
-                            <% }
-                        }
-                    %>
+                    <td><%=meteoDailyMin.getMeteoStringMin()%></td>
+                    <td><%=meteoDailyMin.getTemperaturaPercepitaMedia()%> gradi celsius</td>
+                    <td><%=meteoDailyMin.getStagionePrevisione()%></td>
                 </tr>
             </tbody>
         </table>
-        <%
-            if(maglieSuggerite.size() <= 0) { %>
-        <br>
-        <h3 class="display-6">Nessuna maglia è stata suggerita.</h3>
-        <% }
-        else {
-                List<Double> punteggiMaglie = (List<Double>) request.getAttribute("punteggiMaglie");
-        %>
-        <br>
-        <h3 class="display-6">Maglie suggerite</h3>
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Materiale</th>
-                <th scope="col">Colore</th>
-                <th scope="col">Manica</th>
-                <th scope="col">Stagione</th>
-                <%
-                    if(punteggiMaglie != null){
-                        %>
-                        <th scope="col">Punteggio</th>
-                        <%
-                    }
-                %>
 
-            </tr>
-            </thead>
-            <tbody>
-            <%
-                int i = 0;
-                for(CapoAbbigliamentoLegacy capo: maglieSuggerite){
-                    MagliaLegacy magliaLegacy = (MagliaLegacy) capo;
-                %>
-                    <tr>
-                        <td><%=i%></td>
-                        <td><%=magliaLegacy.getMateriale()%></td>
-                        <td><%=magliaLegacy.getColore()%></td>
-                        <td><%=magliaLegacy.getLunghezzaManica()%></td>
-                        <td><%=magliaLegacy.getStagione()%></td>
-                        <%
-                            if(punteggiMaglie != null){
-                                %>
-                                    <td><%=punteggiMaglie.get(i)%></td>
-                                <%
-                            }
-                        %>
-                    </tr>
-                <%  i++;
-                } %>
-            </tbody>
-        </table>
-        <% }
+        <% if(maglieSuggerite.size() == 0) { %>
+            <br>
+            <h3 class="display-6">Nessuna maglia è stata suggerita, per ricevere suggerimenti carica delle maglie!</h3>
+        <% } else { %>
+            <h3 class="display-6">Maglie suggerite</h3>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Materiale</th>
+                    <th scope="col">Colore</th>
+                    <th scope="col">Manica</th>
+                    <th scope="col">Stagione</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                <%
+                    int i = 0;
+                    for(Maglia maglia: maglieSuggerite){ %>
+                        <tr>
+                            <td><%=i%></td>
+                            <td><%=maglia.getMateriale()%></td>
+                            <td><%=maglia.getColore()%></td>
+                            <td><%=maglia.getLunghezzaManica()%></td>
+                            <td><%=maglia.getStagione()%></td>
+                        </tr>
+                    <%  i++;
+                    } %>
+                </tbody>
+            </table>
+        <% } %>
+        <%
 
             if(pantaloniSuggeriti.size() <= 0) { %>
         <br>

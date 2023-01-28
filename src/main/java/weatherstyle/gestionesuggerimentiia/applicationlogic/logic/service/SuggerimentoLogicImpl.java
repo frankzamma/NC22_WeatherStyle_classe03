@@ -1,13 +1,16 @@
 package weatherstyle.gestionesuggerimentiia.applicationlogic.logic.service;
 
+import weatherstyle.gestionecitta.applicationlogic.logic.service.CittaLogicService;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.CapoAbbigliamento;
 import weatherstyle.gestionemeteo.applicationlogic.logic.beans.MeteoDailyMin;
+import weatherstyle.gestionemeteo.applicationlogic.logic.service.MeteoLogicService;
 import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.algorithms.ImplementorAlgorithm;
 import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.beans.Outfit;
 import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.beans.Suggerimento;
 import weatherstyle.gestionesuggerimentiia.storage.dao.OutfitDAOInterface;
 import weatherstyle.gestionesuggerimentiia.storage.dao.SuggerimentoDAOInterface;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,21 +29,30 @@ public class SuggerimentoLogicImpl implements SuggerimentoLogicService {
 
     /**
      * @param suggerimento il suggerimento che si vuole salvare nel DB
-     * @throws IllegalArgumentException se suggerimento è null oppure non ha settato tutti gli id degli elementi al suo
-     * interno
+     * @throws IllegalArgumentException se suggerimento è null o non ha tutti i campi settati
      * @return true se è stato possibile salvare il suggerimento, altrimenti false
      */
     @Override
     public boolean salvaSuggerimento(Suggerimento suggerimento) {
-        if (suggerimento == null) {
+        if (suggerimento == null)
             throw new IllegalArgumentException("Suggerimento non può essere null");
-        } else
-            if (suggerimento.getUtente().getId() == null
-                    || suggerimento.getCitta().getId() == null
-                    || suggerimento.getOutfit().getId() == null
-                    || suggerimento.getMeteoDaily().getId() == null) {
-                throw new IllegalArgumentException("Suggerimento non ha gli id impostati");
-            }
+        if (suggerimento.getUtente() == null)
+            throw new IllegalArgumentException("Utente non può essere null");
+        if (suggerimento.getCitta() == null)
+            throw new IllegalArgumentException("Citta non può essere null");
+        if (suggerimento.getMeteoDailyMin() == null)
+            throw new IllegalArgumentException("Meteo non può essere null");
+        if (suggerimento.getOutfit() == null)
+            throw new IllegalArgumentException("Outfit non può essere null");
+
+        if (suggerimento.getOutfit().getMaglia() == null)
+            throw new IllegalArgumentException("Outfit non contiene maglia");
+        if (suggerimento.getOutfit().getPantaloni() == null)
+            throw new IllegalArgumentException("Outfit non contiene pantaloni");
+        if (suggerimento.getOutfit().getScarpe() == null)
+            throw new IllegalArgumentException("Outfit non contiene scarpe");
+        if (suggerimento.getOutfit().getNome().length() == 0 || suggerimento.getOutfit().getNome().length() > 30)
+            throw new IllegalArgumentException("Outfit lunghezza nome deve essere tra 1 e 30 caratteri");
 
         return suggerimentoDAO.doSaveSuggerimento(suggerimento);
     }
@@ -69,33 +81,15 @@ public class SuggerimentoLogicImpl implements SuggerimentoLogicService {
     public <T extends CapoAbbigliamento> List<T> ottieniSuggerimentiCapi(ImplementorAlgorithm<T> implementorAlgorithm,
                                                                          List<T> capiAbbigliamento,
                                                                          MeteoDailyMin meteoDailyMin) {
-        if (capiAbbigliamento.size() < 3 || meteoDailyMin == null
+        if (capiAbbigliamento == null || meteoDailyMin == null
                 || implementorAlgorithm == null) {
             throw new IllegalArgumentException("Lista capi d'abbigliamento troppo corta o meteo null");
         }
 
+        if (capiAbbigliamento.size() < 3)
+            return new ArrayList<T>();
+
         return implementorAlgorithm.getBestThreeCapoAbbigliamento(capiAbbigliamento, meteoDailyMin);
-    }
-
-    /**
-     * @param outfit outfit che si vuole salvare nel DB
-     * @throws IllegalArgumentException se outfit è null oppure se non contiene maglia, pantaloni e scarpe
-     * @return true se è stato possibile salvare l'outfit, altrimenti false
-     */
-    @Override
-    public boolean salvaOutfit(Outfit outfit) {
-        if (outfit == null)
-            throw new IllegalArgumentException("Outfit non può essere null");
-        if (outfit.getMaglia() == null)
-            throw new IllegalArgumentException("Outfit non contiene maglia");
-        if (outfit.getPantaloni() == null)
-            throw new IllegalArgumentException("Outfit non contiene pantaloni");
-        if (outfit.getScarpe() == null)
-            throw new IllegalArgumentException("Outfit non contiene scarpe");
-        if (outfit.getNome().length() == 0 || outfit.getNome().length() > 30)
-            throw new IllegalArgumentException("Outfit lunghezza nome deve essere tra 1 e 30 caratteri");
-
-        return outfitDAO.doSaveOutfit(outfit);
     }
 
 }

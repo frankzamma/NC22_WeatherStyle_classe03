@@ -7,14 +7,30 @@ import weatherstyle.gestioneutenti.applicationlogic.logic.beans.Admin;
 
 import java.util.List;
 
-public class RichiestaPromozioneLogicService implements RichiestaPromozioneLogicInterface{
+/**
+ * @author angelopalmieri
+ * Classe che gestisce le operazioni di business che riguardano le richieste di promozione
+ * a ecologista avanzate dagli utenti.
+ */
+public class RichiestaPromozioneLogicImpl implements RichiestaPromozioneLogicInterface{
+    /**
+     * DAO di richiestaPromozione per interagire direttamente col database.
+     */
     private final RichiestaPromozioneDAOInterface richiestaPromozioneDAO;
 
-    public RichiestaPromozioneLogicService() {
+    /**
+     * Costruttore vuoto in cui si istanzia richiestaPromozioneDAO.
+     */
+    public RichiestaPromozioneLogicImpl() {
         this.richiestaPromozioneDAO = new RichiestaPromozioneDAOImpl();
     }
 
-    public RichiestaPromozioneLogicService(RichiestaPromozioneDAOInterface richiestaPromozioneDAO) {
+    /**
+     * Costruttore in cui si assegna richiestaPromozioneDAO.
+     * @param richiestaPromozioneDAO rappresenta il DAO di richiesta promozione che andrà
+     *                               a usare questa classe per interagire direttamente col database.
+     */
+    public RichiestaPromozioneLogicImpl(RichiestaPromozioneDAOInterface richiestaPromozioneDAO) {
         this.richiestaPromozioneDAO = richiestaPromozioneDAO;
     }
 
@@ -51,6 +67,8 @@ public class RichiestaPromozioneLogicService implements RichiestaPromozioneLogic
 
     @Override
     public List<RichiestaPromozione> ottieniListaRichiestePromozionePerStato(String stato) {
+        if(stato == null)
+            throw new IllegalArgumentException("Errore, stato null.");
         if (!"in attesa".equals(stato) && !"approvata".equals(stato) && !"rifiutata".equals(stato)) {
             throw new IllegalArgumentException("Lo stato di una richiesta può essere solo: in attesa, approvata o rifiutata.");
         }
@@ -60,16 +78,22 @@ public class RichiestaPromozioneLogicService implements RichiestaPromozioneLogic
 
     @Override
     public boolean aggiornaStatoRichiestaPromozione(RichiestaPromozione richiestaPromozione,String nuovoStato,Admin admin) {
+        if(nuovoStato == null)
+            throw new IllegalArgumentException("Errore, nuovoStato null.");
+
         if (!"in attesa".equals(nuovoStato) && !"approvata".equals(nuovoStato) && !"rifiutata".equals(nuovoStato)) {
             throw new IllegalArgumentException("Lo stato di una richiesta può essere solo: in attesa, approvata o rifiutata.");
         }
 
-        if (richiestaPromozione == null || !"in attesa".equals(richiestaPromozione.getStato())) {
-            throw new IllegalArgumentException("La richiesta di promozione è già stata valutata precedentemente.");
+        if (richiestaPromozione == null) {
+            throw new IllegalArgumentException("Errore, richiesta di promozione null.");
         }
 
+        if (!richiestaPromozione.getStato().equals("in attesa"))
+            throw new IllegalArgumentException("La richiesta di promozione è già stata valutata.");
+
         if (admin == null) {
-            throw new IllegalArgumentException("Questa operazione deve essere eseguita da un amministratore.");
+            throw new IllegalArgumentException("Errore, admin null.");
         }
 
         return richiestaPromozioneDAO.doUpdateStato(richiestaPromozione,nuovoStato,admin);

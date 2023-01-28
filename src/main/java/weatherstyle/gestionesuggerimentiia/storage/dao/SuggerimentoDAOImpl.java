@@ -44,15 +44,19 @@ public class SuggerimentoDAOImpl implements SuggerimentoDAOInterface{
     @Override
     public boolean doSaveSuggerimento(Suggerimento suggerimento) {
 
+        cittaDAO.doSaveCitta(suggerimento.getCitta());
+        meteoDAO.doSaveMeteo(suggerimento.getMeteoDailyMin());
+        outfitDAO.doSaveOutfit(suggerimento.getOutfit());
+
         try (Connection connection = ConnectionPool.getConnection()) {
 
             PreparedStatement preparedStatement = connection.prepareStatement(
                     "INSERT INTO Suggerimento (dataSuggerimento, IDutente, IDcitta, IDoutfit)"
                             + "VALUES(?,?,?,?)");
             preparedStatement.setDate(1,suggerimento.getDate());
-            preparedStatement.setInt(2,suggerimento.getUtente().getId());
-            preparedStatement.setInt(3,suggerimento.getCitta().getId());
-            preparedStatement.setInt(4,suggerimento.getOutfit().getId());
+            preparedStatement.setInt(2, suggerimento.getUtente().getId());
+            preparedStatement.setInt(3, suggerimento.getCitta().getId());
+            preparedStatement.setInt(4, suggerimento.getOutfit().getId());
 
             if (preparedStatement.executeUpdate() != 1) {
                 return false;
@@ -95,7 +99,7 @@ public class SuggerimentoDAOImpl implements SuggerimentoDAOInterface{
 
                 suggerimento.setCitta(cittaDAO.doRetrieveCittaBySuggerimentoID(suggerimento.getId()));
                 suggerimento.setOutfit(outfitDAO.doRetrieveOutfitBySuggerimentoID(suggerimento.getId()));
-                suggerimento.setMeteoDaily(meteoDAO.doRetrieveMeteoBySuggerimentoID(suggerimento.getId()));
+                suggerimento.setMeteoDailyMin(meteoDAO.doRetrieveMeteoBySuggerimentoID(suggerimento.getId()));
 
                 suggerimentoList.add(suggerimento);
             }
