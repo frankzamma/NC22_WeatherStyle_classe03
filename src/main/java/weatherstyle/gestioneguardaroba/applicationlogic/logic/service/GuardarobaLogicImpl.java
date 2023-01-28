@@ -144,6 +144,25 @@ public class GuardarobaLogicImpl implements GuardarobaLogicInterface {
 
     }
 
+    @Override
+    public List<CapoAbbigliamento> getAll(int idUtente) {
+        List<Maglia> maglie = getMaglie(idUtente);
+        List<Pantaloni> pantaloni = getPantaloni(idUtente);
+        List<Scarpe> scarpe = getScarpe(idUtente);
+        List<CapoAbbigliamento> all = new ArrayList<>();
+
+        for (Maglia m : maglie)
+            all.add(m);
+
+        for (Pantaloni p : pantaloni)
+            all.add(p);
+
+        for (Scarpe s : scarpe)
+            all.add(s);
+
+        return all;
+    }
+
 
     public void controlli (CapoAbbigliamento c) throws ErrorParameterException{
         List<String> errorParameter =  new ArrayList<>();
