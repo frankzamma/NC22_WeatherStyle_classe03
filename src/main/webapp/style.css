@@ -1,0 +1,43 @@
+:root{
+    --blue-light : #76BBDB;
+    --blue-dark : #337AB8;
+    --blue-dark-hover: #337AC9;
+}
+
+body{
+    background-color: #76BBDB;
+    color : #FFFFFF;
+    font-family: 'Roboto', sans-serif;
+}
+
+.navbar-nav {
+    --bs-nav-link-padding-x: 0;
+    --bs-nav-link-padding-y: 0.5rem;
+    --bs-nav-link-color: #FFFFFF;
+    --bs-nav-link-hover-color: var(--bs-navbar-hover-color);
+    --bs-nav-link-disabled-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+    color : white;
+}
+
+a:hover{
+    color: antiquewhite;
+}
+
+.dark-bg{
+    background-color: var(--blue-dark);
+}
+
+.btn-primary{
+    --bs-btn-bg: var(--blue-dark);
+    --bs-btn-border-color: var(--blue-dark);
+    --bs-btn-hover-bg: var(--blue-dark-hover);
+}
