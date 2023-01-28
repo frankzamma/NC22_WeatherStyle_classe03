@@ -34,11 +34,11 @@ public class UtenteLogicImpl implements UtenteLogicService {
             errorParameter.add("email");
         }
 
-        /*Pattern pattern = Pattern.compile("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!_;,:+.-]).{8,20}$");
+        Pattern pattern = Pattern.compile("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!_;,:+.-]).{8,20}$");
         Matcher matcher = pattern.matcher(password);
         if (password == null || !matcher.matches()) {
             errorParameter.add("password");
-        }*/
+        }
 
         if (nome == null || nome.length() < 3 || !nome.matches("^[A-Za-z\\s]{3,30}$")) {
             errorParameter.add("nome");
