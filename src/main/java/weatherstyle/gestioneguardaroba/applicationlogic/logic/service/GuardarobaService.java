@@ -4,19 +4,18 @@ package weatherstyle.gestioneguardaroba.applicationlogic.logic.service;
  * @author Annalaura Miglino
  */
 
-import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.CapoAbbigliamento;
-import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Maglia;
-import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Pantaloni;
-import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Scarpe;
+import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.*;
 import weatherstyle.gestioneguardaroba.storage.dao.CapoAbbigliamentoDAOImpl;
 import weatherstyle.gestioneguardaroba.storage.dao.CapoAbbigliamentoDAOInterface;
+import weatherstyle.gestioneguardaroba.storage.dao.GuardarobaDAOImpl;
+import weatherstyle.gestioneguardaroba.storage.dao.GuardarobaDAOInterface;
 import weatherstyle.utils.ErrorParameterException;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class CapoAbbigliamentoService implements  CapoAbbigliamentoLogicServiceInterface{
+public class GuardarobaService implements GuardarobaLogicServiceInterface {
 
     CapoAbbigliamentoDAOInterface dao = new CapoAbbigliamentoDAOImpl();
     List<String> colori = Arrays.asList("chiaro", "scuro", "colorato");
@@ -25,12 +24,13 @@ public class CapoAbbigliamentoService implements  CapoAbbigliamentoLogicServiceI
     List<String> tipiScarpe = Arrays.asList("stivaletto alla caviglia", "scarpa da ginnastica", "scarpa classica", "scarpe con tacchi", "scarpe aperte", "anfibi", "stivali");
 
     @Override
-    public boolean salvaMaglia(Maglia m) throws ErrorParameterException {
+    public boolean salvaMaglia(Maglia m, int idGuardaroba) throws ErrorParameterException {
         try{
+
             controlli(m);
             if ((m.getLunghezzaManica()!=null) && ((m.getLunghezzaManica().equals("lunga")) || (m.getLunghezzaManica().equals("corta")))){
                 if ((m.getMateriale()!=null) && (materiali.contains(m.getMateriale()))){
-                    dao.doSaveMaglia(m);
+                    dao.doSaveMaglia(m, idGuardaroba);
                 }
             }
         }catch (ErrorParameterException e){
@@ -50,13 +50,13 @@ public class CapoAbbigliamentoService implements  CapoAbbigliamentoLogicServiceI
     }
 
     @Override
-    public boolean salvaPantaloni(Pantaloni p) throws ErrorParameterException {
+    public boolean salvaPantaloni(Pantaloni p, int idGuardaroba) throws ErrorParameterException {
         try{
             controlli(p);
 
             if ((p.getLunghezza()!=null) && ((p.getLunghezza().equals("lunga")) || (p.getLunghezza().equals("corta")) || (p.getLunghezza().equals("media")))){
                 if ((p.getMateriale()!=null) && (materiali.contains(p.getMateriale()))){
-                    dao.doSavePantaloni(p);
+                    dao.doSavePantaloni(p, idGuardaroba);
                 }
             }
         }catch (ErrorParameterException e){
@@ -78,13 +78,13 @@ public class CapoAbbigliamentoService implements  CapoAbbigliamentoLogicServiceI
     }
 
     @Override
-    public boolean salvaScarpe(Scarpe s) throws ErrorParameterException{
+    public boolean salvaScarpe(Scarpe s, int idGuardaroba) throws ErrorParameterException{
         try{
             controlli(s);
             if ((s.getTipo()!=null) && (tipiScarpe.contains(s.getTipo()))){
                 if ((s.isAntiscivolo()==true) || (s.isAntiscivolo()==false)){
                     if ((s.isImpermeabile()==true) || (s.isImpermeabile()==false)){
-                        dao.doSaveScarpe(s);
+                        dao.doSaveScarpe(s, idGuardaroba);
                     }
                 }
             }
@@ -106,6 +106,42 @@ public class CapoAbbigliamentoService implements  CapoAbbigliamentoLogicServiceI
                 throw new ErrorParameterException();
         }
         return true;
+    }
+
+    @Override
+    public List<Maglia> getMaglie(int idUtente) {
+        GuardarobaDAOInterface daoG = new GuardarobaDAOImpl();
+
+        Guardaroba g = daoG.doRetrieveGuardarobaById(idUtente);
+
+        CapoAbbigliamentoDAOInterface daoC = new CapoAbbigliamentoDAOImpl();
+
+        return daoC.doRetrieveMaglieByIdGuardaroba(g.getId());
+
+    }
+
+    @Override
+    public List<Pantaloni> getPantaloni(int idUtente) {
+        GuardarobaDAOInterface daoG = new GuardarobaDAOImpl();
+
+        Guardaroba g = daoG.doRetrieveGuardarobaById(idUtente);
+
+        CapoAbbigliamentoDAOInterface daoC = new CapoAbbigliamentoDAOImpl();
+
+        return daoC.doRetrievePantaloniByIdGuardaroba(g.getId());
+
+    }
+
+    @Override
+    public List<Scarpe> getScarpe(int idUtente) {
+        GuardarobaDAOInterface daoG = new GuardarobaDAOImpl();
+
+        Guardaroba g = daoG.doRetrieveGuardarobaById(idUtente);
+
+        CapoAbbigliamentoDAOInterface daoC = new CapoAbbigliamentoDAOImpl();
+
+        return daoC.doRetrieveScarpeByIdGuardaroba(g.getId());
+
     }
 
 
