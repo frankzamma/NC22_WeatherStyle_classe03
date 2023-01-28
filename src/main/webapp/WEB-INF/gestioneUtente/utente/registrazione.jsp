@@ -13,7 +13,7 @@
     </head>
     <body>
         <%@include file="../../navbar.jsp" %>
-        <form method="post" action="registra-utente">
+        <form method="post" action="registra-utente" onsubmit="return validateForm()">
             <div class="container">
                 <h1>Registrazione</h1>
                 <%
@@ -57,7 +57,20 @@
                 <div class="row">
                     <div class="col">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" name="password" class="form-control" id="password">
+                        <input type="password" name="password" onkeyup="validatePassword('password')"
+                               class="form-control" id="password">
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div id="password-check" >
+                                <ul id="password-check-list">
+                                    <li id="min-lenght"><i class="fa fa-circle-o"></i> Lunghezza minima 8 caratteri</li>
+                                    <li id="min-symbol"><i class="fa fa-circle-o"></i> Almeno un simbolo tra !_;,:.-+</li>
+                                    <li id="min-letter"><i class="fa fa-circle-o"></i> Almeno una lettera minuscola e una maiuscola</li>
+                                    <li id="min-number"><i class="fa fa-circle-o"></i> Almeno un numero</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="row mt-3">
@@ -72,5 +85,6 @@
             </div>
         </form>
         <%@include file="../../footer.jsp" %>
+        <script src="./script/script-registrazione.js" type="text/javascript"></script>
     </body>
 </html>

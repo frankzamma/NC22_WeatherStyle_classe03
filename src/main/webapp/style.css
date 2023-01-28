@@ -41,3 +41,15 @@ a:hover{
     --bs-btn-border-color: var(--blue-dark);
     --bs-btn-hover-bg: var(--blue-dark-hover);
 }
+
+div#password-check{
+    display: none;
+    background-color: white;
+    border-radius: 20px;
+    margin-top: 1rem;
+    margin-bottom:0;
+}
+
+ul#password-check-list{
+    list-style-type: none;
+}
