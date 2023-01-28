@@ -95,7 +95,7 @@ public class SuggerimentoDAOImpl implements SuggerimentoDAOInterface{
 
                 suggerimento.setCitta(cittaDAO.doRetrieveCittaBySuggerimentoID(suggerimento.getId()));
                 suggerimento.setOutfit(outfitDAO.doRetrieveOutfitBySuggerimentoID(suggerimento.getId()));
-                suggerimento.setMeteoDaily(meteoDAO.doRetrieveMeteoBySuggerimentoID(suggerimento.getId()));
+                suggerimento.setMeteoDailyMin(meteoDAO.doRetrieveMeteoBySuggerimentoID(suggerimento.getId()));
 
                 suggerimentoList.add(suggerimento);
             }
