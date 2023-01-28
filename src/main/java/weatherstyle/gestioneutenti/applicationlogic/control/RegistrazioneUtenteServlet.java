@@ -3,16 +3,12 @@ package weatherstyle.gestioneutenti.applicationlogic.control;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
-import weatherstyle.gestionecitta.applicationlogic.logic.beans.Citta;
 import weatherstyle.gestioneutenti.applicationlogic.logic.beans.Utente;
-import weatherstyle.gestioneutenti.applicationlogic.logic.service.UtenteLogicService;
+import weatherstyle.gestioneutenti.applicationlogic.logic.service.UtenteLogicImpl;
 import weatherstyle.utils.ErrorParameterException;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 import java.util.List;
 
 @WebServlet(name = "RegistrazioneUtenteServlet", value = "/registra-utente")
@@ -33,7 +29,7 @@ public class RegistrazioneUtenteServlet extends HttpServlet {
             String dataNascita = request.getParameter("data-nascita");
             String email =  request.getParameter("email");
             String password =  request.getParameter("password");
-            UtenteLogicService service =  new UtenteLogicService();
+            UtenteLogicImpl service =  new UtenteLogicImpl();
 
             if(!service.existsUtente(email)){
                 try{

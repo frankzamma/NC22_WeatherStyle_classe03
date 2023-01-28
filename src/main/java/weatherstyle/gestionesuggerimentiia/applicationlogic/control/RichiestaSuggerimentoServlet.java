@@ -1,7 +1,6 @@
 package weatherstyle.gestionesuggerimentiia.applicationlogic.control;
 
 
-import Model.RecoveryGuardaroba;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -10,10 +9,10 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import weatherstyle.gestionecitta.applicationlogic.logic.beans.Citta;
-import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Guardaroba;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Maglia;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Pantaloni;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Scarpe;
+import weatherstyle.gestioneguardaroba.applicationlogic.logic.service.GuardarobaLogicImpl;
 import weatherstyle.gestionemeteo.applicationlogic.logic.beans.MeteoDailyMin;
 import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.algorithms.ImplementorAlgorithm;
 import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.beans.Suggerimento;
@@ -65,15 +64,12 @@ public class RichiestaSuggerimentoServlet extends HttpServlet {
             // Si prende l'Utente dalla sessione
             Utente utente = (Utente) session.getAttribute("utente");
 
-            // Si prende il guardaroba dell'Utente
-//            Guardaroba guardaroba = new CapoAbbigliamentoService(new CapoAbbigliamentoDAOImpl(),
-//                    new GuardarobaDAOImpl()).ottieniGuardarobaUtente(utente.getId());
-            Guardaroba guardaroba = (Guardaroba) this.getServletContext().getAttribute("guardaroba");
+            GuardarobaLogicImpl guardarobaLogicImpl = new GuardarobaLogicImpl();
 
             // Si prendono le varie liste di capi d'abbigliamento presenti nel guardaroba
-            List<Maglia> listaMaglie = guardaroba.getMaglie();
-            List<Pantaloni> listaPantaloni = guardaroba.getPantaloni();
-            List<Scarpe> listaScarpe = guardaroba.getScarpe();
+            List<Maglia> listaMaglie = guardarobaLogicImpl.getMaglie(utente.getId());
+            List<Pantaloni> listaPantaloni = guardarobaLogicImpl.getPantaloni(utente.getId());
+            List<Scarpe> listaScarpe = guardarobaLogicImpl.getScarpe(utente.getId());
 
             //  Si istanziano le liste che conterranno i capi suggeriti
             List<Maglia> maglieSuggerite;

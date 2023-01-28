@@ -5,9 +5,8 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import weatherstyle.gestioneutenti.applicationlogic.logic.beans.Admin;
 import weatherstyle.gestioneutenti.applicationlogic.logic.beans.Utente;
+import weatherstyle.gestioneutenti.applicationlogic.logic.service.AdminLogicImpl;
 import weatherstyle.gestioneutenti.applicationlogic.logic.service.AdminLogicService;
-import weatherstyle.gestioneutenti.applicationlogic.logic.service.AdminLogicServiceInterface;
-import weatherstyle.gestioneutenti.applicationlogic.logic.service.UtenteLogicService;
 
 import java.io.IOException;
 
@@ -27,7 +26,7 @@ public class LoginAdminServlet extends HttpServlet {
         if( u == null && admin == null){
             String email =  request.getParameter("email");
             String password =  request.getParameter("password");
-            AdminLogicServiceInterface service =  new AdminLogicService();
+            AdminLogicService service =  new AdminLogicImpl();
             try {
                 admin = service.loginAdmin(email, password);
 

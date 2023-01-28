@@ -4,7 +4,7 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import weatherstyle.gestioneutenti.applicationlogic.logic.beans.Utente;
-import weatherstyle.gestioneutenti.applicationlogic.logic.service.UtenteLogicService;
+import weatherstyle.gestioneutenti.applicationlogic.logic.service.UtenteLogicImpl;
 
 import java.io.IOException;
 
@@ -24,7 +24,7 @@ public class LoginUtenteServlet extends HttpServlet {
         if( u == null){
             String email =  request.getParameter("email");
             String password =  request.getParameter("password");
-            UtenteLogicService service =  new UtenteLogicService();
+            UtenteLogicImpl service =  new UtenteLogicImpl();
             try {
                 u = service.loginUtente(email, password);
 
