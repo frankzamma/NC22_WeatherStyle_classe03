@@ -25,13 +25,17 @@ import weatherstyle.gestionemeteo.applicationlogic.logic.beans.MeteoDailyMin;
 import weatherstyle.gestionemeteo.applicationlogic.logic.service.MeteoLogicService;
 import weatherstyle.gestionemeteo.storage.dao.MeteoDAOImpl;
 import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.algorithms.ImplementorAlgorithm;
+import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.beans.Suggerimento;
 import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.service.SuggerimentoLogicImpl;
 import weatherstyle.gestionesuggerimentiia.storage.dao.OutfitDAOImpl;
 import weatherstyle.gestionesuggerimentiia.storage.dao.SuggerimentoDAOImpl;
 import weatherstyle.gestioneutenti.applicationlogic.logic.beans.Utente;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 /**
@@ -146,14 +150,19 @@ public class RichiestaSuggerimentoServlet extends HttpServlet {
                         listaScarpe, meteoDailyMin);
             */
 
-            // salvo nella request i suggerimenti
+            // salvo nella request i suggerimenti dati dal sistema
             request.setAttribute("maglieSuggerite", maglieSuggerite);
             request.setAttribute("pantaloniSuggeriti", pantaloniSuggeriti);
             request.setAttribute("scarpeSuggerite", scarpeSuggerite);
 
-            CittaLogicService cittaLogicService = new CittaLogicImpl(new CittaDAOImpl(), new InfoCittaImpl());
-            request.setAttribute("meteoDailyMin", meteoDailyMin);
-            request.setAttribute("citta", citta);
+            Suggerimento suggerimento = new Suggerimento();
+            suggerimento.setUtente(utente);
+            suggerimento.setDate(new Date(new GregorianCalendar().getTimeInMillis()));
+            suggerimento.setCitta(citta);
+            suggerimento.setMeteoDailyMin(meteoDailyMin);
+
+            // salvo nella request il suggerimento
+            request.setAttribute("suggerimento", suggerimento);
 
             RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/visualizzaSuggerimenti.jsp");
             dispatcher.forward(request, response);

@@ -42,7 +42,7 @@ public class SuggerimentoLogicImpl implements SuggerimentoLogicService {
             throw new IllegalArgumentException("Suggerimento non può essere null");
         } else {
             cittaLogicService.salvaCitta(suggerimento.getCitta());
-            meteoLogicService.salvaMeteo(suggerimento.getMeteoDaily());
+            meteoLogicService.salvaMeteo(suggerimento.getMeteoDailyMin());
             this.salvaOutfit(suggerimento.getOutfit());
         }
 

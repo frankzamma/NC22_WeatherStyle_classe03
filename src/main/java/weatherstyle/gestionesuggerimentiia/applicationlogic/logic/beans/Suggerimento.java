@@ -98,11 +98,11 @@ public class Suggerimento {
         this.outfit = outfit;
     }
 
-    public MeteoDailyMin getMeteoDaily() {
+    public MeteoDailyMin getMeteoDailyMin() {
         return meteoDailyMin;
     }
 
-    public void setMeteoDaily(MeteoDailyMin meteoDailyMin) {
+    public void setMeteoDailyMin(MeteoDailyMin meteoDailyMin) {
         this.meteoDailyMin = meteoDailyMin;
     }
 }
