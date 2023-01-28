@@ -12,6 +12,14 @@ public class MeteoLogicService implements MeteoLogicInterface{
     }
     @Override
     public boolean salvaMeteo(MeteoDailyMin meteoDailyMin) {
-        return false;
+       if(meteoDailyMin != null){
+           if(meteoDailyMin.getMeteoStringMin() != null && meteoDailyMin.getStagionePrevisione() != null) {
+               return meteoDAOInterface.doSaveMeteo(meteoDailyMin);
+           }else{
+               throw new IllegalArgumentException("meteoDailyMin non ammissibile");
+           }
+       }else{
+           throw new IllegalArgumentException("meteoDailyMin non può essere null");
+       }
     }
 }
