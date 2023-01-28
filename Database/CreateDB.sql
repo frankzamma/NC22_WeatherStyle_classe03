@@ -119,9 +119,9 @@ use weatherstyle;
             REFERENCES CapoAbbigliamento(ID)
             ON UPDATE CASCADE
             ON DELETE CASCADE,
-        tipo VARCHAR (20) NOT NULL,
-        antiscivolo BIT NOT NULL,
-        impermeabile BIT NOT NULL
+        tipo VARCHAR (50) NOT NULL,
+        antiscivolo BOOLEAN NOT NULL,
+        impermeabile BOOLEAN NOT NULL
     );
 
     CREATE TABLE Comporre (
