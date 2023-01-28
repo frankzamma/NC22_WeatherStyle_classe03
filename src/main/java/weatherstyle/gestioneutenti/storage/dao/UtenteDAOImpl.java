@@ -33,6 +33,8 @@ public class UtenteDAOImpl implements UtenteDAOInterface {
                 return false;
             } else {
                 ResultSet resultSet = statement.getGeneratedKeys();
+
+                resultSet.next();
                 int id =  resultSet.getInt(1);
 
                 GuardarobaDAOInterface guardarobaDAO = new GuardarobaDAOImpl();
