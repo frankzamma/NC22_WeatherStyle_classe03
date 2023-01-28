@@ -16,6 +16,7 @@
         <div class="container h-50">
             <h1>In questa pagina verranno visulizzate le previsioni meteo</h1>
 
+            <a href="${pageContext.request.contextPath}/dammiCittaMeteoFiglioDiPuta.html">Fatemi andare all'altro mondo!</a></center>
         </div>
         <%@include file="../../footer.jsp"%>
     </body>

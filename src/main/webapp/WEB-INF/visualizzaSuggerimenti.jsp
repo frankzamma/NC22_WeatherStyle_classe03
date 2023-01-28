@@ -23,6 +23,7 @@
         List<String> errorList = (List<String>) request.getAttribute("errorList");
     %>
     <%@include file="navbar.jsp"%>
+    <br>
     <div class="container">
         <% if (errorList.size()>=1) { %>
             <div class="alert alert-danger" role="alert">
@@ -63,7 +64,7 @@
                     <div class="row">
                         <% for(Maglia maglia: maglieSuggerite){ %>
                             <div class="card col-md-4" style="width: 18rem;">
-                                <img src="${pageContext.request.contextPath}/logo.png" class="card-img-top">
+                                <img src="<%=maglia.getDirImmagine()%>" class="card-img-top">
                                 <div class="card-body">
                                     <h5 class="card-title"><%=maglia.getNome()%></h5>
                                     <p class="card-text"><b>Materiale: </b><%=maglia.getMateriale()%></p>
@@ -82,7 +83,7 @@
                     <div class="row">
                         <% for(Pantaloni pantaloni: pantaloniSuggeriti){ %>
                         <div class="card col-md-4" style="width: 18rem;">
-                            <img src="${pageContext.request.contextPath}/logo.png" class="card-img-top">
+                            <img src="<%=pantaloni.getDirImmagine()%>" class="card-img-top">
                             <div class="card-body">
                                 <h5 class="card-title"><%=pantaloni.getNome()%></h5>
                                 <p class="card-text"><b>Materiale: </b><%=pantaloni.getMateriale()%></p>
@@ -101,7 +102,7 @@
                     <div class="row">
                         <% for(Scarpe scarpe: scarpeSuggerite){ %>
                         <div class="card col-md-4" style="width: 18rem;">
-                            <img src="${pageContext.request.contextPath}/logo.png" class="card-img-top">
+                            <img src="<%=scarpe.getDirImmagine()%>" class="card-img-top">
                             <div class="card-body">
                                 <h5 class="card-title"><%=scarpe.getNome()%></h5>
                                 <p class="card-text"><b>Tipo: </b><%=scarpe.getTipo()%></p>
