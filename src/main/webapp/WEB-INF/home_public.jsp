@@ -19,7 +19,7 @@
                     <img src="logo.png" class="rounded mx-auto d-block" width="200" height="200">
                 </div>
                 <div class="row">
-                   <h3>Per utilizzare i servizi di WeatherStyle devi effettuare il <a href="#">Login</a></h3>
+                   <h3>Per utilizzare i servizi di WeatherStyle devi effettuare il <a href="login-page">Login</a></h3>
                     <h5>Se non sei ancora registrato puoi farlo da <a href="registrazione-utente">qui</a></h5>
                 </div>
             </div>

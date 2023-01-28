@@ -19,7 +19,7 @@ public class IndexForwardingServlet extends HttpServlet {
         Utente u  = (Utente) session.getAttribute("utente");
 
         if(u != null){
-            address =  "/WEB-INF/gestioneUtente/utente/home_admin.jsp";
+            address =  "/WEB-INF/gestioneUtente/utente/home_private.jsp";
         }else{
             Admin admin  = (Admin) session.getAttribute("admin");
 
