@@ -92,6 +92,11 @@ public class RichiestaPromozioneDAOImpl implements RichiestaPromozioneDAOInterfa
             if (ps.executeUpdate() != 1) {
                 return false;
             }
+
+            if (nuovoStato.equals("approvata")) {
+                UtenteDAOInterface utenteDAO = new UtenteDAOImpl();
+                utenteDAO.doUpdateUtenteToEcologista(richiestaPromozione.getUtente());
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
