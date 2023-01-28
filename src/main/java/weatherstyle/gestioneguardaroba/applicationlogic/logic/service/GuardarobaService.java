@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class CapoAbbigliamentoService implements  CapoAbbigliamentoLogicServiceInterface{
+public class GuardarobaService implements GuardarobaLogicServiceInterface {
 
     CapoAbbigliamentoDAOInterface dao = new CapoAbbigliamentoDAOImpl();
     List<String> colori = Arrays.asList("chiaro", "scuro", "colorato");

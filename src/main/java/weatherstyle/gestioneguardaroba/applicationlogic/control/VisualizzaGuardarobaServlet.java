@@ -7,8 +7,8 @@ import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Guardaroba;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Maglia;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Pantaloni;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Scarpe;
-import weatherstyle.gestioneguardaroba.applicationlogic.logic.service.CapoAbbigliamentoLogicServiceInterface;
-import weatherstyle.gestioneguardaroba.applicationlogic.logic.service.CapoAbbigliamentoService;
+import weatherstyle.gestioneguardaroba.applicationlogic.logic.service.GuardarobaLogicServiceInterface;
+import weatherstyle.gestioneguardaroba.applicationlogic.logic.service.GuardarobaService;
 import weatherstyle.gestioneutenti.applicationlogic.logic.beans.Utente;
 
 import java.io.IOException;
@@ -24,7 +24,7 @@ public class VisualizzaGuardarobaServlet extends HttpServlet {
 
         Utente u = (Utente) session.getAttribute("utente");
 
-        CapoAbbigliamentoLogicServiceInterface service = new CapoAbbigliamentoService();
+        GuardarobaLogicServiceInterface service = new GuardarobaService();
 
         List<Maglia> maglie = service.getMaglie(u.getId());
         List<Pantaloni> pantaloni = service.getPantaloni(u.getId());
