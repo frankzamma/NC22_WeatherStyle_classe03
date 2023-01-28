@@ -20,7 +20,7 @@
         <a class="nav-link" href="GuardarobaServlet">Guardaroba</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="carica-capo-form">Inserisci capo</a>
+        <a class="nav-link" href="loadCapoAbbigliamento.jsp">Inserisci capo</a>
       </li>
     </ul>
   </div>
