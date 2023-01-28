@@ -9,8 +9,13 @@
 <html>
     <head>
         <title>Home Admin</title>
+        <%@include file="../../links.jsp" %>
     </head>
     <body>
-
+    <%@include file="../../navbar.jsp" %>
+        <div class="container mt-3">
+            <h1>Home page Admin</h1>
+        </div>
+    <%@include file="../../footer.jsp" %>
     </body>
 </html>
