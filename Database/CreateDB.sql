@@ -50,7 +50,7 @@ use weatherstyle;
     );
         CREATE TABLE Meteo (
            ID INT PRIMARY KEY AUTO_INCREMENT,
-           temperatura INT NOT NULL,
+           temperatura DOUBLE NOT NULL,
            meteo VARCHAR (30) NOT NULL,
            stagione VARCHAR (20) NOT NULL
         );
