@@ -35,11 +35,11 @@ public class UtenteLogicService implements UtenteLogicServiceInterface{
             errorParameter.add("email");
         }
 
-        Pattern pattern = Pattern.compile("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!_;,:+.-]).{8,20}$");
+        /*Pattern pattern = Pattern.compile("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!_;,:+.-]).{8,20}$");
         Matcher matcher = pattern.matcher(password);
         if (password == null || !matcher.matches()) {
             errorParameter.add("password");
-        }
+        }*/
 
         if (nome == null || nome.length() < 3 || !nome.matches("^[A-Za-z\\s]{3,30}$")) {
             errorParameter.add("nome");
@@ -113,7 +113,7 @@ public class UtenteLogicService implements UtenteLogicServiceInterface{
 
     @Override
     public boolean existsUtente(String email) {
-        if (email == null || (!email.matches("^[a-z0-9\\.\\_]+@[a-z]+\\.[a-z]{2,3}$"))) {
+        if (email != null && (email.matches("^[a-z0-9\\.\\_]+@[a-z]+\\.[a-z]{2,3}$"))) {
             return utenteDAO.doExistsEmail(email);
         } else {
             throw new IllegalArgumentException("Formato Email non corretto");
