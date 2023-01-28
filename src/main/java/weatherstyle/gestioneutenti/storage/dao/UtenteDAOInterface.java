@@ -8,4 +8,6 @@ public interface UtenteDAOInterface {
     Utente doRetrieveUtenteByUsernameAndPassword(String email,String password);
     boolean doExistsEmail(String email);
 
+    boolean doUpdateUtenteToEcologista(Utente u);
+
 }
