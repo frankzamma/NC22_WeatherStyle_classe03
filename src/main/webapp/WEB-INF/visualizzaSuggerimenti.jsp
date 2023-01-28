@@ -10,6 +10,7 @@
 <head>
     <title>Visualizza suggerimenti</title>
     <%@include file="links.jsp"%>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
     <%
@@ -19,129 +20,114 @@
         List<Scarpe> scarpeSuggerite = (List<Scarpe>) request.getAttribute("scarpeSuggerite");
         MeteoDailyMin meteoDailyMin = suggerimento.getMeteoDailyMin();
         Citta citta = suggerimento.getCitta();
+        List<String> errorList = (List<String>) request.getAttribute("errorList");
     %>
     <%@include file="navbar.jsp"%>
     <div class="container">
-        <h3 class="display-6">Ecco i suggerimenti dei capi ritenuti più adatti in base alle seguenti informazioni metereologiche:</h3>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">Meteo</th>
-                    <th scope="col">Temperatura percepita</th>
-                    <th scope="col">Stagione previsione</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><%=meteoDailyMin.getMeteoStringMin()%></td>
-                    <td><%=meteoDailyMin.getTemperaturaPercepitaMedia()%> gradi celsius</td>
-                    <td><%=meteoDailyMin.getStagionePrevisione()%></td>
-                </tr>
-            </tbody>
-        </table>
-
-        <% if(maglieSuggerite.size() == 0) { %>
-            <br>
-            <h3 class="display-6">Nessuna maglia è stata suggerita, per ricevere suggerimenti devi avere almeno 3 maglie!</h3>
+        <% if (errorList.size()>=1) { %>
+            <div class="alert alert-danger" role="alert">
+                <ul>
+                    <% for (String s : errorList){ %>
+                    <li>
+                        <%=s%>
+                    </li>
+                    <% } %>
+                </ul>
+            </div>
         <% } else { %>
-            <h3 class="display-6">Maglie suggerite</h3>
+
+
+            <h3 class="display-6">Ecco i suggerimenti dei capi ritenuti più adatti in base alle seguenti informazioni metereologiche:</h3>
             <table class="table table-striped">
                 <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Materiale</th>
-                    <th scope="col">Colore</th>
-                    <th scope="col">Manica</th>
-                    <th scope="col">Stagione</th>
-
-                </tr>
+                    <tr>
+                        <th scope="col">Meteo</th>
+                        <th scope="col">Temperatura percepita</th>
+                        <th scope="col">Stagione previsione</th>
+                        <th scope="col">Citta</th>
+                    </tr>
                 </thead>
                 <tbody>
-                <%
-                    int i = 0;
-                    for(Maglia maglia: maglieSuggerite){ %>
-                        <tr>
-                            <td><%=i%></td>
-                            <td><%=maglia.getMateriale()%></td>
-                            <td><%=maglia.getColore()%></td>
-                            <td><%=maglia.getLunghezzaManica()%></td>
-                            <td><%=maglia.getStagione()%></td>
-                        </tr>
-                    <%  i++;
-                    } %>
+                    <tr>
+                        <td><%=meteoDailyMin.getMeteoStringMin()%></td>
+                        <td><%=meteoDailyMin.getTemperaturaPercepitaMedia()%> gradi celsius</td>
+                        <td><%=meteoDailyMin.getStagionePrevisione()%></td>
+                        <td><%=citta.getNome()%></td>
+                    </tr>
                 </tbody>
             </table>
+
+
+            <form action="SalvaSuggerimentoServlet">
+                <h3 class="display-6">Maglie suggerite</h3>
+                    <div class="row">
+                        <% for(Maglia maglia: maglieSuggerite){ %>
+                            <div class="card col-md-4" style="width: 18rem;">
+                                <img src="${pageContext.request.contextPath}/logo.png" class="card-img-top">
+                                <div class="card-body">
+                                    <h5 class="card-title"><%=maglia.getNome()%></h5>
+                                    <p class="card-text"><b>Materiale: </b><%=maglia.getMateriale()%></p>
+                                    <p class="card-text"><b>Colore: </b><%=maglia.getColore()%></p>
+                                    <p class="card-text"><b>Stagione: </b><%=maglia.getStagione()%></p>
+                                    <p class="card-text"><b>Manica: </b><%=maglia.getLunghezzaManica()%></p>
+                                    <input type="radio" id="<%=maglia.getId()%>" name="magliaID" value="<%=maglia.getId()%>">
+                                </div>
+                            </div>
+                        <% } %>
+                    </div>
+
+                <br>
+
+                <h3 class="display-6">Pantaloni suggeriti</h3>
+                    <div class="row">
+                        <% for(Pantaloni pantaloni: pantaloniSuggeriti){ %>
+                        <div class="card col-md-4" style="width: 18rem;">
+                            <img src="${pageContext.request.contextPath}/logo.png" class="card-img-top">
+                            <div class="card-body">
+                                <h5 class="card-title"><%=pantaloni.getNome()%></h5>
+                                <p class="card-text"><b>Materiale: </b><%=pantaloni.getMateriale()%></p>
+                                <p class="card-text"><b>Colore: </b><%=pantaloni.getColore()%></p>
+                                <p class="card-text"><b>Stagione: </b><%=pantaloni.getStagione()%></p>
+                                <p class="card-text"><b>Manica: </b><%=pantaloni.getLunghezza()%></p>
+                                <input type="radio" id="<%=pantaloni.getId()%>" name="pantaloniID" value="<%=pantaloni.getId()%>">
+                            </div>
+                        </div>
+                        <% } %>
+                    </div>
+
+                <br>
+
+                <h3 class="display-6">Scarpe suggerite</h3>
+                    <div class="row">
+                        <% for(Scarpe scarpe: scarpeSuggerite){ %>
+                        <div class="card col-md-4" style="width: 18rem;">
+                            <img src="${pageContext.request.contextPath}/logo.png" class="card-img-top">
+                            <div class="card-body">
+                                <h5 class="card-title"><%=scarpe.getNome()%></h5>
+                                <p class="card-text"><b>Tipo: </b><%=scarpe.getTipo()%></p>
+                                <p class="card-text"><b>Colore: </b><%=scarpe.getColore()%></p>
+                                <p class="card-text"><b>Antiscivolo: </b><%=scarpe.isAntiscivolo() ? "SI" : "NO"%></p>
+                                <p class="card-text"><b>Impermeabile: </b><%=scarpe.isImpermeabile() ? "SI" : "NO"%></p>
+                                <input type="radio" id="<%=scarpe.getId()%>" name="scarpeID" value="<%=scarpe.getId()%>">
+                            </div>
+                        </div>
+                        <% } %>
+                    </div>
+                    <label for="nomeOutfit">Inserisci nome outfit</label>
+                    <br>
+                    <input type="text" name="nomeOutfit" placeholder="Inserisci un nome" id="nomeOutfit">
+                    <br>
+
+                <input type="hidden" name="nomeCitta" value="<%=citta.getNome()%>">
+                <input type="hidden" name="latitudine" value="<%=citta.getLat()%>">
+                <input type="hidden" name="longitudine" value="<%=citta.getLon()%>">
+                <input type="hidden" name="meteo" value="<%=meteoDailyMin.getMeteoStringMin()%>">
+                <input type="hidden" name="temperaturaPercepita" value="<%=meteoDailyMin.getTemperaturaPercepitaMedia()%>">
+                <input type="hidden" name="stagionePrevisione" value="<%=meteoDailyMin.getStagionePrevisione()%>">
+
+                <button type="submit">Conferma outfit</button>
+            </form>
         <% } %>
-
-
-        <% if(pantaloniSuggeriti.size() == 0) { %>
-            <br>
-            <h3 class="display-6">Nessun pantalone è stata suggerito, per ricevere suggerimenti devi avere almeno 3 pantaloni!</h3>
-        <% }
-        else { %>
-            <br>
-            <h3 class="display-6">Pantaloni suggeriti</h3>
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Materiale</th>
-                    <th scope="col">Colore</th>
-                    <th scope="col">Lunghezza pantaloni</th>
-                    <th scope="col">Stagione</th>
-                </tr>
-                </thead>
-                <tbody>
-                <%
-                    int i = 0;
-                    for(Pantaloni pantaloni: pantaloniSuggeriti){ %>
-                        <tr>
-                            <td><%=i%></td>
-                            <td><%=pantaloni.getMateriale()%></td>
-                            <td><%=pantaloni.getColore()%></td>
-                            <td><%=pantaloni.getLunghezza()%></td>
-                            <td><%=pantaloni.getStagione()%></td>
-                        </tr>
-                    <%  i++;
-                } %>
-                </tbody>
-            </table>
-        <% } %>
-
-        <% if(scarpeSuggerite.size() == 0) { %>
-            <br>
-            <h3 class="display-6">Nessun paio di scarpe è stato suggerito, devi avere almeno 3 paia di scarpe!</h3>
-        <% }
-        else { %>
-            <br>
-            <h3 class="display-6">Scarpe suggerite</h3>
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Tipo</th>
-                    <th scope="col">Colore</th>
-                    <th scope="col">Antiscivolo</th>
-                    <th scope="col">Impermeabile</th>
-                    <th scope="col">Stagione</th>
-                </tr>
-                </thead>
-                <tbody>
-                <%
-                    int i = 0;
-                    for(Scarpe scarpe: scarpeSuggerite){ %>
-                <tr>
-                    <td><%=i%></td>
-                    <td><%=scarpe.getTipo()%></td>
-                    <td><%=scarpe.getColore()%></td>
-                    <td><%=scarpe.isAntiscivolo() ? "SI" : "NO"%></td>
-                    <td><%=scarpe.isImpermeabile() ? "SI" : "NO"%></td>
-                    <td><%=scarpe.getStagione()%></td>
-                </tr>
-                <%  i++; } %>
-                </tbody>
-            </table>
-            <% } %>
     </div>
     <%@include file="footer.jsp"%>
 </body>

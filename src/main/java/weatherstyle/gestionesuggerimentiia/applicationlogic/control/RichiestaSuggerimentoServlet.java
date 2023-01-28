@@ -24,6 +24,7 @@ import weatherstyle.gestioneutenti.applicationlogic.logic.beans.Utente;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.List;
 
@@ -151,6 +152,25 @@ public class RichiestaSuggerimentoServlet extends HttpServlet {
 
             // salvo nella request il suggerimento
             request.setAttribute("suggerimento", suggerimento);
+
+            List<String> errorList = new ArrayList<>();
+            String errore;
+            if (maglieSuggerite.size() == 0) {
+                errore = "devi avere almeno 3 maglie nel tuo guardaroba per ricevere suggerimenti";
+                errorList.add(errore);
+            }
+            if (pantaloniSuggeriti.size() == 0) {
+                errore = "devi avere almeno 3 pantaloni nel tuo guardaroba per ricevere suggerimenti";
+                errorList.add(errore);
+            }
+            if (maglieSuggerite.size() == 0) {
+                errore = "devi avere almeno 3 paio di scarpe nel tuo guardaroba per ricevere suggerimenti";
+                errorList.add(errore);
+            }
+
+            // salvo nella request gli errori
+            request.setAttribute("errorList", errorList);
+
 
             RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/visualizzaSuggerimenti.jsp");
             dispatcher.forward(request, response);
