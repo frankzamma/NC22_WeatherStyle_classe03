@@ -4,6 +4,8 @@ import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.*;
 import weatherstyle.utils.ConnectionPool;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CapoAbbigliamentoDAOImpl implements CapoAbbigliamentoDAOInterface{
 
@@ -84,9 +86,9 @@ public class CapoAbbigliamentoDAOImpl implements CapoAbbigliamentoDAOInterface{
     }
 
     @Override
-    public boolean doSaveMaglia(Maglia m) {
+    public boolean doSaveMaglia(Maglia m, int idGuardaroba) {
         try (Connection connection = ConnectionPool.getConnection()) {
-            int id = doSaveCapo(m);
+            int id = doSaveCapo(m, idGuardaroba);
             PreparedStatement statement =  connection.prepareStatement(
                     "insert into Maglia (IDcapoAbbigliamento, materiale, manica) values (?,?,?)",Statement.RETURN_GENERATED_KEYS);
 
@@ -109,9 +111,9 @@ public class CapoAbbigliamentoDAOImpl implements CapoAbbigliamentoDAOInterface{
     }
 
     @Override
-    public boolean doSavePantaloni(Pantaloni p) {
+    public boolean doSavePantaloni(Pantaloni p, int idGuardaroba) {
         try (Connection connection = ConnectionPool.getConnection()) {
-            int id = doSaveCapo(p);
+            int id = doSaveCapo(p, idGuardaroba);
             PreparedStatement statement =  connection.prepareStatement(
                     "insert into Pantaloni (IDcapoAbbigliamento, lunghezza, materiale) values (?,?,?)",Statement.RETURN_GENERATED_KEYS);
 
@@ -132,9 +134,9 @@ public class CapoAbbigliamentoDAOImpl implements CapoAbbigliamentoDAOInterface{
     }
 
     @Override
-    public boolean doSaveScarpe(Scarpe s) {
+    public boolean doSaveScarpe(Scarpe s, int idGuardaroba) {
         try (Connection connection = ConnectionPool.getConnection()) {
-            int id = doSaveCapo(s);
+            int id = doSaveCapo(s, idGuardaroba);
             PreparedStatement statement =  connection.prepareStatement(
                     "insert into Scarpe (IDcapoAbbigliamento, tipo, antiscivolo, impermeabile) values (?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
 
@@ -257,15 +259,16 @@ public class CapoAbbigliamentoDAOImpl implements CapoAbbigliamentoDAOInterface{
      * Questo metodo salva un capo d'abbigliamento nella suddetta tabella.
      * Viene integrato nei metodi di maglie, pantaloni e scarpe.
      */
-    public int doSaveCapo(CapoAbbigliamento c) {
+    public int doSaveCapo(CapoAbbigliamento c, int idGuardaroba) {
         try (Connection connection = ConnectionPool.getConnection()) {
             PreparedStatement statement =  connection.prepareStatement(
-                    "insert into CapoAbbigliamento (nome, stagione, colore, immagine) values (?, ?, ?, ?)",Statement.RETURN_GENERATED_KEYS);
+                    "insert into CapoAbbigliamento (nome, stagione, colore, immagine, IDguardaroba) values (?, ?, ?, ?, ?)",Statement.RETURN_GENERATED_KEYS);
 
             statement.setString(1,c.getNome());
             statement.setString(2,c.getStagione());
             statement.setString(3,c.getColore());
             statement.setString(4,c.getDirImmagine());
+            statement.setInt(5, idGuardaroba);
 
             int res =  statement.executeUpdate();
 
@@ -282,5 +285,96 @@ public class CapoAbbigliamentoDAOImpl implements CapoAbbigliamentoDAOInterface{
             throw new RuntimeException(e);
         }
 
+    }
+
+    @Override
+    public List<Maglia> doRetrieveMaglieByIdGuardaroba(int idG) {
+        List<Maglia> maglie = new ArrayList<>();
+
+        try (Connection connection =  ConnectionPool.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement("SELECT c.nome, c.stagione, c.colore, c.immagine, m.manica, m.materiale from Maglia m, CapoAbbigliamento c WHERE c.ID = m.IDcapoAbbigliamento and m.IDcapoAbbigliamento= ?");
+
+            statement.setInt(1,idG);
+
+            ResultSet res =  statement.executeQuery();
+            while (res.next()) {
+                String nome = res.getString(1);
+                String stagione = res.getString(2);
+                String colore = res.getString(3);
+                String dirImmagine = res.getString(4);
+                String manica = res.getString(5);
+                String materiale = res.getString(6);
+
+                Maglia m = new Maglia(nome, dirImmagine, stagione, colore, manica, materiale);
+
+                maglie.add(m);
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return maglie;
+    }
+
+    @Override
+    public List<Pantaloni> doRetrievePantaloniByIdGuardaroba(int idG) {
+        List<Pantaloni> pant = new ArrayList<>();
+
+        try (Connection connection =  ConnectionPool.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement("SELECT c.nome, c.stagione, c.colore, c.immagine, p.lunghezza, p.materiale from Pantaloni p, CapoAbbigliamento c WHERE c.ID = p.IDcapoAbbigliamento and p.IDcapoAbbigliamento= ?");
+
+            statement.setInt(1,idG);
+
+            ResultSet res =  statement.executeQuery();
+            while (res.next()) {
+                String nome = res.getString(1);
+                String stagione = res.getString(2);
+                String colore = res.getString(3);
+                String dirImmagine = res.getString(4);
+                String lunghezza = res.getString(5);
+                String materiale = res.getString(6);
+
+                Pantaloni p = new Pantaloni(nome, dirImmagine, stagione, colore, lunghezza, materiale);
+
+                pant.add(p);
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return pant;
+    }
+
+    @Override
+    public List<Scarpe> doRetrieveScarpeByIdGuardaroba(int idG) {
+        List<Scarpe> s = new ArrayList<>();
+
+        try (Connection connection =  ConnectionPool.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement("SELECT c.nome, c.stagione, c.colore, c.immagine, s.tipo, s.antiscivolo, s.impermeabile from Scarpe s, CapoAbbigliamento c WHERE c.ID = s.IDcapoAbbigliamento and s.IDcapoAbbigliamento= ?");
+
+            statement.setInt(1,idG);
+
+            ResultSet res =  statement.executeQuery();
+            while (res.next()) {
+                String nome = res.getString(1);
+                String stagione = res.getString(2);
+                String colore = res.getString(3);
+                String dirImmagine = res.getString(4);
+                String tipo = res.getString(5);
+                boolean antiscivolo = res.getBoolean(6);
+                boolean impermeabile = res.getBoolean(7);
+
+                Scarpe scarpe = new Scarpe(nome, dirImmagine, stagione, colore, tipo, antiscivolo, impermeabile);
+
+                s.add(scarpe);
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return s;
     }
 }
