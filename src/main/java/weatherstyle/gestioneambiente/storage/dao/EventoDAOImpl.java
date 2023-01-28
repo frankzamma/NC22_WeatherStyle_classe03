@@ -11,7 +11,19 @@ import weatherstyle.utils.ConnectionPool;
 import java.sql.*;
 import java.util.List;
 
+/**
+ * @author angelopalmieri
+ * Classe che gestisce le informazioni persistenti che riguardano gli eventi a favore dell'ambiente
+ * creati dagli ecologisti.
+ */
 public class EventoDAOImpl implements EventoDAOInterface{
+    /**
+     * Questo metodo permette di creare un oggetto Evento a partire
+     * da un resultSet ottenuto tramite una query.
+     * @param resultSet rappresenta il risultato di una query
+     * @return un evento se il resultSet contiene risultati,
+     * altrimenti restituisce null.
+     */
     private static Evento creaEvento(ResultSet resultSet) {
         Evento evento = new Evento();
         UtenteDAOInterface utenteDAO = new UtenteDAOImpl();
