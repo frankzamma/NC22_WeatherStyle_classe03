@@ -10,6 +10,7 @@ import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.beans.Suggerim
 import weatherstyle.gestionesuggerimentiia.storage.dao.OutfitDAOInterface;
 import weatherstyle.gestionesuggerimentiia.storage.dao.SuggerimentoDAOInterface;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -80,10 +81,13 @@ public class SuggerimentoLogicImpl implements SuggerimentoLogicService {
     public <T extends CapoAbbigliamento> List<T> ottieniSuggerimentiCapi(ImplementorAlgorithm<T> implementorAlgorithm,
                                                                          List<T> capiAbbigliamento,
                                                                          MeteoDailyMin meteoDailyMin) {
-        if (capiAbbigliamento.size() < 3 || meteoDailyMin == null
+        if (capiAbbigliamento == null || meteoDailyMin == null
                 || implementorAlgorithm == null) {
             throw new IllegalArgumentException("Lista capi d'abbigliamento troppo corta o meteo null");
         }
+
+        if (capiAbbigliamento.size() < 3)
+            return new ArrayList<T>();
 
         return implementorAlgorithm.getBestThreeCapoAbbigliamento(capiAbbigliamento, meteoDailyMin);
     }
