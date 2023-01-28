@@ -7,7 +7,7 @@ import jakarta.servlet.annotation.*;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Maglia;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Pantaloni;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Scarpe;
-import weatherstyle.gestioneguardaroba.applicationlogic.logic.service.GuardarobaService;
+import weatherstyle.gestioneguardaroba.applicationlogic.logic.service.GuardarobaLogicImpl;
 import weatherstyle.gestioneutenti.applicationlogic.logic.beans.Utente;
 import weatherstyle.utils.ErrorParameterException;
 
@@ -31,7 +31,7 @@ public class InserisciCapoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String address;
         List<String> errorService = new ArrayList<>();
-        GuardarobaService service = new GuardarobaService();
+        GuardarobaLogicImpl service = new GuardarobaLogicImpl();
 
         //TODO Dopo il login, controllare se l'utente è loggato
         HttpSession session = request.getSession();

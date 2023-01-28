@@ -43,12 +43,6 @@ public class StartupServlet extends HttpServlet {
         ImplementorAlgorithm<Pantaloni> pantaloniImplementorAlgorithmML = pantaloniAbstractAlgorithmML.getImplementorML();
         ImplementorAlgorithm<Scarpe> scarpeImplementorAlgorithmML = scarpeAbstractAlgorithmML.getImplementorML();
 
-        // Caricamento del guardaroba d'esempio
-        RecoveryGuardaroba recoveryGuardaroba =
-                new RecoveryGuardaroba(this.getServletContext()
-                        .getRealPath(""  + File.separator + "WEB-INF/resources/CapoAbbigliamentoList"));
-        Guardaroba guardaroba = recoveryGuardaroba.getGuardaroba();
-
         ServletContext context = this.getServletContext();
 
         context.setAttribute("scarpeGA", scarpeImplementorAlgorithmGA);
@@ -58,8 +52,6 @@ public class StartupServlet extends HttpServlet {
         context.setAttribute("scarpeML", scarpeImplementorAlgorithmML);
         context.setAttribute("pantaloniML",pantaloniImplementorAlgorithmML);
         context.setAttribute("magliaML",magliaImplementorAlgorithmML);
-
-        context.setAttribute("guardaroba",guardaroba);
     }
 
     @Override
