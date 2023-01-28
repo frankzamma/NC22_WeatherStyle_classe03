@@ -377,4 +377,64 @@ public class CapoAbbigliamentoDAOImpl implements CapoAbbigliamentoDAOInterface{
 
         return s;
     }
+
+    @Override
+    public boolean deleteMaglia(int idCapo) {
+        try (Connection connection = ConnectionPool.getConnection()) {
+            PreparedStatement statement =  connection.prepareStatement(
+                    "delete from Maglia where IDcapoAbbigliamento = ?");
+
+            statement.setInt(1,idCapo);
+
+            int res =  statement.executeUpdate();
+
+            if (res == 0) {
+                return false;
+            } else {
+                return true;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public boolean deletePantaloni(int idCapo) {
+        try (Connection connection = ConnectionPool.getConnection()) {
+            PreparedStatement statement =  connection.prepareStatement(
+                    "delete from Pantaloni where IDcapoAbbigliamento = ?");
+
+            statement.setInt(1,idCapo);
+
+            int res =  statement.executeUpdate();
+
+            if (res == 0) {
+                return false;
+            } else {
+                return true;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public boolean deleteScarpe(int idCapo) {
+        try (Connection connection = ConnectionPool.getConnection()) {
+            PreparedStatement statement =  connection.prepareStatement(
+                    "delete from Scarpe where IDcapoAbbigliamento = ?");
+
+            statement.setInt(1,idCapo);
+
+            int res =  statement.executeUpdate();
+
+            if (res == 0) {
+                return false;
+            } else {
+                return true;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
