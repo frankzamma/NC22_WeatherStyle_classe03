@@ -100,6 +100,30 @@ public class SalvaSuggerimentoTest {
     }
 
     @Test
+    public void nameOutfitEmpty(){
+        Suggerimento suggerimento = new Suggerimento();
+        suggerimento.setCitta(new Citta());
+        suggerimento.setOutfit(new Outfit());
+        suggerimento.setUtente(new Utente());
+        suggerimento.setMeteoDailyMin(new MeteoDailyMin());
+
+        Outfit outfit = new Outfit();
+        outfit.setMaglia(new Maglia());
+        outfit.setPantaloni(new Pantaloni());
+        outfit.setScarpe(new Scarpe());
+        outfit.setNome("");
+
+        suggerimento.setOutfit(outfit);
+
+        Mockito.when(suggerimentoDAO.doSaveSuggerimento(suggerimento)).thenReturn(false);
+
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class,
+                () -> suggerimentoLogicService.salvaSuggerimento(suggerimento));
+
+        assertEquals("Outfit lunghezza nome deve essere tra 1 e 30 caratteri", e.getMessage());
+    }
+
+    @Test
     public void nameOutfitNotValid(){
         Suggerimento suggerimento = new Suggerimento();
         suggerimento.setCitta(new Citta());
