@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Registrazione avvenuta correttamente</title>
     <%@include file="../../links.jsp" %>
 </head>
     <body>
@@ -16,7 +16,7 @@
             <div class="container h-50 mt-2">
                 <h1>Registrazione Effettuata con successo!</h1>
                 <p class="mt-2">
-                    Puoi effettuare il login alla seguente <a href="#">link</a>
+                    Puoi effettuare il login alla seguente <a href="login-page">link</a>
                 </p>
             </div>
         <%@include file="../../footer.jsp" %>

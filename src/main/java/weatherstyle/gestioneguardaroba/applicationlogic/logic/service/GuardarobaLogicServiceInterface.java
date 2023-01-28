@@ -6,10 +6,10 @@ import weatherstyle.utils.ErrorParameterException;
 import java.util.List;
 
 public interface GuardarobaLogicServiceInterface {
-    public boolean salvaMaglia (Maglia m, int idGuardaroba) throws ErrorParameterException;
-    public boolean salvaPantaloni (Pantaloni p, int idGuardaroba) throws ErrorParameterException;
-    public boolean salvaScarpe (Scarpe s, int idGuardaroba) throws ErrorParameterException;
-    public List<Maglia> getMaglie (int idUtente);
-    public List<Pantaloni> getPantaloni (int idUtente);
-    public List<Scarpe> getScarpe (int idUtente);
+    boolean salvaMaglia (Maglia m, int idGuardaroba) throws ErrorParameterException;
+    boolean salvaPantaloni (Pantaloni p, int idGuardaroba) throws ErrorParameterException;
+    boolean salvaScarpe (Scarpe s, int idGuardaroba) throws ErrorParameterException;
+    List<Maglia> getMaglie (int idUtente);
+    List<Pantaloni> getPantaloni (int idUtente);
+    List<Scarpe> getScarpe (int idUtente);
 }

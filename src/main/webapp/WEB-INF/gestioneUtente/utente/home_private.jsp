@@ -7,10 +7,16 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>
-    <title>Title</title>
-</head>
-<body>
+    <head>
+        <title>WeatherStyle</title>
+        <%@include file="../../links.jsp"%>
+    </head>
+    <body>
+        <%@include file="../../navbar.jsp"%>
+        <div class="container h-50">
+            <h1>In questa pagina verranno visulizzate le previsioni meteo</h1>
 
-</body>
+        </div>
+        <%@include file="../../footer.jsp"%>
+    </body>
 </html>

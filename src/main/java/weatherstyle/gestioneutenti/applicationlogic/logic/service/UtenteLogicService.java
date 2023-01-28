@@ -89,12 +89,15 @@ public class UtenteLogicService implements UtenteLogicServiceInterface{
     @Override
     public Utente loginUtente(String email,String password) {
 
-        if (email == null && password == null) {
+        if (email != null && password != null) {
             Pattern pattern =  Pattern.compile("^[a-z0-9\\.\\_]+@[a-z]+\\.[a-z]{2,3}$");
             Matcher matcher = pattern.matcher(email);
 
             if (matcher.matches()) {
-                Utente u = utenteDAO.doRetrieveUtenteByUsernameAndPassword(email,password);
+                Utente u = new Utente();
+
+                u.setPassword(password);
+                u = utenteDAO.doRetrieveUtenteByUsernameAndPassword(email,u.getPassword());
 
                 if (u != null) {
                     return u;

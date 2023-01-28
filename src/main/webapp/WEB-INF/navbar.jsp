@@ -26,7 +26,9 @@
         <li class="nav-item">
           <a class="nav-link" href="loadCapoAbbigliamento.jsp">Inserisci capo</a>
         </li>
-
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="logout">Logout</a>
+        </li>
         <%
           if(u.isEcologista()){
         %>
@@ -40,9 +42,12 @@
             <li class="nav-item">
               <a class="nav-link" aria-current="page" href="#">Gestione Richieste</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="logout">Logout</a>
+            </li>
           <%}else{%>
               <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="#">Login/Registrazione</a>
+                <a class="nav-link" aria-current="page" href="login-page">Login/Registrazione</a>
               </li>
            <%}
         }%>

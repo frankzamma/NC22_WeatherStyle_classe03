@@ -67,7 +67,7 @@
                     </div>
                 </div>
                 <div class="d-grid gap-2 mt-3">
-                     <button type="submit" class="btn btn-primary" >Carica capo</button>
+                     <button type="submit" class="btn btn-primary" >Registrati</button>
                 </div>
             </div>
         </form>
