@@ -71,8 +71,8 @@ public class EventoLogicImpl implements EventoLogicInterface{
         }
 
         Pattern DATE_PATTERN = Pattern.compile("[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01][0-9]):[0-5][0-9]:[0-5][0-9].[0-9]");
-        if (DATE_PATTERN.matcher(evento.getDataOraEvento().toString()).matches())
-            throw new IllegalArgumentException("Formato della data non valido");
+        if (!DATE_PATTERN.matcher(evento.getDataOraEvento().toString()).matches())
+            throw new IllegalArgumentException("Formato della data non valido.");
 
         if (evento.getDataOraEvento().before(new Timestamp(System.currentTimeMillis()))) {
             throw new IllegalArgumentException("Data nel passato.");
