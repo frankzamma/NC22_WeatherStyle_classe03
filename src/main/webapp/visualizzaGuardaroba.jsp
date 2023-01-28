@@ -29,6 +29,10 @@ for (Maglia m : g.getMaglie()){
         <h5 class="card-title"><%=m.getNome()%>></h5>
         <!--<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
         <a href="#" class="btn btn-primary">Go somewhere</a>-->
+        <form action="visualizza-dettagli-capo" method="post">
+            <input type="hidden" value="<%=m.getId()%>" name="idMaglia" id="idMaglia">
+            <input type="submit" value="Visualizza dettagli">
+        </form>
     </div>
 </div>
 <%
@@ -45,6 +49,10 @@ for (Maglia m : g.getMaglie()){
         <h5 class="card-title"><%=p.getNome()%>></h5>
         <!--<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
         <a href="#" class="btn btn-primary">Go somewhere</a>-->
+        <form action="visualizza-dettagli-capo" method="post">
+            <input type="hidden" value="<%=p.getId()%>" name="idPantaloni" id="idPantaloni">
+            <input type="submit" value="Visualizza dettagli">
+        </form>
     </div>
 </div>
 <%
@@ -61,6 +69,10 @@ for (Maglia m : g.getMaglie()){
         <h5 class="card-title"><%=s.getNome()%>></h5>
         <!--<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
         <a href="#" class="btn btn-primary">Go somewhere</a>-->
+        <form action="visualizza-dettagli-capo" method="post">
+            <input type="hidden" value="<%=s.getId()%>" name="idScarpe" id="idScarpe">
+            <input type="submit" value="Visualizza dettagli">
+        </form>
     </div>
 </div>
 <%
