@@ -109,10 +109,7 @@ public class UtenteLogicService implements UtenteLogicServiceInterface{
         }
     }
 
-    @Override
-    public void promuoviUtenteAdEcologista(Utente utente) {
 
-    }
 
     @Override
     public boolean existsUtente(String email) {
