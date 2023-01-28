@@ -66,7 +66,6 @@ public class GuardarobaDAOImpl implements GuardarobaDAOInterface {
     public Guardaroba creaGuardaroba(ResultSet res) throws SQLException {
         Guardaroba g = new Guardaroba();
 
-        //chiamare i metodi di sopra da spostare e mettere le liste nel guardaroba
         int id =  res.getInt(1);
         int numeroCapi = res.getInt(2);
 
