@@ -71,6 +71,10 @@ public class RichiestaSuggerimentoServlet extends HttpServlet {
             List<Pantaloni> listaPantaloni = guardarobaLogicImpl.getPantaloni(utente.getId());
             List<Scarpe> listaScarpe = guardarobaLogicImpl.getScarpe(utente.getId());
 
+            System.out.println(listaMaglie);
+            System.out.println(listaPantaloni);
+            System.out.println(listaScarpe);
+
             //  Si istanziano le liste che conterranno i capi suggeriti
             List<Maglia> maglieSuggerite;
             List<Pantaloni> pantaloniSuggeriti;

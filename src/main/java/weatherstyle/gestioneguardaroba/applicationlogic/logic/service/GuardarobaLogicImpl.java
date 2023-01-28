@@ -112,7 +112,7 @@ public class GuardarobaLogicImpl implements GuardarobaLogicInterface {
     public List<Maglia> getMaglie(int idUtente) {
         GuardarobaDAOInterface daoG = new GuardarobaDAOImpl();
 
-        weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Guardaroba g = daoG.doRetrieveGuardarobaById(idUtente);
+        Guardaroba g = daoG.doRetrieveGuardarobaById(idUtente);
 
         CapoAbbigliamentoDAOInterface daoC = new CapoAbbigliamentoDAOImpl();
 
@@ -124,7 +124,7 @@ public class GuardarobaLogicImpl implements GuardarobaLogicInterface {
     public List<Pantaloni> getPantaloni(int idUtente) {
         GuardarobaDAOInterface daoG = new GuardarobaDAOImpl();
 
-        weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Guardaroba g = daoG.doRetrieveGuardarobaById(idUtente);
+        Guardaroba g = daoG.doRetrieveGuardarobaById(idUtente);
 
         CapoAbbigliamentoDAOInterface daoC = new CapoAbbigliamentoDAOImpl();
 
@@ -136,7 +136,7 @@ public class GuardarobaLogicImpl implements GuardarobaLogicInterface {
     public List<Scarpe> getScarpe(int idUtente) {
         GuardarobaDAOInterface daoG = new GuardarobaDAOImpl();
 
-        weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Guardaroba g = daoG.doRetrieveGuardarobaById(idUtente);
+        Guardaroba g = daoG.doRetrieveGuardarobaById(idUtente);
 
         CapoAbbigliamentoDAOInterface daoC = new CapoAbbigliamentoDAOImpl();
 

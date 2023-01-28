@@ -292,7 +292,10 @@ public class CapoAbbigliamentoDAOImpl implements CapoAbbigliamentoDAOInterface{
         List<Maglia> maglie = new ArrayList<>();
 
         try (Connection connection =  ConnectionPool.getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("SELECT c.nome, c.stagione, c.colore, c.immagine, m.manica, m.materiale from Maglia m, CapoAbbigliamento c WHERE c.ID = m.IDcapoAbbigliamento and m.IDcapoAbbigliamento= ?");
+            PreparedStatement statement = connection.prepareStatement("SELECT c.nome, c.stagione, c.colore, " +
+                    "c.immagine, m.manica, m.materiale " +
+                    "from Maglia m, CapoAbbigliamento c " +
+                    "WHERE c.ID = m.IDcapoAbbigliamento and c.IDguardaroba= ?");
 
             statement.setInt(1,idG);
 
@@ -322,7 +325,10 @@ public class CapoAbbigliamentoDAOImpl implements CapoAbbigliamentoDAOInterface{
         List<Pantaloni> pant = new ArrayList<>();
 
         try (Connection connection =  ConnectionPool.getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("SELECT c.nome, c.stagione, c.colore, c.immagine, p.lunghezza, p.materiale from Pantaloni p, CapoAbbigliamento c WHERE c.ID = p.IDcapoAbbigliamento and p.IDcapoAbbigliamento= ?");
+            PreparedStatement statement = connection.prepareStatement("SELECT c.nome, c.stagione, c.colore, " +
+                    "c.immagine, p.lunghezza, p.materiale " +
+                    "from Pantaloni p, CapoAbbigliamento c " +
+                    "WHERE c.ID = p.IDcapoAbbigliamento and c.IDguardaroba= ?");
 
             statement.setInt(1,idG);
 
@@ -352,7 +358,10 @@ public class CapoAbbigliamentoDAOImpl implements CapoAbbigliamentoDAOInterface{
         List<Scarpe> s = new ArrayList<>();
 
         try (Connection connection =  ConnectionPool.getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("SELECT c.nome, c.stagione, c.colore, c.immagine, s.tipo, s.antiscivolo, s.impermeabile from Scarpe s, CapoAbbigliamento c WHERE c.ID = s.IDcapoAbbigliamento and s.IDcapoAbbigliamento= ?");
+            PreparedStatement statement = connection.prepareStatement("SELECT c.nome, c.stagione, c.colore, " +
+                    "c.immagine, s.tipo, s.antiscivolo, s.impermeabile " +
+                    "from Scarpe s, CapoAbbigliamento c " +
+                    "WHERE c.ID = s.IDcapoAbbigliamento and c.IDguardaroba= ?");
 
             statement.setInt(1,idG);
 
