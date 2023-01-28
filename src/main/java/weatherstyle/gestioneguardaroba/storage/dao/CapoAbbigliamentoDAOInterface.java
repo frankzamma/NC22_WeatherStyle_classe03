@@ -5,6 +5,8 @@ import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Maglia;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Pantaloni;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Scarpe;
 
+import java.util.List;
+
 /**
  * L'interfaccia <code>CapoAbbigliamentoDAOInterface</code> ha,
  * al suo interno, tutti i metodi per poter gestire
@@ -46,19 +48,23 @@ public interface  CapoAbbigliamentoDAOInterface {
      * @param m è la maglia da salvare.
      * @return vero se il salvataggio è andato a buon fine, falso altrimenti.
      */
-    boolean doSaveMaglia(Maglia m);
+    boolean doSaveMaglia(Maglia m, int idGuardaroba);
 
     /**
      * Salva un paio di pantaloni nel database
      * @param p è il paio di pantaloni da salvare.
      * @return vero se il salvataggio è andato a buon fine, falso altrimenti.
      */
-    boolean doSavePantaloni(Pantaloni p);
+    boolean doSavePantaloni(Pantaloni p, int idGuardaroba);
 
     /**
      * Salva un paio di scarpe nel database
      * @param s è il paio di pantaloni da salvare.
      * @return vero se il salvataggio è andato a buon fine, falso altrimenti.
      */
-    boolean doSaveScarpe(Scarpe s);
+    boolean doSaveScarpe(Scarpe s, int idGuardaroba);
+
+    List<Maglia> doRetrieveMaglieByIdGuardaroba (int idG);
+    List<Pantaloni> doRetrievePantaloniByIdGuardaroba (int idG);
+    List<Scarpe> doRetrieveScarpeByIdGuardaroba (int idG);
 }

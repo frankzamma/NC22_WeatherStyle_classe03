@@ -1,8 +1,14 @@
 package weatherstyle.gestioneguardaroba.storage.dao;
 
+import net.sf.saxon.expr.Component;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Guardaroba;
+import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Maglia;
+import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Pantaloni;
+import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Scarpe;
 import weatherstyle.utils.ConnectionPool;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Questa classe implementa tutti i metodi dell'interfaccia
@@ -51,6 +57,8 @@ public class GuardarobaDAOImpl implements GuardarobaDAOInterface {
         }
     }
 
+
+
     /**
      * Questo metodo restituisce un oggetto <code>Guardaroba</code>.
      * Viene creato a partire dal risultato della query.
@@ -58,6 +66,7 @@ public class GuardarobaDAOImpl implements GuardarobaDAOInterface {
     public Guardaroba creaGuardaroba(ResultSet res) throws SQLException {
         Guardaroba g = new Guardaroba();
 
+        //chiamare i metodi di sopra da spostare e mettere le liste nel guardaroba
         int id =  res.getInt(1);
         int numeroCapi = res.getInt(2);
 

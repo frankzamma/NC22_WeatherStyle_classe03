@@ -9,22 +9,12 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-
 import weatherstyle.gestionecitta.applicationlogic.logic.beans.Citta;
-import weatherstyle.gestionecitta.applicationlogic.logic.service.CittaLogicImpl;
-import weatherstyle.gestionecitta.applicationlogic.logic.service.CittaLogicService;
-import weatherstyle.gestionecitta.storage.dao.CittaDAOImpl;
-import weatherstyle.gestionecitta.storage.service.InfoCittaImpl;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Guardaroba;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Maglia;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Pantaloni;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Scarpe;
-import weatherstyle.gestioneguardaroba.applicationlogic.logic.service.CapoAbbigliamentoService;
-import weatherstyle.gestioneguardaroba.storage.dao.CapoAbbigliamentoDAOImpl;
-import weatherstyle.gestioneguardaroba.storage.dao.GuardarobaDAOImpl;
 import weatherstyle.gestionemeteo.applicationlogic.logic.beans.MeteoDailyMin;
-import weatherstyle.gestionemeteo.applicationlogic.logic.service.MeteoLogicService;
-import weatherstyle.gestionemeteo.storage.dao.MeteoDAOImpl;
 import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.algorithms.ImplementorAlgorithm;
 import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.beans.Suggerimento;
 import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.service.SuggerimentoLogicImpl;
@@ -34,8 +24,6 @@ import weatherstyle.gestioneutenti.applicationlogic.logic.beans.Utente;
 
 import java.io.IOException;
 import java.sql.Date;
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 

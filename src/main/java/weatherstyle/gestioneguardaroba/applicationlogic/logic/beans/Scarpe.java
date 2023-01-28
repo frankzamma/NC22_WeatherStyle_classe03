@@ -20,7 +20,6 @@ public class Scarpe extends CapoAbbigliamento{
 
     /**
      * Metodo costruttore.
-     * @param id rappresenta l'ID delle scarpe.
      * @param nome è il nome dato alle scarpe.
      * @param dirImmagine è la directory in cui è presente
      *                    un'immagine delle scarpe.
