@@ -10,8 +10,4 @@ public class MeteoLogicService implements MeteoLogicInterface{
     public MeteoLogicService(MeteoDAOInterface meteoDAOInterface){
         this.meteoDAOInterface = meteoDAOInterface;
     }
-    @Override
-    public boolean salvaMeteo(MeteoDailyMin meteoDailyMin) {
-        return false;
-    }
 }

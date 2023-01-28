@@ -19,6 +19,5 @@ public interface SuggerimentoLogicService {
     <T extends CapoAbbigliamento> List<T> ottieniSuggerimentiCapi(ImplementorAlgorithm<T> implementorAlgorithm,
                                                                   List<T> capiAbbigliamento,
                                                                   MeteoDailyMin meteoDailyMin);
-    boolean salvaOutfit(Outfit outfit);
 
 }

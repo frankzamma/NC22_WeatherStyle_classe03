@@ -20,31 +20,38 @@ public class SuggerimentoLogicImpl implements SuggerimentoLogicService {
 
     private final SuggerimentoDAOInterface suggerimentoDAO;
     private final OutfitDAOInterface outfitDAO;
-    private final CittaLogicService cittaLogicService;
-    private final MeteoLogicService meteoLogicService;
 
-    public SuggerimentoLogicImpl(SuggerimentoDAOInterface suggerimentoDAO, OutfitDAOInterface outfitDAO,
-                                 CittaLogicService cittaLogicService, MeteoLogicService meteoLogicService) {
+    public SuggerimentoLogicImpl(SuggerimentoDAOInterface suggerimentoDAO, OutfitDAOInterface outfitDAO) {
         this.suggerimentoDAO = suggerimentoDAO;
         this.outfitDAO = outfitDAO;
-        this.cittaLogicService = cittaLogicService;
-        this.meteoLogicService = meteoLogicService;
     }
 
     /**
      * @param suggerimento il suggerimento che si vuole salvare nel DB
-     * @throws IllegalArgumentException se suggerimento è null
+     * @throws IllegalArgumentException se suggerimento è null o non ha tutti i campi settati
      * @return true se è stato possibile salvare il suggerimento, altrimenti false
      */
     @Override
     public boolean salvaSuggerimento(Suggerimento suggerimento) {
-        if (suggerimento == null) {
+        if (suggerimento == null)
             throw new IllegalArgumentException("Suggerimento non può essere null");
-        } else {
-            cittaLogicService.salvaCitta(suggerimento.getCitta());
-            meteoLogicService.salvaMeteo(suggerimento.getMeteoDailyMin());
-            this.salvaOutfit(suggerimento.getOutfit());
-        }
+        if (suggerimento.getUtente() == null)
+            throw new IllegalArgumentException("Utente non può essere null");
+        if (suggerimento.getCitta() == null)
+            throw new IllegalArgumentException("Citta non può essere null");
+        if (suggerimento.getMeteoDailyMin() == null)
+            throw new IllegalArgumentException("Meteo non può essere null");
+        if (suggerimento.getOutfit() == null)
+            throw new IllegalArgumentException("Outfit non può essere null");
+
+        if (suggerimento.getOutfit().getMaglia() == null)
+            throw new IllegalArgumentException("Outfit non contiene maglia");
+        if (suggerimento.getOutfit().getPantaloni() == null)
+            throw new IllegalArgumentException("Outfit non contiene pantaloni");
+        if (suggerimento.getOutfit().getScarpe() == null)
+            throw new IllegalArgumentException("Outfit non contiene scarpe");
+        if (suggerimento.getOutfit().getNome().length() == 0 || suggerimento.getOutfit().getNome().length() > 30)
+            throw new IllegalArgumentException("Outfit lunghezza nome deve essere tra 1 e 30 caratteri");
 
         return suggerimentoDAO.doSaveSuggerimento(suggerimento);
     }
@@ -79,27 +86,6 @@ public class SuggerimentoLogicImpl implements SuggerimentoLogicService {
         }
 
         return implementorAlgorithm.getBestThreeCapoAbbigliamento(capiAbbigliamento, meteoDailyMin);
-    }
-
-    /**
-     * @param outfit outfit che si vuole salvare nel DB
-     * @throws IllegalArgumentException se outfit è null oppure se non contiene maglia, pantaloni e scarpe
-     * @return true se è stato possibile salvare l'outfit, altrimenti false
-     */
-    @Override
-    public boolean salvaOutfit(Outfit outfit) {
-        if (outfit == null)
-            throw new IllegalArgumentException("Outfit non può essere null");
-        if (outfit.getMaglia() == null)
-            throw new IllegalArgumentException("Outfit non contiene maglia");
-        if (outfit.getPantaloni() == null)
-            throw new IllegalArgumentException("Outfit non contiene pantaloni");
-        if (outfit.getScarpe() == null)
-            throw new IllegalArgumentException("Outfit non contiene scarpe");
-        if (outfit.getNome().length() == 0 || outfit.getNome().length() > 30)
-            throw new IllegalArgumentException("Outfit lunghezza nome deve essere tra 1 e 30 caratteri");
-
-        return outfitDAO.doSaveOutfit(outfit);
     }
 
 }

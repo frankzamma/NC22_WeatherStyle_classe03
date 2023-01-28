@@ -4,5 +4,4 @@ import weatherstyle.gestionemeteo.applicationlogic.logic.beans.MeteoDailyMin;
 
 public interface MeteoLogicInterface {
 
-    boolean salvaMeteo(MeteoDailyMin meteoDailyMin);
 }
