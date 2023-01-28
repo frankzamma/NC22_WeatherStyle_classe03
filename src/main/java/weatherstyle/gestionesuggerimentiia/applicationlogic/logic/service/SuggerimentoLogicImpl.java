@@ -84,14 +84,17 @@ public class SuggerimentoLogicImpl implements SuggerimentoLogicService {
      */
     @Override
     public boolean salvaOutfit(Outfit outfit) {
-        if (outfit == null) {
+        if (outfit == null)
             throw new IllegalArgumentException("Outfit non può essere null");
-        } else
-            if (outfit.getMaglia() == null
-                    || outfit.getPantaloni() == null
-                    || outfit.getScarpe() == null) {
-                throw new IllegalArgumentException("Outfit non contiene maglia, pantaloni o scarpe");
-            }
+        if (outfit.getMaglia() == null)
+            throw new IllegalArgumentException("Outfit non contiene maglia");
+        if (outfit.getPantaloni() == null)
+            throw new IllegalArgumentException("Outfit non contiene pantaloni");
+        if (outfit.getScarpe() == null)
+            throw new IllegalArgumentException("Outfit non contiene scarpe");
+        if (outfit.getNome().length() == 0 || outfit.getNome().length() > 30)
+            throw new IllegalArgumentException("Outfit lunghezza nome deve essere tra 1 e 30 caratteri");
+
         return outfitDAO.doSaveOutfit(outfit);
     }
 
