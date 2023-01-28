@@ -29,7 +29,6 @@
                     <th scope="col">Meteo</th>
                     <th scope="col">Temperatura percepita</th>
                     <th scope="col">Stagione previsione</th>
-                    <th scope="col">Tramite</th>
                 </tr>
             </thead>
             <tbody>
