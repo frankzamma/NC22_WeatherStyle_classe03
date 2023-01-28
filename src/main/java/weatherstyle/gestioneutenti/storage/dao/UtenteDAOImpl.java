@@ -166,7 +166,7 @@ public class UtenteDAOImpl implements UtenteDAOInterface {
     private boolean checkEcologista(int id) {
         try (Connection connection =  ConnectionPool.getConnection()) {
             PreparedStatement statement =
-                    connection.prepareStatement("SELECT id FROM ecologista WHERE id = ?");
+                    connection.prepareStatement("SELECT IDUtente FROM ecologista WHERE IDUtente = ?");
 
             statement.setInt(1,id);
             ResultSet res =  statement.executeQuery();
