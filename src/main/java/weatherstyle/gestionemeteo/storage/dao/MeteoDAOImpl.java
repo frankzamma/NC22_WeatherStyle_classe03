@@ -50,7 +50,7 @@ public class MeteoDAOImpl implements MeteoDAOInterface{
                             "VALUES(?, ?, ?) ", Statement.RETURN_GENERATED_KEYS);
 
             statement.setString(1, meteo.getStagionePrevisione());
-            statement.setDouble(2, meteo.getTemperaturaPercepitaMedia());
+            statement.setInt(2, (int) meteo.getTemperaturaPercepitaMedia());
             statement.setString(3, meteo.getMeteoStringMin());
 
             int result =  statement.executeUpdate();

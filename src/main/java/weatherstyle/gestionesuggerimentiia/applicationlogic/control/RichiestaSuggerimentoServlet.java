@@ -71,10 +71,6 @@ public class RichiestaSuggerimentoServlet extends HttpServlet {
             List<Pantaloni> listaPantaloni = guardarobaLogicImpl.getPantaloni(utente.getId());
             List<Scarpe> listaScarpe = guardarobaLogicImpl.getScarpe(utente.getId());
 
-            System.out.println(listaMaglie);
-            System.out.println(listaPantaloni);
-            System.out.println(listaScarpe);
-
             //  Si istanziano le liste che conterranno i capi suggeriti
             List<Maglia> maglieSuggerite;
             List<Pantaloni> pantaloniSuggeriti;
@@ -180,7 +176,7 @@ public class RichiestaSuggerimentoServlet extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest request,HttpServletResponse response) throws IOException, ServletException {
-        doGet(request,response);
+        doGet(request, response);
     }
 
 }

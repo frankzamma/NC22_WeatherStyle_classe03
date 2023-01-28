@@ -28,7 +28,7 @@ public class SuggerimentoLogicImpl implements SuggerimentoLogicService {
     }
 
     /**
-     * @param suggerimento il suggerimento che si vuole salvare nel DB
+     * @param suggerimento il suggerimento che si vuole salvare nel DB completo dei suoi attributi
      * @throws IllegalArgumentException se suggerimento è null o non ha tutti i campi settati
      * @return true se è stato possibile salvare il suggerimento, altrimenti false
      */

@@ -21,6 +21,7 @@
         MeteoDailyMin meteoDailyMin = suggerimento.getMeteoDailyMin();
         Citta citta = suggerimento.getCitta();
         List<String> errorList = (List<String>) request.getAttribute("errorList");
+        String errorSalvaOutfit = (String) request.getAttribute("errorSalvaOutfit");
     %>
     <%@include file="navbar.jsp"%>
     <br>
@@ -35,7 +36,15 @@
                     <% } %>
                 </ul>
             </div>
-        <% } else { %>
+        <% } else if (errorSalvaOutfit != null) { %>
+            <div class="alert alert-danger" role="alert">
+                <ul>
+                    <li>
+                        <%=errorSalvaOutfit%>
+                    </li>
+                </ul>
+        <% }
+            else { %>
 
 
             <h3 class="display-6">Ecco i suggerimenti dei capi ritenuti più adatti in base alle seguenti informazioni metereologiche:</h3>
@@ -59,7 +68,7 @@
             </table>
 
 
-            <form action="SalvaSuggerimentoServlet">
+            <form action="SalvaSuggerimentoServlet" method="post">
                 <h3 class="display-6">Maglie suggerite</h3>
                     <div class="row">
                         <% for(Maglia maglia: maglieSuggerite){ %>

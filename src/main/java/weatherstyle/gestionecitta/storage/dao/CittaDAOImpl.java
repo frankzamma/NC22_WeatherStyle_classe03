@@ -22,7 +22,7 @@ public class CittaDAOImpl implements CittaDAOInterface{
     @Override
     public boolean doSaveCitta(Citta citta) {
 
-        if (doRetrieveCittaByLatLon(citta)) {
+        if (!doRetrieveCittaByLatLon(citta)) {
             return true;
         }
 
@@ -160,7 +160,7 @@ public class CittaDAOImpl implements CittaDAOInterface{
         try (Connection connection = ConnectionPool.getConnection()) {
 
             PreparedStatement preparedStatement = connection.prepareStatement(
-                    "SELECT ID "
+                    "SELECT *"
                             + "FROM Citta c  "
                             + "where c.latitudine=? and c.longitudine=?");
             preparedStatement.setString(1, citta.getLat());
