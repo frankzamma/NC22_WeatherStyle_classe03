@@ -42,6 +42,9 @@
             <li class="nav-item">
               <a class="nav-link" aria-current="page" href="#">Gestione Richieste</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="logout">Logout</a>
+            </li>
           <%}else{%>
               <li class="nav-item">
                 <a class="nav-link" aria-current="page" href="login-page">Login/Registrazione</a>
