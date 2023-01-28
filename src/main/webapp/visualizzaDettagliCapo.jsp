@@ -1,6 +1,7 @@
 <%@ page import="weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Maglia" %>
 <%@ page import="weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Pantaloni" %>
-<%@ page import="weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Scarpe" %><%--
+<%@ page import="weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Scarpe" %>
+<%@ page import="weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.CapoAbbigliamento" %><%--
   Created by IntelliJ IDEA.
   User: migli
   Date: 28/01/2023
@@ -15,13 +16,12 @@
 </head>
 <body>
 <%
-    Maglia m = (Maglia) request.getAttribute("maglia");
-    Pantaloni p = (Pantaloni) request.getAttribute("pantaloni");
-    Scarpe s = (Scarpe) request.getAttribute("scarpe");
+    CapoAbbigliamento c = (CapoAbbigliamento) request.getAttribute("capo");
 %>
 
 <%
-if (m!=null){
+if (c instanceof Maglia){
+    Maglia m = (Maglia) c;
 %>
 
 <div class="card" style="width: 18rem;">
@@ -49,7 +49,8 @@ if (m!=null){
 %>
 
 <%
-    if (p!=null){
+    if (c instanceof Pantaloni){
+        Pantaloni p = (Pantaloni) c;
 %>
 
 <div class="card" style="width: 18rem;">
@@ -77,7 +78,8 @@ if (m!=null){
 %>
 
 <%
-    if (s!=null){
+    if (c instanceof Scarpe){
+        Scarpe s = (Scarpe) c;
 %>
 
 <div class="card" style="width: 18rem;">

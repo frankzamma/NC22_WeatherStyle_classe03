@@ -12,4 +12,5 @@ public interface GuardarobaLogicServiceInterface {
     List<Maglia> getMaglie (int idUtente);
     List<Pantaloni> getPantaloni (int idUtente);
     List<Scarpe> getScarpe (int idUtente);
+    List<CapoAbbigliamento> getAll (int idUtente);
 }

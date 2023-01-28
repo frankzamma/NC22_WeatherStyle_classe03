@@ -1,7 +1,5 @@
-<%@ page import="weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Guardaroba" %>
-<%@ page import="weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Maglia" %>
-<%@ page import="weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Pantaloni" %>
-<%@ page import="weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Scarpe" %><%--
+<%@ page import="weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.*" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: migli
   Date: 27/01/2023
@@ -17,60 +15,21 @@
 <body>
 <%
 Guardaroba g = (Guardaroba) request.getAttribute("guardaroba");
+List<CapoAbbigliamento> all = (List<CapoAbbigliamento>) request.getAttribute("all");
 %>
 
-<h2>Maglie</h2>
+
 <%
-for (Maglia m : g.getMaglie()){
+for (CapoAbbigliamento c : all){
 %>
 <div class="card" style="width: 18rem;">
-    <img src="<%=m.getDirImmagine()%>" class="card-img-top">
+    <img src="<%=c.getDirImmagine()%>" class="card-img-top">
     <div class="card-body">
-        <h5 class="card-title"><%=m.getNome()%>></h5>
+        <h5 class="card-title"><%=c.getNome()%></h5>
         <!--<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
         <a href="#" class="btn btn-primary">Go somewhere</a>-->
         <form action="visualizza-dettagli-capo" method="post">
-            <input type="hidden" value="<%=m.getId()%>" name="idMaglia" id="idMaglia">
-            <input type="submit" value="Visualizza dettagli">
-        </form>
-    </div>
-</div>
-<%
-    }
-%>
-<br>
-<h2>Pantaloni</h2>
-<%
-    for (Pantaloni p : g.getPantaloni()){
-%>
-<div class="card" style="width: 18rem;">
-    <img src="<%=p.getDirImmagine()%>" class="card-img-top">
-    <div class="card-body">
-        <h5 class="card-title"><%=p.getNome()%>></h5>
-        <!--<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>-->
-        <form action="visualizza-dettagli-capo" method="post">
-            <input type="hidden" value="<%=p.getId()%>" name="idPantaloni" id="idPantaloni">
-            <input type="submit" value="Visualizza dettagli">
-        </form>
-    </div>
-</div>
-<%
-    }
-%>
-<br>
-<h2>Scarpe</h2>
-<%
-    for (Scarpe s : g.getScarpe()){
-%>
-<div class="card" style="width: 18rem;">
-    <img src="<%=s.getDirImmagine()%>" class="card-img-top">
-    <div class="card-body">
-        <h5 class="card-title"><%=s.getNome()%>></h5>
-        <!--<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>-->
-        <form action="visualizza-dettagli-capo" method="post">
-            <input type="hidden" value="<%=s.getId()%>" name="idScarpe" id="idScarpe">
+            <input type="hidden" value="<%=c.getId()%>" name="id" id="id">
             <input type="submit" value="Visualizza dettagli">
         </form>
     </div>

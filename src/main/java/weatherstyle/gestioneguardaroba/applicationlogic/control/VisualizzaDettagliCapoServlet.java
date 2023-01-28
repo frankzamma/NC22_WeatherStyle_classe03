@@ -3,6 +3,7 @@ package weatherstyle.gestioneguardaroba.applicationlogic.control;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
+import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.CapoAbbigliamento;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Maglia;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Pantaloni;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Scarpe;
@@ -20,30 +21,16 @@ public class VisualizzaDettagliCapoServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String idMaglia = request.getParameter("idMaglia");
-        String idPantaloni = request.getParameter("idPantaloni");
-        String idScarpe = request.getParameter("idScarpe");
+        int idCapo = Integer.parseInt(request.getParameter("id"));
 
         CapoAbbigliamentoDAOInterface dao = new CapoAbbigliamentoDAOImpl();
 
-        if (idMaglia!=null){
-            Maglia m = dao.doRetrieveMagliaByIdCapoAbbigliamento(Integer.parseInt(idMaglia));
-            request.setAttribute("maglia", m);
-        }
+        CapoAbbigliamento c = dao.doRetrieveCapoById(idCapo);
 
-        if (idPantaloni!=null) {
-            Pantaloni p = dao.doRetrievePantaloniByIdCapoAbbigliamento(Integer.parseInt(idPantaloni));
-            request.setAttribute("pantaloni", p);
-        }
-
-        if (idScarpe!=null){
-            Scarpe s = dao.doRetrieveScarpeByIdCapoAbbigliamento(Integer.parseInt(idScarpe));
-            request.setAttribute("scarpe", s);
-        }
+        request.setAttribute("capo", c);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("visualizzaDettagliCapo.jsp");
         dispatcher.forward(request, response);
-
 
     }
 }
