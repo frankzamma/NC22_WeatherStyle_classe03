@@ -273,6 +273,7 @@ public class CapoAbbigliamentoDAOImpl implements CapoAbbigliamentoDAOInterface{
                 return -1;
             } else {
                 ResultSet resultSet = statement.getGeneratedKeys();
+                resultSet.next();
                 int id =  resultSet.getInt(1);
 
                 return id;

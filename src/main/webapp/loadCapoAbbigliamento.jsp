@@ -1,3 +1,4 @@
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!DOCTYPE html>
@@ -5,21 +6,84 @@
 <head>
     <title>Driver WeatherStyle</title>
     <meta charset="utf-8">
-    <%@include file="links.jsp"%>
+    <%@include file="WEB-INF/links.jsp"%>
 </head>
 <body>
-    <%@include file="navbar.jsp"%>
+<%
+List<String> errorListService = (List<String>) request.getAttribute("errorListService");
+String erroreTipo = (String) request.getAttribute("erroreTipo");
+%>
+    <%@include file="WEB-INF/navbar.jsp"%>
 
-    <form method="post" action="carica-capo">
+<%
+    if (erroreTipo!=null){
+%>
+    <h2><%=erroreTipo%></h2>
+<%
+    }
+%>
+
+
+
+<%
+    if ((errorListService!=null) && (!errorListService.isEmpty())){
+%>
+<h2>Errori riscontrati:</h2><br>
+<ul>
+    <%
+        for (String s : errorListService){
+    %>
+    <li><%=s%></li>
+    <%
+        }
+    %>
+</ul>
+<%
+    }
+%>
+
+    <form method="post" action="inserisci-capo" name="carica-capo-form" id="carica-capo-form">
         <div class="container">
 
             <div class="mb-3">
                 <label> Scegli tipo di capo </label>
-                <select class="form-select" id="tipologia" name="tipologia" onchange="changeSelectedParameter()">
+                <select class="form-select" id="tipologia" name="tipologia" onchange="changeSelectedParameter()" required>
                     <option value="" selected >Apri menu di selezione</option>
                     <option value="maglia">Maglia</option>
-                    <option value="pantaloni">Pantalone</option>
+                    <option value="pantaloni">Pantaloni</option>
                     <option value="scarpe">Scarpe</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="nomeCapo"> Nome del capo: </label>
+                <input type="text" id="nomeCapo" name="nomeCapo" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="directoryCapo"> Directory del capo: </label>
+                <input type="text" id="directoryCapo" name="directoryCapo" required>
+            </div>
+
+            <div class="mb-3">
+                <label> Inserire colore </label>
+                <select class="form-select" id="colore" name="colore" disabled>
+                    <option value="chiaro">Chiaro</option>
+                    <option value="scuro">Scuro</option>
+                    <option value="colorato">Colorato</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label> Inserire stagione </label>
+                <select class="form-select" id="stagione" name="stagione" disabled>
+                    <option value="inverno">Inverno</option>
+                    <option value="autunno">Autunno</option>
+                    <option value="primavera">Primavera</option>
+                    <option value="estate">Estate</option>
+                    <option value="primavera_estate">Primavera-Estate</option>
+                    <option value="autunno_inverno">Autunno-Inverno</option>
+                    <option value="all">All</option>
                 </select>
             </div>
 
@@ -38,14 +102,7 @@
                 </select>
             </div>
 
-            <div class="mb-3">
-                <label> Inserire colore </label>
-                <select class="form-select" id="colore" name="colore" disabled>
-                    <option value="chiaro">Chiaro</option>
-                    <option value="scuro">Scuro</option>
-                    <option value="colorato">Colorato</option>
-                </select>
-            </div>
+
 
             <div class="mb-3">
                 <label> Inserire lunghezza manica </label>
@@ -55,18 +112,7 @@
                 </select>
             </div>
 
-            <div class="mb-3">
-                <label> Inserire stagione </label>
-                <select class="form-select" id="stagione" name="stagione" disabled>
-                    <option value="inverno">Inverno</option>
-                    <option value="autunno">Autunno</option>
-                    <option value="primavera">Primavera</option>
-                    <option value="estate">Estate</option>
-                    <option value="primavera_estate">Primavera-Estate</option>
-                    <option value="autunno_inverno">Autunno-Inverno</option>
-                    <option value="all">All</option>
-                </select>
-            </div>
+
 
             <div class="mb-3">
                 <label> Inserire lunghezza pantaloni </label>
@@ -172,6 +218,6 @@
         }
     </script>
 
-    <%@include file="footer.jsp"%>
+    <%@include file="WEB-INF/footer.jsp"%>
 </body>
 </html>
