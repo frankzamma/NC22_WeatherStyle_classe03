@@ -35,21 +35,6 @@ public class CittaLogicImpl implements CittaLogicService {
     }
 
     /**
-     * metodo che permette di salvare una citta nel DB
-     * @param citta che si vuole salvare dopo aver ricevuto un suggerimento
-     * @throws IllegalArgumentException se città è null
-     * @return true se è stato possibile salvare la città, false altrimenti
-     */
-    @Override
-    public boolean salvaCitta(Citta citta) {
-        if (citta == null) {
-            throw new IllegalArgumentException("Città non può essere null");
-        }
-
-        return cittaDAO.doSaveCitta(citta);
-    }
-
-    /**
      * metodo che permette di ottenere una lista di citta rispetto al nome inserito dall'utente
      * @param name della città ricercata
      * @throws IllegalArgumentException se città è null
