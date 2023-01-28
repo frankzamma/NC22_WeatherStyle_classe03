@@ -85,7 +85,7 @@ use weatherstyle;
         nome VARCHAR (50) NOT NULL,
         stagione VARCHAR(20) NOT NULL,
         colore VARCHAR(10) NOT NULL,
-        immagine VARCHAR(60) NOT NULL,
+        immagine VARCHAR(250) NOT NULL,
         IDguardaroba INT,
             FOREIGN KEY (IDguardaroba)
             REFERENCES Guardaroba(ID)

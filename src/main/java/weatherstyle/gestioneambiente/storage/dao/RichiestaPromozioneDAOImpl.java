@@ -11,7 +11,19 @@ import weatherstyle.utils.ConnectionPool;
 import java.sql.*;
 import java.util.List;
 
+/**
+ * @author angelopalmieri
+ * Classe che gestisce le informazioni persisistenti che riguardano le richieste di promozione
+ * a ecologista avanzate dagli utenti.
+ */
 public class RichiestaPromozioneDAOImpl implements RichiestaPromozioneDAOInterface{
+    /**
+     * Questo metodo permette di creare un oggetto RichiestaPromozione a partire
+     * da un resultSet ottenuto tramite una query.
+     * @param resultSet rappresenta il risultato di una query
+     * @return una richiesta di promozione se il resultSet contiene risultati,
+     * altrimenti restituisce null.
+     */
     private static RichiestaPromozione creaRichiestaPromozione(ResultSet resultSet) {
         RichiestaPromozione richiestaPromozione = new RichiestaPromozione();
         UtenteDAOInterface utenteDAO = new UtenteDAOImpl();

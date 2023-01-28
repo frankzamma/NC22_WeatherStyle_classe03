@@ -7,30 +7,34 @@
     <title>Driver WeatherStyle</title>
     <meta charset="utf-8">
     <%@include file="WEB-INF/links.jsp"%>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
 <%
 List<String> errorListService = (List<String>) request.getAttribute("errorListService");
-String erroreTipo = (String) request.getAttribute("erroreTipo");
+String errore = (String) request.getAttribute("message");
 %>
     <%@include file="WEB-INF/navbar.jsp"%>
+<br>
 
 <%
-    if (erroreTipo!=null){
+    if (errore!=null){
 %>
-    <h2><%=erroreTipo%></h2>
+<div class="alert alert-danger" role="alert">
+    <%=errore%>
+</div>
 <%
     }
 %>
 
 
-
 <%
     if ((errorListService!=null) && (!errorListService.isEmpty())){
 %>
-<h2>Errori riscontrati:</h2><br>
+<div class="alert alert-danger" role="alert">
 <ul>
-    <%
+
+     <%
         for (String s : errorListService){
     %>
     <li><%=s%></li>
@@ -38,11 +42,12 @@ String erroreTipo = (String) request.getAttribute("erroreTipo");
         }
     %>
 </ul>
+</div>
 <%
     }
 %>
 
-    <form method="post" action="inserisci-capo" name="carica-capo-form" id="carica-capo-form">
+    <form method="post" action="inserisci-capo" name="carica-capo-form" id="carica-capo-form" enctype="multipart/form-data">
         <div class="container">
 
             <div class="mb-3">
@@ -61,8 +66,8 @@ String erroreTipo = (String) request.getAttribute("erroreTipo");
             </div>
 
             <div class="mb-3">
-                <label for="directoryCapo"> Directory del capo: </label>
-                <input type="text" id="directoryCapo" name="directoryCapo" required>
+                <label for="foto">Inserire una foto del prodotto</label>
+                <input type="file" name="foto" id="foto" accept="image/*" required>
             </div>
 
             <div class="mb-3">
