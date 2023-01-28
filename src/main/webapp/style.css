@@ -53,3 +53,15 @@ div#password-check{
 ul#password-check-list{
     list-style-type: none;
 }
+
+#suggest{
+    background-color: white;
+    z-index: 1;
+    position: relative;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    padding: 0.2em;
+    display: none;
+    overflow: scroll;
+    height: 9rem;
+    text-align: left;
+}
