@@ -17,6 +17,7 @@ public class MeteoDailyMin {
         this.id = id;
     }
 
+    //TODO modificare nome meteodo in getMeteo()
     public String getMeteoStringMin() {
         return meteo;
     }
@@ -25,9 +26,6 @@ public class MeteoDailyMin {
         this.meteo = meteo;
     }
 
-    public String getMeteo() {
-        return meteo;
-    }
 
     public double getTemperaturaPercepitaMedia() {
         return temperaturaPercepitaMedia;
