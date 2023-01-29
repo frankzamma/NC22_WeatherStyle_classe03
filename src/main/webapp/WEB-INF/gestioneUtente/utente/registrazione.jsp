@@ -40,25 +40,28 @@
                 <div class="row">
                     <div class="col-md-6">
                         <label for="nome" class="form-label">Nome</label>
-                        <input type="text" name="nome" class="form-control" id="nome" placeholder="Mario" required pattern="^[A-Za-z\s]{3,30}">
+                        <input type="text" name="nome" class="form-control" id="nome" placeholder="Mario"
+                               required pattern="^[A-Za-z\s]{3,30}">
                     </div>
                     <div class="col-md-6">
                         <label for="cognome" class="form-label">Cognome</label>
-                        <input type="text" name="cognome" class="form-control" id="cognome" placeholder="Rossi" required pattern="^[A-Za-z\s]{3,30}">
+                        <input type="text" name="cognome" class="form-control" id="cognome"
+                               placeholder="Rossi" required pattern="^[A-Za-z\s]{3,30}">
                     </div>
                 </div>
 
                 <div class="row mt-3">
                     <div class="col-md-12">
                         <label for="email" class="form-label">Email address</label>
-                        <input type="email" name="email" class="form-control" id="email" placeholder="mario.rossi@example.com">
+                        <input type="email" name="email" class="form-control"
+                               id="email" placeholder="mario.rossi@example.com" required>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
                         <label for="password" class="form-label">Password</label>
                         <input type="password" name="password" onkeyup="validatePassword('password')"
-                               class="form-control" id="password">
+                               class="form-control" id="password" required>
                     </div>
                     <div class="row">
                         <div class="col">
@@ -76,9 +79,20 @@
                 <div class="row mt-3">
                     <div class="col">
                         <label for="data-nascita" class="form-label">Data Nascita</label>
-                        <input type="date" class="form-control" name="data-nascita" id="data-nascita" placeholder="mario.rossi@example.com">
+                        <input type="date" class="form-control" name="data-nascita" id="data-nascita"
+                               placeholder="mario.rossi@example.com" required>
                     </div>
                 </div>
+                <div class="row mt-3">
+                    <div class="col">
+                        <label for="data-nascita" class="form-label">Citta</label>
+                        <input type="text" class="form-control" onkeyup="getCitta('citta')" name="citta" id="citta"
+                               placeholder="Es. Roma">
+                        <div id="suggest">
+                        </div>
+                    </div>
+                </div>
+
                 <div class="d-grid gap-2 mt-3">
                      <button type="submit" class="btn btn-primary" >Registrati</button>
                 </div>
@@ -86,5 +100,6 @@
         </form>
         <%@include file="../../footer.jsp" %>
         <script src="./script/script-registrazione.js" type="text/javascript"></script>
+        <script src="./script/cercaCitta.js" type="text/javascript"></script>
     </body>
 </html>
