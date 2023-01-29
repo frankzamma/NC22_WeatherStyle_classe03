@@ -35,18 +35,21 @@
       <li class="nav-item">
         <a class="nav-link" aria-current="page" href="AreaPersonaleServlet">Area personale</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="VisualizzaEventiServlet">Visualizza Eventi</a>
+      </li>
         <%
           if(u.isEcologista()){
         %>
         <li class="nav-item">
-          <a class="nav-link" href="#">Visualizza Eventi</a>
+          <a class="nav-link" href="CreaEventoServlet">Crea Evento</a>
         </li>
       <%}
         }else{
           Admin admin = (Admin) session.getAttribute("admin");
             if(admin != null){ %>
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="#">Gestione Richieste</a>
+              <a class="nav-link" aria-current="page" href="GestioneRichiesteServlet">Gestione Richieste</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" aria-current="page" href="logout">Logout</a>
