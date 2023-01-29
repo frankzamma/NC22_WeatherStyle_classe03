@@ -68,7 +68,4 @@ public interface  CapoAbbigliamentoDAOInterface {
     List<Pantaloni> doRetrievePantaloniByIdGuardaroba (int idG);
     List<Scarpe> doRetrieveScarpeByIdGuardaroba (int idG);
 
-    boolean deleteMaglia (int idCapo);
-    boolean deletePantaloni (int idCapo);
-    boolean deleteScarpe (int idCapo);
 }
