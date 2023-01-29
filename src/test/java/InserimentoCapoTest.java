@@ -1,17 +1,12 @@
-import net.sf.saxon.trans.Err;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import weatherstyle.gestioneambiente.applicationlogic.logic.service.EventoLogicImpl;
-import weatherstyle.gestioneambiente.storage.dao.EventoDAOImpl;
-import weatherstyle.gestionecitta.storage.service.InfoCittaImpl;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Maglia;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Pantaloni;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Scarpe;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.service.GuardarobaLogicImpl;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.service.GuardarobaLogicInterface;
 import weatherstyle.gestioneguardaroba.storage.dao.CapoAbbigliamentoDAOImpl;
-import weatherstyle.gestioneguardaroba.storage.dao.CapoAbbigliamentoDAOInterface;
 import weatherstyle.gestioneguardaroba.storage.dao.GuardarobaDAOImpl;
 import weatherstyle.utils.ErrorParameterException;
 
