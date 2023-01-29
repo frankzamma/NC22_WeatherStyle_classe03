@@ -12,7 +12,7 @@ import weatherstyle.gestionecitta.storage.service.InfoCittaImpl;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "RichiestaCittaServlet", value = "/RichiestaCittaServlet")
+@WebServlet(name = "RichiestaCittaServlet", value = "/get-citta")
 public class RichiestaCittaServlet extends HttpServlet {
 
     @Override

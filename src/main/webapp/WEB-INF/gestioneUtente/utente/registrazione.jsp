@@ -79,8 +79,7 @@
                 <div class="row mt-3">
                     <div class="col">
                         <label for="data-nascita" class="form-label">Data Nascita</label>
-                        <input type="date" class="form-control" name="data-nascita" id="data-nascita"
-                               placeholder="mario.rossi@example.com" required>
+                        <input type="date" class="form-control" name="data-nascita" id="data-nascita" required>
                     </div>
                 </div>
                 <div class="row mt-3">
@@ -90,6 +89,8 @@
                                placeholder="Es. Roma">
                         <div id="suggest">
                         </div>
+                        <input type="hidden"  name="lat" id="lat">
+                        <input type="hidden" name="lon" id="lon">
                     </div>
                 </div>
 

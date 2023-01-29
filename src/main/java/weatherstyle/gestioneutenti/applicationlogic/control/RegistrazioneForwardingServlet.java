@@ -19,7 +19,7 @@ public class RegistrazioneForwardingServlet extends HttpServlet {
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/gestioneUtente/utente/registrazione.jsp");
                 dispatcher.forward(request, response);
             }else{
-                response.sendRedirect("/index.html");
+                response.sendRedirect("index.html");
             }
 
     }
