@@ -45,7 +45,7 @@ public class RichiestaPromozioneLogicImpl implements RichiestaPromozioneLogicInt
             throw new IllegalArgumentException("Errore, richiestaPromozione null.");
         }
 
-        if (richiestaPromozioneDAO.doRetrieveByIdUtente(richiestaPromozione.getUtente().getId()) == null) {
+        if (richiestaPromozioneDAO.doRetrieveByIdUtente(richiestaPromozione.getUtente().getId()) != null) {
             throw new IllegalArgumentException("L'utente ha già richiesto la promozione ad ecologista.");
         }
 
