@@ -16,12 +16,27 @@
 <div class="container">
 
     <h1>Richiedi promozione in ecologista.</h1>
-    <h7 class="display-7">Compila i campi di seguito per richiedere una promozione in ecologista.
+    <h6 class="display-7">Compila i campi di seguito per richiedere una promozione in ecologista.
     <br>Se verrà accettata si sbloccheranno nuove funzionalità come creare eventi volti a salvaguardare l'ambiente.
     <br>Si tenga presente che è possibile richiedere <b>una sola volta</b> la promozione in ecologista,
-        se verrà rifiutata non sarà possibile richiederne un'altra, dunque si presti attenzione.</h7>
+        se verrà rifiutata non sarà possibile richiederne un'altra, dunque si presti attenzione.</h6>
 
-    <form method="post" action="inserisci-capo">
+    <%
+        String errore = (String) request.getAttribute("Errore");
+        if(errore != null) {
+            %>
+            <div class="alert alert-danger" role="alert">
+                <ul>
+                    <li>
+                        <%=errore%>
+                    </li>
+                </ul>
+            </div>
+            <%
+        }
+    %>
+
+    <form method="post" action="SalvaRichiestaPromozioneServlet">
         <div class="container">
 
             <br>
@@ -50,7 +65,7 @@
                 </div>
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" id="tematiche6" name="tematiche" value="Inquinamento del suolo">
-                    <label class="form-check-label" for="tematiche2">Inquinamento del suolo</label>
+                    <label class="form-check-label" for="tematiche6">Inquinamento del suolo</label>
                 </div>
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" id="tematiche7" name="tematiche" value="Dissesto idrogeologico">

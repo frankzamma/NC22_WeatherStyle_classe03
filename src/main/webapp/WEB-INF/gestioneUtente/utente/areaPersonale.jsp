@@ -1,5 +1,8 @@
 <%@ page import="java.util.List" %>
-<%@ page import="weatherstyle.gestionecitta.applicationlogic.logic.beans.Citta" %><%--
+<%@ page import="weatherstyle.gestionecitta.applicationlogic.logic.beans.Citta" %>
+<%@ page import="weatherstyle.gestioneambiente.applicationlogic.logic.service.RichiestaPromozioneLogicInterface" %>
+<%@ page import="weatherstyle.gestioneambiente.applicationlogic.logic.beans.RichiestaPromozione" %>
+<%@ page import="weatherstyle.gestioneambiente.applicationlogic.logic.service.RichiestaPromozioneLogicImpl" %><%--
   Created by IntelliJ IDEA.
   User: angelopalmieri
   Date: 29/01/23
@@ -17,11 +20,13 @@
 <div class="container h-50">
     <%
         Utente utente = (Utente) session.getAttribute("utente");
+        RichiestaPromozioneLogicInterface richiestaPromozioneLogic = new RichiestaPromozioneLogicImpl();
+        RichiestaPromozione richiestaPromozione = richiestaPromozioneLogic.ottieniRichiestaPromozionePerIdUtente(utente.getId());
     %>
     <h1>Area personale</h1>
 
     <%
-        if(!utente.isEcologista()) {
+        if(!utente.isEcologista() && richiestaPromozione == null ) {
             %>
             <form method="post" action="RichiestaPromozioneServlet">
                 <div class="d-grid gap-2 mt-2">
@@ -29,7 +34,11 @@
                 </div>
             </form>
 
-        <% }
+        <% } else {
+            %>
+                <h3 class="display-6">Stato richiesta di promozione in ecologista: <%=richiestaPromozione.getStato()%></h3>
+            <%
+        }
     %>
 
     <h3 class="display-6">I miei dati</h3>

@@ -9,6 +9,7 @@ import weatherstyle.gestioneutenti.storage.dao.UtenteDAOInterface;
 import weatherstyle.utils.ConnectionPool;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,7 +30,6 @@ public class EventoDAOImpl implements EventoDAOInterface{
         UtenteDAOInterface utenteDAO = new UtenteDAOImpl();
 
         try {
-            if (resultSet.next()) {
                 evento.setId(resultSet.getInt("ID"));
                 evento.setNome(resultSet.getString("nome"));
                 evento.setDataOraEvento(resultSet.getTimestamp("dataOraEvento"));
@@ -37,14 +37,10 @@ public class EventoDAOImpl implements EventoDAOInterface{
                 evento.setDescrizione(resultSet.getString("descrizione"));
                 evento.setAltreInformazioni(resultSet.getString("altreInformazioni"));
                 evento.setUtente(utenteDAO.doRetrieveUtenteByID(resultSet.getInt("IDutente")));
-
-                return evento;
-            }
         } catch (SQLException sql) {
             throw new RuntimeException();
         }
-
-        return null;
+        return evento;
     }
 
     @Override
@@ -56,6 +52,7 @@ public class EventoDAOImpl implements EventoDAOInterface{
                     "SELECT * FROM Evento WHERE ID=?");
             prepareStatement.setInt(1,idEvento);
             ResultSet resultSet = prepareStatement.executeQuery();
+            resultSet.next();
             evento = creaEvento(resultSet);
 
         } catch (SQLException sql) {
@@ -96,7 +93,7 @@ public class EventoDAOImpl implements EventoDAOInterface{
 
     @Override
     public List<Evento> doRetrieveAfterCurrentDate() {
-        List<Evento> list = null;
+        List<Evento> list = new ArrayList<>();
 
         try (Connection connection = ConnectionPool.getConnection()) {
             Statement statement = connection.createStatement();
@@ -114,7 +111,7 @@ public class EventoDAOImpl implements EventoDAOInterface{
 
     @Override
     public List<Evento> doRetrieveAll() {
-        List<Evento> list = null;
+        List<Evento> list = new ArrayList<>();
 
         try (Connection connection = ConnectionPool.getConnection()) {
             Statement statement = connection.createStatement();

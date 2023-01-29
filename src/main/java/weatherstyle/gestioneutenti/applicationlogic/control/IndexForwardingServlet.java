@@ -3,6 +3,10 @@ package weatherstyle.gestioneutenti.applicationlogic.control;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
+import weatherstyle.gestionecitta.applicationlogic.logic.beans.Citta;
+import weatherstyle.gestionemeteo.applicationlogic.logic.beans.MeteoDaily;
+import weatherstyle.gestionemeteo.applicationlogic.logic.service.MeteoLogicService;
+import weatherstyle.gestionemeteo.storage.service.InfoMeteoDailyService;
 import weatherstyle.gestioneutenti.applicationlogic.logic.beans.Admin;
 import weatherstyle.gestioneutenti.applicationlogic.logic.beans.Utente;
 
@@ -19,6 +23,14 @@ public class IndexForwardingServlet extends HttpServlet {
         Utente u  = (Utente) session.getAttribute("utente");
 
         if(u != null){
+            Citta citta = u.getCitta().isEmpty() ?
+                    (Citta) getServletContext().getAttribute("citta_default"):u.getCitta().get(0);
+            MeteoLogicService meteoLogicService =  new MeteoLogicService();
+
+            MeteoDaily meteoDaily =  meteoLogicService.getMeteoDaily(citta);
+
+            request.setAttribute("meteo-daily", meteoDaily);
+            request.setAttribute("citta", citta);
             address =  "/WEB-INF/gestioneUtente/utente/home_private.jsp";
         }else{
             Admin admin  = (Admin) session.getAttribute("admin");
