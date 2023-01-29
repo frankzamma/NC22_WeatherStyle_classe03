@@ -48,6 +48,11 @@ public class SuggerimentoDAOImpl implements SuggerimentoDAOInterface{
         meteoDAO.doSaveMeteo(suggerimento.getMeteoDailyMin());
         outfitDAO.doSaveOutfit(suggerimento.getOutfit());
 
+        System.out.println(suggerimento.getCitta() + "\n" +
+                suggerimento.getMeteoDailyMin() + "\n" +
+                suggerimento.getOutfit() + "\n" +
+                suggerimento.getUtente());
+
         try (Connection connection = ConnectionPool.getConnection()) {
 
             PreparedStatement preparedStatement = connection.prepareStatement(
@@ -68,7 +73,7 @@ public class SuggerimentoDAOImpl implements SuggerimentoDAOInterface{
             suggerimento.setId(idSuggerimento);
 
         } catch (SQLException sql) {
-            throw new RuntimeException();
+            sql.printStackTrace();
         }
 
         return true;

@@ -77,4 +77,15 @@ public class Outfit {
     public void setScarpe(Scarpe scarpe) {
         this.scarpe = scarpe;
     }
+
+    @Override
+    public String toString() {
+        return "Outfit{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", maglia=" + maglia +
+                ", pantaloni=" + pantaloni +
+                ", scarpe=" + scarpe +
+                '}';
+    }
 }

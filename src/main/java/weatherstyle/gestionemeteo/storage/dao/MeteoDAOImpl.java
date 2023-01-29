@@ -56,7 +56,7 @@ public class MeteoDAOImpl implements MeteoDAOInterface{
             int result =  statement.executeUpdate();
             if(result == 1){
                 ResultSet res =  statement.getGeneratedKeys();
-
+                res.next();
                 int id =  res.getInt(1);
                 meteo.setId(id);
 

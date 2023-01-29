@@ -293,7 +293,7 @@ public class CapoAbbigliamentoDAOImpl implements CapoAbbigliamentoDAOInterface{
 
         try (Connection connection =  ConnectionPool.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("SELECT c.nome, c.stagione, c.colore, " +
-                    "c.immagine, m.manica, m.materiale " +
+                    "c.immagine, m.manica, m.materiale, c.ID " +
                     "from Maglia m, CapoAbbigliamento c " +
                     "WHERE c.ID = m.IDcapoAbbigliamento and c.IDguardaroba= ?");
 
@@ -307,8 +307,10 @@ public class CapoAbbigliamentoDAOImpl implements CapoAbbigliamentoDAOInterface{
                 String dirImmagine = res.getString(4);
                 String manica = res.getString(5);
                 String materiale = res.getString(6);
+                int idMaglia = res.getInt(7);
 
                 Maglia m = new Maglia(nome, dirImmagine, stagione, colore, manica, materiale);
+                m.setId(idMaglia);
 
                 maglie.add(m);
             }
@@ -326,7 +328,7 @@ public class CapoAbbigliamentoDAOImpl implements CapoAbbigliamentoDAOInterface{
 
         try (Connection connection =  ConnectionPool.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("SELECT c.nome, c.stagione, c.colore, " +
-                    "c.immagine, p.lunghezza, p.materiale " +
+                    "c.immagine, p.lunghezza, p.materiale, c.ID " +
                     "from Pantaloni p, CapoAbbigliamento c " +
                     "WHERE c.ID = p.IDcapoAbbigliamento and c.IDguardaroba= ?");
 
@@ -340,8 +342,10 @@ public class CapoAbbigliamentoDAOImpl implements CapoAbbigliamentoDAOInterface{
                 String dirImmagine = res.getString(4);
                 String lunghezza = res.getString(5);
                 String materiale = res.getString(6);
+                int idPantaloni = res.getInt(7);
 
                 Pantaloni p = new Pantaloni(nome, dirImmagine, stagione, colore, lunghezza, materiale);
+                p.setId(idPantaloni);
 
                 pant.add(p);
             }
@@ -359,7 +363,7 @@ public class CapoAbbigliamentoDAOImpl implements CapoAbbigliamentoDAOInterface{
 
         try (Connection connection =  ConnectionPool.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("SELECT c.nome, c.stagione, c.colore, " +
-                    "c.immagine, s.tipo, s.antiscivolo, s.impermeabile " +
+                    "c.immagine, s.tipo, s.antiscivolo, s.impermeabile, c.ID " +
                     "from Scarpe s, CapoAbbigliamento c " +
                     "WHERE c.ID = s.IDcapoAbbigliamento and c.IDguardaroba= ?");
 
@@ -374,8 +378,10 @@ public class CapoAbbigliamentoDAOImpl implements CapoAbbigliamentoDAOInterface{
                 String tipo = res.getString(5);
                 boolean antiscivolo = res.getBoolean(6);
                 boolean impermeabile = res.getBoolean(7);
+                int idScarpe = res.getInt(8);
 
                 Scarpe scarpe = new Scarpe(nome, dirImmagine, stagione, colore, tipo, antiscivolo, impermeabile);
+                scarpe.setId(idScarpe);
 
                 s.add(scarpe);
             }

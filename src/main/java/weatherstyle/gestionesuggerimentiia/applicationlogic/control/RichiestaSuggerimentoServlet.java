@@ -140,6 +140,9 @@ public class RichiestaSuggerimentoServlet extends HttpServlet {
             request.setAttribute("pantaloniSuggeriti", pantaloniSuggeriti);
             request.setAttribute("scarpeSuggerite", scarpeSuggerite);
 
+            System.out.println(listaMaglie);
+            System.out.println(maglieSuggerite);
+
             Suggerimento suggerimento = new Suggerimento();
             suggerimento.setUtente(utente);
             suggerimento.setDate(new Date(new GregorianCalendar().getTimeInMillis()));

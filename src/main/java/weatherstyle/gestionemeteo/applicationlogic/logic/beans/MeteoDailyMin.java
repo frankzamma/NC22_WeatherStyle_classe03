@@ -42,4 +42,14 @@ public class MeteoDailyMin {
     public void setStagionePrevisione(String stagionePrevisione) {
         this.stagionePrevisione = stagionePrevisione;
     }
+
+    @Override
+    public String toString() {
+        return "MeteoDailyMin{" +
+                "id=" + id +
+                ", meteo='" + meteo + '\'' +
+                ", temperaturaPercepitaMedia=" + temperaturaPercepitaMedia +
+                ", stagionePrevisione='" + stagionePrevisione + '\'' +
+                '}';
+    }
 }
