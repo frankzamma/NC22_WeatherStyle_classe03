@@ -62,9 +62,9 @@ public class CittaDAOImpl implements CittaDAOInterface{
         try (Connection connection = ConnectionPool.getConnection()) {
 
             PreparedStatement preparedStatement = connection.prepareStatement(
-                    "SELECT ID, nome, latitudine, longitudine " +
+                    "SELECT c.ID, nome, latitudine, longitudine " +
                             "FROM Citta c join Suggerimento s on s.IDcitta = c.ID " +
-                            "where s.IDCitta=?");
+                            "where s.ID=?");
             preparedStatement.setInt(1, idSuggerimento);
 
             ResultSet resultSet = preparedStatement.executeQuery();

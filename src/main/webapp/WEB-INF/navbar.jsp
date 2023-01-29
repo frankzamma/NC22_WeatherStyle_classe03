@@ -29,6 +29,9 @@
         <li class="nav-item">
           <a class="nav-link" aria-current="page" href="logout">Logout</a>
         </li>
+      <li class="nav-item">
+        <a class="nav-link" aria-current="page" href="CronologiaSuggerimentiServlet">Cronologia suggerimenti</a>
+      </li>
         <%
           if(u.isEcologista()){
         %>
