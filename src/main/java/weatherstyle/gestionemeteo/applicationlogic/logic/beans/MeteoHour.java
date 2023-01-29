@@ -70,4 +70,10 @@ public class MeteoHour {
     public void setUmiditaRelativa(double umiditaRelativa) {
         this.umiditaRelativa = umiditaRelativa;
     }
+
+    public String getMeteoString(){
+        return MeteoUtils.translateWeatherCode(this.weatherCode);
+    }
+
+
 }

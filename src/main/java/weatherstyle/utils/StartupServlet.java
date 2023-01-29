@@ -8,6 +8,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import weatherstyle.gestionecitta.applicationlogic.logic.beans.Citta;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Guardaroba;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Maglia;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Pantaloni;
@@ -52,6 +53,14 @@ public class StartupServlet extends HttpServlet {
         context.setAttribute("scarpeML", scarpeImplementorAlgorithmML);
         context.setAttribute("pantaloniML",pantaloniImplementorAlgorithmML);
         context.setAttribute("magliaML",magliaImplementorAlgorithmML);
+
+        Citta citta =  new Citta();
+
+        citta.setNome("Roma, Roma Capitale, Lazio, Italia");
+        citta.setLat("41.8933203");
+        citta.setLon("12.4829321");
+
+        context.setAttribute("citta_default", citta);
     }
 
     @Override
