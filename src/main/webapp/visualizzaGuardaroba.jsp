@@ -14,12 +14,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
+<%@include file="/WEB-INF/navbar.jsp"%>
+<br>
 <%
 List<CapoAbbigliamento> all = (List<CapoAbbigliamento>) request.getAttribute("all");
-Utente u = (Utente) request.getAttribute("utente");
+Utente ut = (Utente) request.getAttribute("utente");
 %>
 
-<h2>Guardaroba di <%=u.getNome()%> <%=u.getCognome()%></h2>
+<h2>Guardaroba di <%=ut.getNome()%> <%=ut.getCognome()%></h2>
 
 <%
 for (CapoAbbigliamento c : all){
@@ -40,5 +42,6 @@ for (CapoAbbigliamento c : all){
 <%
     }
 %>
+<%@include file="/WEB-INF/footer.jsp"%>
 </body>
 </html>

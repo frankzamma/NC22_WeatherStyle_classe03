@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Driver WeatherStyle</title>
+    <title>WeatherStyle</title>
     <%@include file="links.jsp"%>
   </head>
   <body>
