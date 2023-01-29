@@ -7,10 +7,7 @@ import weatherstyle.gestionemeteo.storage.dao.MeteoDAOInterface;
 import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.beans.Suggerimento;
 import weatherstyle.utils.ConnectionPool;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,20 +45,16 @@ public class SuggerimentoDAOImpl implements SuggerimentoDAOInterface{
         meteoDAO.doSaveMeteo(suggerimento.getMeteoDailyMin());
         outfitDAO.doSaveOutfit(suggerimento.getOutfit());
 
-        System.out.println(suggerimento.getCitta() + "\n" +
-                suggerimento.getMeteoDailyMin() + "\n" +
-                suggerimento.getOutfit() + "\n" +
-                suggerimento.getUtente());
-
         try (Connection connection = ConnectionPool.getConnection()) {
 
             PreparedStatement preparedStatement = connection.prepareStatement(
-                    "INSERT INTO Suggerimento (dataSuggerimento, IDutente, IDcitta, IDoutfit)"
-                            + "VALUES(?,?,?,?)");
+                    "INSERT INTO Suggerimento (dataSuggerimento, IDutente, IDcitta, IDoutfit, IDmeteo)"
+                            + "VALUES(?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setDate(1,suggerimento.getDate());
             preparedStatement.setInt(2, suggerimento.getUtente().getId());
             preparedStatement.setInt(3, suggerimento.getCitta().getId());
             preparedStatement.setInt(4, suggerimento.getOutfit().getId());
+            preparedStatement.setInt(5, suggerimento.getMeteoDailyMin().getId());
 
             if (preparedStatement.executeUpdate() != 1) {
                 return false;

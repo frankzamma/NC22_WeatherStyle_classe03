@@ -36,15 +36,18 @@
                     <% } %>
                 </ul>
             </div>
-        <% } else if (errorSalvaOutfit != null) { %>
-            <div class="alert alert-danger" role="alert">
-                <ul>
-                    <li>
-                        <%=errorSalvaOutfit%>
-                    </li>
-                </ul>
         <% }
             else { %>
+
+                <% if (errorSalvaOutfit != null) { %>
+                <div class="alert alert-danger" role="alert">
+                    <ul>
+                        <li>
+                            <%=errorSalvaOutfit%>
+                        </li>
+                    </ul>
+                </div>
+                <% } %>
 
 
             <h3 class="display-6">Ecco i suggerimenti dei capi ritenuti più adatti in base alle seguenti informazioni metereologiche:</h3>

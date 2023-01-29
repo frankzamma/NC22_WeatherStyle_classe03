@@ -76,19 +76,19 @@ public class SalvaSuggerimentoServlet extends HttpServlet {
             outfit.setNome(nomeOutfit);
 
             // si istanziano oggetti maglia, pantaloni e scarpe assegnando loro id presi dalla request
-            if (!scarpeID.equals("")) {
+            if (scarpeID != null) {
                 Scarpe scarpe = new Scarpe();
                 scarpe.setId(Integer.parseInt(scarpeID));
                 outfit.setScarpe(scarpe);
             }
 
-            if (!magliaID.equals("")){
+            if (magliaID != null){
                 Maglia maglia = new Maglia();
                 maglia.setId(Integer.parseInt(magliaID));
                 outfit.setMaglia(maglia);
             }
 
-            if (!pantaloniID.equals("")){
+            if (pantaloniID != null){
                 Pantaloni pantaloni = new Pantaloni();
                 pantaloni.setId(Integer.parseInt(pantaloniID));
                 outfit.setPantaloni(pantaloni);
@@ -106,7 +106,8 @@ public class SalvaSuggerimentoServlet extends HttpServlet {
                 request.getRequestDispatcher("RichiestaSuggerimentoServlet").forward(request, response);
             }
 
-            request.getRequestDispatcher("index.html").forward(request, response);
+            System.out.println(suggerimento);
+            request.getRequestDispatcher("/WEB-INF/gestioneUtente/utente/home_private.jsp").forward(request, response);
         }
     }
 }

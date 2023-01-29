@@ -105,4 +105,17 @@ public class Suggerimento {
     public void setMeteoDailyMin(MeteoDailyMin meteoDailyMin) {
         this.meteoDailyMin = meteoDailyMin;
     }
+
+    @Override
+    public String toString() {
+        return "Suggerimento{" +
+                "id=" + id +
+                ", date=" + date +
+                ", valutazione=" + valutazione +
+                ", utente=" + utente +
+                ", citta=" + citta +
+                ", outfit=" + outfit +
+                ", meteoDailyMin=" + meteoDailyMin +
+                '}';
+    }
 }

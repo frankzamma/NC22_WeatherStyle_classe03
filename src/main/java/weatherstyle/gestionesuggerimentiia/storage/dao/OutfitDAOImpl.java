@@ -40,6 +40,7 @@ public class OutfitDAOImpl implements OutfitDAOInterface {
             return true;
         }
 
+        //TODO da qui inizia a debuggare
         try (Connection connection = ConnectionPool.getConnection()) {
 
             PreparedStatement preparedStatement = connection.prepareStatement(
@@ -65,7 +66,7 @@ public class OutfitDAOImpl implements OutfitDAOInterface {
                 return false;
 
         } catch (SQLException sql) {
-            throw new RuntimeException();
+            throw new RuntimeException("salvataggio outfit non riuscito");
         }
     }
 
