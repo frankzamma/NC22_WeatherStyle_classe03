@@ -32,6 +32,9 @@
       <li class="nav-item">
         <a class="nav-link" aria-current="page" href="CronologiaSuggerimentiServlet">Cronologia suggerimenti</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" aria-current="page" href="AreaPersonaleServlet">Area personale</a>
+      </li>
         <%
           if(u.isEcologista()){
         %>
