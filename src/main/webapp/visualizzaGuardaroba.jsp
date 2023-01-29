@@ -1,5 +1,6 @@
 <%@ page import="weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.*" %>
-<%@ page import="java.util.List" %><%--
+<%@ page import="java.util.List" %>
+<%@ page import="weatherstyle.gestioneutenti.applicationlogic.logic.beans.Utente" %><%--
   Created by IntelliJ IDEA.
   User: migli
   Date: 27/01/2023
@@ -14,10 +15,11 @@
 </head>
 <body>
 <%
-Guardaroba g = (Guardaroba) request.getAttribute("guardaroba");
 List<CapoAbbigliamento> all = (List<CapoAbbigliamento>) request.getAttribute("all");
+Utente u = (Utente) request.getAttribute("utente");
 %>
 
+<h2>Guardaroba di <%=u.getNome()%> <%=u.getCognome()%></h2>
 
 <%
 for (CapoAbbigliamento c : all){
@@ -28,12 +30,13 @@ for (CapoAbbigliamento c : all){
         <h5 class="card-title"><%=c.getNome()%></h5>
         <!--<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
         <a href="#" class="btn btn-primary">Go somewhere</a>-->
-        <form action="visualizza-dettagli-capo" method="post">
+        <form action="visualizza-dettagli-capo" method="get">
             <input type="hidden" value="<%=c.getId()%>" name="id" id="id">
             <input type="submit" value="Visualizza dettagli">
         </form>
     </div>
 </div>
+<br>
 <%
     }
 %>

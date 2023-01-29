@@ -18,25 +18,21 @@ public class VisualizzaGuardarobaServlet extends HttpServlet {
         HttpSession session = request.getSession();
 
         Utente u = (Utente) session.getAttribute("utente");
+        if (u!=null){
+            GuardarobaLogicInterface service = new GuardarobaLogicImpl();
 
-        GuardarobaLogicInterface service = new GuardarobaLogicImpl();
+            List<CapoAbbigliamento> all = service.getAll(u.getId());
 
-        List<Maglia> maglie = service.getMaglie(u.getId());
-        List<Pantaloni> pantaloni = service.getPantaloni(u.getId());
-        List<Scarpe> scarpe = service.getScarpe(u.getId());
-        List<CapoAbbigliamento> all = service.getAll(u.getId());
+            request.setAttribute("all", all);
+            request.setAttribute("utente", u);
 
-        Guardaroba g = new Guardaroba();
 
-        g.setMaglie(maglie);
-        g.setPantaloni(pantaloni);
-        g.setScarpe(scarpe);
-
-        request.setAttribute("guardaroba", g);
-        request.setAttribute("all", all);
-
-        RequestDispatcher dispatcher = request.getRequestDispatcher("visualizzaGuardaroba.jsp");
-        dispatcher.forward(request,response);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("visualizzaGuardaroba.jsp");
+            dispatcher.forward(request,response);
+        }else{
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/gestioneUtente/utente/login_utente.jsp");
+            dispatcher.forward(request,response);
+        }
     }
 
     @Override
