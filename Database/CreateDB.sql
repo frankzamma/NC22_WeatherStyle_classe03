@@ -147,7 +147,7 @@ use weatherstyle;
 
     CREATE TABLE RichiestaPromozione (
         ID INT PRIMARY KEY AUTO_INCREMENT,
-        tematiche VARCHAR(50) NOT NULL,
+        tematiche VARCHAR(250) NOT NULL,
         esperienze VARCHAR(250) NOT NULL,
         stato VARCHAR(15) NOT NULL,
         IDutente INT,
