@@ -163,6 +163,19 @@ public class GuardarobaLogicImpl implements GuardarobaLogicInterface {
         return all;
     }
 
+    @Override
+    public boolean aggiornaNumeroCapi(int idUtente) {
+        GuardarobaDAOInterface daoG = new GuardarobaDAOImpl();
+
+        Guardaroba g = daoG.doRetrieveGuardarobaById(idUtente);
+
+        int numeroCapi = daoG.doRetrieveNumeroCapi(idUtente);
+
+        g.setNumeroCapi(numeroCapi+1);
+
+        return daoG.doSaveNumeroCapi(idUtente, g.getNumeroCapi());
+    }
+
 
     public void controlli (CapoAbbigliamento c) throws ErrorParameterException{
         List<String> errorParameter =  new ArrayList<>();

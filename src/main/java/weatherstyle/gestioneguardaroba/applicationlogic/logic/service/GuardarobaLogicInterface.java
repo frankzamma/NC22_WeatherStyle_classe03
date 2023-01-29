@@ -13,4 +13,5 @@ public interface GuardarobaLogicInterface {
     List<Pantaloni> getPantaloni (int idUtente);
     List<Scarpe> getScarpe (int idUtente);
     List<CapoAbbigliamento> getAll (int idUtente);
+    boolean aggiornaNumeroCapi (int idUtente);
 }

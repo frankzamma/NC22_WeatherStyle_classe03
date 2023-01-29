@@ -30,6 +30,10 @@ public interface GuardarobaDAOInterface {
      */
     boolean doSaveGuardaroba(int idUtente);
 
+    int doRetrieveNumeroCapi (int idUtente);
+
+    boolean doSaveNumeroCapi (int idUtente, int numero);
+
 
 
 }

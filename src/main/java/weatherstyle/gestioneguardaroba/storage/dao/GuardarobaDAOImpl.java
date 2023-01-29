@@ -57,6 +57,48 @@ public class GuardarobaDAOImpl implements GuardarobaDAOInterface {
         }
     }
 
+    @Override
+    public int doRetrieveNumeroCapi(int idUtente) {
+        try (Connection connection =  ConnectionPool.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement("SELECT numeroCapi from Guardaroba WHERE ID = ?");
+
+            statement.setInt(1,idUtente);
+
+            ResultSet res =  statement.executeQuery();
+            if (res.next()) {
+                int numero = res.getInt(1);
+                return numero;
+            } else {
+                return 0;
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public boolean doSaveNumeroCapi(int idUtente, int numero) {
+        try (Connection connection = ConnectionPool.getConnection()) {
+            PreparedStatement statement =  connection.prepareStatement(
+                    "UPDATE guardaroba set numeroCapi = ? WHERE ID = ?");
+
+            statement.setInt(1, numero);
+            statement.setInt(2, idUtente);
+
+            int res =  statement.executeUpdate();
+
+            if (res == 0) {
+                return false;
+            } else {
+                return true;
+            }
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 
     /**
