@@ -16,21 +16,25 @@ import java.io.IOException;
 public class VisualizzaDettagliCapoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int idCapo = Integer.parseInt(request.getParameter("id"));
 
         CapoAbbigliamentoDAOInterface dao = new CapoAbbigliamentoDAOImpl();
 
-        CapoAbbigliamento c = dao.doRetrieveCapoById(idCapo);
+        Maglia m = dao.doRetrieveMagliaByIdCapoAbbigliamento(idCapo);
+        Pantaloni p = dao.doRetrievePantaloniByIdCapoAbbigliamento(idCapo);
+        Scarpe s = dao.doRetrieveScarpeByIdCapoAbbigliamento(idCapo);
 
-        request.setAttribute("capo", c);
+        request.setAttribute("maglia", m);
+        request.setAttribute("pantaloni", p);
+        request.setAttribute("scarpe", s);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("visualizzaDettagliCapo.jsp");
         dispatcher.forward(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 
     }
 }

@@ -16,18 +16,19 @@
 </head>
 <body>
 <%
-    CapoAbbigliamento c = (CapoAbbigliamento) request.getAttribute("capo");
+    Maglia m = (Maglia) request.getAttribute("maglia");
+    Pantaloni p = (Pantaloni) request.getAttribute("pantaloni");
+    Scarpe s = (Scarpe) request.getAttribute("scarpe");
 %>
 
 <%
-if (c instanceof Maglia){
-    Maglia m = (Maglia) c;
+if (m!=null){
 %>
 
 <div class="card" style="width: 18rem;">
     <img src="<%=m.getDirImmagine()%>" class="card-img-top">
     <div class="card-body">
-        <h5 class="card-title"><%=m.getNome()%>></h5>
+        <h5 class="card-title"><%=m.getNome()%></h5>
     </div>
     <ul class="list-group list-group-flush">
         <li class="list-group-item">Categoria: Maglia</li>
@@ -36,27 +37,16 @@ if (c instanceof Maglia){
         <li class="list-group-item">Colore: <%=m.getColore()%></li>
         <li class="list-group-item">Stagione: <%=m.getStagione()%></li>
     </ul>
-    <div class="card-body">
-        <form action="elimina-capo" method="post">
-            <input type="hidden" value="<%=m.getId()%>" name="idMaglia" id="idMaglia">
-            <input type="submit" value="Elimina capo">
-        </form>
-    </div>
 </div>
 
 <%
-    }
+    }else{
+        if (p != null){
 %>
-
-<%
-    if (c instanceof Pantaloni){
-        Pantaloni p = (Pantaloni) c;
-%>
-
 <div class="card" style="width: 18rem;">
     <img src="<%=p.getDirImmagine()%>" class="card-img-top">
     <div class="card-body">
-        <h5 class="card-title"><%=p.getNome()%>></h5>
+        <h5 class="card-title"><%=p.getNome()%></h5>
     </div>
     <ul class="list-group list-group-flush">
         <li class="list-group-item">Categoria: Pantaloni</li>
@@ -65,27 +55,14 @@ if (c instanceof Maglia){
         <li class="list-group-item">Colore: <%=p.getColore()%></li>
         <li class="list-group-item">Stagione: <%=p.getStagione()%></li>
     </ul>
-    <div class="card-body">
-        <form action="elimina-capo" method="post">
-            <input type="hidden" value="<%=p.getId()%>" name="idPantaloni" id="idPantaloni">
-            <input type="submit" value="Elimina capo">
-        </form>
-    </div>
 </div>
-
 <%
-    }
+        }else{
 %>
-
-<%
-    if (c instanceof Scarpe){
-        Scarpe s = (Scarpe) c;
-%>
-
 <div class="card" style="width: 18rem;">
     <img src="<%=s.getDirImmagine()%>" class="card-img-top">
     <div class="card-body">
-        <h5 class="card-title"><%=s.getNome()%>></h5>
+        <h5 class="card-title"><%=s.getNome()%></h5>
     </div>
     <ul class="list-group list-group-flush">
         <li class="list-group-item">Categoria: Scarpe</li>
@@ -95,16 +72,17 @@ if (c instanceof Maglia){
         <li class="list-group-item">Antiscivolo: <%=s.isAntiscivolo()%></li>
         <li class="list-group-item">Impermeabile: <%=s.isImpermeabile()%></li>
     </ul>
-    <div class="card-body">
-        <form action="elimina-capo" method="post">
-            <input type="hidden" value="<%=s.getId()%>" name="idScarpe" id="idScarpe">
-            <input type="submit" value="Elimina capo">
-        </form>
-    </div>
 </div>
 
 <%
     }
 %>
+<%
+    }
+%>
+
+
+
+
 </body>
 </html>
