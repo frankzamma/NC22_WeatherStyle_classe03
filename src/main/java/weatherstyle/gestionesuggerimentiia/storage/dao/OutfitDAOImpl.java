@@ -9,6 +9,8 @@ import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.beans.Outfit;
 import weatherstyle.utils.ConnectionPool;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Raffaele Aurucci
@@ -93,9 +95,7 @@ public class OutfitDAOImpl implements OutfitDAOInterface {
             if (resultSet.next()) {
                 outfit.setId(resultSet.getInt("ID"));
                 outfit.setNome(resultSet.getString("nome"));
-                outfit.setMaglia(doRetrieveMagliaByOutfitID(outfit.getId()));
-                outfit.setPantaloni(doRetrievePantaloneByOutfitID(outfit.getId()));
-                outfit.setScarpe(doRetrieveScarpeByOutfitID(outfit.getId()));
+                settingCapiInOutfit(outfit);
             }
 
         } catch (SQLException sql) {
@@ -103,6 +103,30 @@ public class OutfitDAOImpl implements OutfitDAOInterface {
         }
 
         return outfit;
+    }
+
+    private void settingCapiInOutfit(Outfit outfit) {
+
+        List<Integer> list = new ArrayList<>();
+
+        try (Connection connection = ConnectionPool.getConnection()) {
+            PreparedStatement preparedStatement = connection.prepareStatement(
+                    "SELECT IDcapoAbbigliamento FROM Comporre WHERE IDoutfit=?");
+            preparedStatement.setInt(1, outfit.getId());
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()){
+                Integer idCapoAbbigliamento = resultSet.getInt("IDcapoAbbigliamento");
+                list.add(idCapoAbbigliamento);
+            }
+
+            outfit.setMaglia(capoAbbigliamentoDAO.doRetrieveMagliaByIdCapoAbbigliamento(list.get(0)));
+            outfit.setPantaloni(capoAbbigliamentoDAO.doRetrievePantaloniByIdCapoAbbigliamento(list.get(1)));
+            outfit.setScarpe(capoAbbigliamentoDAO.doRetrieveScarpeByIdCapoAbbigliamento(list.get(2)));
+
+        } catch (SQLException sql){
+            throw new RuntimeException();
+        }
     }
 
     /**
@@ -124,6 +148,7 @@ public class OutfitDAOImpl implements OutfitDAOInterface {
 
             if (resultSet.next()) {
                 int idCapoAbbigliamento = resultSet.getInt("IDcapoAbbigliamento");
+                System.out.println("maglia = " + idCapoAbbigliamento);
                 maglia = capoAbbigliamentoDAO.doRetrieveMagliaByIdCapoAbbigliamento(idCapoAbbigliamento);
             }
 
@@ -153,6 +178,7 @@ public class OutfitDAOImpl implements OutfitDAOInterface {
 
             if (resultSet.next()) {
                 int idCapoAbbigliamento = resultSet.getInt("IDcapoAbbigliamento");
+                System.out.println("pantaloni = " + idCapoAbbigliamento);
                 pantaloni = capoAbbigliamentoDAO.doRetrievePantaloniByIdCapoAbbigliamento(idCapoAbbigliamento);
             }
 
@@ -182,6 +208,7 @@ public class OutfitDAOImpl implements OutfitDAOInterface {
 
             if (resultSet.next()) {
                 int idCapoAbbigliamento = resultSet.getInt("IDcapoAbbigliamento");
+                System.out.println("scarpe = "+ idCapoAbbigliamento);
                 scarpe = capoAbbigliamentoDAO.doRetrieveScarpeByIdCapoAbbigliamento(idCapoAbbigliamento);
             }
 
