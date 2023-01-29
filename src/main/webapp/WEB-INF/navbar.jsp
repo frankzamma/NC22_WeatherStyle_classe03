@@ -21,7 +21,7 @@
         if(u != null){
       %>
         <li class="nav-item">
-          <a class="nav-link" href="GuardarobaServlet">Guardaroba</a>
+          <a class="nav-link" href="visualizza-guardaroba">Guardaroba</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="loadCapoAbbigliamento.jsp">Inserisci capo</a>
