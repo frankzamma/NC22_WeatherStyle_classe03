@@ -126,27 +126,24 @@ public class CittaDAOImpl implements CittaDAOInterface{
      */
     @Override
     public boolean doSaveCittaByUtenteID(int idUtente, Citta citta) {
+        if(doSaveCitta(citta)) {
+            try (Connection connection = ConnectionPool.getConnection()) {
 
-        try (Connection connection = ConnectionPool.getConnection()) {
 
-            PreparedStatement preparedStatement = connection.prepareStatement(
-                    "INSERT INTO Salvare (IDutente, IDcitta) VALUES(?,?)");
-            preparedStatement.setInt(1, idUtente);
-            preparedStatement.setInt(2, citta.getId());
+                PreparedStatement preparedStatement = connection.prepareStatement(
+                        "INSERT INTO Salvare (IDutente, IDcitta) VALUES(?,?)");
+                preparedStatement.setInt(1, idUtente);
+                preparedStatement.setInt(2, citta.getId());
 
-            if (preparedStatement.executeUpdate() != 1) {
-                return false;
+                return preparedStatement.executeUpdate() == 1;
+
+            } catch (SQLException e) {
+                throw new RuntimeException("Errore salvataggio città Utente");
             }
 
-            ResultSet resultSet = preparedStatement.getGeneratedKeys();
-            resultSet.next();
-            int idCitta = resultSet.getInt(1);
-            citta.setId(idCitta);
-        } catch (SQLException e) {
-            e.printStackTrace();
+        }else{
+            throw new RuntimeException("Errore salvataggio citta");
         }
-
-        return true;
     }
 
     /**
@@ -177,6 +174,6 @@ public class CittaDAOImpl implements CittaDAOInterface{
             throw new RuntimeException();
         }
 
-        return false;
+        return true;
     }
 }

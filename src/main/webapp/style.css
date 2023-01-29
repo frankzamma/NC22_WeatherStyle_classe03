@@ -65,3 +65,32 @@ ul#password-check-list{
     height: 9rem;
     text-align: left;
 }
+
+ul#result{
+    padding-left: 0;
+
+}
+
+ul#result li{
+    padding: 1px;
+    display: block;
+    list-style-type: none;
+    float: none;
+    color: black;
+}
+
+ul#result li:hover {
+    background-color: var(--blue-light);
+    color: white;
+}
+
+ul#result li a{
+    background-color: transparent;
+    cursor: pointer;
+
+}
+
+ul#result li a:hover{
+    background-color: transparent;
+
+}
