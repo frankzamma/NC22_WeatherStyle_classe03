@@ -11,37 +11,41 @@
 <html>
 <head>
     <title>Guardaroba</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <%@include file="/WEB-INF/links.jsp" %>
 </head>
 <body>
 <%@include file="/WEB-INF/navbar.jsp"%>
 <br>
+<div class="container">
+
 <%
 List<CapoAbbigliamento> all = (List<CapoAbbigliamento>) request.getAttribute("all");
 Utente ut = (Utente) request.getAttribute("utente");
 %>
 
 <h2>Guardaroba di <%=ut.getNome()%> <%=ut.getCognome()%></h2>
-
+    <div class="row">
 <%
 for (CapoAbbigliamento c : all){
 %>
-<div class="card" style="width: 18rem;">
-    <img src="<%=c.getDirImmagine()%>" class="card-img-top">
-    <div class="card-body">
-        <h5 class="card-title"><%=c.getNome()%></h5>
-        <!--<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>-->
-        <form action="visualizza-dettagli-capo" method="get">
-            <input type="hidden" value="<%=c.getId()%>" name="id" id="id">
-            <input type="submit" value="Visualizza dettagli">
-        </form>
-    </div>
-</div>
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                <img src="<%=c.getDirImmagine()%>" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title"><%=c.getNome()%></h5>
+                    <form action="visualizza-dettagli-capo" method="get">
+                        <input type="hidden" value="<%=c.getId()%>" name="id" id="id">
+                        <input type="submit" value="Visualizza dettagli">
+                    </form>
+                </div>
+            </div>
+        </div>
 <br>
 <%
     }
 %>
+    </div>
+</div>
 <%@include file="/WEB-INF/footer.jsp"%>
 </body>
 </html>

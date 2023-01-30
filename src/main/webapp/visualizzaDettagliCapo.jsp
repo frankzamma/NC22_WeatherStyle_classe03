@@ -12,8 +12,8 @@
 <html>
 <head>
     <title>Dettagli capo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-</head>
+    <%@include file="/WEB-INF/links.jsp" %>
+ </head>
 <body>
 <%@include file="/WEB-INF/navbar.jsp"%>
 <%
@@ -21,66 +21,71 @@
     Pantaloni p = (Pantaloni) request.getAttribute("pantaloni");
     Scarpe s = (Scarpe) request.getAttribute("scarpe");
 %>
-
+<div class="container">
 <%
 if (m!=null){
 %>
-
-<div class="card" style="width: 18rem;">
-    <img src="<%=m.getDirImmagine()%>" class="card-img-top">
-    <div class="card-body">
-        <h5 class="card-title"><%=m.getNome()%></h5>
+<br>
+    <h2 style="color: white"><%=m.getNome()%></h2>
+    <div class="row">
+        <div class="col-8">
+            <ul class="list-group">
+                <li class="list-group-item">Categoria: Maglia</li>
+                <li class="list-group-item">Materiale: <%=m.getMateriale()%></li>
+                <li class="list-group-item">Lunghezza manica: <%=m.getLunghezzaManica()%></li>
+                <li class="list-group-item">Colore: <%=m.getColore()%></li>
+                <li class="list-group-item">Stagione: <%=m.getStagione()%></li>
+            </ul>
+        </div>
+        <div class="col-4">
+            <img src="<%=m.getDirImmagine()%>" class="rounded float-end">
+        </div>
     </div>
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item">Categoria: Maglia</li>
-        <li class="list-group-item">Materiale: <%=m.getMateriale()%></li>
-        <li class="list-group-item">Lunghezza manica: <%=m.getLunghezzaManica()%></li>
-        <li class="list-group-item">Colore: <%=m.getColore()%></li>
-        <li class="list-group-item">Stagione: <%=m.getStagione()%></li>
-    </ul>
-</div>
-
 <%
     }else{
         if (p != null){
 %>
-<div class="card" style="width: 18rem;">
-    <img src="<%=p.getDirImmagine()%>" class="card-img-top">
-    <div class="card-body">
-        <h5 class="card-title"><%=p.getNome()%></h5>
+    <h2 style="color: white"><%=p.getNome()%></h2>
+    <div class="row">
+        <div class="col-8">
+            <ul class="list-group">
+                <li class="list-group-item">Categoria: Pantaloni</li>
+                <li class="list-group-item">Materiale: <%=p.getMateriale()%></li>
+                <li class="list-group-item">Lunghezza: <%=p.getLunghezza()%></li>
+                <li class="list-group-item">Colore: <%=p.getColore()%></li>
+                <li class="list-group-item">Stagione: <%=p.getStagione()%></li>
+            </ul>
+        </div>
+        <div class="col-4">
+            <img src="<%=p.getDirImmagine()%>" class="rounded float-end">
+        </div>
     </div>
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item">Categoria: Pantaloni</li>
-        <li class="list-group-item">Materiale: <%=p.getMateriale()%></li>
-        <li class="list-group-item">Lunghezza: <%=p.getLunghezza()%></li>
-        <li class="list-group-item">Colore: <%=p.getColore()%></li>
-        <li class="list-group-item">Stagione: <%=p.getStagione()%></li>
-    </ul>
-</div>
 <%
         }else{
 %>
-<div class="card" style="width: 18rem;">
-    <img src="<%=s.getDirImmagine()%>" class="card-img-top">
-    <div class="card-body">
-        <h5 class="card-title"><%=s.getNome()%></h5>
+    <h2 style="color: white"><%=s.getNome()%></h2>
+    <div class="row">
+        <div class="col-8">
+            <ul class="list-group">
+                <li class="list-group-item">Categoria: Scarpe</li>
+                <li class="list-group-item">Tipo: <%=s.getTipo()%></li>
+                <li class="list-group-item">Colore: <%=s.getColore()%></li>
+                <li class="list-group-item">Stagione: <%=s.getStagione()%></li>
+                <li class="list-group-item">Antiscivolo: <%=s.isAntiscivolo()%></li>
+                <li class="list-group-item">Impermeabile: <%=s.isImpermeabile()%></li>
+            </ul>
+        </div>
+        <div class="col-4">
+            <img src="<%=s.getDirImmagine()%>" class="rounded float-end">
+        </div>
     </div>
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item">Categoria: Scarpe</li>
-        <li class="list-group-item">Tipo: <%=s.getTipo()%></li>
-        <li class="list-group-item">Colore: <%=s.getColore()%></li>
-        <li class="list-group-item">Stagione: <%=s.getStagione()%></li>
-        <li class="list-group-item">Antiscivolo: <%=s.isAntiscivolo()%></li>
-        <li class="list-group-item">Impermeabile: <%=s.isImpermeabile()%></li>
-    </ul>
+<%
+    }
+%>
+<%
+    }
+%>
 </div>
-
-<%
-    }
-%>
-<%
-    }
-%>
 <%@include file="/WEB-INF/footer.jsp"%>
 </body>
 </html>
