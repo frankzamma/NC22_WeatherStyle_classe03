@@ -1,11 +1,13 @@
 package weatherstyle.gestionemeteo.applicationlogic.logic.beans;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class MeteoHour {
     private int weatherCode;
     private double temperatura;
-    private LocalDate time;
+    private LocalTime time;
+    private LocalDate date;
     private double precipitazioni;
     private int visibilitaMetri;
     private double windSpeed;
@@ -31,11 +33,11 @@ public class MeteoHour {
         this.temperatura = temperatura;
     }
 
-    public LocalDate getTime() {
+    public LocalTime getTime() {
         return time;
     }
 
-    public void setTime(LocalDate time) {
+    public void setTime(LocalTime time) {
         this.time = time;
     }
 
@@ -75,5 +77,11 @@ public class MeteoHour {
         return MeteoUtils.translateWeatherCode(this.weatherCode);
     }
 
+    public LocalDate getDate() {
+        return date;
+    }
 
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
 }

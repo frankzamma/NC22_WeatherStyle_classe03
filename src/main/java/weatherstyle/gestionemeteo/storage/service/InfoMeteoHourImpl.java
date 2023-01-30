@@ -14,6 +14,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,12 +25,13 @@ public class InfoMeteoHourImpl implements InfoMeteoHourService{
         if(citta != null && citta.getLat() != null && citta.getLon() != null){
             if(day != null) {
                 try{
-                    URI uri = URI.create("https://api.open-meteo.com/v1/" +
-                            "forecast?latitude="+citta.getLat()+"&longitude="+citta.getLon()+
-                            "&daily=weathercode,temperature_2m_max,temperature_2m_min" +
-                            "&timezone=Europe%2FLondon" +
-                            "&start_date="+day.format(DateTimeFormatter.ISO_LOCAL_DATE)+
-                            "&end_date="+day.format(DateTimeFormatter.ISO_LOCAL_DATE));
+                    URI uri = URI.create("https://api.open-meteo.com/v1/forecast?latitude="+citta.getLat() +
+                            "&longitude="+citta.getLon()+"&hourly=temperature_2m," +
+                            "relativehumidity_2m,precipitation," +
+                            "weathercode,visibility,windspeed_10m" +
+                            "&start_date="+   day.format(DateTimeFormatter.ISO_LOCAL_DATE) +
+                            "&end_date="+   day.format(DateTimeFormatter.ISO_LOCAL_DATE));
+
 
                     HttpRequest request =  HttpRequest.newBuilder()
                             .uri(uri).build();
@@ -53,7 +55,7 @@ public class InfoMeteoHourImpl implements InfoMeteoHourService{
 
                     List<MeteoHour> list =  new ArrayList<>();
                     for(int i = 0; i < times.size(); i++){
-                        MeteoHour meteoDaily =  new MeteoHour();
+                        MeteoHour meteoHour =  new MeteoHour();
 
                         int weatherCode =  weatherCodes.get(i).getAsInt();
                         double temperatura =  temperaturas.get(i).getAsDouble();
@@ -64,15 +66,16 @@ public class InfoMeteoHourImpl implements InfoMeteoHourService{
                         double windSpeed =  windSpeeds.get(i).getAsDouble();
                         String date =  times.get(i).getAsString();
 
-                        meteoDaily.setWeatherCode(weatherCode);
-                        meteoDaily.setTime(LocalDate.parse(date, DateTimeFormatter.ISO_DATE_TIME));
-                        meteoDaily.setTemperatura(temperatura);
-                        meteoDaily.setUmiditaRelativa(umiditaRelativa);
-                        meteoDaily.setPrecipitazioni(precipitazioni);
-                        meteoDaily.setWindSpeed(windSpeed);
-                        meteoDaily.setVisibilitaMetri(visibilita);
+                        meteoHour.setWeatherCode(weatherCode);
+                        meteoHour.setTime(LocalTime.parse(date, DateTimeFormatter.ISO_DATE_TIME));
+                        meteoHour.setDate(LocalDate.parse(date, DateTimeFormatter.ISO_DATE_TIME));
+                        meteoHour.setTemperatura(temperatura);
+                        meteoHour.setUmiditaRelativa(umiditaRelativa);
+                        meteoHour.setPrecipitazioni(precipitazioni);
+                        meteoHour.setWindSpeed(windSpeed);
+                        meteoHour.setVisibilitaMetri(visibilita);
 
-                        list.add(meteoDaily);
+                        list.add(meteoHour);
                     }
 
                     MeteoHours meteoHours =  new MeteoHours(list);
@@ -99,14 +102,13 @@ public class InfoMeteoHourImpl implements InfoMeteoHourService{
     @Override
     public List<MeteoHours> getInfoMeteoHourByRangeOfDays(LocalDate init, LocalDate end, Citta citta) {
         if(init != null && end != null && init.isBefore(end)){
-            if(citta == null){
+            if(citta != null){
                 List<LocalDate> localDates = new ArrayList<>();
 
                 localDates.add(init);
 
-                while(localDates.get(localDates.size() - 1).equals(end)){
+                while(!localDates.get(localDates.size() - 1).equals(end)){
                     LocalDate tmp =  localDates.get(localDates.size() - 1).plusDays(1);
-
                     localDates.add(tmp);
                 }
 

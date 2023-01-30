@@ -5,12 +5,14 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import weatherstyle.gestionecitta.applicationlogic.logic.beans.Citta;
 import weatherstyle.gestionemeteo.applicationlogic.logic.beans.MeteoDaily;
+import weatherstyle.gestionemeteo.applicationlogic.logic.beans.MeteoHours;
 import weatherstyle.gestionemeteo.applicationlogic.logic.service.MeteoLogicService;
 import weatherstyle.gestionemeteo.storage.service.InfoMeteoDailyService;
 import weatherstyle.gestioneutenti.applicationlogic.logic.beans.Admin;
 import weatherstyle.gestioneutenti.applicationlogic.logic.beans.Utente;
 
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(name = "IndexForwardingServlet", value = "/index.html")
 public class IndexForwardingServlet extends HttpServlet {
@@ -27,8 +29,10 @@ public class IndexForwardingServlet extends HttpServlet {
                     (Citta) getServletContext().getAttribute("citta_default"):u.getCitta().get(0);
             MeteoLogicService meteoLogicService =  new MeteoLogicService();
 
-            MeteoDaily meteoDaily =  meteoLogicService.getMeteoDaily(citta);
+            List<MeteoDaily> meteoDaily =  meteoLogicService.getMeteoDaily(citta);
+            List<MeteoHours> meteoHours =  meteoLogicService.getMeteoHours(citta);
 
+            request.setAttribute("meteo-hours", meteoHours);
             request.setAttribute("meteo-daily", meteoDaily);
             request.setAttribute("citta", citta);
             address =  "/WEB-INF/gestioneUtente/utente/home_private.jsp";
