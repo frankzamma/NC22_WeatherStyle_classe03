@@ -42,7 +42,6 @@ public class OutfitDAOImpl implements OutfitDAOInterface {
             return true;
         }
 
-        //TODO da qui inizia a debuggare
         try (Connection connection = ConnectionPool.getConnection()) {
 
             PreparedStatement preparedStatement = connection.prepareStatement(

@@ -18,6 +18,7 @@
         <ul class="dropdown-menu">
           <li><a class="dropdown-item" href="AreaPersonaleServlet">Area Personale</a></li>
           <li><a class="dropdown-item" href="visualizza-guardaroba">Il mio guardaroba</a></li>
+          <li> <a class="dropdown-item" href="CronologiaSuggerimentiServlet">Cronologia suggerimenti</a> </li>
           <li><a class="dropdown-item" style="background-color: red; color:white" href="logout">Logout</a></li>
         </ul>
       </div>
@@ -47,9 +48,6 @@
         <li class="nav-item">
           <a class="nav-link" href="loadCapoAbbigliamento.jsp">Inserisci capo</a>
         </li>
-      <li class="nav-item">
-        <a class="nav-link" aria-current="page" href="CronologiaSuggerimentiServlet">Cronologia suggerimenti</a>
-      </li>
       <li class="nav-item">
         <a class="nav-link" href="VisualizzaEventiServlet">Visualizza Eventi</a>
       </li>

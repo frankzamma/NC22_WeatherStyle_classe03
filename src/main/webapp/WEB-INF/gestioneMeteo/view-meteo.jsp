@@ -131,6 +131,5 @@
         </div>
     </div>
     <%}%>
-    <a href="${pageContext.request.contextPath}/dammiCittaMeteoFiglioDiPuta.html">Fatemi andare all'altro mondo!</a></center>
 </div>
 <script src="./script/page-meteo-script.js" type="text/javascript"></script>
