@@ -9,7 +9,7 @@
 <html>
 <head>
     <title>Visualizza suggerimenti</title>
-    <%@include file="links.jsp"%>
+    <%@include file="../links.jsp"%>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
@@ -23,7 +23,7 @@
         List<String> errorList = (List<String>) request.getAttribute("errorList");
         String errorSalvaOutfit = (String) request.getAttribute("errorSalvaOutfit");
     %>
-    <%@include file="navbar.jsp"%>
+    <%@include file="../navbar.jsp"%>
     <br>
     <div class="container">
         <% if (errorList.size()>=1) { %>
@@ -142,6 +142,6 @@
             </form>
         <% } %>
     </div>
-    <%@include file="footer.jsp"%>
+    <%@include file="../footer.jsp"%>
 </body>
 </html>

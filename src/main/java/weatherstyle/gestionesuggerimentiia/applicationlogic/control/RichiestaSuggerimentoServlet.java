@@ -168,7 +168,8 @@ public class RichiestaSuggerimentoServlet extends HttpServlet {
             request.setAttribute("errorList", errorList);
 
 
-            RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/visualizzaSuggerimenti.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/gestionesuggerimentiia/" +
+                    "visualizzaSuggerimenti.jsp");
             dispatcher.forward(request, response);
 
             }
