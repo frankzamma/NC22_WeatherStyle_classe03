@@ -1,5 +1,8 @@
 <%@ page import="weatherstyle.gestioneutenti.applicationlogic.logic.beans.Utente" %>
 <%@ page import="weatherstyle.gestioneutenti.applicationlogic.logic.beans.Admin" %>
+<%
+  Utente u = (Utente) session.getAttribute("utente");
+%>
 <div class="container-fluid text-center">
   <div class="row">
     <div class="col-1">
@@ -8,6 +11,11 @@
     <div class="col-10">
       <h1 class="mt-4">WEATHERSTYLE</h1>
     </div>
+    <%if(u != null){%>
+      <div class="col-1">
+        <img src="./image/user.png" class="rounded mx-auto d-block" width="100" height="100">
+      </div>
+    <%}%>
   </div>
 </div>
 <nav class="navbar navbar-expand navbar-light text-white" data-bs-theme="dark" style="background-color:#337AB8;">
@@ -17,7 +25,6 @@
         <a class="nav-link" aria-current="page" href="index.html">Home</a>
       </li>
       <%
-        Utente u = (Utente) session.getAttribute("utente");
         if(u != null){
       %>
         <li class="nav-item">
