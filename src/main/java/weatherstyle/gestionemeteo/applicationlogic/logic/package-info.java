@@ -1,0 +1,1 @@
+package weatherstyle.gestionemeteo.applicationlogic.logic;
