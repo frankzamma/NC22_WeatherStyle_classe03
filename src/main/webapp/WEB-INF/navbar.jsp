@@ -48,14 +48,16 @@
         <li class="nav-item">
           <a class="nav-link" href="loadCapoAbbigliamento.jsp">Inserisci capo</a>
         </li>
-        <div class="col-1 dropdown mt-1" >
-          <img src="./image/foglia.png" data-bs-toggle="dropdown" class="dropdown-toggle rounded mx-auto d-block" width="25" height="25">
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="VisualizzaEventiServlet">Visualizza Eventi</a></li>
+        <div class="nav-item dropdown" >
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Eventi
+          </a>
+          <ul class="dropdown-menu " style="background-color:#337AB8">
+            <li><a class="dropdown-item text-white" href="VisualizzaEventiServlet">Visualizza Eventi</a></li>
             <%
               if(u.isEcologista()){
             %>
-            <li><a class="dropdown-item" href="CreaEventoServlet">Crea Evento</a></li>
+            <li><a class="dropdown-item text-white" href="CreaEventoServlet">Crea Evento</a></li>
             <% } %>
           </ul>
         </div>
