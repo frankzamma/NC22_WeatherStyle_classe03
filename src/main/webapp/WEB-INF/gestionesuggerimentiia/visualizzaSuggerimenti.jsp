@@ -50,12 +50,12 @@
                 <% } %>
 
 
-            <h3 class="display-6">Ecco i suggerimenti dei capi ritenuti più adatti in base alle seguenti informazioni metereologiche:</h3>
+            <h3 class="display-6">Ecco i capi d'abbigliamento ritenuti più adatti in base alle seguenti informazioni:</h3>
             <table class="table table-striped">
                 <thead>
                     <tr>
                         <th scope="col">Meteo</th>
-                        <th scope="col">Temperatura percepita</th>
+                        <th scope="col">Temperatura percepita media</th>
                         <th scope="col">Stagione previsione</th>
                         <th scope="col">Citta</th>
                     </tr>
