@@ -102,12 +102,11 @@ public class SalvaSuggerimentoServlet extends HttpServlet {
                         new OutfitDAOImpl());
                 suggerimentoLogic.salvaSuggerimento(suggerimento);
             } catch (IllegalArgumentException e){
-                request.setAttribute("errorSalvaOutfit", e.getMessage());
-                request.getRequestDispatcher("RichiestaSuggerimentoServlet").forward(request, response);
+                request.setAttribute("errorSalvaSuggerimento", e.getMessage());
+                request.getRequestDispatcher("WEB-INF/gestionesuggerimentiia/errorSalvaSuggerimento.jsp").forward(request, response);
             }
 
-            System.out.println(suggerimento);
-            request.getRequestDispatcher("/WEB-INF/gestioneUtente/utente/home_private.jsp").forward(request, response);
+            response.sendRedirect("index.html");
         }
     }
 }

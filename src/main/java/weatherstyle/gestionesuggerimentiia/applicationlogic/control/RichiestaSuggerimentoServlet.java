@@ -112,25 +112,19 @@ public class RichiestaSuggerimentoServlet extends HttpServlet {
                 @SuppressWarnings("unchecked")
                 ImplementorAlgorithm<Maglia> magliaImplementorAlgorithmGA = (ImplementorAlgorithm<Maglia>)
                         getServletContext().getAttribute("magliaGA");
-
                 @SuppressWarnings("unchecked")
                 ImplementorAlgorithm<Pantaloni> pantaloniImplementorAlgorithmGA = (ImplementorAlgorithm<Pantaloni>)
                         getServletContext().getAttribute("pantaloniGA");
-
                 @SuppressWarnings("unchecked")
                 ImplementorAlgorithm<Scarpe> scarpeImplementorAlgorithmGA = (ImplementorAlgorithm<Scarpe>)
                         getServletContext().getAttribute("scarpeGA");
-
                 //  Si ottengono le migliori maglie, pantaloni e scarpe con i rispettivi punteggi
                 SuggerimentoLogicImpl suggerimentoLogicImpl = new SuggerimentoLogicImpl(
                         new SuggerimentoDAOImpl(), new OutfitDAOImpl());
-
                 maglieSuggerite = suggerimentoLogicImpl.ottieniSuggerimentiCapi(magliaImplementorAlgorithmGA,
                         listaMaglie, meteoDailyMin);
-
                 pantaloniSuggeriti = suggerimentoLogicImpl.ottieniSuggerimentiCapi(pantaloniImplementorAlgorithmGA,
                         listaPantaloni, meteoDailyMin);
-
                 scarpeSuggerite = suggerimentoLogicImpl.ottieniSuggerimentiCapi(scarpeImplementorAlgorithmGA,
                         listaScarpe, meteoDailyMin);
             */
@@ -167,12 +161,11 @@ public class RichiestaSuggerimentoServlet extends HttpServlet {
             // salvo nella request gli errori
             request.setAttribute("errorList", errorList);
 
-
             RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/gestionesuggerimentiia/" +
                     "visualizzaSuggerimenti.jsp");
             dispatcher.forward(request, response);
 
-            }
+        }
     }
 
     @Override
@@ -181,3 +174,4 @@ public class RichiestaSuggerimentoServlet extends HttpServlet {
     }
 
 }
+
