@@ -105,6 +105,10 @@ public class OutfitDAOImpl implements OutfitDAOInterface {
         return outfit;
     }
 
+    /**
+     * metodo che si occupa di settare in ogni outfit i relativi capi d'abbigliamento di cui è composto
+     * @param outfit in cui si vogliono settare i capi d'abbigliamento
+     */
     private void settingCapiInOutfit(Outfit outfit) {
 
         List<Integer> list = new ArrayList<>();
@@ -127,96 +131,6 @@ public class OutfitDAOImpl implements OutfitDAOInterface {
         } catch (SQLException sql){
             throw new RuntimeException();
         }
-    }
-
-    /**
-     * recupera una maglia dal DB che è stata scelta per comporre un outfit
-     * @param outfitID di cui si vuole avere la maglia
-     * @return una maglia con tutti i campi settati compresa la chiave
-     */
-    private Maglia doRetrieveMagliaByOutfitID(int outfitID) {
-
-        Maglia maglia = null;
-
-        try (Connection connection = ConnectionPool.getConnection()) {
-
-            PreparedStatement preparedStatement = connection.prepareStatement(
-                    "SELECT IDcapoAbbigliamento FROM Comporre WHERE IDoutfit=?");
-            preparedStatement.setInt(1,outfitID);
-
-            ResultSet resultSet = preparedStatement.executeQuery();
-
-            if (resultSet.next()) {
-                int idCapoAbbigliamento = resultSet.getInt("IDcapoAbbigliamento");
-                System.out.println("maglia = " + idCapoAbbigliamento);
-                maglia = capoAbbigliamentoDAO.doRetrieveMagliaByIdCapoAbbigliamento(idCapoAbbigliamento);
-            }
-
-        } catch (SQLException sql) {
-            throw new RuntimeException();
-        }
-
-        return maglia;
-    }
-
-    /**
-     * recupera pantaloni dal DB che sono stati scelti per comporre un outfit
-     * @param outfitID di cui si vogliono avere i pantaloni
-     * @return pantaloni con tutti i campi settati compresa la chiave
-     */
-    private Pantaloni doRetrievePantaloneByOutfitID(int outfitID) {
-
-        Pantaloni pantaloni = null;
-
-        try (Connection connection = ConnectionPool.getConnection()) {
-
-            PreparedStatement preparedStatement = connection.prepareStatement(
-                    "SELECT IDcapoAbbigliamento FROM Comporre WHERE IDoutfit=?");
-            preparedStatement.setInt(1,outfitID);
-
-            ResultSet resultSet = preparedStatement.executeQuery();
-
-            if (resultSet.next()) {
-                int idCapoAbbigliamento = resultSet.getInt("IDcapoAbbigliamento");
-                System.out.println("pantaloni = " + idCapoAbbigliamento);
-                pantaloni = capoAbbigliamentoDAO.doRetrievePantaloniByIdCapoAbbigliamento(idCapoAbbigliamento);
-            }
-
-        } catch (SQLException sql) {
-            throw new RuntimeException();
-        }
-
-        return pantaloni;
-    }
-
-    /**
-     * recupera scarpe dal DB che sono state scelte per comporre un outfit
-     * @param outfitID di cui si vuole avere la maglia
-     * @return una maglia con tutti i campi settati compresa la chiave
-     */
-    private Scarpe doRetrieveScarpeByOutfitID(int outfitID) {
-
-        Scarpe scarpe = null;
-
-        try (Connection connection = ConnectionPool.getConnection()) {
-
-            PreparedStatement preparedStatement = connection.prepareStatement(
-                    "SELECT IDcapoAbbigliamento FROM Comporre WHERE IDoutfit=?");
-            preparedStatement.setInt(1,outfitID);
-
-            ResultSet resultSet = preparedStatement.executeQuery();
-
-            if (resultSet.next()) {
-                int idCapoAbbigliamento = resultSet.getInt("IDcapoAbbigliamento");
-                System.out.println("scarpe = "+ idCapoAbbigliamento);
-                scarpe = capoAbbigliamentoDAO.doRetrieveScarpeByIdCapoAbbigliamento(idCapoAbbigliamento);
-            }
-
-        } catch (SQLException sql) {
-            throw new RuntimeException();
-        }
-
-        return scarpe;
     }
 
     /**

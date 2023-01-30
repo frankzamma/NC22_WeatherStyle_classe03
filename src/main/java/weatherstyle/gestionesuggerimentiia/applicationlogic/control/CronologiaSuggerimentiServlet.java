@@ -22,9 +22,12 @@ public class CronologiaSuggerimentiServlet extends HttpServlet {
         Utente utente = (Utente) request.getSession(false).getAttribute("utente");
 
         List<Suggerimento> suggerimentoList = suggerimentoLogic.ottieniCronologiaSuggerimentiUtente(utente.getId());
-        System.out.println(suggerimentoList);
 
-        request.getRequestDispatcher("/WEB-INF/visualizzaCronologiaSuggerimenti.jsp").forward(request, response);
+        // invio della lista di suggerimenti contenenti tutti i dettagli relativi a un suggerimento
+        request.setAttribute("suggerimentoList", suggerimentoList);
+
+        request.getRequestDispatcher("/WEB-INF/gestionesuggerimentiia/" +
+                "visualizzaCronologiaSuggerimenti.jsp").forward(request, response);
     }
 
     @Override
