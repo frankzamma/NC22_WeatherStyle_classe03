@@ -45,6 +45,11 @@
                 </div>
                 <br>
                 <div class="col-md-6">
+                    <label for="luogo" class="form-label">Luogo</label>
+                    <input type="text" name="luogo" class="form-control" id="luogo">
+                </div>
+                <br>
+                <div class="col-md-6">
                     <label for="data" class="form-label">Data</label>
                     <input type="date" class="form-control" name="data" id="data" required>
                 </div>
@@ -52,11 +57,6 @@
                 <div class="col-md-6">
                     <label for="orario">Scelga l'orario:</label>
                     <input type="time" id="orario" name="orario" required>
-                </div>
-                <br>
-                <div class="col-md-6">
-                    <label for="luogo" class="form-label">Luogo</label>
-                    <input type="text" name="luogo" class="form-control" id="luogo">
                 </div>
                 <br>
                 <div class="col-md-6">

@@ -36,7 +36,7 @@
 
         <% } else {
             %>
-                <h3 class="display-6">Stato richiesta di promozione in ecologista: <%=richiestaPromozione.getStato()%></h3>
+                <h3 class="display-7">Stato richiesta di promozione in ecologista: <%=richiestaPromozione.getStato()%>.</h3>
             <%
         }
     %>
