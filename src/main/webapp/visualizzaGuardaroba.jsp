@@ -32,10 +32,10 @@ for (CapoAbbigliamento c : all){
             <div class="card" style="width: 18rem;">
                 <img src="<%=c.getDirImmagine()%>" class="card-img-top">
                 <div class="card-body">
-                    <h5 class="card-title"><%=c.getNome()%></h5>
+                    <h5 class="card-title" style="color: black"><%=c.getNome()%></h5>
                     <form action="visualizza-dettagli-capo" method="get">
                         <input type="hidden" value="<%=c.getId()%>" name="id" id="id">
-                        <input type="submit" value="Visualizza dettagli">
+                        <input type="submit" value="Visualizza dettagli" style="background-color: #337AB8; color: white; border: none">
                     </form>
                 </div>
             </div>
