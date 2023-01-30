@@ -46,6 +46,8 @@ for (CapoAbbigliamento c : all){
 %>
     </div>
 </div>
+<br>
+<a href="controllo-login">Inserisci un capo d'abbigliamento nel guardaroba</a>
 <%@include file="/WEB-INF/footer.jsp"%>
 </body>
 </html>
