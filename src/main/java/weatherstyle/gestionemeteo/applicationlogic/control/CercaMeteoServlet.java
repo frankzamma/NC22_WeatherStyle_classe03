@@ -44,8 +44,6 @@ public class CercaMeteoServlet extends HttpServlet {
             }catch (IllegalArgumentException e){
                 response.sendRedirect("Siamo spiacienti, si è verficato un errore");
             }
-
-
         }else{
             response.sendRedirect("login-utente");
         }

@@ -21,6 +21,5 @@
         <%@include file="../../navbar.jsp"%>
         <%@include file="../../gestioneMeteo/view-meteo.jsp"%>
         <%@include file="../../footer.jsp"%>
-        <script src="./script/page-meteo-script.js" type="text/javascript"></script>
     </body>
 </html>
