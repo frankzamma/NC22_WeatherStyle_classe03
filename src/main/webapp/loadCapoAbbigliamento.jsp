@@ -7,8 +7,7 @@
     <title>Driver WeatherStyle</title>
     <meta charset="utf-8">
     <%@include file="WEB-INF/links.jsp"%>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-</head>
+ </head>
 <body>
 <%
 List<String> errorListService = (List<String>) request.getAttribute("errorListService");
@@ -48,30 +47,30 @@ String errore = (String) request.getAttribute("message");
 %>
 
     <form method="post" action="inserisci-capo" name="carica-capo-form" id="carica-capo-form" enctype="multipart/form-data">
-        <div class="container">
+        <div class="container" style="background-color: white">
 
+            <legend style="background-color: #337AB8">Inserimento di un nuovo capo d'abbigliamento</legend>
+                <div class="col-10">
+                    <label style="color: black"> Scegli tipo di capo </label>
+                    <select class="form-select" id="tipologia" name="tipologia" onchange="changeSelectedParameter()" required>
+                        <option value="" selected >Apri menu di selezione</option>
+                        <option value="maglia">Maglia</option>
+                        <option value="pantaloni">Pantaloni</option>
+                        <option value="scarpe">Scarpe</option>
+                    </select>
+    <br>
             <div class="mb-3">
-                <label> Scegli tipo di capo </label>
-                <select class="form-select" id="tipologia" name="tipologia" onchange="changeSelectedParameter()" required>
-                    <option value="" selected >Apri menu di selezione</option>
-                    <option value="maglia">Maglia</option>
-                    <option value="pantaloni">Pantaloni</option>
-                    <option value="scarpe">Scarpe</option>
-                </select>
-            </div>
-
-            <div class="mb-3">
-                <label for="nomeCapo"> Nome del capo: </label>
+                <label for="nomeCapo" style="color: black"> Nome del capo: </label>
                 <input type="text" id="nomeCapo" name="nomeCapo" required>
             </div>
 
             <div class="mb-3">
-                <label for="foto">Inserire una foto del prodotto</label>
+                <label for="foto" style="color: black">Inserire una foto del prodotto</label>
                 <input type="file" name="foto" id="foto" accept="image/*" required>
             </div>
 
             <div class="mb-3">
-                <label> Inserire colore </label>
+                <label style="color: black"> Inserire colore </label>
                 <select class="form-select" id="colore" name="colore" disabled>
                     <option value="chiaro">Chiaro</option>
                     <option value="scuro">Scuro</option>
@@ -80,7 +79,7 @@ String errore = (String) request.getAttribute("message");
             </div>
 
             <div class="mb-3">
-                <label> Inserire stagione </label>
+                <label style="color: black"> Inserire stagione </label>
                 <select class="form-select" id="stagione" name="stagione" disabled>
                     <option value="inverno">Inverno</option>
                     <option value="autunno">Autunno</option>
@@ -93,7 +92,7 @@ String errore = (String) request.getAttribute("message");
             </div>
 
             <div class="mb-3">
-                <label> Inserire materiale </label>
+                <label style="color: black"> Inserire materiale </label>
                 <select class="form-select" id="materiale" name="materiale" disabled>
                     <option value="cotone">Cotone</option>
                     <option value="poliestere">Poliestere</option>
@@ -110,7 +109,7 @@ String errore = (String) request.getAttribute("message");
 
 
             <div class="mb-3">
-                <label> Inserire lunghezza manica </label>
+                <label style="color: black"> Inserire lunghezza manica </label>
                 <select class="form-select" id="manica" name="manica" disabled>
                     <option value="lunga">Lunga</option>
                     <option value="corta">Corta</option>
@@ -120,7 +119,7 @@ String errore = (String) request.getAttribute("message");
 
 
             <div class="mb-3">
-                <label> Inserire lunghezza pantaloni </label>
+                <label style="color: black"> Inserire lunghezza pantaloni </label>
                 <select class="form-select" id="lungPantalone" name="lungPantalone" disabled>
                     <option value="lunga">Lungo</option>
                     <option value="corta">Corto</option>
@@ -129,7 +128,7 @@ String errore = (String) request.getAttribute("message");
             </div>
 
             <div class="mb-3">
-                <label> Inserire tipo di scarpa </label>
+                <label style="color: black"> Inserire tipo di scarpa </label>
                 <select class="form-select" id="tipoScarpa" name="tipoScarpa" disabled>
                     <option value="stivaletto alla caviglia">Stivaletto alla caviglia</option>
                     <option value="scarpa da ginnastica">Scarpa da ginnastica</option>
@@ -142,32 +141,35 @@ String errore = (String) request.getAttribute("message");
             </div>
 
             <div class="mb-3">
-                <p> Indicare se è una scarpa scivolosa </p>
+                <p style="color: black"> Indicare se è una scarpa scivolosa </p>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="scivoloso" id="scivsi" value="scivsi" disabled>
-                    <label class="form-check-label" for="scivsi"> Si </label>
+                    <label class="form-check-label" for="scivsi" style="color: black"> Si </label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="scivoloso" id="scivno" value="scivno" disabled>
-                    <label class="form-check-label" for="scivno"> No </label>
+                    <label class="form-check-label" for="scivno" style="color: black"> No </label>
                 </div>
             </div>
 
             <div class="mb-3">
-                <p> Indicare se è una scarpa impermeabile </p>
+                <p style="color: black"> Indicare se è una scarpa impermeabile </p>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="impermeabile" id="impsi" value="impsi" disabled>
-                    <label class="form-check-label" for="impsi"> Si </label>
+                    <label class="form-check-label" for="impsi" style="color: black"> Si </label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="impermeabile" id="impno" value="impno" disabled>
-                    <label class="form-check-label" for="impno"> No </label>
+                    <label class="form-check-label" for="impno" style="color: black"> No </label>
                 </div>
             </div>
 
             <button type="submit" class="btn btn-primary">Carica capo</button>
+            <br>
+            </div>
         </div>
     </form>
+    </div>
 
     <br>
 
