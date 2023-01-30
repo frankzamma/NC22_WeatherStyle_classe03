@@ -19,7 +19,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InfoMeteoHourImpl implements InfoMeteoHourService{
+public class InfoMeteoHourImpl implements InfoMeteoHourService {
+
     @Override
     public MeteoHours getInfoMeteoHourByDay(LocalDate day, Citta citta) {
         if(citta != null && citta.getLat() != null && citta.getLon() != null){

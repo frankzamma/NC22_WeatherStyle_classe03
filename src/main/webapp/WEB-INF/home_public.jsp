@@ -25,8 +25,6 @@
             </div>
         </div>
 
-        <br><center>
-        <a href="${pageContext.request.contextPath}/dammiCittaMeteoFiglioDiPuta.html">Fatemi andare all'altro mondo!</a></center>
         <%@include file="footer.jsp"%>
     </body>
 </html>

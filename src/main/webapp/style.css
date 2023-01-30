@@ -57,13 +57,15 @@ ul#password-check-list{
 #suggest{
     background-color: white;
     z-index: 1;
-    position: relative;
+    position: absolute;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
     padding: 0.2em;
     display: none;
     overflow: scroll;
     height: 9rem;
     text-align: left;
+    max-width: 32rem;
+    min-width: 32rem;
 }
 
 ul#result{
@@ -87,10 +89,11 @@ ul#result li:hover {
 ul#result li a{
     background-color: transparent;
     cursor: pointer;
+    color: black;
 
 }
 
 ul#result li a:hover{
     background-color: transparent;
-
+    color: white;
 }
