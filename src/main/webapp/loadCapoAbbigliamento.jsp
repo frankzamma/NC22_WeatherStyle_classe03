@@ -50,7 +50,7 @@ String errore = (String) request.getAttribute("message");
         <div class="container" style="background-color: white">
 
             <legend style="background-color: #337AB8">Inserimento di un nuovo capo d'abbigliamento</legend>
-                <div class="col-10">
+                <div class="col align-self-center">
                     <label style="color: black"> Scegli tipo di capo </label>
                     <select class="form-select" id="tipologia" name="tipologia" onchange="changeSelectedParameter()" required>
                         <option value="" selected >Apri menu di selezione</option>

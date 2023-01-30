@@ -149,7 +149,7 @@ public class GuardarobaLogicImpl implements GuardarobaLogicInterface {
             errorParameter.add("Errore nella directory immagine");
         }
 
-        if ((m.getLunghezzaManica()==null) || ((!m.getLunghezzaManica().equals("lunga")) || (!m.getLunghezzaManica().equals("corta"))))
+        if ((m.getLunghezzaManica()==null) || ((!m.getLunghezzaManica().equals("lunga")) && (!m.getLunghezzaManica().equals("corta"))))
             errorParameter.add("Errore lunghezza manica");
 
         if ((m.getMateriale()==null) || (!materiali.contains(m.getMateriale())))
@@ -178,7 +178,7 @@ public class GuardarobaLogicImpl implements GuardarobaLogicInterface {
             errorParameter.add("Errore nella directory immagine");
         }
 
-        if ((p.getLunghezza()==null) || ((!p.getLunghezza().equals("lunga")) || (!p.getLunghezza().equals("corta")))){
+        if ((p.getLunghezza()==null) || ((!p.getLunghezza().equals("lunga")) && (!p.getLunghezza().equals("corta")))){
             errorParameter.add("Errore lunghezza");
         }
 
