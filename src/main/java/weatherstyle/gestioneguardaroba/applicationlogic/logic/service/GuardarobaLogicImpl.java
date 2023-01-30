@@ -39,6 +39,7 @@ public class GuardarobaLogicImpl implements GuardarobaLogicInterface {
         try{
 
             controlliMaglia(m);
+            capoDAO.doSaveMaglia(m, idGuardaroba);
         }catch (ErrorParameterException e){
             List<String> errorPar = e.getErrorParameter();
 
@@ -52,7 +53,7 @@ public class GuardarobaLogicImpl implements GuardarobaLogicInterface {
     public boolean salvaPantaloni(Pantaloni p, int idGuardaroba) throws ErrorParameterException {
         try{
             controlliPantaloni(p);
-
+            capoDAO.doSavePantaloni(p, idGuardaroba);
         }catch (ErrorParameterException e){
             List<String> errorPar = e.getErrorParameter();
 
@@ -67,6 +68,7 @@ public class GuardarobaLogicImpl implements GuardarobaLogicInterface {
     public boolean salvaScarpe(Scarpe s, int idGuardaroba) throws ErrorParameterException{
         try{
             controlliScarpe(s);
+            capoDAO.doSaveScarpe(s, idGuardaroba);
         }catch (ErrorParameterException e){
             List<String> errorPar = e.getErrorParameter();
 

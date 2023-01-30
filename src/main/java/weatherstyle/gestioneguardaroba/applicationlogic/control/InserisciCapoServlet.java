@@ -108,10 +108,12 @@ public class InserisciCapoServlet extends HttpServlet {
                 if(!fileExtendendPath.exists())
                     fileExtendendPath.mkdir();
 
-                foto.write(extendendPath+File.separator+fileName);
+                String fullPath = extendendPath+File.separator+fileName;
+
+                foto.write(fullPath);
 
                 if ("maglia".equals(tipoCapo)){
-                    Maglia m = new Maglia(nomeCapo, extendendPath, stagione,colore, manica, materialeM);
+                    Maglia m = new Maglia(nomeCapo, fullPath, stagione,colore, manica, materialeM);
                     try {
                         service.salvaMaglia(m, u.getId());
                     } catch (ErrorParameterException e) {
@@ -119,7 +121,7 @@ public class InserisciCapoServlet extends HttpServlet {
                     }
                 }
                 if ("pantaloni".equals(tipoCapo)){
-                    Pantaloni p = new Pantaloni(nomeCapo, extendendPath, stagione, colore, lunghezza, materialeP);
+                    Pantaloni p = new Pantaloni(nomeCapo, fullPath, stagione, colore, lunghezza, materialeP);
                     try {
                         service.salvaPantaloni(p, u.getId());
                     } catch (ErrorParameterException e) {
@@ -127,7 +129,7 @@ public class InserisciCapoServlet extends HttpServlet {
                     }
                 }
                 if ("scarpe".equals(tipoCapo)){
-                    Scarpe s = new Scarpe(nomeCapo, extendendPath, stagione, colore, tipo, scivol, imper);
+                    Scarpe s = new Scarpe(nomeCapo, fullPath, stagione, colore, tipo, scivol, imper);
                     try {
                         service.salvaScarpe(s, u.getId());
                     } catch (ErrorParameterException e) {

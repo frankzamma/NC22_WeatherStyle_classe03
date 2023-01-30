@@ -110,7 +110,7 @@ public class InserimentoCapoTest {
     }
 
     @Test
-    public void magliaCorretto(){
+    public void magliaCorretto() throws ErrorParameterException {
         Maglia m = new Maglia();
 
         m.setNome("Maglia");
@@ -120,10 +120,9 @@ public class InserimentoCapoTest {
         m.setLunghezzaManica("corta");
         m.setDirImmagine("/images/maglia.jpg");
 
-        Mockito.when(capoAbbigliamentoDAO.doSaveMaglia(m, 1)).thenReturn(false);
-        ErrorParameterException e = assertThrows(ErrorParameterException.class,
-                () -> guardarobaLogic.salvaMaglia(m, 1));
-        assertEquals(true, true);
+        Mockito.when(capoAbbigliamentoDAO.doSaveMaglia(m, 1)).thenReturn(true);
+
+        assertTrue(guardarobaLogic.salvaMaglia(m,1));
     }
 
     @Test
@@ -212,7 +211,7 @@ public class InserimentoCapoTest {
     }
 
     @Test
-    public void pantaloniCorretto(){
+    public void pantaloniCorretto() throws ErrorParameterException {
         Pantaloni p = new Pantaloni();
 
         p.setNome("Jeans Alcott");
@@ -222,10 +221,9 @@ public class InserimentoCapoTest {
         p.setStagione("estate");
         p.setDirImmagine("/images/pantaloni.jpg");
 
-        Mockito.when(capoAbbigliamentoDAO.doSavePantaloni(p, 1)).thenReturn(false);
-        ErrorParameterException e = assertThrows(ErrorParameterException.class,
-                () -> guardarobaLogic.salvaPantaloni(p, 1));
-        assertEquals(true, true);
+        Mockito.when(capoAbbigliamentoDAO.doSavePantaloni(p, 1)).thenReturn(true);
+
+        assertTrue(guardarobaLogic.salvaPantaloni(p,1));
     }
 
     @Test
