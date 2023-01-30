@@ -45,9 +45,14 @@ for (CapoAbbigliamento c : all){
     }
 %>
     </div>
+    <br>
+    <br>
+    <button type="button" class="btn btn-light">
+        <a href="controllo-login" style="color: black">Inserisci un capo d'abbigliamento nel guardaroba</a>
+    </button>
 </div>
 <br>
-<a href="controllo-login">Inserisci un capo d'abbigliamento nel guardaroba</a>
+
 <%@include file="/WEB-INF/footer.jsp"%>
 </body>
 </html>

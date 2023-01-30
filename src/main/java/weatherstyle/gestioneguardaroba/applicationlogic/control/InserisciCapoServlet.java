@@ -108,7 +108,7 @@ public class InserisciCapoServlet extends HttpServlet {
                 if(!fileExtendendPath.exists())
                     fileExtendendPath.mkdir();
 
-
+                foto.write(extendendPath+File.separator+fileName);
 
                 if ("maglia".equals(tipoCapo)){
                     Maglia m = new Maglia(nomeCapo, extendendPath, stagione,colore, manica, materialeM);
