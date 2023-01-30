@@ -66,7 +66,7 @@ public class EventoLogicImpl implements EventoLogicInterface{
         }
 
         List<Citta> list = infoCitta.getCittaByName(evento.getLuogo());
-        if (list == null) {
+        if (list == null || list.size() == 0) {
             throw new IllegalArgumentException("Luogo evento inesistente.");
         }
 
