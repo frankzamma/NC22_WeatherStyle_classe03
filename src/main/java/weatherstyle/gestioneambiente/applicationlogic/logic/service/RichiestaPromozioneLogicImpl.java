@@ -53,7 +53,8 @@ public class RichiestaPromozioneLogicImpl implements RichiestaPromozioneLogicInt
             throw new IllegalArgumentException("Mancano le tematiche.");
         }
 
-        if (richiestaPromozione.getEsperienze() == null || (richiestaPromozione.getEsperienze().length() < 5 || richiestaPromozione.getEsperienze().length() > 250)) {
+        if (richiestaPromozione.getEsperienze() == null || (richiestaPromozione.getEsperienze().length() < 5
+                || richiestaPromozione.getEsperienze().length() > 250)) {
             throw new IllegalArgumentException("La lunghezza della stringa esperienze non è valida.");
         }
 

@@ -25,8 +25,7 @@ import java.util.List;
 public class InserisciCapoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-
+        response.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
     }
 
     @Override
@@ -81,7 +80,7 @@ public class InserisciCapoServlet extends HttpServlet {
 
             }
 
-            String[] tmp = {"jpg", "png"};
+            String[] tmp = {"jpg", "png", "jpeg"};
             List<String> extensions = Arrays.asList(tmp);
             Part foto = request.getPart("foto");
             String fileName = foto.getSubmittedFileName();
@@ -93,7 +92,7 @@ public class InserisciCapoServlet extends HttpServlet {
                 dispatcher.forward(request,response);
 
             }else{
-                String path = request.getServletContext().getRealPath("") + "images";
+                String path = request.getServletContext().getRealPath("")  +"images";
 
                 File pathNew = new File(path);
 
@@ -102,18 +101,24 @@ public class InserisciCapoServlet extends HttpServlet {
                     pathNew.mkdir();
                 }
 
-                String extendendPath =  path + File.separator + nomeCapo + tipoCapo;
-                File fileExtendendPath =  new File(extendendPath);
+                int id = u.getId();
 
-                if(!fileExtendendPath.exists())
-                    fileExtendendPath.mkdir();
+                String userPath =  path + File.separator+ id;
 
-                String fullPath = extendendPath+File.separator+fileName;
+                File userPathFile =  new File(userPath);
 
-                foto.write(fullPath);
+                if (!userPathFile.exists()) {
+                    userPathFile.mkdir();
+                }
+
+                String newFileName =  nomeCapo.replace(' ', '_') + tipoCapo + '.' +extension;
+
+                String extendendPath =  userPath + File.separator + newFileName;
+                System.out.println(extendendPath);
+                foto.write(extendendPath);
 
                 if ("maglia".equals(tipoCapo)){
-                    Maglia m = new Maglia(nomeCapo, fullPath, stagione,colore, manica, materialeM);
+                    Maglia m = new Maglia(nomeCapo, "images/" + id + File.separator + newFileName, stagione,colore, manica, materialeM);
                     try {
                         service.salvaMaglia(m, u.getId());
                     } catch (ErrorParameterException e) {
@@ -121,7 +126,8 @@ public class InserisciCapoServlet extends HttpServlet {
                     }
                 }
                 if ("pantaloni".equals(tipoCapo)){
-                    Pantaloni p = new Pantaloni(nomeCapo, fullPath, stagione, colore, lunghezza, materialeP);
+                    Pantaloni p = new Pantaloni(nomeCapo, "images/" + id + File.separator + newFileName,
+                            stagione, colore, lunghezza, materialeP);
                     try {
                         service.salvaPantaloni(p, u.getId());
                     } catch (ErrorParameterException e) {
@@ -129,7 +135,7 @@ public class InserisciCapoServlet extends HttpServlet {
                     }
                 }
                 if ("scarpe".equals(tipoCapo)){
-                    Scarpe s = new Scarpe(nomeCapo, fullPath, stagione, colore, tipo, scivol, imper);
+                    Scarpe s = new Scarpe(nomeCapo, "images/" + id + File.separator +  newFileName, stagione, colore, tipo, scivol, imper);
                     try {
                         service.salvaScarpe(s, u.getId());
                     } catch (ErrorParameterException e) {
