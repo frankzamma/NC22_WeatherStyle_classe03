@@ -9,6 +9,7 @@ import weatherstyle.gestionecitta.storage.service.InfoCittaImpl;
 import weatherstyle.gestioneutenti.applicationlogic.logic.beans.Utente;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -32,8 +33,9 @@ public class SalvaEventoTest {
         evento.setNome("Organizzazione pulizia spiagge per salvaguardare la flora" +
                 "e la fauna che negli ultimi anni stanno subendo gravi danni.");
         evento.setLuogo("Salerno");
-        GregorianCalendar c = new GregorianCalendar(2023,Calendar.FEBRUARY,12,9,0);
-        Timestamp dataOraEvento = new Timestamp(c.getTimeInMillis());
+        Timestamp dataOraEvento = new Timestamp
+                (new GregorianCalendar
+                        (2006, Calendar.FEBRUARY,12, 9, 0).getTimeInMillis());
         evento.setDataOraEvento(dataOraEvento);
         evento.setDescrizione("Vi attendiamo tutti sul lungomare di Salerno nella data " +
                 "e ora indicata, c’è bisogno di tutti voi!.");
@@ -53,8 +55,9 @@ public class SalvaEventoTest {
         Evento evento = new Evento();
         evento.setNome("");
         evento.setLuogo("Salerno");
-        GregorianCalendar c = new GregorianCalendar(2023,Calendar.FEBRUARY,12,9,0);
-        Timestamp dataOraEvento = new Timestamp(c.getTimeInMillis());
+        Timestamp dataOraEvento = new Timestamp
+                (new GregorianCalendar
+                        (2023, Calendar.FEBRUARY,12, 9, 0).getTimeInMillis());
         evento.setDataOraEvento(dataOraEvento);
         evento.setDescrizione("Vi attendiamo tutti sul lungomare di Salerno nella data " +
                 "e ora indicata, c’è bisogno di tutti voi!.");
@@ -74,8 +77,9 @@ public class SalvaEventoTest {
         Evento evento = new Evento();
         evento.setNome("Organizzazione pulizia spiagge.");
         evento.setLuogo("Pincopallo");
-        GregorianCalendar c = new GregorianCalendar(2023,Calendar.FEBRUARY,12,9,0);
-        Timestamp dataOraEvento = new Timestamp(c.getTimeInMillis());
+        Timestamp dataOraEvento = new Timestamp
+                (new GregorianCalendar
+                        (2023, Calendar.FEBRUARY,12, 9, 0).getTimeInMillis());
         evento.setDataOraEvento(dataOraEvento);
         evento.setDescrizione("Vi attendiamo tutti sul lungomare di Salerno nella data " +
                 "e ora indicata, c’è bisogno di tutti voi!.");
@@ -91,36 +95,14 @@ public class SalvaEventoTest {
         assertEquals("Luogo evento inesistente.", e.getMessage());
     }
 
-    /*
-    @Test
-    public void dataOraFormatoNonValido() {
-        Evento evento = new Evento();
-        evento.setNome("Organizzazione pulizia spiagge.");
-        evento.setLuogo("Salerno");
-        Timestamp dataOraEvento = Timestamp.valueOf("2024-01-01");
-        evento.setDataOraEvento(dataOraEvento);
-        evento.setDescrizione("Vi attendiamo tutti sul lungomare di Salerno nella data " +
-                "e ora indicata, c’è bisogno di tutti voi!.");
-        evento.setAltreInformazioni("Munirsi di guanti.");
-        Utente utente = new Utente();
-        utente.setEcologista(true);
-        evento.setUtente(utente);
-
-        Mockito.when(eventoDAO.doSaveEvento(evento)).thenReturn(false);
-        IllegalArgumentException e = assertThrows(IllegalArgumentException.class,
-                () -> eventoLogic.salvaEvento(evento));
-        assertEquals("Formato della data non valido.", e.getMessage());
-    }
-     */
-
     @Test
     public void dataOraNelPassato() {
         Evento evento = new Evento();
         evento.setNome("Organizzazione pulizia spiagge.");
         evento.setLuogo("Salerno");
-        GregorianCalendar c = new GregorianCalendar(2006, Calendar.FEBRUARY,12, 9, 0);
-        Timestamp dataOraEvento = new Timestamp(c.getTimeInMillis());
-        System.out.println(dataOraEvento);
+        Timestamp dataOraEvento = new Timestamp
+                (new GregorianCalendar
+                        (2006, Calendar.FEBRUARY,12, 9, 0).getTimeInMillis());
         evento.setDataOraEvento(dataOraEvento);
         evento.setDescrizione("Vi attendiamo tutti sul lungomare di Salerno nella data " +
                 "e ora indicata, c’è bisogno di tutti voi!.");
@@ -140,8 +122,9 @@ public class SalvaEventoTest {
         Evento evento = new Evento();
         evento.setNome("Organizzazione pulizia spiagge.");
         evento.setLuogo("Salerno");
-        GregorianCalendar c = new GregorianCalendar(2023,Calendar.FEBRUARY,12,9,0);
-        Timestamp dataOraEvento = new Timestamp(c.getTimeInMillis());
+        Timestamp dataOraEvento = new Timestamp
+                (new GregorianCalendar
+                        (2023, Calendar.FEBRUARY,12, 9, 0).getTimeInMillis());
         evento.setDataOraEvento(dataOraEvento);
         evento.setDescrizione("");
         evento.setAltreInformazioni("Munirsi di guanti.");
@@ -160,8 +143,9 @@ public class SalvaEventoTest {
         Evento evento = new Evento();
         evento.setNome("Organizzazione pulizia spiagge.");
         evento.setLuogo("Salerno");
-        GregorianCalendar c = new GregorianCalendar(2023,Calendar.FEBRUARY,12,9,0);
-        Timestamp dataOraEvento = new Timestamp(c.getTimeInMillis());
+        Timestamp dataOraEvento = new Timestamp
+                (new GregorianCalendar
+                        (2023, Calendar.FEBRUARY,12, 9, 0).getTimeInMillis());
         evento.setDataOraEvento(dataOraEvento);
         evento.setDescrizione("FxQkORfKFVAJ6smQsUHHDXOW8cHlZM6wH5xVMZ1mozY85Onr5ioC5qM46DjuOBa3PBRmzeBTqxMmdP7FNrImVMPFZqedZvx8LJBB" +
                 "GLkDz8CSYhWkceM9LEO9ShWYllc3ymuIkO6EPfTcALE8GTAF2W6Pab3LV2dEkGCAaF4jy13880x3UrIlefWe4TS6xOyCAdJQ9dXj" +
@@ -182,8 +166,9 @@ public class SalvaEventoTest {
         Evento evento = new Evento();
         evento.setNome("Organizzazione pulizia spiagge.");
         evento.setLuogo("Salerno");
-        GregorianCalendar c = new GregorianCalendar(2023,Calendar.FEBRUARY,12,9,0);
-        Timestamp dataOraEvento = new Timestamp(c.getTimeInMillis());
+        Timestamp dataOraEvento = new Timestamp
+                (new GregorianCalendar
+                        (2023, Calendar.FEBRUARY,12, 9, 0).getTimeInMillis());
         evento.setDataOraEvento(dataOraEvento);
         evento.setDescrizione("Vi attendiamo tutti sul lungomare di Salerno nella data " +
                 "e ora indicata, c’è bisogno di tutti voi!.");
@@ -203,8 +188,9 @@ public class SalvaEventoTest {
         Evento evento = new Evento();
         evento.setNome("Organizzazione pulizia spiagge.");
         evento.setLuogo("Salerno");
-        GregorianCalendar c = new GregorianCalendar(2023,Calendar.FEBRUARY,12,9,0);
-        Timestamp dataOraEvento = new Timestamp(c.getTimeInMillis());
+        Timestamp dataOraEvento = new Timestamp
+                (new GregorianCalendar
+                        (2023, Calendar.FEBRUARY,12, 9, 0).getTimeInMillis());
         evento.setDataOraEvento(dataOraEvento);
         evento.setDescrizione("Vi attendiamo tutti sul lungomare di Salerno nella data " +
                 "e ora indicata, c’è bisogno di tutti voi!.");
@@ -226,11 +212,12 @@ public class SalvaEventoTest {
         Evento evento = new Evento();
         evento.setNome("Organizzazione pulizia spiagge.");
         evento.setLuogo("Salerno");
-        GregorianCalendar c = new GregorianCalendar(2023,Calendar.FEBRUARY,12,9,0);
-        Timestamp dataOraEvento = new Timestamp(c.getTimeInMillis());
+        Timestamp dataOraEvento = new Timestamp
+                (new GregorianCalendar
+                        (2023, Calendar.FEBRUARY,12, 9, 0).getTimeInMillis());
         evento.setDataOraEvento(dataOraEvento);
         evento.setDescrizione("Vi attendiamo tutti sul lungomare di Salerno nella data " +
-                "e ora indicata, c’è bisogno di tutti voi!.");
+                "e ora indicata, c’è bisogno di tutti voi!");
         evento.setAltreInformazioni("Munirsi di guanti.");
         Utente utente = new Utente();
         utente.setEcologista(true);
