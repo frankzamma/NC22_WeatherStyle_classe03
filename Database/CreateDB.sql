@@ -89,8 +89,6 @@ use weatherstyle;
         IDguardaroba INT,
             FOREIGN KEY (IDguardaroba)
             REFERENCES Guardaroba(ID)
-            ON UPDATE CASCADE
-            ON DELETE CASCADE
     );
 
     CREATE TABLE Maglia (
