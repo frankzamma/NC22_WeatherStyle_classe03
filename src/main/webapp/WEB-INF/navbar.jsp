@@ -48,17 +48,18 @@
         <li class="nav-item">
           <a class="nav-link" href="loadCapoAbbigliamento.jsp">Inserisci capo</a>
         </li>
-      <li class="nav-item">
-        <a class="nav-link" href="VisualizzaEventiServlet">Visualizza Eventi</a>
-      </li>
-      <%
-          if(u.isEcologista()){
-        %>
-        <li class="nav-item">
-          <a class="nav-link" href="CreaEventoServlet">Crea Evento</a>
-        </li>
-      <%}
-        }else{
+        <div class="col-1 dropdown mt-1" >
+          <img src="./image/foglia.png" data-bs-toggle="dropdown" class="dropdown-toggle rounded mx-auto d-block" width="25" height="25">
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="VisualizzaEventiServlet">Visualizza Eventi</a></li>
+            <%
+              if(u.isEcologista()){
+            %>
+            <li><a class="dropdown-item" href="CreaEventoServlet">Crea Evento</a></li>
+            <% } %>
+          </ul>
+        </div>
+        <% }else{
           Admin admin = (Admin) session.getAttribute("admin");
             if(admin != null){ %>
             <li class="nav-item">
