@@ -90,7 +90,7 @@ public class SalvaEventoTest {
         utente.setEcologista(true);
         evento.setUtente(utente);
 
-        Mockito.when(infoCitta.getCittaByName(evento.getLuogo())).thenReturn(null);
+        Mockito.when(infoCitta.getCittaByName(evento.getLuogo())).thenReturn(new ArrayList<>());
         Mockito.when(eventoDAO.doSaveEvento(evento)).thenReturn(false);
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class,
                 () -> eventoLogic.salvaEvento(evento));
