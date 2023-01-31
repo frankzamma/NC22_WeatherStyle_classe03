@@ -1,3 +1,7 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: raffaele aurucci
+--%>
 <%@ page import="weatherstyle.gestionemeteo.applicationlogic.logic.beans.MeteoDailyMin" %>
 <%@ page import="weatherstyle.gestionesuggerimentiia.applicationlogic.logic.beans.Suggerimento" %>
 <%@ page import="weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Maglia" %>

@@ -1,6 +1,16 @@
 package weatherstyle.gestionemeteo.applicationlogic.logic.beans;
 
+/**
+ * @author Francesco Giuseppe Zammarrelli
+ * La classe Meteo utils fornisce dei metodi di utilità per il meteo
+ */
 public class MeteoUtils {
+    /**
+     * Translate weather code string.
+     *
+     * @param weatherCode the weather code
+     * @return the string
+     */
     public static String translateWeatherCode(int weatherCode){
         return switch (weatherCode){
             case 0 ->  "Cielo chiaro";
@@ -35,6 +45,12 @@ public class MeteoUtils {
         };
     }
 
+    /**
+     * Image from weather code string.
+     *
+     * @param weatherCode the weather code
+     * @return the string
+     */
     public static String imageFromWeatherCode(int weatherCode){
         return "./image/meteoImage/"+
                 switch (weatherCode){
