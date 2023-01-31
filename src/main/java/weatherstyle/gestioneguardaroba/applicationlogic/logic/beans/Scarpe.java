@@ -7,8 +7,17 @@ package weatherstyle.gestioneguardaroba.applicationlogic.logic.beans;
  */
 
 public class Scarpe extends CapoAbbigliamento{
+    /**
+     * Rappresenta il tipo di scarpa.
+     */
     private String tipo;
+    /**
+     * True se la scarpa è antiscivolo, false altrimenti.
+     */
     private boolean antiscivolo;
+    /**
+     * True se la scarpa è impermeabile, false altrimenti.
+     */
     private boolean impermeabile;
 
     /**
@@ -39,7 +48,6 @@ public class Scarpe extends CapoAbbigliamento{
     }
 
     /**
-     * Permette di ottenere il tipo di scarpa.
      * @return il tipo di scarpa.
      */
     public String getTipo() {
