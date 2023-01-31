@@ -4,12 +4,10 @@ package weatherstyle.gestioneguardaroba.applicationlogic.control;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
-import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Guardaroba;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Maglia;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Pantaloni;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Scarpe;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.service.GuardarobaLogicImpl;
-import weatherstyle.gestioneguardaroba.applicationlogic.logic.service.GuardarobaLogicInterface;
 import weatherstyle.gestioneutenti.applicationlogic.logic.beans.Utente;
 import weatherstyle.utils.ErrorParameterException;
 

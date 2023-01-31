@@ -174,7 +174,7 @@ public class GuardarobaLogicImpl implements GuardarobaLogicInterface {
             errorParameter.add("Errore nel colore");
         }
 
-        if ((m.getStagione()==null) && (!stagioni.contains(m.getStagione()))){
+        if ((m.getStagione()==null) || (!stagioni.contains(m.getStagione()))){
             errorParameter.add("Errore nella stagione");
         }
 
@@ -208,7 +208,7 @@ public class GuardarobaLogicImpl implements GuardarobaLogicInterface {
             errorParameter.add("Errore nel colore");
         }
 
-        if ((p.getStagione()==null) && (!stagioni.contains(p.getStagione()))){
+        if ((p.getStagione()==null) || (!stagioni.contains(p.getStagione()))){
             errorParameter.add("Errore nella stagione");
         }
 
@@ -244,7 +244,7 @@ public class GuardarobaLogicImpl implements GuardarobaLogicInterface {
             errorParameter.add("Errore nel colore");
         }
 
-        if ((s.getStagione()==null) && (!stagioni.contains(s.getStagione()))){
+        if ((s.getStagione()==null) || (!stagioni.contains(s.getStagione()))){
             errorParameter.add("Errore nella stagione");
         }
 

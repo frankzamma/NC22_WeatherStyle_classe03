@@ -83,7 +83,7 @@ use weatherstyle;
     CREATE TABLE CapoAbbigliamento (
         ID INT PRIMARY KEY AUTO_INCREMENT,
         nome VARCHAR (50) NOT NULL,
-        stagione VARCHAR(20) NOT NULL,
+        stagione VARCHAR(50) NOT NULL,
         colore VARCHAR(10) NOT NULL,
         immagine VARCHAR(250) NOT NULL,
         IDguardaroba INT,

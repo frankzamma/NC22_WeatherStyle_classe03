@@ -2,7 +2,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="weatherstyle.gestioneutenti.applicationlogic.logic.beans.Utente" %><%--
   Created by IntelliJ IDEA.
-  User: migli
+  User: Annalaura Miglino
   Date: 27/01/2023
   Time: 12:56
   To change this template use File | Settings | File Templates.
