@@ -20,24 +20,24 @@ import java.util.GregorianCalendar;
 public class SalvaEventoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String nomeEvento = request.getParameter("nomeEvento");
-        String luogo = request.getParameter("luogo");
-        String descrizione = request.getParameter("descrizione");
-        String altreInformazioni = request.getParameter("altreInformazioni");
-        Timestamp dataOraEvento;
-        String[] data = request.getParameter("data").split("-");
-        String[] orario = request.getParameter("orario").split(":");
-        GregorianCalendar dataNascita = new GregorianCalendar(Integer.parseInt(data[0]), Integer.parseInt(data[1])-1, Integer.parseInt(data[2]), Integer.parseInt(orario[0]), Integer.parseInt(orario[1]));
-        dataOraEvento = new Timestamp(dataNascita.getTimeInMillis());
-
-        EventoLogicInterface eventoLogic = new EventoLogicImpl();
-        HttpSession session = request.getSession(false);
-        if (session == null)
+        HttpSession session = request.getSession();
+        Utente utente = (Utente)  session.getAttribute("utente");
+        if (utente == null || !utente.isEcologista()){
             response.sendRedirect("index.html");
-        else {
-            RequestDispatcher dispatcher;
+        }
+        else{
+            String nomeEvento = request.getParameter("nomeEvento");
+            String luogo = request.getParameter("luogo");
+            String descrizione = request.getParameter("descrizione");
+            String altreInformazioni = request.getParameter("altreInformazioni");
+            Timestamp dataOraEvento;
+            String[] data = request.getParameter("data").split("-");
+            String[] orario = request.getParameter("orario").split(":");
+            GregorianCalendar dataNascita = new GregorianCalendar(Integer.parseInt(data[0]), Integer.parseInt(data[1])-1, Integer.parseInt(data[2]), Integer.parseInt(orario[0]), Integer.parseInt(orario[1]));
+            dataOraEvento = new Timestamp(dataNascita.getTimeInMillis());
 
-            Utente utente = (Utente) session.getAttribute("utente");
+            EventoLogicInterface eventoLogic = new EventoLogicImpl();
+            RequestDispatcher dispatcher;
             Evento evento = new Evento();
             evento.setNome(nomeEvento);
             evento.setDataOraEvento(dataOraEvento);
@@ -45,7 +45,6 @@ public class SalvaEventoServlet extends HttpServlet {
             evento.setDescrizione(descrizione);
             evento.setAltreInformazioni(altreInformazioni);
             evento.setUtente(utente);
-
             try {
                 eventoLogic.salvaEvento(evento);
             }catch (IllegalArgumentException e) {
@@ -53,10 +52,8 @@ public class SalvaEventoServlet extends HttpServlet {
                 dispatcher = request.getRequestDispatcher("/WEB-INF/gestioneambiente/creaEvento.jsp");
                 dispatcher.forward(request, response);
             }
-
-            response.sendRedirect("index.html");
+            response.sendRedirect("VisualizzaEventiServlet");
         }
-
     }
 
     @Override
