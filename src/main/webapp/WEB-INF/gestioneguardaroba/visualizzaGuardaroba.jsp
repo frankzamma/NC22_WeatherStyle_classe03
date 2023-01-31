@@ -24,6 +24,12 @@ Utente ut = (Utente) request.getAttribute("utente");
 %>
 
 <h2>Guardaroba di <%=ut.getNome()%> <%=ut.getCognome()%></h2>
+<br>
+        <button type="button" class="btn btn-light">
+            <a href="inserimento-capo" style="color: black">Inserisci un capo d'abbigliamento nel guardaroba</a>
+        </button>
+    <br>
+        <br>
     <div class="row">
 <%
 for (CapoAbbigliamento c : all){
@@ -47,9 +53,7 @@ for (CapoAbbigliamento c : all){
     </div>
     <br>
     <br>
-    <button type="button" class="btn btn-light">
-        <a href="inserimento-capo" style="color: black">Inserisci un capo d'abbigliamento nel guardaroba</a>
-    </button>
+
 </div>
 <br>
 
