@@ -48,8 +48,8 @@ public class RichiestaSuggerimentoServlet extends HttpServlet {
 
         // parametri citta presi dalla request
         String nomeCitta = request.getParameter("nomeCitta");
-        String lat = request.getParameter("latitudine");
-        String lon = request.getParameter("longitudine");
+        String lat = request.getParameter("lat");
+        String lon = request.getParameter("lon");
 
         Citta citta = new Citta();
         citta.setNome(nomeCitta);

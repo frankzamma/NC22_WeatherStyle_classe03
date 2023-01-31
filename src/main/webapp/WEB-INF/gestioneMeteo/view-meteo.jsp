@@ -43,7 +43,10 @@
                     <input type="hidden" name="temperaturaPercepita"
                            value="<%=meteoDailyMin.getTemperaturaPercepitaMedia()%>">
                     <input type="hidden" name="stagionePrevisione" value="<%=meteoDailyMin.getStagionePrevisione()%>">
-                    <button type="submit">Richiedi Suggerimento</button>
+                    <input type="hidden" name="nomeCitta" value="<%=c.getNome()%>">
+                    <input type="hidden" name="lat" value="<%=c.getLat()%>">
+                    <input type="hidden" name="lon" value="<%=c.getLon()%>">
+                    <button type="submit" class="btn btn-warning">Richiedi Suggerimento</button>
                 </form>
             </div>
             <div class="col-md-4">
