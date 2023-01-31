@@ -1,13 +1,8 @@
 package weatherstyle.gestionesuggerimentiia.applicationlogic.control;
 
-
-import jakarta.servlet.RequestDispatcher;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.*;
+import jakarta.servlet.http.*;
+import jakarta.servlet.annotation.*;
 import weatherstyle.gestionecitta.applicationlogic.logic.beans.Citta;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Maglia;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Pantaloni;
@@ -27,15 +22,11 @@ import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-/**
- * classe che raccoglie tutte le informazioni necessarie per fornire suggerimenti all'utente
- */
-@WebServlet(name = "RichiestaSuggerimentoServlet",value = "/RichiestaSuggerimentoServlet")
-public class RichiestaSuggerimentoServlet extends HttpServlet {
+@WebServlet(name = "RichSugg2Servlet", value = "/RichSugg2Servlet")
+public class RichSugg2Servlet extends HttpServlet {
 
     @Override
-    public void doGet(HttpServletRequest request,HttpServletResponse response) throws IOException, ServletException {
-
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // parametri meteo presi dalla request
         String meteo = request.getParameter("meteo");
         double temperaturaPercepitaMedia = Double.parseDouble(request.getParameter("temperaturaPercepita"));
@@ -161,17 +152,22 @@ public class RichiestaSuggerimentoServlet extends HttpServlet {
             // salvo nella request gli errori
             request.setAttribute("errorList", errorList);
 
-            RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/gestionesuggerimentiia/" +
-                    "visualizzaSuggerimenti.jsp");
-            dispatcher.forward(request, response);
+            if (maglieSuggerite.size() > 0 && pantaloniSuggeriti.size() > 0 && scarpeSuggerite.size() > 0) {
+                session.setAttribute("maglieSuggerite", maglieSuggerite);
+                session.setAttribute("pantaloniSuggeriti", pantaloniSuggeriti);
+                session.setAttribute("scarpeSuggerite", scarpeSuggerite);
+                session.setAttribute("meteoDailyMin", meteoDailyMin);
+                session.setAttribute("citta", citta);
+            }
 
+            RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/gestionesuggerimentiia/" +
+                    "visualizzaSuggerimenti2.jsp");
+            dispatcher.forward(request, response);
         }
     }
 
     @Override
-    public void doPost(HttpServletRequest request,HttpServletResponse response) throws IOException, ServletException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
-
 }
-
