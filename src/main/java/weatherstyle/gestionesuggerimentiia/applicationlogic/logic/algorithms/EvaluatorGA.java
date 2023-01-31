@@ -25,6 +25,9 @@ class EvaluatorGA {
       initTable();
     }
 
+    /**
+     * Inizializza delle tabelle hash per definire i punteggi necessari nelle varie valutazioni.
+     */
     private static void initTable() {
         ranges =  new ArrayList<>();
 
@@ -319,6 +322,12 @@ class EvaluatorGA {
 
     }
 
+    /**
+     * Questo metodo serve a valutare le istanze di capi d’abbigliamento
+     * @param capoAbbigliamento maglia | pantaloni | scarpe
+     * @param meteoDailyMin informazioni meteorologiche
+     * @return punteggio maglia | pantaloni | scarpe
+     */
     public int valuta(CapoAbbigliamento capoAbbigliamento, MeteoDailyMin meteoDailyMin) {
         if (capoAbbigliamento.getClass().equals(Maglia.class) || capoAbbigliamento.getClass().equals(Pantaloni.class)) {
             return valutazioneMagliaOrPantaloni(capoAbbigliamento, meteoDailyMin);
@@ -327,6 +336,12 @@ class EvaluatorGA {
         }
     }
 
+    /**
+     * Questo metodo permette di valutare le scarpe.
+     * @param capoAbbigliamento scarpa
+     * @param meteoDailyMin informazioni meteorologiche
+     * @return punteggio finale scarpe
+     */
     private int valutazioneScarpe(CapoAbbigliamento capoAbbigliamento, MeteoDailyMin meteoDailyMin) {
         int punteggio = 0;
 
@@ -348,6 +363,12 @@ class EvaluatorGA {
         return punteggio;
     }
 
+    /**
+     * Questo metodo permette di valutare le maglie o i pantaloni a seconda del tipo di capo.
+     * @param capoAbbigliamento maglia | pantaloni
+     * @param meteoDailyMin informazioni meteorologiche
+     * @return punteggio maglia | pantaloni
+     */
     private int valutazioneMagliaOrPantaloni(CapoAbbigliamento capoAbbigliamento, MeteoDailyMin meteoDailyMin) {
         int punteggio = 0;
         punteggio += valutazioneTemperatura(capoAbbigliamento, meteoDailyMin);
@@ -357,6 +378,12 @@ class EvaluatorGA {
         return punteggio;
     }
 
+    /**
+     * Questo metodo permette di ottenere l’indice da una lista di tabelle hash con punteggi definiti rispetto ai range
+     * di temperatura.
+     * @param temperaturaPercepita dalla quale si vuole ottenere il punteggio
+     * @return indice
+     */
     private int searchRange(int temperaturaPercepita) {
         int range;
 
@@ -385,6 +412,12 @@ class EvaluatorGA {
         return range;
     }
 
+    /**
+     * Questo metodo permette di valutare un capo d’abbigliamento rispetto alla temperatura.
+     * @param capoAbbigliamento maglia | pantaloni | scarpe
+     * @param meteoDailyMin informazioni meteorologiche
+     * @return punteggio
+     */
     private int valutazioneTemperatura(CapoAbbigliamento capoAbbigliamento, MeteoDailyMin meteoDailyMin) {
         int temperaturaPercepita = (int) meteoDailyMin.getTemperaturaPercepitaMedia();
         int range = searchRange(temperaturaPercepita);
@@ -402,6 +435,12 @@ class EvaluatorGA {
         return voto;
     }
 
+    /**
+     * Questo metodo permette di valutare il colore di un capo d’abbigliamento.
+     * @param capoAbbigliamento maglia | pantaloni | scarpe
+     * @param meteoDailyMin informazioni meteorologiche
+     * @return punteggio
+     */
     private int valutazioneColore(CapoAbbigliamento capoAbbigliamento, MeteoDailyMin meteoDailyMin) {
         int voto;
 
@@ -422,6 +461,12 @@ class EvaluatorGA {
         return voto;
     }
 
+    /**
+     * Questo metodo permette di valutare la lunghezza delle maniche di una maglia o di un pantalone.
+     * @param capoAbbigliamento maglia | pantaloni
+     * @param meteoDailyMin informazioni meteorologiche
+     * @return punteggio maglia | pantaloni
+     */
     private int valutazioneLunghezza(CapoAbbigliamento capoAbbigliamento, MeteoDailyMin meteoDailyMin) {
         int temperaturaPercepita = (int) meteoDailyMin.getTemperaturaPercepitaMedia();
         int range = searchRange(temperaturaPercepita);
@@ -439,6 +484,12 @@ class EvaluatorGA {
         return 0;
     }
 
+    /**
+     * Questo metodo permette di valutare un capo d’abbigliamento rispetto alla stagione della previsione.
+     * @param capoAbbigliamento maglia | pantaloni | scarpe
+     * @param meteoDailyMin informazioni meteorologiche
+     * @return punteggio maglia | pantaloni | scarpe
+     */
     private int valutazioneStagionePrevisione(CapoAbbigliamento capoAbbigliamento, MeteoDailyMin meteoDailyMin) {
         String stagionePrevisione = meteoDailyMin.getStagionePrevisione();
 
@@ -457,6 +508,11 @@ class EvaluatorGA {
         return  stagionalita.get(i).get(capoAbbigliamento.getStagione());
     }
 
+    /**
+     * Questo metodo permette di valutare le scarpe rispetto alla pioggia.
+     * @param scarpe scarpe
+     * @return punteggio scarpa
+     */
     private int valutazionePioggia(Scarpe scarpe) {
         if (scarpe.isAntiscivolo() && scarpe.isImpermeabile()) {
             return 5;
@@ -469,6 +525,12 @@ class EvaluatorGA {
         }
     }
 
+    /**
+     * Questo metodo permette di valutare le scarpe rispetto alla loro tipologia.
+     * @param scarpe scarpe
+     * @param meteoDailyMin informazioni meteorologiche
+     * @return punteggio
+     */
     private int valutazioneTipoScarpa(Scarpe scarpe, MeteoDailyMin meteoDailyMin) {
         return valutazioneTipoScarpa.get(meteoDailyMin.getMeteoStringMin()).get(scarpe.getTipo());
     }

@@ -1,3 +1,7 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: raffaele aurucci
+--%>
 <%@ page import="weatherstyle.gestionesuggerimentiia.applicationlogic.logic.beans.Outfit" %>
 <%@ page import="weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Maglia" %>
 <%@ page import="weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Pantaloni" %>

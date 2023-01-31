@@ -1,3 +1,7 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: raffaele aurucci
+--%>
 <%@ page import="weatherstyle.gestionesuggerimentiia.applicationlogic.logic.beans.Suggerimento" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
