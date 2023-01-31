@@ -5,7 +5,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Visualizza suggerimenti</title>
+    <title>Suggerimento salvato</title>
     <%@include file="../links.jsp"%>
 </head>
 <body>
@@ -40,6 +40,6 @@
     </div>
 
 </div>
-
+<%@include file="../footer.jsp"%>
 </body>
 </html>

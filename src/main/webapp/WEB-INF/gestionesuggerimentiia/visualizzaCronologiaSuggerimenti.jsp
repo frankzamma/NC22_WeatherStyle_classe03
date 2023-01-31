@@ -1,83 +1,85 @@
 <%@ page import="weatherstyle.gestionesuggerimentiia.applicationlogic.logic.beans.Suggerimento" %>
-<%@ page import="java.util.List" %><%--
-  Created by IntelliJ IDEA.
-  User: rafau
-  Date: 28/01/2023
-  Time: 21:18
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <%@include file="../links.jsp"%>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Cronologia suggerimenti</title>
 </head>
 <body>
 <% List<Suggerimento> suggerimentoList = (List<Suggerimento>) request.getAttribute("suggerimentoList"); %>
 <%@include file="../navbar.jsp"%>
-<h3>Cronologia suggerimenti:</h3>
-<table>
-    <tr>
-        <th>
-            Data suggerimento
-        </th>
-        <th>
-            Citta
-        </th>
-        <th>
-            Meteo
-        </th>
-        <th>
-            Temperatura percepita
-        </th>
-        <th>
-            Stagione
-        </th>
-        <th>
-            Nome outfit
-        </th>
-        <th>
-            Maglia
-        </th>
-        <th>
-            Pantalone
-        </th>
-        <th>
-            Scarpa
-        </th>
-    </tr>
-<%for (Suggerimento suggerimento: suggerimentoList) { %>
-    <tr>
-        <td>
-            <%=suggerimento.getDate()%>
-        </td>
-        <td>
-            <%=suggerimento.getCitta().getNome()%>
-        </td>
-        <td>
-            <%=suggerimento.getMeteoDailyMin().getMeteoStringMin()%>
-        </td>
-        <td>
-            <%=suggerimento.getMeteoDailyMin().getTemperaturaPercepitaMedia()%>
-        </td>
-        <td>
-            <%=suggerimento.getMeteoDailyMin().getStagionePrevisione()%>
-        </td>
-        <td>
-            <%=suggerimento.getOutfit().getNome()%>
-        </td>
-        <td>
-            <img src="<%=suggerimento.getOutfit().getMaglia().getDirImmagine()%>">
-        </td>
-        <td>
-            <img src="<%=suggerimento.getOutfit().getPantaloni().getDirImmagine()%>">
-        </td>
-        <td>
-            <img src="<%=suggerimento.getOutfit().getScarpe().getDirImmagine()%>">
-        </td>
-    </tr>
-<% } %>
-</table>
+
+<div class="container">
+
+        <h3>Cronologia suggerimenti:</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">
+                        Data suggerimento
+                    </th>
+                    <th scope="col">
+                        Citta
+                    </th>
+                    <th scope="col">
+                        Meteo
+                    </th>
+                    <th scope="col">
+                        Temperatura percepita
+                    </th>
+                    <th scope="col">
+                        Stagione
+                    </th>
+                    <th scope="col">
+                        Nome outfit
+                    </th>
+                    <th scope="col">
+                        Maglia
+                    </th>
+                    <th scope="col">
+                        Pantalone
+                    </th>
+                    <th scope="col">
+                        Scarpe
+                    </th>
+                </tr>
+            </thead>
+        <tbody>
+        <%for (Suggerimento suggerimento: suggerimentoList) { %>
+            <tr>
+                <td>
+                    <%=suggerimento.getDate()%>
+                </td>
+                <td>
+                    <%=suggerimento.getCitta().getNome()%>
+                </td>
+                <td>
+                    <%=suggerimento.getMeteoDailyMin().getMeteoStringMin()%>
+                </td>
+                <td>
+                    <%=suggerimento.getMeteoDailyMin().getTemperaturaPercepitaMedia()%>
+                </td>
+                <td>
+                    <%=suggerimento.getMeteoDailyMin().getStagionePrevisione()%>
+                </td>
+                <td>
+                    <%=suggerimento.getOutfit().getNome()%>
+                </td>
+                <td>
+                    <img src="<%=suggerimento.getOutfit().getMaglia().getDirImmagine()%>" width="60" height="60">
+                </td>
+                <td>
+                    <img src="<%=suggerimento.getOutfit().getPantaloni().getDirImmagine()%>" width="60" height="60">
+                </td>
+                <td>
+                    <img src="<%=suggerimento.getOutfit().getScarpe().getDirImmagine()%>" width="60" height="60">
+                </td>
+            </tr>
+        <% } %>
+        </tbody>
+        </table>
+    </div>
+<%@include file="../footer.jsp"%>
 </body>
 </html>
