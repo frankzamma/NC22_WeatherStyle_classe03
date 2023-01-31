@@ -1,6 +1,7 @@
 package weatherstyle.gestioneguardaroba.applicationlogic.logic.beans;
 
 /**
+ @author Annalaura Miglino
  Un oggetto <code>CapoAbbigliamento</code> rappresenta un capo
  d'abbigliamento.
  Ha un ID, un nome, una directory per visualizzare le immagini,
@@ -8,15 +9,29 @@ package weatherstyle.gestioneguardaroba.applicationlogic.logic.beans;
  */
 
 public class CapoAbbigliamento {
+    /**
+     * Identificatore del capo d'abbigliamento.
+     */
     private int id;
+    /**
+     * Nome del capo d'abbigliamento.
+     */
     private String nome;
+    /**
+     * Directory in cui è memorizzata l'immagine del capo d'abbigliamento.
+     */
     private String dirImmagine;
+    /**
+     * Stagione in cui viene indossato il capo d'abbigliamento.
+     */
     private String stagione;
+    /**
+     * Colore del capo d'abbigliamento.
+     */
     private String colore;
 
     /**
-     Costruttore vuoto. Inizializza il numero di capi a zero e
-     crea le tre liste: maglie, pantaloni e scarpe.
+     Costruttore vuoto.
      */
     public CapoAbbigliamento() {
 
