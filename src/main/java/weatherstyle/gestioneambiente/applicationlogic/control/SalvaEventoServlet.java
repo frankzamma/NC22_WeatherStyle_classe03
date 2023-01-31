@@ -46,13 +46,13 @@ public class SalvaEventoServlet extends HttpServlet {
             evento.setAltreInformazioni(altreInformazioni);
             evento.setUtente(utente);
             try {
-                eventoLogic.salvaEvento(evento);
+                if(eventoLogic.salvaEvento(evento))
+                    request.setAttribute("EventoCreatoCorrettamente", "Evento creato correttamente.");
             }catch (IllegalArgumentException e) {
                 request.setAttribute("Errore", e.getMessage());
-                dispatcher = request.getRequestDispatcher("/WEB-INF/gestioneambiente/creaEvento.jsp");
-                dispatcher.forward(request, response);
             }
-            response.sendRedirect("VisualizzaEventiServlet");
+            dispatcher = request.getRequestDispatcher("/WEB-INF/gestioneambiente/creaEvento.jsp");
+            dispatcher.forward(request, response);
         }
     }
 
