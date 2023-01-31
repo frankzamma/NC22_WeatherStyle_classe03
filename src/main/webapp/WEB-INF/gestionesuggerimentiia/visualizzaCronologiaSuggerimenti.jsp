@@ -12,7 +12,11 @@
 
 <div class="container">
 
-        <h3>Cronologia suggerimenti:</h3>
+    <h3>Cronologia suggerimenti:</h3>
+
+    <% if (suggerimentoList.size() == 0){ %>
+        <p>Non hai ancora salvato alcun suggerimento, cosa aspetti a farlo?</p>
+    <% } else { %>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -79,6 +83,7 @@
         <% } %>
         </tbody>
         </table>
+    <% } %>
     </div>
 <%@include file="../footer.jsp"%>
 </body>
