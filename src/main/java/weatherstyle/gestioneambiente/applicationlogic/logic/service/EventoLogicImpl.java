@@ -8,6 +8,7 @@ import weatherstyle.gestionecitta.storage.service.InfoCittaImpl;
 import weatherstyle.gestionecitta.storage.service.InfoCittaService;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -66,7 +67,7 @@ public class EventoLogicImpl implements EventoLogicInterface{
         }
 
         List<Citta> list = infoCitta.getCittaByName(evento.getLuogo());
-        if (list == null || list.size() == 0) {
+        if (list.size() == 0) {
             throw new IllegalArgumentException("Luogo evento inesistente.");
         }
 
