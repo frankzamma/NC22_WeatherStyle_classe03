@@ -6,16 +6,13 @@ import weatherstyle.utils.ConnectionPool;
 import java.sql.*;
 
 /**
- * @author  Francesco Giuseppe Zammarrelli
- *
+ * @author Francesco Giuseppe Zammarrelli
  * Classe per gestire le operazioni con il database relative al meteo
  */
 public class MeteoDAOImpl implements MeteoDAOInterface{
 
     /**
-     * Metodo per recupare un istanza di meteoDaily avendo l'id suggerimento a cui fa riferimento
-     * @param idSuggerimento
-     * @return un istanza di MeteoDailyMin se esiste un suggerimento con id = idSuggerimento, null altrimenti
+     *
      * @throws RuntimeException nel caso di problemi relativi alla connessione con DB
      */
     @Override
@@ -55,9 +52,7 @@ public class MeteoDAOImpl implements MeteoDAOInterface{
     }
 
     /**
-     * Metodo per salvare un istanza di MeteoDailyMin nel database.
-     * @param meteo
-     * @return true se il salvataggio avviene correttamente, false altrimenti
+     *
      * @throws RuntimeException nel caso di problemi relativi alla connessione con DB
      */
     @Override

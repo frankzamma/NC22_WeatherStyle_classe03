@@ -5,7 +5,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import weatherstyle.gestionecitta.applicationlogic.logic.beans.Citta;
 import weatherstyle.gestionemeteo.applicationlogic.logic.beans.MeteoDaily;
-import weatherstyle.gestionemeteo.applicationlogic.logic.beans.MeteoDailyMin;
 
 import java.io.IOException;
 import java.net.URI;
@@ -17,7 +16,11 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InfoMeteoDailyiImpl implements InfoMeteoDailyService {
+/**
+ * @author Francesco Giuseppe Zammarrelli
+ * La classe Info meteo dailyi.
+ */
+public class InfoMeteoDailyImpl implements InfoMeteoDailyService {
 
     @Override
     public MeteoDaily getInfoMeteoDailyByDay(LocalDate day, Citta citta) {

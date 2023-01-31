@@ -3,42 +3,42 @@ package weatherstyle.gestionemeteo.applicationlogic.logic.service;
 import weatherstyle.gestionecitta.applicationlogic.logic.beans.Citta;
 import weatherstyle.gestionemeteo.applicationlogic.logic.beans.MeteoDaily;
 import weatherstyle.gestionemeteo.applicationlogic.logic.beans.MeteoHours;
-import weatherstyle.gestionemeteo.storage.dao.MeteoDAOImpl;
-import weatherstyle.gestionemeteo.storage.dao.MeteoDAOInterface;
 import weatherstyle.gestionemeteo.storage.service.InfoMeteoDailyService;
-import weatherstyle.gestionemeteo.storage.service.InfoMeteoDailyiImpl;
+import weatherstyle.gestionemeteo.storage.service.InfoMeteoDailyImpl;
 import weatherstyle.gestionemeteo.storage.service.InfoMeteoHourImpl;
 import weatherstyle.gestionemeteo.storage.service.InfoMeteoHourService;
 
 import java.time.LocalDate;
 import java.util.List;
 
+/**
+ * @author Francesco Giuseppe Zammarrelli
+ * La classe Meteo logic service.
+ */
 public class MeteoLogicService implements MeteoLogicInterface{
 
-    private MeteoDAOInterface meteoDAOInterface;
     private InfoMeteoDailyService meteoDailyService;
     private InfoMeteoHourService meteoHourService;
 
 
+    /**
+     * Instanzia a new Meteo logic service.
+     */
     public MeteoLogicService() {
-        this.meteoDAOInterface = new MeteoDAOImpl();
-        this.meteoDailyService =  new InfoMeteoDailyiImpl();
+        this.meteoDailyService =  new InfoMeteoDailyImpl();
         this.meteoHourService =  new InfoMeteoHourImpl();
     }
-    public MeteoLogicService(MeteoDAOInterface meteoDAOInterface,
-                             InfoMeteoDailyService meteoDailyService, InfoMeteoHourService meteoHourService) {
-        this.meteoDAOInterface = meteoDAOInterface;
+
+    /**
+     * Instanzia un nuovo Meteo logic service.
+     *
+     * @param meteoDailyService meteo daily service
+     * @param meteoHourService  meteo hour service
+     */
+    public MeteoLogicService(InfoMeteoDailyService meteoDailyService, InfoMeteoHourService meteoHourService) {
         this.meteoDailyService = meteoDailyService;
         this.meteoHourService = meteoHourService;
     }
-
-    public MeteoLogicService(MeteoDAOInterface meteoDAOInterface){
-        this.meteoDAOInterface = meteoDAOInterface;
-        this.meteoDailyService =  new InfoMeteoDailyiImpl();
-        this.meteoHourService =  new InfoMeteoHourImpl();
-    }
-
-
 
     @Override
     public List<MeteoDaily> getMeteoDaily(Citta citta) {

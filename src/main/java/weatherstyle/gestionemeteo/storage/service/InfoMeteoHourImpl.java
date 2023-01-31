@@ -19,6 +19,10 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Francesco Giuseppe Zammarrelli
+ * La classe Info meteo hour.
+ */
 public class InfoMeteoHourImpl implements InfoMeteoHourService {
 
     @Override
