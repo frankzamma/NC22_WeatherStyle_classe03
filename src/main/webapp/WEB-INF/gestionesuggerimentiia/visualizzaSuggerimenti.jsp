@@ -10,7 +10,6 @@
 <head>
     <title>Visualizza suggerimenti</title>
     <%@include file="../links.jsp"%>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
 <%
@@ -51,7 +50,7 @@
 
 
     <h3 class="display-6">Ecco i capi d'abbigliamento ritenuti più adatti in base alle seguenti informazioni:</h3>
-    <table class="table table-striped">
+    <table class="table table-striped table-light">
         <thead>
         <tr>
             <th scope="col">Meteo</th>
@@ -75,36 +74,42 @@
         <h3 class="display-6">Maglie suggerite</h3>
         <div class="row">
             <% for(Maglia maglia: maglieSuggerite){ %>
-            <div class="card col-md-4" style="width: 18rem;">
-                <img src="<%=maglia.getDirImmagine()%>" class="card-img-top">
-                <div class="card-body">
-                    <h5 class="card-title"><%=maglia.getNome()%></h5>
-                    <p class="card-text"><b>Materiale: </b><%=maglia.getMateriale()%></p>
-                    <p class="card-text"><b>Colore: </b><%=maglia.getColore()%></p>
-                    <p class="card-text"><b>Stagione: </b><%=maglia.getStagione()%></p>
-                    <p class="card-text"><b>Manica: </b><%=maglia.getLunghezzaManica()%></p>
-                    <input type="radio" id="<%=maglia.getId()%>" name="magliaID" value="<%=maglia.getId()%>">
+            <input type="radio" id="<%=maglia.getId()%>" name="magliaID" value="<%=maglia.getId()%>"  class="btn-check"
+                   autocomplete="off">
+            <label class="btn btn-outline-primary col-md-3 m-1 text-center"  for="<%=maglia.getId()%>"  >
+                <div class="card text-dark col-align-self-center" style="background-color: transparent; border-color: transparent">
+                    <img src="<%=maglia.getDirImmagine()%>" class="card-img-top rounded mx-auto d-block vestiti">
+                    <div class="card-body text-start">
+                        <h5 class="card-title "><%=maglia.getNome()%></h5>
+                        <p class="card-text"><b>Materiale: </b><%=maglia.getMateriale()%></p>
+                        <p class="card-text"><b>Colore: </b><%=maglia.getColore()%></p>
+                        <p class="card-text"><b>Stagione: </b><%=maglia.getStagione()%></p>
+                        <p class="card-text"><b>Manica: </b><%=maglia.getLunghezzaManica()%></p>
+                    </div>
                 </div>
-            </div>
+            </label>
             <% } %>
         </div>
 
         <br>
 
         <h3 class="display-6">Pantaloni suggeriti</h3>
-        <div class="row">
+        <div class="row align-center">
             <% for(Pantaloni pantaloni: pantaloniSuggeriti){ %>
-            <div class="card col-md-4" style="width: 18rem;">
-                <img src="<%=pantaloni.getDirImmagine()%>" class="card-img-top">
-                <div class="card-body">
-                    <h5 class="card-title"><%=pantaloni.getNome()%></h5>
-                    <p class="card-text"><b>Materiale: </b><%=pantaloni.getMateriale()%></p>
-                    <p class="card-text"><b>Colore: </b><%=pantaloni.getColore()%></p>
-                    <p class="card-text"><b>Stagione: </b><%=pantaloni.getStagione()%></p>
-                    <p class="card-text"><b>Manica: </b><%=pantaloni.getLunghezza()%></p>
-                    <input type="radio" id="<%=pantaloni.getId()%>" name="pantaloniID" value="<%=pantaloni.getId()%>">
+            <input type="radio" id="<%=pantaloni.getId()%>" name="pantaloniID" value="<%=pantaloni.getId()%>"  class="btn-check"
+                   autocomplete="off">
+            <label class="btn btn-outline-primary col-md-3 m-1 text-center"  for="<%=pantaloni.getId()%>"  >
+                <div class="card  text-dark col-align-self-center" style="background-color: transparent; border-color: transparent">
+                    <img src="<%=pantaloni.getDirImmagine()%>" class="card-img-top rounded mx-auto d-block vestiti">
+                    <div class="card-body text-start">
+                        <h5 class="card-title"><%=pantaloni.getNome()%></h5>
+                        <p class="card-text"><b>Materiale: </b><%=pantaloni.getMateriale()%></p>
+                        <p class="card-text"><b>Colore: </b><%=pantaloni.getColore()%></p>
+                        <p class="card-text"><b>Stagione: </b><%=pantaloni.getStagione()%></p>
+                        <p class="card-text"><b>Manica: </b><%=pantaloni.getLunghezza()%></p>
+                    </div>
                 </div>
-            </div>
+            </label>
             <% } %>
         </div>
 
@@ -113,23 +118,29 @@
         <h3 class="display-6">Scarpe suggerite</h3>
         <div class="row">
             <% for(Scarpe scarpe: scarpeSuggerite){ %>
-            <div class="card col-md-4" style="width: 18rem;">
-                <img src="<%=scarpe.getDirImmagine()%>" class="card-img-top">
-                <div class="card-body">
-                    <h5 class="card-title"><%=scarpe.getNome()%></h5>
-                    <p class="card-text"><b>Tipo: </b><%=scarpe.getTipo()%></p>
-                    <p class="card-text"><b>Colore: </b><%=scarpe.getColore()%></p>
-                    <p class="card-text"><b>Antiscivolo: </b><%=scarpe.isAntiscivolo() ? "SI" : "NO"%></p>
-                    <p class="card-text"><b>Impermeabile: </b><%=scarpe.isImpermeabile() ? "SI" : "NO"%></p>
-                    <input type="radio" id="<%=scarpe.getId()%>" name="scarpeID" value="<%=scarpe.getId()%>">
+            <input type="radio" id="<%=scarpe.getId()%>" name="scarpeID" value="<%=scarpe.getId()%>"  class="btn-check"
+                   autocomplete="off">
+            <label class="btn btn-outline-primary col-md-3 m-1 text-center"  for="<%=scarpe.getId()%>"  >
+                <div class="card text-dark col-align-self-center" style="background-color: transparent; border-color: transparent">
+                    <img src="<%=scarpe.getDirImmagine()%>" class="card-img-top rounded mx-auto d-block vestiti">
+                    <div class="card-body text-start">
+                        <h5 class="card-title"><%=scarpe.getNome()%></h5>
+                        <p class="card-text"><b>Tipo: </b><%=scarpe.getTipo()%></p>
+                        <p class="card-text"><b>Colore: </b><%=scarpe.getColore()%></p>
+                        <p class="card-text"><b>Antiscivolo: </b><%=scarpe.isAntiscivolo() ? "SI" : "NO"%></p>
+                        <p class="card-text"><b>Impermeabile: </b><%=scarpe.isImpermeabile() ? "SI" : "NO"%></p>
+                    </div>
                 </div>
-            </div>
+            </label>
             <% } %>
         </div>
-        <label for="nomeOutfit">Inserisci nome outfit</label>
-        <br>
-        <input type="text" name="nomeOutfit" placeholder="Inserisci un nome" id="nomeOutfit">
-        <br>
+
+        <div class="row">
+            <div class="col">
+                <label for="nomeOutfit" class="form-label">Inserisci nome outfit</label>
+                <input type="text" class="form-control" name="nomeOutfit" placeholder="Inserisci un nome" id="nomeOutfit">
+            </div>
+        </div>
 
         <input type="hidden" name="nomeCitta" value="<%=citta.getNome()%>">
         <input type="hidden" name="latitudine" value="<%=citta.getLat()%>">
@@ -137,8 +148,9 @@
         <input type="hidden" name="meteo" value="<%=meteoDailyMin.getMeteoStringMin()%>">
         <input type="hidden" name="temperaturaPercepita" value="<%=meteoDailyMin.getTemperaturaPercepitaMedia()%>">
         <input type="hidden" name="stagionePrevisione" value="<%=meteoDailyMin.getStagionePrevisione()%>">
-
-        <button type="submit">Conferma outfit</button>
+        <div class="d-grid gap-2 mt-2">
+            <button class="btn btn-primary" type="submit">Conferma outfit</button>
+        </div>
     </form>
     <% } %>
 </div>

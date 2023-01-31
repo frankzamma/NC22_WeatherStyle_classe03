@@ -97,3 +97,12 @@ ul#result li a:hover{
     background-color: transparent;
     color: white;
 }
+
+img.vestiti{
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+}
+
+/*TODO aggiungere media queries per schermi più piccoli per le immagini*/
+
