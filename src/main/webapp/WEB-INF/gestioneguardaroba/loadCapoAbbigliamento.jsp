@@ -6,14 +6,14 @@
 <head>
     <title>Driver WeatherStyle</title>
     <meta charset="utf-8">
-    <%@include file="WEB-INF/links.jsp"%>
+    <%@include file="../links.jsp"%>
  </head>
 <body>
 <%
 List<String> errorListService = (List<String>) request.getAttribute("errorListService");
 String errore = (String) request.getAttribute("message");
 %>
-    <%@include file="WEB-INF/navbar.jsp"%>
+    <%@include file="../navbar.jsp"%>
 <br>
 
 <%
@@ -48,7 +48,6 @@ String errore = (String) request.getAttribute("message");
 
     <form method="post" action="inserisci-capo" name="carica-capo-form" id="carica-capo-form" enctype="multipart/form-data">
         <div class="container" style="background-color: white">
-
             <legend style="background-color: #337AB8">Inserimento di un nuovo capo d'abbigliamento</legend>
                 <div class="col align-self-center">
                     <label style="color: black"> Scegli tipo di capo </label>
@@ -60,13 +59,13 @@ String errore = (String) request.getAttribute("message");
                     </select>
     <br>
             <div class="mb-3">
-                <label for="nomeCapo" style="color: black"> Nome del capo: </label>
-                <input type="text" id="nomeCapo" name="nomeCapo" required>
+                <label for="nomeCapo" class="form-label" style="color: black"> Nome del capo: </label>
+                <input type="text"  class="form-control" id="nomeCapo" name="nomeCapo" required>
             </div>
 
             <div class="mb-3">
                 <label for="foto" style="color: black">Inserire una foto del prodotto</label>
-                <input type="file" name="foto" id="foto" accept="image/*" required>
+                <input class="form-control" type="file" name="foto" id="foto" accept="image/*" required>
             </div>
 
             <div class="mb-3">
@@ -163,8 +162,9 @@ String errore = (String) request.getAttribute("message");
                     <label class="form-check-label" for="impno" style="color: black"> No </label>
                 </div>
             </div>
-
-            <button type="submit" class="btn btn-primary">Carica capo</button>
+            <div class="d-grid gap-2 mt-2">
+                <button type="submit" class="btn btn-primary">Carica capo</button>
+            </div>
             <br>
             </div>
         </div>
@@ -225,6 +225,6 @@ String errore = (String) request.getAttribute("message");
         }
     </script>
 
-    <%@include file="WEB-INF/footer.jsp"%>
+    <%@include file="../footer.jsp"%>
 </body>
 </html>

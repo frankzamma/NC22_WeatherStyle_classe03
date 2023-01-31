@@ -7,7 +7,7 @@ import weatherstyle.gestioneutenti.applicationlogic.logic.beans.Utente;
 
 import java.io.IOException;
 
-@WebServlet(name = "ControlloLoginServlet", value = "/controllo-login")
+@WebServlet(name = "ControlloLoginServlet", value = "/inserimento-capo")
 public class ControlloLoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
