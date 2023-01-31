@@ -29,7 +29,7 @@
     <br>
 
 
-    <div class="center">
+    <div class="row justify-content-center">
         <div class="card col-align-self-center" style="width: 18rem;">
             <img src="<%=maglia.getDirImmagine()%>" class="card-img-top rounded mx-auto d-block vestiti">
         </div>
