@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ @author Annalaura Miglino
 Un oggetto <code>Guardaroba</code> rappresenta un insieme di
  capi d'abbigliamento.
 Ha un nome, ed è possibile anche tenere traccia di quanti e quali capi contiene.

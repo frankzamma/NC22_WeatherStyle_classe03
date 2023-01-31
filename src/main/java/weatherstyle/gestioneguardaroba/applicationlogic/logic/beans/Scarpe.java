@@ -1,6 +1,7 @@
 package weatherstyle.gestioneguardaroba.applicationlogic.logic.beans;
 
 /**
+ @author Annalaura Miglino
  Un oggetto <code>Scarpa</code> rappresenta un tipo di capo d'abbigliamento.
  Oltre agli attributi della superclasse <code>CapoAbbigliamento</code>,
  considera anche il tipo di scarpa, e se è antiscivolo e/o impermeabile.

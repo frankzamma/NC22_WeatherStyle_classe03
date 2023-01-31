@@ -1,6 +1,7 @@
 package weatherstyle.gestioneguardaroba.applicationlogic.logic.beans;
 
 /**
+ @author Annalaura Miglino
  Un oggetto <code>Pantaloni</code> rappresenta un tipo di capo d'abbigliamento.
  Oltre agli attributi della superclasse <code>CapoAbbigliamento</code>,
  considera anche la lunghezza del pantalone e il materiale di cui è costituita.

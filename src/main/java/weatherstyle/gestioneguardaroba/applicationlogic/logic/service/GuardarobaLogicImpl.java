@@ -17,19 +17,45 @@ import java.util.List;
 
 public class GuardarobaLogicImpl implements GuardarobaLogicInterface {
 
+    /**
+     * Gestisce i capi d'abbigliamento nel database.
+     */
     private CapoAbbigliamentoDAOImpl capoDAO = new CapoAbbigliamentoDAOImpl();
+    /**
+     * Gestisce il guardaroba nel database.
+     */
     private GuardarobaDAOImpl guardarobaDAO = new GuardarobaDAOImpl();
 
+    /**
+     * Lista in cui vengono elencati tutti i valori che puà assumere l'attributo <code>colore</code>.
+     */
     List<String> colori = Arrays.asList("chiaro", "scuro", "colorato");
+    /**
+     * Lista in cui vengono elencati tutti i valori che puà assumere l'attributo <code>stagione</code>.
+     */
     List<String> stagioni = Arrays.asList("inverno", "estate", "autunno", "primavera", "autunno_inverno", "primavera_estate", "all");
+    /**
+     * Lista in cui vengono elencati tutti i valori che puà assumere l'attributo <code>materiale</code>.
+     */
     List<String> materiali = Arrays.asList("cotone", "poliestere", "lana", "velluto", "tweed", "raso", "seta", "lino", "cashmere");
+    /**
+     * Lista in cui vengono elencati tutti i valori che puà assumere l'attributo <code>tipo</code> per le scarpe .
+     */
     List<String> tipiScarpe = Arrays.asList("stivaletto alla caviglia", "scarpa da ginnastica", "scarpa classica", "scarpe con tacchi", "scarpe aperte", "anfibi", "stivali");
 
+    /**
+     * Costruttore.
+     * @param capoAbbigliamentoDAO gestisce i capi d'abbigliamento nel database.
+     * @param guardarobaDAO getisce il guardaroba nel database.
+     */
     public GuardarobaLogicImpl(CapoAbbigliamentoDAOImpl capoAbbigliamentoDAO, GuardarobaDAOImpl guardarobaDAO) {
         this.capoDAO = capoAbbigliamentoDAO;
         this.guardarobaDAO = guardarobaDAO;
     }
 
+    /**
+     * Costruttore vuoto.
+     */
     public GuardarobaLogicImpl (){
 
     }
@@ -132,6 +158,11 @@ public class GuardarobaLogicImpl implements GuardarobaLogicInterface {
         return guardarobaDAO.doSaveNumeroCapi(idUtente, g.getNumeroCapi());
     }
 
+    /**
+     * Controlla se l'oggetto <code>Maglia</code> è conforme ai vincoli.
+     * @param m è la maglia che bisogna controllare.
+     * @throws ErrorParameterException
+     */
     public void controlliMaglia (Maglia m) throws ErrorParameterException{
         List<String> errorParameter =  new ArrayList<>();
 
@@ -161,6 +192,11 @@ public class GuardarobaLogicImpl implements GuardarobaLogicInterface {
             throw new ErrorParameterException(errorParameter);
     }
 
+    /**
+     * Controlla se l'oggetto <code>Pantaloni</code> è conforme ai vincoli.
+     * @param p è il paio di pantaloni che bisogna verificare.
+     * @throws ErrorParameterException
+     */
     public void controlliPantaloni (Pantaloni p) throws ErrorParameterException{
         List<String> errorParameter =  new ArrayList<>();
 
@@ -192,6 +228,11 @@ public class GuardarobaLogicImpl implements GuardarobaLogicInterface {
             throw new ErrorParameterException(errorParameter);
     }
 
+    /**
+     * Controlla se l'oggetto <code>Scarpe</code> è conforme ai vincoli.
+     * @param s è il paio di scarpe da verificare.
+     * @throws ErrorParameterException
+     */
     public void controlliScarpe (Scarpe s) throws ErrorParameterException{
         List<String> errorParameter =  new ArrayList<>();
 
