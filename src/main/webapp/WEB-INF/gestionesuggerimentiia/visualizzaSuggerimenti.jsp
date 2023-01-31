@@ -41,7 +41,7 @@
     <% }
     else { %>
 
-    <h3>Ecco i capi d'abbigliamento ritenuti più adatti in base alle seguenti informazioni:</h3>
+    <h3 style="text-align: center">Ecco i capi d'abbigliamento ritenuti più adatti in base alle seguenti informazioni:</h3>
     <table class="table table-striped table-light">
         <thead>
         <tr>
@@ -61,9 +61,9 @@
         </tbody>
     </table>
 
-    <center>
+
     <form action="SalvaSuggerimentoServlet" method="post">
-        <h4>Maglie suggerite</h4>
+        <h4 style="text-align: center">Maglie suggerite</h4>
         <div class="row justify-content-center">
             <% for(Maglia maglia: maglieSuggerite){ %>
             <input type="radio" id="<%=maglia.getId()%>" name="magliaID" value="<%=maglia.getId()%>"  class="btn-check"
@@ -85,7 +85,7 @@
 
         <br>
 
-        <h4>Pantaloni suggeriti</h4>
+        <h4 style="text-align: center">Pantaloni suggeriti</h4>
         <div class="row justify-content-center">
             <% for(Pantaloni pantaloni: pantaloniSuggeriti){ %>
             <input type="radio" id="<%=pantaloni.getId()%>" name="pantaloniID" value="<%=pantaloni.getId()%>"  class="btn-check"
@@ -107,7 +107,7 @@
 
         <br>
 
-        <h4>Scarpe suggerite</h4>
+        <h4 style="text-align: center">Scarpe suggerite</h4>
         <div class="row justify-content-center">
             <% for(Scarpe scarpe: scarpeSuggerite){ %>
             <input type="radio" id="<%=scarpe.getId()%>" name="scarpeID" value="<%=scarpe.getId()%>"  class="btn-check"
@@ -149,7 +149,7 @@
         </div>
     </form>
     <% } %>
-    </center>
+
 </div>
 <%@include file="../footer.jsp"%>
 </body>

@@ -28,6 +28,7 @@
 
     <br>
 
+    <h4 style="text-align: center"><%=outfit.getNome()%></h4>
 
     <div class="row justify-content-center">
         <div class="card col-align-self-center" style="width: 18rem;">
