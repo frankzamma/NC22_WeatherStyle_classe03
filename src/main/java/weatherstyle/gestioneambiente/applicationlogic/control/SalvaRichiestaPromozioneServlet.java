@@ -14,20 +14,22 @@ import java.io.IOException;
 public class SalvaRichiestaPromozioneServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String[] tematiche = request.getParameterValues("tematiche");
-        String s = "";
-        if(tematiche != null) {
-            for(int i=0; i<tematiche.length; i++)
-                s += tematiche[i] + " - ";
-        }
-
-        String esperienze = request.getParameter("esperienze");
-
-        RichiestaPromozioneLogicInterface richiestaPromozioneLogic = new RichiestaPromozioneLogicImpl();
-        HttpSession session = request.getSession(false);
-        if (session == null)
+        HttpSession session = request.getSession();
+        Utente u  = (Utente) session.getAttribute("utente");
+        if (u == null)
             response.sendRedirect("index.html");
         else {
+
+            String[] tematiche = request.getParameterValues("tematiche");
+            String s = "";
+            if(tematiche != null) {
+                for(int i=0; i<tematiche.length; i++)
+                    s += tematiche[i] + " - ";
+            }
+
+            String esperienze = request.getParameter("esperienze");
+
+            RichiestaPromozioneLogicInterface richiestaPromozioneLogic = new RichiestaPromozioneLogicImpl();
                 RequestDispatcher dispatcher;
 
                 Utente utente = (Utente) session.getAttribute("utente");
@@ -38,14 +40,13 @@ public class SalvaRichiestaPromozioneServlet extends HttpServlet {
 
                 try {
                         richiestaPromozioneLogic.salvaRichiestaPromozione(richiestaPromozione);
+                        dispatcher = request.getRequestDispatcher("/WEB-INF/gestioneUtente/utente/areaPersonale.jsp");
+                        dispatcher.forward(request, response);
                 }catch (IllegalArgumentException e) {
                     request.setAttribute("Errore", e.getMessage());
                     dispatcher = request.getRequestDispatcher("/WEB-INF/gestioneambiente/compilaRichiestaPromozione.jsp");
                     dispatcher.forward(request, response);
                 }
-
-                dispatcher = request.getRequestDispatcher("/WEB-INF/gestioneUtente/utente/areaPersonale.jsp");
-                dispatcher.forward(request, response);
         }
     }
 

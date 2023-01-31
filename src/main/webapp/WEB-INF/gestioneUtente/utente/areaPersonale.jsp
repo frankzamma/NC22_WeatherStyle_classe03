@@ -17,7 +17,7 @@
 </head>
 <body>
 <%@include file="../../navbar.jsp"%>
-<div class="container h-50">
+<div class="container">
     <%
         Utente utente = (Utente) session.getAttribute("utente");
         RichiestaPromozioneLogicInterface richiestaPromozioneLogic = new RichiestaPromozioneLogicImpl();
@@ -42,7 +42,7 @@
     %>
 
     <h3 class="display-6">I miei dati</h3>
-    <table class="table table-striped">
+    <table class="table table-striped table-light">
         <thead>
         <tr>
             <th scope="col">Nome</th>
@@ -81,7 +81,7 @@
         else {
                 %>
                 <h3 class="display-6">Città preferite</h3>
-                <table class="table table-striped">
+                <table class="table table-striped table-light">
                     <thead>
                     <tr>
                         <th scope="col">Città</th>
