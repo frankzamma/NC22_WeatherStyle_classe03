@@ -7,6 +7,7 @@ import weatherstyle.gestioneambiente.applicationlogic.logic.beans.RichiestaPromo
 import weatherstyle.gestioneambiente.applicationlogic.logic.service.RichiestaPromozioneLogicImpl;
 import weatherstyle.gestioneambiente.applicationlogic.logic.service.RichiestaPromozioneLogicInterface;
 import weatherstyle.gestioneutenti.applicationlogic.logic.beans.Admin;
+import weatherstyle.gestioneutenti.applicationlogic.logic.beans.Utente;
 
 import javax.sound.midi.SysexMessage;
 import java.io.IOException;
@@ -15,17 +16,23 @@ import java.io.IOException;
 public class ValutaRichiesteServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int idRichiestaPromozione =  Integer.parseInt(request.getParameter("idRichiestaPromozione"));
-        String nuovoStato = request.getParameter("valutazione");
         HttpSession session = request.getSession();
         Admin admin = (Admin) session.getAttribute("admin");
+        if (admin == null){
+            response.sendRedirect("index.html");
+        }
+        else{
+            int idRichiestaPromozione =  Integer.parseInt(request.getParameter("idRichiestaPromozione"));
+            String nuovoStato = request.getParameter("valutazione");
 
-        RichiestaPromozioneLogicInterface richiestaPromozioneLogic = new RichiestaPromozioneLogicImpl();
-        RichiestaPromozione richiestaPromozione = richiestaPromozioneLogic.ottieniRichiestaPromozionePerId(idRichiestaPromozione);
-        richiestaPromozioneLogic.aggiornaStatoRichiestaPromozione(richiestaPromozione, nuovoStato, admin);
+            RichiestaPromozioneLogicInterface richiestaPromozioneLogic = new RichiestaPromozioneLogicImpl();
+            RichiestaPromozione richiestaPromozione = richiestaPromozioneLogic.ottieniRichiestaPromozionePerId(idRichiestaPromozione);
+            richiestaPromozioneLogic.aggiornaStatoRichiestaPromozione(richiestaPromozione, nuovoStato, admin);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("GestioneRichiesteServlet");
-        dispatcher.forward(request,response);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("GestioneRichiesteServlet");
+            dispatcher.forward(request,response);
+        }
+
     }
 
     @Override

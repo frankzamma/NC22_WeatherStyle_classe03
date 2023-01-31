@@ -16,7 +16,7 @@
 <body>
 <%@include file="../navbar.jsp" %>
 <div class="container mt-3">
-    <h1>Gestione richieste promozione.</h1>
+    <h1>Eventi per l'ambiente in programma.</h1>
     <br>
     <%
         List<Evento> listaEventi = (List<Evento>) request.getAttribute("listaEventi");
