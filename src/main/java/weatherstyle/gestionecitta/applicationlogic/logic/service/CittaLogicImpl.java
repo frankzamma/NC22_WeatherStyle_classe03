@@ -29,7 +29,7 @@ public class CittaLogicImpl implements CittaLogicService {
      */
     private final InfoCittaService infoCittaService;
 
-    public CittaLogicImpl(CittaDAOInterface cittaDAO, InfoCittaService infoCittaService) {
+    public CittaLogicImpl(CittaDAOInterface cittaDAO,InfoCittaService infoCittaService) {
         this.cittaDAO = cittaDAO;
         this.infoCittaService = infoCittaService;
     }
@@ -56,10 +56,11 @@ public class CittaLogicImpl implements CittaLogicService {
      */
     @Override
     public String ottieniJsonDaCitta(List<Citta> cittaList) {
-        if (cittaList == null || cittaList.size() == 0)
+        if (cittaList == null || cittaList.size() == 0) {
             return "";
+        }
         Type listType = new TypeToken<List<Citta>>() {}.getType();
         Gson gson = new Gson();
-        return gson.toJson(cittaList, listType);
+        return gson.toJson(cittaList,listType);
     }
 }

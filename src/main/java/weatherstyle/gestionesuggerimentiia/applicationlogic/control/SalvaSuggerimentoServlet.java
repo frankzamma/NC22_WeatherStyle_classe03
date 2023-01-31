@@ -20,16 +20,16 @@ import java.io.IOException;
 import java.sql.Date;
 import java.util.GregorianCalendar;
 
-@WebServlet(name = "SalvaSuggerimentoServlet", value = "/SalvaSuggerimentoServlet")
+@WebServlet(name = "SalvaSuggerimentoServlet",value = "/SalvaSuggerimentoServlet")
 public class SalvaSuggerimentoServlet extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
         response.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
 
         // parametri relativi ai capi d'abbigliamento scelti dall'utente
         String scarpeID = request.getParameter("scarpeID");
@@ -58,9 +58,9 @@ public class SalvaSuggerimentoServlet extends HttpServlet {
 
 
         HttpSession session = request.getSession(false);
-        if (session == null)
+        if (session == null) {
             response.sendRedirect("index.html");
-        else {
+        } else {
             Utente utente = (Utente) session.getAttribute("utente");
 
             Suggerimento suggerimento = new Suggerimento();
@@ -82,13 +82,13 @@ public class SalvaSuggerimentoServlet extends HttpServlet {
                 outfit.setScarpe(scarpe);
             }
 
-            if (magliaID != null){
+            if (magliaID != null) {
                 Maglia maglia = new Maglia();
                 maglia.setId(Integer.parseInt(magliaID));
                 outfit.setMaglia(maglia);
             }
 
-            if (pantaloniID != null){
+            if (pantaloniID != null) {
                 Pantaloni pantaloni = new Pantaloni();
                 pantaloni.setId(Integer.parseInt(pantaloniID));
                 outfit.setPantaloni(pantaloni);
@@ -101,17 +101,17 @@ public class SalvaSuggerimentoServlet extends HttpServlet {
                 SuggerimentoLogicImpl suggerimentoLogic = new SuggerimentoLogicImpl(new SuggerimentoDAOImpl(),
                         new OutfitDAOImpl());
                 suggerimentoLogic.salvaSuggerimento(suggerimento);
-            } catch (IllegalArgumentException e){
-                request.setAttribute("errorSalvaSuggerimento", e.getMessage());
-                request.getRequestDispatcher("WEB-INF/gestionesuggerimentiia/errorSalvaSuggerimento.jsp").forward(request, response);
+            } catch (IllegalArgumentException e) {
+                request.setAttribute("errorSalvaSuggerimento",e.getMessage());
+                request.getRequestDispatcher("WEB-INF/gestionesuggerimentiia/errorSalvaSuggerimento.jsp").forward(request,response);
             }
 
-            request.setAttribute("suggerimentoSalvato", "Suggerimento salvato correttamente, di seguito l'outfit" +
-                    " da te realizzato.");
+            request.setAttribute("suggerimentoSalvato","Suggerimento salvato correttamente, di seguito l'outfit"
+                    + " da te realizzato.");
 
-            SuggerimentoLogicImpl suggerimentoLogic = new SuggerimentoLogicImpl(new SuggerimentoDAOImpl(), new OutfitDAOImpl());
-            request.setAttribute("outfit", suggerimentoLogic.ottieniOutfitDaSuggerimento(suggerimento));
-            request.getRequestDispatcher("WEB-INF/gestionesuggerimentiia/suggerimentoSalvato.jsp").forward(request, response);
+            SuggerimentoLogicImpl suggerimentoLogic = new SuggerimentoLogicImpl(new SuggerimentoDAOImpl(),new OutfitDAOImpl());
+            request.setAttribute("outfit",suggerimentoLogic.ottieniOutfitDaSuggerimento(suggerimento));
+            request.getRequestDispatcher("WEB-INF/gestionesuggerimentiia/suggerimentoSalvato.jsp").forward(request,response);
         }
     }
 }

@@ -11,19 +11,19 @@ import weatherstyle.gestioneutenti.applicationlogic.logic.beans.Utente;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "VisualizzaEventiServlet", value = "/VisualizzaEventiServlet")
+@WebServlet(name = "VisualizzaEventiServlet",value = "/VisualizzaEventiServlet")
 public class VisualizzaEventiServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         Utente utente = (Utente)  session.getAttribute("utente");
-        if (utente == null){
+        if (utente == null) {
             response.sendRedirect("index.html");
         }
-        else{
+        else {
             EventoLogicInterface eventoLogic = new EventoLogicImpl();
             List<Evento> listaEventi = eventoLogic.ottieniListaEventiFuturi();
-            request.setAttribute("listaEventi", listaEventi);
+            request.setAttribute("listaEventi",listaEventi);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/gestioneambiente/visualizzaEventi.jsp");
             dispatcher.forward(request,response);
         }
@@ -31,7 +31,7 @@ public class VisualizzaEventiServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
     }
 }

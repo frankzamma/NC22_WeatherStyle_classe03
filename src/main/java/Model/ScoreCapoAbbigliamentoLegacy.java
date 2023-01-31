@@ -5,7 +5,7 @@ public class ScoreCapoAbbigliamentoLegacy {
     private CapoAbbigliamentoLegacy capoAbbigliamento;
     private Double punteggio;
 
-    public ScoreCapoAbbigliamentoLegacy(CapoAbbigliamentoLegacy capoAbbigliamento, Double punteggio) {
+    public ScoreCapoAbbigliamentoLegacy(CapoAbbigliamentoLegacy capoAbbigliamento,Double punteggio) {
         this.capoAbbigliamento = capoAbbigliamento;
         this.punteggio = punteggio;
     }

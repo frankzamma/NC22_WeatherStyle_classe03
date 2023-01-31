@@ -7,28 +7,28 @@ import weatherstyle.gestioneutenti.applicationlogic.logic.beans.Utente;
 
 import java.io.IOException;
 
-@WebServlet(name = "ControlloLoginServlet", value = "/inserimento-capo")
+@WebServlet(name = "ControlloLoginServlet",value = "/inserimento-capo")
 public class ControlloLoginServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
 
         Utente u = (Utente) session.getAttribute("utente");
 
         String address;
 
-        if (u!=null){
+        if (u != null) {
             address = "/WEB-INF/gestioneguardaroba/loadCapoAbbigliamento.jsp";
-        }else{
+        } else {
             address = "/WEB-INF/gestioneUtente/utente/login_utente.jsp";
         }
 
         RequestDispatcher dispatcher = request.getRequestDispatcher(address);
-        dispatcher.forward(request, response);
+        dispatcher.forward(request,response);
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
 
     }
 }

@@ -14,39 +14,39 @@ import java.io.IOException;
  * @author Francesco Giuseppe Zammarrelli
  * La classe Login admin servlet.
  */
-@WebServlet(name = "LoginAdminServlet", value = "/login-admin")
+@WebServlet(name = "LoginAdminServlet",value = "/login-admin")
 public class LoginAdminServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
         response.sendRedirect("login-admin-page");
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
 
         Utente u = (Utente) session.getAttribute("utente");
         Admin admin = (Admin) session.getAttribute("admin");
-        if( u == null && admin == null){
+        if (u == null && admin == null) {
             String email =  request.getParameter("email");
             String password =  request.getParameter("password");
             AdminLogicService service =  new AdminLogicImpl();
             try {
-                admin = service.loginAdmin(email, password);
+                admin = service.loginAdmin(email,password);
 
-                session.setAttribute("admin", admin);
+                session.setAttribute("admin",admin);
 
                 response.sendRedirect("index.html");
-            }catch(IllegalArgumentException e){
+            } catch (IllegalArgumentException e) {
                 String message =  e.getMessage();
 
-                request.setAttribute("error-message", message);
+                request.setAttribute("error-message",message);
 
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/gestioneUtente/admin/login_admin.jsp");
 
-                dispatcher.forward(request, response);
+                dispatcher.forward(request,response);
             }
-        }else {
+        } else {
             response.sendRedirect("index.html");
         }
     }

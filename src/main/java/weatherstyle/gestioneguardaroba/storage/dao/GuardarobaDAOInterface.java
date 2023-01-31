@@ -31,7 +31,7 @@ public interface GuardarobaDAOInterface {
      * @param idUtente è l'ID del guardaroba, che è uguale a quello dell'utente.
      * @return il numero di capi nel guardaroba.
      */
-    int doRetrieveNumeroCapi (int idUtente);
+    int doRetrieveNumeroCapi(int idUtente);
 
     /**
      * Setta il numero di capi nel guardaroba.
@@ -39,7 +39,7 @@ public interface GuardarobaDAOInterface {
      * @param numero è il numero di capi da settare.
      * @return true se la modifica è andato a buon fine, false altrimenti.
      */
-    boolean doSaveNumeroCapi (int idUtente, int numero);
+    boolean doSaveNumeroCapi(int idUtente,int numero);
 
 
 

@@ -328,11 +328,11 @@ class EvaluatorGA {
      * @param meteoDailyMin informazioni meteorologiche
      * @return punteggio maglia | pantaloni | scarpe
      */
-    public int valuta(CapoAbbigliamento capoAbbigliamento, MeteoDailyMin meteoDailyMin) {
+    public int valuta(CapoAbbigliamento capoAbbigliamento,MeteoDailyMin meteoDailyMin) {
         if (capoAbbigliamento.getClass().equals(Maglia.class) || capoAbbigliamento.getClass().equals(Pantaloni.class)) {
-            return valutazioneMagliaOrPantaloni(capoAbbigliamento, meteoDailyMin);
+            return valutazioneMagliaOrPantaloni(capoAbbigliamento,meteoDailyMin);
         } else {
-            return valutazioneScarpe(capoAbbigliamento, meteoDailyMin);
+            return valutazioneScarpe(capoAbbigliamento,meteoDailyMin);
         }
     }
 
@@ -342,18 +342,18 @@ class EvaluatorGA {
      * @param meteoDailyMin informazioni meteorologiche
      * @return punteggio finale scarpe
      */
-    private int valutazioneScarpe(CapoAbbigliamento capoAbbigliamento, MeteoDailyMin meteoDailyMin) {
+    private int valutazioneScarpe(CapoAbbigliamento capoAbbigliamento,MeteoDailyMin meteoDailyMin) {
         int punteggio = 0;
 
         if (!"soleggiato".equalsIgnoreCase(meteoDailyMin.getMeteoStringMin())
                 || ("soleggiato".equalsIgnoreCase(meteoDailyMin.getMeteoStringMin())
                 && meteoDailyMin.getTemperaturaPercepitaMedia() > 20)) {
-            punteggio += valutazioneTipoScarpa((Scarpe) capoAbbigliamento, meteoDailyMin);
+            punteggio += valutazioneTipoScarpa((Scarpe) capoAbbigliamento,meteoDailyMin);
         }
 
-        punteggio += valutazioneTemperatura(capoAbbigliamento, meteoDailyMin);
-        punteggio += valutazioneStagionePrevisione(capoAbbigliamento, meteoDailyMin);
-        punteggio += valutazioneColore(capoAbbigliamento, meteoDailyMin);
+        punteggio += valutazioneTemperatura(capoAbbigliamento,meteoDailyMin);
+        punteggio += valutazioneStagionePrevisione(capoAbbigliamento,meteoDailyMin);
+        punteggio += valutazioneColore(capoAbbigliamento,meteoDailyMin);
 
         if ("pioggia".equalsIgnoreCase(meteoDailyMin.getMeteoStringMin())
                 || "neve".equalsIgnoreCase(meteoDailyMin.getMeteoStringMin())) {
@@ -369,12 +369,12 @@ class EvaluatorGA {
      * @param meteoDailyMin informazioni meteorologiche
      * @return punteggio maglia | pantaloni
      */
-    private int valutazioneMagliaOrPantaloni(CapoAbbigliamento capoAbbigliamento, MeteoDailyMin meteoDailyMin) {
+    private int valutazioneMagliaOrPantaloni(CapoAbbigliamento capoAbbigliamento,MeteoDailyMin meteoDailyMin) {
         int punteggio = 0;
-        punteggio += valutazioneTemperatura(capoAbbigliamento, meteoDailyMin);
-        punteggio += valutazioneColore(capoAbbigliamento, meteoDailyMin);
-        punteggio += valutazioneLunghezza(capoAbbigliamento, meteoDailyMin);
-        punteggio += valutazioneStagionePrevisione(capoAbbigliamento, meteoDailyMin);
+        punteggio += valutazioneTemperatura(capoAbbigliamento,meteoDailyMin);
+        punteggio += valutazioneColore(capoAbbigliamento,meteoDailyMin);
+        punteggio += valutazioneLunghezza(capoAbbigliamento,meteoDailyMin);
+        punteggio += valutazioneStagionePrevisione(capoAbbigliamento,meteoDailyMin);
         return punteggio;
     }
 
@@ -418,7 +418,7 @@ class EvaluatorGA {
      * @param meteoDailyMin informazioni meteorologiche
      * @return punteggio
      */
-    private int valutazioneTemperatura(CapoAbbigliamento capoAbbigliamento, MeteoDailyMin meteoDailyMin) {
+    private int valutazioneTemperatura(CapoAbbigliamento capoAbbigliamento,MeteoDailyMin meteoDailyMin) {
         int temperaturaPercepita = (int) meteoDailyMin.getTemperaturaPercepitaMedia();
         int range = searchRange(temperaturaPercepita);
 
@@ -441,7 +441,7 @@ class EvaluatorGA {
      * @param meteoDailyMin informazioni meteorologiche
      * @return punteggio
      */
-    private int valutazioneColore(CapoAbbigliamento capoAbbigliamento, MeteoDailyMin meteoDailyMin) {
+    private int valutazioneColore(CapoAbbigliamento capoAbbigliamento,MeteoDailyMin meteoDailyMin) {
         int voto;
 
         int i = searchRange((int) meteoDailyMin.getTemperaturaPercepitaMedia());
@@ -467,7 +467,7 @@ class EvaluatorGA {
      * @param meteoDailyMin informazioni meteorologiche
      * @return punteggio maglia | pantaloni
      */
-    private int valutazioneLunghezza(CapoAbbigliamento capoAbbigliamento, MeteoDailyMin meteoDailyMin) {
+    private int valutazioneLunghezza(CapoAbbigliamento capoAbbigliamento,MeteoDailyMin meteoDailyMin) {
         int temperaturaPercepita = (int) meteoDailyMin.getTemperaturaPercepitaMedia();
         int range = searchRange(temperaturaPercepita);
 
@@ -490,7 +490,7 @@ class EvaluatorGA {
      * @param meteoDailyMin informazioni meteorologiche
      * @return punteggio maglia | pantaloni | scarpe
      */
-    private int valutazioneStagionePrevisione(CapoAbbigliamento capoAbbigliamento, MeteoDailyMin meteoDailyMin) {
+    private int valutazioneStagionePrevisione(CapoAbbigliamento capoAbbigliamento,MeteoDailyMin meteoDailyMin) {
         String stagionePrevisione = meteoDailyMin.getStagionePrevisione();
 
         int i = -1;
@@ -531,7 +531,7 @@ class EvaluatorGA {
      * @param meteoDailyMin informazioni meteorologiche
      * @return punteggio
      */
-    private int valutazioneTipoScarpa(Scarpe scarpe, MeteoDailyMin meteoDailyMin) {
+    private int valutazioneTipoScarpa(Scarpe scarpe,MeteoDailyMin meteoDailyMin) {
         return valutazioneTipoScarpa.get(meteoDailyMin.getMeteoStringMin()).get(scarpe.getTipo());
     }
 

@@ -99,11 +99,11 @@ public class MeteoDailyMin {
      */
     @Override
     public String toString() {
-        return "MeteoDailyMin{" +
-                "id=" + id +
-                ", meteo='" + meteo + '\'' +
-                ", temperaturaPercepitaMedia=" + temperaturaPercepitaMedia +
-                ", stagionePrevisione='" + stagionePrevisione + '\'' +
-                '}';
+        return "MeteoDailyMin{"
+                + "id=" + id
+                + ", meteo='" + meteo + '\''
+                + ", temperaturaPercepitaMedia=" + temperaturaPercepitaMedia
+                + ", stagionePrevisione='" + stagionePrevisione + '\''
+                + '}';
     }
 }

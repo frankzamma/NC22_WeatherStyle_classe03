@@ -11,25 +11,25 @@ import java.io.IOException;
  * @author Francesco Giuseppe Zammarrelli
  * La classe Registrazione forwarding servlet.
  */
-@WebServlet(name = "RegistrazioneForwardingServlet", value = "/registrazione-utente")
+@WebServlet(name = "RegistrazioneForwardingServlet",value = "/registrazione-utente")
 public class RegistrazioneForwardingServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
             HttpSession session = request.getSession();
 
             Utente utente = (Utente) session.getAttribute("utente");
 
-            if(utente == null){
+            if (utente == null) {
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/gestioneUtente/utente/registrazione.jsp");
-                dispatcher.forward(request, response);
-            }else{
+                dispatcher.forward(request,response);
+            } else {
                 response.sendRedirect("index.html");
             }
 
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
         response.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
     }
 }

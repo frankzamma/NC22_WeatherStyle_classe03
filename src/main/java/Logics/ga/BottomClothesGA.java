@@ -9,7 +9,7 @@ import java.util.List;
 public class BottomClothesGA{
     private GenericGA genericGA;
 
-    public BottomClothesGA(List<PantaloniLegacy> listaPantaloni, MeteoInformationLegacy meteoInformation) {
+    public BottomClothesGA(List<PantaloniLegacy> listaPantaloni,MeteoInformationLegacy meteoInformation) {
         genericGA = new GenericGA(listaPantaloni,meteoInformation,"pantaloniGA");
     }
 

@@ -16,7 +16,7 @@ public class ShoesML {
                 new RegressionTreeWrapper(pathDataset,false,true,"ScarpeML");
     }
 
-    public List<ScoreCapoAbbigliamentoLegacy> classifyIstances(List<ScarpaLegacy> list, MeteoInformationLegacy meteoInformation, boolean getBestThree) {
+    public List<ScoreCapoAbbigliamentoLegacy> classifyIstances(List<ScarpaLegacy> list,MeteoInformationLegacy meteoInformation,boolean getBestThree) {
         List<ScoreCapoAbbigliamentoLegacy> l = treeWrapper.classifyInstances(list,meteoInformation);
 
         if (getBestThree) {

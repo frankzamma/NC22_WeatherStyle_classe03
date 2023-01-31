@@ -19,7 +19,7 @@ public interface InfoMeteoHourService {
        * @param citta citta per la quale si desidera la previsione
        * @return MeteoHours con informazioni meteo della Citta <em>citta</em> per il giorno day
        */
-      MeteoHours getInfoMeteoHourByDay(LocalDate day, Citta citta);
+      MeteoHours getInfoMeteoHourByDay(LocalDate day,Citta citta);
 
       /**
        * Restituisce le informazioni meteo orarie della Citta <em>citta</em> dal giorno init al giorno end.
@@ -29,5 +29,5 @@ public interface InfoMeteoHourService {
        * @param citta citta per la quale si desidera la previsione
        * @return List<MeteoHours> meteo della Citta <em>citta</em> dal giorno init al giorno end.
        */
-      List<MeteoHours> getInfoMeteoHourByRangeOfDays(LocalDate init, LocalDate end, Citta citta);
+      List<MeteoHours> getInfoMeteoHourByRangeOfDays(LocalDate init,LocalDate end,Citta citta);
 }

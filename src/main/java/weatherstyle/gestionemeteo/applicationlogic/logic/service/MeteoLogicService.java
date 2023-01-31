@@ -35,45 +35,45 @@ public class MeteoLogicService implements MeteoLogicInterface{
      * @param meteoDailyService meteo daily service
      * @param meteoHourService  meteo hour service
      */
-    public MeteoLogicService(InfoMeteoDailyService meteoDailyService, InfoMeteoHourService meteoHourService) {
+    public MeteoLogicService(InfoMeteoDailyService meteoDailyService,InfoMeteoHourService meteoHourService) {
         this.meteoDailyService = meteoDailyService;
         this.meteoHourService = meteoHourService;
     }
 
     @Override
     public List<MeteoDaily> getMeteoDaily(Citta citta) {
-       if(citta != null){
-           if(citta.getLat() != null && citta.getLon() != null && citta.getNome() != null){
+       if (citta != null) {
+           if (citta.getLat() != null && citta.getLon() != null && citta.getNome() != null) {
 
                LocalDate date =  LocalDate.now();
                LocalDate end =  date.plusDays(2);
-               List<MeteoDaily> meteoDaily = meteoDailyService.getInfoMeteoDailyByIntervallDay(date, end, citta);
+               List<MeteoDaily> meteoDaily = meteoDailyService.getInfoMeteoDailyByIntervallDay(date,end,citta);
 
                return meteoDaily;
 
-           }else {
+           } else {
                throw new IllegalArgumentException("Citta non ammissibile");
            }
-       }else{
+       } else {
            throw new IllegalArgumentException("Citta non può essere null");
        }
     }
 
     @Override
     public List<MeteoHours> getMeteoHours(Citta citta) {
-        if(citta != null){
-            if(citta.getLat() != null && citta.getLon() != null && citta.getNome() != null){
+        if (citta != null) {
+            if (citta.getLat() != null && citta.getLon() != null && citta.getNome() != null) {
 
             LocalDate date =  LocalDate.now();
             LocalDate end =  date.plusDays(2);
-            List<MeteoHours> meteo = meteoHourService.getInfoMeteoHourByRangeOfDays(date, end, citta);
+            List<MeteoHours> meteo = meteoHourService.getInfoMeteoHourByRangeOfDays(date,end,citta);
 
             return meteo;
 
-        }else {
+        } else {
             throw new IllegalArgumentException("Citta non ammissibile");
         }
-    }else{
+    } else {
         throw new IllegalArgumentException("Citta non può essere null");
     }
     }

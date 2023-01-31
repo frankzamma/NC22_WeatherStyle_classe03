@@ -36,10 +36,11 @@ public class RichiestaPromozioneDAOImpl implements RichiestaPromozioneDAOInterfa
                 richiestaPromozione.setEsperienze(resultSet.getString("esperienze"));
                 richiestaPromozione.setStato(resultSet.getString("stato"));
                 richiestaPromozione.setUtente(utenteDAO.doRetrieveUtenteByID(resultSet.getInt("IDutente")));
-                if(!richiestaPromozione.getStato().equals("in attesa"))
-                    richiestaPromozione.setAdmin(adminDAO.doRetrieveAdminById(resultSet.getInt("IDadmin")));
-                else
-                    richiestaPromozione.setAdmin(null);
+            if (!"in attesa".equals(richiestaPromozione.getStato())) {
+                richiestaPromozione.setAdmin(adminDAO.doRetrieveAdminById(resultSet.getInt("IDadmin")));
+            } else {
+                richiestaPromozione.setAdmin(null);
+            }
                 return richiestaPromozione;
         } catch (SQLException sql) {
             throw new RuntimeException();
@@ -105,7 +106,7 @@ public class RichiestaPromozioneDAOImpl implements RichiestaPromozioneDAOInterfa
             }
 
             richiestaPromozione.setAdmin(admin);
-            if (nuovoStato.equals("approvata")) {
+            if ("approvata".equals(nuovoStato)) {
                 UtenteDAOInterface utenteDAO = new UtenteDAOImpl();
                 utenteDAO.doUpdateUtenteToEcologista(richiestaPromozione.getUtente());
             }
@@ -146,8 +147,9 @@ public class RichiestaPromozioneDAOImpl implements RichiestaPromozioneDAOInterfa
                     "SELECT * FROM RichiestaPromozione WHERE IDutente=?");
             prepareStatement.setInt(1,idUtente);
             ResultSet resultSet = prepareStatement.executeQuery();
-            if(resultSet.next())
+            if (resultSet.next()) {
                 richiestaPromozione = creaRichiestaPromozione(resultSet);
+            }
 
         } catch (SQLException sql) {
             throw new RuntimeException();
@@ -165,8 +167,9 @@ public class RichiestaPromozioneDAOImpl implements RichiestaPromozioneDAOInterfa
                     "SELECT * FROM RichiestaPromozione WHERE ID=?");
             prepareStatement.setInt(1,idRichiestaPromozione);
             ResultSet resultSet = prepareStatement.executeQuery();
-            if (resultSet.next())
+            if (resultSet.next()) {
                 richiestaPromozione = creaRichiestaPromozione(resultSet);
+            }
 
         } catch (SQLException sql) {
             throw new RuntimeException();

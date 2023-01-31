@@ -58,9 +58,9 @@ public class RichiestaSuggerimentoServlet extends HttpServlet {
 
         // prende l'utente dalla sessione
         HttpSession session = request.getSession(false);
-        if (session == null)
+        if (session == null) {
             response.sendRedirect("index.html");
-        else {
+        } else {
             // Si prende l'Utente dalla sessione
             Utente utente = (Utente) session.getAttribute("utente");
 
@@ -94,16 +94,16 @@ public class RichiestaSuggerimentoServlet extends HttpServlet {
             //  Si ottengono le migliori maglie, pantaloni e scarpe con i rispettivi punteggi
 
             SuggerimentoLogicImpl suggerimentoLogicImpl = new SuggerimentoLogicImpl(
-                    new SuggerimentoDAOImpl(), new OutfitDAOImpl());
+                    new SuggerimentoDAOImpl(),new OutfitDAOImpl());
 
             maglieSuggerite = suggerimentoLogicImpl.ottieniSuggerimentiCapi(magliaImplementorAlgorithmML,
-                    listaMaglie, meteoDailyMin);
+                    listaMaglie,meteoDailyMin);
 
             pantaloniSuggeriti = suggerimentoLogicImpl.ottieniSuggerimentiCapi(pantaloniImplementorAlgorithmML,
-                    listaPantaloni, meteoDailyMin);
+                    listaPantaloni,meteoDailyMin);
 
             scarpeSuggerite = suggerimentoLogicImpl.ottieniSuggerimentiCapi(scarpeImplementorAlgorithmML,
-                    listaScarpe, meteoDailyMin);
+                    listaScarpe,meteoDailyMin);
 
             // Si utilizza il design pattern per ottenere un istanza di una implementazione
             // basata su algoritmo genetico
@@ -130,9 +130,9 @@ public class RichiestaSuggerimentoServlet extends HttpServlet {
             */
 
             // salvo nella request i suggerimenti dati dal sistema
-            request.setAttribute("maglieSuggerite", maglieSuggerite);
-            request.setAttribute("pantaloniSuggeriti", pantaloniSuggeriti);
-            request.setAttribute("scarpeSuggerite", scarpeSuggerite);
+            request.setAttribute("maglieSuggerite",maglieSuggerite);
+            request.setAttribute("pantaloniSuggeriti",pantaloniSuggeriti);
+            request.setAttribute("scarpeSuggerite",scarpeSuggerite);
 
             Suggerimento suggerimento = new Suggerimento();
             suggerimento.setUtente(utente);
@@ -141,7 +141,7 @@ public class RichiestaSuggerimentoServlet extends HttpServlet {
             suggerimento.setMeteoDailyMin(meteoDailyMin);
 
             // salvo nella request il suggerimento
-            request.setAttribute("suggerimento", suggerimento);
+            request.setAttribute("suggerimento",suggerimento);
 
             List<String> errorList = new ArrayList<>();
             String errore;
@@ -159,19 +159,18 @@ public class RichiestaSuggerimentoServlet extends HttpServlet {
             }
 
             // salvo nella request gli errori
-            request.setAttribute("errorList", errorList);
+            request.setAttribute("errorList",errorList);
 
-            RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/gestionesuggerimentiia/" +
-                    "visualizzaSuggerimenti.jsp");
-            dispatcher.forward(request, response);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/gestionesuggerimentiia/"
+                    + "visualizzaSuggerimenti.jsp");
+            dispatcher.forward(request,response);
 
         }
     }
 
     @Override
     public void doPost(HttpServletRequest request,HttpServletResponse response) throws IOException, ServletException {
-        doGet(request, response);
+        doGet(request,response);
     }
 
 }
-

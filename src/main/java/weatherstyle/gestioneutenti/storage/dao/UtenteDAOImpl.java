@@ -120,16 +120,16 @@ public class UtenteDAOImpl implements UtenteDAOInterface {
 
     @Override
     public boolean doUpdateUtenteToEcologista(Utente u) {
-        try(Connection con =  ConnectionPool.getConnection()){
-            PreparedStatement statement = con.prepareStatement("INSERT INTO ecologista(IDUtente)" +
-                    "VALUES (?)");
+        try (Connection con =  ConnectionPool.getConnection()) {
+            PreparedStatement statement = con.prepareStatement("INSERT INTO ecologista(IDUtente)"
+                    + "VALUES (?)");
 
             statement.setInt(1,u.getId());
 
             int res =  statement.executeUpdate();
 
             return res == 1;
-        }catch (SQLException e){
+        } catch (SQLException e) {
             throw  new RuntimeException(e);
         }
     }

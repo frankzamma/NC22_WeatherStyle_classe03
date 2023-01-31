@@ -11,7 +11,7 @@ public class MeteoUtils {
      * @param weatherCode the weather code
      * @return the string
      */
-    public static String translateWeatherCode(int weatherCode){
+    public static String translateWeatherCode(int weatherCode) {
         return switch (weatherCode){
             case 0 ->  "Cielo chiaro";
             case 1 -> "Principalmente chiaro";
@@ -51,9 +51,9 @@ public class MeteoUtils {
      * @param weatherCode the weather code
      * @return the string
      */
-    public static String imageFromWeatherCode(int weatherCode){
-        return "./image/meteoImage/"+
-                switch (weatherCode){
+    public static String imageFromWeatherCode(int weatherCode) {
+        return "./image/meteoImage/"
+                + switch (weatherCode){
             case 0, 1 ->  "soleggiato.png";
             case 2, 3 -> "clouds.png";
             case 45, 48 -> "nebbia.png";
@@ -65,5 +65,8 @@ public class MeteoUtils {
             case 71, 77, 73, 75, 85, 86 ->"neve.png";
             default -> throw  new IllegalArgumentException("WeatherCode non ammissibile");
         };
+    }
+
+    private MeteoUtils() {
     }
 }

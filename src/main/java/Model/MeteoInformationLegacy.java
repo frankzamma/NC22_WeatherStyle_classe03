@@ -8,7 +8,7 @@ public class MeteoInformationLegacy {
     public MeteoInformationLegacy() {
     }
 
-    public MeteoInformationLegacy(double temperaturaPercepita, String meteo, String stagionePrevisione) {
+    public MeteoInformationLegacy(double temperaturaPercepita,String meteo,String stagionePrevisione) {
         this.temperaturaPercepita = temperaturaPercepita;
         this.meteo = meteo;
         this.stagionePrevisione = stagionePrevisione;

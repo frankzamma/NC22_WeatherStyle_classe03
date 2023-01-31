@@ -16,9 +16,9 @@ import java.util.List;
 public class RichiestaCittaServlet extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
         String citta = request.getParameter("citta");
-        CittaLogicService cittaLogicService = new CittaLogicImpl(new CittaDAOImpl(), new InfoCittaImpl());
+        CittaLogicService cittaLogicService = new CittaLogicImpl(new CittaDAOImpl(),new InfoCittaImpl());
         List<Citta> cittaList = cittaLogicService.ottieniCittaByName(citta);
         String json = cittaLogicService.ottieniJsonDaCitta(cittaList);
 
@@ -29,7 +29,7 @@ public class RichiestaCittaServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
         response.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
     }
 }

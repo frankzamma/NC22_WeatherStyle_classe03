@@ -49,12 +49,12 @@ public class SuggerimentoDAOImpl implements SuggerimentoDAOInterface{
 
             PreparedStatement preparedStatement = connection.prepareStatement(
                     "INSERT INTO Suggerimento (dataSuggerimento, IDutente, IDcitta, IDoutfit, IDmeteo)"
-                            + "VALUES(?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+                            + "VALUES(?,?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setDate(1,suggerimento.getDate());
-            preparedStatement.setInt(2, suggerimento.getUtente().getId());
-            preparedStatement.setInt(3, suggerimento.getCitta().getId());
-            preparedStatement.setInt(4, suggerimento.getOutfit().getId());
-            preparedStatement.setInt(5, suggerimento.getMeteoDailyMin().getId());
+            preparedStatement.setInt(2,suggerimento.getUtente().getId());
+            preparedStatement.setInt(3,suggerimento.getCitta().getId());
+            preparedStatement.setInt(4,suggerimento.getOutfit().getId());
+            preparedStatement.setInt(5,suggerimento.getMeteoDailyMin().getId());
 
             if (preparedStatement.executeUpdate() != 1) {
                 return false;

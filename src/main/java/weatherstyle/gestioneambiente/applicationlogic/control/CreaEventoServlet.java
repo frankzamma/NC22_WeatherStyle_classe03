@@ -7,16 +7,16 @@ import weatherstyle.gestioneutenti.applicationlogic.logic.beans.Utente;
 
 import java.io.IOException;
 
-@WebServlet(name = "CreaEventoServlet", value = "/CreaEventoServlet")
+@WebServlet(name = "CreaEventoServlet",value = "/CreaEventoServlet")
 public class CreaEventoServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         Utente utente = (Utente)  session.getAttribute("utente");
-        if (utente == null){
+        if (utente == null) {
             response.sendRedirect("index.html");
         }
-        else{
+        else {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/gestioneambiente/creaEvento.jsp");
             dispatcher.forward(request,response);
         }
@@ -24,7 +24,7 @@ public class CreaEventoServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
     }
 }

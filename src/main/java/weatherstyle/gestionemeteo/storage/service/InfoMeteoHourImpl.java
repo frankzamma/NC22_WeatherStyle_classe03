@@ -26,30 +26,30 @@ import java.util.List;
 public class InfoMeteoHourImpl implements InfoMeteoHourService {
 
     @Override
-    public MeteoHours getInfoMeteoHourByDay(LocalDate day, Citta citta) {
-        if(citta != null && citta.getLat() != null && citta.getLon() != null){
-            if(day != null) {
-                try{
-                    URI uri = URI.create("https://api.open-meteo.com/v1/forecast?latitude="+citta.getLat() +
-                            "&longitude="+citta.getLon()+"&hourly=temperature_2m," +
-                            "relativehumidity_2m,precipitation," +
-                            "weathercode,visibility,windspeed_10m" +
-                            "&start_date="+   day.format(DateTimeFormatter.ISO_LOCAL_DATE) +
-                            "&end_date="+   day.format(DateTimeFormatter.ISO_LOCAL_DATE));
+    public MeteoHours getInfoMeteoHourByDay(LocalDate day,Citta citta) {
+        if (citta != null && citta.getLat() != null && citta.getLon() != null) {
+            if (day != null) {
+                try {
+                    URI uri = URI.create("https://api.open-meteo.com/v1/forecast?latitude=" + citta.getLat()
+                            + "&longitude=" + citta.getLon() + "&hourly=temperature_2m,"
+                            + "relativehumidity_2m,precipitation,"
+                            + "weathercode,visibility,windspeed_10m"
+                            + "&start_date=" +   day.format(DateTimeFormatter.ISO_LOCAL_DATE)
+                            + "&end_date=" +   day.format(DateTimeFormatter.ISO_LOCAL_DATE));
 
 
                     HttpRequest request =  HttpRequest.newBuilder()
                             .uri(uri).build();
 
                     HttpClient client  = HttpClient.newHttpClient();
-                    HttpResponse<String> response =  client.send(request, HttpResponse.BodyHandlers.ofString());
+                    HttpResponse<String> response =  client.send(request,HttpResponse.BodyHandlers.ofString());
 
 
                     Gson parser =  new Gson();
 
-                    JsonObject meteoJsonAll =  parser.fromJson(response.body(), JsonObject.class);
+                    JsonObject meteoJsonAll =  parser.fromJson(response.body(),JsonObject.class);
                     JsonObject meteoJson =  meteoJsonAll.getAsJsonObject("hourly");
-                    JsonArray times=  meteoJson.getAsJsonArray("time");
+                    JsonArray times =  meteoJson.getAsJsonArray("time");
                     JsonArray weatherCodes =  meteoJson.get("weathercode").getAsJsonArray();
                     JsonArray temperaturas =  meteoJson.getAsJsonArray("temperature_2m");
                     JsonArray umiditaRelativas =  meteoJson.getAsJsonArray("relativehumidity_2m");
@@ -59,7 +59,7 @@ public class InfoMeteoHourImpl implements InfoMeteoHourService {
                     JsonArray windSpeeds = meteoJson.getAsJsonArray("windspeed_10m");
 
                     List<MeteoHour> list =  new ArrayList<>();
-                    for(int i = 0; i < times.size(); i++){
+                    for (int i = 0; i < times.size(); i++) {
                         MeteoHour meteoHour =  new MeteoHour();
 
                         int weatherCode =  weatherCodes.get(i).getAsInt();
@@ -72,8 +72,8 @@ public class InfoMeteoHourImpl implements InfoMeteoHourService {
                         String date =  times.get(i).getAsString();
 
                         meteoHour.setWeatherCode(weatherCode);
-                        meteoHour.setTime(LocalTime.parse(date, DateTimeFormatter.ISO_DATE_TIME));
-                        meteoHour.setDate(LocalDate.parse(date, DateTimeFormatter.ISO_DATE_TIME));
+                        meteoHour.setTime(LocalTime.parse(date,DateTimeFormatter.ISO_DATE_TIME));
+                        meteoHour.setDate(LocalDate.parse(date,DateTimeFormatter.ISO_DATE_TIME));
                         meteoHour.setTemperatura(temperatura);
                         meteoHour.setUmiditaRelativa(umiditaRelativa);
                         meteoHour.setPrecipitazioni(precipitazioni);
@@ -87,49 +87,49 @@ public class InfoMeteoHourImpl implements InfoMeteoHourService {
 
                     return meteoHours;
 
-                }catch (IllegalArgumentException e){
+                } catch (IllegalArgumentException e) {
                     throw new IllegalArgumentException("Errore nella formulazione della richiesta");
                 } catch (IOException e) {
                     throw new IllegalArgumentException("Problema nell'invio della richiesta");
                 } catch (InterruptedException e) {
                     throw new IllegalArgumentException("Problema di rete");
                 }
-            }else{
+            } else {
                 throw new IllegalArgumentException("Giorno non corretto");
 
             }
-        }else{
+        } else {
             throw new IllegalArgumentException("Citta non corretta");
         }
     }
 
 
     @Override
-    public List<MeteoHours> getInfoMeteoHourByRangeOfDays(LocalDate init, LocalDate end, Citta citta) {
-        if(init != null && end != null && init.isBefore(end)){
-            if(citta != null){
+    public List<MeteoHours> getInfoMeteoHourByRangeOfDays(LocalDate init,LocalDate end,Citta citta) {
+        if (init != null && end != null && init.isBefore(end)) {
+            if (citta != null) {
                 List<LocalDate> localDates = new ArrayList<>();
 
                 localDates.add(init);
 
-                while(!localDates.get(localDates.size() - 1).equals(end)){
+                while (!localDates.get(localDates.size() - 1).equals(end)) {
                     LocalDate tmp =  localDates.get(localDates.size() - 1).plusDays(1);
                     localDates.add(tmp);
                 }
 
                 List<MeteoHours> listMeteo =  new ArrayList<>();
 
-                for (LocalDate date : localDates){
-                    MeteoHours meteoHours =  this.getInfoMeteoHourByDay(date, citta);
+                for (LocalDate date : localDates) {
+                    MeteoHours meteoHours =  this.getInfoMeteoHourByDay(date,citta);
                     listMeteo.add(meteoHours);
                 }
 
                 return listMeteo;
 
-            }else {
+            } else {
                 throw new IllegalArgumentException("Citta non può essere null");
             }
-        }else{
+        } else {
             throw new IllegalArgumentException("Init e End non corrette");
         }
     }

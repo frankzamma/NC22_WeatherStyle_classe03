@@ -49,11 +49,11 @@ public class StartupServlet extends HttpServlet {
 
         ServletContext context = this.getServletContext();
 
-        context.setAttribute("scarpeGA", scarpeImplementorAlgorithmGA);
+        context.setAttribute("scarpeGA",scarpeImplementorAlgorithmGA);
         context.setAttribute("pantaloniGA",pantaloniImplementorAlgorithmGA);
         context.setAttribute("magliaGA",magliaImplementorAlgorithmGA);
 
-        context.setAttribute("scarpeML", scarpeImplementorAlgorithmML);
+        context.setAttribute("scarpeML",scarpeImplementorAlgorithmML);
         context.setAttribute("pantaloniML",pantaloniImplementorAlgorithmML);
         context.setAttribute("magliaML",magliaImplementorAlgorithmML);
 
@@ -63,7 +63,7 @@ public class StartupServlet extends HttpServlet {
         citta.setLat("41.8933203");
         citta.setLon("12.4829321");
 
-        context.setAttribute("citta_default", citta);
+        context.setAttribute("citta_default",citta);
     }
 
     @Override

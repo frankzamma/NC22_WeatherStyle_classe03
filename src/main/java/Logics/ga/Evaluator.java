@@ -302,7 +302,7 @@ public class Evaluator {
 
     }
 
-    public int valuta(CapoAbbigliamentoLegacy capoAbbigliamento, MeteoInformationLegacy meteoInformation) {
+    public int valuta(CapoAbbigliamentoLegacy capoAbbigliamento,MeteoInformationLegacy meteoInformation) {
         if (capoAbbigliamento.getClass().equals(MagliaLegacy.class) || capoAbbigliamento.getClass().equals(PantaloniLegacy.class)) {
             return valutazioneTopOrBottom(capoAbbigliamento,meteoInformation);
         } else {
@@ -310,7 +310,7 @@ public class Evaluator {
         }
     }
 
-    private int valutazioneShoes(CapoAbbigliamentoLegacy capoAbbigliamento, MeteoInformationLegacy meteoInformation) {
+    private int valutazioneShoes(CapoAbbigliamentoLegacy capoAbbigliamento,MeteoInformationLegacy meteoInformation) {
         int punteggio = 0;
         if (!"soleggiato".equalsIgnoreCase(meteoInformation.getMeteo())
                 || ("soleggiato".equalsIgnoreCase(meteoInformation.getMeteo()) && meteoInformation.getTemperaturaPercepita() > 20)) {
@@ -325,7 +325,7 @@ public class Evaluator {
         return punteggio;
     }
 
-    private int valutazioneTopOrBottom(CapoAbbigliamentoLegacy capoAbbigliamento, MeteoInformationLegacy meteoInformation) {
+    private int valutazioneTopOrBottom(CapoAbbigliamentoLegacy capoAbbigliamento,MeteoInformationLegacy meteoInformation) {
         int punteggio = 0;
         punteggio += valutazioneTemperatura(capoAbbigliamento,meteoInformation);
         punteggio += valutazioneColore(capoAbbigliamento,meteoInformation);
@@ -362,7 +362,7 @@ public class Evaluator {
         return range;
     }
 
-    private int valutazioneTemperatura(CapoAbbigliamentoLegacy capoAbbigliamento, MeteoInformationLegacy meteoInformation) {
+    private int valutazioneTemperatura(CapoAbbigliamentoLegacy capoAbbigliamento,MeteoInformationLegacy meteoInformation) {
         /* Valutazione della maglia inserita dall'utente sulla base delle regole descritte su Drive */
         int temperaturaPercepita = (int) meteoInformation.getTemperaturaPercepita();
         int range = searchRange(temperaturaPercepita);
@@ -386,7 +386,7 @@ public class Evaluator {
         return  voto;
     }
 
-    private int valutazioneColore(CapoAbbigliamentoLegacy capoAbbigliamento, MeteoInformationLegacy meteoInformation) {
+    private int valutazioneColore(CapoAbbigliamentoLegacy capoAbbigliamento,MeteoInformationLegacy meteoInformation) {
         int voto;
 
         int i = searchRange((int) meteoInformation.getTemperaturaPercepita());
@@ -402,7 +402,7 @@ public class Evaluator {
         return voto;
     }
 
-    private int valutazioneLunghezza(CapoAbbigliamentoLegacy capoAbbigliamento, MeteoInformationLegacy meteoInformation) {
+    private int valutazioneLunghezza(CapoAbbigliamentoLegacy capoAbbigliamento,MeteoInformationLegacy meteoInformation) {
         int temperaturaPercepita = (int) meteoInformation.getTemperaturaPercepita();
         int range = searchRange(temperaturaPercepita);
         if (capoAbbigliamento.getClass().equals(MagliaLegacy.class)) {
@@ -419,7 +419,7 @@ public class Evaluator {
             return 0;
     }
 
-    private int valutazioneStagione(CapoAbbigliamentoLegacy capoAbbigliamento, MeteoInformationLegacy meteoInformation) {
+    private int valutazioneStagione(CapoAbbigliamentoLegacy capoAbbigliamento,MeteoInformationLegacy meteoInformation) {
         String stagionePrevisione = meteoInformation.getStagionePrevisione();
         int i = -1;
         switch (stagionePrevisione) {
@@ -435,7 +435,7 @@ public class Evaluator {
         return  stagionalita.get(i).get(capoAbbigliamento.getStagione());
     }
 
-    private int valutazionePioggia(ScarpaLegacy scarpa, MeteoInformationLegacy meteoInformation) {
+    private int valutazionePioggia(ScarpaLegacy scarpa,MeteoInformationLegacy meteoInformation) {
         if (scarpa.getAntiscivolo() && scarpa.getImpermeabile()) {
             return 5;
         } else if (scarpa.getAntiscivolo()) {
@@ -447,7 +447,7 @@ public class Evaluator {
         }
     }
 
-    private int valutazioneTipo(ScarpaLegacy scarpa, MeteoInformationLegacy meteoInformation) {
+    private int valutazioneTipo(ScarpaLegacy scarpa,MeteoInformationLegacy meteoInformation) {
         return valutazioneTypeShoes.get(meteoInformation.getMeteo()).get(scarpa.getTipo());
     }
 

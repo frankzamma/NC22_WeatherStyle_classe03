@@ -24,14 +24,14 @@ public class SalvaSuggerimentoTest {
     private static OutfitDAOImpl outfitDAO;
 
     @BeforeAll
-    public static void init(){
+    public static void init() {
         suggerimentoDAO = Mockito.mock(SuggerimentoDAOImpl.class);
         outfitDAO = Mockito.mock(OutfitDAOImpl.class);
-        suggerimentoLogicService = new SuggerimentoLogicImpl(suggerimentoDAO, outfitDAO);
+        suggerimentoLogicService = new SuggerimentoLogicImpl(suggerimentoDAO,outfitDAO);
     }
 
     @Test
-    public void magliaNotSelected(){
+    public void magliaNotSelected() {
         Suggerimento suggerimento = new Suggerimento();
         suggerimento.setCitta(new Citta());
         suggerimento.setOutfit(new Outfit());
@@ -50,11 +50,11 @@ public class SalvaSuggerimentoTest {
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class,
                 () -> suggerimentoLogicService.salvaSuggerimento(suggerimento));
 
-        assertEquals("Outfit non contiene maglia", e.getMessage());
+        assertEquals("Outfit non contiene maglia",e.getMessage());
     }
 
     @Test
-    public void pantaloniNotSelected(){
+    public void pantaloniNotSelected() {
         Suggerimento suggerimento = new Suggerimento();
         suggerimento.setCitta(new Citta());
         suggerimento.setOutfit(new Outfit());
@@ -73,11 +73,11 @@ public class SalvaSuggerimentoTest {
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class,
                 () -> suggerimentoLogicService.salvaSuggerimento(suggerimento));
 
-        assertEquals("Outfit non contiene pantaloni", e.getMessage());
+        assertEquals("Outfit non contiene pantaloni",e.getMessage());
     }
 
     @Test
-    public void scarpeNotSelected(){
+    public void scarpeNotSelected() {
         Suggerimento suggerimento = new Suggerimento();
         suggerimento.setCitta(new Citta());
         suggerimento.setOutfit(new Outfit());
@@ -96,11 +96,11 @@ public class SalvaSuggerimentoTest {
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class,
                 () -> suggerimentoLogicService.salvaSuggerimento(suggerimento));
 
-        assertEquals("Outfit non contiene scarpe", e.getMessage());
+        assertEquals("Outfit non contiene scarpe",e.getMessage());
     }
 
     @Test
-    public void nameOutfitEmpty(){
+    public void nameOutfitEmpty() {
         Suggerimento suggerimento = new Suggerimento();
         suggerimento.setCitta(new Citta());
         suggerimento.setOutfit(new Outfit());
@@ -120,11 +120,11 @@ public class SalvaSuggerimentoTest {
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class,
                 () -> suggerimentoLogicService.salvaSuggerimento(suggerimento));
 
-        assertEquals("Outfit lunghezza nome deve essere tra 1 e 30 caratteri", e.getMessage());
+        assertEquals("Outfit lunghezza nome deve essere tra 1 e 30 caratteri",e.getMessage());
     }
 
     @Test
-    public void nameOutfitNotValid(){
+    public void nameOutfitNotValid() {
         Suggerimento suggerimento = new Suggerimento();
         suggerimento.setCitta(new Citta());
         suggerimento.setOutfit(new Outfit());
@@ -144,11 +144,11 @@ public class SalvaSuggerimentoTest {
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class,
                 () -> suggerimentoLogicService.salvaSuggerimento(suggerimento));
 
-        assertEquals("Outfit lunghezza nome deve essere tra 1 e 30 caratteri", e.getMessage());
+        assertEquals("Outfit lunghezza nome deve essere tra 1 e 30 caratteri",e.getMessage());
     }
 
     @Test
-    public void salvaSuggerimentiOK(){
+    public void salvaSuggerimentiOK() {
         Suggerimento suggerimento = new Suggerimento();
         suggerimento.setCitta(new Citta());
         suggerimento.setOutfit(new Outfit());

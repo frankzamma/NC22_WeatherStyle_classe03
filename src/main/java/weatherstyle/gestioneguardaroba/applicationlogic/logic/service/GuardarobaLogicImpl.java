@@ -29,26 +29,26 @@ public class GuardarobaLogicImpl implements GuardarobaLogicInterface {
     /**
      * Lista in cui vengono elencati tutti i valori che puà assumere l'attributo <code>colore</code>.
      */
-    List<String> colori = Arrays.asList("chiaro", "scuro", "colorato");
+    List<String> colori = Arrays.asList("chiaro","scuro","colorato");
     /**
      * Lista in cui vengono elencati tutti i valori che puà assumere l'attributo <code>stagione</code>.
      */
-    List<String> stagioni = Arrays.asList("inverno", "estate", "autunno", "primavera", "autunno_inverno", "primavera_estate", "all");
+    List<String> stagioni = Arrays.asList("inverno","estate","autunno","primavera","autunno_inverno","primavera_estate","all");
     /**
      * Lista in cui vengono elencati tutti i valori che puà assumere l'attributo <code>materiale</code>.
      */
-    List<String> materiali = Arrays.asList("cotone", "poliestere", "lana", "velluto", "tweed", "raso", "seta", "lino", "cashmere");
+    List<String> materiali = Arrays.asList("cotone","poliestere","lana","velluto","tweed","raso","seta","lino","cashmere");
     /**
      * Lista in cui vengono elencati tutti i valori che puà assumere l'attributo <code>tipo</code> per le scarpe .
      */
-    List<String> tipiScarpe = Arrays.asList("stivaletto alla caviglia", "scarpa da ginnastica", "scarpa classica", "scarpe con tacchi", "scarpe aperte", "anfibi", "stivali");
+    List<String> tipiScarpe = Arrays.asList("stivaletto alla caviglia","scarpa da ginnastica","scarpa classica","scarpe con tacchi","scarpe aperte","anfibi","stivali");
 
     /**
      * Costruttore.
      * @param capoAbbigliamentoDAO gestisce i capi d'abbigliamento nel database.
      * @param guardarobaDAO getisce il guardaroba nel database.
      */
-    public GuardarobaLogicImpl(CapoAbbigliamentoDAOImpl capoAbbigliamentoDAO, GuardarobaDAOImpl guardarobaDAO) {
+    public GuardarobaLogicImpl(CapoAbbigliamentoDAOImpl capoAbbigliamentoDAO,GuardarobaDAOImpl guardarobaDAO) {
         this.capoDAO = capoAbbigliamentoDAO;
         this.guardarobaDAO = guardarobaDAO;
     }
@@ -56,50 +56,53 @@ public class GuardarobaLogicImpl implements GuardarobaLogicInterface {
     /**
      * Costruttore vuoto.
      */
-    public GuardarobaLogicImpl (){
+    public GuardarobaLogicImpl() {
 
     }
 
     @Override
-    public boolean salvaMaglia(Maglia m, int idGuardaroba) throws ErrorParameterException {
-        try{
+    public boolean salvaMaglia(Maglia m,int idGuardaroba) throws ErrorParameterException {
+        try {
 
             controlliMaglia(m);
-            capoDAO.doSaveMaglia(m, idGuardaroba);
-        }catch (ErrorParameterException e){
+            capoDAO.doSaveMaglia(m,idGuardaroba);
+        } catch (ErrorParameterException e) {
             List<String> errorPar = e.getErrorParameter();
 
-            if (!errorPar.isEmpty())
+            if (!errorPar.isEmpty()) {
                 throw new ErrorParameterException(errorPar);
+            }
         }
         return true;
     }
 
     @Override
-    public boolean salvaPantaloni(Pantaloni p, int idGuardaroba) throws ErrorParameterException {
-        try{
+    public boolean salvaPantaloni(Pantaloni p,int idGuardaroba) throws ErrorParameterException {
+        try {
             controlliPantaloni(p);
-            capoDAO.doSavePantaloni(p, idGuardaroba);
-        }catch (ErrorParameterException e){
+            capoDAO.doSavePantaloni(p,idGuardaroba);
+        } catch (ErrorParameterException e) {
             List<String> errorPar = e.getErrorParameter();
 
-            if (!errorPar.isEmpty())
+            if (!errorPar.isEmpty()) {
                 throw new ErrorParameterException(errorPar);
+            }
         }
 
         return true;
     }
 
     @Override
-    public boolean salvaScarpe(Scarpe s, int idGuardaroba) throws ErrorParameterException{
-        try{
+    public boolean salvaScarpe(Scarpe s,int idGuardaroba) throws ErrorParameterException {
+        try {
             controlliScarpe(s);
-            capoDAO.doSaveScarpe(s, idGuardaroba);
-        }catch (ErrorParameterException e){
+            capoDAO.doSaveScarpe(s,idGuardaroba);
+        } catch (ErrorParameterException e) {
             List<String> errorPar = e.getErrorParameter();
 
-            if (!errorPar.isEmpty())
+            if (!errorPar.isEmpty()) {
                 throw new ErrorParameterException(errorPar);
+            }
         }
         return true;
     }
@@ -153,9 +156,9 @@ public class GuardarobaLogicImpl implements GuardarobaLogicInterface {
 
         int numeroCapi = guardarobaDAO.doRetrieveNumeroCapi(idUtente);
 
-        g.setNumeroCapi(numeroCapi+1);
+        g.setNumeroCapi(numeroCapi + 1);
 
-        return guardarobaDAO.doSaveNumeroCapi(idUtente, g.getNumeroCapi());
+        return guardarobaDAO.doSaveNumeroCapi(idUtente,g.getNumeroCapi());
     }
 
     /**
@@ -163,33 +166,36 @@ public class GuardarobaLogicImpl implements GuardarobaLogicInterface {
      * @param m è la maglia che bisogna controllare.
      * @throws ErrorParameterException
      */
-    public void controlliMaglia (Maglia m) throws ErrorParameterException{
+    public void controlliMaglia(Maglia m) throws ErrorParameterException {
         List<String> errorParameter =  new ArrayList<>();
 
-        if ((m.getNome()==null) || ((m.getNome().length()>255) || (m.getNome().length()<=0))){
+        if ((m.getNome() == null) || ((m.getNome().length() > 255) || (m.getNome().length() <= 0))) {
             errorParameter.add("Errore nel nome");
         }
 
-        if ((m.getColore()==null) || (!colori.contains(m.getColore()))){
+        if ((m.getColore() == null) || (!colori.contains(m.getColore()))) {
             errorParameter.add("Errore nel colore");
         }
 
-        if ((m.getStagione()==null) || (!stagioni.contains(m.getStagione()))){
+        if ((m.getStagione() == null) || (!stagioni.contains(m.getStagione()))) {
             errorParameter.add("Errore nella stagione");
         }
 
-        if(m.getDirImmagine()==null){
+        if (m.getDirImmagine() == null) {
             errorParameter.add("Errore nella directory immagine");
         }
 
-        if ((m.getLunghezzaManica()==null) || ((!m.getLunghezzaManica().equals("lunga")) && (!m.getLunghezzaManica().equals("corta"))))
+        if ((m.getLunghezzaManica() == null) || ((!"lunga".equals(m.getLunghezzaManica())) && (!"corta".equals(m.getLunghezzaManica())))) {
             errorParameter.add("Errore lunghezza manica");
+        }
 
-        if ((m.getMateriale()==null) || (!materiali.contains(m.getMateriale())))
+        if ((m.getMateriale() == null) || (!materiali.contains(m.getMateriale()))) {
             errorParameter.add("Errore materiale");
+        }
 
-        if (!errorParameter.isEmpty())
+        if (!errorParameter.isEmpty()) {
             throw new ErrorParameterException(errorParameter);
+        }
     }
 
     /**
@@ -197,35 +203,36 @@ public class GuardarobaLogicImpl implements GuardarobaLogicInterface {
      * @param p è il paio di pantaloni che bisogna verificare.
      * @throws ErrorParameterException
      */
-    public void controlliPantaloni (Pantaloni p) throws ErrorParameterException{
+    public void controlliPantaloni(Pantaloni p) throws ErrorParameterException {
         List<String> errorParameter =  new ArrayList<>();
 
-        if ((p.getNome()==null) || ((p.getNome().length()>255) || (p.getNome().length()<=0))){
+        if ((p.getNome() == null) || ((p.getNome().length() > 255) || (p.getNome().length() <= 0))) {
             errorParameter.add("Errore nel nome");
         }
 
-        if ((p.getColore()==null) || (!colori.contains(p.getColore()))){
+        if ((p.getColore() == null) || (!colori.contains(p.getColore()))) {
             errorParameter.add("Errore nel colore");
         }
 
-        if ((p.getStagione()==null) || (!stagioni.contains(p.getStagione()))){
+        if ((p.getStagione() == null) || (!stagioni.contains(p.getStagione()))) {
             errorParameter.add("Errore nella stagione");
         }
 
-        if(p.getDirImmagine()==null){
+        if (p.getDirImmagine() == null) {
             errorParameter.add("Errore nella directory immagine");
         }
 
-        if ((p.getLunghezza()==null) || ((!p.getLunghezza().equals("lunga")) && (!p.getLunghezza().equals("corta")))){
+        if ((p.getLunghezza() == null) || ((!"lunga".equals(p.getLunghezza())) && (!"corta".equals(p.getLunghezza())))) {
             errorParameter.add("Errore lunghezza");
         }
 
-        if ((p.getMateriale()==null) || (!materiali.contains(p.getMateriale()))){
+        if ((p.getMateriale() == null) || (!materiali.contains(p.getMateriale()))) {
             errorParameter.add("Errore materiale");
         }
 
-        if (!errorParameter.isEmpty())
+        if (!errorParameter.isEmpty()) {
             throw new ErrorParameterException(errorParameter);
+        }
     }
 
     /**
@@ -233,35 +240,39 @@ public class GuardarobaLogicImpl implements GuardarobaLogicInterface {
      * @param s è il paio di scarpe da verificare.
      * @throws ErrorParameterException
      */
-    public void controlliScarpe (Scarpe s) throws ErrorParameterException{
+    public void controlliScarpe(Scarpe s) throws ErrorParameterException {
         List<String> errorParameter =  new ArrayList<>();
 
-        if ((s.getNome()==null) || ((s.getNome().length()>255) || (s.getNome().length()<=0))){
+        if ((s.getNome() == null) || ((s.getNome().length() > 255) || (s.getNome().length() <= 0))) {
             errorParameter.add("Errore nel nome");
         }
 
-        if ((s.getColore()==null) || (!colori.contains(s.getColore()))){
+        if ((s.getColore() == null) || (!colori.contains(s.getColore()))) {
             errorParameter.add("Errore nel colore");
         }
 
-        if ((s.getStagione()==null) || (!stagioni.contains(s.getStagione()))){
+        if ((s.getStagione() == null) || (!stagioni.contains(s.getStagione()))) {
             errorParameter.add("Errore nella stagione");
         }
 
-        if(s.getDirImmagine()==null){
+        if (s.getDirImmagine() == null) {
             errorParameter.add("Errore nella directory immagine");
         }
 
-        if ((s.getTipo()==null) || (!tipiScarpe.contains(s.getTipo())))
+        if ((s.getTipo() == null) || (!tipiScarpe.contains(s.getTipo()))) {
             errorParameter.add("Errore nel tipo di scarpe");
+        }
 
-        if ((s.isAntiscivolo()) && !(s.isAntiscivolo()))
+        if ((s.isAntiscivolo()) && !(s.isAntiscivolo())) {
             errorParameter.add("Errore nell'attributo antiscivolo");
+        }
 
-        if ((s.isImpermeabile()) && !(s.isImpermeabile()))
+        if ((s.isImpermeabile()) && !(s.isImpermeabile())) {
             errorParameter.add("Errore nell'attributo impermeabile");
+        }
 
-        if (!errorParameter.isEmpty())
+        if (!errorParameter.isEmpty()) {
             throw new ErrorParameterException(errorParameter);
+        }
     }
 }
