@@ -42,120 +42,128 @@ public class InserisciCapoServlet extends HttpServlet {
             String tipoCapo = request.getParameter("tipologia");
             if ((tipoCapo==null) || (tipoCapo.equals(""))){
                 request.setAttribute("message", "Selezionare un tipo di capo d'abbigliamento");
-                RequestDispatcher dispatcher = request.getRequestDispatcher("loadCapoAbbigliamento.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher( "/WEB-INF/gestioneguardaroba/loadCapoAbbigliamento.jsp");
                 dispatcher.forward(request,response);
-            }
-
-            String nomeCapo = request.getParameter("nomeCapo");
-
-            String colore = request.getParameter("colore");
-            String stagione = request.getParameter("stagione");
-
-            String manica = null;
-            String materialeM = null;
-            if ("maglia".equals(tipoCapo)) {
-                materialeM = request.getParameter("materiale");
-                manica = request.getParameter("manica");
-            }
-
-            String materialeP = null;
-            String lunghezza = null;
-            if ("pantaloni".equals(tipoCapo)) {
-                materialeP= request.getParameter("materiale");
-                lunghezza = request.getParameter("lungPantalone");
-            }
-
-            String tipo = null;
-            boolean scivol = false;
-            boolean imper = false;
-            if ("scarpe".equals(tipoCapo)) {
-                tipo = request.getParameter("tipoScarpa");
-                String scivoloso = request.getParameter("scivoloso");
-                if ("scivsi".equals(scivoloso))
-                    scivol = true;
-
-                String impermeabile = request.getParameter("impermeabile");
-                if ("impsi".equals(impermeabile))
-                    imper = true;
-
-            }
-
-            String[] tmp = {"jpg", "png", "jpeg"};
-            List<String> extensions = Arrays.asList(tmp);
-            Part foto = request.getPart("foto");
-            String fileName = foto.getSubmittedFileName();
-            String extension = fileName.substring(fileName.lastIndexOf(".") + 1);
-
-            if (!extensions.contains(extension)){
-                request.setAttribute("message", "Errore formato immagine");
-                RequestDispatcher dispatcher = request.getRequestDispatcher("loadCapoAbbigliamento.jsp");
-                dispatcher.forward(request,response);
-
             }else{
-                String path = request.getServletContext().getRealPath("")  +"images";
+                String nomeCapo = request.getParameter("nomeCapo");
 
-                File pathNew = new File(path);
+                String colore = request.getParameter("colore");
+                String stagione = request.getParameter("stagione");
 
-                //creo la cartella
-                if (!pathNew.exists()) {
-                    pathNew.mkdir();
+                String manica = null;
+                String materialeM = null;
+                if ("maglia".equals(tipoCapo)) {
+                    materialeM = request.getParameter("materiale");
+                    manica = request.getParameter("manica");
                 }
 
-                int id = u.getId();
-
-                String userPath =  path + File.separator+ id;
-
-                File userPathFile =  new File(userPath);
-
-                if (!userPathFile.exists()) {
-                    userPathFile.mkdir();
+                String materialeP = null;
+                String lunghezza = null;
+                if ("pantaloni".equals(tipoCapo)) {
+                    materialeP= request.getParameter("materiale");
+                    lunghezza = request.getParameter("lungPantalone");
                 }
 
-                String newFileName =  nomeCapo.replace(' ', '_') + tipoCapo + '.' +extension;
+                String tipo = null;
+                boolean scivol = false;
+                boolean imper = false;
+                if ("scarpe".equals(tipoCapo)) {
+                    tipo = request.getParameter("tipoScarpa");
+                    String scivoloso = request.getParameter("scivoloso");
+                    if ("scivsi".equals(scivoloso))
+                        scivol = true;
 
-                String extendendPath =  userPath + File.separator + newFileName;
-                System.out.println(extendendPath);
-                foto.write(extendendPath);
+                    String impermeabile = request.getParameter("impermeabile");
+                    if ("impsi".equals(impermeabile))
+                        imper = true;
 
-                if ("maglia".equals(tipoCapo)){
-                    Maglia m = new Maglia(nomeCapo, "images/" + id + File.separator + newFileName, stagione,colore, manica, materialeM);
-                    try {
-                        service.salvaMaglia(m, u.getId());
-                    } catch (ErrorParameterException e) {
-                        errorService = e.getErrorParameter();
-                    }
-                }
-                if ("pantaloni".equals(tipoCapo)){
-                    Pantaloni p = new Pantaloni(nomeCapo, "images/" + id + File.separator + newFileName,
-                            stagione, colore, lunghezza, materialeP);
-                    try {
-                        service.salvaPantaloni(p, u.getId());
-                    } catch (ErrorParameterException e) {
-                        errorService = e.getErrorParameter();
-                    }
-                }
-                if ("scarpe".equals(tipoCapo)){
-                    Scarpe s = new Scarpe(nomeCapo, "images/" + id + File.separator +  newFileName, stagione, colore, tipo, scivol, imper);
-                    try {
-                        service.salvaScarpe(s, u.getId());
-                    } catch (ErrorParameterException e) {
-                        errorService = e.getErrorParameter();
-                    }
                 }
 
-                if (errorService.isEmpty()) {
-                    service.aggiornaNumeroCapi(u.getId());
-                    address = "/WEB-INF/gestioneguardaroba/inserimentoResult.jsp";
-                    request.setAttribute("message", "L'inserimento è andato a buon fine");
+                String[] tmp = {"jpg", "png", "jpeg"};
+                List<String> extensions = Arrays.asList(tmp);
+                Part foto = request.getPart("foto");
+                String fileName = foto.getSubmittedFileName();
+                String extension = fileName.substring(fileName.lastIndexOf(".") + 1);
+                if (!extensions.contains(extension)){
+                    request.setAttribute("message", "Errore formato immagine");
+                    RequestDispatcher dispatcher = request.getRequestDispatcher( "/WEB-INF/gestioneguardaroba/loadCapoAbbigliamento.jsp");
+                    dispatcher.forward(request,response);
+
                 }else{
-                    request.setAttribute("errorListService", errorService);
-                    address = "/WEB-INF/gestioneguardaroba/loadCapoAbbigliamento.jsp";
+                    String path = request.getServletContext().getRealPath("")  +"images";
+
+                    File pathNew = new File(path);
+
+                    //creo la cartella
+                    if (!pathNew.exists()) {
+                        pathNew.mkdir();
+                    }
+
+                    int id = u.getId();
+
+                    String userPath =  path + File.separator+ id;
+
+                    File userPathFile =  new File(userPath);
+
+                    if (!userPathFile.exists()) {
+                        userPathFile.mkdir();
+                    }
+
+                    String newFileName =  nomeCapo.replace(' ', '_') + tipoCapo + '.' +extension;
+
+                    String extendendPath =  userPath + File.separator + newFileName;
+                    System.out.println(extendendPath);
+                    foto.write(extendendPath);
+
+                    if ("maglia".equals(tipoCapo)){
+                        Maglia m = new Maglia(nomeCapo, "images/" + id + File.separator + newFileName, stagione,colore, manica, materialeM);
+                        try {
+                            service.salvaMaglia(m, u.getId());
+                        } catch (ErrorParameterException e) {
+                            errorService = e.getErrorParameter();
+                        }
+                    }
+                    if ("pantaloni".equals(tipoCapo)){
+                        Pantaloni p = new Pantaloni(nomeCapo, "images/" + id + File.separator + newFileName,
+                                stagione, colore, lunghezza, materialeP);
+                        try {
+                            service.salvaPantaloni(p, u.getId());
+                        } catch (ErrorParameterException e) {
+                            errorService = e.getErrorParameter();
+                        }
+                    }
+                    if ("scarpe".equals(tipoCapo)){
+                        Scarpe s = new Scarpe(nomeCapo, "images/" + id + File.separator +  newFileName, stagione, colore, tipo, scivol, imper);
+                        try {
+                            service.salvaScarpe(s, u.getId());
+                        } catch (ErrorParameterException e) {
+                            errorService = e.getErrorParameter();
+                        }
+                    }
+
+                    if (errorService.isEmpty()) {
+                        service.aggiornaNumeroCapi(u.getId());
+                        address = "/WEB-INF/gestioneguardaroba/inserimentoResult.jsp";
+                        request.setAttribute("message", "L'inserimento è andato a buon fine");
+                        RequestDispatcher dispatcher = request.getRequestDispatcher(address);
+                        dispatcher.forward(request,response);
+                    }else{
+                        request.setAttribute("errorListService", errorService);
+                        address = "/WEB-INF/gestioneguardaroba/loadCapoAbbigliamento.jsp";
+                        RequestDispatcher dispatcher = request.getRequestDispatcher(address);
+                        dispatcher.forward(request,response);
+                    }
                 }
             }
+
+
+
+
         }else{
             address = "/WEB-INF/gestioneUtente/utente/login_utente.jsp";
+            RequestDispatcher dispatcher = request.getRequestDispatcher(address);
+            dispatcher.forward(request,response);
         }
-        RequestDispatcher dispatcher = request.getRequestDispatcher(address);
-        dispatcher.forward(request,response);
+
     }
 }
