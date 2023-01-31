@@ -145,11 +145,11 @@ public class InserisciCapoServlet extends HttpServlet {
 
                 if (errorService.isEmpty()) {
                     service.aggiornaNumeroCapi(u.getId());
-                    address = "inserimentoResult.jsp";
+                    address = "/WEB-INF/gestioneguardaroba/inserimentoResult.jsp";
                     request.setAttribute("message", "L'inserimento è andato a buon fine");
                 }else{
                     request.setAttribute("errorListService", errorService);
-                    address = "loadCapoAbbigliamento.jsp";
+                    address = "/WEB-INF/gestioneguardaroba/loadCapoAbbigliamento.jsp";
                 }
             }
         }else{

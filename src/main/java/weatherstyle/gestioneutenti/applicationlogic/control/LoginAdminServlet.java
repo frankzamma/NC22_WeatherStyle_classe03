@@ -10,6 +10,10 @@ import weatherstyle.gestioneutenti.applicationlogic.logic.service.AdminLogicServ
 
 import java.io.IOException;
 
+/**
+ * @author Francesco Giuseppe Zammarrelli
+ * La classe Login admin servlet.
+ */
 @WebServlet(name = "LoginAdminServlet", value = "/login-admin")
 public class LoginAdminServlet extends HttpServlet {
     @Override

@@ -27,7 +27,7 @@ public class VisualizzaGuardarobaServlet extends HttpServlet {
             request.setAttribute("utente", u);
 
 
-            RequestDispatcher dispatcher = request.getRequestDispatcher("visualizzaGuardaroba.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/gestioneguardaroba/visualizzaGuardaroba.jsp");
             dispatcher.forward(request,response);
         }else{
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/gestioneUtente/utente/login_utente.jsp");

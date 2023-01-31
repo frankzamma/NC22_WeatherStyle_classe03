@@ -8,6 +8,10 @@ import weatherstyle.gestioneutenti.applicationlogic.logic.service.UtenteLogicImp
 
 import java.io.IOException;
 
+/**
+ * @author Francesco Giuseppe Zammarrelli
+ * La classe Login utente servlet.
+ */
 @WebServlet(name = "LoginUtenteServlet", value = "/login-utente")
 public class LoginUtenteServlet extends HttpServlet {
     @Override

@@ -48,7 +48,7 @@ for (CapoAbbigliamento c : all){
     <br>
     <br>
     <button type="button" class="btn btn-light">
-        <a href="controllo-login" style="color: black">Inserisci un capo d'abbigliamento nel guardaroba</a>
+        <a href="inserimento-capo" style="color: black">Inserisci un capo d'abbigliamento nel guardaroba</a>
     </button>
 </div>
 <br>

@@ -6,15 +6,10 @@ import weatherstyle.utils.ConnectionPool;
 import java.sql.*;
 
 /**
- * @author Francesco Giuseppe Zammarrelli
- * Classe per gestire le operazioni con il database relative al meteo
+ * @author Francesco Giuseppe Zammarrelli Classe per gestire le operazioni con il database relative al meteo
  */
 public class MeteoDAOImpl implements MeteoDAOInterface{
 
-    /**
-     *
-     * @throws RuntimeException nel caso di problemi relativi alla connessione con DB
-     */
     @Override
     public MeteoDailyMin doRetrieveMeteoBySuggerimentoID(int idSuggerimento) {
         try (Connection connection =  ConnectionPool.getConnection()) {
@@ -51,10 +46,6 @@ public class MeteoDAOImpl implements MeteoDAOInterface{
         }
     }
 
-    /**
-     *
-     * @throws RuntimeException nel caso di problemi relativi alla connessione con DB
-     */
     @Override
     public boolean doSaveMeteo(MeteoDailyMin meteo) {
         try (Connection connection =  ConnectionPool.getConnection()) {
