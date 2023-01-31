@@ -45,9 +45,6 @@
       <%
         if(u != null){
       %>
-        <li class="nav-item">
-          <a class="nav-link" href="loadCapoAbbigliamento.jsp">Inserisci capo</a>
-        </li>
         <div class="nav-item dropdown" >
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Eventi
