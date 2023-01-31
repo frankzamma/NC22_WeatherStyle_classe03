@@ -19,5 +19,6 @@ public interface SuggerimentoLogicService {
     <T extends CapoAbbigliamento> List<T> ottieniSuggerimentiCapi(ImplementorAlgorithm<T> implementorAlgorithm,
                                                                   List<T> capiAbbigliamento,
                                                                   MeteoDailyMin meteoDailyMin);
+    Outfit ottieniOutfitDaSuggerimento(Suggerimento suggerimento);
 
 }

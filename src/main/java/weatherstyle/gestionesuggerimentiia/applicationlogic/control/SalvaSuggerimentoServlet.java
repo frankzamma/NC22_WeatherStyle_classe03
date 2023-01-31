@@ -106,8 +106,11 @@ public class SalvaSuggerimentoServlet extends HttpServlet {
                 request.getRequestDispatcher("WEB-INF/gestionesuggerimentiia/errorSalvaSuggerimento.jsp").forward(request, response);
             }
 
-            request.setAttribute("suggerimentoSalvato", "Suggerimento salvato correttamente, potrai visionare" +
-                    " gli outfit da te realizzati dalla cronologia dei suggerimenti.");
+            request.setAttribute("suggerimentoSalvato", "Suggerimento salvato correttamente, di seguito l'outfit" +
+                    " da te realizzato.");
+
+            SuggerimentoLogicImpl suggerimentoLogic = new SuggerimentoLogicImpl(new SuggerimentoDAOImpl(), new OutfitDAOImpl());
+            request.setAttribute("outfit", suggerimentoLogic.ottieniOutfitDaSuggerimento(suggerimento));
             request.getRequestDispatcher("WEB-INF/gestionesuggerimentiia/suggerimentoSalvato.jsp").forward(request, response);
         }
     }

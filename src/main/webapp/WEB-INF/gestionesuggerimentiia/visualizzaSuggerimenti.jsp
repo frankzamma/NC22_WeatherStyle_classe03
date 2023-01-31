@@ -1,3 +1,7 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: raffaele aurucci
+--%>
 <%@ page import="weatherstyle.gestionemeteo.applicationlogic.logic.beans.MeteoDailyMin" %>
 <%@ page import="weatherstyle.gestionesuggerimentiia.applicationlogic.logic.beans.Suggerimento" %>
 <%@ page import="weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Maglia" %>
@@ -20,7 +24,6 @@
     MeteoDailyMin meteoDailyMin = suggerimento.getMeteoDailyMin();
     Citta citta = suggerimento.getCitta();
     List<String> errorList = (List<String>) request.getAttribute("errorList");
-    String errorSalvaOutfit = (String) request.getAttribute("errorSalvaOutfit");
 %>
 <%@include file="../navbar.jsp"%>
 <br>
@@ -37,17 +40,6 @@
     </div>
     <% }
     else { %>
-
-        <% if (errorSalvaOutfit != null) { %>
-        <div class="alert alert-danger" role="alert">
-            <ul>
-                <li>
-                    <%=errorSalvaOutfit%>
-                </li>
-            </ul>
-        </div>
-        <% } %>
-
 
     <h3 class="display-6">Ecco i capi d'abbigliamento ritenuti più adatti in base alle seguenti informazioni:</h3>
     <table class="table table-striped table-light">

@@ -15,7 +15,7 @@ public class Suggerimento {
     /**
      * id suggerimento
      */
-    private int id;
+    private Integer id;
 
     /**
      * data del suggerimento
@@ -50,11 +50,11 @@ public class Suggerimento {
     public Suggerimento() {
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

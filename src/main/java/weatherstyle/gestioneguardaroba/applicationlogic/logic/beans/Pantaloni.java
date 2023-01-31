@@ -1,13 +1,20 @@
 package weatherstyle.gestioneguardaroba.applicationlogic.logic.beans;
 
 /**
+ @author Annalaura Miglino
  Un oggetto <code>Pantaloni</code> rappresenta un tipo di capo d'abbigliamento.
  Oltre agli attributi della superclasse <code>CapoAbbigliamento</code>,
  considera anche la lunghezza del pantalone e il materiale di cui è costituita.
  */
 
 public class Pantaloni extends CapoAbbigliamento {
+    /**
+     * Lunghezza del pantalone.
+     */
     private String lunghezza;
+    /**
+     * Materiale di cui è costituito il pantalone.
+     */
     private String materiale;
 
     /**
@@ -19,7 +26,6 @@ public class Pantaloni extends CapoAbbigliamento {
 
     /**
      * Metodo costruttore.
-     * @param id rappresenta l'ID dei pantaloni.
      * @param nome è il nome dato ai pantaloni.
      * @param dirImmagine è la directory in cui è presente
      *                    un'immagine dei pantaloni.
@@ -37,7 +43,6 @@ public class Pantaloni extends CapoAbbigliamento {
     }
 
     /**
-     * Permette di ottenere la lunghezza dei pantaloni.
      * @return la lunghezza dei pantaloni.
      */
     public String getLunghezza() {
@@ -53,7 +58,6 @@ public class Pantaloni extends CapoAbbigliamento {
     }
 
     /**
-     * Restituisce il materiale di cui sono costituiti i pantaloni.
      * @return il materiale di cui sono costituiti i pantaloni.
      */
     public String getMateriale() {

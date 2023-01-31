@@ -1,13 +1,20 @@
 package weatherstyle.gestioneguardaroba.applicationlogic.logic.beans;
 
 /**
+ @author Annalaura Miglino
  Un oggetto <code>Maglia</code> rappresenta un tipo di capo d'abbigliamento.
  Oltre agli attributi della superclasse <code>CapoAbbigliamento</code>,
  considera anche la lunghezza della manica e il materiale di cui è costituita.
  */
 
 public class Maglia extends CapoAbbigliamento {
+    /**
+     * Rappresenta la lunghezza della manica della maglia.
+     */
     private String lunghezzaManica;
+    /**
+     * Rappresenta il materiale di cui è costituita la maglia.
+     */
     private String materiale;
 
     /**
@@ -19,7 +26,6 @@ public class Maglia extends CapoAbbigliamento {
 
     /**
      * Metodo costruttore.
-     * @param id rappresenta l'ID della maglia.
      * @param nome è il nome dato alla maglia.
      * @param dirImmagine è la directory in cui è presente
      *                    un'immagine della maglia.
@@ -37,7 +43,6 @@ public class Maglia extends CapoAbbigliamento {
     }
 
     /**
-     * Permette di ottenere la lunghezza della manica.
      * @return la lunghezza della manica.
      */
     public String getLunghezzaManica() {
@@ -53,7 +58,6 @@ public class Maglia extends CapoAbbigliamento {
     }
 
     /**
-     * Restituisce il materiale di cui è costituita la maglia.
      * @return il materiale di cui è costituita la maglia.
      */
     public String getMateriale() {
