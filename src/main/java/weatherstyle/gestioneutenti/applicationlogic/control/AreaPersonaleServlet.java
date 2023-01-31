@@ -10,6 +10,10 @@ import weatherstyle.gestioneutenti.applicationlogic.logic.beans.Utente;
 
 import java.io.IOException;
 
+/**
+ * @author Francesco Giuseppe Zammarrelli
+ * La classe Area personale servlet.
+ */
 @WebServlet(name = "AreaPersonaleServlet", value = "/AreaPersonaleServlet")
 public class AreaPersonaleServlet extends HttpServlet {
     @Override

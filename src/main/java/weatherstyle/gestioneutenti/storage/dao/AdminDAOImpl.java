@@ -13,6 +13,10 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
 
+/**
+ * @author Francesco Giuseppe Zammarrelli
+ * La classe Admin dao.
+ */
 public class AdminDAOImpl implements AdminDAOInterface{
     @Override
     public Admin doRetrieveAdminByEmailAndPassword(String email,String password) {
@@ -55,6 +59,13 @@ public class AdminDAOImpl implements AdminDAOInterface{
         }
     }
 
+    /**
+     * Crea admin admin.
+     *
+     * @param res the res
+     * @return the admin
+     * @throws SQLException the sql exception
+     */
     public Admin creaAdmin(ResultSet res) throws SQLException {
         Admin admin = new Admin();
 

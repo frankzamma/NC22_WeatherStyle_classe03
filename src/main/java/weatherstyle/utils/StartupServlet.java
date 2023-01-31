@@ -19,6 +19,9 @@ import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.algorithms.Imp
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * La classe Startup servlet.
+ */
 @WebServlet(name = "StartupServlet", value = "/StartupServlet", loadOnStartup = 1)
 public class StartupServlet extends HttpServlet {
     @Override

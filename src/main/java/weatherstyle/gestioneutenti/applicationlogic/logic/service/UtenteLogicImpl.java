@@ -13,15 +13,23 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- *
+ * @author Francesco Giuseppe Zammarrelli La classe Utente logic.
  */
 public class UtenteLogicImpl implements UtenteLogicService {
     private UtenteDAOInterface utenteDAO;
 
+    /**
+     * Instanzia un nuovo UtentelogicImpl.
+     */
     public UtenteLogicImpl() {
         utenteDAO = new UtenteDAOImpl();
     }
 
+    /**
+     * Instanzia un nuovo UtentelogicImpl.
+     *
+     * @param utenteDAO utente dao
+     */
     public UtenteLogicImpl(UtenteDAOInterface utenteDAO) {
         this.utenteDAO = utenteDAO;
     }
@@ -79,12 +87,6 @@ public class UtenteLogicImpl implements UtenteLogicService {
         }
     }
 
-    /**
-     *
-     * @param email
-     * @param password
-     * @return
-     */
     @Override
     public Utente loginUtente(String email,String password) {
 
@@ -110,8 +112,6 @@ public class UtenteLogicImpl implements UtenteLogicService {
             throw new IllegalArgumentException("Email e password richiesti per accedere!");
         }
     }
-
-
 
     @Override
     public boolean existsUtente(String email) {

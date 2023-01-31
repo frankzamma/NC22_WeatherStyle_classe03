@@ -12,6 +12,10 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 
+/**
+ * @author Francesco Giuseppe Zammarrelli
+ * La classe Registrazione utente servlet.
+ */
 @WebServlet(name = "RegistrazioneUtenteServlet", value = "/registra-utente")
 public class RegistrazioneUtenteServlet extends HttpServlet {
     @Override

@@ -12,6 +12,10 @@ import weatherstyle.gestioneutenti.applicationlogic.logic.beans.Utente;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * @author Francesco Giuseppe Zammarrelli
+ * Servlet per richiedere informazioni meteo
+ */
 @WebServlet(name = "CercaMeteoServlet", value = "/cerca-meteo")
 public class CercaMeteoServlet extends HttpServlet {
     @Override

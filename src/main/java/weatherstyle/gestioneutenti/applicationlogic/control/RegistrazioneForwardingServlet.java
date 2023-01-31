@@ -7,6 +7,10 @@ import weatherstyle.gestioneutenti.applicationlogic.logic.beans.Utente;
 
 import java.io.IOException;
 
+/**
+ * @author Francesco Giuseppe Zammarrelli
+ * La classe Registrazione forwarding servlet.
+ */
 @WebServlet(name = "RegistrazioneForwardingServlet", value = "/registrazione-utente")
 public class RegistrazioneForwardingServlet extends HttpServlet {
     @Override
