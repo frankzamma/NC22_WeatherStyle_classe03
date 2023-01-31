@@ -6,6 +6,10 @@ import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 
+/**
+ * @author Francesco Giuseppe Zammarrelli
+ * La classe Logout servlet.
+ */
 @WebServlet(name = "LogoutServlet", value = "/logout")
 public class LogoutServlet extends HttpServlet {
     @Override

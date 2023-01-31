@@ -14,6 +14,10 @@ import weatherstyle.gestioneutenti.applicationlogic.logic.beans.Utente;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * @author Francesco Giuseppe Zammarrelli
+ * La classe Index forwarding servlet.
+ */
 @WebServlet(name = "IndexForwardingServlet", value = "/index.html")
 public class IndexForwardingServlet extends HttpServlet {
     @Override

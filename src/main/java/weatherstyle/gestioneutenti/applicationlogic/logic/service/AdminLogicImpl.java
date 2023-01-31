@@ -7,13 +7,24 @@ import weatherstyle.gestioneutenti.storage.dao.AdminDAOInterface;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * @author Francesco Giuseppe Zammarrelli La classe Admin logic.
+ */
 public class AdminLogicImpl implements AdminLogicService {
     private AdminDAOInterface adminDAO = new AdminDAOImpl();
 
+    /**
+     * Instanzia a new AdminlogicImp.
+     */
     public AdminLogicImpl() {
         this.adminDAO =  new AdminDAOImpl();
     }
 
+    /**
+     * Instanzia a new AdminlogicImp.
+     *
+     * @param adminDAO admin dao
+     */
     public AdminLogicImpl(AdminDAOInterface adminDAO) {
         this.adminDAO = adminDAO;
     }

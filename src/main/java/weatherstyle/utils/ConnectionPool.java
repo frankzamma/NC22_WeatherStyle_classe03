@@ -7,10 +7,19 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.TimeZone;
 
+/**
+ * La classe Connection pool.
+ */
 public class ConnectionPool {
 
     private static DataSource datasource;
 
+    /**
+     * Restituisce connection.
+     *
+     * @return the connection
+     * @throws SQLException sql exception
+     */
     public static Connection getConnection() throws SQLException {
         if (datasource == null) {
             PoolProperties p = new PoolProperties();
