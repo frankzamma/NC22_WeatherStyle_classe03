@@ -18,7 +18,7 @@ public class ControlloLoginServlet extends HttpServlet {
         String address;
 
         if (u!=null){
-            address = "loadCapoAbbigliamento.jsp";
+            address = "/WEB-INF/gestioneguardaroba/loadCapoAbbigliamento.jsp";
         }else{
             address = "/WEB-INF/gestioneUtente/utente/login_utente.jsp";
         }

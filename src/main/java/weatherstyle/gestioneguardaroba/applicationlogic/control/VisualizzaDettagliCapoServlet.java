@@ -28,7 +28,7 @@ public class VisualizzaDettagliCapoServlet extends HttpServlet {
         request.setAttribute("pantaloni", p);
         request.setAttribute("scarpe", s);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("visualizzaDettagliCapo.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/gestioneguardaroba/visualizzaDettagliCapo.jsp");
         dispatcher.forward(request, response);
     }
 
