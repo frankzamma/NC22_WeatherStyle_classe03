@@ -92,4 +92,15 @@ public class SuggerimentoLogicImpl implements SuggerimentoLogicService {
         return implementorAlgorithm.getBestThreeCapoAbbigliamento(capiAbbigliamento, meteoDailyMin);
     }
 
+    /**
+     * Questo metodo permette di ottenere un Outfit creato dall’utente dal database dato il suggerimento associato.
+     * @param suggerimento con id settato
+     * @return un outfit associato a quel suggerimento
+     */
+    public Outfit ottieniOutfitDaSuggerimento(Suggerimento suggerimento){
+        if (suggerimento.getId() == null)
+            return null;
+        return outfitDAO.doRetrieveOutfitBySuggerimentoID(suggerimento.getId());
+    }
+
 }
