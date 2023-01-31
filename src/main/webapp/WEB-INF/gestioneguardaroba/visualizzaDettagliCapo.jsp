@@ -3,7 +3,7 @@
 <%@ page import="weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Scarpe" %>
 <%@ page import="weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.CapoAbbigliamento" %><%--
   Created by IntelliJ IDEA.
-  User: migli
+  User: Annalaura Miglino
   Date: 28/01/2023
   Time: 19:39
   To change this template use File | Settings | File Templates.

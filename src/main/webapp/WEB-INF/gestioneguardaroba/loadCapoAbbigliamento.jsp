@@ -1,10 +1,16 @@
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<%--
+  Created by IntelliJ IDEA.
+User: Annalaura Miglino
+Date: 25/01/2023
+Time: 15:56
+To change this template use File | Settings | File Templates.
+--%>
 <!DOCTYPE html>
 <html>
     <head>
-    <title>Driver WeatherStyle</title>
+    <title>Inserimento capo</title>
     <meta charset="utf-8">
     <%@include file="../links.jsp"%>
     </head>
@@ -31,16 +37,16 @@
         if ((errorListService!=null) && (!errorListService.isEmpty())){
     %>
     <div class="alert alert-danger" role="alert">
-        <ul>
+
 
              <%
                 for (String s : errorListService){
             %>
-            <li><%=s%></li>
+            <%=s%><br>
             <%
                 }
             %>
-        </ul>
+
     </div>
     <%
         }
@@ -80,6 +86,7 @@
             <div class="mb-3">
                 <label style="color: black"> Inserire stagione </label>
                 <select class="form-select" id="stagione" name="stagione" disabled>
+                    <option selected>Seleziona una stagione</option>
                     <option value="inverno">Inverno</option>
                     <option value="autunno">Autunno</option>
                     <option value="primavera">Primavera</option>
@@ -93,6 +100,7 @@
             <div class="mb-3">
                 <label style="color: black"> Inserire materiale </label>
                 <select class="form-select" id="materiale" name="materiale" disabled>
+                    <option selected>Seleziona un materiale</option>
                     <option value="cotone">Cotone</option>
                     <option value="poliestere">Poliestere</option>
                     <option value="cashmere">Cashmere</option>
@@ -110,6 +118,7 @@
             <div class="mb-3">
                 <label style="color: black"> Inserire lunghezza manica </label>
                 <select class="form-select" id="manica" name="manica" disabled>
+                    <option selected>Seleziona una lunghezza manica</option>
                     <option value="lunga">Lunga</option>
                     <option value="corta">Corta</option>
                 </select>
@@ -120,6 +129,7 @@
             <div class="mb-3">
                 <label style="color: black"> Inserire lunghezza pantaloni </label>
                 <select class="form-select" id="lungPantalone" name="lungPantalone" disabled>
+                    <option selected>Seleziona lunghezza pantaloni</option>
                     <option value="lunga">Lungo</option>
                     <option value="corta">Corto</option>
                     <option value="media">Medio</option>
@@ -129,6 +139,7 @@
             <div class="mb-3">
                 <label style="color: black"> Inserire tipo di scarpa </label>
                 <select class="form-select" id="tipoScarpa" name="tipoScarpa" disabled>
+                    <option selected>Seleziona un tipo di scarpa</option>
                     <option value="stivaletto alla caviglia">Stivaletto alla caviglia</option>
                     <option value="scarpa da ginnastica">Scarpa da ginnastica</option>
                     <option value="scarpa classica">Scarpa classica</option>
