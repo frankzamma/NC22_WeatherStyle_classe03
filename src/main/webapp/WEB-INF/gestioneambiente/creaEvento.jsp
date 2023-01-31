@@ -31,6 +31,23 @@
     </div>
     <%
         }
+        else {
+            String eventoCreatoCorrettamente = (String) request.getAttribute("EventoCreatoCorrettamente");
+            if (eventoCreatoCorrettamente != null) {
+                %>
+                    <div class="alert alert-success" role="alert">
+                        <ul>
+                            <li>
+                                <%=eventoCreatoCorrettamente%>
+                            </li>
+                        </ul>
+                        <h6 class="display-7">Clicca il pulsante in basso per visualizzare tutti gli eventi in programma,
+                            oppure continua a creare nuovi eventi!</h6>
+                        <a class="btn btn-primary" href="VisualizzaEventiServlet" role="button">Visualizza Eventi</a>
+                    </div>
+                <%
+            }
+        }
     %>
 
     <form method="post" action="SalvaEventoServlet">

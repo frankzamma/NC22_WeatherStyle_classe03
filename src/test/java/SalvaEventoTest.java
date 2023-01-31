@@ -5,6 +5,7 @@ import weatherstyle.gestioneambiente.applicationlogic.logic.beans.Evento;
 import weatherstyle.gestioneambiente.applicationlogic.logic.service.EventoLogicImpl;
 import weatherstyle.gestioneambiente.applicationlogic.logic.service.EventoLogicInterface;
 import weatherstyle.gestioneambiente.storage.dao.EventoDAOImpl;
+import weatherstyle.gestionecitta.applicationlogic.logic.beans.Citta;
 import weatherstyle.gestionecitta.storage.service.InfoCittaImpl;
 import weatherstyle.gestioneutenti.applicationlogic.logic.beans.Utente;
 
@@ -12,6 +13,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -111,6 +113,10 @@ public class SalvaEventoTest {
         utente.setEcologista(true);
         evento.setUtente(utente);
 
+        Citta citta = new Citta();
+        List<Citta> list = new ArrayList<>();
+        list.add(citta);
+        Mockito.when(infoCitta.getCittaByName(evento.getLuogo())).thenReturn(list);
         Mockito.when(eventoDAO.doSaveEvento(evento)).thenReturn(false);
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class,
                 () -> eventoLogic.salvaEvento(evento));
@@ -132,6 +138,10 @@ public class SalvaEventoTest {
         utente.setEcologista(true);
         evento.setUtente(utente);
 
+        Citta citta = new Citta();
+        List<Citta> list = new ArrayList<>();
+        list.add(citta);
+        Mockito.when(infoCitta.getCittaByName(evento.getLuogo())).thenReturn(list);
         Mockito.when(eventoDAO.doSaveEvento(evento)).thenReturn(false);
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class,
                 () -> eventoLogic.salvaEvento(evento));
@@ -147,14 +157,20 @@ public class SalvaEventoTest {
                 (new GregorianCalendar
                         (2023, Calendar.FEBRUARY,12, 9, 0).getTimeInMillis());
         evento.setDataOraEvento(dataOraEvento);
-        evento.setDescrizione("FxQkORfKFVAJ6smQsUHHDXOW8cHlZM6wH5xVMZ1mozY85Onr5ioC5qM46DjuOBa3PBRmzeBTqxMmdP7FNrImVMPFZqedZvx8LJBB" +
-                "GLkDz8CSYhWkceM9LEO9ShWYllc3ymuIkO6EPfTcALE8GTAF2W6Pab3LV2dEkGCAaF4jy13880x3UrIlefWe4TS6xOyCAdJQ9dXj" +
-                "CAXey6LYiZ9xNsra51h6zPI9Xq22k45qr604rSIMx6Io5KqrwKFGr5ugKb1CFpo5lGFIdf31Ek2KyoYLzuvHQenc6DSI35YXDesT");
+        evento.setDescrizione("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt" +
+                " ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi" +
+                "ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum" +
+                " dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia" +
+                " deserunt mollit anim id est laborum.");
         evento.setAltreInformazioni("Munirsi di guanti.");
         Utente utente = new Utente();
         utente.setEcologista(true);
         evento.setUtente(utente);
 
+        Citta citta = new Citta();
+        List<Citta> list = new ArrayList<>();
+        list.add(citta);
+        Mockito.when(infoCitta.getCittaByName(evento.getLuogo())).thenReturn(list);
         Mockito.when(eventoDAO.doSaveEvento(evento)).thenReturn(false);
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class,
                 () -> eventoLogic.salvaEvento(evento));
@@ -177,6 +193,10 @@ public class SalvaEventoTest {
         utente.setEcologista(true);
         evento.setUtente(utente);
 
+        Citta citta = new Citta();
+        List<Citta> list = new ArrayList<>();
+        list.add(citta);
+        Mockito.when(infoCitta.getCittaByName(evento.getLuogo())).thenReturn(list);
         Mockito.when(eventoDAO.doSaveEvento(evento)).thenReturn(false);
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class,
                 () -> eventoLogic.salvaEvento(evento));
@@ -194,13 +214,19 @@ public class SalvaEventoTest {
         evento.setDataOraEvento(dataOraEvento);
         evento.setDescrizione("Vi attendiamo tutti sul lungomare di Salerno nella data " +
                 "e ora indicata, c’è bisogno di tutti voi!.");
-        evento.setAltreInformazioni("FxQkORfKFVAJ6smQsUHHDXOW8cHlZM6wH5xVMZ1mozY85Onr5ioC5qM46DjuOBa3PBRmzeBTqxMmdP7FNrImVMPFZqedZvx8LJBB" +
-                "GLkDz8CSYhWkceM9LEO9ShWYllc3ymuIkO6EPfTcALE8GTAF2W6Pab3LV2dEkGCAaF4jy13880x3UrIlefWe4TS6xOyCAdJQ9dXj" +
-                "CAXey6LYiZ9xNsra51h6zPI9Xq22k45qr604rSIMx6Io5KqrwKFGr5ugKb1CFpo5lGFIdf31Ek2KyoYLzuvHQenc6DSI35YXDesT");
+        evento.setAltreInformazioni("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt" +
+                " ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi" +
+                "ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum" +
+                " dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia" +
+                " deserunt mollit anim id est laborum.");
         Utente utente = new Utente();
         utente.setEcologista(true);
         evento.setUtente(utente);
 
+        Citta citta = new Citta();
+        List<Citta> list = new ArrayList<>();
+        list.add(citta);
+        Mockito.when(infoCitta.getCittaByName(evento.getLuogo())).thenReturn(list);
         Mockito.when(eventoDAO.doSaveEvento(evento)).thenReturn(false);
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class,
                 () -> eventoLogic.salvaEvento(evento));
@@ -223,6 +249,10 @@ public class SalvaEventoTest {
         utente.setEcologista(true);
         evento.setUtente(utente);
 
+        Citta citta = new Citta();
+        List<Citta> list = new ArrayList<>();
+        list.add(citta);
+        Mockito.when(infoCitta.getCittaByName(evento.getLuogo())).thenReturn(list);
         Mockito.when(eventoDAO.doSaveEvento(evento)).thenReturn(true);
         assertTrue(eventoLogic.salvaEvento(evento));
     }
