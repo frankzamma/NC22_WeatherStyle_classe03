@@ -5,7 +5,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Visualizza suggerimenti</title>
+    <title>Errore salvataggio suggerimento</title>
     <%@include file="../links.jsp"%>
 </head>
 <body>
@@ -41,6 +41,9 @@
                 <% } %>
 
     </div>
+
+    <p>Tornare alla pagina precedente per ricompilare, aiutarsi con i pulsanti messi a disposizione del proprio
+    browser.</p>
 </div>
 <%@include file="../footer.jsp"%>
 </body>
