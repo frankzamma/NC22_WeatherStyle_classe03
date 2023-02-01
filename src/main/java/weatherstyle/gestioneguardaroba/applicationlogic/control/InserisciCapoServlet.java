@@ -74,10 +74,20 @@ public class InserisciCapoServlet extends HttpServlet {
                     if ("scivsi".equals(scivoloso)) {
                         scivol = true;
                     }
+                    if (!(scivoloso.equals("scivsi")) && !(scivoloso.equals("scivno"))){
+                        request.setAttribute("message","Errore nell'attributo scivoloso");
+                        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/gestioneguardaroba/loadCapoAbbigliamento.jsp");
+                        dispatcher.forward(request,response);
+                    }
 
                     String impermeabile = request.getParameter("impermeabile");
                     if ("impsi".equals(impermeabile)) {
                         imper = true;
+                    }
+                    if (!(impermeabile.equals("impno")) && !(impermeabile.equals("impsi"))){
+                        request.setAttribute("message","Errore nell'attributo impermeabile");
+                        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/gestioneguardaroba/loadCapoAbbigliamento.jsp");
+                        dispatcher.forward(request,response);
                     }
 
                 }

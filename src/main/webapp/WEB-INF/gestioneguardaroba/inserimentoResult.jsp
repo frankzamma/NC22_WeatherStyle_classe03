@@ -9,16 +9,18 @@
 <html>
 <head>
     <title>Inserimento capo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <%@include file="/WEB-INF/links.jsp"%>
 </head>
 <body>
+<%@include file="/WEB-INF/navbar.jsp"%>
 <%
 String result = (String) request.getAttribute("message");
 %>
+<p id="message"><%=result%></p>
 <div class="alert alert-success" role="alert">
-    <%=result%><br>
+
     <a href="visualizza-guardaroba">Visualizza tutto il tuo guardaroba!</a>
 </div>
-
+<%@include file="/WEB-INF/footer.jsp"%>
 </body>
 </html>

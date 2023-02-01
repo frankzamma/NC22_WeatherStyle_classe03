@@ -151,28 +151,23 @@ To change this template use File | Settings | File Templates.
             </div>
 
             <div class="mb-3">
-                <p style="color: black"> Indicare se è una scarpa scivolosa </p>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="scivoloso" id="scivsi" value="scivsi" disabled>
-                    <label class="form-check-label" for="scivsi" style="color: black"> Si </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="scivoloso" id="scivno" value="scivno" disabled>
-                    <label class="form-check-label" for="scivno" style="color: black"> No </label>
-                </div>
+                <label style="color: black"> Indicare se è una scarpa scivolosa </label>
+                    <select class="form-select" id="scivoloso" name="scivoloso" disabled>
+                        <option selected>Selezionare una delle opzioni</option>
+                        <option value="scivsi">Scivolosa</option>
+                        <option value="scivno">Non scivolosa</option>
+                    </select>
             </div>
 
             <div class="mb-3">
-                <p style="color: black"> Indicare se è una scarpa impermeabile </p>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="impermeabile" id="impsi" value="impsi" disabled>
-                    <label class="form-check-label" for="impsi" style="color: black"> Si </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="impermeabile" id="impno" value="impno" disabled>
-                    <label class="form-check-label" for="impno" style="color: black"> No </label>
-                </div>
+                <label style="color: black"> Indicare se è una scarpa impermeabile </label>
+                <select class="form-select" id="impermeabile" name="impermeabile" disabled>
+                    <option selected>Selezionare una delle opzioni</option>
+                    <option value="impsi">Impermeabile</option>
+                    <option value="impno">Non impermeabile</option>
+                </select>
             </div>
+
             <div class="d-grid gap-2 mt-2">
                 <button type="submit" class="btn btn-primary">Carica capo</button>
             </div>
