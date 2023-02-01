@@ -30,7 +30,7 @@ public interface UtenteDAOInterface {
      * @param password password
      * @return utente
      */
-    Utente doRetrieveUtenteByEmailAndPassword(String email, String password);
+    Utente doRetrieveUtenteByEmailAndPassword(String email,String password);
 
     /**
      * Verifica se esiste un utente con email <em>email</em>.
