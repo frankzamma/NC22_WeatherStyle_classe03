@@ -72,7 +72,7 @@ public class InfoMeteoDailyImpl implements InfoMeteoDailyService {
     }
 
     @Override
-    public List<MeteoDaily> getInfoMeteoDailyByRangeOfDays(LocalDate init, LocalDate end, Citta citta) {
+    public List<MeteoDaily> getInfoMeteoDailyByRangeOfDays(LocalDate init,LocalDate end,Citta citta) {
         if (citta != null && citta.getLat() != null && citta.getLon() != null) {
             if ((init != null || end != null) && init.isBefore(end)) {
                 try {

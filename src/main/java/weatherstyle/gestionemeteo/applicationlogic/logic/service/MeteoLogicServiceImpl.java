@@ -35,7 +35,7 @@ public class MeteoLogicServiceImpl implements MeteoLogicService {
      * @param meteoDailyService meteo daily service
      * @param meteoHourService  meteo hour service
      */
-    public MeteoLogicServiceImpl(InfoMeteoDailyService meteoDailyService, InfoMeteoHourService meteoHourService) {
+    public MeteoLogicServiceImpl(InfoMeteoDailyService meteoDailyService,InfoMeteoHourService meteoHourService) {
         this.meteoDailyService = meteoDailyService;
         this.meteoHourService = meteoHourService;
     }

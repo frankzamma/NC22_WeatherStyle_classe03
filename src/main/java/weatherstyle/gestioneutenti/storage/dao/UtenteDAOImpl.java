@@ -82,7 +82,7 @@ public class UtenteDAOImpl implements UtenteDAOInterface {
     }
 
     @Override
-    public Utente doRetrieveUtenteByEmailAndPassword(String email, String password) {
+    public Utente doRetrieveUtenteByEmailAndPassword(String email,String password) {
         try (Connection connection =  ConnectionPool.getConnection()) {
             PreparedStatement statement =
                     connection.prepareStatement("SELECT * from Utente WHERE email = ? AND password = ?");

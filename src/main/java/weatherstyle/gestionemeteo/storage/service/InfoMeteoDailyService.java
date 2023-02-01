@@ -28,6 +28,6 @@ public interface InfoMeteoDailyService {
      * @param citta citta per la quale si desidera la previsione
      * @return List<MeteoDaily> meteo della Citta <em>citta</em> dal giorno init al giorno end.
      */
-    List<MeteoDaily> getInfoMeteoDailyByRangeOfDays(LocalDate init, LocalDate end, Citta citta);
+    List<MeteoDaily> getInfoMeteoDailyByRangeOfDays(LocalDate init,LocalDate end,Citta citta);
 
 }

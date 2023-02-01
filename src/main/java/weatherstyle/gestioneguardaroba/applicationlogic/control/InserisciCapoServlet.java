@@ -74,7 +74,7 @@ public class InserisciCapoServlet extends HttpServlet {
                     if ("scivsi".equals(scivoloso)) {
                         scivol = true;
                     }
-                    if (!(scivoloso.equals("scivsi")) && !(scivoloso.equals("scivno"))){
+                    if (!("scivsi".equals(scivoloso)) && !("scivno".equals(scivoloso))) {
                         request.setAttribute("message","Errore nell'attributo scivoloso");
                         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/gestioneguardaroba/loadCapoAbbigliamento.jsp");
                         dispatcher.forward(request,response);
@@ -84,7 +84,7 @@ public class InserisciCapoServlet extends HttpServlet {
                     if ("impsi".equals(impermeabile)) {
                         imper = true;
                     }
-                    if (!(impermeabile.equals("impno")) && !(impermeabile.equals("impsi"))){
+                    if (!("impno".equals(impermeabile)) && !("impsi".equals(impermeabile))) {
                         request.setAttribute("message","Errore nell'attributo impermeabile");
                         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/gestioneguardaroba/loadCapoAbbigliamento.jsp");
                         dispatcher.forward(request,response);
