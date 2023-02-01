@@ -5,11 +5,16 @@
      "https://checkstyle.org/dtds/suppressions_1_0.dtd">
 
 <suppressions>
-  <suppress checks="." files=".*[\\/]src[\\/]test[\\/]"/>
-  <suppress checks="LineLength" files=".*[\\/]src[\\/]test[\\/]"/>
-  <suppress checks="AvoidStarImport" files=".*[\\/]src[\\/]test[\\/]"/>
-  <suppress checks="naming" files=".*[\\/]src[\\/]test[\\/]"/>
-  <suppress checks="FinalParameters" files=".*[\\/]src[\\/]test[\\/]"/>
+  <suppress checks="LineLength" files=".*[\\/]src[\\/]"/>
+  <suppress checks="AvoidStarImport" files="[\\/]src[\\/]"/>
+  <suppress checks="naming" files="[\\/]src[\\/]"/>
+  <suppress checks="FinalParameters" files="[\\/]src[\\/]"/>
+  <suppress checks="FinalParameters" files="[\\/]src[\\/]"/>
+
+  <suppress checks="LineLength" files=".*[\\/]test[\\/]"/>
+  <suppress checks="AvoidStarImport" files="[\\/]test[\\/]"/>
+  <suppress checks="naming" files="[\\/]test[\\/]"/>
+  <suppress checks="FinalParameters" files="[\\/]test[\\/]"/>
   <!-- Others -->
   <suppress checks="DesignForExtension" files=".+\.(?:jar|zip|java|war|class|tar|bin)$"/>
   <suppress checks="MagicNumber" files=".+\.(?:jar|zip|java|war|class|tar|bin)$"/>

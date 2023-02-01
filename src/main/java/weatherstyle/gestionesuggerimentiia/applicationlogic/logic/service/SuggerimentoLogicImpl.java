@@ -1,9 +1,7 @@
 package weatherstyle.gestionesuggerimentiia.applicationlogic.logic.service;
 
-import weatherstyle.gestionecitta.applicationlogic.logic.service.CittaLogicService;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.CapoAbbigliamento;
 import weatherstyle.gestionemeteo.applicationlogic.logic.beans.MeteoDailyMin;
-import weatherstyle.gestionemeteo.applicationlogic.logic.service.MeteoLogicService;
 import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.algorithms.ImplementorAlgorithm;
 import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.beans.Outfit;
 import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.beans.Suggerimento;
@@ -22,7 +20,7 @@ public class SuggerimentoLogicImpl implements SuggerimentoLogicService {
     private final SuggerimentoDAOInterface suggerimentoDAO;
     private final OutfitDAOInterface outfitDAO;
 
-    public SuggerimentoLogicImpl(SuggerimentoDAOInterface suggerimentoDAO, OutfitDAOInterface outfitDAO) {
+    public SuggerimentoLogicImpl(SuggerimentoDAOInterface suggerimentoDAO,OutfitDAOInterface outfitDAO) {
         this.suggerimentoDAO = suggerimentoDAO;
         this.outfitDAO = outfitDAO;
     }
@@ -34,25 +32,34 @@ public class SuggerimentoLogicImpl implements SuggerimentoLogicService {
      */
     @Override
     public boolean salvaSuggerimento(Suggerimento suggerimento) {
-        if (suggerimento == null)
+        if (suggerimento == null) {
             throw new IllegalArgumentException("Suggerimento non può essere null");
-        if (suggerimento.getUtente() == null)
+        }
+        if (suggerimento.getUtente() == null) {
             throw new IllegalArgumentException("Utente non può essere null");
-        if (suggerimento.getCitta() == null)
+        }
+        if (suggerimento.getCitta() == null) {
             throw new IllegalArgumentException("Citta non può essere null");
-        if (suggerimento.getMeteoDailyMin() == null)
+        }
+        if (suggerimento.getMeteoDailyMin() == null) {
             throw new IllegalArgumentException("Meteo non può essere null");
-        if (suggerimento.getOutfit() == null)
+        }
+        if (suggerimento.getOutfit() == null) {
             throw new IllegalArgumentException("Outfit non può essere null");
+        }
 
-        if (suggerimento.getOutfit().getMaglia() == null)
+        if (suggerimento.getOutfit().getMaglia() == null) {
             throw new IllegalArgumentException("Outfit non contiene maglia");
-        if (suggerimento.getOutfit().getPantaloni() == null)
+        }
+        if (suggerimento.getOutfit().getPantaloni() == null) {
             throw new IllegalArgumentException("Outfit non contiene pantaloni");
-        if (suggerimento.getOutfit().getScarpe() == null)
+        }
+        if (suggerimento.getOutfit().getScarpe() == null) {
             throw new IllegalArgumentException("Outfit non contiene scarpe");
-        if (suggerimento.getOutfit().getNome().length() == 0 || suggerimento.getOutfit().getNome().length() > 30)
+        }
+        if (suggerimento.getOutfit().getNome().length() == 0 || suggerimento.getOutfit().getNome().length() > 30) {
             throw new IllegalArgumentException("Outfit lunghezza nome deve essere tra 1 e 30 caratteri");
+        }
 
         return suggerimentoDAO.doSaveSuggerimento(suggerimento);
     }
@@ -79,17 +86,18 @@ public class SuggerimentoLogicImpl implements SuggerimentoLogicService {
      */
     @Override
     public <T extends CapoAbbigliamento> List<T> ottieniSuggerimentiCapi(ImplementorAlgorithm<T> implementorAlgorithm,
-                                                                         List<T> capiAbbigliamento,
-                                                                         MeteoDailyMin meteoDailyMin) {
+            List<T> capiAbbigliamento,
+            MeteoDailyMin meteoDailyMin) {
         if (capiAbbigliamento == null || meteoDailyMin == null
                 || implementorAlgorithm == null) {
             throw new IllegalArgumentException("Lista capi d'abbigliamento troppo corta o meteo null");
         }
 
-        if (capiAbbigliamento.size() < 3)
+        if (capiAbbigliamento.size() < 3) {
             return new ArrayList<T>();
+        }
 
-        return implementorAlgorithm.getBestThreeCapoAbbigliamento(capiAbbigliamento, meteoDailyMin);
+        return implementorAlgorithm.getBestThreeCapoAbbigliamento(capiAbbigliamento,meteoDailyMin);
     }
 
     /**
@@ -97,9 +105,10 @@ public class SuggerimentoLogicImpl implements SuggerimentoLogicService {
      * @param suggerimento con id settato
      * @return un outfit associato a quel suggerimento
      */
-    public Outfit ottieniOutfitDaSuggerimento(Suggerimento suggerimento){
-        if (suggerimento.getId() == null)
+    public Outfit ottieniOutfitDaSuggerimento(Suggerimento suggerimento) {
+        if (suggerimento.getId() == null) {
             return null;
+        }
         return outfitDAO.doRetrieveOutfitBySuggerimentoID(suggerimento.getId());
     }
 

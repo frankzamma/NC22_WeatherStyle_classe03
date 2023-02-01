@@ -1,8 +1,12 @@
 package weatherstyle.gestioneutenti.applicationlogic.control;
 
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.annotation.WebServlet;
 import weatherstyle.gestionecitta.applicationlogic.logic.beans.Citta;
 import weatherstyle.gestioneutenti.applicationlogic.logic.beans.Utente;
 import weatherstyle.gestioneutenti.applicationlogic.logic.service.UtenteLogicImpl;
@@ -16,19 +20,19 @@ import java.util.List;
  * @author Francesco Giuseppe Zammarrelli
  * La classe Registrazione utente servlet.
  */
-@WebServlet(name = "RegistrazioneUtenteServlet", value = "/registra-utente")
+@WebServlet(name = "RegistrazioneUtenteServlet",value = "/registra-utente")
 public class RegistrazioneUtenteServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
         response.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         Utente u =  (Utente) session.getAttribute("utente");
 
-        if(u == null){
+        if (u == null) {
             String nome = request.getParameter("nome");
             String cognome = request.getParameter("cognome");
             String dataNascita = request.getParameter("data-nascita");
@@ -39,42 +43,42 @@ public class RegistrazioneUtenteServlet extends HttpServlet {
             String lon = request.getParameter("lon");
 
             UtenteLogicImpl service =  new UtenteLogicImpl();
-            if(!service.existsUtente(email)){
-                try{
+            if (!service.existsUtente(email)) {
+                try {
                     LocalDate date = LocalDate.parse(dataNascita);
 
                     Citta citta = null;
-                    if(cittaName != null && lat != null && lon != null ){
+                    if (cittaName != null && lat != null && lon != null) {
                         citta =  new Citta();
                         citta.setLat(lat);
                         citta.setLon(lon);
                         citta.setNome(cittaName);
                     }
 
-                    service.registraUtente(nome, cognome, date, email, password, citta);
+                    service.registraUtente(nome,cognome,date,email,password,citta);
 
 
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/gestioneUtente/utente/registrazione_result.jsp");
 
-                    dispatcher.forward(request, response);
+                    dispatcher.forward(request,response);
 
                 } catch (ErrorParameterException e) {
                     List<String> errorPar =  e.getErrorParameter();
 
-                    request.setAttribute("errorPar", errorPar);
+                    request.setAttribute("errorPar",errorPar);
 
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/gestioneUtente/utente/registrazione.jsp");
 
-                    dispatcher.forward(request, response);
+                    dispatcher.forward(request,response);
                 }
-            }else{
+            } else {
 
-                request.setAttribute("message", "Sembra esista già un utente registrato con la mail " + email);
+                request.setAttribute("message","Sembra esista già un utente registrato con la mail " + email);
 
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/gestioneUtente/utente/registrazione.jsp");
-                dispatcher.forward(request, response);
+                dispatcher.forward(request,response);
             }
-        }else{
+        } else {
             response.sendRedirect("index.html");
         }
     }

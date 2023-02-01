@@ -36,7 +36,7 @@ public class UtenteLogicImpl implements UtenteLogicService {
 
     @Override
     public Utente registraUtente(String nome,String cognome,LocalDate dataNascita,String email,String password,Citta citta) throws ErrorParameterException {
-            List<String> errorParameter =  new ArrayList<>();
+        List<String> errorParameter =  new ArrayList<>();
 
         if (email == null || (!email.matches("^[a-z0-9\\.\\_]+@[a-z]+\\.[a-z]{2,3}$"))) {
             errorParameter.add("email");

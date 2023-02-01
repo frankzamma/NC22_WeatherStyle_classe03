@@ -8,16 +8,14 @@ import weatherstyle.gestionecitta.storage.service.InfoCittaImpl;
 import weatherstyle.gestionecitta.storage.service.InfoCittaService;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Pattern;
 
 /**
  * @author angelopalmieri
  * Classe che gestisce le operazioni di business che riguardano gli eventi
  * a favore dell'ambiente creati dagli ecologisti.
  */
-public class EventoLogicImpl implements EventoLogicInterface{
+public class EventoLogicImpl implements EventoLogicInterface {
 
     /**
      * DAO di evento per interagire direttamente col database.
@@ -43,7 +41,7 @@ public class EventoLogicImpl implements EventoLogicInterface{
      * @param infoCitta rappresenta l'oggetto che andrà a usare questa
      *                  classe per usufruire dei servizi offerti da InfoCitta.
      */
-    public EventoLogicImpl(EventoDAOInterface eventoDAO, InfoCittaService infoCitta) {
+    public EventoLogicImpl(EventoDAOInterface eventoDAO,InfoCittaService infoCitta) {
         this.eventoDAO = eventoDAO;
         this.infoCitta = infoCitta;
     }
@@ -59,8 +57,9 @@ public class EventoLogicImpl implements EventoLogicInterface{
             throw new IllegalArgumentException("Errore, evento null.");
         }
 
-        if(!evento.getUtente().isEcologista())
+        if (!evento.getUtente().isEcologista()) {
             throw new IllegalArgumentException("Per poter creare un evento bisogna necessariamente essere ecologisti.");
+        }
 
         if (evento.getNome() == null || (evento.getNome().length() < 1 || evento.getNome().length() > 40)) {
             throw new IllegalArgumentException("Lunghezza nome Evento non valida.");

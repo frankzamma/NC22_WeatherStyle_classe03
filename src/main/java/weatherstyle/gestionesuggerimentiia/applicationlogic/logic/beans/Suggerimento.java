@@ -108,14 +108,14 @@ public class Suggerimento {
 
     @Override
     public String toString() {
-        return "Suggerimento{" +
-                "id=" + id +
-                ", date=" + date +
-                ", valutazione=" + valutazione +
-                ", utente=" + utente +
-                ", citta=" + citta +
-                ", outfit=" + outfit +
-                ", meteoDailyMin=" + meteoDailyMin +
-                '}';
+        return "Suggerimento{"
+                + "id=" + id
+                + ", date=" + date
+                + ", valutazione=" + valutazione
+                + ", utente=" + utente
+                + ", citta=" + citta
+                + ", outfit=" + outfit
+                + ", meteoDailyMin=" + meteoDailyMin
+                + '}';
     }
 }

@@ -16,7 +16,7 @@ import java.util.List;
  * classe che si interfaccia al DB e lavora sulle tabelle in merito al Suggerimento, in particolare sulla tabella
  * Suggerimento
  */
-public class SuggerimentoDAOImpl implements SuggerimentoDAOInterface{
+public class SuggerimentoDAOImpl implements SuggerimentoDAOInterface {
 
     /**
      * usa cittaDAO per recuperare la città relativa a un suggerimento
@@ -49,12 +49,12 @@ public class SuggerimentoDAOImpl implements SuggerimentoDAOInterface{
 
             PreparedStatement preparedStatement = connection.prepareStatement(
                     "INSERT INTO Suggerimento (dataSuggerimento, IDutente, IDcitta, IDoutfit, IDmeteo)"
-                            + "VALUES(?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+                            + "VALUES(?,?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setDate(1,suggerimento.getDate());
-            preparedStatement.setInt(2, suggerimento.getUtente().getId());
-            preparedStatement.setInt(3, suggerimento.getCitta().getId());
-            preparedStatement.setInt(4, suggerimento.getOutfit().getId());
-            preparedStatement.setInt(5, suggerimento.getMeteoDailyMin().getId());
+            preparedStatement.setInt(2,suggerimento.getUtente().getId());
+            preparedStatement.setInt(3,suggerimento.getCitta().getId());
+            preparedStatement.setInt(4,suggerimento.getOutfit().getId());
+            preparedStatement.setInt(5,suggerimento.getMeteoDailyMin().getId());
 
             if (preparedStatement.executeUpdate() != 1) {
                 return false;

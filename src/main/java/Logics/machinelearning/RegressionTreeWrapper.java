@@ -1,7 +1,6 @@
 package Logics.machinelearning;
 
 import Model.*;
-import Model.ScoreCapoAbbigliamentoLegacy;
 import weka.classifiers.Evaluation;
 import weka.classifiers.trees.REPTree;
 import weka.core.DenseInstance;
@@ -131,25 +130,24 @@ public class RegressionTreeWrapper {
 
 
     public List<ScoreCapoAbbigliamentoLegacy> classifyInstances(List<? extends CapoAbbigliamentoLegacy> capoAbbigliamentoList,
-                                                                MeteoInformationLegacy meteoInformation) {
+            MeteoInformationLegacy meteoInformation) {
         List<Instance> listInstance = new ArrayList<>();
 
         for (CapoAbbigliamentoLegacy capoAbbigliamentoLegacy : capoAbbigliamentoList) {
             Instance instance = new DenseInstance(capoAbbigliamentoLegacy.getClass() != ScarpaLegacy.class ? 7 : 8);
             instance.setDataset(fullDataset);
             if (capoAbbigliamentoLegacy.getClass() == MagliaLegacy.class || capoAbbigliamentoLegacy.getClass() == PantaloniLegacy.class) {
-                instance.setValue(1, capoAbbigliamentoLegacy.getColore());
+                instance.setValue(1,capoAbbigliamentoLegacy.getColore());
 
                 if (capoAbbigliamentoLegacy.getClass() == MagliaLegacy.class) {
                     instance.setValue(2,((MagliaLegacy) capoAbbigliamentoLegacy).getLunghezzaManica());
                     instance.setValue(0,((MagliaLegacy) capoAbbigliamentoLegacy).getMateriale());
-                }
-                else {
+                } else {
                     instance.setValue(2,((PantaloniLegacy) capoAbbigliamentoLegacy).getLunghezza());
                     instance.setValue(0,((PantaloniLegacy) capoAbbigliamentoLegacy).getMateriale());
                 }
 
-                instance.setValue(3, capoAbbigliamentoLegacy.getStagione());
+                instance.setValue(3,capoAbbigliamentoLegacy.getStagione());
                 instance.setValue(4,meteoInformation.getMeteo());
                 instance.setValue(5,meteoInformation.getTemperaturaPercepita());
                 instance.setValue(6,meteoInformation.getStagionePrevisione());
@@ -172,7 +170,7 @@ public class RegressionTreeWrapper {
         List<ScoreCapoAbbigliamentoLegacy> scoreCapoAbbigliamentoList = new ArrayList<>();
 
         int i = 0;
-        for (Instance instance: listInstance) {
+        for (Instance instance : listInstance) {
             try {
                 double predict = repTree.classifyInstance(instance);
                 ScoreCapoAbbigliamentoLegacy scoreCapoAbbigliamentoLegacy = new ScoreCapoAbbigliamentoLegacy(capoAbbigliamentoList.get(i),predict);
@@ -201,9 +199,9 @@ public class RegressionTreeWrapper {
         return bests;
     }
 
-    private static class Comparatore implements Comparator<ScoreCapoAbbigliamentoLegacy>{
+    private static class Comparatore implements Comparator<ScoreCapoAbbigliamentoLegacy> {
         @Override
-        public int compare(ScoreCapoAbbigliamentoLegacy o1, ScoreCapoAbbigliamentoLegacy o2) {
+        public int compare(ScoreCapoAbbigliamentoLegacy o1,ScoreCapoAbbigliamentoLegacy o2) {
             return o1.getPunteggio().compareTo(o2.getPunteggio());
         }
     }

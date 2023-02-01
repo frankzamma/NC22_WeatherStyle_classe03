@@ -9,6 +9,7 @@ import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.beans.Outfit;
 public interface OutfitDAOInterface {
 
     boolean doSaveOutfit(Outfit outfit);
+
     Outfit doRetrieveOutfitBySuggerimentoID(int suggerimentoID);
 
 }

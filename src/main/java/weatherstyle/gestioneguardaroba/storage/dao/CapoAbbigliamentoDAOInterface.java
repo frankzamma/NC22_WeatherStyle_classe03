@@ -49,41 +49,41 @@ public interface  CapoAbbigliamentoDAOInterface {
      * @param m è la maglia da salvare.
      * @return vero se il salvataggio è andato a buon fine, falso altrimenti.
      */
-    boolean doSaveMaglia(Maglia m, int idGuardaroba);
+    boolean doSaveMaglia(Maglia m,int idGuardaroba);
 
     /**
      * Salva un paio di pantaloni nel database
      * @param p è il paio di pantaloni da salvare.
      * @return vero se il salvataggio è andato a buon fine, falso altrimenti.
      */
-    boolean doSavePantaloni(Pantaloni p, int idGuardaroba);
+    boolean doSavePantaloni(Pantaloni p,int idGuardaroba);
 
     /**
      * Salva un paio di scarpe nel database
      * @param s è il paio di pantaloni da salvare.
      * @return vero se il salvataggio è andato a buon fine, falso altrimenti.
      */
-    boolean doSaveScarpe(Scarpe s, int idGuardaroba);
+    boolean doSaveScarpe(Scarpe s,int idGuardaroba);
 
     /**
      * Permette di ottenere la lista di maglia presenti nel guardaroba.
      * @param idG è l'ID del guardaroba.
      * @return la lista di maglie nel guardaroba.
      */
-    List<Maglia> doRetrieveMaglieByIdGuardaroba (int idG);
+    List<Maglia> doRetrieveMaglieByIdGuardaroba(int idG);
 
     /**
      * Permette di ottenere la lista di pantaloni presenti nel guardaroba.
      * @param idG è l'ID del guardaroba.
      * @return la lista di pantaloni nel guardaroba.
      */
-    List<Pantaloni> doRetrievePantaloniByIdGuardaroba (int idG);
+    List<Pantaloni> doRetrievePantaloniByIdGuardaroba(int idG);
 
     /**
      * Permette di ottenere la lista di scarpe presenti nel guardaroba.
      * @param idG è l'ID del guardaroba.
      * @return la lista di scarpe nel guardaroba.
      */
-    List<Scarpe> doRetrieveScarpeByIdGuardaroba (int idG);
+    List<Scarpe> doRetrieveScarpeByIdGuardaroba(int idG);
 
 }

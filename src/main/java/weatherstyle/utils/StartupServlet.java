@@ -1,6 +1,5 @@
 package weatherstyle.utils;
 
-import Model.RecoveryGuardaroba;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
@@ -9,20 +8,18 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import weatherstyle.gestionecitta.applicationlogic.logic.beans.Citta;
-import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Guardaroba;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Maglia;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Pantaloni;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Scarpe;
 import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.algorithms.AbstractAlgorithm;
 import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.algorithms.ImplementorAlgorithm;
 
-import java.io.File;
 import java.io.IOException;
 
 /**
  * La classe Startup servlet.
  */
-@WebServlet(name = "StartupServlet", value = "/StartupServlet", loadOnStartup = 1)
+@WebServlet(name = "StartupServlet",value = "/StartupServlet",loadOnStartup = 1)
 public class StartupServlet extends HttpServlet {
     @Override
     public void init(ServletConfig config) throws ServletException {
@@ -49,11 +46,11 @@ public class StartupServlet extends HttpServlet {
 
         ServletContext context = this.getServletContext();
 
-        context.setAttribute("scarpeGA", scarpeImplementorAlgorithmGA);
+        context.setAttribute("scarpeGA",scarpeImplementorAlgorithmGA);
         context.setAttribute("pantaloniGA",pantaloniImplementorAlgorithmGA);
         context.setAttribute("magliaGA",magliaImplementorAlgorithmGA);
 
-        context.setAttribute("scarpeML", scarpeImplementorAlgorithmML);
+        context.setAttribute("scarpeML",scarpeImplementorAlgorithmML);
         context.setAttribute("pantaloniML",pantaloniImplementorAlgorithmML);
         context.setAttribute("magliaML",magliaImplementorAlgorithmML);
 
@@ -63,7 +60,7 @@ public class StartupServlet extends HttpServlet {
         citta.setLat("41.8933203");
         citta.setLon("12.4829321");
 
-        context.setAttribute("citta_default", citta);
+        context.setAttribute("citta_default",citta);
     }
 
     @Override

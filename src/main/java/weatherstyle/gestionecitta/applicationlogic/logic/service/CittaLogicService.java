@@ -11,6 +11,7 @@ import java.util.List;
 public interface CittaLogicService {
 
     List<Citta> ottieniCittaByName(String name);
+
     String ottieniJsonDaCitta(List<Citta> cittaList);
 
 }

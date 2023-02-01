@@ -16,7 +16,7 @@ public class TopML {
         treeWrapper = new RegressionTreeWrapper(pathDataset,false,true,"MaglieML");
     }
 
-    public List<ScoreCapoAbbigliamentoLegacy> classifyInstances(List<MagliaLegacy> list, MeteoInformationLegacy meteo, boolean getBestThree) {
+    public List<ScoreCapoAbbigliamentoLegacy> classifyInstances(List<MagliaLegacy> list,MeteoInformationLegacy meteo,boolean getBestThree) {
         List<ScoreCapoAbbigliamentoLegacy> l = treeWrapper.classifyInstances(list,meteo);
         if (getBestThree) {
             return treeWrapper.getBestThreeClothes(l);

@@ -6,7 +6,7 @@ import java.util.List;
  * @author Francesco Giuseppe Zammarrelli
  * La classe Error parameter exception.
  */
-public class ErrorParameterException extends Exception{
+public class ErrorParameterException extends Exception {
     private List<String> errorParameter;
 
     /**

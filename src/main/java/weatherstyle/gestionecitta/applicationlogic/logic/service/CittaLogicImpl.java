@@ -3,14 +3,10 @@ package weatherstyle.gestionecitta.applicationlogic.logic.service;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import weatherstyle.gestionecitta.applicationlogic.logic.beans.Citta;
-import weatherstyle.gestionecitta.storage.dao.CittaDAOImpl;
 import weatherstyle.gestionecitta.storage.dao.CittaDAOInterface;
-import weatherstyle.gestionecitta.storage.service.InfoCittaImpl;
 import weatherstyle.gestionecitta.storage.service.InfoCittaService;
 
 import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -29,7 +25,7 @@ public class CittaLogicImpl implements CittaLogicService {
      */
     private final InfoCittaService infoCittaService;
 
-    public CittaLogicImpl(CittaDAOInterface cittaDAO, InfoCittaService infoCittaService) {
+    public CittaLogicImpl(CittaDAOInterface cittaDAO,InfoCittaService infoCittaService) {
         this.cittaDAO = cittaDAO;
         this.infoCittaService = infoCittaService;
     }
@@ -56,10 +52,12 @@ public class CittaLogicImpl implements CittaLogicService {
      */
     @Override
     public String ottieniJsonDaCitta(List<Citta> cittaList) {
-        if (cittaList == null || cittaList.size() == 0)
+        if (cittaList == null || cittaList.size() == 0) {
             return "";
-        Type listType = new TypeToken<List<Citta>>() {}.getType();
+        }
+        Type listType = new TypeToken<List<Citta>>() {
+        }.getType();
         Gson gson = new Gson();
-        return gson.toJson(cittaList, listType);
+        return gson.toJson(cittaList,listType);
     }
 }

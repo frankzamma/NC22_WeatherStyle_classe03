@@ -1,6 +1,9 @@
 package weatherstyle.gestioneguardaroba.storage.dao;
 
-import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.*;
+import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.CapoAbbigliamento;
+import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Maglia;
+import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Pantaloni;
+import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Scarpe;
 import weatherstyle.utils.ConnectionPool;
 
 import java.sql.*;
@@ -11,7 +14,7 @@ import java.util.List;
  * @author Annalaura Miglino
  */
 
-public class CapoAbbigliamentoDAOImpl implements CapoAbbigliamentoDAOInterface{
+public class CapoAbbigliamentoDAOImpl implements CapoAbbigliamentoDAOInterface {
 
     @Override
     public CapoAbbigliamento doRetrieveCapoById(int idCapoAbbigliamento) {
@@ -90,9 +93,9 @@ public class CapoAbbigliamentoDAOImpl implements CapoAbbigliamentoDAOInterface{
     }
 
     @Override
-    public boolean doSaveMaglia(Maglia m, int idGuardaroba) {
+    public boolean doSaveMaglia(Maglia m,int idGuardaroba) {
         try (Connection connection = ConnectionPool.getConnection()) {
-            int id = doSaveCapo(m, idGuardaroba);
+            int id = doSaveCapo(m,idGuardaroba);
             PreparedStatement statement =  connection.prepareStatement(
                     "insert into Maglia (IDcapoAbbigliamento, materiale, manica) values (?,?,?)",Statement.RETURN_GENERATED_KEYS);
 
@@ -115,9 +118,9 @@ public class CapoAbbigliamentoDAOImpl implements CapoAbbigliamentoDAOInterface{
     }
 
     @Override
-    public boolean doSavePantaloni(Pantaloni p, int idGuardaroba) {
+    public boolean doSavePantaloni(Pantaloni p,int idGuardaroba) {
         try (Connection connection = ConnectionPool.getConnection()) {
-            int id = doSaveCapo(p, idGuardaroba);
+            int id = doSaveCapo(p,idGuardaroba);
             PreparedStatement statement =  connection.prepareStatement(
                     "insert into Pantaloni (IDcapoAbbigliamento, lunghezza, materiale) values (?,?,?)",Statement.RETURN_GENERATED_KEYS);
 
@@ -138,9 +141,9 @@ public class CapoAbbigliamentoDAOImpl implements CapoAbbigliamentoDAOInterface{
     }
 
     @Override
-    public boolean doSaveScarpe(Scarpe s, int idGuardaroba) {
+    public boolean doSaveScarpe(Scarpe s,int idGuardaroba) {
         try (Connection connection = ConnectionPool.getConnection()) {
-            int id = doSaveCapo(s, idGuardaroba);
+            int id = doSaveCapo(s,idGuardaroba);
             PreparedStatement statement =  connection.prepareStatement(
                     "insert into Scarpe (IDcapoAbbigliamento, tipo, antiscivolo, impermeabile) values (?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
 
@@ -263,7 +266,7 @@ public class CapoAbbigliamentoDAOImpl implements CapoAbbigliamentoDAOInterface{
      * Questo metodo salva un capo d'abbigliamento nella suddetta tabella.
      * Viene integrato nei metodi di maglie, pantaloni e scarpe.
      */
-    public int doSaveCapo(CapoAbbigliamento c, int idGuardaroba) {
+    public int doSaveCapo(CapoAbbigliamento c,int idGuardaroba) {
         try (Connection connection = ConnectionPool.getConnection()) {
             PreparedStatement statement =  connection.prepareStatement(
                     "insert into CapoAbbigliamento (nome, stagione, colore, immagine, IDguardaroba) values (?, ?, ?, ?, ?)",Statement.RETURN_GENERATED_KEYS);
@@ -272,7 +275,7 @@ public class CapoAbbigliamentoDAOImpl implements CapoAbbigliamentoDAOInterface{
             statement.setString(2,c.getStagione());
             statement.setString(3,c.getColore());
             statement.setString(4,c.getDirImmagine());
-            statement.setInt(5, idGuardaroba);
+            statement.setInt(5,idGuardaroba);
 
             int res =  statement.executeUpdate();
 
@@ -296,10 +299,10 @@ public class CapoAbbigliamentoDAOImpl implements CapoAbbigliamentoDAOInterface{
         List<Maglia> maglie = new ArrayList<>();
 
         try (Connection connection =  ConnectionPool.getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("SELECT c.nome, c.stagione, c.colore, " +
-                    "c.immagine, m.manica, m.materiale, c.ID " +
-                    "from Maglia m, CapoAbbigliamento c " +
-                    "WHERE c.ID = m.IDcapoAbbigliamento and c.IDguardaroba= ?");
+            PreparedStatement statement = connection.prepareStatement("SELECT c.nome, c.stagione, c.colore, "
+                    + "c.immagine, m.manica, m.materiale, c.ID "
+                    + "from Maglia m, CapoAbbigliamento c "
+                    + "WHERE c.ID = m.IDcapoAbbigliamento and c.IDguardaroba= ?");
 
             statement.setInt(1,idG);
 
@@ -313,7 +316,7 @@ public class CapoAbbigliamentoDAOImpl implements CapoAbbigliamentoDAOInterface{
                 String materiale = res.getString(6);
                 int idMaglia = res.getInt(7);
 
-                Maglia m = new Maglia(nome, dirImmagine, stagione, colore, manica, materiale);
+                Maglia m = new Maglia(nome,dirImmagine,stagione,colore,manica,materiale);
                 m.setId(idMaglia);
 
                 maglie.add(m);
@@ -331,10 +334,10 @@ public class CapoAbbigliamentoDAOImpl implements CapoAbbigliamentoDAOInterface{
         List<Pantaloni> pant = new ArrayList<>();
 
         try (Connection connection =  ConnectionPool.getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("SELECT c.nome, c.stagione, c.colore, " +
-                    "c.immagine, p.lunghezza, p.materiale, c.ID " +
-                    "from Pantaloni p, CapoAbbigliamento c " +
-                    "WHERE c.ID = p.IDcapoAbbigliamento and c.IDguardaroba= ?");
+            PreparedStatement statement = connection.prepareStatement("SELECT c.nome, c.stagione, c.colore, "
+                    + "c.immagine, p.lunghezza, p.materiale, c.ID "
+                    + "from Pantaloni p, CapoAbbigliamento c "
+                    + "WHERE c.ID = p.IDcapoAbbigliamento and c.IDguardaroba= ?");
 
             statement.setInt(1,idG);
 
@@ -348,7 +351,7 @@ public class CapoAbbigliamentoDAOImpl implements CapoAbbigliamentoDAOInterface{
                 String materiale = res.getString(6);
                 int idPantaloni = res.getInt(7);
 
-                Pantaloni p = new Pantaloni(nome, dirImmagine, stagione, colore, lunghezza, materiale);
+                Pantaloni p = new Pantaloni(nome,dirImmagine,stagione,colore,lunghezza,materiale);
                 p.setId(idPantaloni);
 
                 pant.add(p);
@@ -366,10 +369,10 @@ public class CapoAbbigliamentoDAOImpl implements CapoAbbigliamentoDAOInterface{
         List<Scarpe> s = new ArrayList<>();
 
         try (Connection connection =  ConnectionPool.getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("SELECT c.nome, c.stagione, c.colore, " +
-                    "c.immagine, s.tipo, s.antiscivolo, s.impermeabile, c.ID " +
-                    "from Scarpe s, CapoAbbigliamento c " +
-                    "WHERE c.ID = s.IDcapoAbbigliamento and c.IDguardaroba= ?");
+            PreparedStatement statement = connection.prepareStatement("SELECT c.nome, c.stagione, c.colore, "
+                    + "c.immagine, s.tipo, s.antiscivolo, s.impermeabile, c.ID "
+                    + "from Scarpe s, CapoAbbigliamento c "
+                    + "WHERE c.ID = s.IDcapoAbbigliamento and c.IDguardaroba= ?");
 
             statement.setInt(1,idG);
 
@@ -384,7 +387,7 @@ public class CapoAbbigliamentoDAOImpl implements CapoAbbigliamentoDAOInterface{
                 boolean impermeabile = res.getBoolean(7);
                 int idScarpe = res.getInt(8);
 
-                Scarpe scarpe = new Scarpe(nome, dirImmagine, stagione, colore, tipo, antiscivolo, impermeabile);
+                Scarpe scarpe = new Scarpe(nome,dirImmagine,stagione,colore,tipo,antiscivolo,impermeabile);
                 scarpe.setId(idScarpe);
 
                 s.add(scarpe);

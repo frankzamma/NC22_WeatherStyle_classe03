@@ -34,7 +34,7 @@ class GeneticAlgorithm<T extends CapoAbbigliamento> implements ImplementorAlgori
      * @return lista dei tre capi d'abbigliamento migliori
      */
     @Override
-    public List<T> getBestThreeCapoAbbigliamento(List<T> capoAbbigliamentoList, MeteoDailyMin meteoDailyMin) {
+    public List<T> getBestThreeCapoAbbigliamento(List<T> capoAbbigliamentoList,MeteoDailyMin meteoDailyMin) {
 
         this.meteoDailyMin = meteoDailyMin;
         this.capoAbbigliamentoList = capoAbbigliamentoList;
@@ -106,7 +106,7 @@ class GeneticAlgorithm<T extends CapoAbbigliamento> implements ImplementorAlgori
         } else {
             for (int i = 0; i < genotype.length(); i++) {
                 punteggio += evaluator.valuta((CapoAbbigliamento) capoAbbigliamentoList
-                        .get(genotype.get(i).gene().intValue()), meteoDailyMin);
+                        .get(genotype.get(i).gene().intValue()),meteoDailyMin);
             }
             punteggio = punteggio / 3;
         }

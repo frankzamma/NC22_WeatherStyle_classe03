@@ -68,7 +68,7 @@ public class MeteoHours {
      * @param index   the index posizione in cui aggiungere in nuovo MeteoHour
      * @param element elemento MeteoHour da aggiungere
      */
-    public void add(int index, MeteoHour element) {
-        meteoInfo.add(index, element);
+    public void add(int index,MeteoHour element) {
+        meteoInfo.add(index,element);
     }
 }

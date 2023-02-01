@@ -76,21 +76,33 @@
                     <label class="form-check-label" for="tematiche8">Distruzione foreste</label>
                 </div>
                 <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" id="tematiche9" name="tematiche" value="Rovina del paesaggio">
-                    <label class="form-check-label" for="tematiche9">Rovina del paesaggio</label>
+                    <input class="form-check-input" type="checkbox" id="tematiche9" name="tematiche" value="Pulizia Aree Publiche">
+                    <label class="form-check-label" for="tematiche9">Pulizia Aree Publiche</label>
                 </div>
                 <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" id="tematiche10" name="tematiche" value="Specie in via d'estinzione">
-                    <label class="form-check-label" for="tematiche10">Specie in via d'estinzione</label>
+                    <input class="form-check-input" type="checkbox" id="tematiche10" name="tematiche" value="Tutela del patrimonio naturale">
+                    <label class="form-check-label" for="tematiche10">Tutela del patrimonio naturale</label>
                 </div>
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" id="tematiche11" name="tematiche" value="Inquinamento acustico">
                     <label class="form-check-label" for="tematiche11">Inquinamento acustico</label>
                 </div>
-
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="tematiche12" name="tematiche" value="Pulizia di spiagge">
+                    <label class="form-check-label" for="tematiche11">Pulizia di spiagge</label>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="tematiche13" name="tematiche" value="Rovina del paesaggio">
+                    <label class="form-check-label" for="tematiche11">Rovina del paesaggio</label>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="tematiche13" name="tematiche" value="Specie in via d'estinzione">
+                    <label class="form-check-label" for="tematiche11">Specie in via d'estinzione</label>
+                </div>
                 <br>
                 <div class="col-md-6">
-                    <label for="esperienze" class="form-label">Si fornisca una breve descrizione delle esperienze che si hanno in ambito ambientale.</label>
+                    <label for="esperienze" class="form-label">Si fornisca una breve descrizione delle esperienze
+                        che si hanno in ambito ambientale.</label>
                     <input type="text" name="esperienze" class="form-control" id="esperienze">
                 </div>
 

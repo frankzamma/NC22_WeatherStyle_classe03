@@ -32,8 +32,9 @@ public class InfoCittaImpl implements InfoCittaService {
     @Override
     public List<Citta> getCittaByName(final String name) {
 
-        if (name.length() == 0)
+        if (name.length() == 0) {
             throw new IllegalArgumentException("Name deve avere almeno un carattere");
+        }
 
         String[] nameSplit = name.split(" ");
         String splitting = nameSplit[0];
@@ -68,7 +69,7 @@ public class InfoCittaImpl implements InfoCittaService {
 
         JsonArray jsonArray = gson.fromJson(response.body(),JsonArray.class);
 
-        for (JsonElement element: jsonArray) {
+        for (JsonElement element : jsonArray) {
             JsonObject jsonObject = element.getAsJsonObject();
             jsonObject.remove("place_id");
             jsonObject.remove("licence");

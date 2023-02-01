@@ -12,7 +12,7 @@ import java.util.List;
  * Classe che gestisce le operazioni di business che riguardano le richieste di promozione
  * a ecologista avanzate dagli utenti.
  */
-public class RichiestaPromozioneLogicImpl implements RichiestaPromozioneLogicInterface{
+public class RichiestaPromozioneLogicImpl implements RichiestaPromozioneLogicInterface {
     /**
      * DAO di richiestaPromozione per interagire direttamente col database.
      */
@@ -68,8 +68,9 @@ public class RichiestaPromozioneLogicImpl implements RichiestaPromozioneLogicInt
 
     @Override
     public List<RichiestaPromozione> ottieniListaRichiestePromozionePerStato(String stato) {
-        if(stato == null)
+        if (stato == null) {
             throw new IllegalArgumentException("Errore, stato null.");
+        }
         if (!"in attesa".equals(stato) && !"approvata".equals(stato) && !"rifiutata".equals(stato)) {
             throw new IllegalArgumentException("Lo stato di una richiesta può essere solo: in attesa, approvata o rifiutata.");
         }
@@ -79,8 +80,9 @@ public class RichiestaPromozioneLogicImpl implements RichiestaPromozioneLogicInt
 
     @Override
     public boolean aggiornaStatoRichiestaPromozione(RichiestaPromozione richiestaPromozione,String nuovoStato,Admin admin) {
-        if(nuovoStato == null)
+        if (nuovoStato == null) {
             throw new IllegalArgumentException("Errore, nuovoStato null.");
+        }
 
         if (!"in attesa".equals(nuovoStato) && !"approvata".equals(nuovoStato) && !"rifiutata".equals(nuovoStato)) {
             throw new IllegalArgumentException("Lo stato di una richiesta può essere solo: in attesa, approvata o rifiutata.");
@@ -90,8 +92,9 @@ public class RichiestaPromozioneLogicImpl implements RichiestaPromozioneLogicInt
             throw new IllegalArgumentException("Errore, richiesta di promozione null.");
         }
 
-        if (!richiestaPromozione.getStato().equals("in attesa"))
+        if (!"in attesa".equals(richiestaPromozione.getStato())) {
             throw new IllegalArgumentException("La richiesta di promozione è già stata valutata.");
+        }
 
         if (admin == null) {
             throw new IllegalArgumentException("Errore, admin null.");

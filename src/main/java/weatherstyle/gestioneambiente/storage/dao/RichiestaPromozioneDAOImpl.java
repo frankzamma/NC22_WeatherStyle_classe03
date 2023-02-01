@@ -17,7 +17,7 @@ import java.util.List;
  * Classe che gestisce le informazioni persisistenti che riguardano le richieste di promozione
  * a ecologista avanzate dagli utenti.
  */
-public class RichiestaPromozioneDAOImpl implements RichiestaPromozioneDAOInterface{
+public class RichiestaPromozioneDAOImpl implements RichiestaPromozioneDAOInterface {
     /**
      * Questo metodo permette di creare un oggetto RichiestaPromozione a partire
      * da un resultSet ottenuto tramite una query.
@@ -31,16 +31,17 @@ public class RichiestaPromozioneDAOImpl implements RichiestaPromozioneDAOInterfa
         AdminDAOInterface adminDAO = new AdminDAOImpl();
 
         try {
-                richiestaPromozione.setId(resultSet.getInt("ID"));
-                richiestaPromozione.setTematiche(resultSet.getString("tematiche"));
-                richiestaPromozione.setEsperienze(resultSet.getString("esperienze"));
-                richiestaPromozione.setStato(resultSet.getString("stato"));
-                richiestaPromozione.setUtente(utenteDAO.doRetrieveUtenteByID(resultSet.getInt("IDutente")));
-                if(!richiestaPromozione.getStato().equals("in attesa"))
-                    richiestaPromozione.setAdmin(adminDAO.doRetrieveAdminById(resultSet.getInt("IDadmin")));
-                else
-                    richiestaPromozione.setAdmin(null);
-                return richiestaPromozione;
+            richiestaPromozione.setId(resultSet.getInt("ID"));
+            richiestaPromozione.setTematiche(resultSet.getString("tematiche"));
+            richiestaPromozione.setEsperienze(resultSet.getString("esperienze"));
+            richiestaPromozione.setStato(resultSet.getString("stato"));
+            richiestaPromozione.setUtente(utenteDAO.doRetrieveUtenteByID(resultSet.getInt("IDutente")));
+            if (!"in attesa".equals(richiestaPromozione.getStato())) {
+                richiestaPromozione.setAdmin(adminDAO.doRetrieveAdminById(resultSet.getInt("IDadmin")));
+            } else {
+                richiestaPromozione.setAdmin(null);
+            }
+            return richiestaPromozione;
         } catch (SQLException sql) {
             throw new RuntimeException();
         }
@@ -105,7 +106,7 @@ public class RichiestaPromozioneDAOImpl implements RichiestaPromozioneDAOInterfa
             }
 
             richiestaPromozione.setAdmin(admin);
-            if (nuovoStato.equals("approvata")) {
+            if ("approvata".equals(nuovoStato)) {
                 UtenteDAOInterface utenteDAO = new UtenteDAOImpl();
                 utenteDAO.doUpdateUtenteToEcologista(richiestaPromozione.getUtente());
             }
@@ -146,8 +147,9 @@ public class RichiestaPromozioneDAOImpl implements RichiestaPromozioneDAOInterfa
                     "SELECT * FROM RichiestaPromozione WHERE IDutente=?");
             prepareStatement.setInt(1,idUtente);
             ResultSet resultSet = prepareStatement.executeQuery();
-            if(resultSet.next())
+            if (resultSet.next()) {
                 richiestaPromozione = creaRichiestaPromozione(resultSet);
+            }
 
         } catch (SQLException sql) {
             throw new RuntimeException();
@@ -165,8 +167,9 @@ public class RichiestaPromozioneDAOImpl implements RichiestaPromozioneDAOInterfa
                     "SELECT * FROM RichiestaPromozione WHERE ID=?");
             prepareStatement.setInt(1,idRichiestaPromozione);
             ResultSet resultSet = prepareStatement.executeQuery();
-            if (resultSet.next())
+            if (resultSet.next()) {
                 richiestaPromozione = creaRichiestaPromozione(resultSet);
+            }
 
         } catch (SQLException sql) {
             throw new RuntimeException();

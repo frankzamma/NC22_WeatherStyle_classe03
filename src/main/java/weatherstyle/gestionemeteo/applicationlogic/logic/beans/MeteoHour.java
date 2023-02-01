@@ -154,7 +154,7 @@ public class MeteoHour {
      * Restituisce una descrizione generica della previsione meteo(Eg. Temporale Forte = pioggia);
      * @return stringa che descrive genericamente la previsione meteo
      */
-    public String getMeteoString(){
+    public String getMeteoString() {
         return MeteoUtils.translateWeatherCode(this.weatherCode);
     }
 

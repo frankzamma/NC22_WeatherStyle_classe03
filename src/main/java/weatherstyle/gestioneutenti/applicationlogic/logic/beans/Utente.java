@@ -227,16 +227,16 @@ public class Utente {
 
     @Override
     public String toString() {
-        return "Utente{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", cognome='" + cognome + '\'' +
-                ", dataNascita=" + dataNascita +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", citta=" + citta +
-                ", guardaroba=" + guardaroba +
-                ", ecologista=" + ecologista +
-                '}';
+        return "Utente{"
+                + "id=" + id
+                + ", nome='" + nome + '\''
+                + ", cognome='" + cognome + '\''
+                + ", dataNascita=" + dataNascita
+                + ", email='" + email + '\''
+                + ", password='" + password + '\''
+                + ", citta=" + citta
+                + ", guardaroba=" + guardaroba
+                + ", ecologista=" + ecologista
+                + '}';
     }
 }

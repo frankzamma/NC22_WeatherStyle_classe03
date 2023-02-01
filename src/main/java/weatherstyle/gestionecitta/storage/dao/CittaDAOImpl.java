@@ -12,7 +12,7 @@ import java.util.List;
  * classe che si interfaccia al DB e lavora sulle tabelle in merito alle Citta, in particolare sulle tabelle Citta e
  * Salvare
  */
-public class CittaDAOImpl implements CittaDAOInterface{
+public class CittaDAOImpl implements CittaDAOInterface {
 
     /**
      * salva citta nel DB e dopodichè riempie l'id dell'oggetto passato con la chiave restituita dal DB
@@ -62,10 +62,10 @@ public class CittaDAOImpl implements CittaDAOInterface{
         try (Connection connection = ConnectionPool.getConnection()) {
 
             PreparedStatement preparedStatement = connection.prepareStatement(
-                    "SELECT c.ID, nome, latitudine, longitudine " +
-                            "FROM Citta c join Suggerimento s on s.IDcitta = c.ID " +
-                            "where s.ID=?");
-            preparedStatement.setInt(1, idSuggerimento);
+                    "SELECT c.ID, nome, latitudine, longitudine "
+                            + "FROM Citta c join Suggerimento s on s.IDcitta = c.ID "
+                            + "where s.ID=?");
+            preparedStatement.setInt(1,idSuggerimento);
 
             ResultSet resultSet = preparedStatement.executeQuery();
             resultSet.next();
@@ -95,14 +95,14 @@ public class CittaDAOImpl implements CittaDAOInterface{
         try (Connection connection = ConnectionPool.getConnection()) {
 
             PreparedStatement preparedStatement = connection.prepareStatement(
-                    "SELECT c.ID, nome, latitudine, longitudine " +
-                            "FROM Citta c join Salvare s on s.IDcitta = c.ID " +
-                            "where s.IDutente=?");
-            preparedStatement.setInt(1, idUtente);
+                    "SELECT c.ID, nome, latitudine, longitudine "
+                            + "FROM Citta c join Salvare s on s.IDcitta = c.ID "
+                            + "where s.IDutente=?");
+            preparedStatement.setInt(1,idUtente);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 Citta citta = new Citta();
                 citta.setId(resultSet.getInt("ID"));
                 citta.setNome(resultSet.getString("nome"));
@@ -125,15 +125,15 @@ public class CittaDAOImpl implements CittaDAOInterface{
      * @return true se è stato possibile salvare la citta, false altrimenti
      */
     @Override
-    public boolean doSaveCittaByUtenteID(int idUtente, Citta citta) {
-        if(doSaveCitta(citta)) {
+    public boolean doSaveCittaByUtenteID(int idUtente,Citta citta) {
+        if (doSaveCitta(citta)) {
             try (Connection connection = ConnectionPool.getConnection()) {
 
 
                 PreparedStatement preparedStatement = connection.prepareStatement(
                         "INSERT INTO Salvare (IDutente, IDcitta) VALUES(?,?)");
-                preparedStatement.setInt(1, idUtente);
-                preparedStatement.setInt(2, citta.getId());
+                preparedStatement.setInt(1,idUtente);
+                preparedStatement.setInt(2,citta.getId());
 
                 return preparedStatement.executeUpdate() == 1;
 
@@ -141,7 +141,7 @@ public class CittaDAOImpl implements CittaDAOInterface{
                 throw new RuntimeException("Errore salvataggio città Utente");
             }
 
-        }else{
+        } else {
             throw new RuntimeException("Errore salvataggio citta");
         }
     }
@@ -160,8 +160,8 @@ public class CittaDAOImpl implements CittaDAOInterface{
                     "SELECT *"
                             + "FROM Citta c  "
                             + "where c.latitudine=? and c.longitudine=?");
-            preparedStatement.setString(1, citta.getLat());
-            preparedStatement.setString(2, citta.getLon());
+            preparedStatement.setString(1,citta.getLat());
+            preparedStatement.setString(2,citta.getLon());
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
