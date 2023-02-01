@@ -160,17 +160,4 @@ public class Evento {
     public void setUtente(Utente utente) {
         this.utente = utente;
     }
-
-    @Override
-    public String toString() {
-        return "Evento{"
-                + "id=" + id
-                + ", nome='" + nome + '\''
-                + ", dataOraEvento=" + dataOraEvento
-                + ", luogo='" + luogo + '\''
-                + ", descrizione='" + descrizione + '\''
-                + ", altreInformazioni='" + altreInformazioni + '\''
-                + ", utente=" + utente
-                + '}';
-    }
 }
