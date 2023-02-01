@@ -13,7 +13,7 @@ import java.util.List;
  L'interfaccia rappresenta le operazioni eseguibili su un guardaroba.
  */
 
-public interface GuardarobaLogicInterface {
+public interface GuardarobaLogicService {
     /**
      * Il metodo salva una maglia nel guardaroba.
      * @param m è la maglia da salvare.

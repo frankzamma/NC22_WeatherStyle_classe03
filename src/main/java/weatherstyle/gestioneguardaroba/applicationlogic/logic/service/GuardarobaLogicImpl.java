@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class GuardarobaLogicImpl implements GuardarobaLogicInterface {
+public class GuardarobaLogicImpl implements GuardarobaLogicService {
 
     /**
      * Gestisce i capi d'abbigliamento nel database.
