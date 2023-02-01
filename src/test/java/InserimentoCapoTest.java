@@ -45,7 +45,7 @@ public class InserimentoCapoTest {
     public void materialeNullMaglie (){
         Maglia m = new Maglia();
 
-        m.setNome("maglia");
+        m.setNome("T-shirt Adidas");
         m.setMateriale(null);
         m.setColore("chiaro");
         m.setStagione("estate");
@@ -62,7 +62,7 @@ public class InserimentoCapoTest {
     public void coloreNullMaglie(){
         Maglia m = new Maglia();
 
-        m.setNome("Maglia");
+        m.setNome("T-shirt Adidas");
         m.setMateriale("poliestere");
         m.setColore(null);
         m.setStagione("estate");
@@ -79,7 +79,7 @@ public class InserimentoCapoTest {
     public void stagioneNullMaglie (){
         Maglia m = new Maglia();
 
-        m.setNome("Maglia");
+        m.setNome("T-shirt Adidas");
         m.setMateriale("poliestere");
         m.setColore("chiaro");
         m.setStagione(null);
@@ -96,7 +96,7 @@ public class InserimentoCapoTest {
     public void lunghezzaManicaErrataMaglia(){
         Maglia m = new Maglia();
 
-        m.setNome("Maglia");
+        m.setNome("T-shirt Adidas");
         m.setMateriale("poliestere");
         m.setColore("chiaro");
         m.setStagione("estate");
@@ -113,7 +113,7 @@ public class InserimentoCapoTest {
     public void magliaCorretto() throws ErrorParameterException {
         Maglia m = new Maglia();
 
-        m.setNome("Maglia");
+        m.setNome("T-shirt Adidas");
         m.setMateriale("poliestere");
         m.setColore("chiaro");
         m.setStagione("estate");
