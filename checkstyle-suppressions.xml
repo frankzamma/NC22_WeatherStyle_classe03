@@ -10,7 +10,6 @@
   <suppress checks="naming" files="[\\/]src[\\/]"/>
   <suppress checks="FinalParameters" files="[\\/]src[\\/]"/>
   <suppress checks="FinalParameters" files="[\\/]src[\\/]"/>
-
   <suppress checks="LineLength" files=".*[\\/]test[\\/]"/>
   <suppress checks="AvoidStarImport" files="[\\/]test[\\/]"/>
   <suppress checks="naming" files="[\\/]test[\\/]"/>
