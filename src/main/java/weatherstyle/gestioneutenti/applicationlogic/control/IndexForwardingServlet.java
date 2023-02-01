@@ -10,7 +10,7 @@ import jakarta.servlet.annotation.WebServlet;
 import weatherstyle.gestionecitta.applicationlogic.logic.beans.Citta;
 import weatherstyle.gestionemeteo.applicationlogic.logic.beans.MeteoDaily;
 import weatherstyle.gestionemeteo.applicationlogic.logic.beans.MeteoHours;
-import weatherstyle.gestionemeteo.applicationlogic.logic.service.MeteoLogicService;
+import weatherstyle.gestionemeteo.applicationlogic.logic.service.MeteoLogicServiceImpl;
 import weatherstyle.gestioneutenti.applicationlogic.logic.beans.Admin;
 import weatherstyle.gestioneutenti.applicationlogic.logic.beans.Utente;
 
@@ -34,7 +34,7 @@ public class IndexForwardingServlet extends HttpServlet {
         if (u != null) {
             Citta citta = u.getCitta().isEmpty()
                     ? (Citta) getServletContext().getAttribute("citta_default") : u.getCitta().get(0);
-            MeteoLogicService meteoLogicService =  new MeteoLogicService();
+            MeteoLogicServiceImpl meteoLogicService =  new MeteoLogicServiceImpl();
 
             List<MeteoDaily> meteoDaily =  meteoLogicService.getMeteoDaily(citta);
             List<MeteoHours> meteoHours =  meteoLogicService.getMeteoHours(citta);
