@@ -5,7 +5,7 @@ import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Maglia;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Pantaloni;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Scarpe;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.service.GuardarobaLogicImpl;
-import weatherstyle.gestioneguardaroba.applicationlogic.logic.service.GuardarobaLogicInterface;
+import weatherstyle.gestioneguardaroba.applicationlogic.logic.service.GuardarobaLogicService;
 import weatherstyle.gestioneguardaroba.storage.dao.CapoAbbigliamentoDAOImpl;
 import weatherstyle.gestioneguardaroba.storage.dao.GuardarobaDAOImpl;
 import weatherstyle.utils.ErrorParameterException;
@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class InserimentoCapoTest {
     private static CapoAbbigliamentoDAOImpl capoAbbigliamentoDAO;
-    private static GuardarobaLogicInterface guardarobaLogic;
+    private static GuardarobaLogicService guardarobaLogic;
     private static GuardarobaDAOImpl guardarobaDAO;
 
     @BeforeAll

@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.annotation.WebServlet;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.CapoAbbigliamento;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.service.GuardarobaLogicImpl;
-import weatherstyle.gestioneguardaroba.applicationlogic.logic.service.GuardarobaLogicInterface;
+import weatherstyle.gestioneguardaroba.applicationlogic.logic.service.GuardarobaLogicService;
 import weatherstyle.gestioneutenti.applicationlogic.logic.beans.Utente;
 
 import java.io.IOException;
@@ -23,7 +23,7 @@ public class VisualizzaGuardarobaServlet extends HttpServlet {
 
         Utente u = (Utente) session.getAttribute("utente");
         if (u != null) {
-            GuardarobaLogicInterface service = new GuardarobaLogicImpl();
+            GuardarobaLogicService service = new GuardarobaLogicImpl();
 
             List<CapoAbbigliamento> all = service.getAll(u.getId());
 
