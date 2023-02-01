@@ -11,7 +11,6 @@
 | Palmieri Angelo | 0512111009 |
 | Zammarrelli Francesco Giuseppe | 0512110694 |
 
-**NOTA**: Attualmente la repository contiene un driver che permette di testare i moduli di intelligenza artificiale
 <hr>
 
 ## Indice
