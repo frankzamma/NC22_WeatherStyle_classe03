@@ -3,9 +3,9 @@ package weatherstyle.gestionemeteo.storage.dao;
 import weatherstyle.gestionemeteo.applicationlogic.logic.beans.MeteoDailyMin;
 
 /**
- * Interfaccia Meteo dao interface.
+ * Interfaccia per i metodi del package gestionemeteo.storage.dao
  *
- * @author Francesco Giuseppe Zammarrelli Interfaccia per i metodi del package gestionemeteo.storage.dao
+ * @author Francesco Giuseppe Zammarrelli
  */
 public interface MeteoDAOInterface {
     /**

@@ -6,7 +6,8 @@ import weatherstyle.utils.ConnectionPool;
 import java.sql.*;
 
 /**
- * @author Francesco Giuseppe Zammarrelli Classe per gestire le operazioni con il database relative al meteo
+ * @author Francesco Giuseppe Zammarrelli
+ * Classe per gestire le operazioni con il database relative al meteo
  */
 public class MeteoDAOImpl implements MeteoDAOInterface {
 
