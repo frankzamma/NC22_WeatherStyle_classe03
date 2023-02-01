@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.annotation.WebServlet;
 import weatherstyle.gestioneambiente.applicationlogic.logic.beans.Evento;
 import weatherstyle.gestioneambiente.applicationlogic.logic.service.EventoLogicImpl;
-import weatherstyle.gestioneambiente.applicationlogic.logic.service.EventoLogicInterface;
+import weatherstyle.gestioneambiente.applicationlogic.logic.service.EventoLogicService;
 import weatherstyle.gestioneutenti.applicationlogic.logic.beans.Utente;
 
 import java.io.IOException;
@@ -24,7 +24,7 @@ public class VisualizzaEventiServlet extends HttpServlet {
         if (utente == null) {
             response.sendRedirect("index.html");
         } else {
-            EventoLogicInterface eventoLogic = new EventoLogicImpl();
+            EventoLogicService eventoLogic = new EventoLogicImpl();
             List<Evento> listaEventi = eventoLogic.ottieniListaEventiFuturi();
             request.setAttribute("listaEventi",listaEventi);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/gestioneambiente/visualizzaEventi.jsp");

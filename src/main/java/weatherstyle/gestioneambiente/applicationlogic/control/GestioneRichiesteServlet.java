@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.annotation.WebServlet;
 import weatherstyle.gestioneambiente.applicationlogic.logic.beans.RichiestaPromozione;
 import weatherstyle.gestioneambiente.applicationlogic.logic.service.RichiestaPromozioneLogicImpl;
-import weatherstyle.gestioneambiente.applicationlogic.logic.service.RichiestaPromozioneLogicInterface;
+import weatherstyle.gestioneambiente.applicationlogic.logic.service.RichiestaPromozioneLogicService;
 import weatherstyle.gestioneutenti.applicationlogic.logic.beans.Admin;
 
 import java.io.IOException;
@@ -24,7 +24,7 @@ public class GestioneRichiesteServlet extends HttpServlet {
         if (admin == null) {
             response.sendRedirect("index.html");
         } else {
-            RichiestaPromozioneLogicInterface richiestaPromozioneLogic = new RichiestaPromozioneLogicImpl();
+            RichiestaPromozioneLogicService richiestaPromozioneLogic = new RichiestaPromozioneLogicImpl();
             List<RichiestaPromozione> listaRichiestePromozione = richiestaPromozioneLogic.ottieniListaRichiestePromozionePerStato("in attesa");
             request.setAttribute("listaRichiestePromozione",listaRichiestePromozione);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/gestioneambiente/gestioneRichieste.jsp");

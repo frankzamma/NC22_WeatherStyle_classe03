@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.annotation.WebServlet;
 import weatherstyle.gestioneambiente.applicationlogic.logic.beans.RichiestaPromozione;
 import weatherstyle.gestioneambiente.applicationlogic.logic.service.RichiestaPromozioneLogicImpl;
-import weatherstyle.gestioneambiente.applicationlogic.logic.service.RichiestaPromozioneLogicInterface;
+import weatherstyle.gestioneambiente.applicationlogic.logic.service.RichiestaPromozioneLogicService;
 import weatherstyle.gestioneutenti.applicationlogic.logic.beans.Admin;
 import java.io.IOException;
 
@@ -25,7 +25,7 @@ public class ValutaRichiesteServlet extends HttpServlet {
             int idRichiestaPromozione =  Integer.parseInt(request.getParameter("idRichiestaPromozione"));
             String nuovoStato = request.getParameter("valutazione");
 
-            RichiestaPromozioneLogicInterface richiestaPromozioneLogic = new RichiestaPromozioneLogicImpl();
+            RichiestaPromozioneLogicService richiestaPromozioneLogic = new RichiestaPromozioneLogicImpl();
             RichiestaPromozione richiestaPromozione = richiestaPromozioneLogic.ottieniRichiestaPromozionePerId(idRichiestaPromozione);
             richiestaPromozioneLogic.aggiornaStatoRichiestaPromozione(richiestaPromozione,nuovoStato,admin);
 

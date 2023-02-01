@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.annotation.WebServlet;
 import weatherstyle.gestioneambiente.applicationlogic.logic.beans.RichiestaPromozione;
 import weatherstyle.gestioneambiente.applicationlogic.logic.service.RichiestaPromozioneLogicImpl;
-import weatherstyle.gestioneambiente.applicationlogic.logic.service.RichiestaPromozioneLogicInterface;
+import weatherstyle.gestioneambiente.applicationlogic.logic.service.RichiestaPromozioneLogicService;
 import weatherstyle.gestioneutenti.applicationlogic.logic.beans.Utente;
 
 import java.io.IOException;
@@ -34,7 +34,7 @@ public class SalvaRichiestaPromozioneServlet extends HttpServlet {
 
             String esperienze = request.getParameter("esperienze");
 
-            RichiestaPromozioneLogicInterface richiestaPromozioneLogic = new RichiestaPromozioneLogicImpl();
+            RichiestaPromozioneLogicService richiestaPromozioneLogic = new RichiestaPromozioneLogicImpl();
             RequestDispatcher dispatcher;
 
             Utente utente = (Utente) session.getAttribute("utente");

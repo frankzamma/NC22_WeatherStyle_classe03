@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.annotation.WebServlet;
 import weatherstyle.gestioneambiente.applicationlogic.logic.beans.Evento;
 import weatherstyle.gestioneambiente.applicationlogic.logic.service.EventoLogicImpl;
-import weatherstyle.gestioneambiente.applicationlogic.logic.service.EventoLogicInterface;
+import weatherstyle.gestioneambiente.applicationlogic.logic.service.EventoLogicService;
 import weatherstyle.gestioneutenti.applicationlogic.logic.beans.Utente;
 
 import java.io.IOException;
@@ -35,7 +35,7 @@ public class SalvaEventoServlet extends HttpServlet {
             GregorianCalendar dataNascita = new GregorianCalendar(Integer.parseInt(data[0]),Integer.parseInt(data[1]) - 1,Integer.parseInt(data[2]),Integer.parseInt(orario[0]),Integer.parseInt(orario[1]));
             dataOraEvento = new Timestamp(dataNascita.getTimeInMillis());
 
-            EventoLogicInterface eventoLogic = new EventoLogicImpl();
+            EventoLogicService eventoLogic = new EventoLogicImpl();
             RequestDispatcher dispatcher;
             Evento evento = new Evento();
             evento.setNome(nomeEvento);

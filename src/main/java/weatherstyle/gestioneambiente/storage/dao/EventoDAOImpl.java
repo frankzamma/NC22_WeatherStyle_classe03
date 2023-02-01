@@ -94,7 +94,8 @@ public class EventoDAOImpl implements EventoDAOInterface {
 
         try (Connection connection = ConnectionPool.getConnection()) {
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM Evento WHERE TIMESTAMPDIFF(MINUTE, CURRENT_TIMESTAMP(), dataOraEvento) > 0;");
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM Evento " +
+                    "WHERE TIMESTAMPDIFF(MINUTE, CURRENT_TIMESTAMP(), dataOraEvento) > 0 ORDER BY dataOraEvento;");
             while (resultSet.next()) {
                 list.add(creaEvento(resultSet));
             }

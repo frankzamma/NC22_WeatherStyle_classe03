@@ -12,7 +12,7 @@ import java.util.List;
  * Classe che gestisce le operazioni di business che riguardano le richieste di promozione
  * a ecologista avanzate dagli utenti.
  */
-public class RichiestaPromozioneLogicImpl implements RichiestaPromozioneLogicInterface {
+public class RichiestaPromozioneLogicImpl implements RichiestaPromozioneLogicService {
     /**
      * DAO di richiestaPromozione per interagire direttamente col database.
      */
