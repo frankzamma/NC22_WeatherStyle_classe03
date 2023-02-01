@@ -14,6 +14,10 @@ import weatherstyle.gestioneutenti.applicationlogic.logic.beans.Utente;
 
 import java.io.IOException;
 
+/**
+ * @author angelopalmieri
+ * Servlet che si occupa di salvare una richiesta di promozione in ecologista nel database.
+ */
 @WebServlet(name = "SalvaRichiestaPromozioneServlet",value = "/SalvaRichiestaPromozioneServlet")
 public class SalvaRichiestaPromozioneServlet extends HttpServlet {
     @Override

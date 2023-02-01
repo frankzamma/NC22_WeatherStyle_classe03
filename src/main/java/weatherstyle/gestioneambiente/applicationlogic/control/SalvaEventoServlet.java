@@ -16,6 +16,10 @@ import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.GregorianCalendar;
 
+/**
+ * @author angelopalmieri
+ * Servlet che si occupa di salvare un evento per la salvaguardia dell'ambiente nel database.
+ */
 @WebServlet(name = "SalvaEventoServlet",value = "/SalvaEventoServlet")
 public class SalvaEventoServlet extends HttpServlet {
     @Override

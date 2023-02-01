@@ -15,6 +15,12 @@ import weatherstyle.gestioneutenti.applicationlogic.logic.beans.Admin;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * @author angelopalmieri
+ * Servlet che si occupa d'indirizzare l'admin verso gestioneRichieste.jsp.
+ * Li sarò possibile per gli admin visualizzare le varie richieste di promozione
+ * in ecologista, e scegliere quale approvare e quali rifiutare.
+ */
 @WebServlet(name = "GestioneRichiesteServlet",value = "/GestioneRichiesteServlet")
 public class GestioneRichiesteServlet extends HttpServlet {
     @Override

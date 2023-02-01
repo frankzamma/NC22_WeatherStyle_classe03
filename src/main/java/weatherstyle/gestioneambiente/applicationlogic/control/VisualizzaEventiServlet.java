@@ -15,6 +15,11 @@ import weatherstyle.gestioneutenti.applicationlogic.logic.beans.Utente;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * @author angelopalmieri
+ * Servlet che si occupa d'indirizzare verso visualizzaEventi.jsp.
+ * Li sarà possibile, per gli utenti, visualizzare tutti gli eventi in programma.
+ */
 @WebServlet(name = "VisualizzaEventiServlet",value = "/VisualizzaEventiServlet")
 public class VisualizzaEventiServlet extends HttpServlet {
     @Override

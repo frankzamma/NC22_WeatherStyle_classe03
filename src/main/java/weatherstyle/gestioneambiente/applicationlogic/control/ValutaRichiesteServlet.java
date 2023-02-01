@@ -13,6 +13,10 @@ import weatherstyle.gestioneambiente.applicationlogic.logic.service.RichiestaPro
 import weatherstyle.gestioneutenti.applicationlogic.logic.beans.Admin;
 import java.io.IOException;
 
+/**
+ * @author angelopalmieri
+ * Servlet che si occupa di aggiornare lo stato di una richiesta di promozione in "approvata" o "rifiutata".
+ */
 @WebServlet(name = "ValutaRichiesteServlet",value = "/ValutaRichiesteServlet")
 public class ValutaRichiesteServlet extends HttpServlet {
     @Override
