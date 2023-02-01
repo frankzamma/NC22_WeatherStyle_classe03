@@ -98,7 +98,7 @@ public class UtenteLogicImpl implements UtenteLogicService {
                 Utente u = new Utente();
 
                 u.setPassword(password);
-                u = utenteDAO.doRetrieveUtenteByUsernameAndPassword(email,u.getPassword());
+                u = utenteDAO.doRetrieveUtenteByEmailAndPassword(email,u.getPassword());
 
                 if (u != null) {
                     return u;
