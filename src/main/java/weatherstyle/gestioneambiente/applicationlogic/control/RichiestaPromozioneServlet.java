@@ -11,6 +11,12 @@ import weatherstyle.gestioneutenti.applicationlogic.logic.beans.Utente;
 
 import java.io.IOException;
 
+/**
+ * @author angelopalmieri
+ * Servlet che si occupa d'indirizzare l'utente verso compilaRichiestaPromozione.jsp.
+ * Li sarà possibile, per gli utenti, compilare i vari campi necessari per richiedere
+ * la promozione in ecologista.
+ */
 @WebServlet(name = "RichiestaPromozioneServlet",value = "/RichiestaPromozioneServlet")
 public class RichiestaPromozioneServlet extends HttpServlet {
     @Override

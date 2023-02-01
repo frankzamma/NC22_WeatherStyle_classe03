@@ -11,6 +11,12 @@ import weatherstyle.gestioneutenti.applicationlogic.logic.beans.Utente;
 
 import java.io.IOException;
 
+/**
+ * @author angelopalmieri
+ * Servlet che si occupa d'indirizzare l'utente verso creaEvento.jsp.
+ * Li sarà possibile per gli utenti ecologisti creare dei nuovi eventi
+ * volti alla salvaguardia dell'ambiente.
+ */
 @WebServlet(name = "CreaEventoServlet",value = "/CreaEventoServlet")
 public class CreaEventoServlet extends HttpServlet {
     @Override

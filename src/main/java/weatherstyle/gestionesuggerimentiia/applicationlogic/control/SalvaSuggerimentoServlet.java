@@ -22,6 +22,10 @@ import java.io.IOException;
 import java.sql.Date;
 import java.util.GregorianCalendar;
 
+/**
+ * @author Raffaele Aurucci
+ * servlet che raccoglie le scelte dell'utente e inoltra la richiesta di salvataggio del suggerimento nel database
+ */
 @WebServlet(name = "SalvaSuggerimentoServlet",value = "/SalvaSuggerimentoServlet")
 public class SalvaSuggerimentoServlet extends HttpServlet {
 

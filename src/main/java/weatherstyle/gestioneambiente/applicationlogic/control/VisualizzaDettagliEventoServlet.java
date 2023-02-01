@@ -14,6 +14,12 @@ import weatherstyle.gestioneutenti.applicationlogic.logic.beans.Utente;
 
 import java.io.IOException;
 
+/**
+ * @author angelopalmieri
+ * Servlet che si occupa di recuperare un evento dato il suo id, e poi di mostrare i suoi dettagli
+ * indirizzando l'utente verso visualizzaDettagliEvento.jsp.
+ * Li si potranno visualizzare appunti i dettagli dell'evento specificato.
+ */
 @WebServlet(name = "VisualizzaDettagliEventoServlet",value = "/VisualizzaDettagliEventoServlet")
 public class VisualizzaDettagliEventoServlet extends HttpServlet {
     @Override
