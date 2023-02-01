@@ -11,7 +11,6 @@
 | Palmieri Angelo | 0512111009 |
 | Zammarrelli Francesco Giuseppe | 0512110694 |
 
-**NOTA**: Attualmente la repository contiene un driver che permette di testare i moduli di intelligenza artificiale
 <hr>
 
 ## Indice
@@ -29,14 +28,7 @@ Il problema esposto non riguarda solo gli studenti, ma anche tutti coloro che de
 L'**obiettivo** di WeatherStyle è quello di realizzare un agente intelligente che aiuti gli utenti a scegliere quali, tra i propri capi d'abbigliamento, siano più adatti considerando le condizioni meteorologiche.
 
 ## Contenuto della repository
-* Nella cartella *src/main/java/* sono disponbili i package *Logics* e *Model*
-    * **Logics.ga** contiene tutte le classi necessarie alla realizzazione degli algoritmi genetici
-    * **Logics.machinelearning** contiene tutte le classi necessarie all'addestramento dei modelli di machine learning
-    * **Logics.controller** contiene tutte le classi servlet necessarie per la logica di controllo dell'applicazione
-    * **Model** contiene la logica di storage e i java beans
-* Nella cartella *src/main/webapp/WEB-INF/* è disponibile la logica di presentazione, proseguendo in *./resources/* sono presenti i CSV necessari alle classi presenti in **Logics.machinelearning**
-* Nella cartella *CreazioneDatasets/* sono disponibili tutti gli script necessari alla creazione dei datasets per addestrare i modelli di machine learning, nonchè i relativi file CSV da cui dipendono.
-
+Da aggiornare...
 
 ## Dipendenze
 
