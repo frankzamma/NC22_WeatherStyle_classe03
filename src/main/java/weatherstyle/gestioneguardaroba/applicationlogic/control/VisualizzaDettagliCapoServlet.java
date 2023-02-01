@@ -1,9 +1,11 @@
 package weatherstyle.gestioneguardaroba.applicationlogic.control;
 
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
-import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.CapoAbbigliamento;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.annotation.WebServlet;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Maglia;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Pantaloni;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Scarpe;
@@ -12,7 +14,7 @@ import weatherstyle.gestioneguardaroba.storage.dao.CapoAbbigliamentoDAOInterface
 
 import java.io.IOException;
 
-@WebServlet(name = "VisualizzaDettagliCapoServlet", value = "/visualizza-dettagli-capo")
+@WebServlet(name = "VisualizzaDettagliCapoServlet",value = "/visualizza-dettagli-capo")
 public class VisualizzaDettagliCapoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {

@@ -6,7 +6,7 @@ import Model.PantaloniLegacy;
 
 import java.util.List;
 
-public class BottomClothesGA{
+public class BottomClothesGA {
     private GenericGA genericGA;
 
     public BottomClothesGA(List<PantaloniLegacy> listaPantaloni,MeteoInformationLegacy meteoInformation) {

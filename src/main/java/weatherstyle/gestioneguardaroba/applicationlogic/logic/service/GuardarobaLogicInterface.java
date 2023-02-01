@@ -1,6 +1,9 @@
 package weatherstyle.gestioneguardaroba.applicationlogic.logic.service;
 
-import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.*;
+import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.CapoAbbigliamento;
+import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Maglia;
+import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Pantaloni;
+import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Scarpe;
 import weatherstyle.utils.ErrorParameterException;
 
 import java.util.List;

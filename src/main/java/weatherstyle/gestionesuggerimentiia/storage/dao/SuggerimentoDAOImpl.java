@@ -16,7 +16,7 @@ import java.util.List;
  * classe che si interfaccia al DB e lavora sulle tabelle in merito al Suggerimento, in particolare sulla tabella
  * Suggerimento
  */
-public class SuggerimentoDAOImpl implements SuggerimentoDAOInterface{
+public class SuggerimentoDAOImpl implements SuggerimentoDAOInterface {
 
     /**
      * usa cittaDAO per recuperare la città relativa a un suggerimento

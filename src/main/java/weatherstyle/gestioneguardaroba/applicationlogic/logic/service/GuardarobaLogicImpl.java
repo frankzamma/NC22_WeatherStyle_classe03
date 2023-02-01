@@ -6,9 +6,7 @@ package weatherstyle.gestioneguardaroba.applicationlogic.logic.service;
 
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.*;
 import weatherstyle.gestioneguardaroba.storage.dao.CapoAbbigliamentoDAOImpl;
-import weatherstyle.gestioneguardaroba.storage.dao.CapoAbbigliamentoDAOInterface;
 import weatherstyle.gestioneguardaroba.storage.dao.GuardarobaDAOImpl;
-import weatherstyle.gestioneguardaroba.storage.dao.GuardarobaDAOInterface;
 import weatherstyle.utils.ErrorParameterException;
 
 import java.util.ArrayList;

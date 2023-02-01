@@ -1,7 +1,6 @@
 package Logics.machinelearning;
 
 import Model.*;
-import Model.ScoreCapoAbbigliamentoLegacy;
 import weka.classifiers.Evaluation;
 import weka.classifiers.trees.REPTree;
 import weka.core.DenseInstance;
@@ -131,7 +130,7 @@ public class RegressionTreeWrapper {
 
 
     public List<ScoreCapoAbbigliamentoLegacy> classifyInstances(List<? extends CapoAbbigliamentoLegacy> capoAbbigliamentoList,
-                                                                MeteoInformationLegacy meteoInformation) {
+            MeteoInformationLegacy meteoInformation) {
         List<Instance> listInstance = new ArrayList<>();
 
         for (CapoAbbigliamentoLegacy capoAbbigliamentoLegacy : capoAbbigliamentoList) {
@@ -143,8 +142,7 @@ public class RegressionTreeWrapper {
                 if (capoAbbigliamentoLegacy.getClass() == MagliaLegacy.class) {
                     instance.setValue(2,((MagliaLegacy) capoAbbigliamentoLegacy).getLunghezzaManica());
                     instance.setValue(0,((MagliaLegacy) capoAbbigliamentoLegacy).getMateriale());
-                }
-                else {
+                } else {
                     instance.setValue(2,((PantaloniLegacy) capoAbbigliamentoLegacy).getLunghezza());
                     instance.setValue(0,((PantaloniLegacy) capoAbbigliamentoLegacy).getMateriale());
                 }
@@ -201,7 +199,7 @@ public class RegressionTreeWrapper {
         return bests;
     }
 
-    private static class Comparatore implements Comparator<ScoreCapoAbbigliamentoLegacy>{
+    private static class Comparatore implements Comparator<ScoreCapoAbbigliamentoLegacy> {
         @Override
         public int compare(ScoreCapoAbbigliamentoLegacy o1,ScoreCapoAbbigliamentoLegacy o2) {
             return o1.getPunteggio().compareTo(o2.getPunteggio());

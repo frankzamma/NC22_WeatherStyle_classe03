@@ -12,7 +12,7 @@ import java.util.List;
  * classe che si interfaccia al DB e lavora sulle tabelle in merito alle Citta, in particolare sulle tabelle Citta e
  * Salvare
  */
-public class CittaDAOImpl implements CittaDAOInterface{
+public class CittaDAOImpl implements CittaDAOInterface {
 
     /**
      * salva citta nel DB e dopodichè riempie l'id dell'oggetto passato con la chiave restituita dal DB

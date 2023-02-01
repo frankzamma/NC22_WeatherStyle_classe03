@@ -1,8 +1,5 @@
 package weatherstyle.gestionesuggerimentiia.storage.dao;
 
-import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Maglia;
-import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Pantaloni;
-import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Scarpe;
 import weatherstyle.gestioneguardaroba.storage.dao.CapoAbbigliamentoDAOImpl;
 import weatherstyle.gestioneguardaroba.storage.dao.CapoAbbigliamentoDAOInterface;
 import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.beans.Outfit;
@@ -85,8 +82,8 @@ public class OutfitDAOImpl implements OutfitDAOInterface {
 
             PreparedStatement preparedStatement = connection.prepareStatement(
                     "SELECT o.ID, o.nome "
-                        + "FROM Outfit o join Suggerimento s on o.ID = s.IDoutfit "
-                        + "where s.ID=?");
+                            + "FROM Outfit o join Suggerimento s on o.ID = s.IDoutfit "
+                            + "where s.ID=?");
             preparedStatement.setInt(1,suggerimentoID);
 
             ResultSet resultSet = preparedStatement.executeQuery();

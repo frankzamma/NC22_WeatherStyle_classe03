@@ -45,7 +45,7 @@ public class CapoAbbigliamento {
      * @param colore è il colore del capo.
      */
     public CapoAbbigliamento(String nome,String dirImmagine,
-                             String stagione,String colore) {
+            String stagione,String colore) {
         this.nome = nome;
         this.dirImmagine = dirImmagine;
         this.stagione = stagione;

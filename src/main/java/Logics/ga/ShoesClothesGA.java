@@ -6,7 +6,7 @@ import Model.ScarpaLegacy;
 
 import java.util.List;
 
-public class ShoesClothesGA{
+public class ShoesClothesGA {
     private GenericGA genericGA;
 
     public ShoesClothesGA(List<ScarpaLegacy> listaScarpe,MeteoInformationLegacy meteoInformation) {

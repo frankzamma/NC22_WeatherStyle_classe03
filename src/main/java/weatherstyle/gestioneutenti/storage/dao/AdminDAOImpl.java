@@ -1,23 +1,18 @@
 package weatherstyle.gestioneutenti.storage.dao;
 
-import weatherstyle.gestionecitta.applicationlogic.logic.beans.Citta;
-import weatherstyle.gestionecitta.storage.dao.CittaDAOImpl;
 import weatherstyle.gestioneutenti.applicationlogic.logic.beans.Admin;
-import weatherstyle.gestioneutenti.applicationlogic.logic.beans.Utente;
 import weatherstyle.utils.ConnectionPool;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.util.List;
 
 /**
  * @author Francesco Giuseppe Zammarrelli
  * La classe Admin dao.
  */
-public class AdminDAOImpl implements AdminDAOInterface{
+public class AdminDAOImpl implements AdminDAOInterface {
     @Override
     public Admin doRetrieveAdminByEmailAndPassword(String email,String password) {
         try (Connection connection =  ConnectionPool.getConnection()) {

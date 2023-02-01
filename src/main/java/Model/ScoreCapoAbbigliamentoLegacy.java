@@ -30,6 +30,6 @@ public class ScoreCapoAbbigliamentoLegacy {
     public String toString() {
         return "[" + capoAbbigliamento
                 + ", punteggio=" + punteggio + "]"
-                ;
+        ;
     }
 }

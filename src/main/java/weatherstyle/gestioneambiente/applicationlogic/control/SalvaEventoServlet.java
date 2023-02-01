@@ -1,18 +1,18 @@
 package weatherstyle.gestioneambiente.applicationlogic.control;
 
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.annotation.WebServlet;
 import weatherstyle.gestioneambiente.applicationlogic.logic.beans.Evento;
-import weatherstyle.gestioneambiente.applicationlogic.logic.beans.RichiestaPromozione;
 import weatherstyle.gestioneambiente.applicationlogic.logic.service.EventoLogicImpl;
 import weatherstyle.gestioneambiente.applicationlogic.logic.service.EventoLogicInterface;
-import weatherstyle.gestioneambiente.applicationlogic.logic.service.RichiestaPromozioneLogicImpl;
-import weatherstyle.gestioneambiente.applicationlogic.logic.service.RichiestaPromozioneLogicInterface;
 import weatherstyle.gestioneutenti.applicationlogic.logic.beans.Utente;
 
 import java.io.IOException;
-import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.GregorianCalendar;
 
@@ -24,8 +24,7 @@ public class SalvaEventoServlet extends HttpServlet {
         Utente utente = (Utente)  session.getAttribute("utente");
         if (utente == null || !utente.isEcologista()) {
             response.sendRedirect("index.html");
-        }
-        else {
+        } else {
             String nomeEvento = request.getParameter("nomeEvento");
             String luogo = request.getParameter("luogo");
             String descrizione = request.getParameter("descrizione");

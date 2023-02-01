@@ -1,9 +1,13 @@
 package weatherstyle.gestioneguardaroba.applicationlogic.control;
 
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
-import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.*;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.annotation.WebServlet;
+import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.CapoAbbigliamento;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.service.GuardarobaLogicImpl;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.service.GuardarobaLogicInterface;
 import weatherstyle.gestioneutenti.applicationlogic.logic.beans.Utente;
@@ -37,7 +41,6 @@ public class VisualizzaGuardarobaServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
-
 
 
     }

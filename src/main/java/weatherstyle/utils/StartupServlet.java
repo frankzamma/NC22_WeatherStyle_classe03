@@ -1,6 +1,5 @@
 package weatherstyle.utils;
 
-import Model.RecoveryGuardaroba;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
@@ -9,20 +8,18 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import weatherstyle.gestionecitta.applicationlogic.logic.beans.Citta;
-import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Guardaroba;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Maglia;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Pantaloni;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Scarpe;
 import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.algorithms.AbstractAlgorithm;
 import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.algorithms.ImplementorAlgorithm;
 
-import java.io.File;
 import java.io.IOException;
 
 /**
  * La classe Startup servlet.
  */
-@WebServlet(name = "StartupServlet", value = "/StartupServlet", loadOnStartup = 1)
+@WebServlet(name = "StartupServlet",value = "/StartupServlet",loadOnStartup = 1)
 public class StartupServlet extends HttpServlet {
     @Override
     public void init(ServletConfig config) throws ServletException {

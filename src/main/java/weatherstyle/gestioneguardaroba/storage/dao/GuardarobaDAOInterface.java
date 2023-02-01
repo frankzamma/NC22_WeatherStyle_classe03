@@ -42,5 +42,4 @@ public interface GuardarobaDAOInterface {
     boolean doSaveNumeroCapi(int idUtente,int numero);
 
 
-
 }

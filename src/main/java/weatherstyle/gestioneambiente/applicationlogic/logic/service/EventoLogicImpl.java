@@ -8,16 +8,14 @@ import weatherstyle.gestionecitta.storage.service.InfoCittaImpl;
 import weatherstyle.gestionecitta.storage.service.InfoCittaService;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Pattern;
 
 /**
  * @author angelopalmieri
  * Classe che gestisce le operazioni di business che riguardano gli eventi
  * a favore dell'ambiente creati dagli ecologisti.
  */
-public class EventoLogicImpl implements EventoLogicInterface{
+public class EventoLogicImpl implements EventoLogicInterface {
 
     /**
      * DAO di evento per interagire direttamente col database.

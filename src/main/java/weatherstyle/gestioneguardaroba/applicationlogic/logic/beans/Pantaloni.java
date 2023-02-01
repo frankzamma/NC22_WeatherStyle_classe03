@@ -36,7 +36,7 @@ public class Pantaloni extends CapoAbbigliamento {
      * @param materiale è il materiale di cui sono costituiti i pantaloni.
      */
     public Pantaloni(String nome,String dirImmagine,String stagione,
-                     String colore,String lunghezza,String materiale) {
+            String colore,String lunghezza,String materiale) {
         super(nome,dirImmagine,stagione,colore);
         this.lunghezza = lunghezza;
         this.materiale = materiale;

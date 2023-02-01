@@ -1,9 +1,6 @@
 package weatherstyle.gestioneambiente.storage.dao;
 
 import weatherstyle.gestioneambiente.applicationlogic.logic.beans.Evento;
-import weatherstyle.gestioneambiente.applicationlogic.logic.beans.RichiestaPromozione;
-import weatherstyle.gestioneutenti.storage.dao.AdminDAOImpl;
-import weatherstyle.gestioneutenti.storage.dao.AdminDAOInterface;
 import weatherstyle.gestioneutenti.storage.dao.UtenteDAOImpl;
 import weatherstyle.gestioneutenti.storage.dao.UtenteDAOInterface;
 import weatherstyle.utils.ConnectionPool;
@@ -17,7 +14,7 @@ import java.util.List;
  * Classe che gestisce le informazioni persistenti che riguardano gli eventi a favore dell'ambiente
  * creati dagli ecologisti.
  */
-public class EventoDAOImpl implements EventoDAOInterface{
+public class EventoDAOImpl implements EventoDAOInterface {
     /**
      * Questo metodo permette di creare un oggetto Evento a partire
      * da un resultSet ottenuto tramite una query.
@@ -30,13 +27,13 @@ public class EventoDAOImpl implements EventoDAOInterface{
         UtenteDAOInterface utenteDAO = new UtenteDAOImpl();
 
         try {
-                evento.setId(resultSet.getInt("ID"));
-                evento.setNome(resultSet.getString("nome"));
-                evento.setDataOraEvento(resultSet.getTimestamp("dataOraEvento"));
-                evento.setLuogo(resultSet.getString("luogo"));
-                evento.setDescrizione(resultSet.getString("descrizione"));
-                evento.setAltreInformazioni(resultSet.getString("altreInformazioni"));
-                evento.setUtente(utenteDAO.doRetrieveUtenteByID(resultSet.getInt("IDutente")));
+            evento.setId(resultSet.getInt("ID"));
+            evento.setNome(resultSet.getString("nome"));
+            evento.setDataOraEvento(resultSet.getTimestamp("dataOraEvento"));
+            evento.setLuogo(resultSet.getString("luogo"));
+            evento.setDescrizione(resultSet.getString("descrizione"));
+            evento.setAltreInformazioni(resultSet.getString("altreInformazioni"));
+            evento.setUtente(utenteDAO.doRetrieveUtenteByID(resultSet.getInt("IDutente")));
         } catch (SQLException sql) {
             throw new RuntimeException();
         }

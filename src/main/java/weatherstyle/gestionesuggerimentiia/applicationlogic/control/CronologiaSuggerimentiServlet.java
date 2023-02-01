@@ -1,8 +1,10 @@
 package weatherstyle.gestionesuggerimentiia.applicationlogic.control;
 
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.annotation.WebServlet;
 import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.beans.Suggerimento;
 import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.service.SuggerimentoLogicImpl;
 import weatherstyle.gestionesuggerimentiia.storage.dao.OutfitDAOImpl;

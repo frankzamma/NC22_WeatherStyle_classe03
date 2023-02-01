@@ -1,13 +1,16 @@
 package weatherstyle.gestioneutenti.applicationlogic.control;
 
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.annotation.WebServlet;
 import weatherstyle.gestionecitta.applicationlogic.logic.beans.Citta;
 import weatherstyle.gestionemeteo.applicationlogic.logic.beans.MeteoDaily;
 import weatherstyle.gestionemeteo.applicationlogic.logic.beans.MeteoHours;
 import weatherstyle.gestionemeteo.applicationlogic.logic.service.MeteoLogicService;
-import weatherstyle.gestionemeteo.storage.service.InfoMeteoDailyService;
 import weatherstyle.gestioneutenti.applicationlogic.logic.beans.Admin;
 import weatherstyle.gestioneutenti.applicationlogic.logic.beans.Utente;
 

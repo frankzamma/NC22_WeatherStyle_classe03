@@ -1,7 +1,6 @@
 package weatherstyle.gestionemeteo.applicationlogic.logic.beans;
 
 import java.time.LocalDate;
-import java.util.Calendar;
 
 /**
  * @author Francesco Giuseppe Zammarrelli
@@ -101,7 +100,7 @@ public class MeteoDaily {
      * @return stringa che descrive la previsione meteo
      */
     public String getMeteoString() {
-       return MeteoUtils.translateWeatherCode(this.weatherCode);
+        return MeteoUtils.translateWeatherCode(this.weatherCode);
     }
 
     /**
@@ -112,7 +111,7 @@ public class MeteoDaily {
     private String getMeteoStringMin() {
         String meteo =  this.getMeteoString();
         if (meteo.contains("Piog") || meteo.contains("piog") || meteo.contains("Temporale")) {
-                return "pioggia";
+            return "pioggia";
         }
         if (meteo.contains("sol") || meteo.contains("Sol") || meteo.contains("chiaro") || meteo.contains("Parzial")) {
             return "soleggiato";

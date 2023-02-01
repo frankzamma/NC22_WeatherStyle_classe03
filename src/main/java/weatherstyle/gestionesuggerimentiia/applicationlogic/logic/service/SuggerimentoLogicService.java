@@ -15,10 +15,13 @@ import java.util.List;
 public interface SuggerimentoLogicService {
 
     boolean salvaSuggerimento(Suggerimento suggerimento);
+
     List<Suggerimento> ottieniCronologiaSuggerimentiUtente(Integer idUtente);
+
     <T extends CapoAbbigliamento> List<T> ottieniSuggerimentiCapi(ImplementorAlgorithm<T> implementorAlgorithm,
-                                                                  List<T> capiAbbigliamento,
-                                                                  MeteoDailyMin meteoDailyMin);
+            List<T> capiAbbigliamento,
+            MeteoDailyMin meteoDailyMin);
+
     Outfit ottieniOutfitDaSuggerimento(Suggerimento suggerimento);
 
 }

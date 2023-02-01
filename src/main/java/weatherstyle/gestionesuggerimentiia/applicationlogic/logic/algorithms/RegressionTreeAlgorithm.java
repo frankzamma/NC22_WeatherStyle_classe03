@@ -17,7 +17,10 @@ import weka.filters.supervised.instance.ClassBalancer;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
 
 /**
  * @author Raffaele Aurucci, Angelo Palmieri, Annalaura Miglino, Francesco Giuseppe Zammarelli
@@ -160,7 +163,7 @@ class RegressionTreeAlgorithm<T extends CapoAbbigliamento> implements Implemento
 
         for (int i = 0; i < 3; i++) {
             ScoreCapoAbbigliamento scoreCapoAbbigliamentoMax = Collections.max(scoreCapoAbbigliamentoList,
-            (o1,o2) -> o1.getPunteggio().compareTo(o2.getPunteggio()));
+                    (o1,o2) -> o1.getPunteggio().compareTo(o2.getPunteggio()));
             bests.add(scoreCapoAbbigliamentoMax);
             scoreCapoAbbigliamentoList.remove(scoreCapoAbbigliamentoMax);
         }

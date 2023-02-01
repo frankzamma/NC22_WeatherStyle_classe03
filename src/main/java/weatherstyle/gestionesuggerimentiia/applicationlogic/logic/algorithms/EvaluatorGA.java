@@ -22,7 +22,7 @@ class EvaluatorGA {
     private static Hashtable<String, Hashtable<String, Integer>> valutazioneTipoScarpa;
 
     public EvaluatorGA() {
-      initTable();
+        initTable();
     }
 
     /**
@@ -63,7 +63,6 @@ class EvaluatorGA {
         ranges.get(0).put("all",3);
 
 
-
         // -------- mappa 25° < temperatura <= 30° --------
 
         // maglie e pantaloni
@@ -90,7 +89,6 @@ class EvaluatorGA {
         ranges.get(1).put("primavera_estate",4);
         ranges.get(1).put("autunno_inverno",1);
         ranges.get(1).put("all",3);
-
 
 
         // -------- mappa 20° < temperatura <= 25° --------
@@ -121,7 +119,6 @@ class EvaluatorGA {
         ranges.get(2).put("all",3);
 
 
-
         // -------- mappa 15° < temperatura <= 20° --------
 
         ranges.get(3).put("cotone",10);
@@ -147,7 +144,6 @@ class EvaluatorGA {
         ranges.get(3).put("primavera_estate",3);
         ranges.get(3).put("autunno_inverno",4);
         ranges.get(3).put("all",3);
-
 
 
         // -------- mappa 10° < temperatura <= 15° --------
@@ -177,7 +173,6 @@ class EvaluatorGA {
         ranges.get(4).put("all",3);
 
 
-
         // -------- mappa 5° < temperatura <= 10° --------
 
         ranges.get(5).put("cotone",8);
@@ -203,7 +198,6 @@ class EvaluatorGA {
         ranges.get(5).put("primavera_estate",0);
         ranges.get(5).put("autunno_inverno",4);
         ranges.get(5).put("all",3);
-
 
 
         // -------- mappa temperatura <= 5° --------
@@ -389,23 +383,17 @@ class EvaluatorGA {
 
         if (temperaturaPercepita > 30) {
             range = 0;
-        }
-        else if (temperaturaPercepita > 25) {
+        } else if (temperaturaPercepita > 25) {
             range = 1;
-        }
-        else if (temperaturaPercepita > 20) {
+        } else if (temperaturaPercepita > 20) {
             range = 2;
-        }
-        else if (temperaturaPercepita > 15) {
+        } else if (temperaturaPercepita > 15) {
             range = 3;
-        }
-        else if (temperaturaPercepita > 10) {
+        } else if (temperaturaPercepita > 10) {
             range = 4;
-        }
-        else if (temperaturaPercepita > 5) {
+        } else if (temperaturaPercepita > 5) {
             range = 5;
-        }
-        else {
+        } else {
             range = 6;
         }
 
@@ -451,9 +439,9 @@ class EvaluatorGA {
                 && i <= 2) {
             voto = 10;
         } else if ("scuro".equalsIgnoreCase(capoAbbigliamento.getColore())
-                    && "soleggiato".equalsIgnoreCase(meteoDailyMin.getMeteoStringMin())
-                    && i <= 2) {
-                voto = 0;
+                && "soleggiato".equalsIgnoreCase(meteoDailyMin.getMeteoStringMin())
+                && i <= 2) {
+            voto = 0;
         } else {
             voto = 5;
         }
@@ -474,9 +462,7 @@ class EvaluatorGA {
         if (capoAbbigliamento.getClass().equals(Maglia.class)) {
             Maglia maglia = (Maglia) capoAbbigliamento;
             return ranges.get(range).get(maglia.getLunghezzaManica());
-        }
-
-        else if (capoAbbigliamento.getClass().equals(Pantaloni.class)) {
+        } else if (capoAbbigliamento.getClass().equals(Pantaloni.class)) {
             Pantaloni pantaloni = (Pantaloni) capoAbbigliamento;
             return ranges.get(range).get(pantaloni.getLunghezza());
         }

@@ -60,31 +60,31 @@ public class Guardaroba {
      * @return l'ID del guardaroba.
      */
     public int getId() {
-            return id;
-        }
+        return id;
+    }
 
     /**
      * Setta l'ID del guardaroba.
       * @param id sarà il nuovo ID del guardaroba.
      */
     public void setId(int id) {
-            this.id = id;
-        }
+        this.id = id;
+    }
 
     /**
      @return il numero di capi d'abbigliamento presenti nel guardaroba.
      */
     public int getNumeroCapi() {
-            return numeroCapi;
-        }
+        return numeroCapi;
+    }
 
     /**
      @param numeroCapi sarà la quantità di capi d'abbigliamento
      presenti nel guardaroba.
      */
     public void setNumeroCapi(int numeroCapi) {
-            this.numeroCapi = numeroCapi;
-        }
+        this.numeroCapi = numeroCapi;
+    }
 
     /**
     @return la lista di maglie presenti nel guardaroba.
@@ -97,14 +97,14 @@ public class Guardaroba {
      @param maglie setta una nuova lista di maglie presente nel guardaroba.
      */
     public void setMaglie(List<Maglia> maglie) {
-            this.maglie = maglie;
+        this.maglie = maglie;
     }
 
     /**
      @return la lista di pantaloni presenti nel guardaroba.
      */
     public List<Pantaloni> getPantaloni() {
-            return pantaloni;
+        return pantaloni;
     }
 
     /**
@@ -126,6 +126,6 @@ public class Guardaroba {
      @param scarpe setta una nuova lista di scarpe nel guardaroba.
      */
     public void setScarpe(List<Scarpe> scarpe) {
-            this.scarpe = scarpe;
-        }
+        this.scarpe = scarpe;
+    }
 }

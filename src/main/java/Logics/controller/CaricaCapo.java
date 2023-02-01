@@ -72,8 +72,6 @@ public class CaricaCapo extends HttpServlet {
         }
 
 
-
-
     }
 
     @Override

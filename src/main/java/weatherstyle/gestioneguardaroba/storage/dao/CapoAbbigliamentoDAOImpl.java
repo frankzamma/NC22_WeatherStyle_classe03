@@ -1,6 +1,9 @@
 package weatherstyle.gestioneguardaroba.storage.dao;
 
-import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.*;
+import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.CapoAbbigliamento;
+import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Maglia;
+import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Pantaloni;
+import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Scarpe;
 import weatherstyle.utils.ConnectionPool;
 
 import java.sql.*;
@@ -11,7 +14,7 @@ import java.util.List;
  * @author Annalaura Miglino
  */
 
-public class CapoAbbigliamentoDAOImpl implements CapoAbbigliamentoDAOInterface{
+public class CapoAbbigliamentoDAOImpl implements CapoAbbigliamentoDAOInterface {
 
     @Override
     public CapoAbbigliamento doRetrieveCapoById(int idCapoAbbigliamento) {
