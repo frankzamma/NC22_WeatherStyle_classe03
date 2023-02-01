@@ -9,7 +9,7 @@ import java.util.List;
  * Interfaccia che definisce i metodi che sono implementati nella
  * classe EventoLogicImpl.
  */
-public interface EventoLogicInterface {
+public interface EventoLogicService {
     /**
      * Questo metodo permette di acquisire un evento dato il suo id.
      * @param idEvento rappresenta l'id dell'evento.

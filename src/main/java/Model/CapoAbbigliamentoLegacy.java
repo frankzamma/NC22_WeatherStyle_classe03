@@ -6,7 +6,7 @@ public abstract class CapoAbbigliamentoLegacy {
     public CapoAbbigliamentoLegacy() {
     }
 
-    public CapoAbbigliamentoLegacy(String stagione, String colore) {
+    public CapoAbbigliamentoLegacy(String stagione,String colore) {
         this.stagione = stagione;
         this.colore = colore;
     }

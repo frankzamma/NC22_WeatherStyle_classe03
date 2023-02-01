@@ -11,6 +11,7 @@ import java.util.List;
 public interface SuggerimentoDAOInterface {
 
     boolean doSaveSuggerimento(Suggerimento suggerimento);
+
     List<Suggerimento> doRetrieveCronologiaSuggerimentiByUtenteID(int utenteID);
 
 }

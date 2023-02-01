@@ -80,12 +80,12 @@ public class Outfit {
 
     @Override
     public String toString() {
-        return "Outfit{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", maglia=" + maglia +
-                ", pantaloni=" + pantaloni +
-                ", scarpe=" + scarpe +
-                '}';
+        return "Outfit{"
+                + "id=" + id
+                + ", nome='" + nome + '\''
+                + ", maglia=" + maglia
+                + ", pantaloni=" + pantaloni
+                + ", scarpe=" + scarpe
+                + '}';
     }
 }

@@ -7,7 +7,7 @@ package weatherstyle.gestioneguardaroba.applicationlogic.logic.beans;
  considera anche il tipo di scarpa, e se è antiscivolo e/o impermeabile.
  */
 
-public class Scarpe extends CapoAbbigliamento{
+public class Scarpe extends CapoAbbigliamento {
     /**
      * Rappresenta il tipo di scarpa.
      */
@@ -41,7 +41,7 @@ public class Scarpe extends CapoAbbigliamento{
      * @param impermeabile definisce l'impermeabilità della scarpa.
      */
     public Scarpe(String nome,String dirImmagine,String stagione,
-                  String colore,String tipo,boolean antiscivolo,boolean impermeabile) {
+            String colore,String tipo,boolean antiscivolo,boolean impermeabile) {
         super(nome,dirImmagine,stagione,colore);
         this.tipo = tipo;
         this.antiscivolo = antiscivolo;

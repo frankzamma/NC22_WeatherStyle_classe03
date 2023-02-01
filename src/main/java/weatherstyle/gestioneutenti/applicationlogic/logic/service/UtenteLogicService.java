@@ -24,7 +24,7 @@ public interface UtenteLogicService {
      * @throws ErrorParameterException nel caso i parametri non siano ammissibili
      */
     Utente registraUtente(String nome,String cognome,LocalDate dataNascita,
-                          String email,String password,Citta citta)  throws ErrorParameterException;
+            String email,String password,Citta citta)  throws ErrorParameterException;
 
     /**
      * Metodo per effettuare il login di un utente.

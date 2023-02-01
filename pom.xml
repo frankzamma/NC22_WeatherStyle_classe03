@@ -91,6 +91,9 @@
                 <configuration>
                     <activeRecipes>
                         <recipe>org.openrewrite.java.cleanup.Cleanup</recipe>
+                        <recipe>org.openrewrite.java.RemoveUnusedImports</recipe>
+                        <recipe>org.openrewrite.java.format.AutoFormat</recipe>
+                        <recipe>org.openrewrite.java.format.Spaces</recipe>
                     </activeRecipes>
                 </configuration>
             </plugin>

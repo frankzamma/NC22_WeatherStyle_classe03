@@ -10,7 +10,7 @@ public class ScarpaLegacy extends CapoAbbigliamentoLegacy {
 
     }
 
-    public ScarpaLegacy(String stagione, String colore, String tipo, Boolean antiscivolo, Boolean impermeabile) {
+    public ScarpaLegacy(String stagione,String colore,String tipo,Boolean antiscivolo,Boolean impermeabile) {
         super(stagione,colore);
         this.tipo = tipo;
         this.antiscivolo = antiscivolo;

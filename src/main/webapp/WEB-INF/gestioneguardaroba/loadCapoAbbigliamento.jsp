@@ -1,57 +1,62 @@
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<%--
+  Created by IntelliJ IDEA.
+User: Annalaura Miglino
+Date: 25/01/2023
+Time: 15:56
+To change this template use File | Settings | File Templates.
+--%>
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Driver WeatherStyle</title>
+    <head>
+    <title>Inserimento capo</title>
     <meta charset="utf-8">
     <%@include file="../links.jsp"%>
- </head>
-<body>
-<%
-List<String> errorListService = (List<String>) request.getAttribute("errorListService");
-String errore = (String) request.getAttribute("message");
-%>
-    <%@include file="../navbar.jsp"%>
-<br>
-
-<%
-    if (errore!=null){
-%>
-<div class="alert alert-danger" role="alert">
-    <%=errore%>
-</div>
-<%
-    }
-%>
-
-
-<%
-    if ((errorListService!=null) && (!errorListService.isEmpty())){
-%>
-<div class="alert alert-danger" role="alert">
-<ul>
-
-     <%
-        for (String s : errorListService){
+    </head>
+    <body>
+    <%
+    List<String> errorListService = (List<String>) request.getAttribute("errorListService");
+    String errore = (String) request.getAttribute("message");
     %>
-    <li><%=s%></li>
+        <%@include file="../navbar.jsp"%>
+    <br>
+
+    <%
+        if (errore!=null){
+    %>
+    <div class="alert alert-danger" role="alert">
+        <%=errore%>
+    </div>
     <%
         }
     %>
-</ul>
-</div>
-<%
-    }
-%>
 
-    <form method="post" action="inserisci-capo" name="carica-capo-form" id="carica-capo-form" enctype="multipart/form-data">
+
+    <%
+        if ((errorListService!=null) && (!errorListService.isEmpty())){
+    %>
+    <div class="alert alert-danger" role="alert">
+
+
+             <%
+                for (String s : errorListService){
+            %>
+            <%=s%><br>
+            <%
+                }
+            %>
+
+    </div>
+    <%
+        }
+    %>
+        <form method="post" action="inserisci-capo" name="carica-capo-form" id="carica-capo-form" enctype="multipart/form-data">
         <div class="container" style="background-color: white">
             <legend style="background-color: #337AB8">Inserimento di un nuovo capo d'abbigliamento</legend>
                 <div class="col align-self-center">
                     <label style="color: black"> Scegli tipo di capo </label>
-                    <select class="form-select" id="tipologia" name="tipologia" onchange="changeSelectedParameter()" required>
+                    <select class="form-select" id="tipologia" name="tipologia" onchange="changeSelectedParameter()">
                         <option value="" selected >Apri menu di selezione</option>
                         <option value="maglia">Maglia</option>
                         <option value="pantaloni">Pantaloni</option>
@@ -60,17 +65,18 @@ String errore = (String) request.getAttribute("message");
     <br>
             <div class="mb-3">
                 <label for="nomeCapo" class="form-label" style="color: black"> Nome del capo: </label>
-                <input type="text"  class="form-control" id="nomeCapo" name="nomeCapo" required>
+                <input type="text"  class="form-control" id="nomeCapo" name="nomeCapo">
             </div>
 
             <div class="mb-3">
                 <label for="foto" style="color: black">Inserire una foto del prodotto</label>
-                <input class="form-control" type="file" name="foto" id="foto" accept="image/*" required>
+                <input class="form-control" type="file" name="foto" id="foto" accept="image/*">
             </div>
 
             <div class="mb-3">
                 <label style="color: black"> Inserire colore </label>
                 <select class="form-select" id="colore" name="colore" disabled>
+                    <option selected>Seleziona un colore</option>
                     <option value="chiaro">Chiaro</option>
                     <option value="scuro">Scuro</option>
                     <option value="colorato">Colorato</option>
@@ -80,6 +86,7 @@ String errore = (String) request.getAttribute("message");
             <div class="mb-3">
                 <label style="color: black"> Inserire stagione </label>
                 <select class="form-select" id="stagione" name="stagione" disabled>
+                    <option selected>Seleziona una stagione</option>
                     <option value="inverno">Inverno</option>
                     <option value="autunno">Autunno</option>
                     <option value="primavera">Primavera</option>
@@ -93,6 +100,7 @@ String errore = (String) request.getAttribute("message");
             <div class="mb-3">
                 <label style="color: black"> Inserire materiale </label>
                 <select class="form-select" id="materiale" name="materiale" disabled>
+                    <option selected>Seleziona un materiale</option>
                     <option value="cotone">Cotone</option>
                     <option value="poliestere">Poliestere</option>
                     <option value="cashmere">Cashmere</option>
@@ -110,6 +118,7 @@ String errore = (String) request.getAttribute("message");
             <div class="mb-3">
                 <label style="color: black"> Inserire lunghezza manica </label>
                 <select class="form-select" id="manica" name="manica" disabled>
+                    <option selected>Seleziona una lunghezza manica</option>
                     <option value="lunga">Lunga</option>
                     <option value="corta">Corta</option>
                 </select>
@@ -120,6 +129,7 @@ String errore = (String) request.getAttribute("message");
             <div class="mb-3">
                 <label style="color: black"> Inserire lunghezza pantaloni </label>
                 <select class="form-select" id="lungPantalone" name="lungPantalone" disabled>
+                    <option selected>Seleziona lunghezza pantaloni</option>
                     <option value="lunga">Lungo</option>
                     <option value="corta">Corto</option>
                     <option value="media">Medio</option>
@@ -129,6 +139,7 @@ String errore = (String) request.getAttribute("message");
             <div class="mb-3">
                 <label style="color: black"> Inserire tipo di scarpa </label>
                 <select class="form-select" id="tipoScarpa" name="tipoScarpa" disabled>
+                    <option selected>Seleziona un tipo di scarpa</option>
                     <option value="stivaletto alla caviglia">Stivaletto alla caviglia</option>
                     <option value="scarpa da ginnastica">Scarpa da ginnastica</option>
                     <option value="scarpa classica">Scarpa classica</option>
@@ -173,58 +184,8 @@ String errore = (String) request.getAttribute("message");
 
     <br>
 
-    <script>
-        function changeSelectedParameter(){
-            let x = document.getElementById("tipologia").value;
-            if(x === "maglia"){
-                document.getElementById("materiale").removeAttribute("disabled");
-                document.getElementById("colore").removeAttribute("disabled");
-                document.getElementById("manica").removeAttribute("disabled");
-                document.getElementById("stagione").removeAttribute("disabled");
-                document.getElementById("lungPantalone").setAttribute("disabled","");
-                document.getElementById("tipoScarpa").setAttribute("disabled","");
-                document.getElementById("scivsi").setAttribute("disabled","");
-                document.getElementById("scivno").setAttribute("disabled","");
-                document.getElementById("impsi").setAttribute("disabled","");
-                document.getElementById("impno").setAttribute("disabled","");
-            }else if(x === "pantaloni"){
-                document.getElementById("materiale").removeAttribute("disabled");
-                document.getElementById("colore").removeAttribute("disabled");
-                document.getElementById("manica").setAttribute("disabled","");
-                document.getElementById("stagione").removeAttribute("disabled");
-                document.getElementById("lungPantalone").removeAttribute("disabled");
-                document.getElementById("tipoScarpa").setAttribute("disabled","");
-                document.getElementById("scivsi").setAttribute("disabled","");
-                document.getElementById("scivno").setAttribute("disabled","");
-                document.getElementById("impsi").setAttribute("disabled","");
-                document.getElementById("impno").setAttribute("disabled","");
-            }else if(x === "scarpe"){
-                document.getElementById("materiale").setAttribute("disabled","");
-                document.getElementById("colore").removeAttribute("disabled");
-                document.getElementById("manica").setAttribute("disabled","");
-                document.getElementById("stagione").removeAttribute("disabled");
-                document.getElementById("lungPantalone").setAttribute("disabled","");
-                document.getElementById("tipoScarpa").removeAttribute("disabled");
-                document.getElementById("scivsi").removeAttribute("disabled");
-                document.getElementById("scivno").removeAttribute("disabled");
-                document.getElementById("impsi").removeAttribute("disabled");
-                document.getElementById("impno").removeAttribute("disabled");
-            }
-            else {
-                document.getElementById("materiale").setAttribute("disabled","");
-                document.getElementById("colore").setAttribute("disabled","");
-                document.getElementById("manica").setAttribute("disabled","");
-                document.getElementById("stagione").setAttribute("disabled","");
-                document.getElementById("lungPantalone").setAttribute("disabled","");
-                document.getElementById("tipoScarpa").setAttribute("disabled","");
-                document.getElementById("scivsi").setAttribute("disabled","");
-                document.getElementById("scivno").setAttribute("disabled","");
-                document.getElementById("impsi").setAttribute("disabled","");
-                document.getElementById("impno").setAttribute("disabled","");
-            }
-        }
-    </script>
+    <script src="script/script-caricamento.js" type="text/javascript"></script>
 
     <%@include file="../footer.jsp"%>
-</body>
+    </body>
 </html>

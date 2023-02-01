@@ -1,7 +1,6 @@
 package weatherstyle.gestionemeteo.applicationlogic.logic.beans;
 
 import java.time.LocalDate;
-import java.util.Calendar;
 
 /**
  * @author Francesco Giuseppe Zammarrelli
@@ -100,8 +99,8 @@ public class MeteoDaily {
      * Restituisce una stringa che descrive la previsione meteo (Eg. soleggiato)
      * @return stringa che descrive la previsione meteo
      */
-    public String getMeteoString(){
-       return MeteoUtils.translateWeatherCode(this.weatherCode);
+    public String getMeteoString() {
+        return MeteoUtils.translateWeatherCode(this.weatherCode);
     }
 
     /**
@@ -109,10 +108,10 @@ public class MeteoDaily {
      * la string fornisce una descrizione generica (Eg. Temporale Forte = pioggia);
      * @return stringa che descrive genericamente la previsione meteo
      */
-    private String getMeteoStringMin(){
+    private String getMeteoStringMin() {
         String meteo =  this.getMeteoString();
-        if (meteo.contains("Piog") || meteo.contains("piog") || meteo.contains("Temporale")){
-                return "pioggia";
+        if (meteo.contains("Piog") || meteo.contains("piog") || meteo.contains("Temporale")) {
+            return "pioggia";
         }
         if (meteo.contains("sol") || meteo.contains("Sol") || meteo.contains("chiaro") || meteo.contains("Parzial")) {
             return "soleggiato";
@@ -120,7 +119,7 @@ public class MeteoDaily {
         if ((meteo.contains("nuv") || meteo.contains("Nuv") || meteo.contains("Coperto")) && (!meteo.contains("Parzial"))) {
             return "nuvoloso";
         }
-        if (meteo.contains("Nebbia")){
+        if (meteo.contains("Nebbia")) {
             return "soleggiato";
         }
         if (meteo.contains("Nev") || meteo.contains("nev") || meteo.contains("Grandine")) {
@@ -134,8 +133,8 @@ public class MeteoDaily {
      *Restituisce la stagione di previsione
      * @return stagione della previsione
      */
-    public String getStagione(){
-        String[] stagioneMesi = {"inverno", "inverno", "primavera", "primavera", "primavera", "estate", "estate", "estate", "autunno", "autunno", "autunno", "inverno"};
+    public String getStagione() {
+        String[] stagioneMesi = {"inverno","inverno","primavera","primavera","primavera","estate","estate","estate","autunno","autunno","autunno","inverno"};
 
         return stagioneMesi[time.getMonth().getValue() - 1];
     }
@@ -144,12 +143,12 @@ public class MeteoDaily {
      * Converte l'oggetto MeteoDaily in MeteoDailyMin
      * @return la conversione dell'ogetto in MeteoDailyMin
      */
-    public MeteoDailyMin toMeteoDailyMin(){
+    public MeteoDailyMin toMeteoDailyMin() {
         MeteoDailyMin meteoDailyMin =  new MeteoDailyMin();
 
         meteoDailyMin.setMeteo(getMeteoStringMin());
         meteoDailyMin
-                .setTemperaturaPercepitaMedia((this.temperaturaPercepitaMinima + this.temperaturaPercepitaMassima)/2);
+                .setTemperaturaPercepitaMedia((this.temperaturaPercepitaMinima + this.temperaturaPercepitaMassima) / 2);
         meteoDailyMin.setStagionePrevisione(this.getStagione());
         return meteoDailyMin;
     }

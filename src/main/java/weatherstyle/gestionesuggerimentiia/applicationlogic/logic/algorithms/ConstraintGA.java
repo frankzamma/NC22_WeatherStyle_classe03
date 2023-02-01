@@ -38,7 +38,7 @@ class ConstraintGA implements Constraint<IntegerGene, Integer> {
      * @param numberGeneration numero della generazione a cui appartiene l'individuo
     **/
     @Override
-    public Phenotype<IntegerGene, Integer> repair(Phenotype<IntegerGene, Integer> phenotype, long numberGeneration) {
+    public Phenotype<IntegerGene, Integer> repair(Phenotype<IntegerGene, Integer> phenotype,long numberGeneration) {
         Set<Integer> distinctValue = new HashSet<>();
 
         int max = phenotype.genotype().gene().max();

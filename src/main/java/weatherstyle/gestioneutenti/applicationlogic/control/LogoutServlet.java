@@ -1,8 +1,11 @@
 package weatherstyle.gestioneutenti.applicationlogic.control;
 
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.annotation.WebServlet;
 
 import java.io.IOException;
 
@@ -10,10 +13,10 @@ import java.io.IOException;
  * @author Francesco Giuseppe Zammarrelli
  * La classe Logout servlet.
  */
-@WebServlet(name = "LogoutServlet", value = "/logout")
+@WebServlet(name = "LogoutServlet",value = "/logout")
 public class LogoutServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
         HttpSession session =  request.getSession();
 
         session.invalidate();
@@ -22,7 +25,7 @@ public class LogoutServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request, response);
+    protected void doPost(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
+        doGet(request,response);
     }
 }

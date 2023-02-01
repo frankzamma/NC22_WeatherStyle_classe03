@@ -7,7 +7,7 @@ public class MagliaLegacy extends CapoAbbigliamentoLegacy {
     public MagliaLegacy() {
     }
 
-    public MagliaLegacy(String materiale, String stagione, String colore, String lunghezzaManica) {
+    public MagliaLegacy(String materiale,String stagione,String colore,String lunghezzaManica) {
         super(stagione,colore);
         this.materiale = materiale;
         this.lunghezzaManica = lunghezzaManica;

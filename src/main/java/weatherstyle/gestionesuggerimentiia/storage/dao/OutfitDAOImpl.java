@@ -34,7 +34,7 @@ public class OutfitDAOImpl implements OutfitDAOInterface {
         int id2 = doRetrieveComporreOutfitByCapoAbbigliamentoID(outfit.getPantaloni().getId());
         int id3 = doRetrieveComporreOutfitByCapoAbbigliamentoID(outfit.getScarpe().getId());
 
-        if ( (id1 == id2) && (id1 == id3) && (id2 == id3) && (id1 != -1)){
+        if ((id1 == id2) && (id1 == id3) && (id2 == id3) && (id1 != -1)) {
             outfit.setId(id1);
             return true;
         }
@@ -42,7 +42,7 @@ public class OutfitDAOImpl implements OutfitDAOInterface {
         try (Connection connection = ConnectionPool.getConnection()) {
 
             PreparedStatement preparedStatement = connection.prepareStatement(
-                    "INSERT INTO Outfit (nome) VALUES(?)", Statement.RETURN_GENERATED_KEYS);
+                    "INSERT INTO Outfit (nome) VALUES(?)",Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1,outfit.getNome());
 
             if (preparedStatement.executeUpdate() != 1) {
@@ -59,9 +59,9 @@ public class OutfitDAOImpl implements OutfitDAOInterface {
                     && doSaveComporreCapoAbbigliamentoByOutfitID(outfit.getPantaloni().getId(),outfit.getId())
                     && doSaveComporreCapoAbbigliamentoByOutfitID(outfit.getScarpe().getId(),outfit.getId())) {
                 return true;
-            }
-            else
+            } else {
                 return false;
+            }
 
         } catch (SQLException sql) {
             throw new RuntimeException("salvataggio outfit non riuscito");
@@ -82,8 +82,8 @@ public class OutfitDAOImpl implements OutfitDAOInterface {
 
             PreparedStatement preparedStatement = connection.prepareStatement(
                     "SELECT o.ID, o.nome "
-                        + "FROM Outfit o join Suggerimento s on o.ID = s.IDoutfit "
-                        + "where s.ID=?");
+                            + "FROM Outfit o join Suggerimento s on o.ID = s.IDoutfit "
+                            + "where s.ID=?");
             preparedStatement.setInt(1,suggerimentoID);
 
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -112,10 +112,10 @@ public class OutfitDAOImpl implements OutfitDAOInterface {
         try (Connection connection = ConnectionPool.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(
                     "SELECT IDcapoAbbigliamento FROM Comporre WHERE IDoutfit=?");
-            preparedStatement.setInt(1, outfit.getId());
+            preparedStatement.setInt(1,outfit.getId());
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 Integer idCapoAbbigliamento = resultSet.getInt("IDcapoAbbigliamento");
                 list.add(idCapoAbbigliamento);
             }
@@ -124,7 +124,7 @@ public class OutfitDAOImpl implements OutfitDAOInterface {
             outfit.setPantaloni(capoAbbigliamentoDAO.doRetrievePantaloniByIdCapoAbbigliamento(list.get(1)));
             outfit.setScarpe(capoAbbigliamentoDAO.doRetrieveScarpeByIdCapoAbbigliamento(list.get(2)));
 
-        } catch (SQLException sql){
+        } catch (SQLException sql) {
             throw new RuntimeException();
         }
     }
@@ -135,14 +135,14 @@ public class OutfitDAOImpl implements OutfitDAOInterface {
      * @param outfitID a cui appartiene
      * @return true se è stato possibile salvare, false altrimenti
      */
-    private boolean doSaveComporreCapoAbbigliamentoByOutfitID(int capoAbbigliamentoID, int outfitID) {
+    private boolean doSaveComporreCapoAbbigliamentoByOutfitID(int capoAbbigliamentoID,int outfitID) {
 
         try (Connection connection = ConnectionPool.getConnection()) {
 
             PreparedStatement preparedStatement = connection.prepareStatement(
                     "INSERT INTO Comporre (IDoutfit, IDcapoAbbigliamento) VALUES(?,?)");
-            preparedStatement.setInt(1, outfitID);
-            preparedStatement.setInt(2, capoAbbigliamentoID);
+            preparedStatement.setInt(1,outfitID);
+            preparedStatement.setInt(2,capoAbbigliamentoID);
 
             if (preparedStatement.executeUpdate() != 1) {
                 return false;
@@ -161,13 +161,13 @@ public class OutfitDAOImpl implements OutfitDAOInterface {
      * @param capoAbbigliamentoID id del capo d'abbigliamento
      * @return la chiave dell'outfit, -1 altrimenti
      */
-    private int doRetrieveComporreOutfitByCapoAbbigliamentoID(int capoAbbigliamentoID){
+    private int doRetrieveComporreOutfitByCapoAbbigliamentoID(int capoAbbigliamentoID) {
 
         try (Connection connection = ConnectionPool.getConnection()) {
 
             PreparedStatement preparedStatement = connection.prepareStatement(
                     "SELECT * FROM Comporre WHERE IDcapoAbbigliamento=?");
-            preparedStatement.setInt(1, capoAbbigliamentoID);
+            preparedStatement.setInt(1,capoAbbigliamentoID);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 

@@ -11,7 +11,10 @@ import java.util.List;
 public interface CittaDAOInterface {
 
     boolean doSaveCitta(Citta citta);
+
     Citta doRetrieveCittaBySuggerimentoID(int idSuggerimento);
+
     List<Citta> doRetrieveCittaPreferiteByUtenteID(int idUtente);
-    boolean doSaveCittaByUtenteID(int idUtente, Citta citta);
+
+    boolean doSaveCittaByUtenteID(int idUtente,Citta citta);
 }

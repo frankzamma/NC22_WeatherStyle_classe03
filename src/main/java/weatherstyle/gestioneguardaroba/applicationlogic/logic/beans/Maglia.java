@@ -36,7 +36,7 @@ public class Maglia extends CapoAbbigliamento {
      * @param materiale è il materiale di cui è costituita la maglia.
      */
     public Maglia(String nome,String dirImmagine,String stagione,
-                  String colore,String lunghezzaManica,String materiale) {
+            String colore,String lunghezzaManica,String materiale) {
         super(nome,dirImmagine,stagione,colore);
         this.lunghezzaManica = lunghezzaManica;
         this.materiale = materiale;

@@ -21,7 +21,7 @@ public class GenericGA {
     private MeteoInformationLegacy meteoInformation;
     private String gaName;
 
-    public GenericGA(List<? extends CapoAbbigliamentoLegacy> list, MeteoInformationLegacy meteoInformation, String gaName) {
+    public GenericGA(List<? extends CapoAbbigliamentoLegacy> list,MeteoInformationLegacy meteoInformation,String gaName) {
         this.gaName = gaName;
         this.listaCapi = (List<CapoAbbigliamentoLegacy>) list;
         this.meteoInformation = meteoInformation;

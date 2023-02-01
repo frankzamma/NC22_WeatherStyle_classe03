@@ -73,13 +73,13 @@ public class GuardarobaDAOImpl implements GuardarobaDAOInterface {
     }
 
     @Override
-    public boolean doSaveNumeroCapi(int idUtente, int numero) {
+    public boolean doSaveNumeroCapi(int idUtente,int numero) {
         try (Connection connection = ConnectionPool.getConnection()) {
             PreparedStatement statement =  connection.prepareStatement(
                     "UPDATE guardaroba set numeroCapi = ? WHERE ID = ?");
 
-            statement.setInt(1, numero);
-            statement.setInt(2, idUtente);
+            statement.setInt(1,numero);
+            statement.setInt(2,idUtente);
 
             int res =  statement.executeUpdate();
 

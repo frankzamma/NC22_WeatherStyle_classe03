@@ -10,7 +10,7 @@ import java.util.List;
  * Interfaccia che definisce i metodi che sono implementati nella
  * classe RichiestaPromozioneLogicImpl.
  */
-public interface RichiestaPromozioneLogicInterface {
+public interface RichiestaPromozioneLogicService {
 
     /**
      * Questo metodo permette di acquisire la richiesta di promozione effettuata da un
