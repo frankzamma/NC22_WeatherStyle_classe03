@@ -1,8 +1,5 @@
 package weatherstyle.gestionesuggerimentiia.storage.dao;
 
-import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Maglia;
-import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Pantaloni;
-import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.Scarpe;
 import weatherstyle.gestioneguardaroba.storage.dao.CapoAbbigliamentoDAOImpl;
 import weatherstyle.gestioneguardaroba.storage.dao.CapoAbbigliamentoDAOInterface;
 import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.beans.Outfit;

@@ -1,9 +1,7 @@
 package weatherstyle.gestionesuggerimentiia.applicationlogic.logic.service;
 
-import weatherstyle.gestionecitta.applicationlogic.logic.service.CittaLogicService;
 import weatherstyle.gestioneguardaroba.applicationlogic.logic.beans.CapoAbbigliamento;
 import weatherstyle.gestionemeteo.applicationlogic.logic.beans.MeteoDailyMin;
-import weatherstyle.gestionemeteo.applicationlogic.logic.service.MeteoLogicService;
 import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.algorithms.ImplementorAlgorithm;
 import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.beans.Outfit;
 import weatherstyle.gestionesuggerimentiia.applicationlogic.logic.beans.Suggerimento;
