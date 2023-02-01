@@ -47,7 +47,7 @@ public class MeteoLogicService implements MeteoLogicInterface {
 
                 LocalDate date =  LocalDate.now();
                 LocalDate end =  date.plusDays(2);
-                List<MeteoDaily> meteoDaily = meteoDailyService.getInfoMeteoDailyByIntervallDay(date,end,citta);
+                List<MeteoDaily> meteoDaily = meteoDailyService.getInfoMeteoDailyByRangeOfDays(date,end,citta);
 
                 return meteoDaily;
 
