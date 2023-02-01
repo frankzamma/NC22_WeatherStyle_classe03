@@ -15,7 +15,7 @@ import java.util.List;
  * Classe che gestisce le operazioni di business che riguardano gli eventi
  * a favore dell'ambiente creati dagli ecologisti.
  */
-public class EventoLogicImpl implements EventoLogicInterface {
+public class EventoLogicImpl implements EventoLogicService {
 
     /**
      * DAO di evento per interagire direttamente col database.

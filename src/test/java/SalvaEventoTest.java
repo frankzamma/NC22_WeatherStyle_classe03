@@ -3,7 +3,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import weatherstyle.gestioneambiente.applicationlogic.logic.beans.Evento;
 import weatherstyle.gestioneambiente.applicationlogic.logic.service.EventoLogicImpl;
-import weatherstyle.gestioneambiente.applicationlogic.logic.service.EventoLogicInterface;
+import weatherstyle.gestioneambiente.applicationlogic.logic.service.EventoLogicService;
 import weatherstyle.gestioneambiente.storage.dao.EventoDAOImpl;
 import weatherstyle.gestionecitta.applicationlogic.logic.beans.Citta;
 import weatherstyle.gestionecitta.storage.service.InfoCittaImpl;
@@ -18,7 +18,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class SalvaEventoTest {
-    private static EventoLogicInterface eventoLogic;
+    private static EventoLogicService eventoLogic;
     private static EventoDAOImpl eventoDAO;
     private static InfoCittaImpl infoCitta;
 

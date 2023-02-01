@@ -63,7 +63,7 @@
                 <br>
                 <div class="col-md-6">
                     <label for="luogo" class="form-label">Luogo</label>
-                    <input type="text" name="luogo" class="form-control" id="luogo">
+                    <input type="text" name="luogo" class="form-control" id="luogo" required>
                 </div>
                 <br>
                 <div class="col-md-6">

@@ -1,6 +1,6 @@
 <%@ page import="java.util.List" %>
 <%@ page import="weatherstyle.gestionecitta.applicationlogic.logic.beans.Citta" %>
-<%@ page import="weatherstyle.gestioneambiente.applicationlogic.logic.service.RichiestaPromozioneLogicInterface" %>
+<%@ page import="weatherstyle.gestioneambiente.applicationlogic.logic.service.RichiestaPromozioneLogicService" %>
 <%@ page import="weatherstyle.gestioneambiente.applicationlogic.logic.beans.RichiestaPromozione" %>
 <%@ page import="weatherstyle.gestioneambiente.applicationlogic.logic.service.RichiestaPromozioneLogicImpl" %><%--
   Created by IntelliJ IDEA.
@@ -20,7 +20,7 @@
 <div class="container">
     <%
         Utente utente = (Utente) session.getAttribute("utente");
-        RichiestaPromozioneLogicInterface richiestaPromozioneLogic = new RichiestaPromozioneLogicImpl();
+        RichiestaPromozioneLogicService richiestaPromozioneLogic = new RichiestaPromozioneLogicImpl();
         RichiestaPromozione richiestaPromozione = richiestaPromozioneLogic.ottieniRichiestaPromozionePerIdUtente(utente.getId());
     %>
     <h1>Area personale</h1>
