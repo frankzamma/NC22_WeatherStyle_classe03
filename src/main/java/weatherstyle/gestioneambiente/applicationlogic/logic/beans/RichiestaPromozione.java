@@ -150,16 +150,4 @@ public class RichiestaPromozione {
     public void setAdmin(Admin admin) {
         this.admin = admin;
     }
-
-    @Override
-    public String toString() {
-        return "RichiestaPromozione{"
-                + "id=" + id
-                + ", tematiche='" + tematiche + '\''
-                + ", esperienze='" + esperienze + '\''
-                + ", stato='" + stato + '\''
-                + ", utente=" + utente
-                + ", admin=" + admin
-                + '}';
-    }
 }
