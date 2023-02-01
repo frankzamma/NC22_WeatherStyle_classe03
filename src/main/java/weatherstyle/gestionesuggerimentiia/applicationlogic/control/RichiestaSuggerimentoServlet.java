@@ -28,7 +28,8 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 /**
- * classe che raccoglie tutte le informazioni necessarie per fornire suggerimenti all'utente
+ * @author Raffaele Aurucci
+ * servlet che raccoglie tutte le informazioni necessarie per fornire suggerimenti all'utente
  */
 @WebServlet(name = "RichiestaSuggerimentoServlet",value = "/RichiestaSuggerimentoServlet")
 public class RichiestaSuggerimentoServlet extends HttpServlet {

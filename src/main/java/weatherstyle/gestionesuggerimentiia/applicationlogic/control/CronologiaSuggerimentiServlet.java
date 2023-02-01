@@ -14,6 +14,11 @@ import weatherstyle.gestioneutenti.applicationlogic.logic.beans.Utente;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * @author Raffaele Aurucci
+ * servlet che si occupa di recuperare la cronologia dei suggerimenti forniti all'utente nel corso dell'utilizzo del
+ * sistema
+ */
 @WebServlet(name = "CronologiaSuggerimentiServlet",value = "/CronologiaSuggerimentiServlet")
 public class CronologiaSuggerimentiServlet extends HttpServlet {
     @Override
