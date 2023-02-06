@@ -220,7 +220,7 @@ public class GuardarobaLogicImpl implements GuardarobaLogicService {
             errorParameter.add("Errore nella directory immagine");
         }
 
-        if ((p.getLunghezza() == null) || ((!"lunga".equals(p.getLunghezza())) && (!"corta".equals(p.getLunghezza())))) {
+        if ((p.getLunghezza() == null) || ((!"lunga".equals(p.getLunghezza())) && (!"corta".equals(p.getLunghezza()) && (!"media".equals(p.getLunghezza()))))) {
             errorParameter.add("Errore lunghezza");
         }
 
