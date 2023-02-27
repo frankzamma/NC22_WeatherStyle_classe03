@@ -28,7 +28,7 @@ Il problema esposto non riguarda solo gli studenti, ma anche tutti coloro che de
 L'**obiettivo** di WeatherStyle è quello di realizzare un agente intelligente che aiuti gli utenti a scegliere quali, tra i propri capi d'abbigliamento, siano più adatti considerando le condizioni meteorologiche.
 
 ## Contenuto della repository
-Da aggiornare...
+In ...
 
 ## Dipendenze
 
