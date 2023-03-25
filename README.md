@@ -11,6 +11,10 @@
 | Palmieri Angelo | 0512111009 |
 | Zammarrelli Francesco Giuseppe | 0512110694 |
 
+<a href="https://github.com/frankzamma/NC22_WeatherStyle_classe03/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=frankzamma/NC22_WeatherStyle_classe03" />
+</a>
+
 <hr>
 
 ## Indice
@@ -28,8 +32,7 @@ Il problema esposto non riguarda solo gli studenti, ma anche tutti coloro che de
 L'**obiettivo** di WeatherStyle è quello di realizzare un agente intelligente che aiuti gli utenti a scegliere quali, tra i propri capi d'abbigliamento, siano più adatti considerando le condizioni meteorologiche.
 
 ## Contenuto della repository
-In ....
-
+On Update...
 ## Dipendenze
 
 Il progetto è stato realizzato tramite l'IDE [IntelliJ IDEA Ultimate](https://www.jetbrains.com/idea/download), la guida del prossimo paragrafo farà riferimento ad esso per la configurazione.
